@@ -728,6 +728,198 @@ func (in *instanceInstanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
+// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+type MaintenanceWindowDay string
+
+const (
+	// The day of the week is unspecified.
+	MaintenanceWindowDayDayOfWeekUnspecified = MaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED")
+	// Monday
+	MaintenanceWindowDayMonday = MaintenanceWindowDay("MONDAY")
+	// Tuesday
+	MaintenanceWindowDayTuesday = MaintenanceWindowDay("TUESDAY")
+	// Wednesday
+	MaintenanceWindowDayWednesday = MaintenanceWindowDay("WEDNESDAY")
+	// Thursday
+	MaintenanceWindowDayThursday = MaintenanceWindowDay("THURSDAY")
+	// Friday
+	MaintenanceWindowDayFriday = MaintenanceWindowDay("FRIDAY")
+	// Saturday
+	MaintenanceWindowDaySaturday = MaintenanceWindowDay("SATURDAY")
+	// Sunday
+	MaintenanceWindowDaySunday = MaintenanceWindowDay("SUNDAY")
+)
+
+func (MaintenanceWindowDay) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowDay)(nil)).Elem()
+}
+
+func (e MaintenanceWindowDay) ToMaintenanceWindowDayOutput() MaintenanceWindowDayOutput {
+	return pulumi.ToOutput(e).(MaintenanceWindowDayOutput)
+}
+
+func (e MaintenanceWindowDay) ToMaintenanceWindowDayOutputWithContext(ctx context.Context) MaintenanceWindowDayOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MaintenanceWindowDayOutput)
+}
+
+func (e MaintenanceWindowDay) ToMaintenanceWindowDayPtrOutput() MaintenanceWindowDayPtrOutput {
+	return e.ToMaintenanceWindowDayPtrOutputWithContext(context.Background())
+}
+
+func (e MaintenanceWindowDay) ToMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) MaintenanceWindowDayPtrOutput {
+	return MaintenanceWindowDay(e).ToMaintenanceWindowDayOutputWithContext(ctx).ToMaintenanceWindowDayPtrOutputWithContext(ctx)
+}
+
+func (e MaintenanceWindowDay) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaintenanceWindowDay) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaintenanceWindowDay) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MaintenanceWindowDay) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MaintenanceWindowDayOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowDayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowDay)(nil)).Elem()
+}
+
+func (o MaintenanceWindowDayOutput) ToMaintenanceWindowDayOutput() MaintenanceWindowDayOutput {
+	return o
+}
+
+func (o MaintenanceWindowDayOutput) ToMaintenanceWindowDayOutputWithContext(ctx context.Context) MaintenanceWindowDayOutput {
+	return o
+}
+
+func (o MaintenanceWindowDayOutput) ToMaintenanceWindowDayPtrOutput() MaintenanceWindowDayPtrOutput {
+	return o.ToMaintenanceWindowDayPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceWindowDayOutput) ToMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) MaintenanceWindowDayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindowDay) *MaintenanceWindowDay {
+		return &v
+	}).(MaintenanceWindowDayPtrOutput)
+}
+
+func (o MaintenanceWindowDayOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MaintenanceWindowDayOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaintenanceWindowDay) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MaintenanceWindowDayOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceWindowDayOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaintenanceWindowDay) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MaintenanceWindowDayPtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowDayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceWindowDay)(nil)).Elem()
+}
+
+func (o MaintenanceWindowDayPtrOutput) ToMaintenanceWindowDayPtrOutput() MaintenanceWindowDayPtrOutput {
+	return o
+}
+
+func (o MaintenanceWindowDayPtrOutput) ToMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) MaintenanceWindowDayPtrOutput {
+	return o
+}
+
+func (o MaintenanceWindowDayPtrOutput) Elem() MaintenanceWindowDayOutput {
+	return o.ApplyT(func(v *MaintenanceWindowDay) MaintenanceWindowDay {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindowDay
+		return ret
+	}).(MaintenanceWindowDayOutput)
+}
+
+func (o MaintenanceWindowDayPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceWindowDayPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MaintenanceWindowDay) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MaintenanceWindowDayInput is an input type that accepts values of the MaintenanceWindowDay enum
+// A concrete instance of `MaintenanceWindowDayInput` can be one of the following:
+//
+//	MaintenanceWindowDayDayOfWeekUnspecified
+//	MaintenanceWindowDayMonday
+//	MaintenanceWindowDayTuesday
+//	MaintenanceWindowDayWednesday
+//	MaintenanceWindowDayThursday
+//	MaintenanceWindowDayFriday
+//	MaintenanceWindowDaySaturday
+//	MaintenanceWindowDaySunday
+type MaintenanceWindowDayInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowDayOutput() MaintenanceWindowDayOutput
+	ToMaintenanceWindowDayOutputWithContext(context.Context) MaintenanceWindowDayOutput
+}
+
+var maintenanceWindowDayPtrType = reflect.TypeOf((**MaintenanceWindowDay)(nil)).Elem()
+
+type MaintenanceWindowDayPtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowDayPtrOutput() MaintenanceWindowDayPtrOutput
+	ToMaintenanceWindowDayPtrOutputWithContext(context.Context) MaintenanceWindowDayPtrOutput
+}
+
+type maintenanceWindowDayPtr string
+
+func MaintenanceWindowDayPtr(v string) MaintenanceWindowDayPtrInput {
+	return (*maintenanceWindowDayPtr)(&v)
+}
+
+func (*maintenanceWindowDayPtr) ElementType() reflect.Type {
+	return maintenanceWindowDayPtrType
+}
+
+func (in *maintenanceWindowDayPtr) ToMaintenanceWindowDayPtrOutput() MaintenanceWindowDayPtrOutput {
+	return pulumi.ToOutput(in).(MaintenanceWindowDayPtrOutput)
+}
+
+func (in *maintenanceWindowDayPtr) ToMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) MaintenanceWindowDayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceWindowDayPtrOutput)
+}
+
+func (in *maintenanceWindowDayPtr) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowDay] {
+	return pulumix.Output[*MaintenanceWindowDay]{
+		OutputState: in.ToMaintenanceWindowDayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
 type SslConfigCaSource string
 
@@ -1687,6 +1879,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAvailabilityTypePtrInput)(nil)).Elem(), InstanceAvailabilityType("AVAILABILITY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInstanceTypeInput)(nil)).Elem(), InstanceInstanceType("INSTANCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInstanceTypePtrInput)(nil)).Elem(), InstanceInstanceType("INSTANCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowDayInput)(nil)).Elem(), MaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowDayPtrInput)(nil)).Elem(), MaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigCaSourceInput)(nil)).Elem(), SslConfigCaSource("CA_SOURCE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigCaSourcePtrInput)(nil)).Elem(), SslConfigCaSource("CA_SOURCE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigSslModeInput)(nil)).Elem(), SslConfigSslMode("SSL_MODE_UNSPECIFIED"))
@@ -1706,6 +1900,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceAvailabilityTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceInstanceTypeOutput{})
 	pulumi.RegisterOutputType(InstanceInstanceTypePtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowDayOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowDayPtrOutput{})
 	pulumi.RegisterOutputType(SslConfigCaSourceOutput{})
 	pulumi.RegisterOutputType(SslConfigCaSourcePtrOutput{})
 	pulumi.RegisterOutputType(SslConfigSslModeOutput{})

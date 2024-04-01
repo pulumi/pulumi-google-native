@@ -37,7 +37,7 @@ type DeviceSession struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The historical state transitions of the session_state message including the current session state.
 	StateHistories SessionStateEventResponseArrayOutput `pulumi:"stateHistories"`
-	// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+	// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
 	Ttl pulumi.StringOutput `pulumi:"ttl"`
 }
 
@@ -95,7 +95,7 @@ type deviceSessionArgs struct {
 	// Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+	// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
 	Ttl *string `pulumi:"ttl"`
 }
 
@@ -108,7 +108,7 @@ type DeviceSessionArgs struct {
 	// Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+	// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
 	Ttl pulumi.StringPtrInput
 }
 
@@ -198,7 +198,7 @@ func (o DeviceSessionOutput) StateHistories() SessionStateEventResponseArrayOutp
 	return o.ApplyT(func(v *DeviceSession) SessionStateEventResponseArrayOutput { return v.StateHistories }).(SessionStateEventResponseArrayOutput)
 }
 
-// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
 func (o DeviceSessionOutput) Ttl() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceSession) pulumi.StringOutput { return v.Ttl }).(pulumi.StringOutput)
 }

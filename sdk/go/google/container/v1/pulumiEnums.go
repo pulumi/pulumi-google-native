@@ -908,6 +908,18 @@ const (
 	ClusterUpdateDesiredDatapathProviderAdvancedDatapath = ClusterUpdateDesiredDatapathProvider("ADVANCED_DATAPATH")
 )
 
+// Specify the details of in-transit encryption.
+type ClusterUpdateDesiredInTransitEncryptionConfig string
+
+const (
+	// Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+	ClusterUpdateDesiredInTransitEncryptionConfigInTransitEncryptionConfigUnspecified = ClusterUpdateDesiredInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED")
+	// In-transit encryption is disabled.
+	ClusterUpdateDesiredInTransitEncryptionConfigInTransitEncryptionDisabled = ClusterUpdateDesiredInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_DISABLED")
+	// Data in-transit is encrypted using inter-node transparent encryption.
+	ClusterUpdateDesiredInTransitEncryptionConfigInTransitEncryptionInterNodeTransparent = ClusterUpdateDesiredInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT")
+)
+
 // The desired state of IPv6 connectivity to Google Services.
 type ClusterUpdateDesiredPrivateIpv6GoogleAccess string
 
@@ -3763,6 +3775,183 @@ func (in *networkConfigDatapathProviderPtr) ToOutput(ctx context.Context) pulumi
 	}
 }
 
+// Specify the details of in-transit encryption.
+type NetworkConfigInTransitEncryptionConfig string
+
+const (
+	// Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+	NetworkConfigInTransitEncryptionConfigInTransitEncryptionConfigUnspecified = NetworkConfigInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED")
+	// In-transit encryption is disabled.
+	NetworkConfigInTransitEncryptionConfigInTransitEncryptionDisabled = NetworkConfigInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_DISABLED")
+	// Data in-transit is encrypted using inter-node transparent encryption.
+	NetworkConfigInTransitEncryptionConfigInTransitEncryptionInterNodeTransparent = NetworkConfigInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT")
+)
+
+func (NetworkConfigInTransitEncryptionConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigInTransitEncryptionConfig)(nil)).Elem()
+}
+
+func (e NetworkConfigInTransitEncryptionConfig) ToNetworkConfigInTransitEncryptionConfigOutput() NetworkConfigInTransitEncryptionConfigOutput {
+	return pulumi.ToOutput(e).(NetworkConfigInTransitEncryptionConfigOutput)
+}
+
+func (e NetworkConfigInTransitEncryptionConfig) ToNetworkConfigInTransitEncryptionConfigOutputWithContext(ctx context.Context) NetworkConfigInTransitEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkConfigInTransitEncryptionConfigOutput)
+}
+
+func (e NetworkConfigInTransitEncryptionConfig) ToNetworkConfigInTransitEncryptionConfigPtrOutput() NetworkConfigInTransitEncryptionConfigPtrOutput {
+	return e.ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkConfigInTransitEncryptionConfig) ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(ctx context.Context) NetworkConfigInTransitEncryptionConfigPtrOutput {
+	return NetworkConfigInTransitEncryptionConfig(e).ToNetworkConfigInTransitEncryptionConfigOutputWithContext(ctx).ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+func (e NetworkConfigInTransitEncryptionConfig) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkConfigInTransitEncryptionConfig) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkConfigInTransitEncryptionConfig) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkConfigInTransitEncryptionConfig) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkConfigInTransitEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigInTransitEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigInTransitEncryptionConfig)(nil)).Elem()
+}
+
+func (o NetworkConfigInTransitEncryptionConfigOutput) ToNetworkConfigInTransitEncryptionConfigOutput() NetworkConfigInTransitEncryptionConfigOutput {
+	return o
+}
+
+func (o NetworkConfigInTransitEncryptionConfigOutput) ToNetworkConfigInTransitEncryptionConfigOutputWithContext(ctx context.Context) NetworkConfigInTransitEncryptionConfigOutput {
+	return o
+}
+
+func (o NetworkConfigInTransitEncryptionConfigOutput) ToNetworkConfigInTransitEncryptionConfigPtrOutput() NetworkConfigInTransitEncryptionConfigPtrOutput {
+	return o.ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigInTransitEncryptionConfigOutput) ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(ctx context.Context) NetworkConfigInTransitEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigInTransitEncryptionConfig) *NetworkConfigInTransitEncryptionConfig {
+		return &v
+	}).(NetworkConfigInTransitEncryptionConfigPtrOutput)
+}
+
+func (o NetworkConfigInTransitEncryptionConfigOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigInTransitEncryptionConfigOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkConfigInTransitEncryptionConfig) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkConfigInTransitEncryptionConfigOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigInTransitEncryptionConfigOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkConfigInTransitEncryptionConfig) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkConfigInTransitEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigInTransitEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfigInTransitEncryptionConfig)(nil)).Elem()
+}
+
+func (o NetworkConfigInTransitEncryptionConfigPtrOutput) ToNetworkConfigInTransitEncryptionConfigPtrOutput() NetworkConfigInTransitEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o NetworkConfigInTransitEncryptionConfigPtrOutput) ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(ctx context.Context) NetworkConfigInTransitEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o NetworkConfigInTransitEncryptionConfigPtrOutput) Elem() NetworkConfigInTransitEncryptionConfigOutput {
+	return o.ApplyT(func(v *NetworkConfigInTransitEncryptionConfig) NetworkConfigInTransitEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigInTransitEncryptionConfig
+		return ret
+	}).(NetworkConfigInTransitEncryptionConfigOutput)
+}
+
+func (o NetworkConfigInTransitEncryptionConfigPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigInTransitEncryptionConfigPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkConfigInTransitEncryptionConfig) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkConfigInTransitEncryptionConfigInput is an input type that accepts values of the NetworkConfigInTransitEncryptionConfig enum
+// A concrete instance of `NetworkConfigInTransitEncryptionConfigInput` can be one of the following:
+//
+//	NetworkConfigInTransitEncryptionConfigInTransitEncryptionConfigUnspecified
+//	NetworkConfigInTransitEncryptionConfigInTransitEncryptionDisabled
+//	NetworkConfigInTransitEncryptionConfigInTransitEncryptionInterNodeTransparent
+type NetworkConfigInTransitEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToNetworkConfigInTransitEncryptionConfigOutput() NetworkConfigInTransitEncryptionConfigOutput
+	ToNetworkConfigInTransitEncryptionConfigOutputWithContext(context.Context) NetworkConfigInTransitEncryptionConfigOutput
+}
+
+var networkConfigInTransitEncryptionConfigPtrType = reflect.TypeOf((**NetworkConfigInTransitEncryptionConfig)(nil)).Elem()
+
+type NetworkConfigInTransitEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworkConfigInTransitEncryptionConfigPtrOutput() NetworkConfigInTransitEncryptionConfigPtrOutput
+	ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(context.Context) NetworkConfigInTransitEncryptionConfigPtrOutput
+}
+
+type networkConfigInTransitEncryptionConfigPtr string
+
+func NetworkConfigInTransitEncryptionConfigPtr(v string) NetworkConfigInTransitEncryptionConfigPtrInput {
+	return (*networkConfigInTransitEncryptionConfigPtr)(&v)
+}
+
+func (*networkConfigInTransitEncryptionConfigPtr) ElementType() reflect.Type {
+	return networkConfigInTransitEncryptionConfigPtrType
+}
+
+func (in *networkConfigInTransitEncryptionConfigPtr) ToNetworkConfigInTransitEncryptionConfigPtrOutput() NetworkConfigInTransitEncryptionConfigPtrOutput {
+	return pulumi.ToOutput(in).(NetworkConfigInTransitEncryptionConfigPtrOutput)
+}
+
+func (in *networkConfigInTransitEncryptionConfigPtr) ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(ctx context.Context) NetworkConfigInTransitEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigInTransitEncryptionConfigPtrOutput)
+}
+
+func (in *networkConfigInTransitEncryptionConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigInTransitEncryptionConfig] {
+	return pulumix.Output[*NetworkConfigInTransitEncryptionConfig]{
+		OutputState: in.ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 type NetworkConfigPrivateIpv6GoogleAccess string
 
@@ -5533,6 +5722,180 @@ func (in *sandboxConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Sa
 	}
 }
 
+// Disk mode (container image cache, etc.)
+type SecondaryBootDiskMode string
+
+const (
+	// MODE_UNSPECIFIED is when mode is not set.
+	SecondaryBootDiskModeModeUnspecified = SecondaryBootDiskMode("MODE_UNSPECIFIED")
+	// CONTAINER_IMAGE_CACHE is for using the secondary boot disk as a container image cache.
+	SecondaryBootDiskModeContainerImageCache = SecondaryBootDiskMode("CONTAINER_IMAGE_CACHE")
+)
+
+func (SecondaryBootDiskMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecondaryBootDiskMode)(nil)).Elem()
+}
+
+func (e SecondaryBootDiskMode) ToSecondaryBootDiskModeOutput() SecondaryBootDiskModeOutput {
+	return pulumi.ToOutput(e).(SecondaryBootDiskModeOutput)
+}
+
+func (e SecondaryBootDiskMode) ToSecondaryBootDiskModeOutputWithContext(ctx context.Context) SecondaryBootDiskModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecondaryBootDiskModeOutput)
+}
+
+func (e SecondaryBootDiskMode) ToSecondaryBootDiskModePtrOutput() SecondaryBootDiskModePtrOutput {
+	return e.ToSecondaryBootDiskModePtrOutputWithContext(context.Background())
+}
+
+func (e SecondaryBootDiskMode) ToSecondaryBootDiskModePtrOutputWithContext(ctx context.Context) SecondaryBootDiskModePtrOutput {
+	return SecondaryBootDiskMode(e).ToSecondaryBootDiskModeOutputWithContext(ctx).ToSecondaryBootDiskModePtrOutputWithContext(ctx)
+}
+
+func (e SecondaryBootDiskMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecondaryBootDiskMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecondaryBootDiskMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecondaryBootDiskMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecondaryBootDiskModeOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecondaryBootDiskMode)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskModeOutput) ToSecondaryBootDiskModeOutput() SecondaryBootDiskModeOutput {
+	return o
+}
+
+func (o SecondaryBootDiskModeOutput) ToSecondaryBootDiskModeOutputWithContext(ctx context.Context) SecondaryBootDiskModeOutput {
+	return o
+}
+
+func (o SecondaryBootDiskModeOutput) ToSecondaryBootDiskModePtrOutput() SecondaryBootDiskModePtrOutput {
+	return o.ToSecondaryBootDiskModePtrOutputWithContext(context.Background())
+}
+
+func (o SecondaryBootDiskModeOutput) ToSecondaryBootDiskModePtrOutputWithContext(ctx context.Context) SecondaryBootDiskModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecondaryBootDiskMode) *SecondaryBootDiskMode {
+		return &v
+	}).(SecondaryBootDiskModePtrOutput)
+}
+
+func (o SecondaryBootDiskModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecondaryBootDiskModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecondaryBootDiskMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecondaryBootDiskModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecondaryBootDiskModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecondaryBootDiskMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecondaryBootDiskModePtrOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecondaryBootDiskMode)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskModePtrOutput) ToSecondaryBootDiskModePtrOutput() SecondaryBootDiskModePtrOutput {
+	return o
+}
+
+func (o SecondaryBootDiskModePtrOutput) ToSecondaryBootDiskModePtrOutputWithContext(ctx context.Context) SecondaryBootDiskModePtrOutput {
+	return o
+}
+
+func (o SecondaryBootDiskModePtrOutput) Elem() SecondaryBootDiskModeOutput {
+	return o.ApplyT(func(v *SecondaryBootDiskMode) SecondaryBootDiskMode {
+		if v != nil {
+			return *v
+		}
+		var ret SecondaryBootDiskMode
+		return ret
+	}).(SecondaryBootDiskModeOutput)
+}
+
+func (o SecondaryBootDiskModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecondaryBootDiskModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecondaryBootDiskMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecondaryBootDiskModeInput is an input type that accepts values of the SecondaryBootDiskMode enum
+// A concrete instance of `SecondaryBootDiskModeInput` can be one of the following:
+//
+//	SecondaryBootDiskModeModeUnspecified
+//	SecondaryBootDiskModeContainerImageCache
+type SecondaryBootDiskModeInput interface {
+	pulumi.Input
+
+	ToSecondaryBootDiskModeOutput() SecondaryBootDiskModeOutput
+	ToSecondaryBootDiskModeOutputWithContext(context.Context) SecondaryBootDiskModeOutput
+}
+
+var secondaryBootDiskModePtrType = reflect.TypeOf((**SecondaryBootDiskMode)(nil)).Elem()
+
+type SecondaryBootDiskModePtrInput interface {
+	pulumi.Input
+
+	ToSecondaryBootDiskModePtrOutput() SecondaryBootDiskModePtrOutput
+	ToSecondaryBootDiskModePtrOutputWithContext(context.Context) SecondaryBootDiskModePtrOutput
+}
+
+type secondaryBootDiskModePtr string
+
+func SecondaryBootDiskModePtr(v string) SecondaryBootDiskModePtrInput {
+	return (*secondaryBootDiskModePtr)(&v)
+}
+
+func (*secondaryBootDiskModePtr) ElementType() reflect.Type {
+	return secondaryBootDiskModePtrType
+}
+
+func (in *secondaryBootDiskModePtr) ToSecondaryBootDiskModePtrOutput() SecondaryBootDiskModePtrOutput {
+	return pulumi.ToOutput(in).(SecondaryBootDiskModePtrOutput)
+}
+
+func (in *secondaryBootDiskModePtr) ToSecondaryBootDiskModePtrOutputWithContext(ctx context.Context) SecondaryBootDiskModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecondaryBootDiskModePtrOutput)
+}
+
+func (in *secondaryBootDiskModePtr) ToOutput(ctx context.Context) pulumix.Output[*SecondaryBootDiskMode] {
+	return pulumix.Output[*SecondaryBootDiskMode]{
+		OutputState: in.ToSecondaryBootDiskModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Sets which mode to use for Security Posture features.
 type SecurityPostureConfigMode string
 
@@ -5720,6 +6083,8 @@ const (
 	SecurityPostureConfigVulnerabilityModeVulnerabilityDisabled = SecurityPostureConfigVulnerabilityMode("VULNERABILITY_DISABLED")
 	// Applies basic vulnerability scanning on the cluster.
 	SecurityPostureConfigVulnerabilityModeVulnerabilityBasic = SecurityPostureConfigVulnerabilityMode("VULNERABILITY_BASIC")
+	// Applies the Security Posture's vulnerability on cluster Enterprise level features.
+	SecurityPostureConfigVulnerabilityModeVulnerabilityEnterprise = SecurityPostureConfigVulnerabilityMode("VULNERABILITY_ENTERPRISE")
 )
 
 func (SecurityPostureConfigVulnerabilityMode) ElementType() reflect.Type {
@@ -5847,6 +6212,7 @@ func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToStringPtrOutputWithCo
 //	SecurityPostureConfigVulnerabilityModeVulnerabilityModeUnspecified
 //	SecurityPostureConfigVulnerabilityModeVulnerabilityDisabled
 //	SecurityPostureConfigVulnerabilityModeVulnerabilityBasic
+//	SecurityPostureConfigVulnerabilityModeVulnerabilityEnterprise
 type SecurityPostureConfigVulnerabilityModeInput interface {
 	pulumi.Input
 
@@ -6870,6 +7236,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringComponentConfigEnableComponentsItemArrayInput)(nil)).Elem(), MonitoringComponentConfigEnableComponentsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigDatapathProviderInput)(nil)).Elem(), NetworkConfigDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigDatapathProviderPtrInput)(nil)).Elem(), NetworkConfigDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInTransitEncryptionConfigInput)(nil)).Elem(), NetworkConfigInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInTransitEncryptionConfigPtrInput)(nil)).Elem(), NetworkConfigInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPrivateIpv6GoogleAccessInput)(nil)).Elem(), NetworkConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPrivateIpv6GoogleAccessPtrInput)(nil)).Elem(), NetworkConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTierInput)(nil)).Elem(), NetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED"))
@@ -6890,6 +7258,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypePtrInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigTypeInput)(nil)).Elem(), SandboxConfigType("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigTypePtrInput)(nil)).Elem(), SandboxConfigType("UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecondaryBootDiskModeInput)(nil)).Elem(), SecondaryBootDiskMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecondaryBootDiskModePtrInput)(nil)).Elem(), SecondaryBootDiskMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigModeInput)(nil)).Elem(), SecurityPostureConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigModePtrInput)(nil)).Elem(), SecurityPostureConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigVulnerabilityModeInput)(nil)).Elem(), SecurityPostureConfigVulnerabilityMode("VULNERABILITY_MODE_UNSPECIFIED"))
@@ -6947,6 +7317,8 @@ func init() {
 	pulumi.RegisterOutputType(MonitoringComponentConfigEnableComponentsItemArrayOutput{})
 	pulumi.RegisterOutputType(NetworkConfigDatapathProviderOutput{})
 	pulumi.RegisterOutputType(NetworkConfigDatapathProviderPtrOutput{})
+	pulumi.RegisterOutputType(NetworkConfigInTransitEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(NetworkConfigInTransitEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPrivateIpv6GoogleAccessOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPrivateIpv6GoogleAccessPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPerformanceConfigTotalEgressBandwidthTierOutput{})
@@ -6967,6 +7339,8 @@ func init() {
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypePtrOutput{})
 	pulumi.RegisterOutputType(SandboxConfigTypeOutput{})
 	pulumi.RegisterOutputType(SandboxConfigTypePtrOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskModeOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskModePtrOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigModeOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigModePtrOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigVulnerabilityModeOutput{})

@@ -56,23 +56,33 @@ type LookupClusterResult struct {
 	EncryptionInfo EncryptionInfoResponse `pulumi:"encryptionInfo"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag string `pulumi:"etag"`
+	// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+	GeminiConfig GeminiClusterConfigResponse `pulumi:"geminiConfig"`
 	// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
 	InitialUser UserPasswordResponse `pulumi:"initialUser"`
 	// Labels as key value pairs
 	Labels map[string]string `pulumi:"labels"`
+	// The maintenance schedule for the cluster, generated for a specific rollout if a maintenance window is set.
+	MaintenanceSchedule MaintenanceScheduleResponse `pulumi:"maintenanceSchedule"`
+	// Optional. The maintenance update policy determines when to allow or deny updates.
+	MaintenanceUpdatePolicy MaintenanceUpdatePolicyResponse `pulumi:"maintenanceUpdatePolicy"`
 	// Cluster created via DMS migration.
 	MigrationSource MigrationSourceResponse `pulumi:"migrationSource"`
 	// The name of the cluster resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id} where the cluster ID segment should satisfy the regex expression `[a-z0-9-]+`. For more details see https://google.aip.dev/122. The prefix of the cluster resource name is the name of the parent resource: * projects/{project}/locations/{region}
 	Name string `pulumi:"name"`
-	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 	//
-	// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+	// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 	Network       string                `pulumi:"network"`
 	NetworkConfig NetworkConfigResponse `pulumi:"networkConfig"`
 	// Cross Region replication config specific to PRIMARY cluster.
 	PrimaryConfig PrimaryConfigResponse `pulumi:"primaryConfig"`
+	// Optional. The configuration for Private Service Connect (PSC) for the cluster.
+	PscConfig PscConfigResponse `pulumi:"pscConfig"`
 	// Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling bool `pulumi:"reconciling"`
+	// Reserved for future use.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Cross Region replication config specific to SECONDARY cluster.
 	SecondaryConfig SecondaryConfigResponse `pulumi:"secondaryConfig"`
 	// SSL configuration for this AlloyDB cluster.
@@ -188,6 +198,11 @@ func (o LookupClusterResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+func (o LookupClusterResultOutput) GeminiConfig() GeminiClusterConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) GeminiClusterConfigResponse { return v.GeminiConfig }).(GeminiClusterConfigResponseOutput)
+}
+
 // Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
 func (o LookupClusterResultOutput) InitialUser() UserPasswordResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) UserPasswordResponse { return v.InitialUser }).(UserPasswordResponseOutput)
@@ -196,6 +211,16 @@ func (o LookupClusterResultOutput) InitialUser() UserPasswordResponseOutput {
 // Labels as key value pairs
 func (o LookupClusterResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The maintenance schedule for the cluster, generated for a specific rollout if a maintenance window is set.
+func (o LookupClusterResultOutput) MaintenanceSchedule() MaintenanceScheduleResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) MaintenanceScheduleResponse { return v.MaintenanceSchedule }).(MaintenanceScheduleResponseOutput)
+}
+
+// Optional. The maintenance update policy determines when to allow or deny updates.
+func (o LookupClusterResultOutput) MaintenanceUpdatePolicy() MaintenanceUpdatePolicyResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) MaintenanceUpdatePolicyResponse { return v.MaintenanceUpdatePolicy }).(MaintenanceUpdatePolicyResponseOutput)
 }
 
 // Cluster created via DMS migration.
@@ -208,9 +233,9 @@ func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 //
-// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 func (o LookupClusterResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -224,9 +249,19 @@ func (o LookupClusterResultOutput) PrimaryConfig() PrimaryConfigResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) PrimaryConfigResponse { return v.PrimaryConfig }).(PrimaryConfigResponseOutput)
 }
 
+// Optional. The configuration for Private Service Connect (PSC) for the cluster.
+func (o LookupClusterResultOutput) PscConfig() PscConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) PscConfigResponse { return v.PscConfig }).(PscConfigResponseOutput)
+}
+
 // Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
 func (o LookupClusterResultOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClusterResult) bool { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// Reserved for future use.
+func (o LookupClusterResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // Cross Region replication config specific to SECONDARY cluster.

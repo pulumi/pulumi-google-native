@@ -16,6 +16,8 @@ import (
 type TrustConfig struct {
 	pulumi.CustomResourceState
 
+	// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+	AllowlistedCertificates AllowlistedCertificateResponseArrayOutput `pulumi:"allowlistedCertificates"`
 	// The creation timestamp of a TrustConfig.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// One or more paragraphs of text description of a TrustConfig.
@@ -85,6 +87,8 @@ func (TrustConfigState) ElementType() reflect.Type {
 }
 
 type trustConfigArgs struct {
+	// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+	AllowlistedCertificates []AllowlistedCertificate `pulumi:"allowlistedCertificates"`
 	// One or more paragraphs of text description of a TrustConfig.
 	Description *string `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -103,6 +107,8 @@ type trustConfigArgs struct {
 
 // The set of arguments for constructing a TrustConfig resource.
 type TrustConfigArgs struct {
+	// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+	AllowlistedCertificates AllowlistedCertificateArrayInput
 	// One or more paragraphs of text description of a TrustConfig.
 	Description pulumi.StringPtrInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -154,6 +160,11 @@ func (o TrustConfigOutput) ToTrustConfigOutput() TrustConfigOutput {
 
 func (o TrustConfigOutput) ToTrustConfigOutputWithContext(ctx context.Context) TrustConfigOutput {
 	return o
+}
+
+// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+func (o TrustConfigOutput) AllowlistedCertificates() AllowlistedCertificateResponseArrayOutput {
+	return o.ApplyT(func(v *TrustConfig) AllowlistedCertificateResponseArrayOutput { return v.AllowlistedCertificates }).(AllowlistedCertificateResponseArrayOutput)
 }
 
 // The creation timestamp of a TrustConfig.

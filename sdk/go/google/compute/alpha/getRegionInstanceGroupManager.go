@@ -63,6 +63,8 @@ type LookupRegionInstanceGroupManagerResult struct {
 	Name string `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts []NamedPortResponse `pulumi:"namedPorts"`
+	// Input only. Additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceGroupManagerParamsResponse `pulumi:"params"`
 	// The URL of the region where the managed instance group resides (for regional resources).
 	Region string `pulumi:"region"`
 	// The URL for this managed instance group. The server defines this URL.
@@ -225,6 +227,11 @@ func (o LookupRegionInstanceGroupManagerResultOutput) Name() pulumi.StringOutput
 // Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 func (o LookupRegionInstanceGroupManagerResultOutput) NamedPorts() NamedPortResponseArrayOutput {
 	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) []NamedPortResponse { return v.NamedPorts }).(NamedPortResponseArrayOutput)
+}
+
+// Input only. Additional params passed with the request, but not persisted as part of resource payload.
+func (o LookupRegionInstanceGroupManagerResultOutput) Params() InstanceGroupManagerParamsResponseOutput {
+	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) InstanceGroupManagerParamsResponse { return v.Params }).(InstanceGroupManagerParamsResponseOutput)
 }
 
 // The URL of the region where the managed instance group resides (for regional resources).

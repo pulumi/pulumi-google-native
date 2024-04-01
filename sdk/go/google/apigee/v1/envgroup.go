@@ -22,7 +22,7 @@ type Envgroup struct {
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
 	// The time at which the environment group was last updated as milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
-	// ID of the environment group. Overrides any ID in the environment_group resource.
+	// Optional. ID of the environment group. Overrides any ID in the environment_group resource.
 	Name           pulumi.StringOutput `pulumi:"name"`
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
@@ -147,7 +147,7 @@ func (o EnvgroupOutput) LastModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Envgroup) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
 }
 
-// ID of the environment group. Overrides any ID in the environment_group resource.
+// Optional. ID of the environment group. Overrides any ID in the environment_group resource.
 func (o EnvgroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Envgroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

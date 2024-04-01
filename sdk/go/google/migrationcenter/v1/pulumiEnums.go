@@ -188,6 +188,186 @@ func (in *computeEnginePreferencesLicenseTypePtr) ToOutput(ctx context.Context) 
 	}
 }
 
+// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+type ComputeEnginePreferencesPersistentDiskType string
+
+const (
+	// Unspecified (default value). Selecting this value allows the system to use any disk type according to reported usage. This a good value to start with.
+	ComputeEnginePreferencesPersistentDiskTypePersistentDiskTypeUnspecified = ComputeEnginePreferencesPersistentDiskType("PERSISTENT_DISK_TYPE_UNSPECIFIED")
+	// Standard HDD Persistent Disk.
+	ComputeEnginePreferencesPersistentDiskTypePersistentDiskTypeStandard = ComputeEnginePreferencesPersistentDiskType("PERSISTENT_DISK_TYPE_STANDARD")
+	// Balanced Persistent Disk.
+	ComputeEnginePreferencesPersistentDiskTypePersistentDiskTypeBalanced = ComputeEnginePreferencesPersistentDiskType("PERSISTENT_DISK_TYPE_BALANCED")
+	// SSD Persistent Disk.
+	ComputeEnginePreferencesPersistentDiskTypePersistentDiskTypeSsd = ComputeEnginePreferencesPersistentDiskType("PERSISTENT_DISK_TYPE_SSD")
+)
+
+func (ComputeEnginePreferencesPersistentDiskType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnginePreferencesPersistentDiskType)(nil)).Elem()
+}
+
+func (e ComputeEnginePreferencesPersistentDiskType) ToComputeEnginePreferencesPersistentDiskTypeOutput() ComputeEnginePreferencesPersistentDiskTypeOutput {
+	return pulumi.ToOutput(e).(ComputeEnginePreferencesPersistentDiskTypeOutput)
+}
+
+func (e ComputeEnginePreferencesPersistentDiskType) ToComputeEnginePreferencesPersistentDiskTypeOutputWithContext(ctx context.Context) ComputeEnginePreferencesPersistentDiskTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ComputeEnginePreferencesPersistentDiskTypeOutput)
+}
+
+func (e ComputeEnginePreferencesPersistentDiskType) ToComputeEnginePreferencesPersistentDiskTypePtrOutput() ComputeEnginePreferencesPersistentDiskTypePtrOutput {
+	return e.ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (e ComputeEnginePreferencesPersistentDiskType) ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesPersistentDiskTypePtrOutput {
+	return ComputeEnginePreferencesPersistentDiskType(e).ToComputeEnginePreferencesPersistentDiskTypeOutputWithContext(ctx).ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(ctx)
+}
+
+func (e ComputeEnginePreferencesPersistentDiskType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ComputeEnginePreferencesPersistentDiskType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ComputeEnginePreferencesPersistentDiskType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ComputeEnginePreferencesPersistentDiskType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ComputeEnginePreferencesPersistentDiskTypeOutput struct{ *pulumi.OutputState }
+
+func (ComputeEnginePreferencesPersistentDiskTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnginePreferencesPersistentDiskType)(nil)).Elem()
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToComputeEnginePreferencesPersistentDiskTypeOutput() ComputeEnginePreferencesPersistentDiskTypeOutput {
+	return o
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToComputeEnginePreferencesPersistentDiskTypeOutputWithContext(ctx context.Context) ComputeEnginePreferencesPersistentDiskTypeOutput {
+	return o
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToComputeEnginePreferencesPersistentDiskTypePtrOutput() ComputeEnginePreferencesPersistentDiskTypePtrOutput {
+	return o.ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesPersistentDiskTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeEnginePreferencesPersistentDiskType) *ComputeEnginePreferencesPersistentDiskType {
+		return &v
+	}).(ComputeEnginePreferencesPersistentDiskTypePtrOutput)
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ComputeEnginePreferencesPersistentDiskType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ComputeEnginePreferencesPersistentDiskType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ComputeEnginePreferencesPersistentDiskTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ComputeEnginePreferencesPersistentDiskTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeEnginePreferencesPersistentDiskType)(nil)).Elem()
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypePtrOutput) ToComputeEnginePreferencesPersistentDiskTypePtrOutput() ComputeEnginePreferencesPersistentDiskTypePtrOutput {
+	return o
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypePtrOutput) ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesPersistentDiskTypePtrOutput {
+	return o
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypePtrOutput) Elem() ComputeEnginePreferencesPersistentDiskTypeOutput {
+	return o.ApplyT(func(v *ComputeEnginePreferencesPersistentDiskType) ComputeEnginePreferencesPersistentDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeEnginePreferencesPersistentDiskType
+		return ret
+	}).(ComputeEnginePreferencesPersistentDiskTypeOutput)
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ComputeEnginePreferencesPersistentDiskType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ComputeEnginePreferencesPersistentDiskTypeInput is an input type that accepts values of the ComputeEnginePreferencesPersistentDiskType enum
+// A concrete instance of `ComputeEnginePreferencesPersistentDiskTypeInput` can be one of the following:
+//
+//	ComputeEnginePreferencesPersistentDiskTypePersistentDiskTypeUnspecified
+//	ComputeEnginePreferencesPersistentDiskTypePersistentDiskTypeStandard
+//	ComputeEnginePreferencesPersistentDiskTypePersistentDiskTypeBalanced
+//	ComputeEnginePreferencesPersistentDiskTypePersistentDiskTypeSsd
+type ComputeEnginePreferencesPersistentDiskTypeInput interface {
+	pulumi.Input
+
+	ToComputeEnginePreferencesPersistentDiskTypeOutput() ComputeEnginePreferencesPersistentDiskTypeOutput
+	ToComputeEnginePreferencesPersistentDiskTypeOutputWithContext(context.Context) ComputeEnginePreferencesPersistentDiskTypeOutput
+}
+
+var computeEnginePreferencesPersistentDiskTypePtrType = reflect.TypeOf((**ComputeEnginePreferencesPersistentDiskType)(nil)).Elem()
+
+type ComputeEnginePreferencesPersistentDiskTypePtrInput interface {
+	pulumi.Input
+
+	ToComputeEnginePreferencesPersistentDiskTypePtrOutput() ComputeEnginePreferencesPersistentDiskTypePtrOutput
+	ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(context.Context) ComputeEnginePreferencesPersistentDiskTypePtrOutput
+}
+
+type computeEnginePreferencesPersistentDiskTypePtr string
+
+func ComputeEnginePreferencesPersistentDiskTypePtr(v string) ComputeEnginePreferencesPersistentDiskTypePtrInput {
+	return (*computeEnginePreferencesPersistentDiskTypePtr)(&v)
+}
+
+func (*computeEnginePreferencesPersistentDiskTypePtr) ElementType() reflect.Type {
+	return computeEnginePreferencesPersistentDiskTypePtrType
+}
+
+func (in *computeEnginePreferencesPersistentDiskTypePtr) ToComputeEnginePreferencesPersistentDiskTypePtrOutput() ComputeEnginePreferencesPersistentDiskTypePtrOutput {
+	return pulumi.ToOutput(in).(ComputeEnginePreferencesPersistentDiskTypePtrOutput)
+}
+
+func (in *computeEnginePreferencesPersistentDiskTypePtr) ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesPersistentDiskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ComputeEnginePreferencesPersistentDiskTypePtrOutput)
+}
+
+func (in *computeEnginePreferencesPersistentDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeEnginePreferencesPersistentDiskType] {
+	return pulumix.Output[*ComputeEnginePreferencesPersistentDiskType]{
+		OutputState: in.ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. The payload format.
 type ImportDataFileFormat string
 
@@ -1102,6 +1282,8 @@ const (
 	SourceTypeSourceTypeInventoryScan = SourceType("SOURCE_TYPE_INVENTORY_SCAN")
 	// Third-party owned sources.
 	SourceTypeSourceTypeCustom = SourceType("SOURCE_TYPE_CUSTOM")
+	// Discovery clients
+	SourceTypeSourceTypeDiscoveryClient = SourceType("SOURCE_TYPE_DISCOVERY_CLIENT")
 )
 
 func (SourceType) ElementType() reflect.Type {
@@ -1231,6 +1413,7 @@ func (o SourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 //	SourceTypeSourceTypeGuestOsScan
 //	SourceTypeSourceTypeInventoryScan
 //	SourceTypeSourceTypeCustom
+//	SourceTypeSourceTypeDiscoveryClient
 type SourceTypeInput interface {
 	pulumi.Input
 
@@ -2000,6 +2183,8 @@ func (in *vmwareEnginePreferencesCommitmentPlanPtr) ToOutput(ctx context.Context
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEnginePreferencesLicenseTypeInput)(nil)).Elem(), ComputeEnginePreferencesLicenseType("LICENSE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEnginePreferencesLicenseTypePtrInput)(nil)).Elem(), ComputeEnginePreferencesLicenseType("LICENSE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEnginePreferencesPersistentDiskTypeInput)(nil)).Elem(), ComputeEnginePreferencesPersistentDiskType("PERSISTENT_DISK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEnginePreferencesPersistentDiskTypePtrInput)(nil)).Elem(), ComputeEnginePreferencesPersistentDiskType("PERSISTENT_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImportDataFileFormatInput)(nil)).Elem(), ImportDataFileFormat("IMPORT_JOB_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImportDataFileFormatPtrInput)(nil)).Elem(), ImportDataFileFormat("IMPORT_JOB_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReportStateEnumInput)(nil)).Elem(), ReportStateEnum("STATE_UNSPECIFIED"))
@@ -2022,6 +2207,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareEnginePreferencesCommitmentPlanPtrInput)(nil)).Elem(), VmwareEnginePreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ComputeEnginePreferencesLicenseTypeOutput{})
 	pulumi.RegisterOutputType(ComputeEnginePreferencesLicenseTypePtrOutput{})
+	pulumi.RegisterOutputType(ComputeEnginePreferencesPersistentDiskTypeOutput{})
+	pulumi.RegisterOutputType(ComputeEnginePreferencesPersistentDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(ImportDataFileFormatOutput{})
 	pulumi.RegisterOutputType(ImportDataFileFormatPtrOutput{})
 	pulumi.RegisterOutputType(ReportStateEnumOutput{})

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state.
+// Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state. NetworkPeering is a global resource and location can only be global.
 func LookupNetworkPeering(ctx *pulumi.Context, args *LookupNetworkPeeringArgs, opts ...pulumi.InvokeOption) (*LookupNetworkPeeringResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkPeeringResult
@@ -23,6 +23,7 @@ func LookupNetworkPeering(ctx *pulumi.Context, args *LookupNetworkPeeringArgs, o
 }
 
 type LookupNetworkPeeringArgs struct {
+	Location         string  `pulumi:"location"`
 	NetworkPeeringId string  `pulumi:"networkPeeringId"`
 	Project          *string `pulumi:"project"`
 }
@@ -42,7 +43,7 @@ type LookupNetworkPeeringResult struct {
 	ImportCustomRoutes bool `pulumi:"importCustomRoutes"`
 	// Optional. True if all subnet routes with public IP address range are imported; false otherwise. The default value is true. IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported to peers and are not controlled by this field.
 	ImportCustomRoutesWithPublicIp bool `pulumi:"importCustomRoutesWithPublicIp"`
-	// The resource name of the network peering. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
+	// The resource name of the network peering. NetworkPeering is a global resource and location can only be global. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
 	Name string `pulumi:"name"`
 	// Optional. Maximum transmission unit (MTU) in bytes. The default value is `1500`. If a value of `0` is provided for this field, VMware Engine uses the default value instead.
 	PeerMtu int `pulumi:"peerMtu"`
@@ -76,6 +77,7 @@ func LookupNetworkPeeringOutput(ctx *pulumi.Context, args LookupNetworkPeeringOu
 }
 
 type LookupNetworkPeeringOutputArgs struct {
+	Location         pulumi.StringInput    `pulumi:"location"`
 	NetworkPeeringId pulumi.StringInput    `pulumi:"networkPeeringId"`
 	Project          pulumi.StringPtrInput `pulumi:"project"`
 }
@@ -133,7 +135,7 @@ func (o LookupNetworkPeeringResultOutput) ImportCustomRoutesWithPublicIp() pulum
 	return o.ApplyT(func(v LookupNetworkPeeringResult) bool { return v.ImportCustomRoutesWithPublicIp }).(pulumi.BoolOutput)
 }
 
-// The resource name of the network peering. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
+// The resource name of the network peering. NetworkPeering is a global resource and location can only be global. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
 func (o LookupNetworkPeeringResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPeeringResult) string { return v.Name }).(pulumi.StringOutput)
 }

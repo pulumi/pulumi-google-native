@@ -31,23 +31,23 @@ type LookupOrganizationBucketArgs struct {
 type LookupOrganizationBucketResult struct {
 	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
 	AnalyticsEnabled bool `pulumi:"analyticsEnabled"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+	// Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings CmekSettingsResponse `pulumi:"cmekSettings"`
 	// The creation timestamp of the bucket. This is not set for any of the default buckets.
 	CreateTime string `pulumi:"createTime"`
-	// Describes this bucket.
+	// Optional. Describes this bucket.
 	Description string `pulumi:"description"`
-	// A list of indexed fields and related configuration data.
+	// Optional. A list of indexed fields and related configuration data.
 	IndexConfigs []IndexConfigResponse `pulumi:"indexConfigs"`
 	// The bucket lifecycle state.
 	LifecycleState string `pulumi:"lifecycleState"`
-	// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+	// Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
 	Locked bool `pulumi:"locked"`
 	// The resource name of the bucket.For example:projects/my-project/locations/global/buckets/my-bucketFor a list of supported locations, see Supported Regions (https://cloud.google.com/logging/docs/region-support)For the location of global it is unspecified where log entries are actually stored.After a bucket has been created, the location cannot be changed.
 	Name string `pulumi:"name"`
-	// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+	// Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
 	RestrictedFields []string `pulumi:"restrictedFields"`
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays int `pulumi:"retentionDays"`
 	// The last update timestamp of the bucket.
 	UpdateTime string `pulumi:"updateTime"`
@@ -95,7 +95,7 @@ func (o LookupOrganizationBucketResultOutput) AnalyticsEnabled() pulumi.BoolOutp
 	return o.ApplyT(func(v LookupOrganizationBucketResult) bool { return v.AnalyticsEnabled }).(pulumi.BoolOutput)
 }
 
-// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+// Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 func (o LookupOrganizationBucketResultOutput) CmekSettings() CmekSettingsResponseOutput {
 	return o.ApplyT(func(v LookupOrganizationBucketResult) CmekSettingsResponse { return v.CmekSettings }).(CmekSettingsResponseOutput)
 }
@@ -105,12 +105,12 @@ func (o LookupOrganizationBucketResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBucketResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Describes this bucket.
+// Optional. Describes this bucket.
 func (o LookupOrganizationBucketResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBucketResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// A list of indexed fields and related configuration data.
+// Optional. A list of indexed fields and related configuration data.
 func (o LookupOrganizationBucketResultOutput) IndexConfigs() IndexConfigResponseArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationBucketResult) []IndexConfigResponse { return v.IndexConfigs }).(IndexConfigResponseArrayOutput)
 }
@@ -120,7 +120,7 @@ func (o LookupOrganizationBucketResultOutput) LifecycleState() pulumi.StringOutp
 	return o.ApplyT(func(v LookupOrganizationBucketResult) string { return v.LifecycleState }).(pulumi.StringOutput)
 }
 
-// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+// Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
 func (o LookupOrganizationBucketResultOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupOrganizationBucketResult) bool { return v.Locked }).(pulumi.BoolOutput)
 }
@@ -130,12 +130,12 @@ func (o LookupOrganizationBucketResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBucketResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+// Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
 func (o LookupOrganizationBucketResultOutput) RestrictedFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationBucketResult) []string { return v.RestrictedFields }).(pulumi.StringArrayOutput)
 }
 
-// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+// Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 func (o LookupOrganizationBucketResultOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupOrganizationBucketResult) int { return v.RetentionDays }).(pulumi.IntOutput)
 }

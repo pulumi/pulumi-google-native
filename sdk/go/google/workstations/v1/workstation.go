@@ -30,6 +30,8 @@ type Workstation struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Host to which clients can send HTTPS traffic that will be received by the workstation. Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different port, clients may prefix the host with the destination port in the format `{port}-{host}`.
 	Host pulumi.StringOutput `pulumi:"host"`
+	// The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key can only be configured in the WorkstationConfig. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	KmsKey pulumi.StringOutput `pulumi:"kmsKey"`
 	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
@@ -221,6 +223,11 @@ func (o WorkstationOutput) Etag() pulumi.StringOutput {
 // Host to which clients can send HTTPS traffic that will be received by the workstation. Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different port, clients may prefix the host with the destination port in the format `{port}-{host}`.
 func (o WorkstationOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key can only be configured in the WorkstationConfig. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+func (o WorkstationOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.

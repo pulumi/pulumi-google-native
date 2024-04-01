@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceIamMember{}
 	case "google-native:spanner/v1:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
+	case "google-native:spanner/v1:InstancePartition":
+		r = &InstancePartition{}
 	case "google-native:spanner/v1:Session":
 		r = &Session{}
 	default:

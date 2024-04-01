@@ -13,12 +13,11 @@ import (
 )
 
 // Creates a new Workspace in a given Repository.
-// Auto-naming is currently not supported for this resource.
 type Workspace struct {
 	pulumi.CustomResourceState
 
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The workspace's name.
+	// Identifier. The workspace's name.
 	Name         pulumi.StringOutput `pulumi:"name"`
 	Project      pulumi.StringOutput `pulumi:"project"`
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
@@ -79,7 +78,9 @@ func (WorkspaceState) ElementType() reflect.Type {
 }
 
 type workspaceArgs struct {
-	Location     *string `pulumi:"location"`
+	Location *string `pulumi:"location"`
+	// Identifier. The workspace's name.
+	Name         *string `pulumi:"name"`
 	Project      *string `pulumi:"project"`
 	RepositoryId string  `pulumi:"repositoryId"`
 	// Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
@@ -88,7 +89,9 @@ type workspaceArgs struct {
 
 // The set of arguments for constructing a Workspace resource.
 type WorkspaceArgs struct {
-	Location     pulumi.StringPtrInput
+	Location pulumi.StringPtrInput
+	// Identifier. The workspace's name.
+	Name         pulumi.StringPtrInput
 	Project      pulumi.StringPtrInput
 	RepositoryId pulumi.StringInput
 	// Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
@@ -136,7 +139,7 @@ func (o WorkspaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The workspace's name.
+// Identifier. The workspace's name.
 func (o WorkspaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

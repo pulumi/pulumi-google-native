@@ -1490,6 +1490,172 @@ func (o BucketEncryptionResponseOutput) DefaultKmsKeyName() pulumi.StringOutput 
 	return o.ApplyT(func(v BucketEncryptionResponse) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
 }
 
+// The bucket's hierarchical namespace configuration.
+type BucketHierarchicalNamespace struct {
+	// When set to true, hierarchical namespace is enabled for this bucket.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// BucketHierarchicalNamespaceInput is an input type that accepts BucketHierarchicalNamespaceArgs and BucketHierarchicalNamespaceOutput values.
+// You can construct a concrete instance of `BucketHierarchicalNamespaceInput` via:
+//
+//	BucketHierarchicalNamespaceArgs{...}
+type BucketHierarchicalNamespaceInput interface {
+	pulumi.Input
+
+	ToBucketHierarchicalNamespaceOutput() BucketHierarchicalNamespaceOutput
+	ToBucketHierarchicalNamespaceOutputWithContext(context.Context) BucketHierarchicalNamespaceOutput
+}
+
+// The bucket's hierarchical namespace configuration.
+type BucketHierarchicalNamespaceArgs struct {
+	// When set to true, hierarchical namespace is enabled for this bucket.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (BucketHierarchicalNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (i BucketHierarchicalNamespaceArgs) ToBucketHierarchicalNamespaceOutput() BucketHierarchicalNamespaceOutput {
+	return i.ToBucketHierarchicalNamespaceOutputWithContext(context.Background())
+}
+
+func (i BucketHierarchicalNamespaceArgs) ToBucketHierarchicalNamespaceOutputWithContext(ctx context.Context) BucketHierarchicalNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketHierarchicalNamespaceOutput)
+}
+
+func (i BucketHierarchicalNamespaceArgs) ToBucketHierarchicalNamespacePtrOutput() BucketHierarchicalNamespacePtrOutput {
+	return i.ToBucketHierarchicalNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i BucketHierarchicalNamespaceArgs) ToBucketHierarchicalNamespacePtrOutputWithContext(ctx context.Context) BucketHierarchicalNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketHierarchicalNamespaceOutput).ToBucketHierarchicalNamespacePtrOutputWithContext(ctx)
+}
+
+// BucketHierarchicalNamespacePtrInput is an input type that accepts BucketHierarchicalNamespaceArgs, BucketHierarchicalNamespacePtr and BucketHierarchicalNamespacePtrOutput values.
+// You can construct a concrete instance of `BucketHierarchicalNamespacePtrInput` via:
+//
+//	        BucketHierarchicalNamespaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketHierarchicalNamespacePtrInput interface {
+	pulumi.Input
+
+	ToBucketHierarchicalNamespacePtrOutput() BucketHierarchicalNamespacePtrOutput
+	ToBucketHierarchicalNamespacePtrOutputWithContext(context.Context) BucketHierarchicalNamespacePtrOutput
+}
+
+type bucketHierarchicalNamespacePtrType BucketHierarchicalNamespaceArgs
+
+func BucketHierarchicalNamespacePtr(v *BucketHierarchicalNamespaceArgs) BucketHierarchicalNamespacePtrInput {
+	return (*bucketHierarchicalNamespacePtrType)(v)
+}
+
+func (*bucketHierarchicalNamespacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (i *bucketHierarchicalNamespacePtrType) ToBucketHierarchicalNamespacePtrOutput() BucketHierarchicalNamespacePtrOutput {
+	return i.ToBucketHierarchicalNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *bucketHierarchicalNamespacePtrType) ToBucketHierarchicalNamespacePtrOutputWithContext(ctx context.Context) BucketHierarchicalNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketHierarchicalNamespacePtrOutput)
+}
+
+// The bucket's hierarchical namespace configuration.
+type BucketHierarchicalNamespaceOutput struct{ *pulumi.OutputState }
+
+func (BucketHierarchicalNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (o BucketHierarchicalNamespaceOutput) ToBucketHierarchicalNamespaceOutput() BucketHierarchicalNamespaceOutput {
+	return o
+}
+
+func (o BucketHierarchicalNamespaceOutput) ToBucketHierarchicalNamespaceOutputWithContext(ctx context.Context) BucketHierarchicalNamespaceOutput {
+	return o
+}
+
+func (o BucketHierarchicalNamespaceOutput) ToBucketHierarchicalNamespacePtrOutput() BucketHierarchicalNamespacePtrOutput {
+	return o.ToBucketHierarchicalNamespacePtrOutputWithContext(context.Background())
+}
+
+func (o BucketHierarchicalNamespaceOutput) ToBucketHierarchicalNamespacePtrOutputWithContext(ctx context.Context) BucketHierarchicalNamespacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketHierarchicalNamespace) *BucketHierarchicalNamespace {
+		return &v
+	}).(BucketHierarchicalNamespacePtrOutput)
+}
+
+// When set to true, hierarchical namespace is enabled for this bucket.
+func (o BucketHierarchicalNamespaceOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketHierarchicalNamespace) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type BucketHierarchicalNamespacePtrOutput struct{ *pulumi.OutputState }
+
+func (BucketHierarchicalNamespacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (o BucketHierarchicalNamespacePtrOutput) ToBucketHierarchicalNamespacePtrOutput() BucketHierarchicalNamespacePtrOutput {
+	return o
+}
+
+func (o BucketHierarchicalNamespacePtrOutput) ToBucketHierarchicalNamespacePtrOutputWithContext(ctx context.Context) BucketHierarchicalNamespacePtrOutput {
+	return o
+}
+
+func (o BucketHierarchicalNamespacePtrOutput) Elem() BucketHierarchicalNamespaceOutput {
+	return o.ApplyT(func(v *BucketHierarchicalNamespace) BucketHierarchicalNamespace {
+		if v != nil {
+			return *v
+		}
+		var ret BucketHierarchicalNamespace
+		return ret
+	}).(BucketHierarchicalNamespaceOutput)
+}
+
+// When set to true, hierarchical namespace is enabled for this bucket.
+func (o BucketHierarchicalNamespacePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketHierarchicalNamespace) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The bucket's hierarchical namespace configuration.
+type BucketHierarchicalNamespaceResponse struct {
+	// When set to true, hierarchical namespace is enabled for this bucket.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// The bucket's hierarchical namespace configuration.
+type BucketHierarchicalNamespaceResponseOutput struct{ *pulumi.OutputState }
+
+func (BucketHierarchicalNamespaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketHierarchicalNamespaceResponse)(nil)).Elem()
+}
+
+func (o BucketHierarchicalNamespaceResponseOutput) ToBucketHierarchicalNamespaceResponseOutput() BucketHierarchicalNamespaceResponseOutput {
+	return o
+}
+
+func (o BucketHierarchicalNamespaceResponseOutput) ToBucketHierarchicalNamespaceResponseOutputWithContext(ctx context.Context) BucketHierarchicalNamespaceResponseOutput {
+	return o
+}
+
+// When set to true, hierarchical namespace is enabled for this bucket.
+func (o BucketHierarchicalNamespaceResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BucketHierarchicalNamespaceResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // The bucket's IAM configuration.
 type BucketIamConfiguration struct {
 	// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
@@ -5497,6 +5663,172 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Only present if the folder is part of an ongoing rename folder operation. Contains information which can be used to query the operation status.
+type FolderPendingRenameInfo struct {
+	// The ID of the rename folder operation.
+	OperationId *string `pulumi:"operationId"`
+}
+
+// FolderPendingRenameInfoInput is an input type that accepts FolderPendingRenameInfoArgs and FolderPendingRenameInfoOutput values.
+// You can construct a concrete instance of `FolderPendingRenameInfoInput` via:
+//
+//	FolderPendingRenameInfoArgs{...}
+type FolderPendingRenameInfoInput interface {
+	pulumi.Input
+
+	ToFolderPendingRenameInfoOutput() FolderPendingRenameInfoOutput
+	ToFolderPendingRenameInfoOutputWithContext(context.Context) FolderPendingRenameInfoOutput
+}
+
+// Only present if the folder is part of an ongoing rename folder operation. Contains information which can be used to query the operation status.
+type FolderPendingRenameInfoArgs struct {
+	// The ID of the rename folder operation.
+	OperationId pulumi.StringPtrInput `pulumi:"operationId"`
+}
+
+func (FolderPendingRenameInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderPendingRenameInfo)(nil)).Elem()
+}
+
+func (i FolderPendingRenameInfoArgs) ToFolderPendingRenameInfoOutput() FolderPendingRenameInfoOutput {
+	return i.ToFolderPendingRenameInfoOutputWithContext(context.Background())
+}
+
+func (i FolderPendingRenameInfoArgs) ToFolderPendingRenameInfoOutputWithContext(ctx context.Context) FolderPendingRenameInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderPendingRenameInfoOutput)
+}
+
+func (i FolderPendingRenameInfoArgs) ToFolderPendingRenameInfoPtrOutput() FolderPendingRenameInfoPtrOutput {
+	return i.ToFolderPendingRenameInfoPtrOutputWithContext(context.Background())
+}
+
+func (i FolderPendingRenameInfoArgs) ToFolderPendingRenameInfoPtrOutputWithContext(ctx context.Context) FolderPendingRenameInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderPendingRenameInfoOutput).ToFolderPendingRenameInfoPtrOutputWithContext(ctx)
+}
+
+// FolderPendingRenameInfoPtrInput is an input type that accepts FolderPendingRenameInfoArgs, FolderPendingRenameInfoPtr and FolderPendingRenameInfoPtrOutput values.
+// You can construct a concrete instance of `FolderPendingRenameInfoPtrInput` via:
+//
+//	        FolderPendingRenameInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type FolderPendingRenameInfoPtrInput interface {
+	pulumi.Input
+
+	ToFolderPendingRenameInfoPtrOutput() FolderPendingRenameInfoPtrOutput
+	ToFolderPendingRenameInfoPtrOutputWithContext(context.Context) FolderPendingRenameInfoPtrOutput
+}
+
+type folderPendingRenameInfoPtrType FolderPendingRenameInfoArgs
+
+func FolderPendingRenameInfoPtr(v *FolderPendingRenameInfoArgs) FolderPendingRenameInfoPtrInput {
+	return (*folderPendingRenameInfoPtrType)(v)
+}
+
+func (*folderPendingRenameInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderPendingRenameInfo)(nil)).Elem()
+}
+
+func (i *folderPendingRenameInfoPtrType) ToFolderPendingRenameInfoPtrOutput() FolderPendingRenameInfoPtrOutput {
+	return i.ToFolderPendingRenameInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *folderPendingRenameInfoPtrType) ToFolderPendingRenameInfoPtrOutputWithContext(ctx context.Context) FolderPendingRenameInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderPendingRenameInfoPtrOutput)
+}
+
+// Only present if the folder is part of an ongoing rename folder operation. Contains information which can be used to query the operation status.
+type FolderPendingRenameInfoOutput struct{ *pulumi.OutputState }
+
+func (FolderPendingRenameInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderPendingRenameInfo)(nil)).Elem()
+}
+
+func (o FolderPendingRenameInfoOutput) ToFolderPendingRenameInfoOutput() FolderPendingRenameInfoOutput {
+	return o
+}
+
+func (o FolderPendingRenameInfoOutput) ToFolderPendingRenameInfoOutputWithContext(ctx context.Context) FolderPendingRenameInfoOutput {
+	return o
+}
+
+func (o FolderPendingRenameInfoOutput) ToFolderPendingRenameInfoPtrOutput() FolderPendingRenameInfoPtrOutput {
+	return o.ToFolderPendingRenameInfoPtrOutputWithContext(context.Background())
+}
+
+func (o FolderPendingRenameInfoOutput) ToFolderPendingRenameInfoPtrOutputWithContext(ctx context.Context) FolderPendingRenameInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderPendingRenameInfo) *FolderPendingRenameInfo {
+		return &v
+	}).(FolderPendingRenameInfoPtrOutput)
+}
+
+// The ID of the rename folder operation.
+func (o FolderPendingRenameInfoOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FolderPendingRenameInfo) *string { return v.OperationId }).(pulumi.StringPtrOutput)
+}
+
+type FolderPendingRenameInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (FolderPendingRenameInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderPendingRenameInfo)(nil)).Elem()
+}
+
+func (o FolderPendingRenameInfoPtrOutput) ToFolderPendingRenameInfoPtrOutput() FolderPendingRenameInfoPtrOutput {
+	return o
+}
+
+func (o FolderPendingRenameInfoPtrOutput) ToFolderPendingRenameInfoPtrOutputWithContext(ctx context.Context) FolderPendingRenameInfoPtrOutput {
+	return o
+}
+
+func (o FolderPendingRenameInfoPtrOutput) Elem() FolderPendingRenameInfoOutput {
+	return o.ApplyT(func(v *FolderPendingRenameInfo) FolderPendingRenameInfo {
+		if v != nil {
+			return *v
+		}
+		var ret FolderPendingRenameInfo
+		return ret
+	}).(FolderPendingRenameInfoOutput)
+}
+
+// The ID of the rename folder operation.
+func (o FolderPendingRenameInfoPtrOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FolderPendingRenameInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only present if the folder is part of an ongoing rename folder operation. Contains information which can be used to query the operation status.
+type FolderPendingRenameInfoResponse struct {
+	// The ID of the rename folder operation.
+	OperationId string `pulumi:"operationId"`
+}
+
+// Only present if the folder is part of an ongoing rename folder operation. Contains information which can be used to query the operation status.
+type FolderPendingRenameInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (FolderPendingRenameInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderPendingRenameInfoResponse)(nil)).Elem()
+}
+
+func (o FolderPendingRenameInfoResponseOutput) ToFolderPendingRenameInfoResponseOutput() FolderPendingRenameInfoResponseOutput {
+	return o
+}
+
+func (o FolderPendingRenameInfoResponseOutput) ToFolderPendingRenameInfoResponseOutputWithContext(ctx context.Context) FolderPendingRenameInfoResponseOutput {
+	return o
+}
+
+// The ID of the rename folder operation.
+func (o FolderPendingRenameInfoResponseOutput) OperationId() pulumi.StringOutput {
+	return o.ApplyT(func(v FolderPendingRenameInfoResponse) string { return v.OperationId }).(pulumi.StringOutput)
+}
+
 type ManagedFolderIamPolicyBindingsItem struct {
 	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
 	Condition *Expr `pulumi:"condition"`
@@ -6626,6 +6958,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigPtrInput)(nil)).Elem(), BucketCustomPlacementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionInput)(nil)).Elem(), BucketEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionPtrInput)(nil)).Elem(), BucketEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketHierarchicalNamespaceInput)(nil)).Elem(), BucketHierarchicalNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketHierarchicalNamespacePtrInput)(nil)).Elem(), BucketHierarchicalNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationInput)(nil)).Elem(), BucketIamConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationPtrInput)(nil)).Elem(), BucketIamConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationBucketPolicyOnlyInput)(nil)).Elem(), BucketIamConfigurationBucketPolicyOnlyArgs{})
@@ -6664,6 +6998,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamPtrInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderPendingRenameInfoInput)(nil)).Elem(), FolderPendingRenameInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderPendingRenameInfoPtrInput)(nil)).Elem(), FolderPendingRenameInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamPolicyBindingsItemInput)(nil)).Elem(), ManagedFolderIamPolicyBindingsItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamPolicyBindingsItemArrayInput)(nil)).Elem(), ManagedFolderIamPolicyBindingsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlTypeInput)(nil)).Elem(), ObjectAccessControlTypeArgs{})
@@ -6695,6 +7031,9 @@ func init() {
 	pulumi.RegisterOutputType(BucketEncryptionOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(BucketHierarchicalNamespaceOutput{})
+	pulumi.RegisterOutputType(BucketHierarchicalNamespacePtrOutput{})
+	pulumi.RegisterOutputType(BucketHierarchicalNamespaceResponseOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationBucketPolicyOnlyOutput{})
@@ -6754,6 +7093,9 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FolderPendingRenameInfoOutput{})
+	pulumi.RegisterOutputType(FolderPendingRenameInfoPtrOutput{})
+	pulumi.RegisterOutputType(FolderPendingRenameInfoResponseOutput{})
 	pulumi.RegisterOutputType(ManagedFolderIamPolicyBindingsItemOutput{})
 	pulumi.RegisterOutputType(ManagedFolderIamPolicyBindingsItemArrayOutput{})
 	pulumi.RegisterOutputType(ManagedFolderIamPolicyBindingsItemResponseOutput{})

@@ -17,15 +17,15 @@ type NetworkEndpointGroup struct {
 
 	// Metadata defined as annotations on the network endpoint group.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+	// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 	AppEngine NetworkEndpointGroupAppEngineResponseOutput `pulumi:"appEngine"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+	// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudFunction NetworkEndpointGroupCloudFunctionResponseOutput `pulumi:"cloudFunction"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+	// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudRun NetworkEndpointGroupCloudRunResponseOutput `pulumi:"cloudRun"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// The default port used if the port number is not specified in the network endpoint.
+	// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
 	DefaultPort pulumi.IntOutput `pulumi:"defaultPort"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -33,13 +33,13 @@ type NetworkEndpointGroup struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType pulumi.StringOutput                       `pulumi:"networkEndpointType"`
 	Project             pulumi.StringOutput                       `pulumi:"project"`
 	PscData             NetworkEndpointGroupPscDataResponseOutput `pulumi:"pscData"`
-	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
 	PscTargetService pulumi.StringOutput `pulumi:"pscTargetService"`
 	// The URL of the region where the network endpoint group is located.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -101,25 +101,25 @@ func (NetworkEndpointGroupState) ElementType() reflect.Type {
 type networkEndpointGroupArgs struct {
 	// Metadata defined as annotations on the network endpoint group.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+	// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 	AppEngine *NetworkEndpointGroupAppEngine `pulumi:"appEngine"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+	// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudFunction *NetworkEndpointGroupCloudFunction `pulumi:"cloudFunction"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+	// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudRun *NetworkEndpointGroupCloudRun `pulumi:"cloudRun"`
-	// The default port used if the port number is not specified in the network endpoint.
+	// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
 	DefaultPort *int `pulumi:"defaultPort"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType *NetworkEndpointGroupNetworkEndpointType `pulumi:"networkEndpointType"`
 	Project             *string                                  `pulumi:"project"`
 	PscData             *NetworkEndpointGroupPscData             `pulumi:"pscData"`
-	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
 	PscTargetService *string `pulumi:"pscTargetService"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
@@ -132,25 +132,25 @@ type networkEndpointGroupArgs struct {
 type NetworkEndpointGroupArgs struct {
 	// Metadata defined as annotations on the network endpoint group.
 	Annotations pulumi.StringMapInput
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+	// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 	AppEngine NetworkEndpointGroupAppEnginePtrInput
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+	// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudFunction NetworkEndpointGroupCloudFunctionPtrInput
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+	// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudRun NetworkEndpointGroupCloudRunPtrInput
-	// The default port used if the port number is not specified in the network endpoint.
+	// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
 	DefaultPort pulumi.IntPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType NetworkEndpointGroupNetworkEndpointTypePtrInput
 	Project             pulumi.StringPtrInput
 	PscData             NetworkEndpointGroupPscDataPtrInput
-	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
 	PscTargetService pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
@@ -201,17 +201,17 @@ func (o NetworkEndpointGroupOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 func (o NetworkEndpointGroupOutput) AppEngine() NetworkEndpointGroupAppEngineResponseOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) NetworkEndpointGroupAppEngineResponseOutput { return v.AppEngine }).(NetworkEndpointGroupAppEngineResponseOutput)
 }
 
-// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 func (o NetworkEndpointGroupOutput) CloudFunction() NetworkEndpointGroupCloudFunctionResponseOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) NetworkEndpointGroupCloudFunctionResponseOutput { return v.CloudFunction }).(NetworkEndpointGroupCloudFunctionResponseOutput)
 }
 
-// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
 func (o NetworkEndpointGroupOutput) CloudRun() NetworkEndpointGroupCloudRunResponseOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) NetworkEndpointGroupCloudRunResponseOutput { return v.CloudRun }).(NetworkEndpointGroupCloudRunResponseOutput)
 }
@@ -221,7 +221,7 @@ func (o NetworkEndpointGroupOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// The default port used if the port number is not specified in the network endpoint.
+// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
 func (o NetworkEndpointGroupOutput) DefaultPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.IntOutput { return v.DefaultPort }).(pulumi.IntOutput)
 }
@@ -241,7 +241,7 @@ func (o NetworkEndpointGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
 func (o NetworkEndpointGroupOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
@@ -259,7 +259,7 @@ func (o NetworkEndpointGroupOutput) PscData() NetworkEndpointGroupPscDataRespons
 	return o.ApplyT(func(v *NetworkEndpointGroup) NetworkEndpointGroupPscDataResponseOutput { return v.PscData }).(NetworkEndpointGroupPscDataResponseOutput)
 }
 
-// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
 func (o NetworkEndpointGroupOutput) PscTargetService() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringOutput { return v.PscTargetService }).(pulumi.StringOutput)
 }

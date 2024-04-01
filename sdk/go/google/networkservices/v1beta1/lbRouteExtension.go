@@ -24,14 +24,14 @@ type LbRouteExtension struct {
 	ExtensionChains ExtensionChainResponseArrayOutput `pulumi:"extensionChains"`
 	// A list of references to the forwarding rules to which this service extension is attached to. At least one forwarding rule is required. There can be only one `LbRouteExtension` resource per forwarding rule.
 	ForwardingRules pulumi.StringArrayOutput `pulumi:"forwardingRules"`
-	// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+	// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Required. User-provided ID of the `LbRouteExtension` resource to be created.
 	LbRouteExtensionId pulumi.StringOutput `pulumi:"lbRouteExtensionId"`
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	LoadBalancingScheme pulumi.StringOutput `pulumi:"loadBalancingScheme"`
 	Location            pulumi.StringOutput `pulumi:"location"`
-	// Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+	// Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -104,14 +104,14 @@ type lbRouteExtensionArgs struct {
 	ExtensionChains []ExtensionChain `pulumi:"extensionChains"`
 	// A list of references to the forwarding rules to which this service extension is attached to. At least one forwarding rule is required. There can be only one `LbRouteExtension` resource per forwarding rule.
 	ForwardingRules []string `pulumi:"forwardingRules"`
-	// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+	// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
 	Labels map[string]string `pulumi:"labels"`
 	// Required. User-provided ID of the `LbRouteExtension` resource to be created.
 	LbRouteExtensionId string `pulumi:"lbRouteExtensionId"`
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	LoadBalancingScheme LbRouteExtensionLoadBalancingScheme `pulumi:"loadBalancingScheme"`
 	Location            *string                             `pulumi:"location"`
-	// Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+	// Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -126,14 +126,14 @@ type LbRouteExtensionArgs struct {
 	ExtensionChains ExtensionChainArrayInput
 	// A list of references to the forwarding rules to which this service extension is attached to. At least one forwarding rule is required. There can be only one `LbRouteExtension` resource per forwarding rule.
 	ForwardingRules pulumi.StringArrayInput
-	// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+	// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
 	Labels pulumi.StringMapInput
 	// Required. User-provided ID of the `LbRouteExtension` resource to be created.
 	LbRouteExtensionId pulumi.StringInput
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	LoadBalancingScheme LbRouteExtensionLoadBalancingSchemeInput
 	Location            pulumi.StringPtrInput
-	// Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+	// Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -197,7 +197,7 @@ func (o LbRouteExtensionOutput) ForwardingRules() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LbRouteExtension) pulumi.StringArrayOutput { return v.ForwardingRules }).(pulumi.StringArrayOutput)
 }
 
-// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
 func (o LbRouteExtensionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LbRouteExtension) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -216,7 +216,7 @@ func (o LbRouteExtensionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *LbRouteExtension) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+// Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
 func (o LbRouteExtensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LbRouteExtension) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

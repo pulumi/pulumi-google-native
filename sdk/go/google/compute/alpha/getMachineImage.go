@@ -43,6 +43,8 @@ type LookupMachineImageResult struct {
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// An array of Machine Image specific properties for disks attached to the source instance
 	SavedDisks []SavedDiskResponse `pulumi:"savedDisks"`
@@ -133,6 +135,11 @@ func (o LookupMachineImageResultOutput) MachineImageEncryptionKey() CustomerEncr
 // Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o LookupMachineImageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineImageResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o LookupMachineImageResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMachineImageResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

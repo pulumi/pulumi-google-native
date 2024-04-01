@@ -42,6 +42,8 @@ type LookupVmwareClusterResult struct {
 	Authorization AuthorizationResponse `pulumi:"authorization"`
 	// Configuration for auto repairing.
 	AutoRepairConfig VmwareAutoRepairConfigResponse `pulumi:"autoRepairConfig"`
+	// Binary Authorization related configurations.
+	BinaryAuthorization BinaryAuthorizationResponse `pulumi:"binaryAuthorization"`
 	// VMware user cluster control plane nodes must have either 1 or 3 replicas.
 	ControlPlaneNode VmwareControlPlaneNodeConfigResponse `pulumi:"controlPlaneNode"`
 	// The time at which VMware user cluster was created.
@@ -160,6 +162,11 @@ func (o LookupVmwareClusterResultOutput) Authorization() AuthorizationResponseOu
 // Configuration for auto repairing.
 func (o LookupVmwareClusterResultOutput) AutoRepairConfig() VmwareAutoRepairConfigResponseOutput {
 	return o.ApplyT(func(v LookupVmwareClusterResult) VmwareAutoRepairConfigResponse { return v.AutoRepairConfig }).(VmwareAutoRepairConfigResponseOutput)
+}
+
+// Binary Authorization related configurations.
+func (o LookupVmwareClusterResultOutput) BinaryAuthorization() BinaryAuthorizationResponseOutput {
+	return o.ApplyT(func(v LookupVmwareClusterResult) BinaryAuthorizationResponse { return v.BinaryAuthorization }).(BinaryAuthorizationResponseOutput)
 }
 
 // VMware user cluster control plane nodes must have either 1 or 3 replicas.

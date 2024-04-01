@@ -2206,7 +2206,7 @@ func (o DataSetResponseArrayOutput) Index(i pulumi.IntInput) DataSetResponseOutp
 	}).(DataSetResponseOutput)
 }
 
-// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+// A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data.
 type Dimension struct {
 	// The name of the column in the source SQL query that is used to chart the dimension.
 	Column string `pulumi:"column"`
@@ -2237,7 +2237,7 @@ type DimensionInput interface {
 	ToDimensionOutputWithContext(context.Context) DimensionOutput
 }
 
-// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+// A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data.
 type DimensionArgs struct {
 	// The name of the column in the source SQL query that is used to chart the dimension.
 	Column pulumi.StringInput `pulumi:"column"`
@@ -2294,7 +2294,7 @@ func (i DimensionArray) ToDimensionArrayOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DimensionArrayOutput)
 }
 
-// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+// A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data.
 type DimensionOutput struct{ *pulumi.OutputState }
 
 func (DimensionOutput) ElementType() reflect.Type {
@@ -2369,7 +2369,7 @@ func (o DimensionArrayOutput) Index(i pulumi.IntInput) DimensionOutput {
 	}).(DimensionOutput)
 }
 
-// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+// A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data.
 type DimensionResponse struct {
 	// The name of the column in the source SQL query that is used to chart the dimension.
 	Column string `pulumi:"column"`
@@ -2389,7 +2389,7 @@ type DimensionResponse struct {
 	TimeBinSize string `pulumi:"timeBinSize"`
 }
 
-// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+// A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data.
 type DimensionResponseOutput struct{ *pulumi.OutputState }
 
 func (DimensionResponseOutput) ElementType() reflect.Type {
@@ -3398,6 +3398,198 @@ func (o IncidentListResponseOutput) PolicyNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IncidentListResponse) []string { return v.PolicyNames }).(pulumi.StringArrayOutput)
 }
 
+// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+type Interval struct {
+	// Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end.
+	EndTime *string `pulumi:"endTime"`
+	// Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// IntervalInput is an input type that accepts IntervalArgs and IntervalOutput values.
+// You can construct a concrete instance of `IntervalInput` via:
+//
+//	IntervalArgs{...}
+type IntervalInput interface {
+	pulumi.Input
+
+	ToIntervalOutput() IntervalOutput
+	ToIntervalOutputWithContext(context.Context) IntervalOutput
+}
+
+// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+type IntervalArgs struct {
+	// Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (IntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Interval)(nil)).Elem()
+}
+
+func (i IntervalArgs) ToIntervalOutput() IntervalOutput {
+	return i.ToIntervalOutputWithContext(context.Background())
+}
+
+func (i IntervalArgs) ToIntervalOutputWithContext(ctx context.Context) IntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntervalOutput)
+}
+
+func (i IntervalArgs) ToIntervalPtrOutput() IntervalPtrOutput {
+	return i.ToIntervalPtrOutputWithContext(context.Background())
+}
+
+func (i IntervalArgs) ToIntervalPtrOutputWithContext(ctx context.Context) IntervalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntervalOutput).ToIntervalPtrOutputWithContext(ctx)
+}
+
+// IntervalPtrInput is an input type that accepts IntervalArgs, IntervalPtr and IntervalPtrOutput values.
+// You can construct a concrete instance of `IntervalPtrInput` via:
+//
+//	        IntervalArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntervalPtrInput interface {
+	pulumi.Input
+
+	ToIntervalPtrOutput() IntervalPtrOutput
+	ToIntervalPtrOutputWithContext(context.Context) IntervalPtrOutput
+}
+
+type intervalPtrType IntervalArgs
+
+func IntervalPtr(v *IntervalArgs) IntervalPtrInput {
+	return (*intervalPtrType)(v)
+}
+
+func (*intervalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Interval)(nil)).Elem()
+}
+
+func (i *intervalPtrType) ToIntervalPtrOutput() IntervalPtrOutput {
+	return i.ToIntervalPtrOutputWithContext(context.Background())
+}
+
+func (i *intervalPtrType) ToIntervalPtrOutputWithContext(ctx context.Context) IntervalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntervalPtrOutput)
+}
+
+// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+type IntervalOutput struct{ *pulumi.OutputState }
+
+func (IntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Interval)(nil)).Elem()
+}
+
+func (o IntervalOutput) ToIntervalOutput() IntervalOutput {
+	return o
+}
+
+func (o IntervalOutput) ToIntervalOutputWithContext(ctx context.Context) IntervalOutput {
+	return o
+}
+
+func (o IntervalOutput) ToIntervalPtrOutput() IntervalPtrOutput {
+	return o.ToIntervalPtrOutputWithContext(context.Background())
+}
+
+func (o IntervalOutput) ToIntervalPtrOutputWithContext(ctx context.Context) IntervalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Interval) *Interval {
+		return &v
+	}).(IntervalPtrOutput)
+}
+
+// Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end.
+func (o IntervalOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Interval) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start.
+func (o IntervalOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Interval) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type IntervalPtrOutput struct{ *pulumi.OutputState }
+
+func (IntervalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Interval)(nil)).Elem()
+}
+
+func (o IntervalPtrOutput) ToIntervalPtrOutput() IntervalPtrOutput {
+	return o
+}
+
+func (o IntervalPtrOutput) ToIntervalPtrOutputWithContext(ctx context.Context) IntervalPtrOutput {
+	return o
+}
+
+func (o IntervalPtrOutput) Elem() IntervalOutput {
+	return o.ApplyT(func(v *Interval) Interval {
+		if v != nil {
+			return *v
+		}
+		var ret Interval
+		return ret
+	}).(IntervalOutput)
+}
+
+// Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end.
+func (o IntervalPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Interval) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start.
+func (o IntervalPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Interval) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+type IntervalResponse struct {
+	// Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end.
+	EndTime string `pulumi:"endTime"`
+	// Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start.
+	StartTime string `pulumi:"startTime"`
+}
+
+// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+type IntervalResponseOutput struct{ *pulumi.OutputState }
+
+func (IntervalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntervalResponse)(nil)).Elem()
+}
+
+func (o IntervalResponseOutput) ToIntervalResponseOutput() IntervalResponseOutput {
+	return o
+}
+
+func (o IntervalResponseOutput) ToIntervalResponseOutputWithContext(ctx context.Context) IntervalResponseOutput {
+	return o
+}
+
+// Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end.
+func (o IntervalResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v IntervalResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start.
+func (o IntervalResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v IntervalResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
 // A widget that displays a stream of log.
 type LogsPanel struct {
 	// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
@@ -3590,7 +3782,7 @@ func (o LogsPanelResponseOutput) ResourceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogsPanelResponse) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
 }
 
-// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+// A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc.
 type Measure struct {
 	// The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
 	AggregationFunction AggregationFunction `pulumi:"aggregationFunction"`
@@ -3609,7 +3801,7 @@ type MeasureInput interface {
 	ToMeasureOutputWithContext(context.Context) MeasureOutput
 }
 
-// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+// A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc.
 type MeasureArgs struct {
 	// The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
 	AggregationFunction AggregationFunctionInput `pulumi:"aggregationFunction"`
@@ -3654,7 +3846,7 @@ func (i MeasureArray) ToMeasureArrayOutputWithContext(ctx context.Context) Measu
 	return pulumi.ToOutputWithContext(ctx, i).(MeasureArrayOutput)
 }
 
-// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+// A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc.
 type MeasureOutput struct{ *pulumi.OutputState }
 
 func (MeasureOutput) ElementType() reflect.Type {
@@ -3699,7 +3891,7 @@ func (o MeasureArrayOutput) Index(i pulumi.IntInput) MeasureOutput {
 	}).(MeasureOutput)
 }
 
-// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+// A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc.
 type MeasureResponse struct {
 	// The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
 	AggregationFunction AggregationFunctionResponse `pulumi:"aggregationFunction"`
@@ -3707,7 +3899,7 @@ type MeasureResponse struct {
 	Column string `pulumi:"column"`
 }
 
-// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+// A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc.
 type MeasureResponseOutput struct{ *pulumi.OutputState }
 
 func (MeasureResponseOutput) ElementType() reflect.Type {
@@ -4438,6 +4630,8 @@ func (o ParameterResponseArrayOutput) Index(i pulumi.IntInput) ParameterResponse
 type PickTimeSeriesFilter struct {
 	// How to use the ranking to select time series that pass through the filter.
 	Direction *PickTimeSeriesFilterDirection `pulumi:"direction"`
+	// Select the top N streams/time series within this time interval
+	Interval *Interval `pulumi:"interval"`
 	// How many time series to allow to pass through the filter.
 	NumTimeSeries *int `pulumi:"numTimeSeries"`
 	// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
@@ -4459,6 +4653,8 @@ type PickTimeSeriesFilterInput interface {
 type PickTimeSeriesFilterArgs struct {
 	// How to use the ranking to select time series that pass through the filter.
 	Direction PickTimeSeriesFilterDirectionPtrInput `pulumi:"direction"`
+	// Select the top N streams/time series within this time interval
+	Interval IntervalPtrInput `pulumi:"interval"`
 	// How many time series to allow to pass through the filter.
 	NumTimeSeries pulumi.IntPtrInput `pulumi:"numTimeSeries"`
 	// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
@@ -4548,6 +4744,11 @@ func (o PickTimeSeriesFilterOutput) Direction() PickTimeSeriesFilterDirectionPtr
 	return o.ApplyT(func(v PickTimeSeriesFilter) *PickTimeSeriesFilterDirection { return v.Direction }).(PickTimeSeriesFilterDirectionPtrOutput)
 }
 
+// Select the top N streams/time series within this time interval
+func (o PickTimeSeriesFilterOutput) Interval() IntervalPtrOutput {
+	return o.ApplyT(func(v PickTimeSeriesFilter) *Interval { return v.Interval }).(IntervalPtrOutput)
+}
+
 // How many time series to allow to pass through the filter.
 func (o PickTimeSeriesFilterOutput) NumTimeSeries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PickTimeSeriesFilter) *int { return v.NumTimeSeries }).(pulumi.IntPtrOutput)
@@ -4592,6 +4793,16 @@ func (o PickTimeSeriesFilterPtrOutput) Direction() PickTimeSeriesFilterDirection
 	}).(PickTimeSeriesFilterDirectionPtrOutput)
 }
 
+// Select the top N streams/time series within this time interval
+func (o PickTimeSeriesFilterPtrOutput) Interval() IntervalPtrOutput {
+	return o.ApplyT(func(v *PickTimeSeriesFilter) *Interval {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(IntervalPtrOutput)
+}
+
 // How many time series to allow to pass through the filter.
 func (o PickTimeSeriesFilterPtrOutput) NumTimeSeries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PickTimeSeriesFilter) *int {
@@ -4616,6 +4827,8 @@ func (o PickTimeSeriesFilterPtrOutput) RankingMethod() PickTimeSeriesFilterRanki
 type PickTimeSeriesFilterResponse struct {
 	// How to use the ranking to select time series that pass through the filter.
 	Direction string `pulumi:"direction"`
+	// Select the top N streams/time series within this time interval
+	Interval IntervalResponse `pulumi:"interval"`
 	// How many time series to allow to pass through the filter.
 	NumTimeSeries int `pulumi:"numTimeSeries"`
 	// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
@@ -4640,6 +4853,11 @@ func (o PickTimeSeriesFilterResponseOutput) ToPickTimeSeriesFilterResponseOutput
 // How to use the ranking to select time series that pass through the filter.
 func (o PickTimeSeriesFilterResponseOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v PickTimeSeriesFilterResponse) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Select the top N streams/time series within this time interval
+func (o PickTimeSeriesFilterResponseOutput) Interval() IntervalResponseOutput {
+	return o.ApplyT(func(v PickTimeSeriesFilterResponse) IntervalResponse { return v.Interval }).(IntervalResponseOutput)
 }
 
 // How many time series to allow to pass through the filter.
@@ -4832,6 +5050,10 @@ func (o PieChartPtrOutput) ShowLabels() pulumi.BoolPtrOutput {
 
 // Groups a time series query definition.
 type PieChartDataSet struct {
+	// A dimension is a structured label, class, or category for a set of measurements in your data.
+	Dimensions []Dimension `pulumi:"dimensions"`
+	// A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc.
+	Measures []Measure `pulumi:"measures"`
 	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 	MinAlignmentPeriod *string `pulumi:"minAlignmentPeriod"`
 	// Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
@@ -4853,6 +5075,10 @@ type PieChartDataSetInput interface {
 
 // Groups a time series query definition.
 type PieChartDataSetArgs struct {
+	// A dimension is a structured label, class, or category for a set of measurements in your data.
+	Dimensions DimensionArrayInput `pulumi:"dimensions"`
+	// A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc.
+	Measures MeasureArrayInput `pulumi:"measures"`
 	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
 	// Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
@@ -4913,6 +5139,16 @@ func (o PieChartDataSetOutput) ToPieChartDataSetOutputWithContext(ctx context.Co
 	return o
 }
 
+// A dimension is a structured label, class, or category for a set of measurements in your data.
+func (o PieChartDataSetOutput) Dimensions() DimensionArrayOutput {
+	return o.ApplyT(func(v PieChartDataSet) []Dimension { return v.Dimensions }).(DimensionArrayOutput)
+}
+
+// A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc.
+func (o PieChartDataSetOutput) Measures() MeasureArrayOutput {
+	return o.ApplyT(func(v PieChartDataSet) []Measure { return v.Measures }).(MeasureArrayOutput)
+}
+
 // Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 func (o PieChartDataSetOutput) MinAlignmentPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PieChartDataSet) *string { return v.MinAlignmentPeriod }).(pulumi.StringPtrOutput)
@@ -4950,6 +5186,10 @@ func (o PieChartDataSetArrayOutput) Index(i pulumi.IntInput) PieChartDataSetOutp
 
 // Groups a time series query definition.
 type PieChartDataSetResponse struct {
+	// A dimension is a structured label, class, or category for a set of measurements in your data.
+	Dimensions []DimensionResponse `pulumi:"dimensions"`
+	// A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc.
+	Measures []MeasureResponse `pulumi:"measures"`
 	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 	MinAlignmentPeriod string `pulumi:"minAlignmentPeriod"`
 	// Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
@@ -4971,6 +5211,16 @@ func (o PieChartDataSetResponseOutput) ToPieChartDataSetResponseOutput() PieChar
 
 func (o PieChartDataSetResponseOutput) ToPieChartDataSetResponseOutputWithContext(ctx context.Context) PieChartDataSetResponseOutput {
 	return o
+}
+
+// A dimension is a structured label, class, or category for a set of measurements in your data.
+func (o PieChartDataSetResponseOutput) Dimensions() DimensionResponseArrayOutput {
+	return o.ApplyT(func(v PieChartDataSetResponse) []DimensionResponse { return v.Dimensions }).(DimensionResponseArrayOutput)
+}
+
+// A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc.
+func (o PieChartDataSetResponseOutput) Measures() MeasureResponseArrayOutput {
+	return o.ApplyT(func(v PieChartDataSetResponse) []MeasureResponse { return v.Measures }).(MeasureResponseArrayOutput)
 }
 
 // Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
@@ -5836,6 +6086,338 @@ func (o ScorecardResponseOutput) Thresholds() ThresholdResponseArrayOutput {
 // Fields for querying time series data from the Stackdriver metrics API.
 func (o ScorecardResponseOutput) TimeSeriesQuery() TimeSeriesQueryResponseOutput {
 	return o.ApplyT(func(v ScorecardResponse) TimeSeriesQueryResponse { return v.TimeSeriesQuery }).(TimeSeriesQueryResponseOutput)
+}
+
+// A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content.
+type SectionHeader struct {
+	// Whether to insert a divider below the section in the table of contents
+	DividerBelow *bool `pulumi:"dividerBelow"`
+	// The subtitle of the section
+	Subtitle *string `pulumi:"subtitle"`
+}
+
+// SectionHeaderInput is an input type that accepts SectionHeaderArgs and SectionHeaderOutput values.
+// You can construct a concrete instance of `SectionHeaderInput` via:
+//
+//	SectionHeaderArgs{...}
+type SectionHeaderInput interface {
+	pulumi.Input
+
+	ToSectionHeaderOutput() SectionHeaderOutput
+	ToSectionHeaderOutputWithContext(context.Context) SectionHeaderOutput
+}
+
+// A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content.
+type SectionHeaderArgs struct {
+	// Whether to insert a divider below the section in the table of contents
+	DividerBelow pulumi.BoolPtrInput `pulumi:"dividerBelow"`
+	// The subtitle of the section
+	Subtitle pulumi.StringPtrInput `pulumi:"subtitle"`
+}
+
+func (SectionHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SectionHeader)(nil)).Elem()
+}
+
+func (i SectionHeaderArgs) ToSectionHeaderOutput() SectionHeaderOutput {
+	return i.ToSectionHeaderOutputWithContext(context.Background())
+}
+
+func (i SectionHeaderArgs) ToSectionHeaderOutputWithContext(ctx context.Context) SectionHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SectionHeaderOutput)
+}
+
+func (i SectionHeaderArgs) ToSectionHeaderPtrOutput() SectionHeaderPtrOutput {
+	return i.ToSectionHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i SectionHeaderArgs) ToSectionHeaderPtrOutputWithContext(ctx context.Context) SectionHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SectionHeaderOutput).ToSectionHeaderPtrOutputWithContext(ctx)
+}
+
+// SectionHeaderPtrInput is an input type that accepts SectionHeaderArgs, SectionHeaderPtr and SectionHeaderPtrOutput values.
+// You can construct a concrete instance of `SectionHeaderPtrInput` via:
+//
+//	        SectionHeaderArgs{...}
+//
+//	or:
+//
+//	        nil
+type SectionHeaderPtrInput interface {
+	pulumi.Input
+
+	ToSectionHeaderPtrOutput() SectionHeaderPtrOutput
+	ToSectionHeaderPtrOutputWithContext(context.Context) SectionHeaderPtrOutput
+}
+
+type sectionHeaderPtrType SectionHeaderArgs
+
+func SectionHeaderPtr(v *SectionHeaderArgs) SectionHeaderPtrInput {
+	return (*sectionHeaderPtrType)(v)
+}
+
+func (*sectionHeaderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SectionHeader)(nil)).Elem()
+}
+
+func (i *sectionHeaderPtrType) ToSectionHeaderPtrOutput() SectionHeaderPtrOutput {
+	return i.ToSectionHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i *sectionHeaderPtrType) ToSectionHeaderPtrOutputWithContext(ctx context.Context) SectionHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SectionHeaderPtrOutput)
+}
+
+// A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content.
+type SectionHeaderOutput struct{ *pulumi.OutputState }
+
+func (SectionHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SectionHeader)(nil)).Elem()
+}
+
+func (o SectionHeaderOutput) ToSectionHeaderOutput() SectionHeaderOutput {
+	return o
+}
+
+func (o SectionHeaderOutput) ToSectionHeaderOutputWithContext(ctx context.Context) SectionHeaderOutput {
+	return o
+}
+
+func (o SectionHeaderOutput) ToSectionHeaderPtrOutput() SectionHeaderPtrOutput {
+	return o.ToSectionHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o SectionHeaderOutput) ToSectionHeaderPtrOutputWithContext(ctx context.Context) SectionHeaderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SectionHeader) *SectionHeader {
+		return &v
+	}).(SectionHeaderPtrOutput)
+}
+
+// Whether to insert a divider below the section in the table of contents
+func (o SectionHeaderOutput) DividerBelow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SectionHeader) *bool { return v.DividerBelow }).(pulumi.BoolPtrOutput)
+}
+
+// The subtitle of the section
+func (o SectionHeaderOutput) Subtitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SectionHeader) *string { return v.Subtitle }).(pulumi.StringPtrOutput)
+}
+
+type SectionHeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (SectionHeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SectionHeader)(nil)).Elem()
+}
+
+func (o SectionHeaderPtrOutput) ToSectionHeaderPtrOutput() SectionHeaderPtrOutput {
+	return o
+}
+
+func (o SectionHeaderPtrOutput) ToSectionHeaderPtrOutputWithContext(ctx context.Context) SectionHeaderPtrOutput {
+	return o
+}
+
+func (o SectionHeaderPtrOutput) Elem() SectionHeaderOutput {
+	return o.ApplyT(func(v *SectionHeader) SectionHeader {
+		if v != nil {
+			return *v
+		}
+		var ret SectionHeader
+		return ret
+	}).(SectionHeaderOutput)
+}
+
+// Whether to insert a divider below the section in the table of contents
+func (o SectionHeaderPtrOutput) DividerBelow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SectionHeader) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DividerBelow
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The subtitle of the section
+func (o SectionHeaderPtrOutput) Subtitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SectionHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subtitle
+	}).(pulumi.StringPtrOutput)
+}
+
+// A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content.
+type SectionHeaderResponse struct {
+	// Whether to insert a divider below the section in the table of contents
+	DividerBelow bool `pulumi:"dividerBelow"`
+	// The subtitle of the section
+	Subtitle string `pulumi:"subtitle"`
+}
+
+// A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content.
+type SectionHeaderResponseOutput struct{ *pulumi.OutputState }
+
+func (SectionHeaderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SectionHeaderResponse)(nil)).Elem()
+}
+
+func (o SectionHeaderResponseOutput) ToSectionHeaderResponseOutput() SectionHeaderResponseOutput {
+	return o
+}
+
+func (o SectionHeaderResponseOutput) ToSectionHeaderResponseOutputWithContext(ctx context.Context) SectionHeaderResponseOutput {
+	return o
+}
+
+// Whether to insert a divider below the section in the table of contents
+func (o SectionHeaderResponseOutput) DividerBelow() pulumi.BoolOutput {
+	return o.ApplyT(func(v SectionHeaderResponse) bool { return v.DividerBelow }).(pulumi.BoolOutput)
+}
+
+// The subtitle of the section
+func (o SectionHeaderResponseOutput) Subtitle() pulumi.StringOutput {
+	return o.ApplyT(func(v SectionHeaderResponse) string { return v.Subtitle }).(pulumi.StringOutput)
+}
+
+// A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+type SingleViewGroup struct {
+}
+
+// SingleViewGroupInput is an input type that accepts SingleViewGroupArgs and SingleViewGroupOutput values.
+// You can construct a concrete instance of `SingleViewGroupInput` via:
+//
+//	SingleViewGroupArgs{...}
+type SingleViewGroupInput interface {
+	pulumi.Input
+
+	ToSingleViewGroupOutput() SingleViewGroupOutput
+	ToSingleViewGroupOutputWithContext(context.Context) SingleViewGroupOutput
+}
+
+// A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+type SingleViewGroupArgs struct {
+}
+
+func (SingleViewGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleViewGroup)(nil)).Elem()
+}
+
+func (i SingleViewGroupArgs) ToSingleViewGroupOutput() SingleViewGroupOutput {
+	return i.ToSingleViewGroupOutputWithContext(context.Background())
+}
+
+func (i SingleViewGroupArgs) ToSingleViewGroupOutputWithContext(ctx context.Context) SingleViewGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleViewGroupOutput)
+}
+
+func (i SingleViewGroupArgs) ToSingleViewGroupPtrOutput() SingleViewGroupPtrOutput {
+	return i.ToSingleViewGroupPtrOutputWithContext(context.Background())
+}
+
+func (i SingleViewGroupArgs) ToSingleViewGroupPtrOutputWithContext(ctx context.Context) SingleViewGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleViewGroupOutput).ToSingleViewGroupPtrOutputWithContext(ctx)
+}
+
+// SingleViewGroupPtrInput is an input type that accepts SingleViewGroupArgs, SingleViewGroupPtr and SingleViewGroupPtrOutput values.
+// You can construct a concrete instance of `SingleViewGroupPtrInput` via:
+//
+//	        SingleViewGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type SingleViewGroupPtrInput interface {
+	pulumi.Input
+
+	ToSingleViewGroupPtrOutput() SingleViewGroupPtrOutput
+	ToSingleViewGroupPtrOutputWithContext(context.Context) SingleViewGroupPtrOutput
+}
+
+type singleViewGroupPtrType SingleViewGroupArgs
+
+func SingleViewGroupPtr(v *SingleViewGroupArgs) SingleViewGroupPtrInput {
+	return (*singleViewGroupPtrType)(v)
+}
+
+func (*singleViewGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleViewGroup)(nil)).Elem()
+}
+
+func (i *singleViewGroupPtrType) ToSingleViewGroupPtrOutput() SingleViewGroupPtrOutput {
+	return i.ToSingleViewGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *singleViewGroupPtrType) ToSingleViewGroupPtrOutputWithContext(ctx context.Context) SingleViewGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleViewGroupPtrOutput)
+}
+
+// A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+type SingleViewGroupOutput struct{ *pulumi.OutputState }
+
+func (SingleViewGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleViewGroup)(nil)).Elem()
+}
+
+func (o SingleViewGroupOutput) ToSingleViewGroupOutput() SingleViewGroupOutput {
+	return o
+}
+
+func (o SingleViewGroupOutput) ToSingleViewGroupOutputWithContext(ctx context.Context) SingleViewGroupOutput {
+	return o
+}
+
+func (o SingleViewGroupOutput) ToSingleViewGroupPtrOutput() SingleViewGroupPtrOutput {
+	return o.ToSingleViewGroupPtrOutputWithContext(context.Background())
+}
+
+func (o SingleViewGroupOutput) ToSingleViewGroupPtrOutputWithContext(ctx context.Context) SingleViewGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SingleViewGroup) *SingleViewGroup {
+		return &v
+	}).(SingleViewGroupPtrOutput)
+}
+
+type SingleViewGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (SingleViewGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleViewGroup)(nil)).Elem()
+}
+
+func (o SingleViewGroupPtrOutput) ToSingleViewGroupPtrOutput() SingleViewGroupPtrOutput {
+	return o
+}
+
+func (o SingleViewGroupPtrOutput) ToSingleViewGroupPtrOutputWithContext(ctx context.Context) SingleViewGroupPtrOutput {
+	return o
+}
+
+func (o SingleViewGroupPtrOutput) Elem() SingleViewGroupOutput {
+	return o.ApplyT(func(v *SingleViewGroup) SingleViewGroup {
+		if v != nil {
+			return *v
+		}
+		var ret SingleViewGroup
+		return ret
+	}).(SingleViewGroupOutput)
+}
+
+// A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+type SingleViewGroupResponse struct {
+}
+
+// A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+type SingleViewGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (SingleViewGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleViewGroupResponse)(nil)).Elem()
+}
+
+func (o SingleViewGroupResponseOutput) ToSingleViewGroupResponseOutput() SingleViewGroupResponseOutput {
+	return o
+}
+
+func (o SingleViewGroupResponseOutput) ToSingleViewGroupResponseOutputWithContext(ctx context.Context) SingleViewGroupResponseOutput {
+	return o
 }
 
 // A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
@@ -8670,6 +9252,10 @@ type Widget struct {
 	PieChart *PieChart `pulumi:"pieChart"`
 	// A scorecard summarizing time series data.
 	Scorecard *Scorecard `pulumi:"scorecard"`
+	// A widget that defines a section header for easier navigation of the dashboard.
+	SectionHeader *SectionHeader `pulumi:"sectionHeader"`
+	// A widget that groups the other widgets by using a dropdown menu.
+	SingleViewGroup *SingleViewGroup `pulumi:"singleViewGroup"`
 	// A raw string or markdown displaying textual content.
 	Text *Text `pulumi:"text"`
 	// A widget that displays time series data in a tabular format.
@@ -8711,6 +9297,10 @@ type WidgetArgs struct {
 	PieChart PieChartPtrInput `pulumi:"pieChart"`
 	// A scorecard summarizing time series data.
 	Scorecard ScorecardPtrInput `pulumi:"scorecard"`
+	// A widget that defines a section header for easier navigation of the dashboard.
+	SectionHeader SectionHeaderPtrInput `pulumi:"sectionHeader"`
+	// A widget that groups the other widgets by using a dropdown menu.
+	SingleViewGroup SingleViewGroupPtrInput `pulumi:"singleViewGroup"`
 	// A raw string or markdown displaying textual content.
 	Text TextPtrInput `pulumi:"text"`
 	// A widget that displays time series data in a tabular format.
@@ -8869,6 +9459,16 @@ func (o WidgetOutput) Scorecard() ScorecardPtrOutput {
 	return o.ApplyT(func(v Widget) *Scorecard { return v.Scorecard }).(ScorecardPtrOutput)
 }
 
+// A widget that defines a section header for easier navigation of the dashboard.
+func (o WidgetOutput) SectionHeader() SectionHeaderPtrOutput {
+	return o.ApplyT(func(v Widget) *SectionHeader { return v.SectionHeader }).(SectionHeaderPtrOutput)
+}
+
+// A widget that groups the other widgets by using a dropdown menu.
+func (o WidgetOutput) SingleViewGroup() SingleViewGroupPtrOutput {
+	return o.ApplyT(func(v Widget) *SingleViewGroup { return v.SingleViewGroup }).(SingleViewGroupPtrOutput)
+}
+
 // A raw string or markdown displaying textual content.
 func (o WidgetOutput) Text() TextPtrOutput {
 	return o.ApplyT(func(v Widget) *Text { return v.Text }).(TextPtrOutput)
@@ -9003,6 +9603,26 @@ func (o WidgetPtrOutput) Scorecard() ScorecardPtrOutput {
 	}).(ScorecardPtrOutput)
 }
 
+// A widget that defines a section header for easier navigation of the dashboard.
+func (o WidgetPtrOutput) SectionHeader() SectionHeaderPtrOutput {
+	return o.ApplyT(func(v *Widget) *SectionHeader {
+		if v == nil {
+			return nil
+		}
+		return v.SectionHeader
+	}).(SectionHeaderPtrOutput)
+}
+
+// A widget that groups the other widgets by using a dropdown menu.
+func (o WidgetPtrOutput) SingleViewGroup() SingleViewGroupPtrOutput {
+	return o.ApplyT(func(v *Widget) *SingleViewGroup {
+		if v == nil {
+			return nil
+		}
+		return v.SingleViewGroup
+	}).(SingleViewGroupPtrOutput)
+}
+
 // A raw string or markdown displaying textual content.
 func (o WidgetPtrOutput) Text() TextPtrOutput {
 	return o.ApplyT(func(v *Widget) *Text {
@@ -9081,6 +9701,10 @@ type WidgetResponse struct {
 	PieChart PieChartResponse `pulumi:"pieChart"`
 	// A scorecard summarizing time series data.
 	Scorecard ScorecardResponse `pulumi:"scorecard"`
+	// A widget that defines a section header for easier navigation of the dashboard.
+	SectionHeader SectionHeaderResponse `pulumi:"sectionHeader"`
+	// A widget that groups the other widgets by using a dropdown menu.
+	SingleViewGroup SingleViewGroupResponse `pulumi:"singleViewGroup"`
 	// A raw string or markdown displaying textual content.
 	Text TextResponse `pulumi:"text"`
 	// A widget that displays time series data in a tabular format.
@@ -9144,6 +9768,16 @@ func (o WidgetResponseOutput) PieChart() PieChartResponseOutput {
 // A scorecard summarizing time series data.
 func (o WidgetResponseOutput) Scorecard() ScorecardResponseOutput {
 	return o.ApplyT(func(v WidgetResponse) ScorecardResponse { return v.Scorecard }).(ScorecardResponseOutput)
+}
+
+// A widget that defines a section header for easier navigation of the dashboard.
+func (o WidgetResponseOutput) SectionHeader() SectionHeaderResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) SectionHeaderResponse { return v.SectionHeader }).(SectionHeaderResponseOutput)
+}
+
+// A widget that groups the other widgets by using a dropdown menu.
+func (o WidgetResponseOutput) SingleViewGroup() SingleViewGroupResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) SingleViewGroupResponse { return v.SingleViewGroup }).(SingleViewGroupResponseOutput)
 }
 
 // A raw string or markdown displaying textual content.
@@ -9544,6 +10178,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutPtrInput)(nil)).Elem(), GridLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IncidentListInput)(nil)).Elem(), IncidentListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IncidentListPtrInput)(nil)).Elem(), IncidentListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntervalInput)(nil)).Elem(), IntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntervalPtrInput)(nil)).Elem(), IntervalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogsPanelInput)(nil)).Elem(), LogsPanelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogsPanelPtrInput)(nil)).Elem(), LogsPanelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MeasureInput)(nil)).Elem(), MeasureArgs{})
@@ -9570,6 +10206,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RowLayoutPtrInput)(nil)).Elem(), RowLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardInput)(nil)).Elem(), ScorecardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardPtrInput)(nil)).Elem(), ScorecardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SectionHeaderInput)(nil)).Elem(), SectionHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SectionHeaderPtrInput)(nil)).Elem(), SectionHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleViewGroupInput)(nil)).Elem(), SingleViewGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleViewGroupPtrInput)(nil)).Elem(), SingleViewGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkChartViewInput)(nil)).Elem(), SparkChartViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkChartViewPtrInput)(nil)).Elem(), SparkChartViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatisticalTimeSeriesFilterInput)(nil)).Elem(), StatisticalTimeSeriesFilterArgs{})
@@ -9658,6 +10298,9 @@ func init() {
 	pulumi.RegisterOutputType(IncidentListOutput{})
 	pulumi.RegisterOutputType(IncidentListPtrOutput{})
 	pulumi.RegisterOutputType(IncidentListResponseOutput{})
+	pulumi.RegisterOutputType(IntervalOutput{})
+	pulumi.RegisterOutputType(IntervalPtrOutput{})
+	pulumi.RegisterOutputType(IntervalResponseOutput{})
 	pulumi.RegisterOutputType(LogsPanelOutput{})
 	pulumi.RegisterOutputType(LogsPanelPtrOutput{})
 	pulumi.RegisterOutputType(LogsPanelResponseOutput{})
@@ -9702,6 +10345,12 @@ func init() {
 	pulumi.RegisterOutputType(ScorecardOutput{})
 	pulumi.RegisterOutputType(ScorecardPtrOutput{})
 	pulumi.RegisterOutputType(ScorecardResponseOutput{})
+	pulumi.RegisterOutputType(SectionHeaderOutput{})
+	pulumi.RegisterOutputType(SectionHeaderPtrOutput{})
+	pulumi.RegisterOutputType(SectionHeaderResponseOutput{})
+	pulumi.RegisterOutputType(SingleViewGroupOutput{})
+	pulumi.RegisterOutputType(SingleViewGroupPtrOutput{})
+	pulumi.RegisterOutputType(SingleViewGroupResponseOutput{})
 	pulumi.RegisterOutputType(SparkChartViewOutput{})
 	pulumi.RegisterOutputType(SparkChartViewPtrOutput{})
 	pulumi.RegisterOutputType(SparkChartViewResponseOutput{})

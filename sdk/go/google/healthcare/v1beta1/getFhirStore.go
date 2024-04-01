@@ -40,11 +40,13 @@ type LookupFhirStoreResult struct {
 	DisableReferentialIntegrity bool `pulumi:"disableReferentialIntegrity"`
 	// Immutable. Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation of FHIR store. If set to false, which is the default behavior, all write operations cause historical versions to be recorded automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for attempts to read the historical versions.
 	DisableResourceVersioning bool `pulumi:"disableResourceVersioning"`
+	// Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
+	EnableHistoryModifications bool `pulumi:"enableHistoryModifications"`
 	// Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
 	EnableUpdateCreate bool `pulumi:"enableUpdateCreate"`
 	// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+	// Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
 	Name string `pulumi:"name"`
 	// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	//
@@ -125,6 +127,11 @@ func (o LookupFhirStoreResultOutput) DisableResourceVersioning() pulumi.BoolOutp
 	return o.ApplyT(func(v LookupFhirStoreResult) bool { return v.DisableResourceVersioning }).(pulumi.BoolOutput)
 }
 
+// Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
+func (o LookupFhirStoreResultOutput) EnableHistoryModifications() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupFhirStoreResult) bool { return v.EnableHistoryModifications }).(pulumi.BoolOutput)
+}
+
 // Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
 func (o LookupFhirStoreResultOutput) EnableUpdateCreate() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFhirStoreResult) bool { return v.EnableUpdateCreate }).(pulumi.BoolOutput)
@@ -135,7 +142,7 @@ func (o LookupFhirStoreResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFhirStoreResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+// Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
 func (o LookupFhirStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFhirStoreResult) string { return v.Name }).(pulumi.StringOutput)
 }

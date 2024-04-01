@@ -48,6 +48,8 @@ type LookupInstanceResult struct {
 	IngressPublicIp string `pulumi:"ingressPublicIp"`
 	// Last computed maintenance denial period for this instance.
 	LastDenyMaintenancePeriod DenyMaintenancePeriodResponse `pulumi:"lastDenyMaintenancePeriod"`
+	// Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+	LinkedLspProjectNumber string `pulumi:"linkedLspProjectNumber"`
 	// Looker instance URI which can be used to access the Looker Instance UI.
 	LookerUri string `pulumi:"lookerUri"`
 	// The Looker version that the instance is using.
@@ -160,6 +162,11 @@ func (o LookupInstanceResultOutput) IngressPublicIp() pulumi.StringOutput {
 // Last computed maintenance denial period for this instance.
 func (o LookupInstanceResultOutput) LastDenyMaintenancePeriod() DenyMaintenancePeriodResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) DenyMaintenancePeriodResponse { return v.LastDenyMaintenancePeriod }).(DenyMaintenancePeriodResponseOutput)
+}
+
+// Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+func (o LookupInstanceResultOutput) LinkedLspProjectNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.LinkedLspProjectNumber }).(pulumi.StringOutput)
 }
 
 // Looker instance URI which can be used to access the Looker Instance UI.

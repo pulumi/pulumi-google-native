@@ -20,26 +20,26 @@ type BillingAccountBucket struct {
 	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
 	AnalyticsEnabled pulumi.BoolOutput   `pulumi:"analyticsEnabled"`
 	BillingAccountId pulumi.StringOutput `pulumi:"billingAccountId"`
-	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+	// Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings CmekSettingsResponseOutput `pulumi:"cmekSettings"`
 	// The creation timestamp of the bucket. This is not set for any of the default buckets.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Describes this bucket.
+	// Optional. Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// A list of indexed fields and related configuration data.
+	// Optional. A list of indexed fields and related configuration data.
 	IndexConfigs IndexConfigResponseArrayOutput `pulumi:"indexConfigs"`
 	// The bucket lifecycle state.
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	Location       pulumi.StringOutput `pulumi:"location"`
-	// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+	// Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// The resource name of the bucket.For example:projects/my-project/locations/global/buckets/my-bucketFor a list of supported locations, see Supported Regions (https://cloud.google.com/logging/docs/region-support)For the location of global it is unspecified where log entries are actually stored.After a bucket has been created, the location cannot be changed.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+	// Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
 	RestrictedFields pulumi.StringArrayOutput `pulumi:"restrictedFields"`
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays pulumi.IntOutput `pulumi:"retentionDays"`
 	// The last update timestamp of the bucket.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -100,20 +100,20 @@ type billingAccountBucketArgs struct {
 	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
 	AnalyticsEnabled *bool  `pulumi:"analyticsEnabled"`
 	BillingAccountId string `pulumi:"billingAccountId"`
-	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character.
 	BucketId string `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+	// Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *CmekSettings `pulumi:"cmekSettings"`
-	// Describes this bucket.
+	// Optional. Describes this bucket.
 	Description *string `pulumi:"description"`
-	// A list of indexed fields and related configuration data.
+	// Optional. A list of indexed fields and related configuration data.
 	IndexConfigs []IndexConfig `pulumi:"indexConfigs"`
 	Location     *string       `pulumi:"location"`
-	// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+	// Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
 	Locked *bool `pulumi:"locked"`
-	// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+	// Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
 	RestrictedFields []string `pulumi:"restrictedFields"`
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays *int `pulumi:"retentionDays"`
 }
 
@@ -122,20 +122,20 @@ type BillingAccountBucketArgs struct {
 	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
 	AnalyticsEnabled pulumi.BoolPtrInput
 	BillingAccountId pulumi.StringInput
-	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character.
 	BucketId pulumi.StringInput
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+	// Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings CmekSettingsPtrInput
-	// Describes this bucket.
+	// Optional. Describes this bucket.
 	Description pulumi.StringPtrInput
-	// A list of indexed fields and related configuration data.
+	// Optional. A list of indexed fields and related configuration data.
 	IndexConfigs IndexConfigArrayInput
 	Location     pulumi.StringPtrInput
-	// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+	// Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
 	Locked pulumi.BoolPtrInput
-	// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+	// Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
 	RestrictedFields pulumi.StringArrayInput
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays pulumi.IntPtrInput
 }
 
@@ -185,12 +185,12 @@ func (o BillingAccountBucketOutput) BillingAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) pulumi.StringOutput { return v.BillingAccountId }).(pulumi.StringOutput)
 }
 
-// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character.
 func (o BillingAccountBucketOutput) BucketId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
 }
 
-// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+// Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 func (o BillingAccountBucketOutput) CmekSettings() CmekSettingsResponseOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) CmekSettingsResponseOutput { return v.CmekSettings }).(CmekSettingsResponseOutput)
 }
@@ -200,12 +200,12 @@ func (o BillingAccountBucketOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Describes this bucket.
+// Optional. Describes this bucket.
 func (o BillingAccountBucketOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// A list of indexed fields and related configuration data.
+// Optional. A list of indexed fields and related configuration data.
 func (o BillingAccountBucketOutput) IndexConfigs() IndexConfigResponseArrayOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) IndexConfigResponseArrayOutput { return v.IndexConfigs }).(IndexConfigResponseArrayOutput)
 }
@@ -219,7 +219,7 @@ func (o BillingAccountBucketOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+// Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
 func (o BillingAccountBucketOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) pulumi.BoolOutput { return v.Locked }).(pulumi.BoolOutput)
 }
@@ -229,12 +229,12 @@ func (o BillingAccountBucketOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+// Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
 func (o BillingAccountBucketOutput) RestrictedFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) pulumi.StringArrayOutput { return v.RestrictedFields }).(pulumi.StringArrayOutput)
 }
 
-// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+// Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 func (o BillingAccountBucketOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *BillingAccountBucket) pulumi.IntOutput { return v.RetentionDays }).(pulumi.IntOutput)
 }

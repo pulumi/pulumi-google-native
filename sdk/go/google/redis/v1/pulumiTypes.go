@@ -13,6 +13,390 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// Configuration of the AOF based persistence.
+type AOFConfig struct {
+	// Optional. fsync configuration.
+	AppendFsync *AOFConfigAppendFsync `pulumi:"appendFsync"`
+}
+
+// AOFConfigInput is an input type that accepts AOFConfigArgs and AOFConfigOutput values.
+// You can construct a concrete instance of `AOFConfigInput` via:
+//
+//	AOFConfigArgs{...}
+type AOFConfigInput interface {
+	pulumi.Input
+
+	ToAOFConfigOutput() AOFConfigOutput
+	ToAOFConfigOutputWithContext(context.Context) AOFConfigOutput
+}
+
+// Configuration of the AOF based persistence.
+type AOFConfigArgs struct {
+	// Optional. fsync configuration.
+	AppendFsync AOFConfigAppendFsyncPtrInput `pulumi:"appendFsync"`
+}
+
+func (AOFConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AOFConfig)(nil)).Elem()
+}
+
+func (i AOFConfigArgs) ToAOFConfigOutput() AOFConfigOutput {
+	return i.ToAOFConfigOutputWithContext(context.Background())
+}
+
+func (i AOFConfigArgs) ToAOFConfigOutputWithContext(ctx context.Context) AOFConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AOFConfigOutput)
+}
+
+func (i AOFConfigArgs) ToAOFConfigPtrOutput() AOFConfigPtrOutput {
+	return i.ToAOFConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AOFConfigArgs) ToAOFConfigPtrOutputWithContext(ctx context.Context) AOFConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AOFConfigOutput).ToAOFConfigPtrOutputWithContext(ctx)
+}
+
+// AOFConfigPtrInput is an input type that accepts AOFConfigArgs, AOFConfigPtr and AOFConfigPtrOutput values.
+// You can construct a concrete instance of `AOFConfigPtrInput` via:
+//
+//	        AOFConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AOFConfigPtrInput interface {
+	pulumi.Input
+
+	ToAOFConfigPtrOutput() AOFConfigPtrOutput
+	ToAOFConfigPtrOutputWithContext(context.Context) AOFConfigPtrOutput
+}
+
+type aofconfigPtrType AOFConfigArgs
+
+func AOFConfigPtr(v *AOFConfigArgs) AOFConfigPtrInput {
+	return (*aofconfigPtrType)(v)
+}
+
+func (*aofconfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AOFConfig)(nil)).Elem()
+}
+
+func (i *aofconfigPtrType) ToAOFConfigPtrOutput() AOFConfigPtrOutput {
+	return i.ToAOFConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aofconfigPtrType) ToAOFConfigPtrOutputWithContext(ctx context.Context) AOFConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AOFConfigPtrOutput)
+}
+
+// Configuration of the AOF based persistence.
+type AOFConfigOutput struct{ *pulumi.OutputState }
+
+func (AOFConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AOFConfig)(nil)).Elem()
+}
+
+func (o AOFConfigOutput) ToAOFConfigOutput() AOFConfigOutput {
+	return o
+}
+
+func (o AOFConfigOutput) ToAOFConfigOutputWithContext(ctx context.Context) AOFConfigOutput {
+	return o
+}
+
+func (o AOFConfigOutput) ToAOFConfigPtrOutput() AOFConfigPtrOutput {
+	return o.ToAOFConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AOFConfigOutput) ToAOFConfigPtrOutputWithContext(ctx context.Context) AOFConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AOFConfig) *AOFConfig {
+		return &v
+	}).(AOFConfigPtrOutput)
+}
+
+// Optional. fsync configuration.
+func (o AOFConfigOutput) AppendFsync() AOFConfigAppendFsyncPtrOutput {
+	return o.ApplyT(func(v AOFConfig) *AOFConfigAppendFsync { return v.AppendFsync }).(AOFConfigAppendFsyncPtrOutput)
+}
+
+type AOFConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AOFConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AOFConfig)(nil)).Elem()
+}
+
+func (o AOFConfigPtrOutput) ToAOFConfigPtrOutput() AOFConfigPtrOutput {
+	return o
+}
+
+func (o AOFConfigPtrOutput) ToAOFConfigPtrOutputWithContext(ctx context.Context) AOFConfigPtrOutput {
+	return o
+}
+
+func (o AOFConfigPtrOutput) Elem() AOFConfigOutput {
+	return o.ApplyT(func(v *AOFConfig) AOFConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AOFConfig
+		return ret
+	}).(AOFConfigOutput)
+}
+
+// Optional. fsync configuration.
+func (o AOFConfigPtrOutput) AppendFsync() AOFConfigAppendFsyncPtrOutput {
+	return o.ApplyT(func(v *AOFConfig) *AOFConfigAppendFsync {
+		if v == nil {
+			return nil
+		}
+		return v.AppendFsync
+	}).(AOFConfigAppendFsyncPtrOutput)
+}
+
+// Configuration of the AOF based persistence.
+type AOFConfigResponse struct {
+	// Optional. fsync configuration.
+	AppendFsync string `pulumi:"appendFsync"`
+}
+
+// Configuration of the AOF based persistence.
+type AOFConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AOFConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AOFConfigResponse)(nil)).Elem()
+}
+
+func (o AOFConfigResponseOutput) ToAOFConfigResponseOutput() AOFConfigResponseOutput {
+	return o
+}
+
+func (o AOFConfigResponseOutput) ToAOFConfigResponseOutputWithContext(ctx context.Context) AOFConfigResponseOutput {
+	return o
+}
+
+// Optional. fsync configuration.
+func (o AOFConfigResponseOutput) AppendFsync() pulumi.StringOutput {
+	return o.ApplyT(func(v AOFConfigResponse) string { return v.AppendFsync }).(pulumi.StringOutput)
+}
+
+// Configuration of the persistence functionality.
+type ClusterPersistenceConfig struct {
+	// Optional. AOF configuration. This field will be ignored if mode is not AOF.
+	AofConfig *AOFConfig `pulumi:"aofConfig"`
+	// Optional. The mode of persistence.
+	Mode *ClusterPersistenceConfigMode `pulumi:"mode"`
+	// Optional. RDB configuration. This field will be ignored if mode is not RDB.
+	RdbConfig *RDBConfig `pulumi:"rdbConfig"`
+}
+
+// ClusterPersistenceConfigInput is an input type that accepts ClusterPersistenceConfigArgs and ClusterPersistenceConfigOutput values.
+// You can construct a concrete instance of `ClusterPersistenceConfigInput` via:
+//
+//	ClusterPersistenceConfigArgs{...}
+type ClusterPersistenceConfigInput interface {
+	pulumi.Input
+
+	ToClusterPersistenceConfigOutput() ClusterPersistenceConfigOutput
+	ToClusterPersistenceConfigOutputWithContext(context.Context) ClusterPersistenceConfigOutput
+}
+
+// Configuration of the persistence functionality.
+type ClusterPersistenceConfigArgs struct {
+	// Optional. AOF configuration. This field will be ignored if mode is not AOF.
+	AofConfig AOFConfigPtrInput `pulumi:"aofConfig"`
+	// Optional. The mode of persistence.
+	Mode ClusterPersistenceConfigModePtrInput `pulumi:"mode"`
+	// Optional. RDB configuration. This field will be ignored if mode is not RDB.
+	RdbConfig RDBConfigPtrInput `pulumi:"rdbConfig"`
+}
+
+func (ClusterPersistenceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPersistenceConfig)(nil)).Elem()
+}
+
+func (i ClusterPersistenceConfigArgs) ToClusterPersistenceConfigOutput() ClusterPersistenceConfigOutput {
+	return i.ToClusterPersistenceConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterPersistenceConfigArgs) ToClusterPersistenceConfigOutputWithContext(ctx context.Context) ClusterPersistenceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigOutput)
+}
+
+func (i ClusterPersistenceConfigArgs) ToClusterPersistenceConfigPtrOutput() ClusterPersistenceConfigPtrOutput {
+	return i.ToClusterPersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPersistenceConfigArgs) ToClusterPersistenceConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigOutput).ToClusterPersistenceConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterPersistenceConfigPtrInput is an input type that accepts ClusterPersistenceConfigArgs, ClusterPersistenceConfigPtr and ClusterPersistenceConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterPersistenceConfigPtrInput` via:
+//
+//	        ClusterPersistenceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPersistenceConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterPersistenceConfigPtrOutput() ClusterPersistenceConfigPtrOutput
+	ToClusterPersistenceConfigPtrOutputWithContext(context.Context) ClusterPersistenceConfigPtrOutput
+}
+
+type clusterPersistenceConfigPtrType ClusterPersistenceConfigArgs
+
+func ClusterPersistenceConfigPtr(v *ClusterPersistenceConfigArgs) ClusterPersistenceConfigPtrInput {
+	return (*clusterPersistenceConfigPtrType)(v)
+}
+
+func (*clusterPersistenceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPersistenceConfig)(nil)).Elem()
+}
+
+func (i *clusterPersistenceConfigPtrType) ToClusterPersistenceConfigPtrOutput() ClusterPersistenceConfigPtrOutput {
+	return i.ToClusterPersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPersistenceConfigPtrType) ToClusterPersistenceConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigPtrOutput)
+}
+
+// Configuration of the persistence functionality.
+type ClusterPersistenceConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterPersistenceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPersistenceConfig)(nil)).Elem()
+}
+
+func (o ClusterPersistenceConfigOutput) ToClusterPersistenceConfigOutput() ClusterPersistenceConfigOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigOutput) ToClusterPersistenceConfigOutputWithContext(ctx context.Context) ClusterPersistenceConfigOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigOutput) ToClusterPersistenceConfigPtrOutput() ClusterPersistenceConfigPtrOutput {
+	return o.ToClusterPersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPersistenceConfigOutput) ToClusterPersistenceConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPersistenceConfig) *ClusterPersistenceConfig {
+		return &v
+	}).(ClusterPersistenceConfigPtrOutput)
+}
+
+// Optional. AOF configuration. This field will be ignored if mode is not AOF.
+func (o ClusterPersistenceConfigOutput) AofConfig() AOFConfigPtrOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfig) *AOFConfig { return v.AofConfig }).(AOFConfigPtrOutput)
+}
+
+// Optional. The mode of persistence.
+func (o ClusterPersistenceConfigOutput) Mode() ClusterPersistenceConfigModePtrOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfig) *ClusterPersistenceConfigMode { return v.Mode }).(ClusterPersistenceConfigModePtrOutput)
+}
+
+// Optional. RDB configuration. This field will be ignored if mode is not RDB.
+func (o ClusterPersistenceConfigOutput) RdbConfig() RDBConfigPtrOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfig) *RDBConfig { return v.RdbConfig }).(RDBConfigPtrOutput)
+}
+
+type ClusterPersistenceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPersistenceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPersistenceConfig)(nil)).Elem()
+}
+
+func (o ClusterPersistenceConfigPtrOutput) ToClusterPersistenceConfigPtrOutput() ClusterPersistenceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigPtrOutput) ToClusterPersistenceConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigPtrOutput) Elem() ClusterPersistenceConfigOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfig) ClusterPersistenceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPersistenceConfig
+		return ret
+	}).(ClusterPersistenceConfigOutput)
+}
+
+// Optional. AOF configuration. This field will be ignored if mode is not AOF.
+func (o ClusterPersistenceConfigPtrOutput) AofConfig() AOFConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfig) *AOFConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AofConfig
+	}).(AOFConfigPtrOutput)
+}
+
+// Optional. The mode of persistence.
+func (o ClusterPersistenceConfigPtrOutput) Mode() ClusterPersistenceConfigModePtrOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfig) *ClusterPersistenceConfigMode {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(ClusterPersistenceConfigModePtrOutput)
+}
+
+// Optional. RDB configuration. This field will be ignored if mode is not RDB.
+func (o ClusterPersistenceConfigPtrOutput) RdbConfig() RDBConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfig) *RDBConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RdbConfig
+	}).(RDBConfigPtrOutput)
+}
+
+// Configuration of the persistence functionality.
+type ClusterPersistenceConfigResponse struct {
+	// Optional. AOF configuration. This field will be ignored if mode is not AOF.
+	AofConfig AOFConfigResponse `pulumi:"aofConfig"`
+	// Optional. The mode of persistence.
+	Mode string `pulumi:"mode"`
+	// Optional. RDB configuration. This field will be ignored if mode is not RDB.
+	RdbConfig RDBConfigResponse `pulumi:"rdbConfig"`
+}
+
+// Configuration of the persistence functionality.
+type ClusterPersistenceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterPersistenceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPersistenceConfigResponse)(nil)).Elem()
+}
+
+func (o ClusterPersistenceConfigResponseOutput) ToClusterPersistenceConfigResponseOutput() ClusterPersistenceConfigResponseOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigResponseOutput) ToClusterPersistenceConfigResponseOutputWithContext(ctx context.Context) ClusterPersistenceConfigResponseOutput {
+	return o
+}
+
+// Optional. AOF configuration. This field will be ignored if mode is not AOF.
+func (o ClusterPersistenceConfigResponseOutput) AofConfig() AOFConfigResponseOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfigResponse) AOFConfigResponse { return v.AofConfig }).(AOFConfigResponseOutput)
+}
+
+// Optional. The mode of persistence.
+func (o ClusterPersistenceConfigResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfigResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Optional. RDB configuration. This field will be ignored if mode is not RDB.
+func (o ClusterPersistenceConfigResponseOutput) RdbConfig() RDBConfigResponseOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfigResponse) RDBConfigResponse { return v.RdbConfig }).(RDBConfigResponseOutput)
+}
+
 // Endpoints on each network, for Redis clients to connect to the cluster.
 type DiscoveryEndpointResponse struct {
 	// Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
@@ -812,6 +1196,198 @@ func (o PscConnectionResponseArrayOutput) Index(i pulumi.IntInput) PscConnection
 	}).(PscConnectionResponseOutput)
 }
 
+// Configuration of the RDB based persistence.
+type RDBConfig struct {
+	// Optional. Period between RDB snapshots.
+	RdbSnapshotPeriod *RDBConfigRdbSnapshotPeriod `pulumi:"rdbSnapshotPeriod"`
+	// Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+	RdbSnapshotStartTime *string `pulumi:"rdbSnapshotStartTime"`
+}
+
+// RDBConfigInput is an input type that accepts RDBConfigArgs and RDBConfigOutput values.
+// You can construct a concrete instance of `RDBConfigInput` via:
+//
+//	RDBConfigArgs{...}
+type RDBConfigInput interface {
+	pulumi.Input
+
+	ToRDBConfigOutput() RDBConfigOutput
+	ToRDBConfigOutputWithContext(context.Context) RDBConfigOutput
+}
+
+// Configuration of the RDB based persistence.
+type RDBConfigArgs struct {
+	// Optional. Period between RDB snapshots.
+	RdbSnapshotPeriod RDBConfigRdbSnapshotPeriodPtrInput `pulumi:"rdbSnapshotPeriod"`
+	// Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+	RdbSnapshotStartTime pulumi.StringPtrInput `pulumi:"rdbSnapshotStartTime"`
+}
+
+func (RDBConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RDBConfig)(nil)).Elem()
+}
+
+func (i RDBConfigArgs) ToRDBConfigOutput() RDBConfigOutput {
+	return i.ToRDBConfigOutputWithContext(context.Background())
+}
+
+func (i RDBConfigArgs) ToRDBConfigOutputWithContext(ctx context.Context) RDBConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RDBConfigOutput)
+}
+
+func (i RDBConfigArgs) ToRDBConfigPtrOutput() RDBConfigPtrOutput {
+	return i.ToRDBConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RDBConfigArgs) ToRDBConfigPtrOutputWithContext(ctx context.Context) RDBConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RDBConfigOutput).ToRDBConfigPtrOutputWithContext(ctx)
+}
+
+// RDBConfigPtrInput is an input type that accepts RDBConfigArgs, RDBConfigPtr and RDBConfigPtrOutput values.
+// You can construct a concrete instance of `RDBConfigPtrInput` via:
+//
+//	        RDBConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RDBConfigPtrInput interface {
+	pulumi.Input
+
+	ToRDBConfigPtrOutput() RDBConfigPtrOutput
+	ToRDBConfigPtrOutputWithContext(context.Context) RDBConfigPtrOutput
+}
+
+type rdbconfigPtrType RDBConfigArgs
+
+func RDBConfigPtr(v *RDBConfigArgs) RDBConfigPtrInput {
+	return (*rdbconfigPtrType)(v)
+}
+
+func (*rdbconfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RDBConfig)(nil)).Elem()
+}
+
+func (i *rdbconfigPtrType) ToRDBConfigPtrOutput() RDBConfigPtrOutput {
+	return i.ToRDBConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *rdbconfigPtrType) ToRDBConfigPtrOutputWithContext(ctx context.Context) RDBConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RDBConfigPtrOutput)
+}
+
+// Configuration of the RDB based persistence.
+type RDBConfigOutput struct{ *pulumi.OutputState }
+
+func (RDBConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RDBConfig)(nil)).Elem()
+}
+
+func (o RDBConfigOutput) ToRDBConfigOutput() RDBConfigOutput {
+	return o
+}
+
+func (o RDBConfigOutput) ToRDBConfigOutputWithContext(ctx context.Context) RDBConfigOutput {
+	return o
+}
+
+func (o RDBConfigOutput) ToRDBConfigPtrOutput() RDBConfigPtrOutput {
+	return o.ToRDBConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RDBConfigOutput) ToRDBConfigPtrOutputWithContext(ctx context.Context) RDBConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RDBConfig) *RDBConfig {
+		return &v
+	}).(RDBConfigPtrOutput)
+}
+
+// Optional. Period between RDB snapshots.
+func (o RDBConfigOutput) RdbSnapshotPeriod() RDBConfigRdbSnapshotPeriodPtrOutput {
+	return o.ApplyT(func(v RDBConfig) *RDBConfigRdbSnapshotPeriod { return v.RdbSnapshotPeriod }).(RDBConfigRdbSnapshotPeriodPtrOutput)
+}
+
+// Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+func (o RDBConfigOutput) RdbSnapshotStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RDBConfig) *string { return v.RdbSnapshotStartTime }).(pulumi.StringPtrOutput)
+}
+
+type RDBConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RDBConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RDBConfig)(nil)).Elem()
+}
+
+func (o RDBConfigPtrOutput) ToRDBConfigPtrOutput() RDBConfigPtrOutput {
+	return o
+}
+
+func (o RDBConfigPtrOutput) ToRDBConfigPtrOutputWithContext(ctx context.Context) RDBConfigPtrOutput {
+	return o
+}
+
+func (o RDBConfigPtrOutput) Elem() RDBConfigOutput {
+	return o.ApplyT(func(v *RDBConfig) RDBConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RDBConfig
+		return ret
+	}).(RDBConfigOutput)
+}
+
+// Optional. Period between RDB snapshots.
+func (o RDBConfigPtrOutput) RdbSnapshotPeriod() RDBConfigRdbSnapshotPeriodPtrOutput {
+	return o.ApplyT(func(v *RDBConfig) *RDBConfigRdbSnapshotPeriod {
+		if v == nil {
+			return nil
+		}
+		return v.RdbSnapshotPeriod
+	}).(RDBConfigRdbSnapshotPeriodPtrOutput)
+}
+
+// Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+func (o RDBConfigPtrOutput) RdbSnapshotStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RDBConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RdbSnapshotStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration of the RDB based persistence.
+type RDBConfigResponse struct {
+	// Optional. Period between RDB snapshots.
+	RdbSnapshotPeriod string `pulumi:"rdbSnapshotPeriod"`
+	// Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+	RdbSnapshotStartTime string `pulumi:"rdbSnapshotStartTime"`
+}
+
+// Configuration of the RDB based persistence.
+type RDBConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RDBConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RDBConfigResponse)(nil)).Elem()
+}
+
+func (o RDBConfigResponseOutput) ToRDBConfigResponseOutput() RDBConfigResponseOutput {
+	return o
+}
+
+func (o RDBConfigResponseOutput) ToRDBConfigResponseOutputWithContext(ctx context.Context) RDBConfigResponseOutput {
+	return o
+}
+
+// Optional. Period between RDB snapshots.
+func (o RDBConfigResponseOutput) RdbSnapshotPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v RDBConfigResponse) string { return v.RdbSnapshotPeriod }).(pulumi.StringOutput)
+}
+
+// Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+func (o RDBConfigResponseOutput) RdbSnapshotStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RDBConfigResponse) string { return v.RdbSnapshotStartTime }).(pulumi.StringOutput)
+}
+
 // Represents additional information about the state of the cluster.
 type StateInfoResponse struct {
 	// Describes ongoing update on the cluster when cluster state is UPDATING.
@@ -1244,15 +1820,27 @@ func (o WeeklyMaintenanceWindowResponseArrayOutput) Index(i pulumi.IntInput) Wee
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AOFConfigInput)(nil)).Elem(), AOFConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AOFConfigPtrInput)(nil)).Elem(), AOFConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigInput)(nil)).Elem(), ClusterPersistenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigPtrInput)(nil)).Elem(), ClusterPersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyInput)(nil)).Elem(), MaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyPtrInput)(nil)).Elem(), MaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigInput)(nil)).Elem(), PersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigPtrInput)(nil)).Elem(), PersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigInput)(nil)).Elem(), PscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigArrayInput)(nil)).Elem(), PscConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RDBConfigInput)(nil)).Elem(), RDBConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RDBConfigPtrInput)(nil)).Elem(), RDBConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayInput)(nil)).Elem(), TimeOfDayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowInput)(nil)).Elem(), WeeklyMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowArrayInput)(nil)).Elem(), WeeklyMaintenanceWindowArray{})
+	pulumi.RegisterOutputType(AOFConfigOutput{})
+	pulumi.RegisterOutputType(AOFConfigPtrOutput{})
+	pulumi.RegisterOutputType(AOFConfigResponseOutput{})
+	pulumi.RegisterOutputType(ClusterPersistenceConfigOutput{})
+	pulumi.RegisterOutputType(ClusterPersistenceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPersistenceConfigResponseOutput{})
 	pulumi.RegisterOutputType(DiscoveryEndpointResponseOutput{})
 	pulumi.RegisterOutputType(DiscoveryEndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyOutput{})
@@ -1270,6 +1858,9 @@ func init() {
 	pulumi.RegisterOutputType(PscConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(PscConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PscConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(RDBConfigOutput{})
+	pulumi.RegisterOutputType(RDBConfigPtrOutput{})
+	pulumi.RegisterOutputType(RDBConfigResponseOutput{})
 	pulumi.RegisterOutputType(StateInfoResponseOutput{})
 	pulumi.RegisterOutputType(TimeOfDayOutput{})
 	pulumi.RegisterOutputType(TimeOfDayResponseOutput{})

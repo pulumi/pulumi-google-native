@@ -14,29 +14,37 @@ import (
 
 // Creates a new CustomConnectorVersion in a given project and location.
 // Auto-naming is currently not supported for this resource.
+// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+// on Google Cloud even though it will be deleted from Pulumi state.
 type CustomConnectorVersion struct {
 	pulumi.CustomResourceState
 
-	// Configuration for establishing the authentication to the connector destination.
+	// Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
 	AuthConfig AuthConfigResponseOutput `pulumi:"authConfig"`
+	// Optional. Backend variables config templates. This translates to additional variable templates in connection.
+	BackendVariableTemplates ConfigVariableTemplateResponseArrayOutput `pulumi:"backendVariableTemplates"`
 	// Created time.
 	CreateTime        pulumi.StringOutput `pulumi:"createTime"`
 	CustomConnectorId pulumi.StringOutput `pulumi:"customConnectorId"`
 	// Required. Identifier to assign to the CreateCustomConnectorVersion. Must be unique within scope of the parent resource.
 	CustomConnectorVersionId pulumi.StringOutput `pulumi:"customConnectorVersionId"`
-	// Configuration of the customConnector's destination.
-	DestinationConfig DestinationConfigResponseOutput `pulumi:"destinationConfig"`
-	// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+	// Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
+	DestinationConfigs DestinationConfigResponseArrayOutput `pulumi:"destinationConfigs"`
+	// Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
 	EnableBackendDestinationConfig pulumi.BoolOutput `pulumi:"enableBackendDestinationConfig"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Identifier. Resource name of the Version. Format: projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Service account needed for runtime plane to access Custom Connector secrets.
+	// Optional. Service account used by runtime plane to access auth config secrets.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
-	// Optional. Location of the custom connector spec.
+	// Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
 	SpecLocation pulumi.StringOutput `pulumi:"specLocation"`
+	// Server URLs parsed from the spec.
+	SpecServerUrls pulumi.StringArrayOutput `pulumi:"specServerUrls"`
+	// State of the custom connector version.
+	State pulumi.StringOutput `pulumi:"state"`
 	// Updated time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -48,20 +56,11 @@ func NewCustomConnectorVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AuthConfig == nil {
-		return nil, errors.New("invalid value for required argument 'AuthConfig'")
-	}
 	if args.CustomConnectorId == nil {
 		return nil, errors.New("invalid value for required argument 'CustomConnectorId'")
 	}
 	if args.CustomConnectorVersionId == nil {
 		return nil, errors.New("invalid value for required argument 'CustomConnectorVersionId'")
-	}
-	if args.DestinationConfig == nil {
-		return nil, errors.New("invalid value for required argument 'DestinationConfig'")
-	}
-	if args.ServiceAccount == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceAccount'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"customConnectorId",
@@ -102,41 +101,45 @@ func (CustomConnectorVersionState) ElementType() reflect.Type {
 }
 
 type customConnectorVersionArgs struct {
-	// Configuration for establishing the authentication to the connector destination.
-	AuthConfig        AuthConfig `pulumi:"authConfig"`
-	CustomConnectorId string     `pulumi:"customConnectorId"`
+	// Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
+	AuthConfig *AuthConfig `pulumi:"authConfig"`
+	// Optional. Backend variables config templates. This translates to additional variable templates in connection.
+	BackendVariableTemplates []ConfigVariableTemplate `pulumi:"backendVariableTemplates"`
+	CustomConnectorId        string                   `pulumi:"customConnectorId"`
 	// Required. Identifier to assign to the CreateCustomConnectorVersion. Must be unique within scope of the parent resource.
 	CustomConnectorVersionId string `pulumi:"customConnectorVersionId"`
-	// Configuration of the customConnector's destination.
-	DestinationConfig DestinationConfig `pulumi:"destinationConfig"`
-	// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+	// Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
+	DestinationConfigs []DestinationConfig `pulumi:"destinationConfigs"`
+	// Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
 	EnableBackendDestinationConfig *bool `pulumi:"enableBackendDestinationConfig"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels  map[string]string `pulumi:"labels"`
 	Project *string           `pulumi:"project"`
-	// Service account needed for runtime plane to access Custom Connector secrets.
-	ServiceAccount string `pulumi:"serviceAccount"`
-	// Optional. Location of the custom connector spec.
+	// Optional. Service account used by runtime plane to access auth config secrets.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
 	SpecLocation *string `pulumi:"specLocation"`
 }
 
 // The set of arguments for constructing a CustomConnectorVersion resource.
 type CustomConnectorVersionArgs struct {
-	// Configuration for establishing the authentication to the connector destination.
-	AuthConfig        AuthConfigInput
-	CustomConnectorId pulumi.StringInput
+	// Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
+	AuthConfig AuthConfigPtrInput
+	// Optional. Backend variables config templates. This translates to additional variable templates in connection.
+	BackendVariableTemplates ConfigVariableTemplateArrayInput
+	CustomConnectorId        pulumi.StringInput
 	// Required. Identifier to assign to the CreateCustomConnectorVersion. Must be unique within scope of the parent resource.
 	CustomConnectorVersionId pulumi.StringInput
-	// Configuration of the customConnector's destination.
-	DestinationConfig DestinationConfigInput
-	// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+	// Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
+	DestinationConfigs DestinationConfigArrayInput
+	// Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
 	EnableBackendDestinationConfig pulumi.BoolPtrInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels  pulumi.StringMapInput
 	Project pulumi.StringPtrInput
-	// Service account needed for runtime plane to access Custom Connector secrets.
-	ServiceAccount pulumi.StringInput
-	// Optional. Location of the custom connector spec.
+	// Optional. Service account used by runtime plane to access auth config secrets.
+	ServiceAccount pulumi.StringPtrInput
+	// Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
 	SpecLocation pulumi.StringPtrInput
 }
 
@@ -177,9 +180,16 @@ func (o CustomConnectorVersionOutput) ToCustomConnectorVersionOutputWithContext(
 	return o
 }
 
-// Configuration for establishing the authentication to the connector destination.
+// Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
 func (o CustomConnectorVersionOutput) AuthConfig() AuthConfigResponseOutput {
 	return o.ApplyT(func(v *CustomConnectorVersion) AuthConfigResponseOutput { return v.AuthConfig }).(AuthConfigResponseOutput)
+}
+
+// Optional. Backend variables config templates. This translates to additional variable templates in connection.
+func (o CustomConnectorVersionOutput) BackendVariableTemplates() ConfigVariableTemplateResponseArrayOutput {
+	return o.ApplyT(func(v *CustomConnectorVersion) ConfigVariableTemplateResponseArrayOutput {
+		return v.BackendVariableTemplates
+	}).(ConfigVariableTemplateResponseArrayOutput)
 }
 
 // Created time.
@@ -196,12 +206,12 @@ func (o CustomConnectorVersionOutput) CustomConnectorVersionId() pulumi.StringOu
 	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.StringOutput { return v.CustomConnectorVersionId }).(pulumi.StringOutput)
 }
 
-// Configuration of the customConnector's destination.
-func (o CustomConnectorVersionOutput) DestinationConfig() DestinationConfigResponseOutput {
-	return o.ApplyT(func(v *CustomConnectorVersion) DestinationConfigResponseOutput { return v.DestinationConfig }).(DestinationConfigResponseOutput)
+// Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
+func (o CustomConnectorVersionOutput) DestinationConfigs() DestinationConfigResponseArrayOutput {
+	return o.ApplyT(func(v *CustomConnectorVersion) DestinationConfigResponseArrayOutput { return v.DestinationConfigs }).(DestinationConfigResponseArrayOutput)
 }
 
-// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+// Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
 func (o CustomConnectorVersionOutput) EnableBackendDestinationConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.BoolOutput { return v.EnableBackendDestinationConfig }).(pulumi.BoolOutput)
 }
@@ -220,14 +230,24 @@ func (o CustomConnectorVersionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Service account needed for runtime plane to access Custom Connector secrets.
+// Optional. Service account used by runtime plane to access auth config secrets.
 func (o CustomConnectorVersionOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
-// Optional. Location of the custom connector spec.
+// Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
 func (o CustomConnectorVersionOutput) SpecLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.StringOutput { return v.SpecLocation }).(pulumi.StringOutput)
+}
+
+// Server URLs parsed from the spec.
+func (o CustomConnectorVersionOutput) SpecServerUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.StringArrayOutput { return v.SpecServerUrls }).(pulumi.StringArrayOutput)
+}
+
+// State of the custom connector version.
+func (o CustomConnectorVersionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // Updated time.

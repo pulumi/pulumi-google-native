@@ -13,6 +13,7 @@ import (
 )
 
 // Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
+// Auto-naming is currently not supported for this resource.
 type OrganizationSink struct {
 	pulumi.CustomResourceState
 
@@ -34,13 +35,17 @@ type OrganizationSink struct {
 	Filter pulumi.StringOutput `pulumi:"filter"`
 	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
 	IncludeChildren pulumi.BoolOutput `pulumi:"includeChildren"`
-	// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+	// Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+	InterceptChildren pulumi.BoolOutput `pulumi:"interceptChildren"`
+	// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First character has to be alphanumeric.
 	Name           pulumi.StringOutput `pulumi:"name"`
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Deprecated. This field is unused.
 	//
 	// Deprecated: Deprecated. This field is unused.
 	OutputVersionFormat pulumi.StringOutput `pulumi:"outputVersionFormat"`
+	// The resource name of the sink. "projects/[PROJECT_ID]/sinks/[SINK_NAME] "organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME] "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME] "folders/[FOLDER_ID]/sinks/[SINK_NAME] For example: projects/my_project/sinks/SINK_NAME
+	ResourceName pulumi.StringOutput `pulumi:"resourceName"`
 	// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.
 	UniqueWriterIdentity pulumi.BoolPtrOutput `pulumi:"uniqueWriterIdentity"`
 	// The last update timestamp of the sink.This field may not be present for older sinks.
@@ -115,9 +120,9 @@ type organizationSinkArgs struct {
 	Filter *string `pulumi:"filter"`
 	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
 	IncludeChildren *bool `pulumi:"includeChildren"`
-	// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name           *string `pulumi:"name"`
-	OrganizationId string  `pulumi:"organizationId"`
+	// Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+	InterceptChildren *bool  `pulumi:"interceptChildren"`
+	OrganizationId    string `pulumi:"organizationId"`
 	// Deprecated. This field is unused.
 	//
 	// Deprecated: Deprecated. This field is unused.
@@ -144,9 +149,9 @@ type OrganizationSinkArgs struct {
 	Filter pulumi.StringPtrInput
 	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
 	IncludeChildren pulumi.BoolPtrInput
-	// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name           pulumi.StringPtrInput
-	OrganizationId pulumi.StringInput
+	// Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+	InterceptChildren pulumi.BoolPtrInput
+	OrganizationId    pulumi.StringInput
 	// Deprecated. This field is unused.
 	//
 	// Deprecated: Deprecated. This field is unused.
@@ -237,7 +242,12 @@ func (o OrganizationSinkOutput) IncludeChildren() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OrganizationSink) pulumi.BoolOutput { return v.IncludeChildren }).(pulumi.BoolOutput)
 }
 
-// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+// Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+func (o OrganizationSinkOutput) InterceptChildren() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OrganizationSink) pulumi.BoolOutput { return v.InterceptChildren }).(pulumi.BoolOutput)
+}
+
+// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First character has to be alphanumeric.
 func (o OrganizationSinkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSink) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -251,6 +261,11 @@ func (o OrganizationSinkOutput) OrganizationId() pulumi.StringOutput {
 // Deprecated: Deprecated. This field is unused.
 func (o OrganizationSinkOutput) OutputVersionFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSink) pulumi.StringOutput { return v.OutputVersionFormat }).(pulumi.StringOutput)
+}
+
+// The resource name of the sink. "projects/[PROJECT_ID]/sinks/[SINK_NAME] "organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME] "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME] "folders/[FOLDER_ID]/sinks/[SINK_NAME] For example: projects/my_project/sinks/SINK_NAME
+func (o OrganizationSinkOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationSink) pulumi.StringOutput { return v.ResourceName }).(pulumi.StringOutput)
 }
 
 // Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.

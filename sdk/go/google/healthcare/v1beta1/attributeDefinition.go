@@ -31,7 +31,7 @@ type AttributeDefinition struct {
 	// Optional. A description of the attribute.
 	Description pulumi.StringOutput `pulumi:"description"`
 	Location    pulumi.StringOutput `pulumi:"location"`
-	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 }
@@ -114,7 +114,7 @@ type attributeDefinitionArgs struct {
 	// Optional. A description of the attribute.
 	Description *string `pulumi:"description"`
 	Location    *string `pulumi:"location"`
-	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
@@ -136,7 +136,7 @@ type AttributeDefinitionArgs struct {
 	// Optional. A description of the attribute.
 	Description pulumi.StringPtrInput
 	Location    pulumi.StringPtrInput
-	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }
@@ -220,7 +220,7 @@ func (o AttributeDefinitionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+// Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 func (o AttributeDefinitionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

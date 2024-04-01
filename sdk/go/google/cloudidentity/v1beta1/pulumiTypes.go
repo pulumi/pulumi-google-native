@@ -88,6 +88,183 @@ func (o AndroidAttributesResponseOutput) VerifyAppsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v AndroidAttributesResponse) bool { return v.VerifyAppsEnabled }).(pulumi.BoolOutput)
 }
 
+// Contains information about browser profiles reported by the Endpoint Verification extension.
+type BrowserAttributesResponse struct {
+	// Represents the current state of the [Chrome browser attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the Endpoint Verification extension.
+	ChromeBrowserInfo BrowserInfoResponse `pulumi:"chromeBrowserInfo"`
+	// Chrome profile ID that is exposed by the Chrome API. It is unique for each device.
+	ChromeProfileId string `pulumi:"chromeProfileId"`
+	// Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+	LastProfileSyncTime string `pulumi:"lastProfileSyncTime"`
+}
+
+// Contains information about browser profiles reported by the Endpoint Verification extension.
+type BrowserAttributesResponseOutput struct{ *pulumi.OutputState }
+
+func (BrowserAttributesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrowserAttributesResponse)(nil)).Elem()
+}
+
+func (o BrowserAttributesResponseOutput) ToBrowserAttributesResponseOutput() BrowserAttributesResponseOutput {
+	return o
+}
+
+func (o BrowserAttributesResponseOutput) ToBrowserAttributesResponseOutputWithContext(ctx context.Context) BrowserAttributesResponseOutput {
+	return o
+}
+
+// Represents the current state of the [Chrome browser attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the Endpoint Verification extension.
+func (o BrowserAttributesResponseOutput) ChromeBrowserInfo() BrowserInfoResponseOutput {
+	return o.ApplyT(func(v BrowserAttributesResponse) BrowserInfoResponse { return v.ChromeBrowserInfo }).(BrowserInfoResponseOutput)
+}
+
+// Chrome profile ID that is exposed by the Chrome API. It is unique for each device.
+func (o BrowserAttributesResponseOutput) ChromeProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v BrowserAttributesResponse) string { return v.ChromeProfileId }).(pulumi.StringOutput)
+}
+
+// Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+func (o BrowserAttributesResponseOutput) LastProfileSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BrowserAttributesResponse) string { return v.LastProfileSyncTime }).(pulumi.StringOutput)
+}
+
+type BrowserAttributesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BrowserAttributesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BrowserAttributesResponse)(nil)).Elem()
+}
+
+func (o BrowserAttributesResponseArrayOutput) ToBrowserAttributesResponseArrayOutput() BrowserAttributesResponseArrayOutput {
+	return o
+}
+
+func (o BrowserAttributesResponseArrayOutput) ToBrowserAttributesResponseArrayOutputWithContext(ctx context.Context) BrowserAttributesResponseArrayOutput {
+	return o
+}
+
+func (o BrowserAttributesResponseArrayOutput) Index(i pulumi.IntInput) BrowserAttributesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BrowserAttributesResponse {
+		return vs[0].([]BrowserAttributesResponse)[vs[1].(int)]
+	}).(BrowserAttributesResponseOutput)
+}
+
+// Browser-specific fields reported by the Endpoint Verification extension. LINT.IfChange
+type BrowserInfoResponse struct {
+	// Browser's management state.
+	BrowserManagementState string `pulumi:"browserManagementState"`
+	// Version of the request initiating browser.
+	BrowserVersion string `pulumi:"browserVersion"`
+	// Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
+	IsBuiltInDnsClientEnabled bool `pulumi:"isBuiltInDnsClientEnabled"`
+	// Current state of [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+	IsBulkDataEntryAnalysisEnabled bool `pulumi:"isBulkDataEntryAnalysisEnabled"`
+	// Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+	IsChromeCleanupEnabled bool `pulumi:"isChromeCleanupEnabled"`
+	// Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
+	IsChromeRemoteDesktopAppBlocked bool `pulumi:"isChromeRemoteDesktopAppBlocked"`
+	// Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+	IsFileDownloadAnalysisEnabled bool `pulumi:"isFileDownloadAnalysisEnabled"`
+	// Current state of [file upload analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+	IsFileUploadAnalysisEnabled bool `pulumi:"isFileUploadAnalysisEnabled"`
+	// Current state of [real-time URL check](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode). Set to true if provider list from Chrome is non-empty.
+	IsRealtimeUrlCheckEnabled bool `pulumi:"isRealtimeUrlCheckEnabled"`
+	// Current state of [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+	IsSecurityEventAnalysisEnabled bool `pulumi:"isSecurityEventAnalysisEnabled"`
+	// Current state of [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
+	IsSiteIsolationEnabled bool `pulumi:"isSiteIsolationEnabled"`
+	// Current state of [third-party blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
+	IsThirdPartyBlockingEnabled bool `pulumi:"isThirdPartyBlockingEnabled"`
+	// Current state of [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
+	PasswordProtectionWarningTrigger string `pulumi:"passwordProtectionWarningTrigger"`
+	// Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
+	SafeBrowsingProtectionLevel string `pulumi:"safeBrowsingProtectionLevel"`
+}
+
+// Browser-specific fields reported by the Endpoint Verification extension. LINT.IfChange
+type BrowserInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (BrowserInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrowserInfoResponse)(nil)).Elem()
+}
+
+func (o BrowserInfoResponseOutput) ToBrowserInfoResponseOutput() BrowserInfoResponseOutput {
+	return o
+}
+
+func (o BrowserInfoResponseOutput) ToBrowserInfoResponseOutputWithContext(ctx context.Context) BrowserInfoResponseOutput {
+	return o
+}
+
+// Browser's management state.
+func (o BrowserInfoResponseOutput) BrowserManagementState() pulumi.StringOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) string { return v.BrowserManagementState }).(pulumi.StringOutput)
+}
+
+// Version of the request initiating browser.
+func (o BrowserInfoResponseOutput) BrowserVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) string { return v.BrowserVersion }).(pulumi.StringOutput)
+}
+
+// Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
+func (o BrowserInfoResponseOutput) IsBuiltInDnsClientEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) bool { return v.IsBuiltInDnsClientEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+func (o BrowserInfoResponseOutput) IsBulkDataEntryAnalysisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) bool { return v.IsBulkDataEntryAnalysisEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+func (o BrowserInfoResponseOutput) IsChromeCleanupEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) bool { return v.IsChromeCleanupEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
+func (o BrowserInfoResponseOutput) IsChromeRemoteDesktopAppBlocked() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) bool { return v.IsChromeRemoteDesktopAppBlocked }).(pulumi.BoolOutput)
+}
+
+// Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+func (o BrowserInfoResponseOutput) IsFileDownloadAnalysisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) bool { return v.IsFileDownloadAnalysisEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [file upload analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+func (o BrowserInfoResponseOutput) IsFileUploadAnalysisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) bool { return v.IsFileUploadAnalysisEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [real-time URL check](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode). Set to true if provider list from Chrome is non-empty.
+func (o BrowserInfoResponseOutput) IsRealtimeUrlCheckEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) bool { return v.IsRealtimeUrlCheckEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+func (o BrowserInfoResponseOutput) IsSecurityEventAnalysisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) bool { return v.IsSecurityEventAnalysisEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
+func (o BrowserInfoResponseOutput) IsSiteIsolationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) bool { return v.IsSiteIsolationEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [third-party blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
+func (o BrowserInfoResponseOutput) IsThirdPartyBlockingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) bool { return v.IsThirdPartyBlockingEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
+func (o BrowserInfoResponseOutput) PasswordProtectionWarningTrigger() pulumi.StringOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) string { return v.PasswordProtectionWarningTrigger }).(pulumi.StringOutput)
+}
+
+// Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
+func (o BrowserInfoResponseOutput) SafeBrowsingProtectionLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v BrowserInfoResponse) string { return v.SafeBrowsingProtectionLevel }).(pulumi.StringOutput)
+}
+
 // Stores information about a certificate.
 type CertificateAttributesResponse struct {
 	// The X.509 extension for CertificateTemplate.
@@ -225,7 +402,7 @@ func (o CertificateTemplateResponseOutput) MinorVersion() pulumi.IntOutput {
 
 // Dynamic group metadata like queries and status.
 type DynamicGroupMetadata struct {
-	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 	Queries []DynamicGroupQuery `pulumi:"queries"`
 }
 
@@ -242,7 +419,7 @@ type DynamicGroupMetadataInput interface {
 
 // Dynamic group metadata like queries and status.
 type DynamicGroupMetadataArgs struct {
-	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 	Queries DynamicGroupQueryArrayInput `pulumi:"queries"`
 }
 
@@ -324,7 +501,7 @@ func (o DynamicGroupMetadataOutput) ToDynamicGroupMetadataPtrOutputWithContext(c
 	}).(DynamicGroupMetadataPtrOutput)
 }
 
-// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 func (o DynamicGroupMetadataOutput) Queries() DynamicGroupQueryArrayOutput {
 	return o.ApplyT(func(v DynamicGroupMetadata) []DynamicGroupQuery { return v.Queries }).(DynamicGroupQueryArrayOutput)
 }
@@ -353,7 +530,7 @@ func (o DynamicGroupMetadataPtrOutput) Elem() DynamicGroupMetadataOutput {
 	}).(DynamicGroupMetadataOutput)
 }
 
-// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 func (o DynamicGroupMetadataPtrOutput) Queries() DynamicGroupQueryArrayOutput {
 	return o.ApplyT(func(v *DynamicGroupMetadata) []DynamicGroupQuery {
 		if v == nil {
@@ -365,7 +542,7 @@ func (o DynamicGroupMetadataPtrOutput) Queries() DynamicGroupQueryArrayOutput {
 
 // Dynamic group metadata like queries and status.
 type DynamicGroupMetadataResponse struct {
-	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 	Queries []DynamicGroupQueryResponse `pulumi:"queries"`
 	// Status of the dynamic group.
 	Status DynamicGroupStatusResponse `pulumi:"status"`
@@ -386,7 +563,7 @@ func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponseOutput
 	return o
 }
 
-// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 func (o DynamicGroupMetadataResponseOutput) Queries() DynamicGroupQueryResponseArrayOutput {
 	return o.ApplyT(func(v DynamicGroupMetadataResponse) []DynamicGroupQueryResponse { return v.Queries }).(DynamicGroupQueryResponseArrayOutput)
 }
@@ -586,13 +763,17 @@ func (o DynamicGroupStatusResponseOutput) StatusTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DynamicGroupStatusResponse) string { return v.StatusTime }).(pulumi.StringOutput)
 }
 
-// Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
+// Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device.
 type EndpointVerificationSpecificAttributesResponse struct {
+	// Additional signals reported by Endpoint Verification. It includes the following attributes: 1. Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. Configurable attributes: file_config, registry_config, and plist_config.
+	AdditionalSignals map[string]string `pulumi:"additionalSignals"`
+	// Details of browser profiles reported by Endpoint Verification.
+	BrowserAttributes []BrowserAttributesResponse `pulumi:"browserAttributes"`
 	// Details of certificates.
 	CertificateAttributes []CertificateAttributesResponse `pulumi:"certificateAttributes"`
 }
 
-// Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
+// Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device.
 type EndpointVerificationSpecificAttributesResponseOutput struct{ *pulumi.OutputState }
 
 func (EndpointVerificationSpecificAttributesResponseOutput) ElementType() reflect.Type {
@@ -605,6 +786,18 @@ func (o EndpointVerificationSpecificAttributesResponseOutput) ToEndpointVerifica
 
 func (o EndpointVerificationSpecificAttributesResponseOutput) ToEndpointVerificationSpecificAttributesResponseOutputWithContext(ctx context.Context) EndpointVerificationSpecificAttributesResponseOutput {
 	return o
+}
+
+// Additional signals reported by Endpoint Verification. It includes the following attributes: 1. Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. Configurable attributes: file_config, registry_config, and plist_config.
+func (o EndpointVerificationSpecificAttributesResponseOutput) AdditionalSignals() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EndpointVerificationSpecificAttributesResponse) map[string]string { return v.AdditionalSignals }).(pulumi.StringMapOutput)
+}
+
+// Details of browser profiles reported by Endpoint Verification.
+func (o EndpointVerificationSpecificAttributesResponseOutput) BrowserAttributes() BrowserAttributesResponseArrayOutput {
+	return o.ApplyT(func(v EndpointVerificationSpecificAttributesResponse) []BrowserAttributesResponse {
+		return v.BrowserAttributes
+	}).(BrowserAttributesResponseArrayOutput)
 }
 
 // Details of certificates.
@@ -2414,6 +2607,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SignInBehaviorInput)(nil)).Elem(), SignInBehaviorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignInBehaviorPtrInput)(nil)).Elem(), SignInBehaviorArgs{})
 	pulumi.RegisterOutputType(AndroidAttributesResponseOutput{})
+	pulumi.RegisterOutputType(BrowserAttributesResponseOutput{})
+	pulumi.RegisterOutputType(BrowserAttributesResponseArrayOutput{})
+	pulumi.RegisterOutputType(BrowserInfoResponseOutput{})
 	pulumi.RegisterOutputType(CertificateAttributesResponseOutput{})
 	pulumi.RegisterOutputType(CertificateAttributesResponseArrayOutput{})
 	pulumi.RegisterOutputType(CertificateTemplateResponseOutput{})

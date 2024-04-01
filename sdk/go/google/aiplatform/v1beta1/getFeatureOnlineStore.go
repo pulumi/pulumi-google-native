@@ -35,13 +35,15 @@ type LookupFeatureOnlineStoreResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
 	DedicatedServingEndpoint GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse `pulumi:"dedicatedServingEndpoint"`
-	// Optional. The settings for embedding management in FeatureOnlineStore.
+	// Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
+	//
+	// Deprecated: Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
 	EmbeddingManagement GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse `pulumi:"embeddingManagement"`
 	// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag string `pulumi:"etag"`
 	// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+	// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
 	Name string `pulumi:"name"`
 	// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
 	Optimized GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedResponse `pulumi:"optimized"`
@@ -107,7 +109,9 @@ func (o LookupFeatureOnlineStoreResultOutput) DedicatedServingEndpoint() GoogleC
 	}).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponseOutput)
 }
 
-// Optional. The settings for embedding management in FeatureOnlineStore.
+// Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
+//
+// Deprecated: Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
 func (o LookupFeatureOnlineStoreResultOutput) EmbeddingManagement() GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponseOutput {
 	return o.ApplyT(func(v LookupFeatureOnlineStoreResult) GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse {
 		return v.EmbeddingManagement
@@ -124,7 +128,7 @@ func (o LookupFeatureOnlineStoreResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFeatureOnlineStoreResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
 func (o LookupFeatureOnlineStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureOnlineStoreResult) string { return v.Name }).(pulumi.StringOutput)
 }

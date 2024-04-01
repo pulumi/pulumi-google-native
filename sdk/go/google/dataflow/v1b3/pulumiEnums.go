@@ -589,6 +589,183 @@ func (in *environmentFlexResourceSchedulingGoalPtr) ToOutput(ctx context.Context
 	}
 }
 
+// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+type EnvironmentStreamingMode string
+
+const (
+	// Run in the default mode.
+	EnvironmentStreamingModeStreamingModeUnspecified = EnvironmentStreamingMode("STREAMING_MODE_UNSPECIFIED")
+	// In this mode, message deduplication is performed against persistent state to make sure each message is processed and committed to storage exactly once.
+	EnvironmentStreamingModeStreamingModeExactlyOnce = EnvironmentStreamingMode("STREAMING_MODE_EXACTLY_ONCE")
+	// Message deduplication is not performed. Messages might be processed multiple times, and the results are applied multiple times. Note: Setting this value also enables Streaming Engine and Streaming Engine resource-based billing.
+	EnvironmentStreamingModeStreamingModeAtLeastOnce = EnvironmentStreamingMode("STREAMING_MODE_AT_LEAST_ONCE")
+)
+
+func (EnvironmentStreamingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentStreamingMode)(nil)).Elem()
+}
+
+func (e EnvironmentStreamingMode) ToEnvironmentStreamingModeOutput() EnvironmentStreamingModeOutput {
+	return pulumi.ToOutput(e).(EnvironmentStreamingModeOutput)
+}
+
+func (e EnvironmentStreamingMode) ToEnvironmentStreamingModeOutputWithContext(ctx context.Context) EnvironmentStreamingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnvironmentStreamingModeOutput)
+}
+
+func (e EnvironmentStreamingMode) ToEnvironmentStreamingModePtrOutput() EnvironmentStreamingModePtrOutput {
+	return e.ToEnvironmentStreamingModePtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentStreamingMode) ToEnvironmentStreamingModePtrOutputWithContext(ctx context.Context) EnvironmentStreamingModePtrOutput {
+	return EnvironmentStreamingMode(e).ToEnvironmentStreamingModeOutputWithContext(ctx).ToEnvironmentStreamingModePtrOutputWithContext(ctx)
+}
+
+func (e EnvironmentStreamingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentStreamingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentStreamingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentStreamingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnvironmentStreamingModeOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentStreamingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentStreamingMode)(nil)).Elem()
+}
+
+func (o EnvironmentStreamingModeOutput) ToEnvironmentStreamingModeOutput() EnvironmentStreamingModeOutput {
+	return o
+}
+
+func (o EnvironmentStreamingModeOutput) ToEnvironmentStreamingModeOutputWithContext(ctx context.Context) EnvironmentStreamingModeOutput {
+	return o
+}
+
+func (o EnvironmentStreamingModeOutput) ToEnvironmentStreamingModePtrOutput() EnvironmentStreamingModePtrOutput {
+	return o.ToEnvironmentStreamingModePtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentStreamingModeOutput) ToEnvironmentStreamingModePtrOutputWithContext(ctx context.Context) EnvironmentStreamingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentStreamingMode) *EnvironmentStreamingMode {
+		return &v
+	}).(EnvironmentStreamingModePtrOutput)
+}
+
+func (o EnvironmentStreamingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnvironmentStreamingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentStreamingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnvironmentStreamingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentStreamingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentStreamingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentStreamingModePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentStreamingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentStreamingMode)(nil)).Elem()
+}
+
+func (o EnvironmentStreamingModePtrOutput) ToEnvironmentStreamingModePtrOutput() EnvironmentStreamingModePtrOutput {
+	return o
+}
+
+func (o EnvironmentStreamingModePtrOutput) ToEnvironmentStreamingModePtrOutputWithContext(ctx context.Context) EnvironmentStreamingModePtrOutput {
+	return o
+}
+
+func (o EnvironmentStreamingModePtrOutput) Elem() EnvironmentStreamingModeOutput {
+	return o.ApplyT(func(v *EnvironmentStreamingMode) EnvironmentStreamingMode {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentStreamingMode
+		return ret
+	}).(EnvironmentStreamingModeOutput)
+}
+
+func (o EnvironmentStreamingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentStreamingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnvironmentStreamingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EnvironmentStreamingModeInput is an input type that accepts values of the EnvironmentStreamingMode enum
+// A concrete instance of `EnvironmentStreamingModeInput` can be one of the following:
+//
+//	EnvironmentStreamingModeStreamingModeUnspecified
+//	EnvironmentStreamingModeStreamingModeExactlyOnce
+//	EnvironmentStreamingModeStreamingModeAtLeastOnce
+type EnvironmentStreamingModeInput interface {
+	pulumi.Input
+
+	ToEnvironmentStreamingModeOutput() EnvironmentStreamingModeOutput
+	ToEnvironmentStreamingModeOutputWithContext(context.Context) EnvironmentStreamingModeOutput
+}
+
+var environmentStreamingModePtrType = reflect.TypeOf((**EnvironmentStreamingMode)(nil)).Elem()
+
+type EnvironmentStreamingModePtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentStreamingModePtrOutput() EnvironmentStreamingModePtrOutput
+	ToEnvironmentStreamingModePtrOutputWithContext(context.Context) EnvironmentStreamingModePtrOutput
+}
+
+type environmentStreamingModePtr string
+
+func EnvironmentStreamingModePtr(v string) EnvironmentStreamingModePtrInput {
+	return (*environmentStreamingModePtr)(&v)
+}
+
+func (*environmentStreamingModePtr) ElementType() reflect.Type {
+	return environmentStreamingModePtrType
+}
+
+func (in *environmentStreamingModePtr) ToEnvironmentStreamingModePtrOutput() EnvironmentStreamingModePtrOutput {
+	return pulumi.ToOutput(in).(EnvironmentStreamingModePtrOutput)
+}
+
+func (in *environmentStreamingModePtr) ToEnvironmentStreamingModePtrOutputWithContext(ctx context.Context) EnvironmentStreamingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentStreamingModePtrOutput)
+}
+
+func (in *environmentStreamingModePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentStreamingMode] {
+	return pulumix.Output[*EnvironmentStreamingMode]{
+		OutputState: in.ToEnvironmentStreamingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Executions stage states allow the same set of values as JobState.
 type ExecutionStageStateExecutionStageState string
 
@@ -1759,6 +1936,183 @@ func (in *runtimeEnvironmentIpConfigurationPtr) ToOutput(ctx context.Context) pu
 	}
 }
 
+// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+type RuntimeEnvironmentStreamingMode string
+
+const (
+	// Run in the default mode.
+	RuntimeEnvironmentStreamingModeStreamingModeUnspecified = RuntimeEnvironmentStreamingMode("STREAMING_MODE_UNSPECIFIED")
+	// In this mode, message deduplication is performed against persistent state to make sure each message is processed and committed to storage exactly once.
+	RuntimeEnvironmentStreamingModeStreamingModeExactlyOnce = RuntimeEnvironmentStreamingMode("STREAMING_MODE_EXACTLY_ONCE")
+	// Message deduplication is not performed. Messages might be processed multiple times, and the results are applied multiple times. Note: Setting this value also enables Streaming Engine and Streaming Engine resource-based billing.
+	RuntimeEnvironmentStreamingModeStreamingModeAtLeastOnce = RuntimeEnvironmentStreamingMode("STREAMING_MODE_AT_LEAST_ONCE")
+)
+
+func (RuntimeEnvironmentStreamingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeEnvironmentStreamingMode)(nil)).Elem()
+}
+
+func (e RuntimeEnvironmentStreamingMode) ToRuntimeEnvironmentStreamingModeOutput() RuntimeEnvironmentStreamingModeOutput {
+	return pulumi.ToOutput(e).(RuntimeEnvironmentStreamingModeOutput)
+}
+
+func (e RuntimeEnvironmentStreamingMode) ToRuntimeEnvironmentStreamingModeOutputWithContext(ctx context.Context) RuntimeEnvironmentStreamingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RuntimeEnvironmentStreamingModeOutput)
+}
+
+func (e RuntimeEnvironmentStreamingMode) ToRuntimeEnvironmentStreamingModePtrOutput() RuntimeEnvironmentStreamingModePtrOutput {
+	return e.ToRuntimeEnvironmentStreamingModePtrOutputWithContext(context.Background())
+}
+
+func (e RuntimeEnvironmentStreamingMode) ToRuntimeEnvironmentStreamingModePtrOutputWithContext(ctx context.Context) RuntimeEnvironmentStreamingModePtrOutput {
+	return RuntimeEnvironmentStreamingMode(e).ToRuntimeEnvironmentStreamingModeOutputWithContext(ctx).ToRuntimeEnvironmentStreamingModePtrOutputWithContext(ctx)
+}
+
+func (e RuntimeEnvironmentStreamingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RuntimeEnvironmentStreamingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RuntimeEnvironmentStreamingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RuntimeEnvironmentStreamingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RuntimeEnvironmentStreamingModeOutput struct{ *pulumi.OutputState }
+
+func (RuntimeEnvironmentStreamingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeEnvironmentStreamingMode)(nil)).Elem()
+}
+
+func (o RuntimeEnvironmentStreamingModeOutput) ToRuntimeEnvironmentStreamingModeOutput() RuntimeEnvironmentStreamingModeOutput {
+	return o
+}
+
+func (o RuntimeEnvironmentStreamingModeOutput) ToRuntimeEnvironmentStreamingModeOutputWithContext(ctx context.Context) RuntimeEnvironmentStreamingModeOutput {
+	return o
+}
+
+func (o RuntimeEnvironmentStreamingModeOutput) ToRuntimeEnvironmentStreamingModePtrOutput() RuntimeEnvironmentStreamingModePtrOutput {
+	return o.ToRuntimeEnvironmentStreamingModePtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeEnvironmentStreamingModeOutput) ToRuntimeEnvironmentStreamingModePtrOutputWithContext(ctx context.Context) RuntimeEnvironmentStreamingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeEnvironmentStreamingMode) *RuntimeEnvironmentStreamingMode {
+		return &v
+	}).(RuntimeEnvironmentStreamingModePtrOutput)
+}
+
+func (o RuntimeEnvironmentStreamingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RuntimeEnvironmentStreamingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RuntimeEnvironmentStreamingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RuntimeEnvironmentStreamingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeEnvironmentStreamingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RuntimeEnvironmentStreamingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeEnvironmentStreamingModePtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeEnvironmentStreamingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeEnvironmentStreamingMode)(nil)).Elem()
+}
+
+func (o RuntimeEnvironmentStreamingModePtrOutput) ToRuntimeEnvironmentStreamingModePtrOutput() RuntimeEnvironmentStreamingModePtrOutput {
+	return o
+}
+
+func (o RuntimeEnvironmentStreamingModePtrOutput) ToRuntimeEnvironmentStreamingModePtrOutputWithContext(ctx context.Context) RuntimeEnvironmentStreamingModePtrOutput {
+	return o
+}
+
+func (o RuntimeEnvironmentStreamingModePtrOutput) Elem() RuntimeEnvironmentStreamingModeOutput {
+	return o.ApplyT(func(v *RuntimeEnvironmentStreamingMode) RuntimeEnvironmentStreamingMode {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeEnvironmentStreamingMode
+		return ret
+	}).(RuntimeEnvironmentStreamingModeOutput)
+}
+
+func (o RuntimeEnvironmentStreamingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeEnvironmentStreamingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RuntimeEnvironmentStreamingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RuntimeEnvironmentStreamingModeInput is an input type that accepts values of the RuntimeEnvironmentStreamingMode enum
+// A concrete instance of `RuntimeEnvironmentStreamingModeInput` can be one of the following:
+//
+//	RuntimeEnvironmentStreamingModeStreamingModeUnspecified
+//	RuntimeEnvironmentStreamingModeStreamingModeExactlyOnce
+//	RuntimeEnvironmentStreamingModeStreamingModeAtLeastOnce
+type RuntimeEnvironmentStreamingModeInput interface {
+	pulumi.Input
+
+	ToRuntimeEnvironmentStreamingModeOutput() RuntimeEnvironmentStreamingModeOutput
+	ToRuntimeEnvironmentStreamingModeOutputWithContext(context.Context) RuntimeEnvironmentStreamingModeOutput
+}
+
+var runtimeEnvironmentStreamingModePtrType = reflect.TypeOf((**RuntimeEnvironmentStreamingMode)(nil)).Elem()
+
+type RuntimeEnvironmentStreamingModePtrInput interface {
+	pulumi.Input
+
+	ToRuntimeEnvironmentStreamingModePtrOutput() RuntimeEnvironmentStreamingModePtrOutput
+	ToRuntimeEnvironmentStreamingModePtrOutputWithContext(context.Context) RuntimeEnvironmentStreamingModePtrOutput
+}
+
+type runtimeEnvironmentStreamingModePtr string
+
+func RuntimeEnvironmentStreamingModePtr(v string) RuntimeEnvironmentStreamingModePtrInput {
+	return (*runtimeEnvironmentStreamingModePtr)(&v)
+}
+
+func (*runtimeEnvironmentStreamingModePtr) ElementType() reflect.Type {
+	return runtimeEnvironmentStreamingModePtrType
+}
+
+func (in *runtimeEnvironmentStreamingModePtr) ToRuntimeEnvironmentStreamingModePtrOutput() RuntimeEnvironmentStreamingModePtrOutput {
+	return pulumi.ToOutput(in).(RuntimeEnvironmentStreamingModePtrOutput)
+}
+
+func (in *runtimeEnvironmentStreamingModePtr) ToRuntimeEnvironmentStreamingModePtrOutputWithContext(ctx context.Context) RuntimeEnvironmentStreamingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RuntimeEnvironmentStreamingModePtrOutput)
+}
+
+func (in *runtimeEnvironmentStreamingModePtr) ToOutput(ctx context.Context) pulumix.Output[*RuntimeEnvironmentStreamingMode] {
+	return pulumix.Output[*RuntimeEnvironmentStreamingMode]{
+		OutputState: in.ToRuntimeEnvironmentStreamingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The support status for this SDK version.
 type SdkVersionSdkSupportStatus string
 
@@ -2682,6 +3036,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSamplingConfigBehaviorsItemArrayInput)(nil)).Elem(), DataSamplingConfigBehaviorsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentFlexResourceSchedulingGoalInput)(nil)).Elem(), EnvironmentFlexResourceSchedulingGoal("FLEXRS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentFlexResourceSchedulingGoalPtrInput)(nil)).Elem(), EnvironmentFlexResourceSchedulingGoal("FLEXRS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStreamingModeInput)(nil)).Elem(), EnvironmentStreamingMode("STREAMING_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStreamingModePtrInput)(nil)).Elem(), EnvironmentStreamingMode("STREAMING_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateExecutionStageStateInput)(nil)).Elem(), ExecutionStageStateExecutionStageState("JOB_STATE_UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateExecutionStageStatePtrInput)(nil)).Elem(), ExecutionStageStateExecutionStageState("JOB_STATE_UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageSummaryKindInput)(nil)).Elem(), ExecutionStageSummaryKind("UNKNOWN_KIND"))
@@ -2694,6 +3050,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTypePtrInput)(nil)).Elem(), JobType("JOB_TYPE_UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeEnvironmentIpConfigurationInput)(nil)).Elem(), RuntimeEnvironmentIpConfiguration("WORKER_IP_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeEnvironmentIpConfigurationPtrInput)(nil)).Elem(), RuntimeEnvironmentIpConfiguration("WORKER_IP_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeEnvironmentStreamingModeInput)(nil)).Elem(), RuntimeEnvironmentStreamingMode("STREAMING_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeEnvironmentStreamingModePtrInput)(nil)).Elem(), RuntimeEnvironmentStreamingMode("STREAMING_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionSdkSupportStatusInput)(nil)).Elem(), SdkVersionSdkSupportStatus("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionSdkSupportStatusPtrInput)(nil)).Elem(), SdkVersionSdkSupportStatus("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TransformSummaryKindInput)(nil)).Elem(), TransformSummaryKind("UNKNOWN_KIND"))
@@ -2711,6 +3069,8 @@ func init() {
 	pulumi.RegisterOutputType(DataSamplingConfigBehaviorsItemArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentFlexResourceSchedulingGoalOutput{})
 	pulumi.RegisterOutputType(EnvironmentFlexResourceSchedulingGoalPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentStreamingModeOutput{})
+	pulumi.RegisterOutputType(EnvironmentStreamingModePtrOutput{})
 	pulumi.RegisterOutputType(ExecutionStageStateExecutionStageStateOutput{})
 	pulumi.RegisterOutputType(ExecutionStageStateExecutionStageStatePtrOutput{})
 	pulumi.RegisterOutputType(ExecutionStageSummaryKindOutput{})
@@ -2723,6 +3083,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTypePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeEnvironmentIpConfigurationOutput{})
 	pulumi.RegisterOutputType(RuntimeEnvironmentIpConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeEnvironmentStreamingModeOutput{})
+	pulumi.RegisterOutputType(RuntimeEnvironmentStreamingModePtrOutput{})
 	pulumi.RegisterOutputType(SdkVersionSdkSupportStatusOutput{})
 	pulumi.RegisterOutputType(SdkVersionSdkSupportStatusPtrOutput{})
 	pulumi.RegisterOutputType(TransformSummaryKindOutput{})

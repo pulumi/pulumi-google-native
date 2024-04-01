@@ -83,7 +83,7 @@ type LookupDiskResult struct {
 	PhysicalBlockSizeBytes string `pulumi:"physicalBlockSizeBytes"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops string `pulumi:"provisionedIops"`
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
 	ProvisionedThroughput string `pulumi:"provisionedThroughput"`
 	// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
@@ -93,6 +93,8 @@ type LookupDiskResult struct {
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Status information for the disk resource.
 	ResourceStatus DiskResourceStatusResponse `pulumi:"resourceStatus"`
+	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
@@ -314,7 +316,7 @@ func (o LookupDiskResultOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.ProvisionedIops }).(pulumi.StringOutput)
 }
 
-// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
 func (o LookupDiskResultOutput) ProvisionedThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
@@ -337,6 +339,11 @@ func (o LookupDiskResultOutput) ResourcePolicies() pulumi.StringArrayOutput {
 // Status information for the disk resource.
 func (o LookupDiskResultOutput) ResourceStatus() DiskResourceStatusResponseOutput {
 	return o.ApplyT(func(v LookupDiskResult) DiskResourceStatusResponse { return v.ResourceStatus }).(DiskResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o LookupDiskResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDiskResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

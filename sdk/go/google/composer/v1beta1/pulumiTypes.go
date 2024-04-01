@@ -13,6 +13,200 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// The policy for airflow metadata database retention.
+type AirflowMetadataRetentionPolicyConfig struct {
+	// Optional. How many days data should be retained for.
+	RetentionDays *int `pulumi:"retentionDays"`
+	// Optional. Retention can be either enabled or disabled.
+	RetentionMode *AirflowMetadataRetentionPolicyConfigRetentionMode `pulumi:"retentionMode"`
+}
+
+// AirflowMetadataRetentionPolicyConfigInput is an input type that accepts AirflowMetadataRetentionPolicyConfigArgs and AirflowMetadataRetentionPolicyConfigOutput values.
+// You can construct a concrete instance of `AirflowMetadataRetentionPolicyConfigInput` via:
+//
+//	AirflowMetadataRetentionPolicyConfigArgs{...}
+type AirflowMetadataRetentionPolicyConfigInput interface {
+	pulumi.Input
+
+	ToAirflowMetadataRetentionPolicyConfigOutput() AirflowMetadataRetentionPolicyConfigOutput
+	ToAirflowMetadataRetentionPolicyConfigOutputWithContext(context.Context) AirflowMetadataRetentionPolicyConfigOutput
+}
+
+// The policy for airflow metadata database retention.
+type AirflowMetadataRetentionPolicyConfigArgs struct {
+	// Optional. How many days data should be retained for.
+	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
+	// Optional. Retention can be either enabled or disabled.
+	RetentionMode AirflowMetadataRetentionPolicyConfigRetentionModePtrInput `pulumi:"retentionMode"`
+}
+
+func (AirflowMetadataRetentionPolicyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AirflowMetadataRetentionPolicyConfig)(nil)).Elem()
+}
+
+func (i AirflowMetadataRetentionPolicyConfigArgs) ToAirflowMetadataRetentionPolicyConfigOutput() AirflowMetadataRetentionPolicyConfigOutput {
+	return i.ToAirflowMetadataRetentionPolicyConfigOutputWithContext(context.Background())
+}
+
+func (i AirflowMetadataRetentionPolicyConfigArgs) ToAirflowMetadataRetentionPolicyConfigOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AirflowMetadataRetentionPolicyConfigOutput)
+}
+
+func (i AirflowMetadataRetentionPolicyConfigArgs) ToAirflowMetadataRetentionPolicyConfigPtrOutput() AirflowMetadataRetentionPolicyConfigPtrOutput {
+	return i.ToAirflowMetadataRetentionPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AirflowMetadataRetentionPolicyConfigArgs) ToAirflowMetadataRetentionPolicyConfigPtrOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AirflowMetadataRetentionPolicyConfigOutput).ToAirflowMetadataRetentionPolicyConfigPtrOutputWithContext(ctx)
+}
+
+// AirflowMetadataRetentionPolicyConfigPtrInput is an input type that accepts AirflowMetadataRetentionPolicyConfigArgs, AirflowMetadataRetentionPolicyConfigPtr and AirflowMetadataRetentionPolicyConfigPtrOutput values.
+// You can construct a concrete instance of `AirflowMetadataRetentionPolicyConfigPtrInput` via:
+//
+//	        AirflowMetadataRetentionPolicyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AirflowMetadataRetentionPolicyConfigPtrInput interface {
+	pulumi.Input
+
+	ToAirflowMetadataRetentionPolicyConfigPtrOutput() AirflowMetadataRetentionPolicyConfigPtrOutput
+	ToAirflowMetadataRetentionPolicyConfigPtrOutputWithContext(context.Context) AirflowMetadataRetentionPolicyConfigPtrOutput
+}
+
+type airflowMetadataRetentionPolicyConfigPtrType AirflowMetadataRetentionPolicyConfigArgs
+
+func AirflowMetadataRetentionPolicyConfigPtr(v *AirflowMetadataRetentionPolicyConfigArgs) AirflowMetadataRetentionPolicyConfigPtrInput {
+	return (*airflowMetadataRetentionPolicyConfigPtrType)(v)
+}
+
+func (*airflowMetadataRetentionPolicyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AirflowMetadataRetentionPolicyConfig)(nil)).Elem()
+}
+
+func (i *airflowMetadataRetentionPolicyConfigPtrType) ToAirflowMetadataRetentionPolicyConfigPtrOutput() AirflowMetadataRetentionPolicyConfigPtrOutput {
+	return i.ToAirflowMetadataRetentionPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *airflowMetadataRetentionPolicyConfigPtrType) ToAirflowMetadataRetentionPolicyConfigPtrOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AirflowMetadataRetentionPolicyConfigPtrOutput)
+}
+
+// The policy for airflow metadata database retention.
+type AirflowMetadataRetentionPolicyConfigOutput struct{ *pulumi.OutputState }
+
+func (AirflowMetadataRetentionPolicyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AirflowMetadataRetentionPolicyConfig)(nil)).Elem()
+}
+
+func (o AirflowMetadataRetentionPolicyConfigOutput) ToAirflowMetadataRetentionPolicyConfigOutput() AirflowMetadataRetentionPolicyConfigOutput {
+	return o
+}
+
+func (o AirflowMetadataRetentionPolicyConfigOutput) ToAirflowMetadataRetentionPolicyConfigOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigOutput {
+	return o
+}
+
+func (o AirflowMetadataRetentionPolicyConfigOutput) ToAirflowMetadataRetentionPolicyConfigPtrOutput() AirflowMetadataRetentionPolicyConfigPtrOutput {
+	return o.ToAirflowMetadataRetentionPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AirflowMetadataRetentionPolicyConfigOutput) ToAirflowMetadataRetentionPolicyConfigPtrOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AirflowMetadataRetentionPolicyConfig) *AirflowMetadataRetentionPolicyConfig {
+		return &v
+	}).(AirflowMetadataRetentionPolicyConfigPtrOutput)
+}
+
+// Optional. How many days data should be retained for.
+func (o AirflowMetadataRetentionPolicyConfigOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AirflowMetadataRetentionPolicyConfig) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Retention can be either enabled or disabled.
+func (o AirflowMetadataRetentionPolicyConfigOutput) RetentionMode() AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput {
+	return o.ApplyT(func(v AirflowMetadataRetentionPolicyConfig) *AirflowMetadataRetentionPolicyConfigRetentionMode {
+		return v.RetentionMode
+	}).(AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput)
+}
+
+type AirflowMetadataRetentionPolicyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AirflowMetadataRetentionPolicyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AirflowMetadataRetentionPolicyConfig)(nil)).Elem()
+}
+
+func (o AirflowMetadataRetentionPolicyConfigPtrOutput) ToAirflowMetadataRetentionPolicyConfigPtrOutput() AirflowMetadataRetentionPolicyConfigPtrOutput {
+	return o
+}
+
+func (o AirflowMetadataRetentionPolicyConfigPtrOutput) ToAirflowMetadataRetentionPolicyConfigPtrOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigPtrOutput {
+	return o
+}
+
+func (o AirflowMetadataRetentionPolicyConfigPtrOutput) Elem() AirflowMetadataRetentionPolicyConfigOutput {
+	return o.ApplyT(func(v *AirflowMetadataRetentionPolicyConfig) AirflowMetadataRetentionPolicyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AirflowMetadataRetentionPolicyConfig
+		return ret
+	}).(AirflowMetadataRetentionPolicyConfigOutput)
+}
+
+// Optional. How many days data should be retained for.
+func (o AirflowMetadataRetentionPolicyConfigPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AirflowMetadataRetentionPolicyConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Retention can be either enabled or disabled.
+func (o AirflowMetadataRetentionPolicyConfigPtrOutput) RetentionMode() AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput {
+	return o.ApplyT(func(v *AirflowMetadataRetentionPolicyConfig) *AirflowMetadataRetentionPolicyConfigRetentionMode {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionMode
+	}).(AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput)
+}
+
+// The policy for airflow metadata database retention.
+type AirflowMetadataRetentionPolicyConfigResponse struct {
+	// Optional. How many days data should be retained for.
+	RetentionDays int `pulumi:"retentionDays"`
+	// Optional. Retention can be either enabled or disabled.
+	RetentionMode string `pulumi:"retentionMode"`
+}
+
+// The policy for airflow metadata database retention.
+type AirflowMetadataRetentionPolicyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AirflowMetadataRetentionPolicyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AirflowMetadataRetentionPolicyConfigResponse)(nil)).Elem()
+}
+
+func (o AirflowMetadataRetentionPolicyConfigResponseOutput) ToAirflowMetadataRetentionPolicyConfigResponseOutput() AirflowMetadataRetentionPolicyConfigResponseOutput {
+	return o
+}
+
+func (o AirflowMetadataRetentionPolicyConfigResponseOutput) ToAirflowMetadataRetentionPolicyConfigResponseOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigResponseOutput {
+	return o
+}
+
+// Optional. How many days data should be retained for.
+func (o AirflowMetadataRetentionPolicyConfigResponseOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v AirflowMetadataRetentionPolicyConfigResponse) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// Optional. Retention can be either enabled or disabled.
+func (o AirflowMetadataRetentionPolicyConfigResponseOutput) RetentionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v AirflowMetadataRetentionPolicyConfigResponse) string { return v.RetentionMode }).(pulumi.StringOutput)
+}
+
 // Allowed IP range with user-provided description.
 type AllowedIpRange struct {
 	// Optional. User-provided description. It must contain at most 300 characters.
@@ -503,6 +697,472 @@ func (o CloudDataLineageIntegrationResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v CloudDataLineageIntegrationResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+type DagProcessorResource struct {
+	// Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created.
+	Count *int `pulumi:"count"`
+	// Optional. CPU request and limit for a single Airflow DAG processor replica.
+	Cpu *float64 `pulumi:"cpu"`
+	// Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.
+	MemoryGb *float64 `pulumi:"memoryGb"`
+	// Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.
+	StorageGb *float64 `pulumi:"storageGb"`
+}
+
+// DagProcessorResourceInput is an input type that accepts DagProcessorResourceArgs and DagProcessorResourceOutput values.
+// You can construct a concrete instance of `DagProcessorResourceInput` via:
+//
+//	DagProcessorResourceArgs{...}
+type DagProcessorResourceInput interface {
+	pulumi.Input
+
+	ToDagProcessorResourceOutput() DagProcessorResourceOutput
+	ToDagProcessorResourceOutputWithContext(context.Context) DagProcessorResourceOutput
+}
+
+// Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+type DagProcessorResourceArgs struct {
+	// Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Optional. CPU request and limit for a single Airflow DAG processor replica.
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.
+	MemoryGb pulumi.Float64PtrInput `pulumi:"memoryGb"`
+	// Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.
+	StorageGb pulumi.Float64PtrInput `pulumi:"storageGb"`
+}
+
+func (DagProcessorResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DagProcessorResource)(nil)).Elem()
+}
+
+func (i DagProcessorResourceArgs) ToDagProcessorResourceOutput() DagProcessorResourceOutput {
+	return i.ToDagProcessorResourceOutputWithContext(context.Background())
+}
+
+func (i DagProcessorResourceArgs) ToDagProcessorResourceOutputWithContext(ctx context.Context) DagProcessorResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DagProcessorResourceOutput)
+}
+
+func (i DagProcessorResourceArgs) ToDagProcessorResourcePtrOutput() DagProcessorResourcePtrOutput {
+	return i.ToDagProcessorResourcePtrOutputWithContext(context.Background())
+}
+
+func (i DagProcessorResourceArgs) ToDagProcessorResourcePtrOutputWithContext(ctx context.Context) DagProcessorResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DagProcessorResourceOutput).ToDagProcessorResourcePtrOutputWithContext(ctx)
+}
+
+// DagProcessorResourcePtrInput is an input type that accepts DagProcessorResourceArgs, DagProcessorResourcePtr and DagProcessorResourcePtrOutput values.
+// You can construct a concrete instance of `DagProcessorResourcePtrInput` via:
+//
+//	        DagProcessorResourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DagProcessorResourcePtrInput interface {
+	pulumi.Input
+
+	ToDagProcessorResourcePtrOutput() DagProcessorResourcePtrOutput
+	ToDagProcessorResourcePtrOutputWithContext(context.Context) DagProcessorResourcePtrOutput
+}
+
+type dagProcessorResourcePtrType DagProcessorResourceArgs
+
+func DagProcessorResourcePtr(v *DagProcessorResourceArgs) DagProcessorResourcePtrInput {
+	return (*dagProcessorResourcePtrType)(v)
+}
+
+func (*dagProcessorResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DagProcessorResource)(nil)).Elem()
+}
+
+func (i *dagProcessorResourcePtrType) ToDagProcessorResourcePtrOutput() DagProcessorResourcePtrOutput {
+	return i.ToDagProcessorResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *dagProcessorResourcePtrType) ToDagProcessorResourcePtrOutputWithContext(ctx context.Context) DagProcessorResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DagProcessorResourcePtrOutput)
+}
+
+// Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+type DagProcessorResourceOutput struct{ *pulumi.OutputState }
+
+func (DagProcessorResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DagProcessorResource)(nil)).Elem()
+}
+
+func (o DagProcessorResourceOutput) ToDagProcessorResourceOutput() DagProcessorResourceOutput {
+	return o
+}
+
+func (o DagProcessorResourceOutput) ToDagProcessorResourceOutputWithContext(ctx context.Context) DagProcessorResourceOutput {
+	return o
+}
+
+func (o DagProcessorResourceOutput) ToDagProcessorResourcePtrOutput() DagProcessorResourcePtrOutput {
+	return o.ToDagProcessorResourcePtrOutputWithContext(context.Background())
+}
+
+func (o DagProcessorResourceOutput) ToDagProcessorResourcePtrOutputWithContext(ctx context.Context) DagProcessorResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DagProcessorResource) *DagProcessorResource {
+		return &v
+	}).(DagProcessorResourcePtrOutput)
+}
+
+// Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created.
+func (o DagProcessorResourceOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DagProcessorResource) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Optional. CPU request and limit for a single Airflow DAG processor replica.
+func (o DagProcessorResourceOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DagProcessorResource) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.
+func (o DagProcessorResourceOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DagProcessorResource) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.
+func (o DagProcessorResourceOutput) StorageGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DagProcessorResource) *float64 { return v.StorageGb }).(pulumi.Float64PtrOutput)
+}
+
+type DagProcessorResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (DagProcessorResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DagProcessorResource)(nil)).Elem()
+}
+
+func (o DagProcessorResourcePtrOutput) ToDagProcessorResourcePtrOutput() DagProcessorResourcePtrOutput {
+	return o
+}
+
+func (o DagProcessorResourcePtrOutput) ToDagProcessorResourcePtrOutputWithContext(ctx context.Context) DagProcessorResourcePtrOutput {
+	return o
+}
+
+func (o DagProcessorResourcePtrOutput) Elem() DagProcessorResourceOutput {
+	return o.ApplyT(func(v *DagProcessorResource) DagProcessorResource {
+		if v != nil {
+			return *v
+		}
+		var ret DagProcessorResource
+		return ret
+	}).(DagProcessorResourceOutput)
+}
+
+// Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created.
+func (o DagProcessorResourcePtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DagProcessorResource) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. CPU request and limit for a single Airflow DAG processor replica.
+func (o DagProcessorResourcePtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DagProcessorResource) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.
+func (o DagProcessorResourcePtrOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DagProcessorResource) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryGb
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.
+func (o DagProcessorResourcePtrOutput) StorageGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DagProcessorResource) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StorageGb
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+type DagProcessorResourceResponse struct {
+	// Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created.
+	Count int `pulumi:"count"`
+	// Optional. CPU request and limit for a single Airflow DAG processor replica.
+	Cpu float64 `pulumi:"cpu"`
+	// Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.
+	MemoryGb float64 `pulumi:"memoryGb"`
+	// Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.
+	StorageGb float64 `pulumi:"storageGb"`
+}
+
+// Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+type DagProcessorResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (DagProcessorResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DagProcessorResourceResponse)(nil)).Elem()
+}
+
+func (o DagProcessorResourceResponseOutput) ToDagProcessorResourceResponseOutput() DagProcessorResourceResponseOutput {
+	return o
+}
+
+func (o DagProcessorResourceResponseOutput) ToDagProcessorResourceResponseOutputWithContext(ctx context.Context) DagProcessorResourceResponseOutput {
+	return o
+}
+
+// Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created.
+func (o DagProcessorResourceResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v DagProcessorResourceResponse) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Optional. CPU request and limit for a single Airflow DAG processor replica.
+func (o DagProcessorResourceResponseOutput) Cpu() pulumi.Float64Output {
+	return o.ApplyT(func(v DagProcessorResourceResponse) float64 { return v.Cpu }).(pulumi.Float64Output)
+}
+
+// Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.
+func (o DagProcessorResourceResponseOutput) MemoryGb() pulumi.Float64Output {
+	return o.ApplyT(func(v DagProcessorResourceResponse) float64 { return v.MemoryGb }).(pulumi.Float64Output)
+}
+
+// Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.
+func (o DagProcessorResourceResponseOutput) StorageGb() pulumi.Float64Output {
+	return o.ApplyT(func(v DagProcessorResourceResponse) float64 { return v.StorageGb }).(pulumi.Float64Output)
+}
+
+// The configuration setting for Airflow database data retention mechanism.
+type DataRetentionConfig struct {
+	// Optional. The number of days describing for how long to store event-based records in airflow database. If the retention mechanism is enabled this value must be a positive integer otherwise, value should be set to 0.
+	AirflowDatabaseRetentionDays *int `pulumi:"airflowDatabaseRetentionDays"`
+	// Optional. The retention policy for airflow metadata database.
+	AirflowMetadataRetentionConfig *AirflowMetadataRetentionPolicyConfig `pulumi:"airflowMetadataRetentionConfig"`
+	// Optional. The configuration settings for task logs retention
+	TaskLogsRetentionConfig *TaskLogsRetentionConfig `pulumi:"taskLogsRetentionConfig"`
+}
+
+// DataRetentionConfigInput is an input type that accepts DataRetentionConfigArgs and DataRetentionConfigOutput values.
+// You can construct a concrete instance of `DataRetentionConfigInput` via:
+//
+//	DataRetentionConfigArgs{...}
+type DataRetentionConfigInput interface {
+	pulumi.Input
+
+	ToDataRetentionConfigOutput() DataRetentionConfigOutput
+	ToDataRetentionConfigOutputWithContext(context.Context) DataRetentionConfigOutput
+}
+
+// The configuration setting for Airflow database data retention mechanism.
+type DataRetentionConfigArgs struct {
+	// Optional. The number of days describing for how long to store event-based records in airflow database. If the retention mechanism is enabled this value must be a positive integer otherwise, value should be set to 0.
+	AirflowDatabaseRetentionDays pulumi.IntPtrInput `pulumi:"airflowDatabaseRetentionDays"`
+	// Optional. The retention policy for airflow metadata database.
+	AirflowMetadataRetentionConfig AirflowMetadataRetentionPolicyConfigPtrInput `pulumi:"airflowMetadataRetentionConfig"`
+	// Optional. The configuration settings for task logs retention
+	TaskLogsRetentionConfig TaskLogsRetentionConfigPtrInput `pulumi:"taskLogsRetentionConfig"`
+}
+
+func (DataRetentionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataRetentionConfig)(nil)).Elem()
+}
+
+func (i DataRetentionConfigArgs) ToDataRetentionConfigOutput() DataRetentionConfigOutput {
+	return i.ToDataRetentionConfigOutputWithContext(context.Background())
+}
+
+func (i DataRetentionConfigArgs) ToDataRetentionConfigOutputWithContext(ctx context.Context) DataRetentionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataRetentionConfigOutput)
+}
+
+func (i DataRetentionConfigArgs) ToDataRetentionConfigPtrOutput() DataRetentionConfigPtrOutput {
+	return i.ToDataRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataRetentionConfigArgs) ToDataRetentionConfigPtrOutputWithContext(ctx context.Context) DataRetentionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataRetentionConfigOutput).ToDataRetentionConfigPtrOutputWithContext(ctx)
+}
+
+// DataRetentionConfigPtrInput is an input type that accepts DataRetentionConfigArgs, DataRetentionConfigPtr and DataRetentionConfigPtrOutput values.
+// You can construct a concrete instance of `DataRetentionConfigPtrInput` via:
+//
+//	        DataRetentionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataRetentionConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataRetentionConfigPtrOutput() DataRetentionConfigPtrOutput
+	ToDataRetentionConfigPtrOutputWithContext(context.Context) DataRetentionConfigPtrOutput
+}
+
+type dataRetentionConfigPtrType DataRetentionConfigArgs
+
+func DataRetentionConfigPtr(v *DataRetentionConfigArgs) DataRetentionConfigPtrInput {
+	return (*dataRetentionConfigPtrType)(v)
+}
+
+func (*dataRetentionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataRetentionConfig)(nil)).Elem()
+}
+
+func (i *dataRetentionConfigPtrType) ToDataRetentionConfigPtrOutput() DataRetentionConfigPtrOutput {
+	return i.ToDataRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataRetentionConfigPtrType) ToDataRetentionConfigPtrOutputWithContext(ctx context.Context) DataRetentionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataRetentionConfigPtrOutput)
+}
+
+// The configuration setting for Airflow database data retention mechanism.
+type DataRetentionConfigOutput struct{ *pulumi.OutputState }
+
+func (DataRetentionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataRetentionConfig)(nil)).Elem()
+}
+
+func (o DataRetentionConfigOutput) ToDataRetentionConfigOutput() DataRetentionConfigOutput {
+	return o
+}
+
+func (o DataRetentionConfigOutput) ToDataRetentionConfigOutputWithContext(ctx context.Context) DataRetentionConfigOutput {
+	return o
+}
+
+func (o DataRetentionConfigOutput) ToDataRetentionConfigPtrOutput() DataRetentionConfigPtrOutput {
+	return o.ToDataRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataRetentionConfigOutput) ToDataRetentionConfigPtrOutputWithContext(ctx context.Context) DataRetentionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataRetentionConfig) *DataRetentionConfig {
+		return &v
+	}).(DataRetentionConfigPtrOutput)
+}
+
+// Optional. The number of days describing for how long to store event-based records in airflow database. If the retention mechanism is enabled this value must be a positive integer otherwise, value should be set to 0.
+func (o DataRetentionConfigOutput) AirflowDatabaseRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataRetentionConfig) *int { return v.AirflowDatabaseRetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The retention policy for airflow metadata database.
+func (o DataRetentionConfigOutput) AirflowMetadataRetentionConfig() AirflowMetadataRetentionPolicyConfigPtrOutput {
+	return o.ApplyT(func(v DataRetentionConfig) *AirflowMetadataRetentionPolicyConfig {
+		return v.AirflowMetadataRetentionConfig
+	}).(AirflowMetadataRetentionPolicyConfigPtrOutput)
+}
+
+// Optional. The configuration settings for task logs retention
+func (o DataRetentionConfigOutput) TaskLogsRetentionConfig() TaskLogsRetentionConfigPtrOutput {
+	return o.ApplyT(func(v DataRetentionConfig) *TaskLogsRetentionConfig { return v.TaskLogsRetentionConfig }).(TaskLogsRetentionConfigPtrOutput)
+}
+
+type DataRetentionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataRetentionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataRetentionConfig)(nil)).Elem()
+}
+
+func (o DataRetentionConfigPtrOutput) ToDataRetentionConfigPtrOutput() DataRetentionConfigPtrOutput {
+	return o
+}
+
+func (o DataRetentionConfigPtrOutput) ToDataRetentionConfigPtrOutputWithContext(ctx context.Context) DataRetentionConfigPtrOutput {
+	return o
+}
+
+func (o DataRetentionConfigPtrOutput) Elem() DataRetentionConfigOutput {
+	return o.ApplyT(func(v *DataRetentionConfig) DataRetentionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataRetentionConfig
+		return ret
+	}).(DataRetentionConfigOutput)
+}
+
+// Optional. The number of days describing for how long to store event-based records in airflow database. If the retention mechanism is enabled this value must be a positive integer otherwise, value should be set to 0.
+func (o DataRetentionConfigPtrOutput) AirflowDatabaseRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataRetentionConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AirflowDatabaseRetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The retention policy for airflow metadata database.
+func (o DataRetentionConfigPtrOutput) AirflowMetadataRetentionConfig() AirflowMetadataRetentionPolicyConfigPtrOutput {
+	return o.ApplyT(func(v *DataRetentionConfig) *AirflowMetadataRetentionPolicyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AirflowMetadataRetentionConfig
+	}).(AirflowMetadataRetentionPolicyConfigPtrOutput)
+}
+
+// Optional. The configuration settings for task logs retention
+func (o DataRetentionConfigPtrOutput) TaskLogsRetentionConfig() TaskLogsRetentionConfigPtrOutput {
+	return o.ApplyT(func(v *DataRetentionConfig) *TaskLogsRetentionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TaskLogsRetentionConfig
+	}).(TaskLogsRetentionConfigPtrOutput)
+}
+
+// The configuration setting for Airflow database data retention mechanism.
+type DataRetentionConfigResponse struct {
+	// Optional. The number of days describing for how long to store event-based records in airflow database. If the retention mechanism is enabled this value must be a positive integer otherwise, value should be set to 0.
+	AirflowDatabaseRetentionDays int `pulumi:"airflowDatabaseRetentionDays"`
+	// Optional. The retention policy for airflow metadata database.
+	AirflowMetadataRetentionConfig AirflowMetadataRetentionPolicyConfigResponse `pulumi:"airflowMetadataRetentionConfig"`
+	// Optional. The configuration settings for task logs retention
+	TaskLogsRetentionConfig TaskLogsRetentionConfigResponse `pulumi:"taskLogsRetentionConfig"`
+}
+
+// The configuration setting for Airflow database data retention mechanism.
+type DataRetentionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DataRetentionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataRetentionConfigResponse)(nil)).Elem()
+}
+
+func (o DataRetentionConfigResponseOutput) ToDataRetentionConfigResponseOutput() DataRetentionConfigResponseOutput {
+	return o
+}
+
+func (o DataRetentionConfigResponseOutput) ToDataRetentionConfigResponseOutputWithContext(ctx context.Context) DataRetentionConfigResponseOutput {
+	return o
+}
+
+// Optional. The number of days describing for how long to store event-based records in airflow database. If the retention mechanism is enabled this value must be a positive integer otherwise, value should be set to 0.
+func (o DataRetentionConfigResponseOutput) AirflowDatabaseRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v DataRetentionConfigResponse) int { return v.AirflowDatabaseRetentionDays }).(pulumi.IntOutput)
+}
+
+// Optional. The retention policy for airflow metadata database.
+func (o DataRetentionConfigResponseOutput) AirflowMetadataRetentionConfig() AirflowMetadataRetentionPolicyConfigResponseOutput {
+	return o.ApplyT(func(v DataRetentionConfigResponse) AirflowMetadataRetentionPolicyConfigResponse {
+		return v.AirflowMetadataRetentionConfig
+	}).(AirflowMetadataRetentionPolicyConfigResponseOutput)
+}
+
+// Optional. The configuration settings for task logs retention
+func (o DataRetentionConfigResponseOutput) TaskLogsRetentionConfig() TaskLogsRetentionConfigResponseOutput {
+	return o.ApplyT(func(v DataRetentionConfigResponse) TaskLogsRetentionConfigResponse { return v.TaskLogsRetentionConfig }).(TaskLogsRetentionConfigResponseOutput)
+}
+
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software.
 type DatabaseConfig struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -863,13 +1523,15 @@ func (o EncryptionConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
 
 // Configuration information for an environment.
 type EnvironmentConfig struct {
+	// Optional. The configuration setting for Airflow database data retention mechanism.
+	DataRetentionConfig *DataRetentionConfig `pulumi:"dataRetentionConfig"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig *DatabaseConfig `pulumi:"databaseConfig"`
 	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize *EnvironmentConfigEnvironmentSize `pulumi:"environmentSize"`
-	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
+	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
 	MasterAuthorizedNetworksConfig *MasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfig"`
@@ -906,13 +1568,15 @@ type EnvironmentConfigInput interface {
 
 // Configuration information for an environment.
 type EnvironmentConfigArgs struct {
+	// Optional. The configuration setting for Airflow database data retention mechanism.
+	DataRetentionConfig DataRetentionConfigPtrInput `pulumi:"dataRetentionConfig"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig DatabaseConfigPtrInput `pulumi:"databaseConfig"`
 	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize EnvironmentConfigEnvironmentSizePtrInput `pulumi:"environmentSize"`
-	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
+	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
 	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
 	// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigPtrInput `pulumi:"masterAuthorizedNetworksConfig"`
@@ -1014,6 +1678,11 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx con
 	}).(EnvironmentConfigPtrOutput)
 }
 
+// Optional. The configuration setting for Airflow database data retention mechanism.
+func (o EnvironmentConfigOutput) DataRetentionConfig() DataRetentionConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *DataRetentionConfig { return v.DataRetentionConfig }).(DataRetentionConfigPtrOutput)
+}
+
 // Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 func (o EnvironmentConfigOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *DatabaseConfig { return v.DatabaseConfig }).(DatabaseConfigPtrOutput)
@@ -1029,7 +1698,7 @@ func (o EnvironmentConfigOutput) EnvironmentSize() EnvironmentConfigEnvironmentS
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigEnvironmentSize { return v.EnvironmentSize }).(EnvironmentConfigEnvironmentSizePtrOutput)
 }
 
-// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
+// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
 func (o EnvironmentConfigOutput) MaintenanceWindow() MaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *MaintenanceWindow { return v.MaintenanceWindow }).(MaintenanceWindowPtrOutput)
 }
@@ -1108,6 +1777,16 @@ func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
 	}).(EnvironmentConfigOutput)
 }
 
+// Optional. The configuration setting for Airflow database data retention mechanism.
+func (o EnvironmentConfigPtrOutput) DataRetentionConfig() DataRetentionConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *DataRetentionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataRetentionConfig
+	}).(DataRetentionConfigPtrOutput)
+}
+
 // Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 func (o EnvironmentConfigPtrOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *DatabaseConfig {
@@ -1138,7 +1817,7 @@ func (o EnvironmentConfigPtrOutput) EnvironmentSize() EnvironmentConfigEnvironme
 	}).(EnvironmentConfigEnvironmentSizePtrOutput)
 }
 
-// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
+// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
 func (o EnvironmentConfigPtrOutput) MaintenanceWindow() MaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *MaintenanceWindow {
 		if v == nil {
@@ -1256,6 +1935,8 @@ type EnvironmentConfigResponse struct {
 	AirflowUri string `pulumi:"airflowUri"`
 	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
 	DagGcsPrefix string `pulumi:"dagGcsPrefix"`
+	// Optional. The configuration setting for Airflow database data retention mechanism.
+	DataRetentionConfig DataRetentionConfigResponse `pulumi:"dataRetentionConfig"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig DatabaseConfigResponse `pulumi:"databaseConfig"`
 	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
@@ -1264,7 +1945,7 @@ type EnvironmentConfigResponse struct {
 	EnvironmentSize string `pulumi:"environmentSize"`
 	// The Kubernetes Engine cluster used to run this environment.
 	GkeCluster string `pulumi:"gkeCluster"`
-	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
+	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
 	// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigResponse `pulumi:"masterAuthorizedNetworksConfig"`
@@ -1318,6 +1999,11 @@ func (o EnvironmentConfigResponseOutput) DagGcsPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) string { return v.DagGcsPrefix }).(pulumi.StringOutput)
 }
 
+// Optional. The configuration setting for Airflow database data retention mechanism.
+func (o EnvironmentConfigResponseOutput) DataRetentionConfig() DataRetentionConfigResponseOutput {
+	return o.ApplyT(func(v EnvironmentConfigResponse) DataRetentionConfigResponse { return v.DataRetentionConfig }).(DataRetentionConfigResponseOutput)
+}
+
 // Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 func (o EnvironmentConfigResponseOutput) DatabaseConfig() DatabaseConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) DatabaseConfigResponse { return v.DatabaseConfig }).(DatabaseConfigResponseOutput)
@@ -1338,7 +2024,7 @@ func (o EnvironmentConfigResponseOutput) GkeCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) string { return v.GkeCluster }).(pulumi.StringOutput)
 }
 
-// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
+// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
 func (o EnvironmentConfigResponseOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
 }
@@ -2245,6 +2931,10 @@ func (o NetworkingConfigResponseOutput) ConnectionType() pulumi.StringOutput {
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfig struct {
+	// Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	ComposerInternalIpv4CidrBlock *string `pulumi:"composerInternalIpv4CidrBlock"`
+	// Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	ComposerNetworkAttachment *string `pulumi:"composerNetworkAttachment"`
 	// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
@@ -2282,6 +2972,10 @@ type NodeConfigInput interface {
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfigArgs struct {
+	// Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	ComposerInternalIpv4CidrBlock pulumi.StringPtrInput `pulumi:"composerInternalIpv4CidrBlock"`
+	// Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	ComposerNetworkAttachment pulumi.StringPtrInput `pulumi:"composerNetworkAttachment"`
 	// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
@@ -2384,6 +3078,16 @@ func (o NodeConfigOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) 
 	}).(NodeConfigPtrOutput)
 }
 
+// Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o NodeConfigOutput) ComposerInternalIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *string { return v.ComposerInternalIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o NodeConfigOutput) ComposerNetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *string { return v.ComposerNetworkAttachment }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
@@ -2461,6 +3165,26 @@ func (o NodeConfigPtrOutput) Elem() NodeConfigOutput {
 		var ret NodeConfig
 		return ret
 	}).(NodeConfigOutput)
+}
+
+// Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o NodeConfigPtrOutput) ComposerInternalIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComposerInternalIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o NodeConfigPtrOutput) ComposerNetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComposerNetworkAttachment
+	}).(pulumi.StringPtrOutput)
 }
 
 // Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2575,6 +3299,10 @@ func (o NodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfigResponse struct {
+	// Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	ComposerInternalIpv4CidrBlock string `pulumi:"composerInternalIpv4CidrBlock"`
+	// Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	ComposerNetworkAttachment string `pulumi:"composerNetworkAttachment"`
 	// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
@@ -2612,6 +3340,16 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponseOutput() NodeConfigRespons
 
 func (o NodeConfigResponseOutput) ToNodeConfigResponseOutputWithContext(ctx context.Context) NodeConfigResponseOutput {
 	return o
+}
+
+// Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o NodeConfigResponseOutput) ComposerInternalIpv4CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeConfigResponse) string { return v.ComposerInternalIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+// Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o NodeConfigResponseOutput) ComposerNetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeConfigResponse) string { return v.ComposerNetworkAttachment }).(pulumi.StringOutput)
 }
 
 // Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2876,6 +3614,8 @@ type PrivateEnvironmentConfig struct {
 	CloudComposerNetworkIpv4CidrBlock *string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
 	CloudSqlIpv4CidrBlock *string `pulumi:"cloudSqlIpv4CidrBlock"`
+	// Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	EnablePrivateBuildsOnly *bool `pulumi:"enablePrivateBuildsOnly"`
 	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EnablePrivateEnvironment *bool `pulumi:"enablePrivateEnvironment"`
 	// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
@@ -2907,6 +3647,8 @@ type PrivateEnvironmentConfigArgs struct {
 	CloudComposerNetworkIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
 	CloudSqlIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudSqlIpv4CidrBlock"`
+	// Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	EnablePrivateBuildsOnly pulumi.BoolPtrInput `pulumi:"enablePrivateBuildsOnly"`
 	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EnablePrivateEnvironment pulumi.BoolPtrInput `pulumi:"enablePrivateEnvironment"`
 	// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
@@ -3012,6 +3754,11 @@ func (o PrivateEnvironmentConfigOutput) CloudSqlIpv4CidrBlock() pulumi.StringPtr
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o PrivateEnvironmentConfigOutput) EnablePrivateBuildsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PrivateEnvironmentConfig) *bool { return v.EnablePrivateBuildsOnly }).(pulumi.BoolPtrOutput)
+}
+
 // Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *bool { return v.EnablePrivateEnvironment }).(pulumi.BoolPtrOutput)
@@ -3091,6 +3838,16 @@ func (o PrivateEnvironmentConfigPtrOutput) CloudSqlIpv4CidrBlock() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o PrivateEnvironmentConfigPtrOutput) EnablePrivateBuildsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PrivateEnvironmentConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateBuildsOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigPtrOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PrivateEnvironmentConfig) *bool {
@@ -3151,6 +3908,8 @@ type PrivateEnvironmentConfigResponse struct {
 	CloudComposerNetworkIpv4ReservedRange string `pulumi:"cloudComposerNetworkIpv4ReservedRange"`
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
 	CloudSqlIpv4CidrBlock string `pulumi:"cloudSqlIpv4CidrBlock"`
+	// Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	EnablePrivateBuildsOnly bool `pulumi:"enablePrivateBuildsOnly"`
 	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EnablePrivateEnvironment bool `pulumi:"enablePrivateEnvironment"`
 	// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
@@ -3198,6 +3957,11 @@ func (o PrivateEnvironmentConfigResponseOutput) CloudComposerNetworkIpv4Reserved
 // Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
 func (o PrivateEnvironmentConfigResponseOutput) CloudSqlIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+// Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o PrivateEnvironmentConfigResponseOutput) EnablePrivateBuildsOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) bool { return v.EnablePrivateBuildsOnly }).(pulumi.BoolOutput)
 }
 
 // Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -3900,6 +4664,8 @@ type SoftwareConfig struct {
 	PythonVersion *string `pulumi:"pythonVersion"`
 	// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
 	SchedulerCount *int `pulumi:"schedulerCount"`
+	// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	WebServerPluginsMode *SoftwareConfigWebServerPluginsMode `pulumi:"webServerPluginsMode"`
 }
 
 // SoftwareConfigInput is an input type that accepts SoftwareConfigArgs and SoftwareConfigOutput values.
@@ -3929,6 +4695,8 @@ type SoftwareConfigArgs struct {
 	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
 	// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
 	SchedulerCount pulumi.IntPtrInput `pulumi:"schedulerCount"`
+	// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	WebServerPluginsMode SoftwareConfigWebServerPluginsModePtrInput `pulumi:"webServerPluginsMode"`
 }
 
 func (SoftwareConfigArgs) ElementType() reflect.Type {
@@ -4044,6 +4812,11 @@ func (o SoftwareConfigOutput) SchedulerCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SoftwareConfig) *int { return v.SchedulerCount }).(pulumi.IntPtrOutput)
 }
 
+// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o SoftwareConfigOutput) WebServerPluginsMode() SoftwareConfigWebServerPluginsModePtrOutput {
+	return o.ApplyT(func(v SoftwareConfig) *SoftwareConfigWebServerPluginsMode { return v.WebServerPluginsMode }).(SoftwareConfigWebServerPluginsModePtrOutput)
+}
+
 type SoftwareConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SoftwareConfigPtrOutput) ElementType() reflect.Type {
@@ -4138,6 +4911,16 @@ func (o SoftwareConfigPtrOutput) SchedulerCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o SoftwareConfigPtrOutput) WebServerPluginsMode() SoftwareConfigWebServerPluginsModePtrOutput {
+	return o.ApplyT(func(v *SoftwareConfig) *SoftwareConfigWebServerPluginsMode {
+		if v == nil {
+			return nil
+		}
+		return v.WebServerPluginsMode
+	}).(SoftwareConfigWebServerPluginsModePtrOutput)
+}
+
 // Specifies the selection and configuration of software inside the environment.
 type SoftwareConfigResponse struct {
 	// Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
@@ -4154,6 +4937,8 @@ type SoftwareConfigResponse struct {
 	PythonVersion string `pulumi:"pythonVersion"`
 	// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
 	SchedulerCount int `pulumi:"schedulerCount"`
+	// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	WebServerPluginsMode string `pulumi:"webServerPluginsMode"`
 }
 
 // Specifies the selection and configuration of software inside the environment.
@@ -4206,6 +4991,11 @@ func (o SoftwareConfigResponseOutput) PythonVersion() pulumi.StringOutput {
 // Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
 func (o SoftwareConfigResponseOutput) SchedulerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) int { return v.SchedulerCount }).(pulumi.IntOutput)
+}
+
+// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o SoftwareConfigResponseOutput) WebServerPluginsMode() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareConfigResponse) string { return v.WebServerPluginsMode }).(pulumi.StringOutput)
 }
 
 // The configuration for data storage in the environment.
@@ -4372,6 +5162,172 @@ func (o StorageConfigResponseOutput) ToStorageConfigResponseOutputWithContext(ct
 // Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
 func (o StorageConfigResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageConfigResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The configuration setting for Task Logs.
+type TaskLogsRetentionConfig struct {
+	// Optional. The mode of storage for Airflow workers task logs.
+	StorageMode *TaskLogsRetentionConfigStorageMode `pulumi:"storageMode"`
+}
+
+// TaskLogsRetentionConfigInput is an input type that accepts TaskLogsRetentionConfigArgs and TaskLogsRetentionConfigOutput values.
+// You can construct a concrete instance of `TaskLogsRetentionConfigInput` via:
+//
+//	TaskLogsRetentionConfigArgs{...}
+type TaskLogsRetentionConfigInput interface {
+	pulumi.Input
+
+	ToTaskLogsRetentionConfigOutput() TaskLogsRetentionConfigOutput
+	ToTaskLogsRetentionConfigOutputWithContext(context.Context) TaskLogsRetentionConfigOutput
+}
+
+// The configuration setting for Task Logs.
+type TaskLogsRetentionConfigArgs struct {
+	// Optional. The mode of storage for Airflow workers task logs.
+	StorageMode TaskLogsRetentionConfigStorageModePtrInput `pulumi:"storageMode"`
+}
+
+func (TaskLogsRetentionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (i TaskLogsRetentionConfigArgs) ToTaskLogsRetentionConfigOutput() TaskLogsRetentionConfigOutput {
+	return i.ToTaskLogsRetentionConfigOutputWithContext(context.Background())
+}
+
+func (i TaskLogsRetentionConfigArgs) ToTaskLogsRetentionConfigOutputWithContext(ctx context.Context) TaskLogsRetentionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskLogsRetentionConfigOutput)
+}
+
+func (i TaskLogsRetentionConfigArgs) ToTaskLogsRetentionConfigPtrOutput() TaskLogsRetentionConfigPtrOutput {
+	return i.ToTaskLogsRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TaskLogsRetentionConfigArgs) ToTaskLogsRetentionConfigPtrOutputWithContext(ctx context.Context) TaskLogsRetentionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskLogsRetentionConfigOutput).ToTaskLogsRetentionConfigPtrOutputWithContext(ctx)
+}
+
+// TaskLogsRetentionConfigPtrInput is an input type that accepts TaskLogsRetentionConfigArgs, TaskLogsRetentionConfigPtr and TaskLogsRetentionConfigPtrOutput values.
+// You can construct a concrete instance of `TaskLogsRetentionConfigPtrInput` via:
+//
+//	        TaskLogsRetentionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskLogsRetentionConfigPtrInput interface {
+	pulumi.Input
+
+	ToTaskLogsRetentionConfigPtrOutput() TaskLogsRetentionConfigPtrOutput
+	ToTaskLogsRetentionConfigPtrOutputWithContext(context.Context) TaskLogsRetentionConfigPtrOutput
+}
+
+type taskLogsRetentionConfigPtrType TaskLogsRetentionConfigArgs
+
+func TaskLogsRetentionConfigPtr(v *TaskLogsRetentionConfigArgs) TaskLogsRetentionConfigPtrInput {
+	return (*taskLogsRetentionConfigPtrType)(v)
+}
+
+func (*taskLogsRetentionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (i *taskLogsRetentionConfigPtrType) ToTaskLogsRetentionConfigPtrOutput() TaskLogsRetentionConfigPtrOutput {
+	return i.ToTaskLogsRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *taskLogsRetentionConfigPtrType) ToTaskLogsRetentionConfigPtrOutputWithContext(ctx context.Context) TaskLogsRetentionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskLogsRetentionConfigPtrOutput)
+}
+
+// The configuration setting for Task Logs.
+type TaskLogsRetentionConfigOutput struct{ *pulumi.OutputState }
+
+func (TaskLogsRetentionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (o TaskLogsRetentionConfigOutput) ToTaskLogsRetentionConfigOutput() TaskLogsRetentionConfigOutput {
+	return o
+}
+
+func (o TaskLogsRetentionConfigOutput) ToTaskLogsRetentionConfigOutputWithContext(ctx context.Context) TaskLogsRetentionConfigOutput {
+	return o
+}
+
+func (o TaskLogsRetentionConfigOutput) ToTaskLogsRetentionConfigPtrOutput() TaskLogsRetentionConfigPtrOutput {
+	return o.ToTaskLogsRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TaskLogsRetentionConfigOutput) ToTaskLogsRetentionConfigPtrOutputWithContext(ctx context.Context) TaskLogsRetentionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskLogsRetentionConfig) *TaskLogsRetentionConfig {
+		return &v
+	}).(TaskLogsRetentionConfigPtrOutput)
+}
+
+// Optional. The mode of storage for Airflow workers task logs.
+func (o TaskLogsRetentionConfigOutput) StorageMode() TaskLogsRetentionConfigStorageModePtrOutput {
+	return o.ApplyT(func(v TaskLogsRetentionConfig) *TaskLogsRetentionConfigStorageMode { return v.StorageMode }).(TaskLogsRetentionConfigStorageModePtrOutput)
+}
+
+type TaskLogsRetentionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskLogsRetentionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (o TaskLogsRetentionConfigPtrOutput) ToTaskLogsRetentionConfigPtrOutput() TaskLogsRetentionConfigPtrOutput {
+	return o
+}
+
+func (o TaskLogsRetentionConfigPtrOutput) ToTaskLogsRetentionConfigPtrOutputWithContext(ctx context.Context) TaskLogsRetentionConfigPtrOutput {
+	return o
+}
+
+func (o TaskLogsRetentionConfigPtrOutput) Elem() TaskLogsRetentionConfigOutput {
+	return o.ApplyT(func(v *TaskLogsRetentionConfig) TaskLogsRetentionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TaskLogsRetentionConfig
+		return ret
+	}).(TaskLogsRetentionConfigOutput)
+}
+
+// Optional. The mode of storage for Airflow workers task logs.
+func (o TaskLogsRetentionConfigPtrOutput) StorageMode() TaskLogsRetentionConfigStorageModePtrOutput {
+	return o.ApplyT(func(v *TaskLogsRetentionConfig) *TaskLogsRetentionConfigStorageMode {
+		if v == nil {
+			return nil
+		}
+		return v.StorageMode
+	}).(TaskLogsRetentionConfigStorageModePtrOutput)
+}
+
+// The configuration setting for Task Logs.
+type TaskLogsRetentionConfigResponse struct {
+	// Optional. The mode of storage for Airflow workers task logs.
+	StorageMode string `pulumi:"storageMode"`
+}
+
+// The configuration setting for Task Logs.
+type TaskLogsRetentionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (TaskLogsRetentionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskLogsRetentionConfigResponse)(nil)).Elem()
+}
+
+func (o TaskLogsRetentionConfigResponseOutput) ToTaskLogsRetentionConfigResponseOutput() TaskLogsRetentionConfigResponseOutput {
+	return o
+}
+
+func (o TaskLogsRetentionConfigResponseOutput) ToTaskLogsRetentionConfigResponseOutputWithContext(ctx context.Context) TaskLogsRetentionConfigResponseOutput {
+	return o
+}
+
+// Optional. The mode of storage for Airflow workers task logs.
+func (o TaskLogsRetentionConfigResponseOutput) StorageMode() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskLogsRetentionConfigResponse) string { return v.StorageMode }).(pulumi.StringOutput)
 }
 
 // Configuration for resources used by Airflow triggerers.
@@ -5414,6 +6370,8 @@ func (o WorkerResourceResponseOutput) StorageGb() pulumi.Float64Output {
 
 // The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 type WorkloadsConfig struct {
+	// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	DagProcessor *DagProcessorResource `pulumi:"dagProcessor"`
 	// Optional. Resources used by Airflow schedulers.
 	Scheduler *SchedulerResource `pulumi:"scheduler"`
 	// Optional. Resources used by Airflow triggerers.
@@ -5437,6 +6395,8 @@ type WorkloadsConfigInput interface {
 
 // The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 type WorkloadsConfigArgs struct {
+	// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	DagProcessor DagProcessorResourcePtrInput `pulumi:"dagProcessor"`
 	// Optional. Resources used by Airflow schedulers.
 	Scheduler SchedulerResourcePtrInput `pulumi:"scheduler"`
 	// Optional. Resources used by Airflow triggerers.
@@ -5525,6 +6485,11 @@ func (o WorkloadsConfigOutput) ToWorkloadsConfigPtrOutputWithContext(ctx context
 	}).(WorkloadsConfigPtrOutput)
 }
 
+// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o WorkloadsConfigOutput) DagProcessor() DagProcessorResourcePtrOutput {
+	return o.ApplyT(func(v WorkloadsConfig) *DagProcessorResource { return v.DagProcessor }).(DagProcessorResourcePtrOutput)
+}
+
 // Optional. Resources used by Airflow schedulers.
 func (o WorkloadsConfigOutput) Scheduler() SchedulerResourcePtrOutput {
 	return o.ApplyT(func(v WorkloadsConfig) *SchedulerResource { return v.Scheduler }).(SchedulerResourcePtrOutput)
@@ -5569,6 +6534,16 @@ func (o WorkloadsConfigPtrOutput) Elem() WorkloadsConfigOutput {
 	}).(WorkloadsConfigOutput)
 }
 
+// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o WorkloadsConfigPtrOutput) DagProcessor() DagProcessorResourcePtrOutput {
+	return o.ApplyT(func(v *WorkloadsConfig) *DagProcessorResource {
+		if v == nil {
+			return nil
+		}
+		return v.DagProcessor
+	}).(DagProcessorResourcePtrOutput)
+}
+
 // Optional. Resources used by Airflow schedulers.
 func (o WorkloadsConfigPtrOutput) Scheduler() SchedulerResourcePtrOutput {
 	return o.ApplyT(func(v *WorkloadsConfig) *SchedulerResource {
@@ -5611,6 +6586,8 @@ func (o WorkloadsConfigPtrOutput) Worker() WorkerResourcePtrOutput {
 
 // The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 type WorkloadsConfigResponse struct {
+	// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+	DagProcessor DagProcessorResourceResponse `pulumi:"dagProcessor"`
 	// Optional. Resources used by Airflow schedulers.
 	Scheduler SchedulerResourceResponse `pulumi:"scheduler"`
 	// Optional. Resources used by Airflow triggerers.
@@ -5636,6 +6613,11 @@ func (o WorkloadsConfigResponseOutput) ToWorkloadsConfigResponseOutputWithContex
 	return o
 }
 
+// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+func (o WorkloadsConfigResponseOutput) DagProcessor() DagProcessorResourceResponseOutput {
+	return o.ApplyT(func(v WorkloadsConfigResponse) DagProcessorResourceResponse { return v.DagProcessor }).(DagProcessorResourceResponseOutput)
+}
+
 // Optional. Resources used by Airflow schedulers.
 func (o WorkloadsConfigResponseOutput) Scheduler() SchedulerResourceResponseOutput {
 	return o.ApplyT(func(v WorkloadsConfigResponse) SchedulerResourceResponse { return v.Scheduler }).(SchedulerResourceResponseOutput)
@@ -5657,12 +6639,18 @@ func (o WorkloadsConfigResponseOutput) Worker() WorkerResourceResponseOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AirflowMetadataRetentionPolicyConfigInput)(nil)).Elem(), AirflowMetadataRetentionPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AirflowMetadataRetentionPolicyConfigPtrInput)(nil)).Elem(), AirflowMetadataRetentionPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeInput)(nil)).Elem(), AllowedIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeArrayInput)(nil)).Elem(), AllowedIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockInput)(nil)).Elem(), CidrBlockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockArrayInput)(nil)).Elem(), CidrBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudDataLineageIntegrationInput)(nil)).Elem(), CloudDataLineageIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudDataLineageIntegrationPtrInput)(nil)).Elem(), CloudDataLineageIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DagProcessorResourceInput)(nil)).Elem(), DagProcessorResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DagProcessorResourcePtrInput)(nil)).Elem(), DagProcessorResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataRetentionConfigInput)(nil)).Elem(), DataRetentionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataRetentionConfigPtrInput)(nil)).Elem(), DataRetentionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigInput)(nil)).Elem(), DatabaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigPtrInput)(nil)).Elem(), DatabaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
@@ -5693,6 +6681,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigPtrInput)(nil)).Elem(), SoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageConfigInput)(nil)).Elem(), StorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageConfigPtrInput)(nil)).Elem(), StorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskLogsRetentionConfigInput)(nil)).Elem(), TaskLogsRetentionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskLogsRetentionConfigPtrInput)(nil)).Elem(), TaskLogsRetentionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggererResourceInput)(nil)).Elem(), TriggererResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggererResourcePtrInput)(nil)).Elem(), TriggererResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigInput)(nil)).Elem(), WebServerConfigArgs{})
@@ -5705,6 +6695,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerResourcePtrInput)(nil)).Elem(), WorkerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadsConfigInput)(nil)).Elem(), WorkloadsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadsConfigPtrInput)(nil)).Elem(), WorkloadsConfigArgs{})
+	pulumi.RegisterOutputType(AirflowMetadataRetentionPolicyConfigOutput{})
+	pulumi.RegisterOutputType(AirflowMetadataRetentionPolicyConfigPtrOutput{})
+	pulumi.RegisterOutputType(AirflowMetadataRetentionPolicyConfigResponseOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeResponseOutput{})
@@ -5716,6 +6709,12 @@ func init() {
 	pulumi.RegisterOutputType(CloudDataLineageIntegrationOutput{})
 	pulumi.RegisterOutputType(CloudDataLineageIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(CloudDataLineageIntegrationResponseOutput{})
+	pulumi.RegisterOutputType(DagProcessorResourceOutput{})
+	pulumi.RegisterOutputType(DagProcessorResourcePtrOutput{})
+	pulumi.RegisterOutputType(DagProcessorResourceResponseOutput{})
+	pulumi.RegisterOutputType(DataRetentionConfigOutput{})
+	pulumi.RegisterOutputType(DataRetentionConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataRetentionConfigResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigResponseOutput{})
@@ -5761,6 +6760,9 @@ func init() {
 	pulumi.RegisterOutputType(StorageConfigOutput{})
 	pulumi.RegisterOutputType(StorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(StorageConfigResponseOutput{})
+	pulumi.RegisterOutputType(TaskLogsRetentionConfigOutput{})
+	pulumi.RegisterOutputType(TaskLogsRetentionConfigPtrOutput{})
+	pulumi.RegisterOutputType(TaskLogsRetentionConfigResponseOutput{})
 	pulumi.RegisterOutputType(TriggererResourceOutput{})
 	pulumi.RegisterOutputType(TriggererResourcePtrOutput{})
 	pulumi.RegisterOutputType(TriggererResourceResponseOutput{})

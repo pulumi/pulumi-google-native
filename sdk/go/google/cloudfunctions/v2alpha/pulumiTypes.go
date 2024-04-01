@@ -337,13 +337,153 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 	}).(AuditLogConfigResponseOutput)
 }
 
+// Security patches are applied automatically to the runtime without requiring the function to be redeployed.
+type AutomaticUpdatePolicy struct {
+}
+
+// AutomaticUpdatePolicyInput is an input type that accepts AutomaticUpdatePolicyArgs and AutomaticUpdatePolicyOutput values.
+// You can construct a concrete instance of `AutomaticUpdatePolicyInput` via:
+//
+//	AutomaticUpdatePolicyArgs{...}
+type AutomaticUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToAutomaticUpdatePolicyOutput() AutomaticUpdatePolicyOutput
+	ToAutomaticUpdatePolicyOutputWithContext(context.Context) AutomaticUpdatePolicyOutput
+}
+
+// Security patches are applied automatically to the runtime without requiring the function to be redeployed.
+type AutomaticUpdatePolicyArgs struct {
+}
+
+func (AutomaticUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (i AutomaticUpdatePolicyArgs) ToAutomaticUpdatePolicyOutput() AutomaticUpdatePolicyOutput {
+	return i.ToAutomaticUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i AutomaticUpdatePolicyArgs) ToAutomaticUpdatePolicyOutputWithContext(ctx context.Context) AutomaticUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticUpdatePolicyOutput)
+}
+
+func (i AutomaticUpdatePolicyArgs) ToAutomaticUpdatePolicyPtrOutput() AutomaticUpdatePolicyPtrOutput {
+	return i.ToAutomaticUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AutomaticUpdatePolicyArgs) ToAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) AutomaticUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticUpdatePolicyOutput).ToAutomaticUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// AutomaticUpdatePolicyPtrInput is an input type that accepts AutomaticUpdatePolicyArgs, AutomaticUpdatePolicyPtr and AutomaticUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `AutomaticUpdatePolicyPtrInput` via:
+//
+//	        AutomaticUpdatePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomaticUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToAutomaticUpdatePolicyPtrOutput() AutomaticUpdatePolicyPtrOutput
+	ToAutomaticUpdatePolicyPtrOutputWithContext(context.Context) AutomaticUpdatePolicyPtrOutput
+}
+
+type automaticUpdatePolicyPtrType AutomaticUpdatePolicyArgs
+
+func AutomaticUpdatePolicyPtr(v *AutomaticUpdatePolicyArgs) AutomaticUpdatePolicyPtrInput {
+	return (*automaticUpdatePolicyPtrType)(v)
+}
+
+func (*automaticUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (i *automaticUpdatePolicyPtrType) ToAutomaticUpdatePolicyPtrOutput() AutomaticUpdatePolicyPtrOutput {
+	return i.ToAutomaticUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *automaticUpdatePolicyPtrType) ToAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) AutomaticUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticUpdatePolicyPtrOutput)
+}
+
+// Security patches are applied automatically to the runtime without requiring the function to be redeployed.
+type AutomaticUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (AutomaticUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (o AutomaticUpdatePolicyOutput) ToAutomaticUpdatePolicyOutput() AutomaticUpdatePolicyOutput {
+	return o
+}
+
+func (o AutomaticUpdatePolicyOutput) ToAutomaticUpdatePolicyOutputWithContext(ctx context.Context) AutomaticUpdatePolicyOutput {
+	return o
+}
+
+func (o AutomaticUpdatePolicyOutput) ToAutomaticUpdatePolicyPtrOutput() AutomaticUpdatePolicyPtrOutput {
+	return o.ToAutomaticUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AutomaticUpdatePolicyOutput) ToAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) AutomaticUpdatePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticUpdatePolicy) *AutomaticUpdatePolicy {
+		return &v
+	}).(AutomaticUpdatePolicyPtrOutput)
+}
+
+type AutomaticUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AutomaticUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (o AutomaticUpdatePolicyPtrOutput) ToAutomaticUpdatePolicyPtrOutput() AutomaticUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o AutomaticUpdatePolicyPtrOutput) ToAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) AutomaticUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o AutomaticUpdatePolicyPtrOutput) Elem() AutomaticUpdatePolicyOutput {
+	return o.ApplyT(func(v *AutomaticUpdatePolicy) AutomaticUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticUpdatePolicy
+		return ret
+	}).(AutomaticUpdatePolicyOutput)
+}
+
+// Security patches are applied automatically to the runtime without requiring the function to be redeployed.
+type AutomaticUpdatePolicyResponse struct {
+}
+
+// Security patches are applied automatically to the runtime without requiring the function to be redeployed.
+type AutomaticUpdatePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomaticUpdatePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticUpdatePolicyResponse)(nil)).Elem()
+}
+
+func (o AutomaticUpdatePolicyResponseOutput) ToAutomaticUpdatePolicyResponseOutput() AutomaticUpdatePolicyResponseOutput {
+	return o
+}
+
+func (o AutomaticUpdatePolicyResponseOutput) ToAutomaticUpdatePolicyResponseOutputWithContext(ctx context.Context) AutomaticUpdatePolicyResponseOutput {
+	return o
+}
+
 // Associates `members`, or principals, with a `role`.
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -362,9 +502,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -425,12 +565,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -459,9 +599,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -485,12 +625,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -517,16 +657,20 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // Describes the Build step of the function that builds a container from the given source.
 type BuildConfig struct {
-	// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+	AutomaticUpdatePolicy *AutomaticUpdatePolicy `pulumi:"automaticUpdatePolicy"`
+	// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 	DockerRegistry *BuildConfigDockerRegistry `pulumi:"dockerRegistry"`
-	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+	// Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud Build. If specified by user, it is created and managed by user with a customer managed encryption key. Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository *string `pulumi:"dockerRepository"`
 	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
 	EntryPoint *string `pulumi:"entryPoint"`
 	// User-provided build-time environment variables for the function
-	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string     `pulumi:"environmentVariables"`
+	OnDeployUpdatePolicy *OnDeployUpdatePolicy `pulumi:"onDeployUpdatePolicy"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime *string `pulumi:"runtime"`
+	// [Preview] Service account to be used for building the container
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The location of the function source code.
 	Source *Source `pulumi:"source"`
 	// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
@@ -548,16 +692,20 @@ type BuildConfigInput interface {
 
 // Describes the Build step of the function that builds a container from the given source.
 type BuildConfigArgs struct {
-	// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+	AutomaticUpdatePolicy AutomaticUpdatePolicyPtrInput `pulumi:"automaticUpdatePolicy"`
+	// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 	DockerRegistry BuildConfigDockerRegistryPtrInput `pulumi:"dockerRegistry"`
-	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+	// Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud Build. If specified by user, it is created and managed by user with a customer managed encryption key. Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository pulumi.StringPtrInput `pulumi:"dockerRepository"`
 	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
 	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
 	// User-provided build-time environment variables for the function
-	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
+	EnvironmentVariables pulumi.StringMapInput        `pulumi:"environmentVariables"`
+	OnDeployUpdatePolicy OnDeployUpdatePolicyPtrInput `pulumi:"onDeployUpdatePolicy"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
+	// [Preview] Service account to be used for building the container
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// The location of the function source code.
 	Source SourcePtrInput `pulumi:"source"`
 	// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
@@ -644,12 +792,16 @@ func (o BuildConfigOutput) ToBuildConfigPtrOutputWithContext(ctx context.Context
 	}).(BuildConfigPtrOutput)
 }
 
-// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+func (o BuildConfigOutput) AutomaticUpdatePolicy() AutomaticUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v BuildConfig) *AutomaticUpdatePolicy { return v.AutomaticUpdatePolicy }).(AutomaticUpdatePolicyPtrOutput)
+}
+
+// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 func (o BuildConfigOutput) DockerRegistry() BuildConfigDockerRegistryPtrOutput {
 	return o.ApplyT(func(v BuildConfig) *BuildConfigDockerRegistry { return v.DockerRegistry }).(BuildConfigDockerRegistryPtrOutput)
 }
 
-// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+// Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud Build. If specified by user, it is created and managed by user with a customer managed encryption key. Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 func (o BuildConfigOutput) DockerRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildConfig) *string { return v.DockerRepository }).(pulumi.StringPtrOutput)
 }
@@ -664,9 +816,18 @@ func (o BuildConfigOutput) EnvironmentVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BuildConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
+func (o BuildConfigOutput) OnDeployUpdatePolicy() OnDeployUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v BuildConfig) *OnDeployUpdatePolicy { return v.OnDeployUpdatePolicy }).(OnDeployUpdatePolicyPtrOutput)
+}
+
 // The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 func (o BuildConfigOutput) Runtime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildConfig) *string { return v.Runtime }).(pulumi.StringPtrOutput)
+}
+
+// [Preview] Service account to be used for building the container
+func (o BuildConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 // The location of the function source code.
@@ -708,7 +869,16 @@ func (o BuildConfigPtrOutput) Elem() BuildConfigOutput {
 	}).(BuildConfigOutput)
 }
 
-// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+func (o BuildConfigPtrOutput) AutomaticUpdatePolicy() AutomaticUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *BuildConfig) *AutomaticUpdatePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticUpdatePolicy
+	}).(AutomaticUpdatePolicyPtrOutput)
+}
+
+// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 func (o BuildConfigPtrOutput) DockerRegistry() BuildConfigDockerRegistryPtrOutput {
 	return o.ApplyT(func(v *BuildConfig) *BuildConfigDockerRegistry {
 		if v == nil {
@@ -718,7 +888,7 @@ func (o BuildConfigPtrOutput) DockerRegistry() BuildConfigDockerRegistryPtrOutpu
 	}).(BuildConfigDockerRegistryPtrOutput)
 }
 
-// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+// Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud Build. If specified by user, it is created and managed by user with a customer managed encryption key. Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 func (o BuildConfigPtrOutput) DockerRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildConfig) *string {
 		if v == nil {
@@ -748,6 +918,15 @@ func (o BuildConfigPtrOutput) EnvironmentVariables() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+func (o BuildConfigPtrOutput) OnDeployUpdatePolicy() OnDeployUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *BuildConfig) *OnDeployUpdatePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.OnDeployUpdatePolicy
+	}).(OnDeployUpdatePolicyPtrOutput)
+}
+
 // The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 func (o BuildConfigPtrOutput) Runtime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildConfig) *string {
@@ -755,6 +934,16 @@ func (o BuildConfigPtrOutput) Runtime() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Runtime
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Preview] Service account to be used for building the container
+func (o BuildConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -790,18 +979,22 @@ func (o BuildConfigPtrOutput) WorkerPool() pulumi.StringPtrOutput {
 
 // Describes the Build step of the function that builds a container from the given source.
 type BuildConfigResponse struct {
+	AutomaticUpdatePolicy AutomaticUpdatePolicyResponse `pulumi:"automaticUpdatePolicy"`
 	// The Cloud Build name of the latest successful deployment of the function.
 	Build string `pulumi:"build"`
-	// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+	// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 	DockerRegistry string `pulumi:"dockerRegistry"`
-	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+	// Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud Build. If specified by user, it is created and managed by user with a customer managed encryption key. Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository string `pulumi:"dockerRepository"`
 	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
 	EntryPoint string `pulumi:"entryPoint"`
 	// User-provided build-time environment variables for the function
-	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string            `pulumi:"environmentVariables"`
+	OnDeployUpdatePolicy OnDeployUpdatePolicyResponse `pulumi:"onDeployUpdatePolicy"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime string `pulumi:"runtime"`
+	// [Preview] Service account to be used for building the container
+	ServiceAccount string `pulumi:"serviceAccount"`
 	// The location of the function source code.
 	Source SourceResponse `pulumi:"source"`
 	// A permanent fixed identifier for source.
@@ -827,17 +1020,21 @@ func (o BuildConfigResponseOutput) ToBuildConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o BuildConfigResponseOutput) AutomaticUpdatePolicy() AutomaticUpdatePolicyResponseOutput {
+	return o.ApplyT(func(v BuildConfigResponse) AutomaticUpdatePolicyResponse { return v.AutomaticUpdatePolicy }).(AutomaticUpdatePolicyResponseOutput)
+}
+
 // The Cloud Build name of the latest successful deployment of the function.
 func (o BuildConfigResponseOutput) Build() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildConfigResponse) string { return v.Build }).(pulumi.StringOutput)
 }
 
-// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 func (o BuildConfigResponseOutput) DockerRegistry() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildConfigResponse) string { return v.DockerRegistry }).(pulumi.StringOutput)
 }
 
-// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+// Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud Build. If specified by user, it is created and managed by user with a customer managed encryption key. Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 func (o BuildConfigResponseOutput) DockerRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildConfigResponse) string { return v.DockerRepository }).(pulumi.StringOutput)
 }
@@ -852,9 +1049,18 @@ func (o BuildConfigResponseOutput) EnvironmentVariables() pulumi.StringMapOutput
 	return o.ApplyT(func(v BuildConfigResponse) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
+func (o BuildConfigResponseOutput) OnDeployUpdatePolicy() OnDeployUpdatePolicyResponseOutput {
+	return o.ApplyT(func(v BuildConfigResponse) OnDeployUpdatePolicyResponse { return v.OnDeployUpdatePolicy }).(OnDeployUpdatePolicyResponseOutput)
+}
+
 // The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 func (o BuildConfigResponseOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildConfigResponse) string { return v.Runtime }).(pulumi.StringOutput)
+}
+
+// [Preview] Service account to be used for building the container
+func (o BuildConfigResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildConfigResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 // The location of the function source code.
@@ -1067,6 +1273,8 @@ type EventTrigger struct {
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
 	RetryPolicy *EventTriggerRetryPolicy `pulumi:"retryPolicy"`
+	// Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions.
+	Service *string `pulumi:"service"`
 	// Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
@@ -1096,6 +1304,8 @@ type EventTriggerArgs struct {
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
 	// Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
 	RetryPolicy EventTriggerRetryPolicyPtrInput `pulumi:"retryPolicy"`
+	// Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions.
+	Service pulumi.StringPtrInput `pulumi:"service"`
 	// Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
@@ -1205,6 +1415,11 @@ func (o EventTriggerOutput) RetryPolicy() EventTriggerRetryPolicyPtrOutput {
 	return o.ApplyT(func(v EventTrigger) *EventTriggerRetryPolicy { return v.RetryPolicy }).(EventTriggerRetryPolicyPtrOutput)
 }
 
+// Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions.
+func (o EventTriggerOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventTrigger) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
 func (o EventTriggerOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventTrigger) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
@@ -1289,6 +1504,16 @@ func (o EventTriggerPtrOutput) RetryPolicy() EventTriggerRetryPolicyPtrOutput {
 	}).(EventTriggerRetryPolicyPtrOutput)
 }
 
+// Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions.
+func (o EventTriggerPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
 func (o EventTriggerPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventTrigger) *string {
@@ -1321,6 +1546,8 @@ type EventTriggerResponse struct {
 	PubsubTopic string `pulumi:"pubsubTopic"`
 	// Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
 	RetryPolicy string `pulumi:"retryPolicy"`
+	// Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions.
+	Service string `pulumi:"service"`
 	// Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// The resource name of the Eventarc trigger. The format of this field is `projects/{project}/locations/{region}/triggers/{trigger}`.
@@ -1367,6 +1594,11 @@ func (o EventTriggerResponseOutput) PubsubTopic() pulumi.StringOutput {
 // Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
 func (o EventTriggerResponseOutput) RetryPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v EventTriggerResponse) string { return v.RetryPolicy }).(pulumi.StringOutput)
+}
+
+// Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions.
+func (o EventTriggerResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v EventTriggerResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
 // Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
@@ -1686,6 +1918,153 @@ func (o GoogleCloudFunctionsV2alphaStateMessageResponseArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudFunctionsV2alphaStateMessageResponse {
 		return vs[0].([]GoogleCloudFunctionsV2alphaStateMessageResponse)[vs[1].(int)]
 	}).(GoogleCloudFunctionsV2alphaStateMessageResponseOutput)
+}
+
+// Security patches are only applied when a function is redeployed.
+type OnDeployUpdatePolicy struct {
+}
+
+// OnDeployUpdatePolicyInput is an input type that accepts OnDeployUpdatePolicyArgs and OnDeployUpdatePolicyOutput values.
+// You can construct a concrete instance of `OnDeployUpdatePolicyInput` via:
+//
+//	OnDeployUpdatePolicyArgs{...}
+type OnDeployUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToOnDeployUpdatePolicyOutput() OnDeployUpdatePolicyOutput
+	ToOnDeployUpdatePolicyOutputWithContext(context.Context) OnDeployUpdatePolicyOutput
+}
+
+// Security patches are only applied when a function is redeployed.
+type OnDeployUpdatePolicyArgs struct {
+}
+
+func (OnDeployUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (i OnDeployUpdatePolicyArgs) ToOnDeployUpdatePolicyOutput() OnDeployUpdatePolicyOutput {
+	return i.ToOnDeployUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i OnDeployUpdatePolicyArgs) ToOnDeployUpdatePolicyOutputWithContext(ctx context.Context) OnDeployUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnDeployUpdatePolicyOutput)
+}
+
+func (i OnDeployUpdatePolicyArgs) ToOnDeployUpdatePolicyPtrOutput() OnDeployUpdatePolicyPtrOutput {
+	return i.ToOnDeployUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i OnDeployUpdatePolicyArgs) ToOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) OnDeployUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnDeployUpdatePolicyOutput).ToOnDeployUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// OnDeployUpdatePolicyPtrInput is an input type that accepts OnDeployUpdatePolicyArgs, OnDeployUpdatePolicyPtr and OnDeployUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `OnDeployUpdatePolicyPtrInput` via:
+//
+//	        OnDeployUpdatePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type OnDeployUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToOnDeployUpdatePolicyPtrOutput() OnDeployUpdatePolicyPtrOutput
+	ToOnDeployUpdatePolicyPtrOutputWithContext(context.Context) OnDeployUpdatePolicyPtrOutput
+}
+
+type onDeployUpdatePolicyPtrType OnDeployUpdatePolicyArgs
+
+func OnDeployUpdatePolicyPtr(v *OnDeployUpdatePolicyArgs) OnDeployUpdatePolicyPtrInput {
+	return (*onDeployUpdatePolicyPtrType)(v)
+}
+
+func (*onDeployUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (i *onDeployUpdatePolicyPtrType) ToOnDeployUpdatePolicyPtrOutput() OnDeployUpdatePolicyPtrOutput {
+	return i.ToOnDeployUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *onDeployUpdatePolicyPtrType) ToOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) OnDeployUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnDeployUpdatePolicyPtrOutput)
+}
+
+// Security patches are only applied when a function is redeployed.
+type OnDeployUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (OnDeployUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (o OnDeployUpdatePolicyOutput) ToOnDeployUpdatePolicyOutput() OnDeployUpdatePolicyOutput {
+	return o
+}
+
+func (o OnDeployUpdatePolicyOutput) ToOnDeployUpdatePolicyOutputWithContext(ctx context.Context) OnDeployUpdatePolicyOutput {
+	return o
+}
+
+func (o OnDeployUpdatePolicyOutput) ToOnDeployUpdatePolicyPtrOutput() OnDeployUpdatePolicyPtrOutput {
+	return o.ToOnDeployUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o OnDeployUpdatePolicyOutput) ToOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) OnDeployUpdatePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnDeployUpdatePolicy) *OnDeployUpdatePolicy {
+		return &v
+	}).(OnDeployUpdatePolicyPtrOutput)
+}
+
+type OnDeployUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (OnDeployUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (o OnDeployUpdatePolicyPtrOutput) ToOnDeployUpdatePolicyPtrOutput() OnDeployUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o OnDeployUpdatePolicyPtrOutput) ToOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) OnDeployUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o OnDeployUpdatePolicyPtrOutput) Elem() OnDeployUpdatePolicyOutput {
+	return o.ApplyT(func(v *OnDeployUpdatePolicy) OnDeployUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OnDeployUpdatePolicy
+		return ret
+	}).(OnDeployUpdatePolicyOutput)
+}
+
+// Security patches are only applied when a function is redeployed.
+type OnDeployUpdatePolicyResponse struct {
+	// contains the runtime version which was used during latest function deployment.
+	RuntimeVersion string `pulumi:"runtimeVersion"`
+}
+
+// Security patches are only applied when a function is redeployed.
+type OnDeployUpdatePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (OnDeployUpdatePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnDeployUpdatePolicyResponse)(nil)).Elem()
+}
+
+func (o OnDeployUpdatePolicyResponseOutput) ToOnDeployUpdatePolicyResponseOutput() OnDeployUpdatePolicyResponseOutput {
+	return o
+}
+
+func (o OnDeployUpdatePolicyResponseOutput) ToOnDeployUpdatePolicyResponseOutputWithContext(ctx context.Context) OnDeployUpdatePolicyResponseOutput {
+	return o
+}
+
+// contains the runtime version which was used during latest function deployment.
+func (o OnDeployUpdatePolicyResponseOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v OnDeployUpdatePolicyResponse) string { return v.RuntimeVersion }).(pulumi.StringOutput)
 }
 
 // Location of the source in a Google Cloud Source Repository.
@@ -2538,7 +2917,7 @@ func (o SecretVolumeResponseArrayOutput) Index(i pulumi.IntInput) SecretVolumeRe
 type ServiceConfig struct {
 	// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
 	AllTrafficOnLatestRevision *bool `pulumi:"allTrafficOnLatestRevision"`
-	// [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+	// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
 	AvailableCpu *string `pulumi:"availableCpu"`
 	// The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
 	AvailableMemory *string `pulumi:"availableMemory"`
@@ -2548,7 +2927,7 @@ type ServiceConfig struct {
 	IngressSettings *ServiceConfigIngressSettings `pulumi:"ingressSettings"`
 	// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
-	// [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+	// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
 	MaxInstanceRequestConcurrency *int `pulumi:"maxInstanceRequestConcurrency"`
 	// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
@@ -2583,7 +2962,7 @@ type ServiceConfigInput interface {
 type ServiceConfigArgs struct {
 	// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
 	AllTrafficOnLatestRevision pulumi.BoolPtrInput `pulumi:"allTrafficOnLatestRevision"`
-	// [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+	// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
 	AvailableCpu pulumi.StringPtrInput `pulumi:"availableCpu"`
 	// The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
 	AvailableMemory pulumi.StringPtrInput `pulumi:"availableMemory"`
@@ -2593,7 +2972,7 @@ type ServiceConfigArgs struct {
 	IngressSettings ServiceConfigIngressSettingsPtrInput `pulumi:"ingressSettings"`
 	// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
-	// [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+	// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
 	MaxInstanceRequestConcurrency pulumi.IntPtrInput `pulumi:"maxInstanceRequestConcurrency"`
 	// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
@@ -2696,7 +3075,7 @@ func (o ServiceConfigOutput) AllTrafficOnLatestRevision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *bool { return v.AllTrafficOnLatestRevision }).(pulumi.BoolPtrOutput)
 }
 
-// [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
 func (o ServiceConfigOutput) AvailableCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *string { return v.AvailableCpu }).(pulumi.StringPtrOutput)
 }
@@ -2721,7 +3100,7 @@ func (o ServiceConfigOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
 }
 
-// [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
 func (o ServiceConfigOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntPtrOutput)
 }
@@ -2800,7 +3179,7 @@ func (o ServiceConfigPtrOutput) AllTrafficOnLatestRevision() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
 func (o ServiceConfigPtrOutput) AvailableCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceConfig) *string {
 		if v == nil {
@@ -2850,7 +3229,7 @@ func (o ServiceConfigPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
 func (o ServiceConfigPtrOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceConfig) *int {
 		if v == nil {
@@ -2944,7 +3323,7 @@ func (o ServiceConfigPtrOutput) VpcConnectorEgressSettings() ServiceConfigVpcCon
 type ServiceConfigResponse struct {
 	// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
 	AllTrafficOnLatestRevision bool `pulumi:"allTrafficOnLatestRevision"`
-	// [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+	// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
 	AvailableCpu string `pulumi:"availableCpu"`
 	// The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
 	AvailableMemory string `pulumi:"availableMemory"`
@@ -2954,7 +3333,7 @@ type ServiceConfigResponse struct {
 	IngressSettings string `pulumi:"ingressSettings"`
 	// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
 	MaxInstanceCount int `pulumi:"maxInstanceCount"`
-	// [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+	// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
 	MaxInstanceRequestConcurrency int `pulumi:"maxInstanceRequestConcurrency"`
 	// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 	MinInstanceCount int `pulumi:"minInstanceCount"`
@@ -3000,7 +3379,7 @@ func (o ServiceConfigResponseOutput) AllTrafficOnLatestRevision() pulumi.BoolOut
 	return o.ApplyT(func(v ServiceConfigResponse) bool { return v.AllTrafficOnLatestRevision }).(pulumi.BoolOutput)
 }
 
-// [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
 func (o ServiceConfigResponseOutput) AvailableCpu() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) string { return v.AvailableCpu }).(pulumi.StringOutput)
 }
@@ -3025,7 +3404,7 @@ func (o ServiceConfigResponseOutput) MaxInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
 }
 
-// [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
 func (o ServiceConfigResponseOutput) MaxInstanceRequestConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntOutput)
 }
@@ -3561,11 +3940,60 @@ func (o StorageSourceResponseOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceResponse) string { return v.Object }).(pulumi.StringOutput)
 }
 
+// Information related to: * A function's eligibility for 1st Gen to 2nd Gen migration * Current state of migration for function undergoing migration.
+type UpgradeInfoResponse struct {
+	// Describes the Build step of the function that builds a container to prepare for 2nd gen upgrade.
+	BuildConfig BuildConfigResponse `pulumi:"buildConfig"`
+	// Describes the Event trigger which has been setup to prepare for 2nd gen upgrade.
+	EventTrigger EventTriggerResponse `pulumi:"eventTrigger"`
+	// Describes the Cloud Run service which has been setup to prepare for 2nd gen upgrade.
+	ServiceConfig ServiceConfigResponse `pulumi:"serviceConfig"`
+	// UpgradeState of the function
+	UpgradeState string `pulumi:"upgradeState"`
+}
+
+// Information related to: * A function's eligibility for 1st Gen to 2nd Gen migration * Current state of migration for function undergoing migration.
+type UpgradeInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (UpgradeInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeInfoResponse)(nil)).Elem()
+}
+
+func (o UpgradeInfoResponseOutput) ToUpgradeInfoResponseOutput() UpgradeInfoResponseOutput {
+	return o
+}
+
+func (o UpgradeInfoResponseOutput) ToUpgradeInfoResponseOutputWithContext(ctx context.Context) UpgradeInfoResponseOutput {
+	return o
+}
+
+// Describes the Build step of the function that builds a container to prepare for 2nd gen upgrade.
+func (o UpgradeInfoResponseOutput) BuildConfig() BuildConfigResponseOutput {
+	return o.ApplyT(func(v UpgradeInfoResponse) BuildConfigResponse { return v.BuildConfig }).(BuildConfigResponseOutput)
+}
+
+// Describes the Event trigger which has been setup to prepare for 2nd gen upgrade.
+func (o UpgradeInfoResponseOutput) EventTrigger() EventTriggerResponseOutput {
+	return o.ApplyT(func(v UpgradeInfoResponse) EventTriggerResponse { return v.EventTrigger }).(EventTriggerResponseOutput)
+}
+
+// Describes the Cloud Run service which has been setup to prepare for 2nd gen upgrade.
+func (o UpgradeInfoResponseOutput) ServiceConfig() ServiceConfigResponseOutput {
+	return o.ApplyT(func(v UpgradeInfoResponse) ServiceConfigResponse { return v.ServiceConfig }).(ServiceConfigResponseOutput)
+}
+
+// UpgradeState of the function
+func (o UpgradeInfoResponseOutput) UpgradeState() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeInfoResponse) string { return v.UpgradeState }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomaticUpdatePolicyInput)(nil)).Elem(), AutomaticUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomaticUpdatePolicyPtrInput)(nil)).Elem(), AutomaticUpdatePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildConfigInput)(nil)).Elem(), BuildConfigArgs{})
@@ -3576,6 +4004,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EventTriggerPtrInput)(nil)).Elem(), EventTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnDeployUpdatePolicyInput)(nil)).Elem(), OnDeployUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnDeployUpdatePolicyPtrInput)(nil)).Elem(), OnDeployUpdatePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourceInput)(nil)).Elem(), RepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourcePtrInput)(nil)).Elem(), RepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvVarInput)(nil)).Elem(), SecretEnvVarArgs{})
@@ -3598,6 +4028,9 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(AutomaticUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(AutomaticUpdatePolicyPtrOutput{})
+	pulumi.RegisterOutputType(AutomaticUpdatePolicyResponseOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -3617,6 +4050,9 @@ func init() {
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudFunctionsV2alphaStateMessageResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudFunctionsV2alphaStateMessageResponseArrayOutput{})
+	pulumi.RegisterOutputType(OnDeployUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(OnDeployUpdatePolicyPtrOutput{})
+	pulumi.RegisterOutputType(OnDeployUpdatePolicyResponseOutput{})
 	pulumi.RegisterOutputType(RepoSourceOutput{})
 	pulumi.RegisterOutputType(RepoSourcePtrOutput{})
 	pulumi.RegisterOutputType(RepoSourceResponseOutput{})
@@ -3642,4 +4078,5 @@ func init() {
 	pulumi.RegisterOutputType(StorageSourceOutput{})
 	pulumi.RegisterOutputType(StorageSourcePtrOutput{})
 	pulumi.RegisterOutputType(StorageSourceResponseOutput{})
+	pulumi.RegisterOutputType(UpgradeInfoResponseOutput{})
 }

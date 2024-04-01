@@ -22,9 +22,13 @@ type DatasetVersion struct {
 	// Timestamp when this DatasetVersion was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	DatasetId  pulumi.StringOutput `pulumi:"datasetId"`
+	// The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag     pulumi.StringOutput `pulumi:"etag"`
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Additional information about the DatasetVersion.
+	Metadata pulumi.AnyOutput `pulumi:"metadata"`
 	// The resource name of the DatasetVersion.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -82,6 +86,8 @@ func (DatasetVersionState) ElementType() reflect.Type {
 
 type datasetVersionArgs struct {
 	DatasetId string `pulumi:"datasetId"`
+	// The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName *string `pulumi:"displayName"`
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag     *string `pulumi:"etag"`
 	Location *string `pulumi:"location"`
@@ -91,6 +97,8 @@ type datasetVersionArgs struct {
 // The set of arguments for constructing a DatasetVersion resource.
 type DatasetVersionArgs struct {
 	DatasetId pulumi.StringInput
+	// The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName pulumi.StringPtrInput
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag     pulumi.StringPtrInput
 	Location pulumi.StringPtrInput
@@ -148,6 +156,11 @@ func (o DatasetVersionOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatasetVersion) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }
 
+// The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+func (o DatasetVersionOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatasetVersion) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
 // Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 func (o DatasetVersionOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatasetVersion) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -155,6 +168,11 @@ func (o DatasetVersionOutput) Etag() pulumi.StringOutput {
 
 func (o DatasetVersionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatasetVersion) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Additional information about the DatasetVersion.
+func (o DatasetVersionOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DatasetVersion) pulumi.AnyOutput { return v.Metadata }).(pulumi.AnyOutput)
 }
 
 // The resource name of the DatasetVersion.

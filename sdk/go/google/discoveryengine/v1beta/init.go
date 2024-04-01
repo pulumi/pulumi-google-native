@@ -23,10 +23,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:discoveryengine/v1beta:Conversation":
 		r = &Conversation{}
+	case "google-native:discoveryengine/v1beta:DataStore":
+		r = &DataStore{}
+	case "google-native:discoveryengine/v1beta:DataStoreConversation":
+		r = &DataStoreConversation{}
 	case "google-native:discoveryengine/v1beta:Document":
 		r = &Document{}
+	case "google-native:discoveryengine/v1beta:Engine":
+		r = &Engine{}
+	case "google-native:discoveryengine/v1beta:EngineConversation":
+		r = &EngineConversation{}
 	case "google-native:discoveryengine/v1beta:Schema":
 		r = &Schema{}
+	case "google-native:discoveryengine/v1beta:TargetSite":
+		r = &TargetSite{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

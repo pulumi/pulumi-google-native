@@ -17,6 +17,8 @@ import (
 type ConnectivityTest struct {
 	pulumi.CustomResourceState
 
+	// Whether the test should skip firewall checking. If not provided, we assume false.
+	BypassFirewallChecks pulumi.BoolOutput `pulumi:"bypassFirewallChecks"`
 	// The time the test was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
@@ -103,6 +105,8 @@ func (ConnectivityTestState) ElementType() reflect.Type {
 }
 
 type connectivityTestArgs struct {
+	// Whether the test should skip firewall checking. If not provided, we assume false.
+	BypassFirewallChecks *bool `pulumi:"bypassFirewallChecks"`
 	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
 	Description *string `pulumi:"description"`
 	// Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
@@ -124,6 +128,8 @@ type connectivityTestArgs struct {
 
 // The set of arguments for constructing a ConnectivityTest resource.
 type ConnectivityTestArgs struct {
+	// Whether the test should skip firewall checking. If not provided, we assume false.
+	BypassFirewallChecks pulumi.BoolPtrInput
 	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
 	Description pulumi.StringPtrInput
 	// Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
@@ -178,6 +184,11 @@ func (o ConnectivityTestOutput) ToConnectivityTestOutput() ConnectivityTestOutpu
 
 func (o ConnectivityTestOutput) ToConnectivityTestOutputWithContext(ctx context.Context) ConnectivityTestOutput {
 	return o
+}
+
+// Whether the test should skip firewall checking. If not provided, we assume false.
+func (o ConnectivityTestOutput) BypassFirewallChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ConnectivityTest) pulumi.BoolOutput { return v.BypassFirewallChecks }).(pulumi.BoolOutput)
 }
 
 // The time the test was created.

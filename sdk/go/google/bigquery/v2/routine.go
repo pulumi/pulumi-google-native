@@ -53,7 +53,7 @@ type Routine struct {
 	SecurityMode pulumi.StringOutput `pulumi:"securityMode"`
 	// Optional. Spark specific options.
 	SparkOptions SparkOptionsResponseOutput `pulumi:"sparkOptions"`
-	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+	// Optional. Use this option to catch many common errors. Error checking is not exhaustive, and successfully creating a procedure doesn't guarantee that the procedure will successfully execute at runtime. If `strictMode` is set to `TRUE`, the procedure body is further checked for errors such as non-existent tables or columns. The `CREATE PROCEDURE` statement fails if the body fails any of these checks. If `strictMode` is set to `FALSE`, the procedure body is checked only for syntax. For procedures that invoke themselves recursively, specify `strictMode=FALSE` to avoid non-existent procedure errors during validation. Default value is `TRUE`.
 	StrictMode pulumi.BoolOutput `pulumi:"strictMode"`
 }
 
@@ -144,7 +144,7 @@ type routineArgs struct {
 	SecurityMode *RoutineSecurityMode `pulumi:"securityMode"`
 	// Optional. Spark specific options.
 	SparkOptions *SparkOptions `pulumi:"sparkOptions"`
-	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+	// Optional. Use this option to catch many common errors. Error checking is not exhaustive, and successfully creating a procedure doesn't guarantee that the procedure will successfully execute at runtime. If `strictMode` is set to `TRUE`, the procedure body is further checked for errors such as non-existent tables or columns. The `CREATE PROCEDURE` statement fails if the body fails any of these checks. If `strictMode` is set to `FALSE`, the procedure body is checked only for syntax. For procedures that invoke themselves recursively, specify `strictMode=FALSE` to avoid non-existent procedure errors during validation. Default value is `TRUE`.
 	StrictMode *bool `pulumi:"strictMode"`
 }
 
@@ -180,7 +180,7 @@ type RoutineArgs struct {
 	SecurityMode RoutineSecurityModePtrInput
 	// Optional. Spark specific options.
 	SparkOptions SparkOptionsPtrInput
-	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+	// Optional. Use this option to catch many common errors. Error checking is not exhaustive, and successfully creating a procedure doesn't guarantee that the procedure will successfully execute at runtime. If `strictMode` is set to `TRUE`, the procedure body is further checked for errors such as non-existent tables or columns. The `CREATE PROCEDURE` statement fails if the body fails any of these checks. If `strictMode` is set to `FALSE`, the procedure body is checked only for syntax. For procedures that invoke themselves recursively, specify `strictMode=FALSE` to avoid non-existent procedure errors during validation. Default value is `TRUE`.
 	StrictMode pulumi.BoolPtrInput
 }
 
@@ -314,7 +314,7 @@ func (o RoutineOutput) SparkOptions() SparkOptionsResponseOutput {
 	return o.ApplyT(func(v *Routine) SparkOptionsResponseOutput { return v.SparkOptions }).(SparkOptionsResponseOutput)
 }
 
-// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+// Optional. Use this option to catch many common errors. Error checking is not exhaustive, and successfully creating a procedure doesn't guarantee that the procedure will successfully execute at runtime. If `strictMode` is set to `TRUE`, the procedure body is further checked for errors such as non-existent tables or columns. The `CREATE PROCEDURE` statement fails if the body fails any of these checks. If `strictMode` is set to `FALSE`, the procedure body is checked only for syntax. For procedures that invoke themselves recursively, specify `strictMode=FALSE` to avoid non-existent procedure errors during validation. Default value is `TRUE`.
 func (o RoutineOutput) StrictMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Routine) pulumi.BoolOutput { return v.StrictMode }).(pulumi.BoolOutput)
 }

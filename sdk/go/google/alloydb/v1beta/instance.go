@@ -36,6 +36,8 @@ type Instance struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone pulumi.StringOutput `pulumi:"gceZone"`
+	// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+	GeminiConfig GeminiInstanceConfigResponseOutput `pulumi:"geminiConfig"`
 	// Required. ID of the requesting object.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The type of the instance. Specified at creation time.
@@ -49,9 +51,17 @@ type Instance struct {
 	MachineConfig MachineConfigResponseOutput `pulumi:"machineConfig"`
 	// The name of the instance resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}/instances/{instance_id} where the cluster and instance ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the instance resource name is the name of the parent resource: * projects/{project}/locations/{region}/clusters/{cluster_id}
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. Instance level network configuration.
+	NetworkConfig InstanceNetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
-	Nodes   NodeResponseArrayOutput `pulumi:"nodes"`
-	Project pulumi.StringOutput     `pulumi:"project"`
+	Nodes NodeResponseArrayOutput `pulumi:"nodes"`
+	// Configuration for observability.
+	ObservabilityConfig ObservabilityInstanceConfigResponseOutput `pulumi:"observabilityConfig"`
+	Project             pulumi.StringOutput                       `pulumi:"project"`
+	// Optional. The configuration for Private Service Connect (PSC) for the instance.
+	PscInstanceConfig PscInstanceConfigResponseOutput `pulumi:"pscInstanceConfig"`
+	// The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
 	// Configuration for query insights.
 	QueryInsightsConfig QueryInsightsInstanceConfigResponseOutput `pulumi:"queryInsightsConfig"`
 	// Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
@@ -60,6 +70,8 @@ type Instance struct {
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The current serving state of the instance.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
@@ -143,6 +155,8 @@ type instanceArgs struct {
 	Etag *string `pulumi:"etag"`
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone *string `pulumi:"gceZone"`
+	// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+	GeminiConfig *GeminiInstanceConfig `pulumi:"geminiConfig"`
 	// Required. ID of the requesting object.
 	InstanceId string `pulumi:"instanceId"`
 	// The type of the instance. Specified at creation time.
@@ -152,7 +166,13 @@ type instanceArgs struct {
 	Location *string           `pulumi:"location"`
 	// Configurations for the machines that host the underlying database engine.
 	MachineConfig *MachineConfig `pulumi:"machineConfig"`
-	Project       *string        `pulumi:"project"`
+	// Optional. Instance level network configuration.
+	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
+	// Configuration for observability.
+	ObservabilityConfig *ObservabilityInstanceConfig `pulumi:"observabilityConfig"`
+	Project             *string                      `pulumi:"project"`
+	// Optional. The configuration for Private Service Connect (PSC) for the instance.
+	PscInstanceConfig *PscInstanceConfig `pulumi:"pscInstanceConfig"`
 	// Configuration for query insights.
 	QueryInsightsConfig *QueryInsightsInstanceConfig `pulumi:"queryInsightsConfig"`
 	// Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
@@ -180,6 +200,8 @@ type InstanceArgs struct {
 	Etag pulumi.StringPtrInput
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone pulumi.StringPtrInput
+	// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+	GeminiConfig GeminiInstanceConfigPtrInput
 	// Required. ID of the requesting object.
 	InstanceId pulumi.StringInput
 	// The type of the instance. Specified at creation time.
@@ -189,7 +211,13 @@ type InstanceArgs struct {
 	Location pulumi.StringPtrInput
 	// Configurations for the machines that host the underlying database engine.
 	MachineConfig MachineConfigPtrInput
-	Project       pulumi.StringPtrInput
+	// Optional. Instance level network configuration.
+	NetworkConfig InstanceNetworkConfigPtrInput
+	// Configuration for observability.
+	ObservabilityConfig ObservabilityInstanceConfigPtrInput
+	Project             pulumi.StringPtrInput
+	// Optional. The configuration for Private Service Connect (PSC) for the instance.
+	PscInstanceConfig PscInstanceConfigPtrInput
 	// Configuration for query insights.
 	QueryInsightsConfig QueryInsightsInstanceConfigPtrInput
 	// Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
@@ -286,6 +314,11 @@ func (o InstanceOutput) GceZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.GceZone }).(pulumi.StringOutput)
 }
 
+// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+func (o InstanceOutput) GeminiConfig() GeminiInstanceConfigResponseOutput {
+	return o.ApplyT(func(v *Instance) GeminiInstanceConfigResponseOutput { return v.GeminiConfig }).(GeminiInstanceConfigResponseOutput)
+}
+
 // Required. ID of the requesting object.
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
@@ -320,13 +353,33 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional. Instance level network configuration.
+func (o InstanceOutput) NetworkConfig() InstanceNetworkConfigResponseOutput {
+	return o.ApplyT(func(v *Instance) InstanceNetworkConfigResponseOutput { return v.NetworkConfig }).(InstanceNetworkConfigResponseOutput)
+}
+
 // List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
 func (o InstanceOutput) Nodes() NodeResponseArrayOutput {
 	return o.ApplyT(func(v *Instance) NodeResponseArrayOutput { return v.Nodes }).(NodeResponseArrayOutput)
 }
 
+// Configuration for observability.
+func (o InstanceOutput) ObservabilityConfig() ObservabilityInstanceConfigResponseOutput {
+	return o.ApplyT(func(v *Instance) ObservabilityInstanceConfigResponseOutput { return v.ObservabilityConfig }).(ObservabilityInstanceConfigResponseOutput)
+}
+
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. The configuration for Private Service Connect (PSC) for the instance.
+func (o InstanceOutput) PscInstanceConfig() PscInstanceConfigResponseOutput {
+	return o.ApplyT(func(v *Instance) PscInstanceConfigResponseOutput { return v.PscInstanceConfig }).(PscInstanceConfigResponseOutput)
+}
+
+// The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+func (o InstanceOutput) PublicIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
 
 // Configuration for query insights.
@@ -347,6 +400,11 @@ func (o InstanceOutput) Reconciling() pulumi.BoolOutput {
 // Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 func (o InstanceOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// Reserved for future use.
+func (o InstanceOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // The current serving state of the instance.

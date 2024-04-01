@@ -23,7 +23,7 @@ type ServiceLevelObjective struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
 	Goal pulumi.Float64Output `pulumi:"goal"`
-	// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+	// Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
 	RollingPeriod pulumi.StringOutput `pulumi:"rollingPeriod"`
@@ -99,7 +99,7 @@ type serviceLevelObjectiveArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
 	Goal *float64 `pulumi:"goal"`
-	// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+	// Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
 	Name *string `pulumi:"name"`
 	// A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
 	RollingPeriod *string `pulumi:"rollingPeriod"`
@@ -122,7 +122,7 @@ type ServiceLevelObjectiveArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
 	Goal pulumi.Float64PtrInput
-	// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+	// Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
 	Name pulumi.StringPtrInput
 	// A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
 	RollingPeriod pulumi.StringPtrInput
@@ -189,7 +189,7 @@ func (o ServiceLevelObjectiveOutput) Goal() pulumi.Float64Output {
 	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.Float64Output { return v.Goal }).(pulumi.Float64Output)
 }
 
-// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+// Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
 func (o ServiceLevelObjectiveOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -115,6 +115,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PartnerTenant{}
 	case "google-native:beyondcorp/v1alpha:ProxyConfig":
 		r = &ProxyConfig{}
+	case "google-native:beyondcorp/v1alpha:SecurityGateway":
+		r = &SecurityGateway{}
 	case "google-native:beyondcorp/v1alpha:Subscription":
 		r = &Subscription{}
 	default:

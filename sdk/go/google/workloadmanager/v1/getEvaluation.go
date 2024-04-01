@@ -29,6 +29,8 @@ type LookupEvaluationArgs struct {
 }
 
 type LookupEvaluationResult struct {
+	// Optional. BigQuery destination
+	BigQueryDestination BigQueryDestinationResponse `pulumi:"bigQueryDestination"`
 	// [Output only] Create time stamp
 	CreateTime string `pulumi:"createTime"`
 	// The Cloud Storage bucket name for custom rules.
@@ -88,6 +90,11 @@ func (o LookupEvaluationResultOutput) ToLookupEvaluationResultOutput() LookupEva
 
 func (o LookupEvaluationResultOutput) ToLookupEvaluationResultOutputWithContext(ctx context.Context) LookupEvaluationResultOutput {
 	return o
+}
+
+// Optional. BigQuery destination
+func (o LookupEvaluationResultOutput) BigQueryDestination() BigQueryDestinationResponseOutput {
+	return o.ApplyT(func(v LookupEvaluationResult) BigQueryDestinationResponse { return v.BigQueryDestination }).(BigQueryDestinationResponseOutput)
 }
 
 // [Output only] Create time stamp

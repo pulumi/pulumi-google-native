@@ -52,6 +52,8 @@ type LookupInstanceConfigResult struct {
 	Replicas []ReplicaInfoResponse `pulumi:"replicas"`
 	// The current instance config state. Applicable only for USER_MANAGED configs.
 	State string `pulumi:"state"`
+	// The storage limit in bytes per processing unit.
+	StorageLimitPerProcessingUnit string `pulumi:"storageLimitPerProcessingUnit"`
 }
 
 func LookupInstanceConfigOutput(ctx *pulumi.Context, args LookupInstanceConfigOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceConfigResultOutput {
@@ -148,6 +150,11 @@ func (o LookupInstanceConfigResultOutput) Replicas() ReplicaInfoResponseArrayOut
 // The current instance config state. Applicable only for USER_MANAGED configs.
 func (o LookupInstanceConfigResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceConfigResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The storage limit in bytes per processing unit.
+func (o LookupInstanceConfigResultOutput) StorageLimitPerProcessingUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceConfigResult) string { return v.StorageLimitPerProcessingUnit }).(pulumi.StringOutput)
 }
 
 func init() {

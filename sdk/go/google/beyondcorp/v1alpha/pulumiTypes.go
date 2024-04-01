@@ -2050,6 +2050,47 @@ func (i GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput)
 }
 
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput).ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs, GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtr and GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrInput` via:
+//
+//	        GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput
+}
+
+type googleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrType GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs
+
+func GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtr(v *GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrInput {
+	return (*googleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrType)(v)
+}
+
+func (*googleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo)(nil)).Elem()
+}
+
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput)
+}
+
 // Message contains the transport layer information to verify the proxy server.
 type GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput struct{ *pulumi.OutputState }
 
@@ -2065,6 +2106,16 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) ToGoogle
 	return o
 }
 
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput {
+	return o.ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo) *GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo {
+		return &v
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput)
+}
+
 // PEM encoded CA certificate associated with the proxy server certificate.
 func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) ServerCaCertPem() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo) string { return v.ServerCaCertPem }).(pulumi.StringOutput)
@@ -2073,6 +2124,50 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) ServerCa
 // Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
 func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) SslDecryptCaCertPem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo) *string { return v.SslDecryptCaCertPem }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput) Elem() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo
+		return ret
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput)
+}
+
+// PEM encoded CA certificate associated with the proxy server certificate.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput) ServerCaCertPem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerCaCertPem
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput) SslDecryptCaCertPem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslDecryptCaCertPem
+	}).(pulumi.StringPtrOutput)
 }
 
 // Message contains the transport layer information to verify the proxy server.
@@ -2110,6 +2205,161 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput) 
 	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse) string {
 		return v.SslDecryptCaCertPem
 	}).(pulumi.StringOutput)
+}
+
+// Message contains the configuration for each supported region for the securityGateway instance.
+type GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig struct {
+	// The region where the egress connectivity is required.
+	Region string `pulumi:"region"`
+}
+
+// GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigInput is an input type that accepts GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArgs and GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigInput` via:
+//
+//	GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArgs{...}
+type GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput() GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput
+	ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutputWithContext(context.Context) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput
+}
+
+// Message contains the configuration for each supported region for the securityGateway instance.
+type GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArgs struct {
+	// The region where the egress connectivity is required.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArgs) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput() GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput {
+	return i.ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArgs) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput)
+}
+
+// GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayInput is an input type that accepts GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArray and GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayInput` via:
+//
+//	GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArray{ GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArgs{...} }
+type GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput() GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput
+	ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutputWithContext(context.Context) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput
+}
+
+type GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArray []GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigInput
+
+func (GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArray) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput() GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput {
+	return i.ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArray) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput)
+}
+
+// Message contains the configuration for each supported region for the securityGateway instance.
+type GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput() GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput {
+	return o
+}
+
+// The region where the egress connectivity is required.
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput() GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig {
+		return vs[0].([]GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig)[vs[1].(int)]
+	}).(GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput)
+}
+
+// Message contains the configuration for each supported region for the securityGateway instance.
+type GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponse struct {
+	// External IP addresses that will be used for establishing connection to the egress endpoints.
+	EgressIpAddresses []string `pulumi:"egressIpAddresses"`
+	// The region where the egress connectivity is required.
+	Region string `pulumi:"region"`
+}
+
+// Message contains the configuration for each supported region for the securityGateway instance.
+type GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput() GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput {
+	return o
+}
+
+// External IP addresses that will be used for establishing connection to the egress endpoints.
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput) EgressIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponse) []string {
+		return v.EgressIpAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// The region where the egress connectivity is required.
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponse) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseArrayOutput) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseArrayOutput() GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseArrayOutput) ToGoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponse {
+		return vs[0].([]GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponse)[vs[1].(int)]
+	}).(GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
@@ -2440,9 +2690,9 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *GoogleTypeExpr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -2461,9 +2711,9 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -2524,12 +2774,12 @@ func (o GoogleIamV1BindingOutput) Condition() GoogleTypeExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -2558,9 +2808,9 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -2584,12 +2834,12 @@ func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutp
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -3455,6 +3705,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigInput)(nil)).Elem(), GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayInput)(nil)).Elem(), GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigInput)(nil)).Elem(), GoogleIamV1AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigArrayInput)(nil)).Elem(), GoogleIamV1AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigInput)(nil)).Elem(), GoogleIamV1AuditLogConfigArgs{})
@@ -3505,7 +3758,12 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigResponseOutput{})

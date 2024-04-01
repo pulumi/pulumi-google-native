@@ -13,6 +13,2009 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type SecurityPolicyAssociationResponse struct {
+	// The resource that the security policy is attached to.
+	AttachmentId string `pulumi:"attachmentId"`
+	// The display name of the security policy of the association.
+	DisplayName string `pulumi:"displayName"`
+	// The name for an association.
+	Name string `pulumi:"name"`
+	// The security policy ID of the association.
+	SecurityPolicyId string `pulumi:"securityPolicyId"`
+}
+
+type SecurityPolicyAssociationResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAssociationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAssociationResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyAssociationResponseOutput) ToSecurityPolicyAssociationResponseOutput() SecurityPolicyAssociationResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyAssociationResponseOutput) ToSecurityPolicyAssociationResponseOutputWithContext(ctx context.Context) SecurityPolicyAssociationResponseOutput {
+	return o
+}
+
+// The resource that the security policy is attached to.
+func (o SecurityPolicyAssociationResponseOutput) AttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyAssociationResponse) string { return v.AttachmentId }).(pulumi.StringOutput)
+}
+
+// The display name of the security policy of the association.
+func (o SecurityPolicyAssociationResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyAssociationResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The name for an association.
+func (o SecurityPolicyAssociationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyAssociationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The security policy ID of the association.
+func (o SecurityPolicyAssociationResponseOutput) SecurityPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyAssociationResponse) string { return v.SecurityPolicyId }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyAssociationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAssociationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAssociationResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyAssociationResponseArrayOutput) ToSecurityPolicyAssociationResponseArrayOutput() SecurityPolicyAssociationResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAssociationResponseArrayOutput) ToSecurityPolicyAssociationResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyAssociationResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAssociationResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyAssociationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyAssociationResponse {
+		return vs[0].([]SecurityPolicyAssociationResponse)[vs[1].(int)]
+	}).(SecurityPolicyAssociationResponseOutput)
+}
+
+// Configuration options for Cloud Armor.
+type SecurityPolicyCloudArmorConfig struct {
+	// If set to true, enables Cloud Armor Machine Learning.
+	EnableMl *bool `pulumi:"enableMl"`
+}
+
+// SecurityPolicyCloudArmorConfigInput is an input type that accepts SecurityPolicyCloudArmorConfigArgs and SecurityPolicyCloudArmorConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyCloudArmorConfigInput` via:
+//
+//	SecurityPolicyCloudArmorConfigArgs{...}
+type SecurityPolicyCloudArmorConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyCloudArmorConfigOutput() SecurityPolicyCloudArmorConfigOutput
+	ToSecurityPolicyCloudArmorConfigOutputWithContext(context.Context) SecurityPolicyCloudArmorConfigOutput
+}
+
+// Configuration options for Cloud Armor.
+type SecurityPolicyCloudArmorConfigArgs struct {
+	// If set to true, enables Cloud Armor Machine Learning.
+	EnableMl pulumi.BoolPtrInput `pulumi:"enableMl"`
+}
+
+func (SecurityPolicyCloudArmorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyCloudArmorConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyCloudArmorConfigArgs) ToSecurityPolicyCloudArmorConfigOutput() SecurityPolicyCloudArmorConfigOutput {
+	return i.ToSecurityPolicyCloudArmorConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyCloudArmorConfigArgs) ToSecurityPolicyCloudArmorConfigOutputWithContext(ctx context.Context) SecurityPolicyCloudArmorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyCloudArmorConfigOutput)
+}
+
+func (i SecurityPolicyCloudArmorConfigArgs) ToSecurityPolicyCloudArmorConfigPtrOutput() SecurityPolicyCloudArmorConfigPtrOutput {
+	return i.ToSecurityPolicyCloudArmorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyCloudArmorConfigArgs) ToSecurityPolicyCloudArmorConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyCloudArmorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyCloudArmorConfigOutput).ToSecurityPolicyCloudArmorConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyCloudArmorConfigPtrInput is an input type that accepts SecurityPolicyCloudArmorConfigArgs, SecurityPolicyCloudArmorConfigPtr and SecurityPolicyCloudArmorConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyCloudArmorConfigPtrInput` via:
+//
+//	        SecurityPolicyCloudArmorConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyCloudArmorConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyCloudArmorConfigPtrOutput() SecurityPolicyCloudArmorConfigPtrOutput
+	ToSecurityPolicyCloudArmorConfigPtrOutputWithContext(context.Context) SecurityPolicyCloudArmorConfigPtrOutput
+}
+
+type securityPolicyCloudArmorConfigPtrType SecurityPolicyCloudArmorConfigArgs
+
+func SecurityPolicyCloudArmorConfigPtr(v *SecurityPolicyCloudArmorConfigArgs) SecurityPolicyCloudArmorConfigPtrInput {
+	return (*securityPolicyCloudArmorConfigPtrType)(v)
+}
+
+func (*securityPolicyCloudArmorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyCloudArmorConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyCloudArmorConfigPtrType) ToSecurityPolicyCloudArmorConfigPtrOutput() SecurityPolicyCloudArmorConfigPtrOutput {
+	return i.ToSecurityPolicyCloudArmorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyCloudArmorConfigPtrType) ToSecurityPolicyCloudArmorConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyCloudArmorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyCloudArmorConfigPtrOutput)
+}
+
+// Configuration options for Cloud Armor.
+type SecurityPolicyCloudArmorConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyCloudArmorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyCloudArmorConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyCloudArmorConfigOutput) ToSecurityPolicyCloudArmorConfigOutput() SecurityPolicyCloudArmorConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyCloudArmorConfigOutput) ToSecurityPolicyCloudArmorConfigOutputWithContext(ctx context.Context) SecurityPolicyCloudArmorConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyCloudArmorConfigOutput) ToSecurityPolicyCloudArmorConfigPtrOutput() SecurityPolicyCloudArmorConfigPtrOutput {
+	return o.ToSecurityPolicyCloudArmorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyCloudArmorConfigOutput) ToSecurityPolicyCloudArmorConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyCloudArmorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyCloudArmorConfig) *SecurityPolicyCloudArmorConfig {
+		return &v
+	}).(SecurityPolicyCloudArmorConfigPtrOutput)
+}
+
+// If set to true, enables Cloud Armor Machine Learning.
+func (o SecurityPolicyCloudArmorConfigOutput) EnableMl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyCloudArmorConfig) *bool { return v.EnableMl }).(pulumi.BoolPtrOutput)
+}
+
+type SecurityPolicyCloudArmorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyCloudArmorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyCloudArmorConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyCloudArmorConfigPtrOutput) ToSecurityPolicyCloudArmorConfigPtrOutput() SecurityPolicyCloudArmorConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyCloudArmorConfigPtrOutput) ToSecurityPolicyCloudArmorConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyCloudArmorConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyCloudArmorConfigPtrOutput) Elem() SecurityPolicyCloudArmorConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyCloudArmorConfig) SecurityPolicyCloudArmorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyCloudArmorConfig
+		return ret
+	}).(SecurityPolicyCloudArmorConfigOutput)
+}
+
+// If set to true, enables Cloud Armor Machine Learning.
+func (o SecurityPolicyCloudArmorConfigPtrOutput) EnableMl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyCloudArmorConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableMl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration options for Cloud Armor.
+type SecurityPolicyCloudArmorConfigResponse struct {
+	// If set to true, enables Cloud Armor Machine Learning.
+	EnableMl bool `pulumi:"enableMl"`
+}
+
+// Configuration options for Cloud Armor.
+type SecurityPolicyCloudArmorConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyCloudArmorConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyCloudArmorConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyCloudArmorConfigResponseOutput) ToSecurityPolicyCloudArmorConfigResponseOutput() SecurityPolicyCloudArmorConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyCloudArmorConfigResponseOutput) ToSecurityPolicyCloudArmorConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyCloudArmorConfigResponseOutput {
+	return o
+}
+
+// If set to true, enables Cloud Armor Machine Learning.
+func (o SecurityPolicyCloudArmorConfigResponseOutput) EnableMl() pulumi.BoolOutput {
+	return o.ApplyT(func(v SecurityPolicyCloudArmorConfigResponse) bool { return v.EnableMl }).(pulumi.BoolOutput)
+}
+
+type SecurityPolicyDdosProtectionConfig struct {
+	DdosProtection *SecurityPolicyDdosProtectionConfigDdosProtection `pulumi:"ddosProtection"`
+}
+
+// SecurityPolicyDdosProtectionConfigInput is an input type that accepts SecurityPolicyDdosProtectionConfigArgs and SecurityPolicyDdosProtectionConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyDdosProtectionConfigInput` via:
+//
+//	SecurityPolicyDdosProtectionConfigArgs{...}
+type SecurityPolicyDdosProtectionConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyDdosProtectionConfigOutput() SecurityPolicyDdosProtectionConfigOutput
+	ToSecurityPolicyDdosProtectionConfigOutputWithContext(context.Context) SecurityPolicyDdosProtectionConfigOutput
+}
+
+type SecurityPolicyDdosProtectionConfigArgs struct {
+	DdosProtection SecurityPolicyDdosProtectionConfigDdosProtectionPtrInput `pulumi:"ddosProtection"`
+}
+
+func (SecurityPolicyDdosProtectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyDdosProtectionConfigArgs) ToSecurityPolicyDdosProtectionConfigOutput() SecurityPolicyDdosProtectionConfigOutput {
+	return i.ToSecurityPolicyDdosProtectionConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyDdosProtectionConfigArgs) ToSecurityPolicyDdosProtectionConfigOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyDdosProtectionConfigOutput)
+}
+
+func (i SecurityPolicyDdosProtectionConfigArgs) ToSecurityPolicyDdosProtectionConfigPtrOutput() SecurityPolicyDdosProtectionConfigPtrOutput {
+	return i.ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyDdosProtectionConfigArgs) ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyDdosProtectionConfigOutput).ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyDdosProtectionConfigPtrInput is an input type that accepts SecurityPolicyDdosProtectionConfigArgs, SecurityPolicyDdosProtectionConfigPtr and SecurityPolicyDdosProtectionConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyDdosProtectionConfigPtrInput` via:
+//
+//	        SecurityPolicyDdosProtectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyDdosProtectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyDdosProtectionConfigPtrOutput() SecurityPolicyDdosProtectionConfigPtrOutput
+	ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(context.Context) SecurityPolicyDdosProtectionConfigPtrOutput
+}
+
+type securityPolicyDdosProtectionConfigPtrType SecurityPolicyDdosProtectionConfigArgs
+
+func SecurityPolicyDdosProtectionConfigPtr(v *SecurityPolicyDdosProtectionConfigArgs) SecurityPolicyDdosProtectionConfigPtrInput {
+	return (*securityPolicyDdosProtectionConfigPtrType)(v)
+}
+
+func (*securityPolicyDdosProtectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyDdosProtectionConfigPtrType) ToSecurityPolicyDdosProtectionConfigPtrOutput() SecurityPolicyDdosProtectionConfigPtrOutput {
+	return i.ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyDdosProtectionConfigPtrType) ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyDdosProtectionConfigPtrOutput)
+}
+
+type SecurityPolicyDdosProtectionConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyDdosProtectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyDdosProtectionConfigOutput) ToSecurityPolicyDdosProtectionConfigOutput() SecurityPolicyDdosProtectionConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigOutput) ToSecurityPolicyDdosProtectionConfigOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigOutput) ToSecurityPolicyDdosProtectionConfigPtrOutput() SecurityPolicyDdosProtectionConfigPtrOutput {
+	return o.ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyDdosProtectionConfigOutput) ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyDdosProtectionConfig) *SecurityPolicyDdosProtectionConfig {
+		return &v
+	}).(SecurityPolicyDdosProtectionConfigPtrOutput)
+}
+
+func (o SecurityPolicyDdosProtectionConfigOutput) DdosProtection() SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyDdosProtectionConfig) *SecurityPolicyDdosProtectionConfigDdosProtection {
+		return v.DdosProtection
+	}).(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput)
+}
+
+type SecurityPolicyDdosProtectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyDdosProtectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyDdosProtectionConfigPtrOutput) ToSecurityPolicyDdosProtectionConfigPtrOutput() SecurityPolicyDdosProtectionConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigPtrOutput) ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigPtrOutput) Elem() SecurityPolicyDdosProtectionConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyDdosProtectionConfig) SecurityPolicyDdosProtectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyDdosProtectionConfig
+		return ret
+	}).(SecurityPolicyDdosProtectionConfigOutput)
+}
+
+func (o SecurityPolicyDdosProtectionConfigPtrOutput) DdosProtection() SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyDdosProtectionConfig) *SecurityPolicyDdosProtectionConfigDdosProtection {
+		if v == nil {
+			return nil
+		}
+		return v.DdosProtection
+	}).(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput)
+}
+
+type SecurityPolicyDdosProtectionConfigResponse struct {
+	DdosProtection string `pulumi:"ddosProtection"`
+}
+
+type SecurityPolicyDdosProtectionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyDdosProtectionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyDdosProtectionConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyDdosProtectionConfigResponseOutput) ToSecurityPolicyDdosProtectionConfigResponseOutput() SecurityPolicyDdosProtectionConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigResponseOutput) ToSecurityPolicyDdosProtectionConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigResponseOutput) DdosProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyDdosProtectionConfigResponse) string { return v.DdosProtection }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRecaptchaOptionsConfig struct {
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	RedirectSiteKey *string `pulumi:"redirectSiteKey"`
+}
+
+// SecurityPolicyRecaptchaOptionsConfigInput is an input type that accepts SecurityPolicyRecaptchaOptionsConfigArgs and SecurityPolicyRecaptchaOptionsConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyRecaptchaOptionsConfigInput` via:
+//
+//	SecurityPolicyRecaptchaOptionsConfigArgs{...}
+type SecurityPolicyRecaptchaOptionsConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRecaptchaOptionsConfigOutput() SecurityPolicyRecaptchaOptionsConfigOutput
+	ToSecurityPolicyRecaptchaOptionsConfigOutputWithContext(context.Context) SecurityPolicyRecaptchaOptionsConfigOutput
+}
+
+type SecurityPolicyRecaptchaOptionsConfigArgs struct {
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	RedirectSiteKey pulumi.StringPtrInput `pulumi:"redirectSiteKey"`
+}
+
+func (SecurityPolicyRecaptchaOptionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigArgs) ToSecurityPolicyRecaptchaOptionsConfigOutput() SecurityPolicyRecaptchaOptionsConfigOutput {
+	return i.ToSecurityPolicyRecaptchaOptionsConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigArgs) ToSecurityPolicyRecaptchaOptionsConfigOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRecaptchaOptionsConfigOutput)
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigArgs) ToSecurityPolicyRecaptchaOptionsConfigPtrOutput() SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return i.ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigArgs) ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRecaptchaOptionsConfigOutput).ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRecaptchaOptionsConfigPtrInput is an input type that accepts SecurityPolicyRecaptchaOptionsConfigArgs, SecurityPolicyRecaptchaOptionsConfigPtr and SecurityPolicyRecaptchaOptionsConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRecaptchaOptionsConfigPtrInput` via:
+//
+//	        SecurityPolicyRecaptchaOptionsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRecaptchaOptionsConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRecaptchaOptionsConfigPtrOutput() SecurityPolicyRecaptchaOptionsConfigPtrOutput
+	ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(context.Context) SecurityPolicyRecaptchaOptionsConfigPtrOutput
+}
+
+type securityPolicyRecaptchaOptionsConfigPtrType SecurityPolicyRecaptchaOptionsConfigArgs
+
+func SecurityPolicyRecaptchaOptionsConfigPtr(v *SecurityPolicyRecaptchaOptionsConfigArgs) SecurityPolicyRecaptchaOptionsConfigPtrInput {
+	return (*securityPolicyRecaptchaOptionsConfigPtrType)(v)
+}
+
+func (*securityPolicyRecaptchaOptionsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyRecaptchaOptionsConfigPtrType) ToSecurityPolicyRecaptchaOptionsConfigPtrOutput() SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return i.ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRecaptchaOptionsConfigPtrType) ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRecaptchaOptionsConfigPtrOutput)
+}
+
+type SecurityPolicyRecaptchaOptionsConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRecaptchaOptionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOptionsConfigOutput() SecurityPolicyRecaptchaOptionsConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOptionsConfigOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOptionsConfigPtrOutput() SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return o.ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRecaptchaOptionsConfig) *SecurityPolicyRecaptchaOptionsConfig {
+		return &v
+	}).(SecurityPolicyRecaptchaOptionsConfigPtrOutput)
+}
+
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRecaptchaOptionsConfigOutput) RedirectSiteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfig) *string { return v.RedirectSiteKey }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRecaptchaOptionsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRecaptchaOptionsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) ToSecurityPolicyRecaptchaOptionsConfigPtrOutput() SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) Elem() SecurityPolicyRecaptchaOptionsConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyRecaptchaOptionsConfig) SecurityPolicyRecaptchaOptionsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRecaptchaOptionsConfig
+		return ret
+	}).(SecurityPolicyRecaptchaOptionsConfigOutput)
+}
+
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) RedirectSiteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRecaptchaOptionsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectSiteKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRecaptchaOptionsConfigResponse struct {
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	RedirectSiteKey string `pulumi:"redirectSiteKey"`
+}
+
+type SecurityPolicyRecaptchaOptionsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRecaptchaOptionsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyRecaptchaOptionsConfigResponseOutput() SecurityPolicyRecaptchaOptionsConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyRecaptchaOptionsConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigResponseOutput {
+	return o
+}
+
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) RedirectSiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfigResponse) string { return v.RedirectSiteKey }).(pulumi.StringOutput)
+}
+
+// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+type SecurityPolicyRule struct {
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	Action *string `pulumi:"action"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description *string `pulumi:"description"`
+	// The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
+	Direction *SecurityPolicyRuleDirection `pulumi:"direction"`
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
+	EnableLogging *bool `pulumi:"enableLogging"`
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	HeaderAction *SecurityPolicyRuleHttpHeaderAction `pulumi:"headerAction"`
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	Match *SecurityPolicyRuleMatcher `pulumi:"match"`
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+	NetworkMatch *SecurityPolicyRuleNetworkMatcher `pulumi:"networkMatch"`
+	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfig *SecurityPolicyRulePreconfiguredWafConfig `pulumi:"preconfiguredWafConfig"`
+	// If set to true, the specified action is not enforced.
+	Preview *bool `pulumi:"preview"`
+	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+	Priority *int `pulumi:"priority"`
+	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	RedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"redirectOptions"`
+	// This must be specified for redirect actions. Cannot be specified for any other actions.
+	RedirectTarget *string `pulumi:"redirectTarget"`
+	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
+	RuleNumber *string `pulumi:"ruleNumber"`
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
+	TargetResources []string `pulumi:"targetResources"`
+	// A list of service accounts indicating the sets of instances that are applied with this rule.
+	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+}
+
+// SecurityPolicyRuleInput is an input type that accepts SecurityPolicyRuleArgs and SecurityPolicyRuleOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleInput` via:
+//
+//	SecurityPolicyRuleArgs{...}
+type SecurityPolicyRuleInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleOutput() SecurityPolicyRuleOutput
+	ToSecurityPolicyRuleOutputWithContext(context.Context) SecurityPolicyRuleOutput
+}
+
+// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+type SecurityPolicyRuleArgs struct {
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
+	Direction SecurityPolicyRuleDirectionPtrInput `pulumi:"direction"`
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
+	EnableLogging pulumi.BoolPtrInput `pulumi:"enableLogging"`
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	HeaderAction SecurityPolicyRuleHttpHeaderActionPtrInput `pulumi:"headerAction"`
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	Match SecurityPolicyRuleMatcherPtrInput `pulumi:"match"`
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+	NetworkMatch SecurityPolicyRuleNetworkMatcherPtrInput `pulumi:"networkMatch"`
+	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfig SecurityPolicyRulePreconfiguredWafConfigPtrInput `pulumi:"preconfiguredWafConfig"`
+	// If set to true, the specified action is not enforced.
+	Preview pulumi.BoolPtrInput `pulumi:"preview"`
+	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput `pulumi:"rateLimitOptions"`
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"redirectOptions"`
+	// This must be specified for redirect actions. Cannot be specified for any other actions.
+	RedirectTarget pulumi.StringPtrInput `pulumi:"redirectTarget"`
+	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
+	RuleNumber pulumi.StringPtrInput `pulumi:"ruleNumber"`
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
+	TargetResources pulumi.StringArrayInput `pulumi:"targetResources"`
+	// A list of service accounts indicating the sets of instances that are applied with this rule.
+	TargetServiceAccounts pulumi.StringArrayInput `pulumi:"targetServiceAccounts"`
+}
+
+func (SecurityPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRule)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleArgs) ToSecurityPolicyRuleOutput() SecurityPolicyRuleOutput {
+	return i.ToSecurityPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleArgs) ToSecurityPolicyRuleOutputWithContext(ctx context.Context) SecurityPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleOutput)
+}
+
+// SecurityPolicyRuleArrayInput is an input type that accepts SecurityPolicyRuleArray and SecurityPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleArrayInput` via:
+//
+//	SecurityPolicyRuleArray{ SecurityPolicyRuleArgs{...} }
+type SecurityPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleArrayOutput() SecurityPolicyRuleArrayOutput
+	ToSecurityPolicyRuleArrayOutputWithContext(context.Context) SecurityPolicyRuleArrayOutput
+}
+
+type SecurityPolicyRuleArray []SecurityPolicyRuleInput
+
+func (SecurityPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRule)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleArray) ToSecurityPolicyRuleArrayOutput() SecurityPolicyRuleArrayOutput {
+	return i.ToSecurityPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleArray) ToSecurityPolicyRuleArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleArrayOutput)
+}
+
+// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+type SecurityPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRule)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutput() SecurityPolicyRuleOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutputWithContext(ctx context.Context) SecurityPolicyRuleOutput {
+	return o
+}
+
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+func (o SecurityPolicyRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o SecurityPolicyRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleOutput) Direction() SecurityPolicyRuleDirectionPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleDirection { return v.Direction }).(SecurityPolicyRuleDirectionPtrOutput)
+}
+
+// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleOutput) EnableLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *bool { return v.EnableLogging }).(pulumi.BoolPtrOutput)
+}
+
+// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRuleOutput) HeaderAction() SecurityPolicyRuleHttpHeaderActionPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleHttpHeaderAction { return v.HeaderAction }).(SecurityPolicyRuleHttpHeaderActionPtrOutput)
+}
+
+// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+func (o SecurityPolicyRuleOutput) Match() SecurityPolicyRuleMatcherPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleMatcher { return v.Match }).(SecurityPolicyRuleMatcherPtrOutput)
+}
+
+// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+func (o SecurityPolicyRuleOutput) NetworkMatch() SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleNetworkMatcher { return v.NetworkMatch }).(SecurityPolicyRuleNetworkMatcherPtrOutput)
+}
+
+// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+func (o SecurityPolicyRuleOutput) PreconfiguredWafConfig() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRulePreconfiguredWafConfig { return v.PreconfiguredWafConfig }).(SecurityPolicyRulePreconfiguredWafConfigPtrOutput)
+}
+
+// If set to true, the specified action is not enforced.
+func (o SecurityPolicyRuleOutput) Preview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *bool { return v.Preview }).(pulumi.BoolPtrOutput)
+}
+
+// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+func (o SecurityPolicyRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+func (o SecurityPolicyRuleOutput) RateLimitOptions() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRateLimitOptions { return v.RateLimitOptions }).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
+}
+
+// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRuleOutput) RedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRedirectOptions { return v.RedirectOptions }).(SecurityPolicyRuleRedirectOptionsPtrOutput)
+}
+
+// This must be specified for redirect actions. Cannot be specified for any other actions.
+func (o SecurityPolicyRuleOutput) RedirectTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.RedirectTarget }).(pulumi.StringPtrOutput)
+}
+
+// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
+func (o SecurityPolicyRuleOutput) RuleNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.RuleNumber }).(pulumi.StringPtrOutput)
+}
+
+// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleOutput) TargetResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) []string { return v.TargetResources }).(pulumi.StringArrayOutput)
+}
+
+// A list of service accounts indicating the sets of instances that are applied with this rule.
+func (o SecurityPolicyRuleOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) []string { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRule)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleArrayOutput) ToSecurityPolicyRuleArrayOutput() SecurityPolicyRuleArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleArrayOutput) ToSecurityPolicyRuleArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRule {
+		return vs[0].([]SecurityPolicyRule)[vs[1].(int)]
+	}).(SecurityPolicyRuleOutput)
+}
+
+type SecurityPolicyRuleHttpHeaderAction struct {
+	// The list of request headers to add or overwrite if they're already present.
+	RequestHeadersToAdds []SecurityPolicyRuleHttpHeaderActionHttpHeaderOption `pulumi:"requestHeadersToAdds"`
+}
+
+// SecurityPolicyRuleHttpHeaderActionInput is an input type that accepts SecurityPolicyRuleHttpHeaderActionArgs and SecurityPolicyRuleHttpHeaderActionOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleHttpHeaderActionInput` via:
+//
+//	SecurityPolicyRuleHttpHeaderActionArgs{...}
+type SecurityPolicyRuleHttpHeaderActionInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleHttpHeaderActionOutput() SecurityPolicyRuleHttpHeaderActionOutput
+	ToSecurityPolicyRuleHttpHeaderActionOutputWithContext(context.Context) SecurityPolicyRuleHttpHeaderActionOutput
+}
+
+type SecurityPolicyRuleHttpHeaderActionArgs struct {
+	// The list of request headers to add or overwrite if they're already present.
+	RequestHeadersToAdds SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayInput `pulumi:"requestHeadersToAdds"`
+}
+
+func (SecurityPolicyRuleHttpHeaderActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderAction)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleHttpHeaderActionArgs) ToSecurityPolicyRuleHttpHeaderActionOutput() SecurityPolicyRuleHttpHeaderActionOutput {
+	return i.ToSecurityPolicyRuleHttpHeaderActionOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleHttpHeaderActionArgs) ToSecurityPolicyRuleHttpHeaderActionOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleHttpHeaderActionOutput)
+}
+
+func (i SecurityPolicyRuleHttpHeaderActionArgs) ToSecurityPolicyRuleHttpHeaderActionPtrOutput() SecurityPolicyRuleHttpHeaderActionPtrOutput {
+	return i.ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleHttpHeaderActionArgs) ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleHttpHeaderActionOutput).ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleHttpHeaderActionPtrInput is an input type that accepts SecurityPolicyRuleHttpHeaderActionArgs, SecurityPolicyRuleHttpHeaderActionPtr and SecurityPolicyRuleHttpHeaderActionPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleHttpHeaderActionPtrInput` via:
+//
+//	        SecurityPolicyRuleHttpHeaderActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleHttpHeaderActionPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleHttpHeaderActionPtrOutput() SecurityPolicyRuleHttpHeaderActionPtrOutput
+	ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(context.Context) SecurityPolicyRuleHttpHeaderActionPtrOutput
+}
+
+type securityPolicyRuleHttpHeaderActionPtrType SecurityPolicyRuleHttpHeaderActionArgs
+
+func SecurityPolicyRuleHttpHeaderActionPtr(v *SecurityPolicyRuleHttpHeaderActionArgs) SecurityPolicyRuleHttpHeaderActionPtrInput {
+	return (*securityPolicyRuleHttpHeaderActionPtrType)(v)
+}
+
+func (*securityPolicyRuleHttpHeaderActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleHttpHeaderAction)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleHttpHeaderActionPtrType) ToSecurityPolicyRuleHttpHeaderActionPtrOutput() SecurityPolicyRuleHttpHeaderActionPtrOutput {
+	return i.ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleHttpHeaderActionPtrType) ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleHttpHeaderActionPtrOutput)
+}
+
+type SecurityPolicyRuleHttpHeaderActionOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleHttpHeaderActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderAction)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionOutput) ToSecurityPolicyRuleHttpHeaderActionOutput() SecurityPolicyRuleHttpHeaderActionOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionOutput) ToSecurityPolicyRuleHttpHeaderActionOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionOutput) ToSecurityPolicyRuleHttpHeaderActionPtrOutput() SecurityPolicyRuleHttpHeaderActionPtrOutput {
+	return o.ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionOutput) ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleHttpHeaderAction) *SecurityPolicyRuleHttpHeaderAction {
+		return &v
+	}).(SecurityPolicyRuleHttpHeaderActionPtrOutput)
+}
+
+// The list of request headers to add or overwrite if they're already present.
+func (o SecurityPolicyRuleHttpHeaderActionOutput) RequestHeadersToAdds() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderAction) []SecurityPolicyRuleHttpHeaderActionHttpHeaderOption {
+		return v.RequestHeadersToAdds
+	}).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput)
+}
+
+type SecurityPolicyRuleHttpHeaderActionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleHttpHeaderActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleHttpHeaderAction)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionPtrOutput) ToSecurityPolicyRuleHttpHeaderActionPtrOutput() SecurityPolicyRuleHttpHeaderActionPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionPtrOutput) ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionPtrOutput) Elem() SecurityPolicyRuleHttpHeaderActionOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleHttpHeaderAction) SecurityPolicyRuleHttpHeaderAction {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleHttpHeaderAction
+		return ret
+	}).(SecurityPolicyRuleHttpHeaderActionOutput)
+}
+
+// The list of request headers to add or overwrite if they're already present.
+func (o SecurityPolicyRuleHttpHeaderActionPtrOutput) RequestHeadersToAdds() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleHttpHeaderAction) []SecurityPolicyRuleHttpHeaderActionHttpHeaderOption {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToAdds
+	}).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput)
+}
+
+type SecurityPolicyRuleHttpHeaderActionHttpHeaderOption struct {
+	// The name of the header to set.
+	HeaderName *string `pulumi:"headerName"`
+	// The value to set the named header to.
+	HeaderValue *string `pulumi:"headerValue"`
+}
+
+// SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionInput is an input type that accepts SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs and SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionInput` via:
+//
+//	SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs{...}
+type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput
+	ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutputWithContext(context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput
+}
+
+type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs struct {
+	// The name of the header to set.
+	HeaderName pulumi.StringPtrInput `pulumi:"headerName"`
+	// The value to set the named header to.
+	HeaderValue pulumi.StringPtrInput `pulumi:"headerValue"`
+}
+
+func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionHttpHeaderOption)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput {
+	return i.ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput)
+}
+
+// SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayInput is an input type that accepts SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray and SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayInput` via:
+//
+//	SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray{ SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs{...} }
+type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput
+	ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutputWithContext(context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput
+}
+
+type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray []SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionInput
+
+func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleHttpHeaderActionHttpHeaderOption)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
+	return i.ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput)
+}
+
+type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionHttpHeaderOption)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput {
+	return o
+}
+
+// The name of the header to set.
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput) HeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderActionHttpHeaderOption) *string { return v.HeaderName }).(pulumi.StringPtrOutput)
+}
+
+// The value to set the named header to.
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput) HeaderValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderActionHttpHeaderOption) *string { return v.HeaderValue }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleHttpHeaderActionHttpHeaderOption)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleHttpHeaderActionHttpHeaderOption {
+		return vs[0].([]SecurityPolicyRuleHttpHeaderActionHttpHeaderOption)[vs[1].(int)]
+	}).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput)
+}
+
+type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse struct {
+	// The name of the header to set.
+	HeaderName string `pulumi:"headerName"`
+	// The value to set the named header to.
+	HeaderValue string `pulumi:"headerValue"`
+}
+
+type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput {
+	return o
+}
+
+// The name of the header to set.
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+// The value to set the named header to.
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse) string { return v.HeaderValue }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse {
+		return vs[0].([]SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse)[vs[1].(int)]
+	}).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput)
+}
+
+type SecurityPolicyRuleHttpHeaderActionResponse struct {
+	// The list of request headers to add or overwrite if they're already present.
+	RequestHeadersToAdds []SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse `pulumi:"requestHeadersToAdds"`
+}
+
+type SecurityPolicyRuleHttpHeaderActionResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleHttpHeaderActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionResponseOutput) ToSecurityPolicyRuleHttpHeaderActionResponseOutput() SecurityPolicyRuleHttpHeaderActionResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleHttpHeaderActionResponseOutput) ToSecurityPolicyRuleHttpHeaderActionResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionResponseOutput {
+	return o
+}
+
+// The list of request headers to add or overwrite if they're already present.
+func (o SecurityPolicyRuleHttpHeaderActionResponseOutput) RequestHeadersToAdds() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderActionResponse) []SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse {
+		return v.RequestHeadersToAdds
+	}).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput)
+}
+
+// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+type SecurityPolicyRuleMatcher struct {
+	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+	Config *SecurityPolicyRuleMatcherConfig `pulumi:"config"`
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
+	Expr *Expr `pulumi:"expr"`
+	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+	ExprOptions *SecurityPolicyRuleMatcherExprOptions `pulumi:"exprOptions"`
+	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
+	VersionedExpr *SecurityPolicyRuleMatcherVersionedExpr `pulumi:"versionedExpr"`
+}
+
+// SecurityPolicyRuleMatcherInput is an input type that accepts SecurityPolicyRuleMatcherArgs and SecurityPolicyRuleMatcherOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherInput` via:
+//
+//	SecurityPolicyRuleMatcherArgs{...}
+type SecurityPolicyRuleMatcherInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherOutput() SecurityPolicyRuleMatcherOutput
+	ToSecurityPolicyRuleMatcherOutputWithContext(context.Context) SecurityPolicyRuleMatcherOutput
+}
+
+// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+type SecurityPolicyRuleMatcherArgs struct {
+	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+	Config SecurityPolicyRuleMatcherConfigPtrInput `pulumi:"config"`
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
+	Expr ExprPtrInput `pulumi:"expr"`
+	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+	ExprOptions SecurityPolicyRuleMatcherExprOptionsPtrInput `pulumi:"exprOptions"`
+	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
+	VersionedExpr SecurityPolicyRuleMatcherVersionedExprPtrInput `pulumi:"versionedExpr"`
+}
+
+func (SecurityPolicyRuleMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcher)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleMatcherArgs) ToSecurityPolicyRuleMatcherOutput() SecurityPolicyRuleMatcherOutput {
+	return i.ToSecurityPolicyRuleMatcherOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherArgs) ToSecurityPolicyRuleMatcherOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherOutput)
+}
+
+func (i SecurityPolicyRuleMatcherArgs) ToSecurityPolicyRuleMatcherPtrOutput() SecurityPolicyRuleMatcherPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherArgs) ToSecurityPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherOutput).ToSecurityPolicyRuleMatcherPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleMatcherPtrInput is an input type that accepts SecurityPolicyRuleMatcherArgs, SecurityPolicyRuleMatcherPtr and SecurityPolicyRuleMatcherPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherPtrInput` via:
+//
+//	        SecurityPolicyRuleMatcherArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleMatcherPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherPtrOutput() SecurityPolicyRuleMatcherPtrOutput
+	ToSecurityPolicyRuleMatcherPtrOutputWithContext(context.Context) SecurityPolicyRuleMatcherPtrOutput
+}
+
+type securityPolicyRuleMatcherPtrType SecurityPolicyRuleMatcherArgs
+
+func SecurityPolicyRuleMatcherPtr(v *SecurityPolicyRuleMatcherArgs) SecurityPolicyRuleMatcherPtrInput {
+	return (*securityPolicyRuleMatcherPtrType)(v)
+}
+
+func (*securityPolicyRuleMatcherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcher)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleMatcherPtrType) ToSecurityPolicyRuleMatcherPtrOutput() SecurityPolicyRuleMatcherPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleMatcherPtrType) ToSecurityPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherPtrOutput)
+}
+
+// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+type SecurityPolicyRuleMatcherOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcher)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherOutput) ToSecurityPolicyRuleMatcherOutput() SecurityPolicyRuleMatcherOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherOutput) ToSecurityPolicyRuleMatcherOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherOutput) ToSecurityPolicyRuleMatcherPtrOutput() SecurityPolicyRuleMatcherPtrOutput {
+	return o.ToSecurityPolicyRuleMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleMatcherOutput) ToSecurityPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcher {
+		return &v
+	}).(SecurityPolicyRuleMatcherPtrOutput)
+}
+
+// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+func (o SecurityPolicyRuleMatcherOutput) Config() SecurityPolicyRuleMatcherConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherConfig { return v.Config }).(SecurityPolicyRuleMatcherConfigPtrOutput)
+}
+
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
+func (o SecurityPolicyRuleMatcherOutput) Expr() ExprPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *Expr { return v.Expr }).(ExprPtrOutput)
+}
+
+// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+func (o SecurityPolicyRuleMatcherOutput) ExprOptions() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherExprOptions { return v.ExprOptions }).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
+}
+
+// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
+func (o SecurityPolicyRuleMatcherOutput) VersionedExpr() SecurityPolicyRuleMatcherVersionedExprPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherVersionedExpr { return v.VersionedExpr }).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
+}
+
+type SecurityPolicyRuleMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcher)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherPtrOutput) ToSecurityPolicyRuleMatcherPtrOutput() SecurityPolicyRuleMatcherPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherPtrOutput) ToSecurityPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherPtrOutput) Elem() SecurityPolicyRuleMatcherOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) SecurityPolicyRuleMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleMatcher
+		return ret
+	}).(SecurityPolicyRuleMatcherOutput)
+}
+
+// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+func (o SecurityPolicyRuleMatcherPtrOutput) Config() SecurityPolicyRuleMatcherConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(SecurityPolicyRuleMatcherConfigPtrOutput)
+}
+
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
+func (o SecurityPolicyRuleMatcherPtrOutput) Expr() ExprPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *Expr {
+		if v == nil {
+			return nil
+		}
+		return v.Expr
+	}).(ExprPtrOutput)
+}
+
+// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+func (o SecurityPolicyRuleMatcherPtrOutput) ExprOptions() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherExprOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ExprOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
+}
+
+// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
+func (o SecurityPolicyRuleMatcherPtrOutput) VersionedExpr() SecurityPolicyRuleMatcherVersionedExprPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherVersionedExpr {
+		if v == nil {
+			return nil
+		}
+		return v.VersionedExpr
+	}).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
+}
+
+type SecurityPolicyRuleMatcherConfig struct {
+	// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
+	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+	DestPorts []SecurityPolicyRuleMatcherConfigDestinationPort `pulumi:"destPorts"`
+	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+	Layer4Configs []SecurityPolicyRuleMatcherConfigLayer4Config `pulumi:"layer4Configs"`
+	// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+}
+
+// SecurityPolicyRuleMatcherConfigInput is an input type that accepts SecurityPolicyRuleMatcherConfigArgs and SecurityPolicyRuleMatcherConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigInput` via:
+//
+//	SecurityPolicyRuleMatcherConfigArgs{...}
+type SecurityPolicyRuleMatcherConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherConfigOutput() SecurityPolicyRuleMatcherConfigOutput
+	ToSecurityPolicyRuleMatcherConfigOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigOutput
+}
+
+type SecurityPolicyRuleMatcherConfigArgs struct {
+	// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
+	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
+	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+	DestPorts SecurityPolicyRuleMatcherConfigDestinationPortArrayInput `pulumi:"destPorts"`
+	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+	Layer4Configs SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput `pulumi:"layer4Configs"`
+	// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
+	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+}
+
+func (SecurityPolicyRuleMatcherConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleMatcherConfigArgs) ToSecurityPolicyRuleMatcherConfigOutput() SecurityPolicyRuleMatcherConfigOutput {
+	return i.ToSecurityPolicyRuleMatcherConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherConfigArgs) ToSecurityPolicyRuleMatcherConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigOutput)
+}
+
+func (i SecurityPolicyRuleMatcherConfigArgs) ToSecurityPolicyRuleMatcherConfigPtrOutput() SecurityPolicyRuleMatcherConfigPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherConfigArgs) ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigOutput).ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleMatcherConfigPtrInput is an input type that accepts SecurityPolicyRuleMatcherConfigArgs, SecurityPolicyRuleMatcherConfigPtr and SecurityPolicyRuleMatcherConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigPtrInput` via:
+//
+//	        SecurityPolicyRuleMatcherConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleMatcherConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherConfigPtrOutput() SecurityPolicyRuleMatcherConfigPtrOutput
+	ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigPtrOutput
+}
+
+type securityPolicyRuleMatcherConfigPtrType SecurityPolicyRuleMatcherConfigArgs
+
+func SecurityPolicyRuleMatcherConfigPtr(v *SecurityPolicyRuleMatcherConfigArgs) SecurityPolicyRuleMatcherConfigPtrInput {
+	return (*securityPolicyRuleMatcherConfigPtrType)(v)
+}
+
+func (*securityPolicyRuleMatcherConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleMatcherConfigPtrType) ToSecurityPolicyRuleMatcherConfigPtrOutput() SecurityPolicyRuleMatcherConfigPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleMatcherConfigPtrType) ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigPtrOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigOutput) ToSecurityPolicyRuleMatcherConfigOutput() SecurityPolicyRuleMatcherConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigOutput) ToSecurityPolicyRuleMatcherConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigOutput) ToSecurityPolicyRuleMatcherConfigPtrOutput() SecurityPolicyRuleMatcherConfigPtrOutput {
+	return o.ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleMatcherConfigOutput) ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleMatcherConfig) *SecurityPolicyRuleMatcherConfig {
+		return &v
+	}).(SecurityPolicyRuleMatcherConfigPtrOutput)
+}
+
+// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfig) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigOutput) DestPorts() SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfig) []SecurityPolicyRuleMatcherConfigDestinationPort {
+		return v.DestPorts
+	}).(SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigOutput) Layer4Configs() SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfig) []SecurityPolicyRuleMatcherConfigLayer4Config {
+		return v.Layer4Configs
+	}).(SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput)
+}
+
+// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
+func (o SecurityPolicyRuleMatcherConfigOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfig) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigPtrOutput) ToSecurityPolicyRuleMatcherConfigPtrOutput() SecurityPolicyRuleMatcherConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigPtrOutput) ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigPtrOutput) Elem() SecurityPolicyRuleMatcherConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherConfig) SecurityPolicyRuleMatcherConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleMatcherConfig
+		return ret
+	}).(SecurityPolicyRuleMatcherConfigOutput)
+}
+
+// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigPtrOutput) DestPorts() SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherConfig) []SecurityPolicyRuleMatcherConfigDestinationPort {
+		if v == nil {
+			return nil
+		}
+		return v.DestPorts
+	}).(SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigPtrOutput) Layer4Configs() SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherConfig) []SecurityPolicyRuleMatcherConfigLayer4Config {
+		if v == nil {
+			return nil
+		}
+		return v.Layer4Configs
+	}).(SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput)
+}
+
+// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
+func (o SecurityPolicyRuleMatcherConfigPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigDestinationPort struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+	IpProtocol *string `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
+	Ports []string `pulumi:"ports"`
+}
+
+// SecurityPolicyRuleMatcherConfigDestinationPortInput is an input type that accepts SecurityPolicyRuleMatcherConfigDestinationPortArgs and SecurityPolicyRuleMatcherConfigDestinationPortOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigDestinationPortInput` via:
+//
+//	SecurityPolicyRuleMatcherConfigDestinationPortArgs{...}
+type SecurityPolicyRuleMatcherConfigDestinationPortInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherConfigDestinationPortOutput() SecurityPolicyRuleMatcherConfigDestinationPortOutput
+	ToSecurityPolicyRuleMatcherConfigDestinationPortOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigDestinationPortOutput
+}
+
+type SecurityPolicyRuleMatcherConfigDestinationPortArgs struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (SecurityPolicyRuleMatcherConfigDestinationPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPort)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleMatcherConfigDestinationPortArgs) ToSecurityPolicyRuleMatcherConfigDestinationPortOutput() SecurityPolicyRuleMatcherConfigDestinationPortOutput {
+	return i.ToSecurityPolicyRuleMatcherConfigDestinationPortOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherConfigDestinationPortArgs) ToSecurityPolicyRuleMatcherConfigDestinationPortOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigDestinationPortOutput)
+}
+
+// SecurityPolicyRuleMatcherConfigDestinationPortArrayInput is an input type that accepts SecurityPolicyRuleMatcherConfigDestinationPortArray and SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigDestinationPortArrayInput` via:
+//
+//	SecurityPolicyRuleMatcherConfigDestinationPortArray{ SecurityPolicyRuleMatcherConfigDestinationPortArgs{...} }
+type SecurityPolicyRuleMatcherConfigDestinationPortArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutput() SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput
+	ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput
+}
+
+type SecurityPolicyRuleMatcherConfigDestinationPortArray []SecurityPolicyRuleMatcherConfigDestinationPortInput
+
+func (SecurityPolicyRuleMatcherConfigDestinationPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigDestinationPort)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleMatcherConfigDestinationPortArray) ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutput() SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
+	return i.ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherConfigDestinationPortArray) ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigDestinationPortOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigDestinationPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPort)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigDestinationPortOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortOutput() SecurityPolicyRuleMatcherConfigDestinationPortOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigDestinationPortOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortOutput {
+	return o
+}
+
+// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+func (o SecurityPolicyRuleMatcherConfigDestinationPortOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigDestinationPort) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+}
+
+// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigDestinationPortOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigDestinationPort) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigDestinationPort)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutput() SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleMatcherConfigDestinationPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleMatcherConfigDestinationPort {
+		return vs[0].([]SecurityPolicyRuleMatcherConfigDestinationPort)[vs[1].(int)]
+	}).(SecurityPolicyRuleMatcherConfigDestinationPortOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigDestinationPortResponse struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+	IpProtocol string `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
+	Ports []string `pulumi:"ports"`
+}
+
+type SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPortResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortResponseOutput() SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput {
+	return o
+}
+
+// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigDestinationPortResponse) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigDestinationPortResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigDestinationPortResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput() SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleMatcherConfigDestinationPortResponse {
+		return vs[0].([]SecurityPolicyRuleMatcherConfigDestinationPortResponse)[vs[1].(int)]
+	}).(SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigLayer4Config struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+	IpProtocol *string `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
+	Ports []string `pulumi:"ports"`
+}
+
+// SecurityPolicyRuleMatcherConfigLayer4ConfigInput is an input type that accepts SecurityPolicyRuleMatcherConfigLayer4ConfigArgs and SecurityPolicyRuleMatcherConfigLayer4ConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigLayer4ConfigInput` via:
+//
+//	SecurityPolicyRuleMatcherConfigLayer4ConfigArgs{...}
+type SecurityPolicyRuleMatcherConfigLayer4ConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigOutput
+	ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigOutput
+}
+
+type SecurityPolicyRuleMatcherConfigLayer4ConfigArgs struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (SecurityPolicyRuleMatcherConfigLayer4ConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4Config)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleMatcherConfigLayer4ConfigArgs) ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigOutput {
+	return i.ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherConfigLayer4ConfigArgs) ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigLayer4ConfigOutput)
+}
+
+// SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput is an input type that accepts SecurityPolicyRuleMatcherConfigLayer4ConfigArray and SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput` via:
+//
+//	SecurityPolicyRuleMatcherConfigLayer4ConfigArray{ SecurityPolicyRuleMatcherConfigLayer4ConfigArgs{...} }
+type SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput
+	ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput
+}
+
+type SecurityPolicyRuleMatcherConfigLayer4ConfigArray []SecurityPolicyRuleMatcherConfigLayer4ConfigInput
+
+func (SecurityPolicyRuleMatcherConfigLayer4ConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigLayer4Config)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleMatcherConfigLayer4ConfigArray) ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
+	return i.ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherConfigLayer4ConfigArray) ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigLayer4ConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigLayer4ConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4Config)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigOutput {
+	return o
+}
+
+// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigLayer4Config) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+}
+
+// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigLayer4Config) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigLayer4Config)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleMatcherConfigLayer4ConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleMatcherConfigLayer4Config {
+		return vs[0].([]SecurityPolicyRuleMatcherConfigLayer4Config)[vs[1].(int)]
+	}).(SecurityPolicyRuleMatcherConfigLayer4ConfigOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigLayer4ConfigResponse struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+	IpProtocol string `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
+	Ports []string `pulumi:"ports"`
+}
+
+type SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput {
+	return o
+}
+
+// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigLayer4ConfigResponse) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigLayer4ConfigResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigLayer4ConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleMatcherConfigLayer4ConfigResponse {
+		return vs[0].([]SecurityPolicyRuleMatcherConfigLayer4ConfigResponse)[vs[1].(int)]
+	}).(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput)
+}
+
+type SecurityPolicyRuleMatcherConfigResponse struct {
+	// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
+	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+	DestPorts []SecurityPolicyRuleMatcherConfigDestinationPortResponse `pulumi:"destPorts"`
+	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+	Layer4Configs []SecurityPolicyRuleMatcherConfigLayer4ConfigResponse `pulumi:"layer4Configs"`
+	// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+}
+
+type SecurityPolicyRuleMatcherConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherConfigResponseOutput) ToSecurityPolicyRuleMatcherConfigResponseOutput() SecurityPolicyRuleMatcherConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherConfigResponseOutput) ToSecurityPolicyRuleMatcherConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigResponseOutput {
+	return o
+}
+
+// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigResponseOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigResponse) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigResponseOutput) DestPorts() SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigResponse) []SecurityPolicyRuleMatcherConfigDestinationPortResponse {
+		return v.DestPorts
+	}).(SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleMatcherConfigResponseOutput) Layer4Configs() SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigResponse) []SecurityPolicyRuleMatcherConfigLayer4ConfigResponse {
+		return v.Layer4Configs
+	}).(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput)
+}
+
+// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
+func (o SecurityPolicyRuleMatcherConfigResponseOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigResponse) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptions struct {
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+	RecaptchaOptions *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions `pulumi:"recaptchaOptions"`
+}
+
+// SecurityPolicyRuleMatcherExprOptionsInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsArgs and SecurityPolicyRuleMatcherExprOptionsOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsInput` via:
+//
+//	SecurityPolicyRuleMatcherExprOptionsArgs{...}
+type SecurityPolicyRuleMatcherExprOptionsInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput
+	ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsOutput
+}
+
+type SecurityPolicyRuleMatcherExprOptionsArgs struct {
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+	RecaptchaOptions SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput `pulumi:"recaptchaOptions"`
+}
+
+func (SecurityPolicyRuleMatcherExprOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsOutput)
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsOutput).ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleMatcherExprOptionsPtrInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsArgs, SecurityPolicyRuleMatcherExprOptionsPtr and SecurityPolicyRuleMatcherExprOptionsPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsPtrInput` via:
+//
+//	        SecurityPolicyRuleMatcherExprOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleMatcherExprOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput
+	ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput
+}
+
+type securityPolicyRuleMatcherExprOptionsPtrType SecurityPolicyRuleMatcherExprOptionsArgs
+
+func SecurityPolicyRuleMatcherExprOptionsPtr(v *SecurityPolicyRuleMatcherExprOptionsArgs) SecurityPolicyRuleMatcherExprOptionsPtrInput {
+	return (*securityPolicyRuleMatcherExprOptionsPtrType)(v)
+}
+
+func (*securityPolicyRuleMatcherExprOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleMatcherExprOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleMatcherExprOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptions {
+		return &v
+	}).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
+}
+
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
+		return v.RecaptchaOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) Elem() SecurityPolicyRuleMatcherExprOptionsOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptions) SecurityPolicyRuleMatcherExprOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleMatcherExprOptions
+		return ret
+	}).(SecurityPolicyRuleMatcherExprOptionsOutput)
+}
+
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
+		if v == nil {
+			return nil
+		}
+		return v.RecaptchaOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
+}
+
 type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions struct {
 	// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
 	ActionTokenSiteKeys []string `pulumi:"actionTokenSiteKeys"`
@@ -205,7 +2208,7 @@ func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) Sess
 }
 
 type SecurityPolicyRuleMatcherExprOptionsResponse struct {
-	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
 	RecaptchaOptions SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse `pulumi:"recaptchaOptions"`
 }
 
@@ -223,7 +2226,7 @@ func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) ToSecurityPolicyRule
 	return o
 }
 
-// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
 func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsResponse) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse {
 		return v.RecaptchaOptions
@@ -1356,7 +3359,7 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	BanThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction *string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
 	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
 	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig `pulumi:"enforceOnKeyConfigs"`
@@ -1390,7 +3393,7 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
 	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
 	EnforceOnKeyConfigs SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput `pulumi:"enforceOnKeyConfigs"`
@@ -1500,7 +3503,7 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringP
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ConformAction }).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		return v.EnforceOnKey
@@ -1599,7 +3602,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		if v == nil {
@@ -1672,7 +3675,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) RateLimitThreshold() Securi
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig struct {
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKeyType *SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType `pulumi:"enforceOnKeyType"`
 }
 
@@ -1690,7 +3693,7 @@ type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput interface {
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs struct {
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKeyType SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrInput `pulumi:"enforceOnKeyType"`
 }
 
@@ -1750,7 +3753,7 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKey
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKeyType() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig) *SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType {
 		return v.EnforceOnKeyType
@@ -1780,7 +3783,7 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) Index(i
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse struct {
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKeyType string `pulumi:"enforceOnKeyType"`
 }
 
@@ -1803,7 +3806,7 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) Enfo
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyType() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyType }).(pulumi.StringOutput)
 }
@@ -1835,7 +3838,7 @@ type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKey string `pulumi:"enforceOnKey"`
 	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
 	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse `pulumi:"enforceOnKeyConfigs"`
@@ -1882,7 +3885,7 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
 }
@@ -3787,6 +5790,8 @@ type ServiceAttachmentConnectedEndpointResponse struct {
 	ConsumerNetwork string `pulumi:"consumerNetwork"`
 	// The url of a connected endpoint.
 	Endpoint string `pulumi:"endpoint"`
+	// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+	PropagatedConnectionCount int `pulumi:"propagatedConnectionCount"`
 	// The PSC connection id of the connected endpoint.
 	PscConnectionId string `pulumi:"pscConnectionId"`
 	// The status of a connected endpoint to this service attachment.
@@ -3816,6 +5821,11 @@ func (o ServiceAttachmentConnectedEndpointResponseOutput) ConsumerNetwork() pulu
 // The url of a connected endpoint.
 func (o ServiceAttachmentConnectedEndpointResponseOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+func (o ServiceAttachmentConnectedEndpointResponseOutput) PropagatedConnectionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) int { return v.PropagatedConnectionCount }).(pulumi.IntOutput)
 }
 
 // The PSC connection id of the connected endpoint.
@@ -5229,6 +7239,30 @@ func (o ShieldedVmIntegrityPolicyResponseOutput) UpdateAutoLearnPolicy() pulumi.
 	return o.ApplyT(func(v ShieldedVmIntegrityPolicyResponse) bool { return v.UpdateAutoLearnPolicy }).(pulumi.BoolOutput)
 }
 
+type SnapshotResourceStatusResponse struct {
+	// [Output only] Scheduled deletion time of the snapshot. The snapshot will be deleted by the at any point within one hour after the deletion time.
+	ScheduledDeletionTime string `pulumi:"scheduledDeletionTime"`
+}
+
+type SnapshotResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (SnapshotResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotResourceStatusResponse)(nil)).Elem()
+}
+
+func (o SnapshotResourceStatusResponseOutput) ToSnapshotResourceStatusResponseOutput() SnapshotResourceStatusResponseOutput {
+	return o
+}
+
+func (o SnapshotResourceStatusResponseOutput) ToSnapshotResourceStatusResponseOutputWithContext(ctx context.Context) SnapshotResourceStatusResponseOutput {
+	return o
+}
+
+// [Output only] Scheduled deletion time of the snapshot. The snapshot will be deleted by the at any point within one hour after the deletion time.
+func (o SnapshotResourceStatusResponseOutput) ScheduledDeletionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotResourceStatusResponse) string { return v.ScheduledDeletionTime }).(pulumi.StringOutput)
+}
+
 type SourceDiskEncryptionKey struct {
 	// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
 	DiskEncryptionKey *CustomerEncryptionKey `pulumi:"diskEncryptionKey"`
@@ -6532,21 +8566,53 @@ func (o StatefulPolicyResponseOutput) PreservedState() StatefulPolicyPreservedSt
 
 // [Output Only] Contains output only fields.
 type StoragePoolResourceStatusResponse struct {
-	// Sum of all the disks' provisioned IOPS.
+	// DEPRECATED -- use "total_provisioned_disk_iops".
+	//
+	// Deprecated: DEPRECATED -- use "total_provisioned_disk_iops".
 	AggregateDiskProvisionedIops string `pulumi:"aggregateDiskProvisionedIops"`
-	// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
+	// DEPRECATED -- use "total provisioned disk size gb".
+	//
+	// Deprecated: DEPRECATED -- use "total provisioned disk size gb".
 	AggregateDiskSizeGb string `pulumi:"aggregateDiskSizeGb"`
+	// Number of disks used.
+	DiskCount string `pulumi:"diskCount"`
 	// Timestamp of the last successful resize in RFC3339 text format.
 	LastResizeTimestamp string `pulumi:"lastResizeTimestamp"`
-	// Maximum allowed aggregate disk size in gigabytes.
+	// DEPRECATED -- use "max provisioned disk size gb"
+	//
+	// Deprecated: DEPRECATED -- use "max provisioned disk size gb"
 	MaxAggregateDiskSizeGb string `pulumi:"maxAggregateDiskSizeGb"`
-	// Number of disks used.
+	// Maximum allowed aggregate disk size in gigabytes.
+	MaxTotalProvisionedDiskCapacityGb string `pulumi:"maxTotalProvisionedDiskCapacityGb"`
+	// DEPRECATED -- use "disk count".
+	//
+	// Deprecated: DEPRECATED -- use "disk count".
 	NumberOfDisks string `pulumi:"numberOfDisks"`
-	// Space used by data stored in disks within the storage pool (in bytes).
-	UsedBytes string `pulumi:"usedBytes"`
-	// Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
-	UsedReducedBytes string `pulumi:"usedReducedBytes"`
+	// Space used by data stored in disks within the storage pool (in bytes). This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+	PoolUsedCapacityBytes string `pulumi:"poolUsedCapacityBytes"`
+	// Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity.
+	PoolUsedIops string `pulumi:"poolUsedIops"`
 	// Sum of all the disks' provisioned throughput in MB/s.
+	PoolUsedThroughput string `pulumi:"poolUsedThroughput"`
+	// Amount of data written into the pool, before it is compacted.
+	PoolUserWrittenBytes string `pulumi:"poolUserWrittenBytes"`
+	// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
+	TotalProvisionedDiskCapacityGb string `pulumi:"totalProvisionedDiskCapacityGb"`
+	// Sum of all the disks' provisioned IOPS.
+	TotalProvisionedDiskIops string `pulumi:"totalProvisionedDiskIops"`
+	// Sum of all the disks' provisioned throughput in MB/s, minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+	TotalProvisionedDiskThroughput string `pulumi:"totalProvisionedDiskThroughput"`
+	// DEPRECATED -- use "pool used capacity".
+	//
+	// Deprecated: DEPRECATED -- use "pool used capacity".
+	UsedBytes string `pulumi:"usedBytes"`
+	// DEPRECATED -- do not use, will be removed.
+	//
+	// Deprecated: DEPRECATED -- do not use, will be removed.
+	UsedReducedBytes string `pulumi:"usedReducedBytes"`
+	// DEPRECATED -- use "pool used throughput".
+	//
+	// Deprecated: DEPRECATED -- use "pool used throughput".
 	UsedThroughput string `pulumi:"usedThroughput"`
 }
 
@@ -6565,14 +8631,23 @@ func (o StoragePoolResourceStatusResponseOutput) ToStoragePoolResourceStatusResp
 	return o
 }
 
-// Sum of all the disks' provisioned IOPS.
+// DEPRECATED -- use "total_provisioned_disk_iops".
+//
+// Deprecated: DEPRECATED -- use "total_provisioned_disk_iops".
 func (o StoragePoolResourceStatusResponseOutput) AggregateDiskProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.AggregateDiskProvisionedIops }).(pulumi.StringOutput)
 }
 
-// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
+// DEPRECATED -- use "total provisioned disk size gb".
+//
+// Deprecated: DEPRECATED -- use "total provisioned disk size gb".
 func (o StoragePoolResourceStatusResponseOutput) AggregateDiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.AggregateDiskSizeGb }).(pulumi.StringOutput)
+}
+
+// Number of disks used.
+func (o StoragePoolResourceStatusResponseOutput) DiskCount() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.DiskCount }).(pulumi.StringOutput)
 }
 
 // Timestamp of the last successful resize in RFC3339 text format.
@@ -6580,27 +8655,77 @@ func (o StoragePoolResourceStatusResponseOutput) LastResizeTimestamp() pulumi.St
 	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.LastResizeTimestamp }).(pulumi.StringOutput)
 }
 
-// Maximum allowed aggregate disk size in gigabytes.
+// DEPRECATED -- use "max provisioned disk size gb"
+//
+// Deprecated: DEPRECATED -- use "max provisioned disk size gb"
 func (o StoragePoolResourceStatusResponseOutput) MaxAggregateDiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.MaxAggregateDiskSizeGb }).(pulumi.StringOutput)
 }
 
-// Number of disks used.
+// Maximum allowed aggregate disk size in gigabytes.
+func (o StoragePoolResourceStatusResponseOutput) MaxTotalProvisionedDiskCapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.MaxTotalProvisionedDiskCapacityGb }).(pulumi.StringOutput)
+}
+
+// DEPRECATED -- use "disk count".
+//
+// Deprecated: DEPRECATED -- use "disk count".
 func (o StoragePoolResourceStatusResponseOutput) NumberOfDisks() pulumi.StringOutput {
 	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.NumberOfDisks }).(pulumi.StringOutput)
 }
 
-// Space used by data stored in disks within the storage pool (in bytes).
+// Space used by data stored in disks within the storage pool (in bytes). This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+func (o StoragePoolResourceStatusResponseOutput) PoolUsedCapacityBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.PoolUsedCapacityBytes }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity.
+func (o StoragePoolResourceStatusResponseOutput) PoolUsedIops() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.PoolUsedIops }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned throughput in MB/s.
+func (o StoragePoolResourceStatusResponseOutput) PoolUsedThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.PoolUsedThroughput }).(pulumi.StringOutput)
+}
+
+// Amount of data written into the pool, before it is compacted.
+func (o StoragePoolResourceStatusResponseOutput) PoolUserWrittenBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.PoolUserWrittenBytes }).(pulumi.StringOutput)
+}
+
+// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
+func (o StoragePoolResourceStatusResponseOutput) TotalProvisionedDiskCapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.TotalProvisionedDiskCapacityGb }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned IOPS.
+func (o StoragePoolResourceStatusResponseOutput) TotalProvisionedDiskIops() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.TotalProvisionedDiskIops }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned throughput in MB/s, minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+func (o StoragePoolResourceStatusResponseOutput) TotalProvisionedDiskThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.TotalProvisionedDiskThroughput }).(pulumi.StringOutput)
+}
+
+// DEPRECATED -- use "pool used capacity".
+//
+// Deprecated: DEPRECATED -- use "pool used capacity".
 func (o StoragePoolResourceStatusResponseOutput) UsedBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.UsedBytes }).(pulumi.StringOutput)
 }
 
-// Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
+// DEPRECATED -- do not use, will be removed.
+//
+// Deprecated: DEPRECATED -- do not use, will be removed.
 func (o StoragePoolResourceStatusResponseOutput) UsedReducedBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.UsedReducedBytes }).(pulumi.StringOutput)
 }
 
-// Sum of all the disks' provisioned throughput in MB/s.
+// DEPRECATED -- use "pool used throughput".
+//
+// Deprecated: DEPRECATED -- use "pool used throughput".
 func (o StoragePoolResourceStatusResponseOutput) UsedThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.UsedThroughput }).(pulumi.StringOutput)
 }
@@ -7270,7 +9395,7 @@ type TCPHealthCheck struct {
 	Port *int `pulumi:"port"`
 	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *TCPHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *TCPHealthCheckProxyHeader `pulumi:"proxyHeader"`
@@ -7296,7 +9421,7 @@ type TCPHealthCheckArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification TCPHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader TCPHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
@@ -7393,7 +9518,7 @@ func (o TCPHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o TCPHealthCheckOutput) PortSpecification() TCPHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *TCPHealthCheckPortSpecification { return v.PortSpecification }).(TCPHealthCheckPortSpecificationPtrOutput)
 }
@@ -7457,7 +9582,7 @@ func (o TCPHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o TCPHealthCheckPtrOutput) PortSpecification() TCPHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *TCPHealthCheckPortSpecification {
 		if v == nil {
@@ -7502,7 +9627,7 @@ type TCPHealthCheckResponse struct {
 	Port int `pulumi:"port"`
 	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
@@ -7536,7 +9661,7 @@ func (o TCPHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o TCPHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -9939,6 +12064,28 @@ func (o WeightedBackendServiceResponseArrayOutput) Index(i pulumi.IntInput) Weig
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyCloudArmorConfigInput)(nil)).Elem(), SecurityPolicyCloudArmorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyCloudArmorConfigPtrInput)(nil)).Elem(), SecurityPolicyCloudArmorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyDdosProtectionConfigInput)(nil)).Elem(), SecurityPolicyDdosProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyDdosProtectionConfigPtrInput)(nil)).Elem(), SecurityPolicyDdosProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleInput)(nil)).Elem(), SecurityPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleArrayInput)(nil)).Elem(), SecurityPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionInput)(nil)).Elem(), SecurityPolicyRuleHttpHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionPtrInput)(nil)).Elem(), SecurityPolicyRuleHttpHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionInput)(nil)).Elem(), SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayInput)(nil)).Elem(), SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherInput)(nil)).Elem(), SecurityPolicyRuleMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPortInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigDestinationPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPortArrayInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigDestinationPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherArgs{})
@@ -10027,6 +12174,41 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceArrayInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceInput)(nil)).Elem(), WeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceArrayInput)(nil)).Elem(), WeightedBackendServiceArray{})
+	pulumi.RegisterOutputType(SecurityPolicyAssociationResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAssociationResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyCloudArmorConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyCloudArmorConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyCloudArmorConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigDestinationPortOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput{})
@@ -10109,6 +12291,7 @@ func init() {
 	pulumi.RegisterOutputType(ShieldedVmIntegrityPolicyOutput{})
 	pulumi.RegisterOutputType(ShieldedVmIntegrityPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ShieldedVmIntegrityPolicyResponseOutput{})
+	pulumi.RegisterOutputType(SnapshotResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(SourceDiskEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(SourceDiskEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(SourceDiskEncryptionKeyResponseOutput{})

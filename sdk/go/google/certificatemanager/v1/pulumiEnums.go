@@ -539,6 +539,183 @@ func (in *certificateScopePtr) ToOutput(ctx context.Context) pulumix.Output[*Cer
 	}
 }
 
+// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+type DnsAuthorizationType string
+
+const (
+	// Type is unspecified.
+	DnsAuthorizationTypeTypeUnspecified = DnsAuthorizationType("TYPE_UNSPECIFIED")
+	// FIXED_RECORD DNS authorization uses DNS-01 validation method.
+	DnsAuthorizationTypeFixedRecord = DnsAuthorizationType("FIXED_RECORD")
+	// PER_PROJECT_RECORD DNS authorization allows for independent management of Google-managed certificates with DNS authorization across multiple projects.
+	DnsAuthorizationTypePerProjectRecord = DnsAuthorizationType("PER_PROJECT_RECORD")
+)
+
+func (DnsAuthorizationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsAuthorizationType)(nil)).Elem()
+}
+
+func (e DnsAuthorizationType) ToDnsAuthorizationTypeOutput() DnsAuthorizationTypeOutput {
+	return pulumi.ToOutput(e).(DnsAuthorizationTypeOutput)
+}
+
+func (e DnsAuthorizationType) ToDnsAuthorizationTypeOutputWithContext(ctx context.Context) DnsAuthorizationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DnsAuthorizationTypeOutput)
+}
+
+func (e DnsAuthorizationType) ToDnsAuthorizationTypePtrOutput() DnsAuthorizationTypePtrOutput {
+	return e.ToDnsAuthorizationTypePtrOutputWithContext(context.Background())
+}
+
+func (e DnsAuthorizationType) ToDnsAuthorizationTypePtrOutputWithContext(ctx context.Context) DnsAuthorizationTypePtrOutput {
+	return DnsAuthorizationType(e).ToDnsAuthorizationTypeOutputWithContext(ctx).ToDnsAuthorizationTypePtrOutputWithContext(ctx)
+}
+
+func (e DnsAuthorizationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DnsAuthorizationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DnsAuthorizationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DnsAuthorizationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DnsAuthorizationTypeOutput struct{ *pulumi.OutputState }
+
+func (DnsAuthorizationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsAuthorizationType)(nil)).Elem()
+}
+
+func (o DnsAuthorizationTypeOutput) ToDnsAuthorizationTypeOutput() DnsAuthorizationTypeOutput {
+	return o
+}
+
+func (o DnsAuthorizationTypeOutput) ToDnsAuthorizationTypeOutputWithContext(ctx context.Context) DnsAuthorizationTypeOutput {
+	return o
+}
+
+func (o DnsAuthorizationTypeOutput) ToDnsAuthorizationTypePtrOutput() DnsAuthorizationTypePtrOutput {
+	return o.ToDnsAuthorizationTypePtrOutputWithContext(context.Background())
+}
+
+func (o DnsAuthorizationTypeOutput) ToDnsAuthorizationTypePtrOutputWithContext(ctx context.Context) DnsAuthorizationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsAuthorizationType) *DnsAuthorizationType {
+		return &v
+	}).(DnsAuthorizationTypePtrOutput)
+}
+
+func (o DnsAuthorizationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DnsAuthorizationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DnsAuthorizationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DnsAuthorizationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DnsAuthorizationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DnsAuthorizationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DnsAuthorizationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DnsAuthorizationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsAuthorizationType)(nil)).Elem()
+}
+
+func (o DnsAuthorizationTypePtrOutput) ToDnsAuthorizationTypePtrOutput() DnsAuthorizationTypePtrOutput {
+	return o
+}
+
+func (o DnsAuthorizationTypePtrOutput) ToDnsAuthorizationTypePtrOutputWithContext(ctx context.Context) DnsAuthorizationTypePtrOutput {
+	return o
+}
+
+func (o DnsAuthorizationTypePtrOutput) Elem() DnsAuthorizationTypeOutput {
+	return o.ApplyT(func(v *DnsAuthorizationType) DnsAuthorizationType {
+		if v != nil {
+			return *v
+		}
+		var ret DnsAuthorizationType
+		return ret
+	}).(DnsAuthorizationTypeOutput)
+}
+
+func (o DnsAuthorizationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DnsAuthorizationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DnsAuthorizationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DnsAuthorizationTypeInput is an input type that accepts values of the DnsAuthorizationType enum
+// A concrete instance of `DnsAuthorizationTypeInput` can be one of the following:
+//
+//	DnsAuthorizationTypeTypeUnspecified
+//	DnsAuthorizationTypeFixedRecord
+//	DnsAuthorizationTypePerProjectRecord
+type DnsAuthorizationTypeInput interface {
+	pulumi.Input
+
+	ToDnsAuthorizationTypeOutput() DnsAuthorizationTypeOutput
+	ToDnsAuthorizationTypeOutputWithContext(context.Context) DnsAuthorizationTypeOutput
+}
+
+var dnsAuthorizationTypePtrType = reflect.TypeOf((**DnsAuthorizationType)(nil)).Elem()
+
+type DnsAuthorizationTypePtrInput interface {
+	pulumi.Input
+
+	ToDnsAuthorizationTypePtrOutput() DnsAuthorizationTypePtrOutput
+	ToDnsAuthorizationTypePtrOutputWithContext(context.Context) DnsAuthorizationTypePtrOutput
+}
+
+type dnsAuthorizationTypePtr string
+
+func DnsAuthorizationTypePtr(v string) DnsAuthorizationTypePtrInput {
+	return (*dnsAuthorizationTypePtr)(&v)
+}
+
+func (*dnsAuthorizationTypePtr) ElementType() reflect.Type {
+	return dnsAuthorizationTypePtrType
+}
+
+func (in *dnsAuthorizationTypePtr) ToDnsAuthorizationTypePtrOutput() DnsAuthorizationTypePtrOutput {
+	return pulumi.ToOutput(in).(DnsAuthorizationTypePtrOutput)
+}
+
+func (in *dnsAuthorizationTypePtr) ToDnsAuthorizationTypePtrOutputWithContext(ctx context.Context) DnsAuthorizationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DnsAuthorizationTypePtrOutput)
+}
+
+func (in *dnsAuthorizationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DnsAuthorizationType] {
+	return pulumix.Output[*DnsAuthorizationType]{
+		OutputState: in.ToDnsAuthorizationTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigKeyAlgorithmInput)(nil)).Elem(), CertificateIssuanceConfigKeyAlgorithm("KEY_ALGORITHM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigKeyAlgorithmPtrInput)(nil)).Elem(), CertificateIssuanceConfigKeyAlgorithm("KEY_ALGORITHM_UNSPECIFIED"))
@@ -546,10 +723,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapEntryMatcherPtrInput)(nil)).Elem(), CertificateMapEntryMatcher("MATCHER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateScopeInput)(nil)).Elem(), CertificateScope("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateScopePtrInput)(nil)).Elem(), CertificateScope("DEFAULT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsAuthorizationTypeInput)(nil)).Elem(), DnsAuthorizationType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsAuthorizationTypePtrInput)(nil)).Elem(), DnsAuthorizationType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(CertificateIssuanceConfigKeyAlgorithmOutput{})
 	pulumi.RegisterOutputType(CertificateIssuanceConfigKeyAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(CertificateMapEntryMatcherOutput{})
 	pulumi.RegisterOutputType(CertificateMapEntryMatcherPtrOutput{})
 	pulumi.RegisterOutputType(CertificateScopeOutput{})
 	pulumi.RegisterOutputType(CertificateScopePtrOutput{})
+	pulumi.RegisterOutputType(DnsAuthorizationTypeOutput{})
+	pulumi.RegisterOutputType(DnsAuthorizationTypePtrOutput{})
 }

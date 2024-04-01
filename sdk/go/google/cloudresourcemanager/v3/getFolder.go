@@ -41,6 +41,8 @@ type LookupFolderResult struct {
 	Parent string `pulumi:"parent"`
 	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
 	State string `pulumi:"state"`
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags map[string]string `pulumi:"tags"`
 	// Timestamp when the folder was last modified.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -113,6 +115,11 @@ func (o LookupFolderResultOutput) Parent() pulumi.StringOutput {
 // The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
 func (o LookupFolderResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFolderResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+func (o LookupFolderResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFolderResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Timestamp when the folder was last modified.

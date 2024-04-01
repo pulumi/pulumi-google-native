@@ -43,6 +43,8 @@ type LookupFirewallPolicyResult struct {
 	Kind string `pulumi:"kind"`
 	// Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
 	Name string `pulumi:"name"`
+	// A list of packet mirroring rules that belong to this policy.
+	PacketMirroringRules []FirewallPolicyRuleResponse `pulumi:"packetMirroringRules"`
 	// The parent of the firewall policy. This field is not applicable to network firewall policies.
 	Parent string `pulumi:"parent"`
 	// URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -131,6 +133,11 @@ func (o LookupFirewallPolicyResultOutput) Kind() pulumi.StringOutput {
 // Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
 func (o LookupFirewallPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of packet mirroring rules that belong to this policy.
+func (o LookupFirewallPolicyResultOutput) PacketMirroringRules() FirewallPolicyRuleResponseArrayOutput {
+	return o.ApplyT(func(v LookupFirewallPolicyResult) []FirewallPolicyRuleResponse { return v.PacketMirroringRules }).(FirewallPolicyRuleResponseArrayOutput)
 }
 
 // The parent of the firewall policy. This field is not applicable to network firewall policies.

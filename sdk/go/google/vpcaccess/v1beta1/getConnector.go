@@ -31,8 +31,12 @@ type LookupConnectorArgs struct {
 type LookupConnectorResult struct {
 	// List of projects using the connector.
 	ConnectedProjects []string `pulumi:"connectedProjects"`
+	// The creation time of the connector.
+	CreateTime string `pulumi:"createTime"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The last restart time of the connector.
+	LastRestartTime string `pulumi:"lastRestartTime"`
 	// Machine type of VM Instance underlying connector. Default is e2-micro
 	MachineType string `pulumi:"machineType"`
 	// Maximum value of instances in autoscaling group underlying the connector.
@@ -95,9 +99,19 @@ func (o LookupConnectorResultOutput) ConnectedProjects() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v LookupConnectorResult) []string { return v.ConnectedProjects }).(pulumi.StringArrayOutput)
 }
 
+// The creation time of the connector.
+func (o LookupConnectorResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 func (o LookupConnectorResultOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The last restart time of the connector.
+func (o LookupConnectorResultOutput) LastRestartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.LastRestartTime }).(pulumi.StringOutput)
 }
 
 // Machine type of VM Instance underlying connector. Default is e2-micro

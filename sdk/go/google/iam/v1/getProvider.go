@@ -52,6 +52,8 @@ type LookupProviderResult struct {
 	Saml SamlResponse `pulumi:"saml"`
 	// The state of the provider.
 	State string `pulumi:"state"`
+	// An X.509-type identity provider.
+	X509 X509Response `pulumi:"x509"`
 }
 
 func LookupProviderOutput(ctx *pulumi.Context, args LookupProviderOutputArgs, opts ...pulumi.InvokeOption) LookupProviderResultOutput {
@@ -145,6 +147,11 @@ func (o LookupProviderResultOutput) Saml() SamlResponseOutput {
 // The state of the provider.
 func (o LookupProviderResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// An X.509-type identity provider.
+func (o LookupProviderResultOutput) X509() X509ResponseOutput {
+	return o.ApplyT(func(v LookupProviderResult) X509Response { return v.X509 }).(X509ResponseOutput)
 }
 
 func init() {

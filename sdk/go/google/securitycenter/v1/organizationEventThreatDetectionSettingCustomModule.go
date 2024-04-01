@@ -12,11 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an Event Threat Detection custom module.
+// Creates a resident Event Threat Detection custom module at the scope of the given Resource Manager parent, and also creates inherited custom modules for all descendants of the given parent. These modules are enabled by default.
 // Auto-naming is currently not supported for this resource.
 type OrganizationEventThreatDetectionSettingCustomModule struct {
 	pulumi.CustomResourceState
 
+	// The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.
+	AncestorModule pulumi.StringOutput `pulumi:"ancestorModule"`
 	// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
 	Config pulumi.StringMapOutput `pulumi:"config"`
 	// The description for the module.
@@ -150,6 +152,13 @@ func (o OrganizationEventThreatDetectionSettingCustomModuleOutput) ToOrganizatio
 
 func (o OrganizationEventThreatDetectionSettingCustomModuleOutput) ToOrganizationEventThreatDetectionSettingCustomModuleOutputWithContext(ctx context.Context) OrganizationEventThreatDetectionSettingCustomModuleOutput {
 	return o
+}
+
+// The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.
+func (o OrganizationEventThreatDetectionSettingCustomModuleOutput) AncestorModule() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationEventThreatDetectionSettingCustomModule) pulumi.StringOutput {
+		return v.AncestorModule
+	}).(pulumi.StringOutput)
 }
 
 // Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.

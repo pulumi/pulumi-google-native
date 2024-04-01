@@ -25,6 +25,8 @@ type TemplatesVersion struct {
 	DatabasePersistencePolicy pulumi.StringOutput `pulumi:"databasePersistencePolicy"`
 	// Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. True if variable masking feature should be turned on for generated workflows
+	EnableVariableMasking pulumi.BoolOutput `pulumi:"enableVariableMasking"`
 	// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
 	ErrorCatcherConfigs   GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput `pulumi:"errorCatcherConfigs"`
 	IntegrationtemplateId pulumi.StringOutput                                                 `pulumi:"integrationtemplateId"`
@@ -112,6 +114,8 @@ type templatesVersionArgs struct {
 	DatabasePersistencePolicy *TemplatesVersionDatabasePersistencePolicy `pulumi:"databasePersistencePolicy"`
 	// Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
 	Description *string `pulumi:"description"`
+	// Optional. True if variable masking feature should be turned on for generated workflows
+	EnableVariableMasking *bool `pulumi:"enableVariableMasking"`
 	// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
 	ErrorCatcherConfigs   []GoogleCloudIntegrationsV1alphaErrorCatcherConfig `pulumi:"errorCatcherConfigs"`
 	IntegrationtemplateId string                                             `pulumi:"integrationtemplateId"`
@@ -140,6 +144,8 @@ type TemplatesVersionArgs struct {
 	DatabasePersistencePolicy TemplatesVersionDatabasePersistencePolicyPtrInput
 	// Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
 	Description pulumi.StringPtrInput
+	// Optional. True if variable masking feature should be turned on for generated workflows
+	EnableVariableMasking pulumi.BoolPtrInput
 	// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
 	ErrorCatcherConfigs   GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput
 	IntegrationtemplateId pulumi.StringInput
@@ -212,6 +218,11 @@ func (o TemplatesVersionOutput) DatabasePersistencePolicy() pulumi.StringOutput 
 // Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
 func (o TemplatesVersionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *TemplatesVersion) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. True if variable masking feature should be turned on for generated workflows
+func (o TemplatesVersionOutput) EnableVariableMasking() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TemplatesVersion) pulumi.BoolOutput { return v.EnableVariableMasking }).(pulumi.BoolOutput)
 }
 
 // Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.

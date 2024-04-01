@@ -1707,7 +1707,7 @@ func (in *metadataOptionsTemporaryHoldPtr) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
 type MetadataOptionsTimeCreated string
 
 const (
@@ -1715,7 +1715,7 @@ const (
 	MetadataOptionsTimeCreatedTimeCreatedUnspecified = MetadataOptionsTimeCreated("TIME_CREATED_UNSPECIFIED")
 	// Do not preserve the `timeCreated` metadata from the source object.
 	MetadataOptionsTimeCreatedTimeCreatedSkip = MetadataOptionsTimeCreated("TIME_CREATED_SKIP")
-	// Preserves the source object's `timeCreated` metadata in the `customTime` field in the destination object. Note that any value stored in the source object's `customTime` field will not be propagated to the destination object.
+	// Preserves the source object's `timeCreated` or `lastModified` metadata in the `customTime` field in the destination object. Note that any value stored in the source object's `customTime` field will not be propagated to the destination object.
 	MetadataOptionsTimeCreatedTimeCreatedPreserveAsCustomTime = MetadataOptionsTimeCreated("TIME_CREATED_PRESERVE_AS_CUSTOM_TIME")
 )
 

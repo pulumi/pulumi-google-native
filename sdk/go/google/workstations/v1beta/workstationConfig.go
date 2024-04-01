@@ -28,7 +28,7 @@ type WorkstationConfig struct {
 	Degraded pulumi.BoolOutput `pulumi:"degraded"`
 	// Time when this workstation configuration was soft-deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
 	DisableTcpConnections pulumi.BoolOutput `pulumi:"disableTcpConnections"`
 	// Optional. Human-readable name for this workstation configuration.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -126,7 +126,7 @@ type workstationConfigArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Optional. Container that runs upon startup for each workstation using this workstation configuration.
 	Container *Container `pulumi:"container"`
-	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
 	DisableTcpConnections *bool `pulumi:"disableTcpConnections"`
 	// Optional. Human-readable name for this workstation configuration.
 	DisplayName *string `pulumi:"displayName"`
@@ -167,7 +167,7 @@ type WorkstationConfigArgs struct {
 	Annotations pulumi.StringMapInput
 	// Optional. Container that runs upon startup for each workstation using this workstation configuration.
 	Container ContainerPtrInput
-	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
 	DisableTcpConnections pulumi.BoolPtrInput
 	// Optional. Human-readable name for this workstation configuration.
 	DisplayName pulumi.StringPtrInput
@@ -269,7 +269,7 @@ func (o WorkstationConfigOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
 func (o WorkstationConfigOutput) DisableTcpConnections() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.DisableTcpConnections }).(pulumi.BoolOutput)
 }

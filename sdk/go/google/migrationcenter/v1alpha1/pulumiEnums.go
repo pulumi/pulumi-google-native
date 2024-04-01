@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
 type ComputeEnginePreferencesLicenseType string
 
 const (
@@ -380,11 +380,11 @@ const (
 	GCSPayloadInfoFormatImportJobFormatRvtoolsXlsx = GCSPayloadInfoFormat("IMPORT_JOB_FORMAT_RVTOOLS_XLSX")
 	// RVTools format (CSV).
 	GCSPayloadInfoFormatImportJobFormatRvtoolsCsv = GCSPayloadInfoFormat("IMPORT_JOB_FORMAT_RVTOOLS_CSV")
-	// CSV format exported from AWS using the AWS collection script.
+	// CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
 	GCSPayloadInfoFormatImportJobFormatExportedAwsCsv = GCSPayloadInfoFormat("IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV")
-	// CSV format exported from Azure using the Azure collection script.
+	// CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
 	GCSPayloadInfoFormatImportJobFormatExportedAzureCsv = GCSPayloadInfoFormat("IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV")
-	// CSV format created manually. For more information, see Manually create and upload data tables.
+	// CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
 	GCSPayloadInfoFormatImportJobFormatManualCsv = GCSPayloadInfoFormat("IMPORT_JOB_FORMAT_MANUAL_CSV")
 )
 
@@ -569,11 +569,11 @@ const (
 	ImportDataFileFormatImportJobFormatRvtoolsXlsx = ImportDataFileFormat("IMPORT_JOB_FORMAT_RVTOOLS_XLSX")
 	// RVTools format (CSV).
 	ImportDataFileFormatImportJobFormatRvtoolsCsv = ImportDataFileFormat("IMPORT_JOB_FORMAT_RVTOOLS_CSV")
-	// CSV format exported from AWS using the AWS collection script.
+	// CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
 	ImportDataFileFormatImportJobFormatExportedAwsCsv = ImportDataFileFormat("IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV")
-	// CSV format exported from Azure using the Azure collection script.
+	// CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
 	ImportDataFileFormatImportJobFormatExportedAzureCsv = ImportDataFileFormat("IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV")
-	// CSV format created manually. For more information, see Manually create and upload data tables.
+	// CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
 	ImportDataFileFormatImportJobFormatManualCsv = ImportDataFileFormat("IMPORT_JOB_FORMAT_MANUAL_CSV")
 )
 
@@ -758,11 +758,11 @@ const (
 	InlinePayloadInfoFormatImportJobFormatRvtoolsXlsx = InlinePayloadInfoFormat("IMPORT_JOB_FORMAT_RVTOOLS_XLSX")
 	// RVTools format (CSV).
 	InlinePayloadInfoFormatImportJobFormatRvtoolsCsv = InlinePayloadInfoFormat("IMPORT_JOB_FORMAT_RVTOOLS_CSV")
-	// CSV format exported from AWS using the AWS collection script.
+	// CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
 	InlinePayloadInfoFormatImportJobFormatExportedAwsCsv = InlinePayloadInfoFormat("IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV")
-	// CSV format exported from Azure using the Azure collection script.
+	// CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
 	InlinePayloadInfoFormatImportJobFormatExportedAzureCsv = InlinePayloadInfoFormat("IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV")
-	// CSV format created manually. For more information, see Manually create and upload data tables.
+	// CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
 	InlinePayloadInfoFormatImportJobFormatManualCsv = InlinePayloadInfoFormat("IMPORT_JOB_FORMAT_MANUAL_CSV")
 )
 
@@ -1119,9 +1119,9 @@ func (in *reportStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*Repo
 type ReportType string
 
 const (
-	// Default Report type.
+	// Default report type.
 	ReportTypeTypeUnspecified = ReportType("TYPE_UNSPECIFIED")
-	// Total cost of ownership Report type.
+	// Total cost of ownership report type.
 	ReportTypeTotalCostOfOwnership = ReportType("TOTAL_COST_OF_OWNERSHIP")
 )
 
@@ -1297,9 +1297,9 @@ const (
 	SoleTenancyPreferencesCommitmentPlanCommitmentPlanUnspecified = SoleTenancyPreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED")
 	// No commitment plan (on-demand usage).
 	SoleTenancyPreferencesCommitmentPlanOnDemand = SoleTenancyPreferencesCommitmentPlan("ON_DEMAND")
-	// 1 year commitment.
+	// 1-year regular committed use discount.
 	SoleTenancyPreferencesCommitmentPlanCommitment1Year = SoleTenancyPreferencesCommitmentPlan("COMMITMENT_1_YEAR")
-	// 3 years commitment.
+	// 3-year regular committed use discount.
 	SoleTenancyPreferencesCommitmentPlanCommitment3Year = SoleTenancyPreferencesCommitmentPlan("COMMITMENT_3_YEAR")
 )
 
@@ -1663,6 +1663,8 @@ const (
 	SourceTypeSourceTypeInventoryScan = SourceType("SOURCE_TYPE_INVENTORY_SCAN")
 	// Third-party owned sources.
 	SourceTypeSourceTypeCustom = SourceType("SOURCE_TYPE_CUSTOM")
+	// Discovery clients
+	SourceTypeSourceTypeDiscoveryClient = SourceType("SOURCE_TYPE_DISCOVERY_CLIENT")
 )
 
 func (SourceType) ElementType() reflect.Type {
@@ -1792,6 +1794,7 @@ func (o SourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 //	SourceTypeSourceTypeGuestOsScan
 //	SourceTypeSourceTypeInventoryScan
 //	SourceTypeSourceTypeCustom
+//	SourceTypeSourceTypeDiscoveryClient
 type SourceTypeInput interface {
 	pulumi.Input
 
@@ -1840,9 +1843,9 @@ const (
 	VirtualMachinePreferencesCommitmentPlanCommitmentPlanUnspecified = VirtualMachinePreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED")
 	// No commitment plan.
 	VirtualMachinePreferencesCommitmentPlanCommitmentPlanNone = VirtualMachinePreferencesCommitmentPlan("COMMITMENT_PLAN_NONE")
-	// 1 year commitment.
+	// 1-year regular committed use discount.
 	VirtualMachinePreferencesCommitmentPlanCommitmentPlanOneYear = VirtualMachinePreferencesCommitmentPlan("COMMITMENT_PLAN_ONE_YEAR")
-	// 3 years commitment.
+	// 3-year regular committed use discount.
 	VirtualMachinePreferencesCommitmentPlanCommitmentPlanThreeYears = VirtualMachinePreferencesCommitmentPlan("COMMITMENT_PLAN_THREE_YEARS")
 )
 

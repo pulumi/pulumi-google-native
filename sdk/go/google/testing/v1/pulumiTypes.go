@@ -5189,6 +5189,59 @@ func (o ManualShardingResponseOutput) TestTargetsForShard() TestTargetsForShardR
 	return o.ApplyT(func(v ManualShardingResponse) []TestTargetsForShardResponse { return v.TestTargetsForShard }).(TestTargetsForShardResponseArrayOutput)
 }
 
+// Describes a single error or issue with a matrix.
+type MatrixErrorDetailResponse struct {
+	// A human-readable message about how the error in the TestMatrix. Expands on the `reason` field with additional details and possible options to fix the issue.
+	Message string `pulumi:"message"`
+	// The reason for the error. This is a constant value in UPPER_SNAKE_CASE that identifies the cause of the error.
+	Reason string `pulumi:"reason"`
+}
+
+// Describes a single error or issue with a matrix.
+type MatrixErrorDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (MatrixErrorDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MatrixErrorDetailResponse)(nil)).Elem()
+}
+
+func (o MatrixErrorDetailResponseOutput) ToMatrixErrorDetailResponseOutput() MatrixErrorDetailResponseOutput {
+	return o
+}
+
+func (o MatrixErrorDetailResponseOutput) ToMatrixErrorDetailResponseOutputWithContext(ctx context.Context) MatrixErrorDetailResponseOutput {
+	return o
+}
+
+// A human-readable message about how the error in the TestMatrix. Expands on the `reason` field with additional details and possible options to fix the issue.
+func (o MatrixErrorDetailResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v MatrixErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The reason for the error. This is a constant value in UPPER_SNAKE_CASE that identifies the cause of the error.
+func (o MatrixErrorDetailResponseOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v MatrixErrorDetailResponse) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+type MatrixErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MatrixErrorDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MatrixErrorDetailResponse)(nil)).Elem()
+}
+
+func (o MatrixErrorDetailResponseArrayOutput) ToMatrixErrorDetailResponseArrayOutput() MatrixErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o MatrixErrorDetailResponseArrayOutput) ToMatrixErrorDetailResponseArrayOutputWithContext(ctx context.Context) MatrixErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o MatrixErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) MatrixErrorDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MatrixErrorDetailResponse {
+		return vs[0].([]MatrixErrorDetailResponse)[vs[1].(int)]
+	}).(MatrixErrorDetailResponseOutput)
+}
+
 // Skips the starting activity
 type NoActivityIntent struct {
 }
@@ -8587,6 +8640,8 @@ func init() {
 	pulumi.RegisterOutputType(ManualShardingOutput{})
 	pulumi.RegisterOutputType(ManualShardingPtrOutput{})
 	pulumi.RegisterOutputType(ManualShardingResponseOutput{})
+	pulumi.RegisterOutputType(MatrixErrorDetailResponseOutput{})
+	pulumi.RegisterOutputType(MatrixErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(NoActivityIntentOutput{})
 	pulumi.RegisterOutputType(NoActivityIntentPtrOutput{})
 	pulumi.RegisterOutputType(NoActivityIntentResponseOutput{})

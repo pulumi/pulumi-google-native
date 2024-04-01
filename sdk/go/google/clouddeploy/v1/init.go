@@ -23,6 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:clouddeploy/v1:Automation":
 		r = &Automation{}
+	case "google-native:clouddeploy/v1:CustomTargetType":
+		r = &CustomTargetType{}
+	case "google-native:clouddeploy/v1:CustomTargetTypeIamBinding":
+		r = &CustomTargetTypeIamBinding{}
+	case "google-native:clouddeploy/v1:CustomTargetTypeIamMember":
+		r = &CustomTargetTypeIamMember{}
+	case "google-native:clouddeploy/v1:CustomTargetTypeIamPolicy":
+		r = &CustomTargetTypeIamPolicy{}
 	case "google-native:clouddeploy/v1:DeliveryPipeline":
 		r = &DeliveryPipeline{}
 	case "google-native:clouddeploy/v1:DeliveryPipelineIamBinding":

@@ -24,6 +24,8 @@ type Repository struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+	DisallowUnspecifiedMode pulumi.BoolOutput `pulumi:"disallowUnspecifiedMode"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	DockerConfig DockerRepositoryConfigResponseOutput `pulumi:"dockerConfig"`
 	// Optional. The format of packages that are stored in the repository.
@@ -109,6 +111,8 @@ type repositoryArgs struct {
 	CleanupPolicyDryRun *bool `pulumi:"cleanupPolicyDryRun"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
+	// Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+	DisallowUnspecifiedMode *bool `pulumi:"disallowUnspecifiedMode"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	DockerConfig *DockerRepositoryConfig `pulumi:"dockerConfig"`
 	// Optional. The format of packages that are stored in the repository.
@@ -141,6 +145,8 @@ type RepositoryArgs struct {
 	CleanupPolicyDryRun pulumi.BoolPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
+	// Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+	DisallowUnspecifiedMode pulumi.BoolPtrInput
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	DockerConfig DockerRepositoryConfigPtrInput
 	// Optional. The format of packages that are stored in the repository.
@@ -220,6 +226,11 @@ func (o RepositoryOutput) CreateTime() pulumi.StringOutput {
 // The user-provided description of the repository.
 func (o RepositoryOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+func (o RepositoryOutput) DisallowUnspecifiedMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Repository) pulumi.BoolOutput { return v.DisallowUnspecifiedMode }).(pulumi.BoolOutput)
 }
 
 // Docker repository config contains repository level configuration for the repositories of docker type.

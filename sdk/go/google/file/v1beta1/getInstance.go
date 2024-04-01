@@ -37,7 +37,7 @@ type LookupInstanceResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The description of the instance (2048 characters or less).
 	Description string `pulumi:"description"`
-	// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+	// Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
 	DirectoryServices DirectoryServicesConfigResponse `pulumi:"directoryServices"`
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag string `pulumi:"etag"`
@@ -130,7 +130,7 @@ func (o LookupInstanceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+// Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
 func (o LookupInstanceResultOutput) DirectoryServices() DirectoryServicesConfigResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) DirectoryServicesConfigResponse { return v.DirectoryServices }).(DirectoryServicesConfigResponseOutput)
 }

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:bigtableadmin/v2:AppProfile":
 		r = &AppProfile{}
+	case "google-native:bigtableadmin/v2:AuthorizedView":
+		r = &AuthorizedView{}
 	case "google-native:bigtableadmin/v2:Backup":
 		r = &Backup{}
 	case "google-native:bigtableadmin/v2:Cluster":

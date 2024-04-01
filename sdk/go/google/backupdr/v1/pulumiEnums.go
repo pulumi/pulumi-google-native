@@ -191,7 +191,7 @@ func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// Required. The type of the ManagementServer resource.
+// Optional. The type of the ManagementServer resource.
 type ManagementServerType string
 
 const (

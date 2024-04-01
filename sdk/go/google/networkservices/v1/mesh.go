@@ -20,6 +20,8 @@ type Mesh struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+	EnvoyHeaders pulumi.StringOutput `pulumi:"envoyHeaders"`
 	// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
 	InterceptionPort pulumi.IntOutput `pulumi:"interceptionPort"`
 	// Optional. Set of label tags associated with the Mesh resource.
@@ -87,6 +89,8 @@ func (MeshState) ElementType() reflect.Type {
 type meshArgs struct {
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+	EnvoyHeaders *MeshEnvoyHeaders `pulumi:"envoyHeaders"`
 	// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
 	InterceptionPort *int `pulumi:"interceptionPort"`
 	// Optional. Set of label tags associated with the Mesh resource.
@@ -103,6 +107,8 @@ type meshArgs struct {
 type MeshArgs struct {
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+	EnvoyHeaders MeshEnvoyHeadersPtrInput
 	// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
 	InterceptionPort pulumi.IntPtrInput
 	// Optional. Set of label tags associated with the Mesh resource.
@@ -160,6 +166,11 @@ func (o MeshOutput) CreateTime() pulumi.StringOutput {
 // Optional. A free-text description of the resource. Max length 1024 characters.
 func (o MeshOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+func (o MeshOutput) EnvoyHeaders() pulumi.StringOutput {
+	return o.ApplyT(func(v *Mesh) pulumi.StringOutput { return v.EnvoyHeaders }).(pulumi.StringOutput)
 }
 
 // Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.

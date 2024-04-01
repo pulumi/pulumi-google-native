@@ -1259,6 +1259,356 @@ func (in *addressPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*Addre
 	}
 }
 
+// The VM family that all instances scheduled against this reservation must belong to.
+type AllocationAggregateReservationVmFamily string
+
+const (
+	AllocationAggregateReservationVmFamilyVmFamilyCloudTpuLiteDeviceCt5l    = AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L")
+	AllocationAggregateReservationVmFamilyVmFamilyCloudTpuLitePodSliceCt5lp = AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP")
+	AllocationAggregateReservationVmFamilyVmFamilyCloudTpuPodSliceCt4p      = AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P")
+)
+
+func (AllocationAggregateReservationVmFamily) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationAggregateReservationVmFamily)(nil)).Elem()
+}
+
+func (e AllocationAggregateReservationVmFamily) ToAllocationAggregateReservationVmFamilyOutput() AllocationAggregateReservationVmFamilyOutput {
+	return pulumi.ToOutput(e).(AllocationAggregateReservationVmFamilyOutput)
+}
+
+func (e AllocationAggregateReservationVmFamily) ToAllocationAggregateReservationVmFamilyOutputWithContext(ctx context.Context) AllocationAggregateReservationVmFamilyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AllocationAggregateReservationVmFamilyOutput)
+}
+
+func (e AllocationAggregateReservationVmFamily) ToAllocationAggregateReservationVmFamilyPtrOutput() AllocationAggregateReservationVmFamilyPtrOutput {
+	return e.ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(context.Background())
+}
+
+func (e AllocationAggregateReservationVmFamily) ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(ctx context.Context) AllocationAggregateReservationVmFamilyPtrOutput {
+	return AllocationAggregateReservationVmFamily(e).ToAllocationAggregateReservationVmFamilyOutputWithContext(ctx).ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(ctx)
+}
+
+func (e AllocationAggregateReservationVmFamily) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllocationAggregateReservationVmFamily) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllocationAggregateReservationVmFamily) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AllocationAggregateReservationVmFamily) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AllocationAggregateReservationVmFamilyOutput struct{ *pulumi.OutputState }
+
+func (AllocationAggregateReservationVmFamilyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationAggregateReservationVmFamily)(nil)).Elem()
+}
+
+func (o AllocationAggregateReservationVmFamilyOutput) ToAllocationAggregateReservationVmFamilyOutput() AllocationAggregateReservationVmFamilyOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationVmFamilyOutput) ToAllocationAggregateReservationVmFamilyOutputWithContext(ctx context.Context) AllocationAggregateReservationVmFamilyOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationVmFamilyOutput) ToAllocationAggregateReservationVmFamilyPtrOutput() AllocationAggregateReservationVmFamilyPtrOutput {
+	return o.ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationVmFamilyOutput) ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(ctx context.Context) AllocationAggregateReservationVmFamilyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllocationAggregateReservationVmFamily) *AllocationAggregateReservationVmFamily {
+		return &v
+	}).(AllocationAggregateReservationVmFamilyPtrOutput)
+}
+
+func (o AllocationAggregateReservationVmFamilyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationVmFamilyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllocationAggregateReservationVmFamily) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AllocationAggregateReservationVmFamilyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationVmFamilyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllocationAggregateReservationVmFamily) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AllocationAggregateReservationVmFamilyPtrOutput struct{ *pulumi.OutputState }
+
+func (AllocationAggregateReservationVmFamilyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AllocationAggregateReservationVmFamily)(nil)).Elem()
+}
+
+func (o AllocationAggregateReservationVmFamilyPtrOutput) ToAllocationAggregateReservationVmFamilyPtrOutput() AllocationAggregateReservationVmFamilyPtrOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationVmFamilyPtrOutput) ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(ctx context.Context) AllocationAggregateReservationVmFamilyPtrOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationVmFamilyPtrOutput) Elem() AllocationAggregateReservationVmFamilyOutput {
+	return o.ApplyT(func(v *AllocationAggregateReservationVmFamily) AllocationAggregateReservationVmFamily {
+		if v != nil {
+			return *v
+		}
+		var ret AllocationAggregateReservationVmFamily
+		return ret
+	}).(AllocationAggregateReservationVmFamilyOutput)
+}
+
+func (o AllocationAggregateReservationVmFamilyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationVmFamilyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AllocationAggregateReservationVmFamily) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AllocationAggregateReservationVmFamilyInput is an input type that accepts values of the AllocationAggregateReservationVmFamily enum
+// A concrete instance of `AllocationAggregateReservationVmFamilyInput` can be one of the following:
+//
+//	AllocationAggregateReservationVmFamilyVmFamilyCloudTpuLiteDeviceCt5l
+//	AllocationAggregateReservationVmFamilyVmFamilyCloudTpuLitePodSliceCt5lp
+//	AllocationAggregateReservationVmFamilyVmFamilyCloudTpuPodSliceCt4p
+type AllocationAggregateReservationVmFamilyInput interface {
+	pulumi.Input
+
+	ToAllocationAggregateReservationVmFamilyOutput() AllocationAggregateReservationVmFamilyOutput
+	ToAllocationAggregateReservationVmFamilyOutputWithContext(context.Context) AllocationAggregateReservationVmFamilyOutput
+}
+
+var allocationAggregateReservationVmFamilyPtrType = reflect.TypeOf((**AllocationAggregateReservationVmFamily)(nil)).Elem()
+
+type AllocationAggregateReservationVmFamilyPtrInput interface {
+	pulumi.Input
+
+	ToAllocationAggregateReservationVmFamilyPtrOutput() AllocationAggregateReservationVmFamilyPtrOutput
+	ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(context.Context) AllocationAggregateReservationVmFamilyPtrOutput
+}
+
+type allocationAggregateReservationVmFamilyPtr string
+
+func AllocationAggregateReservationVmFamilyPtr(v string) AllocationAggregateReservationVmFamilyPtrInput {
+	return (*allocationAggregateReservationVmFamilyPtr)(&v)
+}
+
+func (*allocationAggregateReservationVmFamilyPtr) ElementType() reflect.Type {
+	return allocationAggregateReservationVmFamilyPtrType
+}
+
+func (in *allocationAggregateReservationVmFamilyPtr) ToAllocationAggregateReservationVmFamilyPtrOutput() AllocationAggregateReservationVmFamilyPtrOutput {
+	return pulumi.ToOutput(in).(AllocationAggregateReservationVmFamilyPtrOutput)
+}
+
+func (in *allocationAggregateReservationVmFamilyPtr) ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(ctx context.Context) AllocationAggregateReservationVmFamilyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AllocationAggregateReservationVmFamilyPtrOutput)
+}
+
+func (in *allocationAggregateReservationVmFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*AllocationAggregateReservationVmFamily] {
+	return pulumix.Output[*AllocationAggregateReservationVmFamily]{
+		OutputState: in.ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The workload type of the instances that will target this reservation.
+type AllocationAggregateReservationWorkloadType string
+
+const (
+	// Reserved resources will be optimized for BATCH workloads, such as ML training.
+	AllocationAggregateReservationWorkloadTypeBatch = AllocationAggregateReservationWorkloadType("BATCH")
+	// Reserved resources will be optimized for SERVING workloads, such as ML inference.
+	AllocationAggregateReservationWorkloadTypeServing     = AllocationAggregateReservationWorkloadType("SERVING")
+	AllocationAggregateReservationWorkloadTypeUnspecified = AllocationAggregateReservationWorkloadType("UNSPECIFIED")
+)
+
+func (AllocationAggregateReservationWorkloadType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationAggregateReservationWorkloadType)(nil)).Elem()
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToAllocationAggregateReservationWorkloadTypeOutput() AllocationAggregateReservationWorkloadTypeOutput {
+	return pulumi.ToOutput(e).(AllocationAggregateReservationWorkloadTypeOutput)
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToAllocationAggregateReservationWorkloadTypeOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AllocationAggregateReservationWorkloadTypeOutput)
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToAllocationAggregateReservationWorkloadTypePtrOutput() AllocationAggregateReservationWorkloadTypePtrOutput {
+	return e.ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(context.Background())
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypePtrOutput {
+	return AllocationAggregateReservationWorkloadType(e).ToAllocationAggregateReservationWorkloadTypeOutputWithContext(ctx).ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx)
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AllocationAggregateReservationWorkloadTypeOutput struct{ *pulumi.OutputState }
+
+func (AllocationAggregateReservationWorkloadTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationAggregateReservationWorkloadType)(nil)).Elem()
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToAllocationAggregateReservationWorkloadTypeOutput() AllocationAggregateReservationWorkloadTypeOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToAllocationAggregateReservationWorkloadTypeOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypeOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToAllocationAggregateReservationWorkloadTypePtrOutput() AllocationAggregateReservationWorkloadTypePtrOutput {
+	return o.ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllocationAggregateReservationWorkloadType) *AllocationAggregateReservationWorkloadType {
+		return &v
+	}).(AllocationAggregateReservationWorkloadTypePtrOutput)
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllocationAggregateReservationWorkloadType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllocationAggregateReservationWorkloadType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AllocationAggregateReservationWorkloadTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AllocationAggregateReservationWorkloadTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AllocationAggregateReservationWorkloadType)(nil)).Elem()
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) ToAllocationAggregateReservationWorkloadTypePtrOutput() AllocationAggregateReservationWorkloadTypePtrOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypePtrOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) Elem() AllocationAggregateReservationWorkloadTypeOutput {
+	return o.ApplyT(func(v *AllocationAggregateReservationWorkloadType) AllocationAggregateReservationWorkloadType {
+		if v != nil {
+			return *v
+		}
+		var ret AllocationAggregateReservationWorkloadType
+		return ret
+	}).(AllocationAggregateReservationWorkloadTypeOutput)
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AllocationAggregateReservationWorkloadType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AllocationAggregateReservationWorkloadTypeInput is an input type that accepts values of the AllocationAggregateReservationWorkloadType enum
+// A concrete instance of `AllocationAggregateReservationWorkloadTypeInput` can be one of the following:
+//
+//	AllocationAggregateReservationWorkloadTypeBatch
+//	AllocationAggregateReservationWorkloadTypeServing
+//	AllocationAggregateReservationWorkloadTypeUnspecified
+type AllocationAggregateReservationWorkloadTypeInput interface {
+	pulumi.Input
+
+	ToAllocationAggregateReservationWorkloadTypeOutput() AllocationAggregateReservationWorkloadTypeOutput
+	ToAllocationAggregateReservationWorkloadTypeOutputWithContext(context.Context) AllocationAggregateReservationWorkloadTypeOutput
+}
+
+var allocationAggregateReservationWorkloadTypePtrType = reflect.TypeOf((**AllocationAggregateReservationWorkloadType)(nil)).Elem()
+
+type AllocationAggregateReservationWorkloadTypePtrInput interface {
+	pulumi.Input
+
+	ToAllocationAggregateReservationWorkloadTypePtrOutput() AllocationAggregateReservationWorkloadTypePtrOutput
+	ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(context.Context) AllocationAggregateReservationWorkloadTypePtrOutput
+}
+
+type allocationAggregateReservationWorkloadTypePtr string
+
+func AllocationAggregateReservationWorkloadTypePtr(v string) AllocationAggregateReservationWorkloadTypePtrInput {
+	return (*allocationAggregateReservationWorkloadTypePtr)(&v)
+}
+
+func (*allocationAggregateReservationWorkloadTypePtr) ElementType() reflect.Type {
+	return allocationAggregateReservationWorkloadTypePtrType
+}
+
+func (in *allocationAggregateReservationWorkloadTypePtr) ToAllocationAggregateReservationWorkloadTypePtrOutput() AllocationAggregateReservationWorkloadTypePtrOutput {
+	return pulumi.ToOutput(in).(AllocationAggregateReservationWorkloadTypePtrOutput)
+}
+
+func (in *allocationAggregateReservationWorkloadTypePtr) ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AllocationAggregateReservationWorkloadTypePtrOutput)
+}
+
+func (in *allocationAggregateReservationWorkloadTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AllocationAggregateReservationWorkloadType] {
+	return pulumix.Output[*AllocationAggregateReservationWorkloadType]{
+		OutputState: in.ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
 type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface string
 
@@ -3901,6 +4251,183 @@ func (in *backendBucketCompressionModePtr) ToOutput(ctx context.Context) pulumix
 	}
 }
 
+// This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default
+type BackendPreference string
+
+const (
+	// No preference.
+	BackendPreferenceDefault = BackendPreference("DEFAULT")
+	// If preference is unspecified, we set it to the DEFAULT value
+	BackendPreferencePreferenceUnspecified = BackendPreference("PREFERENCE_UNSPECIFIED")
+	// Traffic will be sent to this backend first.
+	BackendPreferencePreferred = BackendPreference("PREFERRED")
+)
+
+func (BackendPreference) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendPreference)(nil)).Elem()
+}
+
+func (e BackendPreference) ToBackendPreferenceOutput() BackendPreferenceOutput {
+	return pulumi.ToOutput(e).(BackendPreferenceOutput)
+}
+
+func (e BackendPreference) ToBackendPreferenceOutputWithContext(ctx context.Context) BackendPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackendPreferenceOutput)
+}
+
+func (e BackendPreference) ToBackendPreferencePtrOutput() BackendPreferencePtrOutput {
+	return e.ToBackendPreferencePtrOutputWithContext(context.Background())
+}
+
+func (e BackendPreference) ToBackendPreferencePtrOutputWithContext(ctx context.Context) BackendPreferencePtrOutput {
+	return BackendPreference(e).ToBackendPreferenceOutputWithContext(ctx).ToBackendPreferencePtrOutputWithContext(ctx)
+}
+
+func (e BackendPreference) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendPreference) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendPreference) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackendPreference) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackendPreferenceOutput struct{ *pulumi.OutputState }
+
+func (BackendPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendPreference)(nil)).Elem()
+}
+
+func (o BackendPreferenceOutput) ToBackendPreferenceOutput() BackendPreferenceOutput {
+	return o
+}
+
+func (o BackendPreferenceOutput) ToBackendPreferenceOutputWithContext(ctx context.Context) BackendPreferenceOutput {
+	return o
+}
+
+func (o BackendPreferenceOutput) ToBackendPreferencePtrOutput() BackendPreferencePtrOutput {
+	return o.ToBackendPreferencePtrOutputWithContext(context.Background())
+}
+
+func (o BackendPreferenceOutput) ToBackendPreferencePtrOutputWithContext(ctx context.Context) BackendPreferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendPreference) *BackendPreference {
+		return &v
+	}).(BackendPreferencePtrOutput)
+}
+
+func (o BackendPreferenceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackendPreferenceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendPreference) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackendPreferenceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendPreferenceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendPreference) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackendPreferencePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendPreferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendPreference)(nil)).Elem()
+}
+
+func (o BackendPreferencePtrOutput) ToBackendPreferencePtrOutput() BackendPreferencePtrOutput {
+	return o
+}
+
+func (o BackendPreferencePtrOutput) ToBackendPreferencePtrOutputWithContext(ctx context.Context) BackendPreferencePtrOutput {
+	return o
+}
+
+func (o BackendPreferencePtrOutput) Elem() BackendPreferenceOutput {
+	return o.ApplyT(func(v *BackendPreference) BackendPreference {
+		if v != nil {
+			return *v
+		}
+		var ret BackendPreference
+		return ret
+	}).(BackendPreferenceOutput)
+}
+
+func (o BackendPreferencePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendPreferencePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackendPreference) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackendPreferenceInput is an input type that accepts values of the BackendPreference enum
+// A concrete instance of `BackendPreferenceInput` can be one of the following:
+//
+//	BackendPreferenceDefault
+//	BackendPreferencePreferenceUnspecified
+//	BackendPreferencePreferred
+type BackendPreferenceInput interface {
+	pulumi.Input
+
+	ToBackendPreferenceOutput() BackendPreferenceOutput
+	ToBackendPreferenceOutputWithContext(context.Context) BackendPreferenceOutput
+}
+
+var backendPreferencePtrType = reflect.TypeOf((**BackendPreference)(nil)).Elem()
+
+type BackendPreferencePtrInput interface {
+	pulumi.Input
+
+	ToBackendPreferencePtrOutput() BackendPreferencePtrOutput
+	ToBackendPreferencePtrOutputWithContext(context.Context) BackendPreferencePtrOutput
+}
+
+type backendPreferencePtr string
+
+func BackendPreferencePtr(v string) BackendPreferencePtrInput {
+	return (*backendPreferencePtr)(&v)
+}
+
+func (*backendPreferencePtr) ElementType() reflect.Type {
+	return backendPreferencePtrType
+}
+
+func (in *backendPreferencePtr) ToBackendPreferencePtrOutput() BackendPreferencePtrOutput {
+	return pulumi.ToOutput(in).(BackendPreferencePtrOutput)
+}
+
+func (in *backendPreferencePtr) ToBackendPreferencePtrOutputWithContext(ctx context.Context) BackendPreferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackendPreferencePtrOutput)
+}
+
+func (in *backendPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendPreference] {
+	return pulumix.Output[*BackendPreference]{
+		OutputState: in.ToBackendPreferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 type BackendServiceCdnPolicyCacheMode string
 
@@ -4606,13 +5133,13 @@ func (in *backendServiceConnectionTrackingPolicyTrackingModePtr) ToOutput(ctx co
 type BackendServiceLoadBalancingScheme string
 
 const (
-	// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+	// Signifies that this will be used for classic Application Load Balancers, global external proxy Network Load Balancers, or external passthrough Network Load Balancers.
 	BackendServiceLoadBalancingSchemeExternal = BackendServiceLoadBalancingScheme("EXTERNAL")
-	// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+	// Signifies that this will be used for global external Application Load Balancers, regional external Application Load Balancers, or regional external proxy Network Load Balancers.
 	BackendServiceLoadBalancingSchemeExternalManaged = BackendServiceLoadBalancingScheme("EXTERNAL_MANAGED")
-	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
+	// Signifies that this will be used for internal passthrough Network Load Balancers.
 	BackendServiceLoadBalancingSchemeInternal = BackendServiceLoadBalancingScheme("INTERNAL")
-	// Signifies that this will be used for Internal HTTP(S) Load Balancing.
+	// Signifies that this will be used for internal Application Load Balancers.
 	BackendServiceLoadBalancingSchemeInternalManaged = BackendServiceLoadBalancingScheme("INTERNAL_MANAGED")
 	// Signifies that this will be used by Traffic Director.
 	BackendServiceLoadBalancingSchemeInternalSelfManaged        = BackendServiceLoadBalancingScheme("INTERNAL_SELF_MANAGED")
@@ -8780,7 +9307,7 @@ func (in *forwardingRulePscConnectionStatusPtr) ToOutput(ctx context.Context) pu
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type GRPCHealthCheckPortSpecification string
 
 const (
@@ -10942,12 +11469,13 @@ func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToOutput(ctx context
 	}
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
 type GuestOsFeatureType string
 
 const (
 	GuestOsFeatureTypeFeatureTypeUnspecified = GuestOsFeatureType("FEATURE_TYPE_UNSPECIFIED")
 	GuestOsFeatureTypeGvnic                  = GuestOsFeatureType("GVNIC")
+	GuestOsFeatureTypeIdpf                   = GuestOsFeatureType("IDPF")
 	GuestOsFeatureTypeMultiIpSubnet          = GuestOsFeatureType("MULTI_IP_SUBNET")
 	GuestOsFeatureTypeSecureBoot             = GuestOsFeatureType("SECURE_BOOT")
 	GuestOsFeatureTypeSevCapable             = GuestOsFeatureType("SEV_CAPABLE")
@@ -11083,6 +11611,7 @@ func (o GuestOsFeatureTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //
 //	GuestOsFeatureTypeFeatureTypeUnspecified
 //	GuestOsFeatureTypeGvnic
+//	GuestOsFeatureTypeIdpf
 //	GuestOsFeatureTypeMultiIpSubnet
 //	GuestOsFeatureTypeSecureBoot
 //	GuestOsFeatureTypeSevCapable
@@ -11132,7 +11661,7 @@ func (in *guestOsFeatureTypePtr) ToOutput(ctx context.Context) pulumix.Output[*G
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type HTTP2HealthCheckPortSpecification string
 
 const (
@@ -11481,7 +12010,7 @@ func (in *http2healthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type HTTPHealthCheckPortSpecification string
 
 const (
@@ -11830,7 +12359,7 @@ func (in *httphealthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type HTTPSHealthCheckPortSpecification string
 
 const (
@@ -13058,6 +13587,180 @@ func (in *imageSourceTypePtr) ToImageSourceTypePtrOutputWithContext(ctx context.
 func (in *imageSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageSourceType] {
 	return pulumix.Output[*ImageSourceType]{
 		OutputState: in.ToImageSourceTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
+type InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure string
+
+const (
+	// MIG does not repair a failed or an unhealthy VM.
+	InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureDoNothing = InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("DO_NOTHING")
+	// (Default) MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG.
+	InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureRepair = InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("REPAIR")
+)
+
+func (InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure)(nil)).Elem()
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput {
+	return pulumi.ToOutput(e).(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput)
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput)
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
+	return e.ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
+	return InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure(e).ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutputWithContext(ctx).ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(ctx)
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
+	return o.ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) *InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure {
+		return &v
+	}).(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput)
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput) Elem() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure
+		return ret
+	}).(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput)
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureInput is an input type that accepts values of the InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure enum
+// A concrete instance of `InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureInput` can be one of the following:
+//
+//	InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureDoNothing
+//	InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureRepair
+type InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput
+	ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutputWithContext(context.Context) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput
+}
+
+var instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrType = reflect.TypeOf((**InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure)(nil)).Elem()
+
+type InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput
+	ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(context.Context) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput
+}
+
+type instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtr string
+
+func InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtr(v string) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrInput {
+	return (*instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtr)(&v)
+}
+
+func (*instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtr) ElementType() reflect.Type {
+	return instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrType
+}
+
+func (in *instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtr) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
+	return pulumi.ToOutput(in).(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput)
+}
+
+func (in *instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtr) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput)
+}
+
+func (in *instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure] {
+	return pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure]{
+		OutputState: in.ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -19662,13 +20365,13 @@ func (in *regionBackendServiceCompressionModePtr) ToOutput(ctx context.Context) 
 type RegionBackendServiceLoadBalancingScheme string
 
 const (
-	// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+	// Signifies that this will be used for classic Application Load Balancers, global external proxy Network Load Balancers, or external passthrough Network Load Balancers.
 	RegionBackendServiceLoadBalancingSchemeExternal = RegionBackendServiceLoadBalancingScheme("EXTERNAL")
-	// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+	// Signifies that this will be used for global external Application Load Balancers, regional external Application Load Balancers, or regional external proxy Network Load Balancers.
 	RegionBackendServiceLoadBalancingSchemeExternalManaged = RegionBackendServiceLoadBalancingScheme("EXTERNAL_MANAGED")
-	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
+	// Signifies that this will be used for internal passthrough Network Load Balancers.
 	RegionBackendServiceLoadBalancingSchemeInternal = RegionBackendServiceLoadBalancingScheme("INTERNAL")
-	// Signifies that this will be used for Internal HTTP(S) Load Balancing.
+	// Signifies that this will be used for internal Application Load Balancers.
 	RegionBackendServiceLoadBalancingSchemeInternalManaged = RegionBackendServiceLoadBalancingScheme("INTERNAL_MANAGED")
 	// Signifies that this will be used by Traffic Director.
 	RegionBackendServiceLoadBalancingSchemeInternalSelfManaged        = RegionBackendServiceLoadBalancingScheme("INTERNAL_SELF_MANAGED")
@@ -20779,10 +21482,12 @@ const (
 	RegionCommitmentTypeGeneralPurposeE2       = RegionCommitmentType("GENERAL_PURPOSE_E2")
 	RegionCommitmentTypeGeneralPurposeN2       = RegionCommitmentType("GENERAL_PURPOSE_N2")
 	RegionCommitmentTypeGeneralPurposeN2d      = RegionCommitmentType("GENERAL_PURPOSE_N2D")
+	RegionCommitmentTypeGeneralPurposeN4       = RegionCommitmentType("GENERAL_PURPOSE_N4")
 	RegionCommitmentTypeGeneralPurposeT2d      = RegionCommitmentType("GENERAL_PURPOSE_T2D")
 	RegionCommitmentTypeGraphicsOptimized      = RegionCommitmentType("GRAPHICS_OPTIMIZED")
 	RegionCommitmentTypeMemoryOptimized        = RegionCommitmentType("MEMORY_OPTIMIZED")
 	RegionCommitmentTypeMemoryOptimizedM3      = RegionCommitmentType("MEMORY_OPTIMIZED_M3")
+	RegionCommitmentTypeStorageOptimizedZ3     = RegionCommitmentType("STORAGE_OPTIMIZED_Z3")
 	RegionCommitmentTypeTypeUnspecified        = RegionCommitmentType("TYPE_UNSPECIFIED")
 )
 
@@ -20919,10 +21624,12 @@ func (o RegionCommitmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 //	RegionCommitmentTypeGeneralPurposeE2
 //	RegionCommitmentTypeGeneralPurposeN2
 //	RegionCommitmentTypeGeneralPurposeN2d
+//	RegionCommitmentTypeGeneralPurposeN4
 //	RegionCommitmentTypeGeneralPurposeT2d
 //	RegionCommitmentTypeGraphicsOptimized
 //	RegionCommitmentTypeMemoryOptimized
 //	RegionCommitmentTypeMemoryOptimizedM3
+//	RegionCommitmentTypeStorageOptimizedZ3
 //	RegionCommitmentTypeTypeUnspecified
 type RegionCommitmentTypeInput interface {
 	pulumi.Input
@@ -26433,7 +27140,7 @@ func (in *ruleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*RuleActio
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type SSLHealthCheckPortSpecification string
 
 const (
@@ -28524,18 +29231,20 @@ func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToO
 	}
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKey string
 
 const (
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyAll        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpCookie = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_COOKIE")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpHeader = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_HEADER")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpPath   = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_PATH")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyIp         = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyRegionCode = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("REGION_CODE")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeySni        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("SNI")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyXffIp      = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("XFF_IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyAll               = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpCookie        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_COOKIE")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpHeader        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_HEADER")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpPath          = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_PATH")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyIp                = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyRegionCode        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("REGION_CODE")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeySni               = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("SNI")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyTlsJa3Fingerprint = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("TLS_JA3_FINGERPRINT")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyUserIp            = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("USER_IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyXffIp             = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("XFF_IP")
 )
 
 func (SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ElementType() reflect.Type {
@@ -28667,6 +29376,8 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ToStringPtrOutp
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyIp
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyRegionCode
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeySni
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyTlsJa3Fingerprint
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyUserIp
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyXffIp
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput interface {
 	pulumi.Input
@@ -28708,18 +29419,20 @@ func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr) ToOutput(ctx contex
 	}
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType string
 
 const (
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeAll        = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpCookie = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_COOKIE")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpHeader = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_HEADER")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpPath   = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_PATH")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeIp         = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("IP")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeRegionCode = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("REGION_CODE")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeSni        = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("SNI")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeXffIp      = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("XFF_IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeAll               = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpCookie        = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_COOKIE")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpHeader        = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_HEADER")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpPath          = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_PATH")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeIp                = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeRegionCode        = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("REGION_CODE")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeSni               = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("SNI")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeTlsJa3Fingerprint = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("TLS_JA3_FINGERPRINT")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeUserIp            = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("USER_IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeXffIp             = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("XFF_IP")
 )
 
 func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType) ElementType() reflect.Type {
@@ -28851,6 +29564,8 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrO
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeIp
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeRegionCode
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeSni
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeTlsJa3Fingerprint
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeUserIp
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeXffIp
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeInput interface {
 	pulumi.Input
@@ -30648,6 +31363,358 @@ func (in *sslPolicyProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*Ssl
 	}
 }
 
+// Provisioning type of the byte capacity of the pool.
+type StoragePoolCapacityProvisioningType string
+
+const (
+	// Advanced provisioning "thinly" allocates the related resource.
+	StoragePoolCapacityProvisioningTypeAdvanced = StoragePoolCapacityProvisioningType("ADVANCED")
+	// Standard provisioning allocates the related resource for the pool disks' exclusive use.
+	StoragePoolCapacityProvisioningTypeStandard    = StoragePoolCapacityProvisioningType("STANDARD")
+	StoragePoolCapacityProvisioningTypeUnspecified = StoragePoolCapacityProvisioningType("UNSPECIFIED")
+)
+
+func (StoragePoolCapacityProvisioningType) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolCapacityProvisioningType)(nil)).Elem()
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypeOutput() StoragePoolCapacityProvisioningTypeOutput {
+	return pulumi.ToOutput(e).(StoragePoolCapacityProvisioningTypeOutput)
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StoragePoolCapacityProvisioningTypeOutput)
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return e.ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(context.Background())
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return StoragePoolCapacityProvisioningType(e).ToStoragePoolCapacityProvisioningTypeOutputWithContext(ctx).ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx)
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StoragePoolCapacityProvisioningTypeOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolCapacityProvisioningTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolCapacityProvisioningType)(nil)).Elem()
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypeOutput() StoragePoolCapacityProvisioningTypeOutput {
+	return o
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypeOutput {
+	return o
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return o.ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoragePoolCapacityProvisioningType) *StoragePoolCapacityProvisioningType {
+		return &v
+	}).(StoragePoolCapacityProvisioningTypePtrOutput)
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolCapacityProvisioningType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolCapacityProvisioningType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StoragePoolCapacityProvisioningTypePtrOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolCapacityProvisioningTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoragePoolCapacityProvisioningType)(nil)).Elem()
+}
+
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return o
+}
+
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return o
+}
+
+func (o StoragePoolCapacityProvisioningTypePtrOutput) Elem() StoragePoolCapacityProvisioningTypeOutput {
+	return o.ApplyT(func(v *StoragePoolCapacityProvisioningType) StoragePoolCapacityProvisioningType {
+		if v != nil {
+			return *v
+		}
+		var ret StoragePoolCapacityProvisioningType
+		return ret
+	}).(StoragePoolCapacityProvisioningTypeOutput)
+}
+
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StoragePoolCapacityProvisioningType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StoragePoolCapacityProvisioningTypeInput is an input type that accepts values of the StoragePoolCapacityProvisioningType enum
+// A concrete instance of `StoragePoolCapacityProvisioningTypeInput` can be one of the following:
+//
+//	StoragePoolCapacityProvisioningTypeAdvanced
+//	StoragePoolCapacityProvisioningTypeStandard
+//	StoragePoolCapacityProvisioningTypeUnspecified
+type StoragePoolCapacityProvisioningTypeInput interface {
+	pulumi.Input
+
+	ToStoragePoolCapacityProvisioningTypeOutput() StoragePoolCapacityProvisioningTypeOutput
+	ToStoragePoolCapacityProvisioningTypeOutputWithContext(context.Context) StoragePoolCapacityProvisioningTypeOutput
+}
+
+var storagePoolCapacityProvisioningTypePtrType = reflect.TypeOf((**StoragePoolCapacityProvisioningType)(nil)).Elem()
+
+type StoragePoolCapacityProvisioningTypePtrInput interface {
+	pulumi.Input
+
+	ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput
+	ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(context.Context) StoragePoolCapacityProvisioningTypePtrOutput
+}
+
+type storagePoolCapacityProvisioningTypePtr string
+
+func StoragePoolCapacityProvisioningTypePtr(v string) StoragePoolCapacityProvisioningTypePtrInput {
+	return (*storagePoolCapacityProvisioningTypePtr)(&v)
+}
+
+func (*storagePoolCapacityProvisioningTypePtr) ElementType() reflect.Type {
+	return storagePoolCapacityProvisioningTypePtrType
+}
+
+func (in *storagePoolCapacityProvisioningTypePtr) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return pulumi.ToOutput(in).(StoragePoolCapacityProvisioningTypePtrOutput)
+}
+
+func (in *storagePoolCapacityProvisioningTypePtr) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StoragePoolCapacityProvisioningTypePtrOutput)
+}
+
+func (in *storagePoolCapacityProvisioningTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolCapacityProvisioningType] {
+	return pulumix.Output[*StoragePoolCapacityProvisioningType]{
+		OutputState: in.ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+type StoragePoolPerformanceProvisioningType string
+
+const (
+	// Advanced provisioning "thinly" allocates the related resource.
+	StoragePoolPerformanceProvisioningTypeAdvanced = StoragePoolPerformanceProvisioningType("ADVANCED")
+	// Standard provisioning allocates the related resource for the pool disks' exclusive use.
+	StoragePoolPerformanceProvisioningTypeStandard    = StoragePoolPerformanceProvisioningType("STANDARD")
+	StoragePoolPerformanceProvisioningTypeUnspecified = StoragePoolPerformanceProvisioningType("UNSPECIFIED")
+)
+
+func (StoragePoolPerformanceProvisioningType) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolPerformanceProvisioningType)(nil)).Elem()
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypeOutput() StoragePoolPerformanceProvisioningTypeOutput {
+	return pulumi.ToOutput(e).(StoragePoolPerformanceProvisioningTypeOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StoragePoolPerformanceProvisioningTypeOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return e.ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(context.Background())
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return StoragePoolPerformanceProvisioningType(e).ToStoragePoolPerformanceProvisioningTypeOutputWithContext(ctx).ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StoragePoolPerformanceProvisioningTypeOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolPerformanceProvisioningTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolPerformanceProvisioningType)(nil)).Elem()
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypeOutput() StoragePoolPerformanceProvisioningTypeOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypeOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o.ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoragePoolPerformanceProvisioningType) *StoragePoolPerformanceProvisioningType {
+		return &v
+	}).(StoragePoolPerformanceProvisioningTypePtrOutput)
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolPerformanceProvisioningType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolPerformanceProvisioningType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StoragePoolPerformanceProvisioningTypePtrOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolPerformanceProvisioningTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoragePoolPerformanceProvisioningType)(nil)).Elem()
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) Elem() StoragePoolPerformanceProvisioningTypeOutput {
+	return o.ApplyT(func(v *StoragePoolPerformanceProvisioningType) StoragePoolPerformanceProvisioningType {
+		if v != nil {
+			return *v
+		}
+		var ret StoragePoolPerformanceProvisioningType
+		return ret
+	}).(StoragePoolPerformanceProvisioningTypeOutput)
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StoragePoolPerformanceProvisioningType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StoragePoolPerformanceProvisioningTypeInput is an input type that accepts values of the StoragePoolPerformanceProvisioningType enum
+// A concrete instance of `StoragePoolPerformanceProvisioningTypeInput` can be one of the following:
+//
+//	StoragePoolPerformanceProvisioningTypeAdvanced
+//	StoragePoolPerformanceProvisioningTypeStandard
+//	StoragePoolPerformanceProvisioningTypeUnspecified
+type StoragePoolPerformanceProvisioningTypeInput interface {
+	pulumi.Input
+
+	ToStoragePoolPerformanceProvisioningTypeOutput() StoragePoolPerformanceProvisioningTypeOutput
+	ToStoragePoolPerformanceProvisioningTypeOutputWithContext(context.Context) StoragePoolPerformanceProvisioningTypeOutput
+}
+
+var storagePoolPerformanceProvisioningTypePtrType = reflect.TypeOf((**StoragePoolPerformanceProvisioningType)(nil)).Elem()
+
+type StoragePoolPerformanceProvisioningTypePtrInput interface {
+	pulumi.Input
+
+	ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput
+	ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(context.Context) StoragePoolPerformanceProvisioningTypePtrOutput
+}
+
+type storagePoolPerformanceProvisioningTypePtr string
+
+func StoragePoolPerformanceProvisioningTypePtr(v string) StoragePoolPerformanceProvisioningTypePtrInput {
+	return (*storagePoolPerformanceProvisioningTypePtr)(&v)
+}
+
+func (*storagePoolPerformanceProvisioningTypePtr) ElementType() reflect.Type {
+	return storagePoolPerformanceProvisioningTypePtrType
+}
+
+func (in *storagePoolPerformanceProvisioningTypePtr) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return pulumi.ToOutput(in).(StoragePoolPerformanceProvisioningTypePtrOutput)
+}
+
+func (in *storagePoolPerformanceProvisioningTypePtr) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StoragePoolPerformanceProvisioningTypePtrOutput)
+}
+
+func (in *storagePoolPerformanceProvisioningTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolPerformanceProvisioningType] {
+	return pulumix.Output[*StoragePoolPerformanceProvisioningType]{
+		OutputState: in.ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
 type SubnetworkIpv6AccessType string
 
@@ -31353,13 +32420,13 @@ func (in *subnetworkPrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pu
 	}
 }
 
-// The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+// The purpose of the resource. This field can be either PRIVATE, GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
 type SubnetworkPurpose string
 
 const (
 	// Subnet reserved for Global Envoy-based Load Balancing.
 	SubnetworkPurposeGlobalManagedProxy = SubnetworkPurpose("GLOBAL_MANAGED_PROXY")
-	// Subnet reserved for Internal HTTP(S) Load Balancing.
+	// Subnet reserved for Internal HTTP(S) Load Balancing. This is a legacy purpose, please use REGIONAL_MANAGED_PROXY instead.
 	SubnetworkPurposeInternalHttpsLoadBalancer = SubnetworkPurpose("INTERNAL_HTTPS_LOAD_BALANCER")
 	// Regular user created or automatically created subnet.
 	SubnetworkPurposePrivate = SubnetworkPurpose("PRIVATE")
@@ -31542,7 +32609,7 @@ func (in *subnetworkPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*Su
 	}
 }
 
-// The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+// The role of subnetwork. Currently, this field is only used when purpose is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
 type SubnetworkRole string
 
 const (
@@ -32063,7 +33130,7 @@ func (in *subsettingPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*Sub
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type TCPHealthCheckPortSpecification string
 
 const (
@@ -33296,6 +34363,180 @@ func (in *targetTcpProxyProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
+// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+type VpnGatewayGatewayIpVersion string
+
+const (
+	// Every HA-VPN gateway interface is configured with an IPv4 address.
+	VpnGatewayGatewayIpVersionIpv4 = VpnGatewayGatewayIpVersion("IPV4")
+	// Every HA-VPN gateway interface is configured with an IPv6 address.
+	VpnGatewayGatewayIpVersionIpv6 = VpnGatewayGatewayIpVersion("IPV6")
+)
+
+func (VpnGatewayGatewayIpVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayGatewayIpVersion)(nil)).Elem()
+}
+
+func (e VpnGatewayGatewayIpVersion) ToVpnGatewayGatewayIpVersionOutput() VpnGatewayGatewayIpVersionOutput {
+	return pulumi.ToOutput(e).(VpnGatewayGatewayIpVersionOutput)
+}
+
+func (e VpnGatewayGatewayIpVersion) ToVpnGatewayGatewayIpVersionOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VpnGatewayGatewayIpVersionOutput)
+}
+
+func (e VpnGatewayGatewayIpVersion) ToVpnGatewayGatewayIpVersionPtrOutput() VpnGatewayGatewayIpVersionPtrOutput {
+	return e.ToVpnGatewayGatewayIpVersionPtrOutputWithContext(context.Background())
+}
+
+func (e VpnGatewayGatewayIpVersion) ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionPtrOutput {
+	return VpnGatewayGatewayIpVersion(e).ToVpnGatewayGatewayIpVersionOutputWithContext(ctx).ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx)
+}
+
+func (e VpnGatewayGatewayIpVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VpnGatewayGatewayIpVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VpnGatewayGatewayIpVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VpnGatewayGatewayIpVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VpnGatewayGatewayIpVersionOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayGatewayIpVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayGatewayIpVersion)(nil)).Elem()
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToVpnGatewayGatewayIpVersionOutput() VpnGatewayGatewayIpVersionOutput {
+	return o
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToVpnGatewayGatewayIpVersionOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionOutput {
+	return o
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToVpnGatewayGatewayIpVersionPtrOutput() VpnGatewayGatewayIpVersionPtrOutput {
+	return o.ToVpnGatewayGatewayIpVersionPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnGatewayGatewayIpVersion) *VpnGatewayGatewayIpVersion {
+		return &v
+	}).(VpnGatewayGatewayIpVersionPtrOutput)
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VpnGatewayGatewayIpVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VpnGatewayGatewayIpVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpnGatewayGatewayIpVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayGatewayIpVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayGatewayIpVersion)(nil)).Elem()
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) ToVpnGatewayGatewayIpVersionPtrOutput() VpnGatewayGatewayIpVersionPtrOutput {
+	return o
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionPtrOutput {
+	return o
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) Elem() VpnGatewayGatewayIpVersionOutput {
+	return o.ApplyT(func(v *VpnGatewayGatewayIpVersion) VpnGatewayGatewayIpVersion {
+		if v != nil {
+			return *v
+		}
+		var ret VpnGatewayGatewayIpVersion
+		return ret
+	}).(VpnGatewayGatewayIpVersionOutput)
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VpnGatewayGatewayIpVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VpnGatewayGatewayIpVersionInput is an input type that accepts values of the VpnGatewayGatewayIpVersion enum
+// A concrete instance of `VpnGatewayGatewayIpVersionInput` can be one of the following:
+//
+//	VpnGatewayGatewayIpVersionIpv4
+//	VpnGatewayGatewayIpVersionIpv6
+type VpnGatewayGatewayIpVersionInput interface {
+	pulumi.Input
+
+	ToVpnGatewayGatewayIpVersionOutput() VpnGatewayGatewayIpVersionOutput
+	ToVpnGatewayGatewayIpVersionOutputWithContext(context.Context) VpnGatewayGatewayIpVersionOutput
+}
+
+var vpnGatewayGatewayIpVersionPtrType = reflect.TypeOf((**VpnGatewayGatewayIpVersion)(nil)).Elem()
+
+type VpnGatewayGatewayIpVersionPtrInput interface {
+	pulumi.Input
+
+	ToVpnGatewayGatewayIpVersionPtrOutput() VpnGatewayGatewayIpVersionPtrOutput
+	ToVpnGatewayGatewayIpVersionPtrOutputWithContext(context.Context) VpnGatewayGatewayIpVersionPtrOutput
+}
+
+type vpnGatewayGatewayIpVersionPtr string
+
+func VpnGatewayGatewayIpVersionPtr(v string) VpnGatewayGatewayIpVersionPtrInput {
+	return (*vpnGatewayGatewayIpVersionPtr)(&v)
+}
+
+func (*vpnGatewayGatewayIpVersionPtr) ElementType() reflect.Type {
+	return vpnGatewayGatewayIpVersionPtrType
+}
+
+func (in *vpnGatewayGatewayIpVersionPtr) ToVpnGatewayGatewayIpVersionPtrOutput() VpnGatewayGatewayIpVersionPtrOutput {
+	return pulumi.ToOutput(in).(VpnGatewayGatewayIpVersionPtrOutput)
+}
+
+func (in *vpnGatewayGatewayIpVersionPtr) ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VpnGatewayGatewayIpVersionPtrOutput)
+}
+
+func (in *vpnGatewayGatewayIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*VpnGatewayGatewayIpVersion] {
+	return pulumix.Output[*VpnGatewayGatewayIpVersion]{
+		OutputState: in.ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
 type VpnGatewayStackType string
 
@@ -33485,6 +34726,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressNetworkTierPtrInput)(nil)).Elem(), AddressNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressPurposeInput)(nil)).Elem(), AddressPurpose("DNS_RESOLVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressPurposePtrInput)(nil)).Elem(), AddressPurpose("DNS_RESOLVER"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationAggregateReservationVmFamilyInput)(nil)).Elem(), AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationAggregateReservationVmFamilyPtrInput)(nil)).Elem(), AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationAggregateReservationWorkloadTypeInput)(nil)).Elem(), AllocationAggregateReservationWorkloadType("BATCH"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationAggregateReservationWorkloadTypePtrInput)(nil)).Elem(), AllocationAggregateReservationWorkloadType("BATCH"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceInput)(nil)).Elem(), AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface("NVME"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrInput)(nil)).Elem(), AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface("NVME"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsArchitectureInput)(nil)).Elem(), AttachedDiskInitializeParamsArchitecture("ARCHITECTURE_UNSPECIFIED"))
@@ -33515,6 +34760,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyCacheModePtrInput)(nil)).Elem(), BackendBucketCdnPolicyCacheMode("CACHE_ALL_STATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCompressionModeInput)(nil)).Elem(), BackendBucketCompressionMode("AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCompressionModePtrInput)(nil)).Elem(), BackendBucketCompressionMode("AUTOMATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendPreferenceInput)(nil)).Elem(), BackendPreference("DEFAULT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendPreferencePtrInput)(nil)).Elem(), BackendPreference("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyCacheModeInput)(nil)).Elem(), BackendServiceCdnPolicyCacheMode("CACHE_ALL_STATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyCacheModePtrInput)(nil)).Elem(), BackendServiceCdnPolicyCacheMode("CACHE_ALL_STATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCompressionModeInput)(nil)).Elem(), BackendServiceCompressionMode("AUTOMATIC"))
@@ -33617,6 +34864,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageRawDiskContainerTypePtrInput)(nil)).Elem(), ImageRawDiskContainerType("TAR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageSourceTypeInput)(nil)).Elem(), ImageSourceType("RAW"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageSourceTypePtrInput)(nil)).Elem(), ImageSourceType("RAW"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("DO_NOTHING"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("DO_NOTHING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResultsInput)(nil)).Elem(), InstanceGroupManagerListManagedInstancesResults("PAGELESS"))
@@ -33818,6 +35067,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyMinTlsVersionPtrInput)(nil)).Elem(), SslPolicyMinTlsVersion("TLS_1_0"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyProfileInput)(nil)).Elem(), SslPolicyProfile("COMPATIBLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyProfilePtrInput)(nil)).Elem(), SslPolicyProfile("COMPATIBLE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolCapacityProvisioningTypeInput)(nil)).Elem(), StoragePoolCapacityProvisioningType("ADVANCED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolCapacityProvisioningTypePtrInput)(nil)).Elem(), StoragePoolCapacityProvisioningType("ADVANCED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolPerformanceProvisioningTypeInput)(nil)).Elem(), StoragePoolPerformanceProvisioningType("ADVANCED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolPerformanceProvisioningTypePtrInput)(nil)).Elem(), StoragePoolPerformanceProvisioningType("ADVANCED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIpv6AccessTypeInput)(nil)).Elem(), SubnetworkIpv6AccessType("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIpv6AccessTypePtrInput)(nil)).Elem(), SubnetworkIpv6AccessType("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigAggregationIntervalInput)(nil)).Elem(), SubnetworkLogConfigAggregationInterval("INTERVAL_10_MIN"))
@@ -33848,6 +35101,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetSslProxyProxyHeaderPtrInput)(nil)).Elem(), TargetSslProxyProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetTcpProxyProxyHeaderInput)(nil)).Elem(), TargetTcpProxyProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetTcpProxyProxyHeaderPtrInput)(nil)).Elem(), TargetTcpProxyProxyHeader("NONE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayGatewayIpVersionInput)(nil)).Elem(), VpnGatewayGatewayIpVersion("IPV4"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayGatewayIpVersionPtrInput)(nil)).Elem(), VpnGatewayGatewayIpVersion("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayStackTypeInput)(nil)).Elem(), VpnGatewayStackType("IPV4_IPV6"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayStackTypePtrInput)(nil)).Elem(), VpnGatewayStackType("IPV4_IPV6"))
 	pulumi.RegisterOutputType(AccessConfigNetworkTierOutput{})
@@ -33864,6 +35119,10 @@ func init() {
 	pulumi.RegisterOutputType(AddressNetworkTierPtrOutput{})
 	pulumi.RegisterOutputType(AddressPurposeOutput{})
 	pulumi.RegisterOutputType(AddressPurposePtrOutput{})
+	pulumi.RegisterOutputType(AllocationAggregateReservationVmFamilyOutput{})
+	pulumi.RegisterOutputType(AllocationAggregateReservationVmFamilyPtrOutput{})
+	pulumi.RegisterOutputType(AllocationAggregateReservationWorkloadTypeOutput{})
+	pulumi.RegisterOutputType(AllocationAggregateReservationWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput{})
 	pulumi.RegisterOutputType(AttachedDiskInitializeParamsArchitectureOutput{})
@@ -33894,6 +35153,8 @@ func init() {
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyCacheModePtrOutput{})
 	pulumi.RegisterOutputType(BackendBucketCompressionModeOutput{})
 	pulumi.RegisterOutputType(BackendBucketCompressionModePtrOutput{})
+	pulumi.RegisterOutputType(BackendPreferenceOutput{})
+	pulumi.RegisterOutputType(BackendPreferencePtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyCacheModeOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyCacheModePtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceCompressionModeOutput{})
@@ -33996,6 +35257,8 @@ func init() {
 	pulumi.RegisterOutputType(ImageRawDiskContainerTypePtrOutput{})
 	pulumi.RegisterOutputType(ImageSourceTypeOutput{})
 	pulumi.RegisterOutputType(ImageSourceTypePtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerListManagedInstancesResultsOutput{})
@@ -34197,6 +35460,10 @@ func init() {
 	pulumi.RegisterOutputType(SslPolicyMinTlsVersionPtrOutput{})
 	pulumi.RegisterOutputType(SslPolicyProfileOutput{})
 	pulumi.RegisterOutputType(SslPolicyProfilePtrOutput{})
+	pulumi.RegisterOutputType(StoragePoolCapacityProvisioningTypeOutput{})
+	pulumi.RegisterOutputType(StoragePoolCapacityProvisioningTypePtrOutput{})
+	pulumi.RegisterOutputType(StoragePoolPerformanceProvisioningTypeOutput{})
+	pulumi.RegisterOutputType(StoragePoolPerformanceProvisioningTypePtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkIpv6AccessTypeOutput{})
 	pulumi.RegisterOutputType(SubnetworkIpv6AccessTypePtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkLogConfigAggregationIntervalOutput{})
@@ -34227,6 +35494,8 @@ func init() {
 	pulumi.RegisterOutputType(TargetSslProxyProxyHeaderPtrOutput{})
 	pulumi.RegisterOutputType(TargetTcpProxyProxyHeaderOutput{})
 	pulumi.RegisterOutputType(TargetTcpProxyProxyHeaderPtrOutput{})
+	pulumi.RegisterOutputType(VpnGatewayGatewayIpVersionOutput{})
+	pulumi.RegisterOutputType(VpnGatewayGatewayIpVersionPtrOutput{})
 	pulumi.RegisterOutputType(VpnGatewayStackTypeOutput{})
 	pulumi.RegisterOutputType(VpnGatewayStackTypePtrOutput{})
 }

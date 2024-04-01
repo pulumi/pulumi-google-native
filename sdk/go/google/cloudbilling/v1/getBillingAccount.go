@@ -33,9 +33,9 @@ type LookupBillingAccountResult struct {
 	MasterBillingAccount string `pulumi:"masterBillingAccount"`
 	// The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.
 	Name string `pulumi:"name"`
-	// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+	// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it are unable to use paid services.
 	Open bool `pulumi:"open"`
-	// The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update the account's parent resource if it is a organization. Format: - organizations/{organization_id}, for example: organizations/12345678 - billingAccounts/{billing_account_id}, for example: `billingAccounts/012345-567890-ABCDEF`
+	// The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update the account's parent resource if it is a organization. Format: - `organizations/{organization_id}`, for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
 	Parent string `pulumi:"parent"`
 }
 
@@ -89,12 +89,12 @@ func (o LookupBillingAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it are unable to use paid services.
 func (o LookupBillingAccountResultOutput) Open() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBillingAccountResult) bool { return v.Open }).(pulumi.BoolOutput)
 }
 
-// The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update the account's parent resource if it is a organization. Format: - organizations/{organization_id}, for example: organizations/12345678 - billingAccounts/{billing_account_id}, for example: `billingAccounts/012345-567890-ABCDEF`
+// The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update the account's parent resource if it is a organization. Format: - `organizations/{organization_id}`, for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
 func (o LookupBillingAccountResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingAccountResult) string { return v.Parent }).(pulumi.StringOutput)
 }

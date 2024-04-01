@@ -201,9 +201,9 @@ const (
 	BinaryAuthorizationEvaluationModeDisabled = BinaryAuthorizationEvaluationMode("DISABLED")
 	// Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy. This is equivalent to setting the enabled boolean to true.
 	BinaryAuthorizationEvaluationModeProjectSingletonPolicyEnforce = BinaryAuthorizationEvaluationMode("PROJECT_SINGLETON_POLICY_ENFORCE")
-	// Use Binary Authorization with the policies specified in policy_bindings.
+	// Use Binary Authorization Continuous Validation with the policies specified in policy_bindings.
 	BinaryAuthorizationEvaluationModePolicyBindings = BinaryAuthorizationEvaluationMode("POLICY_BINDINGS")
-	// Use Binary Authorization with the policies specified in policy_bindings, and also with the project's singleton policy in enforcement mode.
+	// Use Binary Authorization Continuous Validation with the policies specified in policy_bindings and enforce Kubernetes admission requests with Binary Authorization using the project's singleton policy.
 	BinaryAuthorizationEvaluationModePolicyBindingsAndProjectSingletonPolicyEnforce = BinaryAuthorizationEvaluationMode("POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE")
 )
 
@@ -6613,6 +6613,180 @@ func (in *sandboxConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Sa
 	}
 }
 
+// Disk mode (container image cache, etc.)
+type SecondaryBootDiskMode string
+
+const (
+	// MODE_UNSPECIFIED is when mode is not set.
+	SecondaryBootDiskModeModeUnspecified = SecondaryBootDiskMode("MODE_UNSPECIFIED")
+	// CONTAINER_IMAGE_CACHE is for using the secondary boot disk as a container image cache.
+	SecondaryBootDiskModeContainerImageCache = SecondaryBootDiskMode("CONTAINER_IMAGE_CACHE")
+)
+
+func (SecondaryBootDiskMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecondaryBootDiskMode)(nil)).Elem()
+}
+
+func (e SecondaryBootDiskMode) ToSecondaryBootDiskModeOutput() SecondaryBootDiskModeOutput {
+	return pulumi.ToOutput(e).(SecondaryBootDiskModeOutput)
+}
+
+func (e SecondaryBootDiskMode) ToSecondaryBootDiskModeOutputWithContext(ctx context.Context) SecondaryBootDiskModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecondaryBootDiskModeOutput)
+}
+
+func (e SecondaryBootDiskMode) ToSecondaryBootDiskModePtrOutput() SecondaryBootDiskModePtrOutput {
+	return e.ToSecondaryBootDiskModePtrOutputWithContext(context.Background())
+}
+
+func (e SecondaryBootDiskMode) ToSecondaryBootDiskModePtrOutputWithContext(ctx context.Context) SecondaryBootDiskModePtrOutput {
+	return SecondaryBootDiskMode(e).ToSecondaryBootDiskModeOutputWithContext(ctx).ToSecondaryBootDiskModePtrOutputWithContext(ctx)
+}
+
+func (e SecondaryBootDiskMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecondaryBootDiskMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecondaryBootDiskMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecondaryBootDiskMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecondaryBootDiskModeOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecondaryBootDiskMode)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskModeOutput) ToSecondaryBootDiskModeOutput() SecondaryBootDiskModeOutput {
+	return o
+}
+
+func (o SecondaryBootDiskModeOutput) ToSecondaryBootDiskModeOutputWithContext(ctx context.Context) SecondaryBootDiskModeOutput {
+	return o
+}
+
+func (o SecondaryBootDiskModeOutput) ToSecondaryBootDiskModePtrOutput() SecondaryBootDiskModePtrOutput {
+	return o.ToSecondaryBootDiskModePtrOutputWithContext(context.Background())
+}
+
+func (o SecondaryBootDiskModeOutput) ToSecondaryBootDiskModePtrOutputWithContext(ctx context.Context) SecondaryBootDiskModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecondaryBootDiskMode) *SecondaryBootDiskMode {
+		return &v
+	}).(SecondaryBootDiskModePtrOutput)
+}
+
+func (o SecondaryBootDiskModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecondaryBootDiskModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecondaryBootDiskMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecondaryBootDiskModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecondaryBootDiskModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecondaryBootDiskMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecondaryBootDiskModePtrOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecondaryBootDiskMode)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskModePtrOutput) ToSecondaryBootDiskModePtrOutput() SecondaryBootDiskModePtrOutput {
+	return o
+}
+
+func (o SecondaryBootDiskModePtrOutput) ToSecondaryBootDiskModePtrOutputWithContext(ctx context.Context) SecondaryBootDiskModePtrOutput {
+	return o
+}
+
+func (o SecondaryBootDiskModePtrOutput) Elem() SecondaryBootDiskModeOutput {
+	return o.ApplyT(func(v *SecondaryBootDiskMode) SecondaryBootDiskMode {
+		if v != nil {
+			return *v
+		}
+		var ret SecondaryBootDiskMode
+		return ret
+	}).(SecondaryBootDiskModeOutput)
+}
+
+func (o SecondaryBootDiskModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecondaryBootDiskModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecondaryBootDiskMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecondaryBootDiskModeInput is an input type that accepts values of the SecondaryBootDiskMode enum
+// A concrete instance of `SecondaryBootDiskModeInput` can be one of the following:
+//
+//	SecondaryBootDiskModeModeUnspecified
+//	SecondaryBootDiskModeContainerImageCache
+type SecondaryBootDiskModeInput interface {
+	pulumi.Input
+
+	ToSecondaryBootDiskModeOutput() SecondaryBootDiskModeOutput
+	ToSecondaryBootDiskModeOutputWithContext(context.Context) SecondaryBootDiskModeOutput
+}
+
+var secondaryBootDiskModePtrType = reflect.TypeOf((**SecondaryBootDiskMode)(nil)).Elem()
+
+type SecondaryBootDiskModePtrInput interface {
+	pulumi.Input
+
+	ToSecondaryBootDiskModePtrOutput() SecondaryBootDiskModePtrOutput
+	ToSecondaryBootDiskModePtrOutputWithContext(context.Context) SecondaryBootDiskModePtrOutput
+}
+
+type secondaryBootDiskModePtr string
+
+func SecondaryBootDiskModePtr(v string) SecondaryBootDiskModePtrInput {
+	return (*secondaryBootDiskModePtr)(&v)
+}
+
+func (*secondaryBootDiskModePtr) ElementType() reflect.Type {
+	return secondaryBootDiskModePtrType
+}
+
+func (in *secondaryBootDiskModePtr) ToSecondaryBootDiskModePtrOutput() SecondaryBootDiskModePtrOutput {
+	return pulumi.ToOutput(in).(SecondaryBootDiskModePtrOutput)
+}
+
+func (in *secondaryBootDiskModePtr) ToSecondaryBootDiskModePtrOutputWithContext(ctx context.Context) SecondaryBootDiskModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecondaryBootDiskModePtrOutput)
+}
+
+func (in *secondaryBootDiskModePtr) ToOutput(ctx context.Context) pulumix.Output[*SecondaryBootDiskMode] {
+	return pulumix.Output[*SecondaryBootDiskMode]{
+		OutputState: in.ToSecondaryBootDiskModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Sets which mode to use for Security Posture features.
 type SecurityPostureConfigMode string
 
@@ -8348,6 +8522,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypePtrInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigTypeInput)(nil)).Elem(), SandboxConfigType("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigTypePtrInput)(nil)).Elem(), SandboxConfigType("UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecondaryBootDiskModeInput)(nil)).Elem(), SecondaryBootDiskMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecondaryBootDiskModePtrInput)(nil)).Elem(), SecondaryBootDiskMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigModeInput)(nil)).Elem(), SecurityPostureConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigModePtrInput)(nil)).Elem(), SecurityPostureConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigVulnerabilityModeInput)(nil)).Elem(), SecurityPostureConfigVulnerabilityMode("VULNERABILITY_MODE_UNSPECIFIED"))
@@ -8441,6 +8617,8 @@ func init() {
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypePtrOutput{})
 	pulumi.RegisterOutputType(SandboxConfigTypeOutput{})
 	pulumi.RegisterOutputType(SandboxConfigTypePtrOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskModeOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskModePtrOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigModeOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigModePtrOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigVulnerabilityModeOutput{})

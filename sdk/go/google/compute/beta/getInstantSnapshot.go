@@ -50,6 +50,8 @@ type LookupInstantSnapshotResult struct {
 	// Status information for the instant snapshot resource.
 	ResourceStatus InstantSnapshotResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -150,6 +152,11 @@ func (o LookupInstantSnapshotResultOutput) Region() pulumi.StringOutput {
 // Status information for the instant snapshot resource.
 func (o LookupInstantSnapshotResultOutput) ResourceStatus() InstantSnapshotResourceStatusResponseOutput {
 	return o.ApplyT(func(v LookupInstantSnapshotResult) InstantSnapshotResourceStatusResponse { return v.ResourceStatus }).(InstantSnapshotResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o LookupInstantSnapshotResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstantSnapshotResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

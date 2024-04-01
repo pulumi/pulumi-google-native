@@ -23,7 +23,6 @@ func LookupConversation(ctx *pulumi.Context, args *LookupConversationArgs, opts 
 }
 
 type LookupConversationArgs struct {
-	CollectionId   string  `pulumi:"collectionId"`
 	ConversationId string  `pulumi:"conversationId"`
 	DataStoreId    string  `pulumi:"dataStoreId"`
 	Location       string  `pulumi:"location"`
@@ -35,7 +34,7 @@ type LookupConversationResult struct {
 	EndTime string `pulumi:"endTime"`
 	// Conversation messages.
 	Messages []GoogleCloudDiscoveryengineV1betaConversationMessageResponse `pulumi:"messages"`
-	// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+	// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
 	Name string `pulumi:"name"`
 	// The time the conversation started.
 	StartTime string `pulumi:"startTime"`
@@ -59,7 +58,6 @@ func LookupConversationOutput(ctx *pulumi.Context, args LookupConversationOutput
 }
 
 type LookupConversationOutputArgs struct {
-	CollectionId   pulumi.StringInput    `pulumi:"collectionId"`
 	ConversationId pulumi.StringInput    `pulumi:"conversationId"`
 	DataStoreId    pulumi.StringInput    `pulumi:"dataStoreId"`
 	Location       pulumi.StringInput    `pulumi:"location"`
@@ -96,7 +94,7 @@ func (o LookupConversationResultOutput) Messages() GoogleCloudDiscoveryengineV1b
 	}).(GoogleCloudDiscoveryengineV1betaConversationMessageResponseArrayOutput)
 }
 
-// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
 func (o LookupConversationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConversationResult) string { return v.Name }).(pulumi.StringOutput)
 }

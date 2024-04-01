@@ -17,6 +17,8 @@ import (
 type CustomConnector struct {
 	pulumi.CustomResourceState
 
+	// Optional. Active connector versions.
+	ActiveConnectorVersions pulumi.StringArrayOutput `pulumi:"activeConnectorVersions"`
 	// Created time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource.
@@ -89,6 +91,8 @@ func (CustomConnectorState) ElementType() reflect.Type {
 }
 
 type customConnectorArgs struct {
+	// Optional. Active connector versions.
+	ActiveConnectorVersions []string `pulumi:"activeConnectorVersions"`
 	// Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource.
 	CustomConnectorId string `pulumi:"customConnectorId"`
 	// Type of the custom connector.
@@ -108,6 +112,8 @@ type customConnectorArgs struct {
 
 // The set of arguments for constructing a CustomConnector resource.
 type CustomConnectorArgs struct {
+	// Optional. Active connector versions.
+	ActiveConnectorVersions pulumi.StringArrayInput
 	// Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource.
 	CustomConnectorId pulumi.StringInput
 	// Type of the custom connector.
@@ -160,6 +166,11 @@ func (o CustomConnectorOutput) ToCustomConnectorOutput() CustomConnectorOutput {
 
 func (o CustomConnectorOutput) ToCustomConnectorOutputWithContext(ctx context.Context) CustomConnectorOutput {
 	return o
+}
+
+// Optional. Active connector versions.
+func (o CustomConnectorOutput) ActiveConnectorVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomConnector) pulumi.StringArrayOutput { return v.ActiveConnectorVersions }).(pulumi.StringArrayOutput)
 }
 
 // Created time.

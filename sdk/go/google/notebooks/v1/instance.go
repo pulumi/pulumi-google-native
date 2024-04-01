@@ -56,7 +56,7 @@ type Instance struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
-	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
+	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Bool indicating whether this notebook has been migrated to a Workbench Instance
 	Migrated pulumi.BoolOutput `pulumi:"migrated"`
@@ -182,7 +182,7 @@ type instanceArgs struct {
 	Location *string           `pulumi:"location"`
 	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType string `pulumi:"machineType"`
-	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
+	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network *string `pulumi:"network"`
@@ -248,7 +248,7 @@ type InstanceArgs struct {
 	Location pulumi.StringPtrInput
 	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringInput
-	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
+	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
 	Metadata pulumi.StringMapInput
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network pulumi.StringPtrInput
@@ -417,7 +417,7 @@ func (o InstanceOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MachineType }).(pulumi.StringOutput)
 }
 
-// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=“BUCKET”"`.
+// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
 func (o InstanceOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }

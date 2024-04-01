@@ -161,6 +161,8 @@ type BackfillAllStrategy struct {
 	OracleExcludedObjects *OracleRdbms `pulumi:"oracleExcludedObjects"`
 	// PostgreSQL data source objects to avoid backfilling.
 	PostgresqlExcludedObjects *PostgresqlRdbms `pulumi:"postgresqlExcludedObjects"`
+	// SQLServer data source objects to avoid backfilling
+	SqlServerExcludedObjects *SqlServerRdbms `pulumi:"sqlServerExcludedObjects"`
 }
 
 // BackfillAllStrategyInput is an input type that accepts BackfillAllStrategyArgs and BackfillAllStrategyOutput values.
@@ -182,6 +184,8 @@ type BackfillAllStrategyArgs struct {
 	OracleExcludedObjects OracleRdbmsPtrInput `pulumi:"oracleExcludedObjects"`
 	// PostgreSQL data source objects to avoid backfilling.
 	PostgresqlExcludedObjects PostgresqlRdbmsPtrInput `pulumi:"postgresqlExcludedObjects"`
+	// SQLServer data source objects to avoid backfilling
+	SqlServerExcludedObjects SqlServerRdbmsPtrInput `pulumi:"sqlServerExcludedObjects"`
 }
 
 func (BackfillAllStrategyArgs) ElementType() reflect.Type {
@@ -277,6 +281,11 @@ func (o BackfillAllStrategyOutput) PostgresqlExcludedObjects() PostgresqlRdbmsPt
 	return o.ApplyT(func(v BackfillAllStrategy) *PostgresqlRdbms { return v.PostgresqlExcludedObjects }).(PostgresqlRdbmsPtrOutput)
 }
 
+// SQLServer data source objects to avoid backfilling
+func (o BackfillAllStrategyOutput) SqlServerExcludedObjects() SqlServerRdbmsPtrOutput {
+	return o.ApplyT(func(v BackfillAllStrategy) *SqlServerRdbms { return v.SqlServerExcludedObjects }).(SqlServerRdbmsPtrOutput)
+}
+
 type BackfillAllStrategyPtrOutput struct{ *pulumi.OutputState }
 
 func (BackfillAllStrategyPtrOutput) ElementType() reflect.Type {
@@ -331,6 +340,16 @@ func (o BackfillAllStrategyPtrOutput) PostgresqlExcludedObjects() PostgresqlRdbm
 	}).(PostgresqlRdbmsPtrOutput)
 }
 
+// SQLServer data source objects to avoid backfilling
+func (o BackfillAllStrategyPtrOutput) SqlServerExcludedObjects() SqlServerRdbmsPtrOutput {
+	return o.ApplyT(func(v *BackfillAllStrategy) *SqlServerRdbms {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServerExcludedObjects
+	}).(SqlServerRdbmsPtrOutput)
+}
+
 // Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
 type BackfillAllStrategyResponse struct {
 	// MySQL data source objects to avoid backfilling.
@@ -339,6 +358,8 @@ type BackfillAllStrategyResponse struct {
 	OracleExcludedObjects OracleRdbmsResponse `pulumi:"oracleExcludedObjects"`
 	// PostgreSQL data source objects to avoid backfilling.
 	PostgresqlExcludedObjects PostgresqlRdbmsResponse `pulumi:"postgresqlExcludedObjects"`
+	// SQLServer data source objects to avoid backfilling
+	SqlServerExcludedObjects SqlServerRdbmsResponse `pulumi:"sqlServerExcludedObjects"`
 }
 
 // Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
@@ -369,6 +390,11 @@ func (o BackfillAllStrategyResponseOutput) OracleExcludedObjects() OracleRdbmsRe
 // PostgreSQL data source objects to avoid backfilling.
 func (o BackfillAllStrategyResponseOutput) PostgresqlExcludedObjects() PostgresqlRdbmsResponseOutput {
 	return o.ApplyT(func(v BackfillAllStrategyResponse) PostgresqlRdbmsResponse { return v.PostgresqlExcludedObjects }).(PostgresqlRdbmsResponseOutput)
+}
+
+// SQLServer data source objects to avoid backfilling
+func (o BackfillAllStrategyResponseOutput) SqlServerExcludedObjects() SqlServerRdbmsResponseOutput {
+	return o.ApplyT(func(v BackfillAllStrategyResponse) SqlServerRdbmsResponse { return v.SqlServerExcludedObjects }).(SqlServerRdbmsResponseOutput)
 }
 
 // Backfill strategy to disable automatic backfill for the Stream's objects.
@@ -4795,7 +4821,7 @@ type OracleSourceConfig struct {
 	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
 	// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
 	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
-	// Stream large object values. NOTE: This feature is currently experimental.
+	// Stream large object values.
 	StreamLargeObjects *StreamLargeObjects `pulumi:"streamLargeObjects"`
 }
 
@@ -4822,7 +4848,7 @@ type OracleSourceConfigArgs struct {
 	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
 	// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
 	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
-	// Stream large object values. NOTE: This feature is currently experimental.
+	// Stream large object values.
 	StreamLargeObjects StreamLargeObjectsPtrInput `pulumi:"streamLargeObjects"`
 }
 
@@ -4929,7 +4955,7 @@ func (o OracleSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OracleSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
 }
 
-// Stream large object values. NOTE: This feature is currently experimental.
+// Stream large object values.
 func (o OracleSourceConfigOutput) StreamLargeObjects() StreamLargeObjectsPtrOutput {
 	return o.ApplyT(func(v OracleSourceConfig) *StreamLargeObjects { return v.StreamLargeObjects }).(StreamLargeObjectsPtrOutput)
 }
@@ -5008,7 +5034,7 @@ func (o OracleSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Stream large object values. NOTE: This feature is currently experimental.
+// Stream large object values.
 func (o OracleSourceConfigPtrOutput) StreamLargeObjects() StreamLargeObjectsPtrOutput {
 	return o.ApplyT(func(v *OracleSourceConfig) *StreamLargeObjects {
 		if v == nil {
@@ -5030,7 +5056,7 @@ type OracleSourceConfigResponse struct {
 	MaxConcurrentBackfillTasks int `pulumi:"maxConcurrentBackfillTasks"`
 	// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
 	MaxConcurrentCdcTasks int `pulumi:"maxConcurrentCdcTasks"`
-	// Stream large object values. NOTE: This feature is currently experimental.
+	// Stream large object values.
 	StreamLargeObjects StreamLargeObjectsResponse `pulumi:"streamLargeObjects"`
 }
 
@@ -5074,7 +5100,7 @@ func (o OracleSourceConfigResponseOutput) MaxConcurrentCdcTasks() pulumi.IntOutp
 	return o.ApplyT(func(v OracleSourceConfigResponse) int { return v.MaxConcurrentCdcTasks }).(pulumi.IntOutput)
 }
 
-// Stream large object values. NOTE: This feature is currently experimental.
+// Stream large object values.
 func (o OracleSourceConfigResponseOutput) StreamLargeObjects() StreamLargeObjectsResponseOutput {
 	return o.ApplyT(func(v OracleSourceConfigResponse) StreamLargeObjectsResponse { return v.StreamLargeObjects }).(StreamLargeObjectsResponseOutput)
 }
@@ -7044,6 +7070,8 @@ type SourceConfig struct {
 	PostgresqlSourceConfig *PostgresqlSourceConfig `pulumi:"postgresqlSourceConfig"`
 	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
+	// SQLServer data source configuration.
+	SqlServerSourceConfig *SqlServerSourceConfig `pulumi:"sqlServerSourceConfig"`
 }
 
 // SourceConfigInput is an input type that accepts SourceConfigArgs and SourceConfigOutput values.
@@ -7067,6 +7095,8 @@ type SourceConfigArgs struct {
 	PostgresqlSourceConfig PostgresqlSourceConfigPtrInput `pulumi:"postgresqlSourceConfig"`
 	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	SourceConnectionProfile pulumi.StringInput `pulumi:"sourceConnectionProfile"`
+	// SQLServer data source configuration.
+	SqlServerSourceConfig SqlServerSourceConfigPtrInput `pulumi:"sqlServerSourceConfig"`
 }
 
 func (SourceConfigArgs) ElementType() reflect.Type {
@@ -7116,6 +7146,11 @@ func (o SourceConfigOutput) SourceConnectionProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceConfig) string { return v.SourceConnectionProfile }).(pulumi.StringOutput)
 }
 
+// SQLServer data source configuration.
+func (o SourceConfigOutput) SqlServerSourceConfig() SqlServerSourceConfigPtrOutput {
+	return o.ApplyT(func(v SourceConfig) *SqlServerSourceConfig { return v.SqlServerSourceConfig }).(SqlServerSourceConfigPtrOutput)
+}
+
 // The configuration of the stream source.
 type SourceConfigResponse struct {
 	// MySQL data source configuration.
@@ -7126,6 +7161,8 @@ type SourceConfigResponse struct {
 	PostgresqlSourceConfig PostgresqlSourceConfigResponse `pulumi:"postgresqlSourceConfig"`
 	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
+	// SQLServer data source configuration.
+	SqlServerSourceConfig SqlServerSourceConfigResponse `pulumi:"sqlServerSourceConfig"`
 }
 
 // The configuration of the stream source.
@@ -7161,6 +7198,11 @@ func (o SourceConfigResponseOutput) PostgresqlSourceConfig() PostgresqlSourceCon
 // Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 func (o SourceConfigResponseOutput) SourceConnectionProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceConfigResponse) string { return v.SourceConnectionProfile }).(pulumi.StringOutput)
+}
+
+// SQLServer data source configuration.
+func (o SourceConfigResponseOutput) SqlServerSourceConfig() SqlServerSourceConfigResponseOutput {
+	return o.ApplyT(func(v SourceConfigResponse) SqlServerSourceConfigResponse { return v.SqlServerSourceConfig }).(SqlServerSourceConfigResponseOutput)
 }
 
 // Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
@@ -7327,6 +7369,1268 @@ func (o SourceHierarchyDatasetsResponseOutput) ToSourceHierarchyDatasetsResponse
 // The dataset template to use for dynamic dataset creation.
 func (o SourceHierarchyDatasetsResponseOutput) DatasetTemplate() DatasetTemplateResponseOutput {
 	return o.ApplyT(func(v SourceHierarchyDatasetsResponse) DatasetTemplateResponse { return v.DatasetTemplate }).(DatasetTemplateResponseOutput)
+}
+
+// SQLServer Column.
+type SqlServerColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The SQLServer data type.
+	DataType *string `pulumi:"dataType"`
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// SqlServerColumnInput is an input type that accepts SqlServerColumnArgs and SqlServerColumnOutput values.
+// You can construct a concrete instance of `SqlServerColumnInput` via:
+//
+//	SqlServerColumnArgs{...}
+type SqlServerColumnInput interface {
+	pulumi.Input
+
+	ToSqlServerColumnOutput() SqlServerColumnOutput
+	ToSqlServerColumnOutputWithContext(context.Context) SqlServerColumnOutput
+}
+
+// SQLServer Column.
+type SqlServerColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The SQLServer data type.
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (SqlServerColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerColumn)(nil)).Elem()
+}
+
+func (i SqlServerColumnArgs) ToSqlServerColumnOutput() SqlServerColumnOutput {
+	return i.ToSqlServerColumnOutputWithContext(context.Background())
+}
+
+func (i SqlServerColumnArgs) ToSqlServerColumnOutputWithContext(ctx context.Context) SqlServerColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerColumnOutput)
+}
+
+// SqlServerColumnArrayInput is an input type that accepts SqlServerColumnArray and SqlServerColumnArrayOutput values.
+// You can construct a concrete instance of `SqlServerColumnArrayInput` via:
+//
+//	SqlServerColumnArray{ SqlServerColumnArgs{...} }
+type SqlServerColumnArrayInput interface {
+	pulumi.Input
+
+	ToSqlServerColumnArrayOutput() SqlServerColumnArrayOutput
+	ToSqlServerColumnArrayOutputWithContext(context.Context) SqlServerColumnArrayOutput
+}
+
+type SqlServerColumnArray []SqlServerColumnInput
+
+func (SqlServerColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerColumn)(nil)).Elem()
+}
+
+func (i SqlServerColumnArray) ToSqlServerColumnArrayOutput() SqlServerColumnArrayOutput {
+	return i.ToSqlServerColumnArrayOutputWithContext(context.Background())
+}
+
+func (i SqlServerColumnArray) ToSqlServerColumnArrayOutputWithContext(ctx context.Context) SqlServerColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerColumnArrayOutput)
+}
+
+// SQLServer Column.
+type SqlServerColumnOutput struct{ *pulumi.OutputState }
+
+func (SqlServerColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerColumn)(nil)).Elem()
+}
+
+func (o SqlServerColumnOutput) ToSqlServerColumnOutput() SqlServerColumnOutput {
+	return o
+}
+
+func (o SqlServerColumnOutput) ToSqlServerColumnOutputWithContext(ctx context.Context) SqlServerColumnOutput {
+	return o
+}
+
+// Column name.
+func (o SqlServerColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerColumn) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// The SQLServer data type.
+func (o SqlServerColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerColumn) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// Column length.
+func (o SqlServerColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlServerColumn) *int { return v.Length }).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o SqlServerColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerColumn) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o SqlServerColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlServerColumn) *int { return v.OrdinalPosition }).(pulumi.IntPtrOutput)
+}
+
+// Column precision.
+func (o SqlServerColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlServerColumn) *int { return v.Precision }).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o SqlServerColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerColumn) *bool { return v.PrimaryKey }).(pulumi.BoolPtrOutput)
+}
+
+// Column scale.
+func (o SqlServerColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlServerColumn) *int { return v.Scale }).(pulumi.IntPtrOutput)
+}
+
+type SqlServerColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlServerColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerColumn)(nil)).Elem()
+}
+
+func (o SqlServerColumnArrayOutput) ToSqlServerColumnArrayOutput() SqlServerColumnArrayOutput {
+	return o
+}
+
+func (o SqlServerColumnArrayOutput) ToSqlServerColumnArrayOutputWithContext(ctx context.Context) SqlServerColumnArrayOutput {
+	return o
+}
+
+func (o SqlServerColumnArrayOutput) Index(i pulumi.IntInput) SqlServerColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerColumn {
+		return vs[0].([]SqlServerColumn)[vs[1].(int)]
+	}).(SqlServerColumnOutput)
+}
+
+// SQLServer Column.
+type SqlServerColumnResponse struct {
+	// Column name.
+	Column string `pulumi:"column"`
+	// The SQLServer data type.
+	DataType string `pulumi:"dataType"`
+	// Column length.
+	Length int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale int `pulumi:"scale"`
+}
+
+// SQLServer Column.
+type SqlServerColumnResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerColumnResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerColumnResponse)(nil)).Elem()
+}
+
+func (o SqlServerColumnResponseOutput) ToSqlServerColumnResponseOutput() SqlServerColumnResponseOutput {
+	return o
+}
+
+func (o SqlServerColumnResponseOutput) ToSqlServerColumnResponseOutputWithContext(ctx context.Context) SqlServerColumnResponseOutput {
+	return o
+}
+
+// Column name.
+func (o SqlServerColumnResponseOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerColumnResponse) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// The SQLServer data type.
+func (o SqlServerColumnResponseOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerColumnResponse) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// Column length.
+func (o SqlServerColumnResponseOutput) Length() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerColumnResponse) int { return v.Length }).(pulumi.IntOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o SqlServerColumnResponseOutput) Nullable() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlServerColumnResponse) bool { return v.Nullable }).(pulumi.BoolOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o SqlServerColumnResponseOutput) OrdinalPosition() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerColumnResponse) int { return v.OrdinalPosition }).(pulumi.IntOutput)
+}
+
+// Column precision.
+func (o SqlServerColumnResponseOutput) Precision() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerColumnResponse) int { return v.Precision }).(pulumi.IntOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o SqlServerColumnResponseOutput) PrimaryKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlServerColumnResponse) bool { return v.PrimaryKey }).(pulumi.BoolOutput)
+}
+
+// Column scale.
+func (o SqlServerColumnResponseOutput) Scale() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerColumnResponse) int { return v.Scale }).(pulumi.IntOutput)
+}
+
+type SqlServerColumnResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlServerColumnResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerColumnResponse)(nil)).Elem()
+}
+
+func (o SqlServerColumnResponseArrayOutput) ToSqlServerColumnResponseArrayOutput() SqlServerColumnResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerColumnResponseArrayOutput) ToSqlServerColumnResponseArrayOutputWithContext(ctx context.Context) SqlServerColumnResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerColumnResponseArrayOutput) Index(i pulumi.IntInput) SqlServerColumnResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerColumnResponse {
+		return vs[0].([]SqlServerColumnResponse)[vs[1].(int)]
+	}).(SqlServerColumnResponseOutput)
+}
+
+// SQLServer database profile
+type SqlServerProfile struct {
+	// Database for the SQLServer connection.
+	Database string `pulumi:"database"`
+	// Hostname for the SQLServer connection.
+	Hostname string `pulumi:"hostname"`
+	// Password for the SQLServer connection.
+	Password string `pulumi:"password"`
+	// Port for the SQLServer connection, default value is 1433.
+	Port *int `pulumi:"port"`
+	// Username for the SQLServer connection.
+	Username string `pulumi:"username"`
+}
+
+// SqlServerProfileInput is an input type that accepts SqlServerProfileArgs and SqlServerProfileOutput values.
+// You can construct a concrete instance of `SqlServerProfileInput` via:
+//
+//	SqlServerProfileArgs{...}
+type SqlServerProfileInput interface {
+	pulumi.Input
+
+	ToSqlServerProfileOutput() SqlServerProfileOutput
+	ToSqlServerProfileOutputWithContext(context.Context) SqlServerProfileOutput
+}
+
+// SQLServer database profile
+type SqlServerProfileArgs struct {
+	// Database for the SQLServer connection.
+	Database pulumi.StringInput `pulumi:"database"`
+	// Hostname for the SQLServer connection.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Password for the SQLServer connection.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Port for the SQLServer connection, default value is 1433.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Username for the SQLServer connection.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (SqlServerProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerProfile)(nil)).Elem()
+}
+
+func (i SqlServerProfileArgs) ToSqlServerProfileOutput() SqlServerProfileOutput {
+	return i.ToSqlServerProfileOutputWithContext(context.Background())
+}
+
+func (i SqlServerProfileArgs) ToSqlServerProfileOutputWithContext(ctx context.Context) SqlServerProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerProfileOutput)
+}
+
+func (i SqlServerProfileArgs) ToSqlServerProfilePtrOutput() SqlServerProfilePtrOutput {
+	return i.ToSqlServerProfilePtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerProfileArgs) ToSqlServerProfilePtrOutputWithContext(ctx context.Context) SqlServerProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerProfileOutput).ToSqlServerProfilePtrOutputWithContext(ctx)
+}
+
+// SqlServerProfilePtrInput is an input type that accepts SqlServerProfileArgs, SqlServerProfilePtr and SqlServerProfilePtrOutput values.
+// You can construct a concrete instance of `SqlServerProfilePtrInput` via:
+//
+//	        SqlServerProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerProfilePtrInput interface {
+	pulumi.Input
+
+	ToSqlServerProfilePtrOutput() SqlServerProfilePtrOutput
+	ToSqlServerProfilePtrOutputWithContext(context.Context) SqlServerProfilePtrOutput
+}
+
+type sqlServerProfilePtrType SqlServerProfileArgs
+
+func SqlServerProfilePtr(v *SqlServerProfileArgs) SqlServerProfilePtrInput {
+	return (*sqlServerProfilePtrType)(v)
+}
+
+func (*sqlServerProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerProfile)(nil)).Elem()
+}
+
+func (i *sqlServerProfilePtrType) ToSqlServerProfilePtrOutput() SqlServerProfilePtrOutput {
+	return i.ToSqlServerProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerProfilePtrType) ToSqlServerProfilePtrOutputWithContext(ctx context.Context) SqlServerProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerProfilePtrOutput)
+}
+
+// SQLServer database profile
+type SqlServerProfileOutput struct{ *pulumi.OutputState }
+
+func (SqlServerProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerProfile)(nil)).Elem()
+}
+
+func (o SqlServerProfileOutput) ToSqlServerProfileOutput() SqlServerProfileOutput {
+	return o
+}
+
+func (o SqlServerProfileOutput) ToSqlServerProfileOutputWithContext(ctx context.Context) SqlServerProfileOutput {
+	return o
+}
+
+func (o SqlServerProfileOutput) ToSqlServerProfilePtrOutput() SqlServerProfilePtrOutput {
+	return o.ToSqlServerProfilePtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerProfileOutput) ToSqlServerProfilePtrOutputWithContext(ctx context.Context) SqlServerProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerProfile) *SqlServerProfile {
+		return &v
+	}).(SqlServerProfilePtrOutput)
+}
+
+// Database for the SQLServer connection.
+func (o SqlServerProfileOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerProfile) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Hostname for the SQLServer connection.
+func (o SqlServerProfileOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerProfile) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Password for the SQLServer connection.
+func (o SqlServerProfileOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerProfile) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Port for the SQLServer connection, default value is 1433.
+func (o SqlServerProfileOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlServerProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Username for the SQLServer connection.
+func (o SqlServerProfileOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerProfile) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type SqlServerProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerProfile)(nil)).Elem()
+}
+
+func (o SqlServerProfilePtrOutput) ToSqlServerProfilePtrOutput() SqlServerProfilePtrOutput {
+	return o
+}
+
+func (o SqlServerProfilePtrOutput) ToSqlServerProfilePtrOutputWithContext(ctx context.Context) SqlServerProfilePtrOutput {
+	return o
+}
+
+func (o SqlServerProfilePtrOutput) Elem() SqlServerProfileOutput {
+	return o.ApplyT(func(v *SqlServerProfile) SqlServerProfile {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerProfile
+		return ret
+	}).(SqlServerProfileOutput)
+}
+
+// Database for the SQLServer connection.
+func (o SqlServerProfilePtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hostname for the SQLServer connection.
+func (o SqlServerProfilePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password for the SQLServer connection.
+func (o SqlServerProfilePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port for the SQLServer connection, default value is 1433.
+func (o SqlServerProfilePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlServerProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Username for the SQLServer connection.
+func (o SqlServerProfilePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQLServer database profile
+type SqlServerProfileResponse struct {
+	// Database for the SQLServer connection.
+	Database string `pulumi:"database"`
+	// Hostname for the SQLServer connection.
+	Hostname string `pulumi:"hostname"`
+	// Password for the SQLServer connection.
+	Password string `pulumi:"password"`
+	// Port for the SQLServer connection, default value is 1433.
+	Port int `pulumi:"port"`
+	// Username for the SQLServer connection.
+	Username string `pulumi:"username"`
+}
+
+// SQLServer database profile
+type SqlServerProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerProfileResponse)(nil)).Elem()
+}
+
+func (o SqlServerProfileResponseOutput) ToSqlServerProfileResponseOutput() SqlServerProfileResponseOutput {
+	return o
+}
+
+func (o SqlServerProfileResponseOutput) ToSqlServerProfileResponseOutputWithContext(ctx context.Context) SqlServerProfileResponseOutput {
+	return o
+}
+
+// Database for the SQLServer connection.
+func (o SqlServerProfileResponseOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerProfileResponse) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Hostname for the SQLServer connection.
+func (o SqlServerProfileResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerProfileResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Password for the SQLServer connection.
+func (o SqlServerProfileResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerProfileResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Port for the SQLServer connection, default value is 1433.
+func (o SqlServerProfileResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerProfileResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Username for the SQLServer connection.
+func (o SqlServerProfileResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerProfileResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// SQLServer database structure.
+type SqlServerRdbms struct {
+	// SQLServer schemas in the database server.
+	Schemas []SqlServerSchema `pulumi:"schemas"`
+}
+
+// SqlServerRdbmsInput is an input type that accepts SqlServerRdbmsArgs and SqlServerRdbmsOutput values.
+// You can construct a concrete instance of `SqlServerRdbmsInput` via:
+//
+//	SqlServerRdbmsArgs{...}
+type SqlServerRdbmsInput interface {
+	pulumi.Input
+
+	ToSqlServerRdbmsOutput() SqlServerRdbmsOutput
+	ToSqlServerRdbmsOutputWithContext(context.Context) SqlServerRdbmsOutput
+}
+
+// SQLServer database structure.
+type SqlServerRdbmsArgs struct {
+	// SQLServer schemas in the database server.
+	Schemas SqlServerSchemaArrayInput `pulumi:"schemas"`
+}
+
+func (SqlServerRdbmsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerRdbms)(nil)).Elem()
+}
+
+func (i SqlServerRdbmsArgs) ToSqlServerRdbmsOutput() SqlServerRdbmsOutput {
+	return i.ToSqlServerRdbmsOutputWithContext(context.Background())
+}
+
+func (i SqlServerRdbmsArgs) ToSqlServerRdbmsOutputWithContext(ctx context.Context) SqlServerRdbmsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerRdbmsOutput)
+}
+
+func (i SqlServerRdbmsArgs) ToSqlServerRdbmsPtrOutput() SqlServerRdbmsPtrOutput {
+	return i.ToSqlServerRdbmsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerRdbmsArgs) ToSqlServerRdbmsPtrOutputWithContext(ctx context.Context) SqlServerRdbmsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerRdbmsOutput).ToSqlServerRdbmsPtrOutputWithContext(ctx)
+}
+
+// SqlServerRdbmsPtrInput is an input type that accepts SqlServerRdbmsArgs, SqlServerRdbmsPtr and SqlServerRdbmsPtrOutput values.
+// You can construct a concrete instance of `SqlServerRdbmsPtrInput` via:
+//
+//	        SqlServerRdbmsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerRdbmsPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerRdbmsPtrOutput() SqlServerRdbmsPtrOutput
+	ToSqlServerRdbmsPtrOutputWithContext(context.Context) SqlServerRdbmsPtrOutput
+}
+
+type sqlServerRdbmsPtrType SqlServerRdbmsArgs
+
+func SqlServerRdbmsPtr(v *SqlServerRdbmsArgs) SqlServerRdbmsPtrInput {
+	return (*sqlServerRdbmsPtrType)(v)
+}
+
+func (*sqlServerRdbmsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerRdbms)(nil)).Elem()
+}
+
+func (i *sqlServerRdbmsPtrType) ToSqlServerRdbmsPtrOutput() SqlServerRdbmsPtrOutput {
+	return i.ToSqlServerRdbmsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerRdbmsPtrType) ToSqlServerRdbmsPtrOutputWithContext(ctx context.Context) SqlServerRdbmsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerRdbmsPtrOutput)
+}
+
+// SQLServer database structure.
+type SqlServerRdbmsOutput struct{ *pulumi.OutputState }
+
+func (SqlServerRdbmsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerRdbms)(nil)).Elem()
+}
+
+func (o SqlServerRdbmsOutput) ToSqlServerRdbmsOutput() SqlServerRdbmsOutput {
+	return o
+}
+
+func (o SqlServerRdbmsOutput) ToSqlServerRdbmsOutputWithContext(ctx context.Context) SqlServerRdbmsOutput {
+	return o
+}
+
+func (o SqlServerRdbmsOutput) ToSqlServerRdbmsPtrOutput() SqlServerRdbmsPtrOutput {
+	return o.ToSqlServerRdbmsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerRdbmsOutput) ToSqlServerRdbmsPtrOutputWithContext(ctx context.Context) SqlServerRdbmsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerRdbms) *SqlServerRdbms {
+		return &v
+	}).(SqlServerRdbmsPtrOutput)
+}
+
+// SQLServer schemas in the database server.
+func (o SqlServerRdbmsOutput) Schemas() SqlServerSchemaArrayOutput {
+	return o.ApplyT(func(v SqlServerRdbms) []SqlServerSchema { return v.Schemas }).(SqlServerSchemaArrayOutput)
+}
+
+type SqlServerRdbmsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerRdbmsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerRdbms)(nil)).Elem()
+}
+
+func (o SqlServerRdbmsPtrOutput) ToSqlServerRdbmsPtrOutput() SqlServerRdbmsPtrOutput {
+	return o
+}
+
+func (o SqlServerRdbmsPtrOutput) ToSqlServerRdbmsPtrOutputWithContext(ctx context.Context) SqlServerRdbmsPtrOutput {
+	return o
+}
+
+func (o SqlServerRdbmsPtrOutput) Elem() SqlServerRdbmsOutput {
+	return o.ApplyT(func(v *SqlServerRdbms) SqlServerRdbms {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerRdbms
+		return ret
+	}).(SqlServerRdbmsOutput)
+}
+
+// SQLServer schemas in the database server.
+func (o SqlServerRdbmsPtrOutput) Schemas() SqlServerSchemaArrayOutput {
+	return o.ApplyT(func(v *SqlServerRdbms) []SqlServerSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Schemas
+	}).(SqlServerSchemaArrayOutput)
+}
+
+// SQLServer database structure.
+type SqlServerRdbmsResponse struct {
+	// SQLServer schemas in the database server.
+	Schemas []SqlServerSchemaResponse `pulumi:"schemas"`
+}
+
+// SQLServer database structure.
+type SqlServerRdbmsResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerRdbmsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerRdbmsResponse)(nil)).Elem()
+}
+
+func (o SqlServerRdbmsResponseOutput) ToSqlServerRdbmsResponseOutput() SqlServerRdbmsResponseOutput {
+	return o
+}
+
+func (o SqlServerRdbmsResponseOutput) ToSqlServerRdbmsResponseOutputWithContext(ctx context.Context) SqlServerRdbmsResponseOutput {
+	return o
+}
+
+// SQLServer schemas in the database server.
+func (o SqlServerRdbmsResponseOutput) Schemas() SqlServerSchemaResponseArrayOutput {
+	return o.ApplyT(func(v SqlServerRdbmsResponse) []SqlServerSchemaResponse { return v.Schemas }).(SqlServerSchemaResponseArrayOutput)
+}
+
+// SQLServer schema.
+type SqlServerSchema struct {
+	// Schema name.
+	Schema *string `pulumi:"schema"`
+	// Tables in the schema.
+	Tables []SqlServerTable `pulumi:"tables"`
+}
+
+// SqlServerSchemaInput is an input type that accepts SqlServerSchemaArgs and SqlServerSchemaOutput values.
+// You can construct a concrete instance of `SqlServerSchemaInput` via:
+//
+//	SqlServerSchemaArgs{...}
+type SqlServerSchemaInput interface {
+	pulumi.Input
+
+	ToSqlServerSchemaOutput() SqlServerSchemaOutput
+	ToSqlServerSchemaOutputWithContext(context.Context) SqlServerSchemaOutput
+}
+
+// SQLServer schema.
+type SqlServerSchemaArgs struct {
+	// Schema name.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+	// Tables in the schema.
+	Tables SqlServerTableArrayInput `pulumi:"tables"`
+}
+
+func (SqlServerSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerSchema)(nil)).Elem()
+}
+
+func (i SqlServerSchemaArgs) ToSqlServerSchemaOutput() SqlServerSchemaOutput {
+	return i.ToSqlServerSchemaOutputWithContext(context.Background())
+}
+
+func (i SqlServerSchemaArgs) ToSqlServerSchemaOutputWithContext(ctx context.Context) SqlServerSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerSchemaOutput)
+}
+
+// SqlServerSchemaArrayInput is an input type that accepts SqlServerSchemaArray and SqlServerSchemaArrayOutput values.
+// You can construct a concrete instance of `SqlServerSchemaArrayInput` via:
+//
+//	SqlServerSchemaArray{ SqlServerSchemaArgs{...} }
+type SqlServerSchemaArrayInput interface {
+	pulumi.Input
+
+	ToSqlServerSchemaArrayOutput() SqlServerSchemaArrayOutput
+	ToSqlServerSchemaArrayOutputWithContext(context.Context) SqlServerSchemaArrayOutput
+}
+
+type SqlServerSchemaArray []SqlServerSchemaInput
+
+func (SqlServerSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerSchema)(nil)).Elem()
+}
+
+func (i SqlServerSchemaArray) ToSqlServerSchemaArrayOutput() SqlServerSchemaArrayOutput {
+	return i.ToSqlServerSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i SqlServerSchemaArray) ToSqlServerSchemaArrayOutputWithContext(ctx context.Context) SqlServerSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerSchemaArrayOutput)
+}
+
+// SQLServer schema.
+type SqlServerSchemaOutput struct{ *pulumi.OutputState }
+
+func (SqlServerSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerSchema)(nil)).Elem()
+}
+
+func (o SqlServerSchemaOutput) ToSqlServerSchemaOutput() SqlServerSchemaOutput {
+	return o
+}
+
+func (o SqlServerSchemaOutput) ToSqlServerSchemaOutputWithContext(ctx context.Context) SqlServerSchemaOutput {
+	return o
+}
+
+// Schema name.
+func (o SqlServerSchemaOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerSchema) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+// Tables in the schema.
+func (o SqlServerSchemaOutput) Tables() SqlServerTableArrayOutput {
+	return o.ApplyT(func(v SqlServerSchema) []SqlServerTable { return v.Tables }).(SqlServerTableArrayOutput)
+}
+
+type SqlServerSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlServerSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerSchema)(nil)).Elem()
+}
+
+func (o SqlServerSchemaArrayOutput) ToSqlServerSchemaArrayOutput() SqlServerSchemaArrayOutput {
+	return o
+}
+
+func (o SqlServerSchemaArrayOutput) ToSqlServerSchemaArrayOutputWithContext(ctx context.Context) SqlServerSchemaArrayOutput {
+	return o
+}
+
+func (o SqlServerSchemaArrayOutput) Index(i pulumi.IntInput) SqlServerSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerSchema {
+		return vs[0].([]SqlServerSchema)[vs[1].(int)]
+	}).(SqlServerSchemaOutput)
+}
+
+// SQLServer schema.
+type SqlServerSchemaResponse struct {
+	// Schema name.
+	Schema string `pulumi:"schema"`
+	// Tables in the schema.
+	Tables []SqlServerTableResponse `pulumi:"tables"`
+}
+
+// SQLServer schema.
+type SqlServerSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerSchemaResponse)(nil)).Elem()
+}
+
+func (o SqlServerSchemaResponseOutput) ToSqlServerSchemaResponseOutput() SqlServerSchemaResponseOutput {
+	return o
+}
+
+func (o SqlServerSchemaResponseOutput) ToSqlServerSchemaResponseOutputWithContext(ctx context.Context) SqlServerSchemaResponseOutput {
+	return o
+}
+
+// Schema name.
+func (o SqlServerSchemaResponseOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerSchemaResponse) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// Tables in the schema.
+func (o SqlServerSchemaResponseOutput) Tables() SqlServerTableResponseArrayOutput {
+	return o.ApplyT(func(v SqlServerSchemaResponse) []SqlServerTableResponse { return v.Tables }).(SqlServerTableResponseArrayOutput)
+}
+
+type SqlServerSchemaResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlServerSchemaResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerSchemaResponse)(nil)).Elem()
+}
+
+func (o SqlServerSchemaResponseArrayOutput) ToSqlServerSchemaResponseArrayOutput() SqlServerSchemaResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerSchemaResponseArrayOutput) ToSqlServerSchemaResponseArrayOutputWithContext(ctx context.Context) SqlServerSchemaResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerSchemaResponseArrayOutput) Index(i pulumi.IntInput) SqlServerSchemaResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerSchemaResponse {
+		return vs[0].([]SqlServerSchemaResponse)[vs[1].(int)]
+	}).(SqlServerSchemaResponseOutput)
+}
+
+// SQLServer data source configuration
+type SqlServerSourceConfig struct {
+	// SQLServer objects to exclude from the stream.
+	ExcludeObjects *SqlServerRdbms `pulumi:"excludeObjects"`
+	// SQLServer objects to include in the stream.
+	IncludeObjects *SqlServerRdbms `pulumi:"includeObjects"`
+	// Max concurrent backfill tasks.
+	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
+	// Max concurrent CDC tasks.
+	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
+}
+
+// SqlServerSourceConfigInput is an input type that accepts SqlServerSourceConfigArgs and SqlServerSourceConfigOutput values.
+// You can construct a concrete instance of `SqlServerSourceConfigInput` via:
+//
+//	SqlServerSourceConfigArgs{...}
+type SqlServerSourceConfigInput interface {
+	pulumi.Input
+
+	ToSqlServerSourceConfigOutput() SqlServerSourceConfigOutput
+	ToSqlServerSourceConfigOutputWithContext(context.Context) SqlServerSourceConfigOutput
+}
+
+// SQLServer data source configuration
+type SqlServerSourceConfigArgs struct {
+	// SQLServer objects to exclude from the stream.
+	ExcludeObjects SqlServerRdbmsPtrInput `pulumi:"excludeObjects"`
+	// SQLServer objects to include in the stream.
+	IncludeObjects SqlServerRdbmsPtrInput `pulumi:"includeObjects"`
+	// Max concurrent backfill tasks.
+	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
+	// Max concurrent CDC tasks.
+	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
+}
+
+func (SqlServerSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerSourceConfig)(nil)).Elem()
+}
+
+func (i SqlServerSourceConfigArgs) ToSqlServerSourceConfigOutput() SqlServerSourceConfigOutput {
+	return i.ToSqlServerSourceConfigOutputWithContext(context.Background())
+}
+
+func (i SqlServerSourceConfigArgs) ToSqlServerSourceConfigOutputWithContext(ctx context.Context) SqlServerSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerSourceConfigOutput)
+}
+
+func (i SqlServerSourceConfigArgs) ToSqlServerSourceConfigPtrOutput() SqlServerSourceConfigPtrOutput {
+	return i.ToSqlServerSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerSourceConfigArgs) ToSqlServerSourceConfigPtrOutputWithContext(ctx context.Context) SqlServerSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerSourceConfigOutput).ToSqlServerSourceConfigPtrOutputWithContext(ctx)
+}
+
+// SqlServerSourceConfigPtrInput is an input type that accepts SqlServerSourceConfigArgs, SqlServerSourceConfigPtr and SqlServerSourceConfigPtrOutput values.
+// You can construct a concrete instance of `SqlServerSourceConfigPtrInput` via:
+//
+//	        SqlServerSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerSourceConfigPtrOutput() SqlServerSourceConfigPtrOutput
+	ToSqlServerSourceConfigPtrOutputWithContext(context.Context) SqlServerSourceConfigPtrOutput
+}
+
+type sqlServerSourceConfigPtrType SqlServerSourceConfigArgs
+
+func SqlServerSourceConfigPtr(v *SqlServerSourceConfigArgs) SqlServerSourceConfigPtrInput {
+	return (*sqlServerSourceConfigPtrType)(v)
+}
+
+func (*sqlServerSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerSourceConfig)(nil)).Elem()
+}
+
+func (i *sqlServerSourceConfigPtrType) ToSqlServerSourceConfigPtrOutput() SqlServerSourceConfigPtrOutput {
+	return i.ToSqlServerSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerSourceConfigPtrType) ToSqlServerSourceConfigPtrOutputWithContext(ctx context.Context) SqlServerSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerSourceConfigPtrOutput)
+}
+
+// SQLServer data source configuration
+type SqlServerSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (SqlServerSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerSourceConfig)(nil)).Elem()
+}
+
+func (o SqlServerSourceConfigOutput) ToSqlServerSourceConfigOutput() SqlServerSourceConfigOutput {
+	return o
+}
+
+func (o SqlServerSourceConfigOutput) ToSqlServerSourceConfigOutputWithContext(ctx context.Context) SqlServerSourceConfigOutput {
+	return o
+}
+
+func (o SqlServerSourceConfigOutput) ToSqlServerSourceConfigPtrOutput() SqlServerSourceConfigPtrOutput {
+	return o.ToSqlServerSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerSourceConfigOutput) ToSqlServerSourceConfigPtrOutputWithContext(ctx context.Context) SqlServerSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerSourceConfig) *SqlServerSourceConfig {
+		return &v
+	}).(SqlServerSourceConfigPtrOutput)
+}
+
+// SQLServer objects to exclude from the stream.
+func (o SqlServerSourceConfigOutput) ExcludeObjects() SqlServerRdbmsPtrOutput {
+	return o.ApplyT(func(v SqlServerSourceConfig) *SqlServerRdbms { return v.ExcludeObjects }).(SqlServerRdbmsPtrOutput)
+}
+
+// SQLServer objects to include in the stream.
+func (o SqlServerSourceConfigOutput) IncludeObjects() SqlServerRdbmsPtrOutput {
+	return o.ApplyT(func(v SqlServerSourceConfig) *SqlServerRdbms { return v.IncludeObjects }).(SqlServerRdbmsPtrOutput)
+}
+
+// Max concurrent backfill tasks.
+func (o SqlServerSourceConfigOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlServerSourceConfig) *int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntPtrOutput)
+}
+
+// Max concurrent CDC tasks.
+func (o SqlServerSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlServerSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
+}
+
+type SqlServerSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerSourceConfig)(nil)).Elem()
+}
+
+func (o SqlServerSourceConfigPtrOutput) ToSqlServerSourceConfigPtrOutput() SqlServerSourceConfigPtrOutput {
+	return o
+}
+
+func (o SqlServerSourceConfigPtrOutput) ToSqlServerSourceConfigPtrOutputWithContext(ctx context.Context) SqlServerSourceConfigPtrOutput {
+	return o
+}
+
+func (o SqlServerSourceConfigPtrOutput) Elem() SqlServerSourceConfigOutput {
+	return o.ApplyT(func(v *SqlServerSourceConfig) SqlServerSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerSourceConfig
+		return ret
+	}).(SqlServerSourceConfigOutput)
+}
+
+// SQLServer objects to exclude from the stream.
+func (o SqlServerSourceConfigPtrOutput) ExcludeObjects() SqlServerRdbmsPtrOutput {
+	return o.ApplyT(func(v *SqlServerSourceConfig) *SqlServerRdbms {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeObjects
+	}).(SqlServerRdbmsPtrOutput)
+}
+
+// SQLServer objects to include in the stream.
+func (o SqlServerSourceConfigPtrOutput) IncludeObjects() SqlServerRdbmsPtrOutput {
+	return o.ApplyT(func(v *SqlServerSourceConfig) *SqlServerRdbms {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeObjects
+	}).(SqlServerRdbmsPtrOutput)
+}
+
+// Max concurrent backfill tasks.
+func (o SqlServerSourceConfigPtrOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlServerSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentBackfillTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max concurrent CDC tasks.
+func (o SqlServerSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlServerSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentCdcTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+// SQLServer data source configuration
+type SqlServerSourceConfigResponse struct {
+	// SQLServer objects to exclude from the stream.
+	ExcludeObjects SqlServerRdbmsResponse `pulumi:"excludeObjects"`
+	// SQLServer objects to include in the stream.
+	IncludeObjects SqlServerRdbmsResponse `pulumi:"includeObjects"`
+	// Max concurrent backfill tasks.
+	MaxConcurrentBackfillTasks int `pulumi:"maxConcurrentBackfillTasks"`
+	// Max concurrent CDC tasks.
+	MaxConcurrentCdcTasks int `pulumi:"maxConcurrentCdcTasks"`
+}
+
+// SQLServer data source configuration
+type SqlServerSourceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerSourceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerSourceConfigResponse)(nil)).Elem()
+}
+
+func (o SqlServerSourceConfigResponseOutput) ToSqlServerSourceConfigResponseOutput() SqlServerSourceConfigResponseOutput {
+	return o
+}
+
+func (o SqlServerSourceConfigResponseOutput) ToSqlServerSourceConfigResponseOutputWithContext(ctx context.Context) SqlServerSourceConfigResponseOutput {
+	return o
+}
+
+// SQLServer objects to exclude from the stream.
+func (o SqlServerSourceConfigResponseOutput) ExcludeObjects() SqlServerRdbmsResponseOutput {
+	return o.ApplyT(func(v SqlServerSourceConfigResponse) SqlServerRdbmsResponse { return v.ExcludeObjects }).(SqlServerRdbmsResponseOutput)
+}
+
+// SQLServer objects to include in the stream.
+func (o SqlServerSourceConfigResponseOutput) IncludeObjects() SqlServerRdbmsResponseOutput {
+	return o.ApplyT(func(v SqlServerSourceConfigResponse) SqlServerRdbmsResponse { return v.IncludeObjects }).(SqlServerRdbmsResponseOutput)
+}
+
+// Max concurrent backfill tasks.
+func (o SqlServerSourceConfigResponseOutput) MaxConcurrentBackfillTasks() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerSourceConfigResponse) int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntOutput)
+}
+
+// Max concurrent CDC tasks.
+func (o SqlServerSourceConfigResponseOutput) MaxConcurrentCdcTasks() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerSourceConfigResponse) int { return v.MaxConcurrentCdcTasks }).(pulumi.IntOutput)
+}
+
+// SQLServer table.
+type SqlServerTable struct {
+	// SQLServer columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	Columns []SqlServerColumn `pulumi:"columns"`
+	// Table name.
+	Table *string `pulumi:"table"`
+}
+
+// SqlServerTableInput is an input type that accepts SqlServerTableArgs and SqlServerTableOutput values.
+// You can construct a concrete instance of `SqlServerTableInput` via:
+//
+//	SqlServerTableArgs{...}
+type SqlServerTableInput interface {
+	pulumi.Input
+
+	ToSqlServerTableOutput() SqlServerTableOutput
+	ToSqlServerTableOutputWithContext(context.Context) SqlServerTableOutput
+}
+
+// SQLServer table.
+type SqlServerTableArgs struct {
+	// SQLServer columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	Columns SqlServerColumnArrayInput `pulumi:"columns"`
+	// Table name.
+	Table pulumi.StringPtrInput `pulumi:"table"`
+}
+
+func (SqlServerTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerTable)(nil)).Elem()
+}
+
+func (i SqlServerTableArgs) ToSqlServerTableOutput() SqlServerTableOutput {
+	return i.ToSqlServerTableOutputWithContext(context.Background())
+}
+
+func (i SqlServerTableArgs) ToSqlServerTableOutputWithContext(ctx context.Context) SqlServerTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerTableOutput)
+}
+
+// SqlServerTableArrayInput is an input type that accepts SqlServerTableArray and SqlServerTableArrayOutput values.
+// You can construct a concrete instance of `SqlServerTableArrayInput` via:
+//
+//	SqlServerTableArray{ SqlServerTableArgs{...} }
+type SqlServerTableArrayInput interface {
+	pulumi.Input
+
+	ToSqlServerTableArrayOutput() SqlServerTableArrayOutput
+	ToSqlServerTableArrayOutputWithContext(context.Context) SqlServerTableArrayOutput
+}
+
+type SqlServerTableArray []SqlServerTableInput
+
+func (SqlServerTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerTable)(nil)).Elem()
+}
+
+func (i SqlServerTableArray) ToSqlServerTableArrayOutput() SqlServerTableArrayOutput {
+	return i.ToSqlServerTableArrayOutputWithContext(context.Background())
+}
+
+func (i SqlServerTableArray) ToSqlServerTableArrayOutputWithContext(ctx context.Context) SqlServerTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerTableArrayOutput)
+}
+
+// SQLServer table.
+type SqlServerTableOutput struct{ *pulumi.OutputState }
+
+func (SqlServerTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerTable)(nil)).Elem()
+}
+
+func (o SqlServerTableOutput) ToSqlServerTableOutput() SqlServerTableOutput {
+	return o
+}
+
+func (o SqlServerTableOutput) ToSqlServerTableOutputWithContext(ctx context.Context) SqlServerTableOutput {
+	return o
+}
+
+// SQLServer columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+func (o SqlServerTableOutput) Columns() SqlServerColumnArrayOutput {
+	return o.ApplyT(func(v SqlServerTable) []SqlServerColumn { return v.Columns }).(SqlServerColumnArrayOutput)
+}
+
+// Table name.
+func (o SqlServerTableOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerTable) *string { return v.Table }).(pulumi.StringPtrOutput)
+}
+
+type SqlServerTableArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlServerTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerTable)(nil)).Elem()
+}
+
+func (o SqlServerTableArrayOutput) ToSqlServerTableArrayOutput() SqlServerTableArrayOutput {
+	return o
+}
+
+func (o SqlServerTableArrayOutput) ToSqlServerTableArrayOutputWithContext(ctx context.Context) SqlServerTableArrayOutput {
+	return o
+}
+
+func (o SqlServerTableArrayOutput) Index(i pulumi.IntInput) SqlServerTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerTable {
+		return vs[0].([]SqlServerTable)[vs[1].(int)]
+	}).(SqlServerTableOutput)
+}
+
+// SQLServer table.
+type SqlServerTableResponse struct {
+	// SQLServer columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	Columns []SqlServerColumnResponse `pulumi:"columns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// SQLServer table.
+type SqlServerTableResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerTableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerTableResponse)(nil)).Elem()
+}
+
+func (o SqlServerTableResponseOutput) ToSqlServerTableResponseOutput() SqlServerTableResponseOutput {
+	return o
+}
+
+func (o SqlServerTableResponseOutput) ToSqlServerTableResponseOutputWithContext(ctx context.Context) SqlServerTableResponseOutput {
+	return o
+}
+
+// SQLServer columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+func (o SqlServerTableResponseOutput) Columns() SqlServerColumnResponseArrayOutput {
+	return o.ApplyT(func(v SqlServerTableResponse) []SqlServerColumnResponse { return v.Columns }).(SqlServerColumnResponseArrayOutput)
+}
+
+// Table name.
+func (o SqlServerTableResponseOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerTableResponse) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type SqlServerTableResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlServerTableResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerTableResponse)(nil)).Elem()
+}
+
+func (o SqlServerTableResponseArrayOutput) ToSqlServerTableResponseArrayOutput() SqlServerTableResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerTableResponseArrayOutput) ToSqlServerTableResponseArrayOutputWithContext(ctx context.Context) SqlServerTableResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerTableResponseArrayOutput) Index(i pulumi.IntInput) SqlServerTableResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerTableResponse {
+		return vs[0].([]SqlServerTableResponse)[vs[1].(int)]
+	}).(SqlServerTableResponseOutput)
 }
 
 // Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
@@ -7872,6 +9176,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigInput)(nil)).Elem(), SourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceHierarchyDatasetsInput)(nil)).Elem(), SourceHierarchyDatasetsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceHierarchyDatasetsPtrInput)(nil)).Elem(), SourceHierarchyDatasetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerColumnInput)(nil)).Elem(), SqlServerColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerColumnArrayInput)(nil)).Elem(), SqlServerColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerProfileInput)(nil)).Elem(), SqlServerProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerProfilePtrInput)(nil)).Elem(), SqlServerProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerRdbmsInput)(nil)).Elem(), SqlServerRdbmsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerRdbmsPtrInput)(nil)).Elem(), SqlServerRdbmsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerSchemaInput)(nil)).Elem(), SqlServerSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerSchemaArrayInput)(nil)).Elem(), SqlServerSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerSourceConfigInput)(nil)).Elem(), SqlServerSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerSourceConfigPtrInput)(nil)).Elem(), SqlServerSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerTableInput)(nil)).Elem(), SqlServerTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerTableArrayInput)(nil)).Elem(), SqlServerTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityPtrInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamLargeObjectsInput)(nil)).Elem(), StreamLargeObjectsArgs{})
@@ -7995,6 +9311,27 @@ func init() {
 	pulumi.RegisterOutputType(SourceHierarchyDatasetsOutput{})
 	pulumi.RegisterOutputType(SourceHierarchyDatasetsPtrOutput{})
 	pulumi.RegisterOutputType(SourceHierarchyDatasetsResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerColumnOutput{})
+	pulumi.RegisterOutputType(SqlServerColumnArrayOutput{})
+	pulumi.RegisterOutputType(SqlServerColumnResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerColumnResponseArrayOutput{})
+	pulumi.RegisterOutputType(SqlServerProfileOutput{})
+	pulumi.RegisterOutputType(SqlServerProfilePtrOutput{})
+	pulumi.RegisterOutputType(SqlServerProfileResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerRdbmsOutput{})
+	pulumi.RegisterOutputType(SqlServerRdbmsPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerRdbmsResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerSchemaOutput{})
+	pulumi.RegisterOutputType(SqlServerSchemaArrayOutput{})
+	pulumi.RegisterOutputType(SqlServerSchemaResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerSchemaResponseArrayOutput{})
+	pulumi.RegisterOutputType(SqlServerSourceConfigOutput{})
+	pulumi.RegisterOutputType(SqlServerSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerSourceConfigResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerTableOutput{})
+	pulumi.RegisterOutputType(SqlServerTableArrayOutput{})
+	pulumi.RegisterOutputType(SqlServerTableResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerTableResponseArrayOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityResponseOutput{})

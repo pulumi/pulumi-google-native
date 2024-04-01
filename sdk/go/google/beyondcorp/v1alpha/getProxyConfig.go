@@ -41,7 +41,7 @@ type LookupProxyConfigResult struct {
 	ProxyUri string `pulumi:"proxyUri"`
 	// Routing info to direct traffic to the proxy server.
 	RoutingInfo GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse `pulumi:"routingInfo"`
-	// Transport layer information to verify for the proxy server.
+	// Optional. Transport layer information to verify for the proxy server.
 	TransportInfo GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse `pulumi:"transportInfo"`
 	// Timestamp when the resource was last modified.
 	UpdateTime string `pulumi:"updateTime"`
@@ -118,7 +118,7 @@ func (o LookupProxyConfigResultOutput) RoutingInfo() GoogleCloudBeyondcorpPartne
 	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput)
 }
 
-// Transport layer information to verify for the proxy server.
+// Optional. Transport layer information to verify for the proxy server.
 func (o LookupProxyConfigResultOutput) TransportInfo() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput {
 	return o.ApplyT(func(v LookupProxyConfigResult) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse {
 		return v.TransportInfo

@@ -34,13 +34,15 @@ type LookupReleaseConfigResult struct {
 	CodeCompilationConfig CodeCompilationConfigResponse `pulumi:"codeCompilationConfig"`
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule string `pulumi:"cronSchedule"`
+	// Optional. Disables automatic creation of compilation results.
+	Disabled bool `pulumi:"disabled"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1`
 	GitCommitish string `pulumi:"gitCommitish"`
-	// The release config's name.
+	// Identifier. The release config's name.
 	Name string `pulumi:"name"`
 	// Records of the 10 most recent scheduled release attempts, ordered in in descending order of `release_time`. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
 	RecentScheduledReleaseRecords []ScheduledReleaseRecordResponse `pulumi:"recentScheduledReleaseRecords"`
-	// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+	// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is automatically created from this release config (using cron_schedule), or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
 	ReleaseCompilationResult string `pulumi:"releaseCompilationResult"`
 	// Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
 	TimeZone string `pulumi:"timeZone"`
@@ -94,12 +96,17 @@ func (o LookupReleaseConfigResultOutput) CronSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseConfigResult) string { return v.CronSchedule }).(pulumi.StringOutput)
 }
 
+// Optional. Disables automatic creation of compilation results.
+func (o LookupReleaseConfigResultOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupReleaseConfigResult) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
 // Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1`
 func (o LookupReleaseConfigResultOutput) GitCommitish() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseConfigResult) string { return v.GitCommitish }).(pulumi.StringOutput)
 }
 
-// The release config's name.
+// Identifier. The release config's name.
 func (o LookupReleaseConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -111,7 +118,7 @@ func (o LookupReleaseConfigResultOutput) RecentScheduledReleaseRecords() Schedul
 	}).(ScheduledReleaseRecordResponseArrayOutput)
 }
 
-// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is automatically created from this release config (using cron_schedule), or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
 func (o LookupReleaseConfigResultOutput) ReleaseCompilationResult() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseConfigResult) string { return v.ReleaseCompilationResult }).(pulumi.StringOutput)
 }

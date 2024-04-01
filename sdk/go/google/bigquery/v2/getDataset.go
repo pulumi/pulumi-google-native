@@ -29,49 +29,58 @@ type LookupDatasetArgs struct {
 }
 
 type LookupDatasetResult struct {
-	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+	// Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
 	Access []DatasetAccessItemResponse `pulumi:"access"`
 	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime string `pulumi:"creationTime"`
-	// [Required] A reference that identifies the dataset.
+	// A reference that identifies the dataset.
 	DatasetReference DatasetReferenceResponse `pulumi:"datasetReference"`
-	// The default collation of the dataset.
-	DefaultCollation               string                          `pulumi:"defaultCollation"`
+	// Optional. Defines the default collation specification of future tables created in the dataset. If a table is created in this dataset without table-level default collation, then the table inherits the dataset default collation, which is applied to the string fields that do not have explicit collation specified. A change to this field affects only tables created afterwards, and does not alter the existing tables. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
+	DefaultCollation string `pulumi:"defaultCollation"`
+	// The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
 	DefaultEncryptionConfiguration EncryptionConfigurationResponse `pulumi:"defaultEncryptionConfiguration"`
-	// [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+	// This default partition expiration, expressed in milliseconds. When new time-partitioned tables are created in a dataset where this property is set, the table will inherit this value, propagated as the `TimePartitioning.expirationMs` property on the new table. If you set `TimePartitioning.expirationMs` explicitly when creating a table, the `defaultPartitionExpirationMs` of the containing dataset is ignored. When creating a partitioned table, if `defaultPartitionExpirationMs` is set, the `defaultTableExpirationMs` value is ignored and the table will not be inherit a table expiration deadline.
 	DefaultPartitionExpirationMs string `pulumi:"defaultPartitionExpirationMs"`
-	// The default rounding mode of the dataset.
+	// Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
 	DefaultRoundingMode string `pulumi:"defaultRoundingMode"`
-	// [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+	// Optional. The default lifetime of all tables in the dataset, in milliseconds. The minimum lifetime value is 3600000 milliseconds (one hour). To clear an existing default expiration with a PATCH request, set to 0. Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
 	DefaultTableExpirationMs string `pulumi:"defaultTableExpirationMs"`
-	// [Optional] A user-friendly description of the dataset.
+	// Optional. A user-friendly description of the dataset.
 	Description string `pulumi:"description"`
 	// A hash of the resource.
 	Etag string `pulumi:"etag"`
-	// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+	// Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out when the dataset type is EXTERNAL.
 	ExternalDatasetReference ExternalDatasetReferenceResponse `pulumi:"externalDatasetReference"`
-	// [Optional] A descriptive name for the dataset.
+	// Optional. A descriptive name for the dataset.
 	FriendlyName string `pulumi:"friendlyName"`
-	// [Optional] Indicates if table names are case insensitive in the dataset.
+	// Optional. TRUE if the dataset and its table names are case-insensitive, otherwise FALSE. By default, this is FALSE, which means the dataset and its table names are case-sensitive. This field does not affect routine references.
 	IsCaseInsensitive bool `pulumi:"isCaseInsensitive"`
 	// The resource type.
 	Kind string `pulumi:"kind"`
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
 	Labels map[string]string `pulumi:"labels"`
-	// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+	// The date when this dataset was last modified, in milliseconds since the epoch.
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
-	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+	// Metadata about the LinkedDataset. Filled out when the dataset type is LINKED.
+	LinkedDatasetMetadata LinkedDatasetMetadataResponse `pulumi:"linkedDatasetMetadata"`
+	// Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is not set. This field cannot be updated once it is set. Any attempt to update this field using Update and Patch API Operations will be ignored.
+	LinkedDatasetSource LinkedDatasetSourceResponse `pulumi:"linkedDatasetSource"`
+	// The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
 	Location string `pulumi:"location"`
-	// [Optional] Number of hours for the max time travel for all tables in the dataset.
+	// Optional. Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days). The default value is 168 hours if this is not set.
 	MaxTimeTravelHours string `pulumi:"maxTimeTravelHours"`
+	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+	// Optional. Updates storage_billing_model for the dataset.
 	StorageBillingModel string `pulumi:"storageBillingModel"`
-	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+	// Tags for the Dataset.
 	Tags []DatasetTagsItemResponse `pulumi:"tags"`
+	// Same as `type` in `ListFormatDataset`. The type of the dataset, one of: * DEFAULT - only accessible by owner and authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked dataset, * EXTERNAL - dataset with definition in external metadata catalog. -- *BIGLAKE_METASTORE - dataset that references a database created in BigLakeMetastore service. --
+	Type string `pulumi:"type"`
 }
 
 func LookupDatasetOutput(ctx *pulumi.Context, args LookupDatasetOutputArgs, opts ...pulumi.InvokeOption) LookupDatasetResultOutput {
@@ -111,7 +120,7 @@ func (o LookupDatasetResultOutput) ToLookupDatasetResultOutputWithContext(ctx co
 	return o
 }
 
-// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+// Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
 func (o LookupDatasetResultOutput) Access() DatasetAccessItemResponseArrayOutput {
 	return o.ApplyT(func(v LookupDatasetResult) []DatasetAccessItemResponse { return v.Access }).(DatasetAccessItemResponseArrayOutput)
 }
@@ -121,36 +130,37 @@ func (o LookupDatasetResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// [Required] A reference that identifies the dataset.
+// A reference that identifies the dataset.
 func (o LookupDatasetResultOutput) DatasetReference() DatasetReferenceResponseOutput {
 	return o.ApplyT(func(v LookupDatasetResult) DatasetReferenceResponse { return v.DatasetReference }).(DatasetReferenceResponseOutput)
 }
 
-// The default collation of the dataset.
+// Optional. Defines the default collation specification of future tables created in the dataset. If a table is created in this dataset without table-level default collation, then the table inherits the dataset default collation, which is applied to the string fields that do not have explicit collation specified. A change to this field affects only tables created afterwards, and does not alter the existing tables. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * ”: empty string. Default to case-sensitive behavior.
 func (o LookupDatasetResultOutput) DefaultCollation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.DefaultCollation }).(pulumi.StringOutput)
 }
 
+// The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
 func (o LookupDatasetResultOutput) DefaultEncryptionConfiguration() EncryptionConfigurationResponseOutput {
 	return o.ApplyT(func(v LookupDatasetResult) EncryptionConfigurationResponse { return v.DefaultEncryptionConfiguration }).(EncryptionConfigurationResponseOutput)
 }
 
-// [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+// This default partition expiration, expressed in milliseconds. When new time-partitioned tables are created in a dataset where this property is set, the table will inherit this value, propagated as the `TimePartitioning.expirationMs` property on the new table. If you set `TimePartitioning.expirationMs` explicitly when creating a table, the `defaultPartitionExpirationMs` of the containing dataset is ignored. When creating a partitioned table, if `defaultPartitionExpirationMs` is set, the `defaultTableExpirationMs` value is ignored and the table will not be inherit a table expiration deadline.
 func (o LookupDatasetResultOutput) DefaultPartitionExpirationMs() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.DefaultPartitionExpirationMs }).(pulumi.StringOutput)
 }
 
-// The default rounding mode of the dataset.
+// Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
 func (o LookupDatasetResultOutput) DefaultRoundingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.DefaultRoundingMode }).(pulumi.StringOutput)
 }
 
-// [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+// Optional. The default lifetime of all tables in the dataset, in milliseconds. The minimum lifetime value is 3600000 milliseconds (one hour). To clear an existing default expiration with a PATCH request, set to 0. Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
 func (o LookupDatasetResultOutput) DefaultTableExpirationMs() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.DefaultTableExpirationMs }).(pulumi.StringOutput)
 }
 
-// [Optional] A user-friendly description of the dataset.
+// Optional. A user-friendly description of the dataset.
 func (o LookupDatasetResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -160,17 +170,17 @@ func (o LookupDatasetResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+// Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out when the dataset type is EXTERNAL.
 func (o LookupDatasetResultOutput) ExternalDatasetReference() ExternalDatasetReferenceResponseOutput {
 	return o.ApplyT(func(v LookupDatasetResult) ExternalDatasetReferenceResponse { return v.ExternalDatasetReference }).(ExternalDatasetReferenceResponseOutput)
 }
 
-// [Optional] A descriptive name for the dataset.
+// Optional. A descriptive name for the dataset.
 func (o LookupDatasetResultOutput) FriendlyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.FriendlyName }).(pulumi.StringOutput)
 }
 
-// [Optional] Indicates if table names are case insensitive in the dataset.
+// Optional. TRUE if the dataset and its table names are case-insensitive, otherwise FALSE. By default, this is FALSE, which means the dataset and its table names are case-sensitive. This field does not affect routine references.
 func (o LookupDatasetResultOutput) IsCaseInsensitive() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatasetResult) bool { return v.IsCaseInsensitive }).(pulumi.BoolOutput)
 }
@@ -185,19 +195,34 @@ func (o LookupDatasetResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDatasetResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+// The date when this dataset was last modified, in milliseconds since the epoch.
 func (o LookupDatasetResultOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
-// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+// Metadata about the LinkedDataset. Filled out when the dataset type is LINKED.
+func (o LookupDatasetResultOutput) LinkedDatasetMetadata() LinkedDatasetMetadataResponseOutput {
+	return o.ApplyT(func(v LookupDatasetResult) LinkedDatasetMetadataResponse { return v.LinkedDatasetMetadata }).(LinkedDatasetMetadataResponseOutput)
+}
+
+// Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is not set. This field cannot be updated once it is set. Any attempt to update this field using Update and Patch API Operations will be ignored.
+func (o LookupDatasetResultOutput) LinkedDatasetSource() LinkedDatasetSourceResponseOutput {
+	return o.ApplyT(func(v LookupDatasetResult) LinkedDatasetSourceResponse { return v.LinkedDatasetSource }).(LinkedDatasetSourceResponseOutput)
+}
+
+// The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
 func (o LookupDatasetResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// [Optional] Number of hours for the max time travel for all tables in the dataset.
+// Optional. Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days). The default value is 168 hours if this is not set.
 func (o LookupDatasetResultOutput) MaxTimeTravelHours() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.MaxTimeTravelHours }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o LookupDatasetResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatasetResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.
@@ -210,14 +235,19 @@ func (o LookupDatasetResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+// Optional. Updates storage_billing_model for the dataset.
 func (o LookupDatasetResultOutput) StorageBillingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.StorageBillingModel }).(pulumi.StringOutput)
 }
 
-// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+// Tags for the Dataset.
 func (o LookupDatasetResultOutput) Tags() DatasetTagsItemResponseArrayOutput {
 	return o.ApplyT(func(v LookupDatasetResult) []DatasetTagsItemResponse { return v.Tags }).(DatasetTagsItemResponseArrayOutput)
+}
+
+// Same as `type` in `ListFormatDataset`. The type of the dataset, one of: * DEFAULT - only accessible by owner and authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked dataset, * EXTERNAL - dataset with definition in external metadata catalog. -- *BIGLAKE_METASTORE - dataset that references a database created in BigLakeMetastore service. --
+func (o LookupDatasetResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

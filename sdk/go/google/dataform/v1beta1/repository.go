@@ -13,10 +13,11 @@ import (
 )
 
 // Creates a new Repository in a given project and location.
-// Auto-naming is currently not supported for this resource.
 type Repository struct {
 	pulumi.CustomResourceState
 
+	// The timestamp of when the repository was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. The repository's user-friendly name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. If set, configures this repository to be linked to a Git remote.
@@ -24,7 +25,7 @@ type Repository struct {
 	// Optional. Repository user labels.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// The repository's name.
+	// Identifier. The repository's name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 	NpmrcEnvironmentVariablesSecretVersion pulumi.StringOutput `pulumi:"npmrcEnvironmentVariablesSecretVersion"`
@@ -95,6 +96,8 @@ type repositoryArgs struct {
 	// Optional. Repository user labels.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
+	// Identifier. The repository's name.
+	Name *string `pulumi:"name"`
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 	NpmrcEnvironmentVariablesSecretVersion *string `pulumi:"npmrcEnvironmentVariablesSecretVersion"`
 	Project                                *string `pulumi:"project"`
@@ -117,6 +120,8 @@ type RepositoryArgs struct {
 	// Optional. Repository user labels.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
+	// Identifier. The repository's name.
+	Name pulumi.StringPtrInput
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 	NpmrcEnvironmentVariablesSecretVersion pulumi.StringPtrInput
 	Project                                pulumi.StringPtrInput
@@ -167,6 +172,11 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 	return o
 }
 
+// The timestamp of when the repository was created.
+func (o RepositoryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // Optional. The repository's user-friendly name.
 func (o RepositoryOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
@@ -186,7 +196,7 @@ func (o RepositoryOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The repository's name.
+// Identifier. The repository's name.
 func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

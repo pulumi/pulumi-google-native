@@ -31,6 +31,8 @@ type Snapshot struct {
 	DiskSizeGb pulumi.StringOutput `pulumi:"diskSizeGb"`
 	// Number of bytes downloaded to restore a snapshot to a disk.
 	DownloadBytes pulumi.StringOutput `pulumi:"downloadBytes"`
+	// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute pulumi.BoolOutput `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures GuestOsFeatureResponseArrayOutput `pulumi:"guestOsFeatures"`
 	// Type of the resource. Always compute#snapshot for Snapshot resources.
@@ -51,6 +53,8 @@ type Snapshot struct {
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Reserved for future use.
+	SatisfiesPzi pulumi.BoolOutput `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -66,6 +70,12 @@ type Snapshot struct {
 	SourceDiskForRecoveryCheckpoint pulumi.StringOutput `pulumi:"sourceDiskForRecoveryCheckpoint"`
 	// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
 	SourceDiskId pulumi.StringOutput `pulumi:"sourceDiskId"`
+	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+	SourceInstantSnapshot pulumi.StringOutput `pulumi:"sourceInstantSnapshot"`
+	// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+	SourceInstantSnapshotEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"sourceInstantSnapshotEncryptionKey"`
+	// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+	SourceInstantSnapshotId pulumi.StringOutput `pulumi:"sourceInstantSnapshotId"`
 	// URL of the resource policy which created this scheduled snapshot.
 	SourceSnapshotSchedulePolicy pulumi.StringOutput `pulumi:"sourceSnapshotSchedulePolicy"`
 	// ID of the resource policy which created this scheduled snapshot.
@@ -128,6 +138,8 @@ type snapshotArgs struct {
 	ChainName *string `pulumi:"chainName"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
 	Labels map[string]string `pulumi:"labels"`
 	// An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
@@ -147,6 +159,10 @@ type snapshotArgs struct {
 	SourceDiskEncryptionKey *CustomerEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
 	// The source disk whose recovery checkpoint will be used to create this snapshot.
 	SourceDiskForRecoveryCheckpoint *string `pulumi:"sourceDiskForRecoveryCheckpoint"`
+	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+	SourceInstantSnapshot *string `pulumi:"sourceInstantSnapshot"`
+	// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+	SourceInstantSnapshotEncryptionKey *CustomerEncryptionKey `pulumi:"sourceInstantSnapshotEncryptionKey"`
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations []string `pulumi:"storageLocations"`
 }
@@ -157,6 +173,8 @@ type SnapshotArgs struct {
 	ChainName pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute pulumi.BoolPtrInput
 	// Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
 	Labels pulumi.StringMapInput
 	// An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
@@ -176,6 +194,10 @@ type SnapshotArgs struct {
 	SourceDiskEncryptionKey CustomerEncryptionKeyPtrInput
 	// The source disk whose recovery checkpoint will be used to create this snapshot.
 	SourceDiskForRecoveryCheckpoint pulumi.StringPtrInput
+	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+	SourceInstantSnapshot pulumi.StringPtrInput
+	// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+	SourceInstantSnapshotEncryptionKey CustomerEncryptionKeyPtrInput
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations pulumi.StringArrayInput
 }
@@ -257,6 +279,11 @@ func (o SnapshotOutput) DownloadBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.DownloadBytes }).(pulumi.StringOutput)
 }
 
+// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+func (o SnapshotOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.BoolOutput { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
 // A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 func (o SnapshotOutput) GuestOsFeatures() GuestOsFeatureResponseArrayOutput {
 	return o.ApplyT(func(v *Snapshot) GuestOsFeatureResponseArrayOutput { return v.GuestOsFeatures }).(GuestOsFeatureResponseArrayOutput)
@@ -307,6 +334,11 @@ func (o SnapshotOutput) RequestId() pulumi.StringPtrOutput {
 }
 
 // Reserved for future use.
+func (o SnapshotOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.BoolOutput { return v.SatisfiesPzi }).(pulumi.BoolOutput)
+}
+
+// Reserved for future use.
 func (o SnapshotOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
@@ -344,6 +376,21 @@ func (o SnapshotOutput) SourceDiskForRecoveryCheckpoint() pulumi.StringOutput {
 // The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
 func (o SnapshotOutput) SourceDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+func (o SnapshotOutput) SourceInstantSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceInstantSnapshot }).(pulumi.StringOutput)
+}
+
+// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+func (o SnapshotOutput) SourceInstantSnapshotEncryptionKey() CustomerEncryptionKeyResponseOutput {
+	return o.ApplyT(func(v *Snapshot) CustomerEncryptionKeyResponseOutput { return v.SourceInstantSnapshotEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+func (o SnapshotOutput) SourceInstantSnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceInstantSnapshotId }).(pulumi.StringOutput)
 }
 
 // URL of the resource policy which created this scheduled snapshot.

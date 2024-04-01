@@ -27,8 +27,10 @@ type Release struct {
 	// Information around the state of the Release.
 	Condition ReleaseConditionResponseOutput `pulumi:"condition"`
 	// Time at which the `Release` was created.
-	CreateTime         pulumi.StringOutput `pulumi:"createTime"`
-	DeliveryPipelineId pulumi.StringOutput `pulumi:"deliveryPipelineId"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Snapshot of the custom target types referenced by the targets taken at release creation time.
+	CustomTargetTypeSnapshots CustomTargetTypeResponseArrayOutput `pulumi:"customTargetTypeSnapshots"`
+	DeliveryPipelineId        pulumi.StringOutput                 `pulumi:"deliveryPipelineId"`
 	// Snapshot of the parent pipeline taken at release creation time.
 	DeliveryPipelineSnapshot DeliveryPipelineResponseOutput `pulumi:"deliveryPipelineSnapshot"`
 	// Optional. The deploy parameters to use for all targets in this release.
@@ -51,7 +53,7 @@ type Release struct {
 	RenderStartTime pulumi.StringOutput `pulumi:"renderStartTime"`
 	// Current state of the render operation.
 	RenderState pulumi.StringOutput `pulumi:"renderState"`
-	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Filepath of the Skaffold config inside of the config URI.
 	SkaffoldConfigPath pulumi.StringOutput `pulumi:"skaffoldConfigPath"`
@@ -141,7 +143,7 @@ type releaseArgs struct {
 	Project *string `pulumi:"project"`
 	// Required. ID of the `Release`.
 	ReleaseId string `pulumi:"releaseId"`
-	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Filepath of the Skaffold config inside of the config URI.
 	SkaffoldConfigPath *string `pulumi:"skaffoldConfigPath"`
@@ -172,7 +174,7 @@ type ReleaseArgs struct {
 	Project pulumi.StringPtrInput
 	// Required. ID of the `Release`.
 	ReleaseId pulumi.StringInput
-	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Filepath of the Skaffold config inside of the config URI.
 	SkaffoldConfigPath pulumi.StringPtrInput
@@ -244,6 +246,11 @@ func (o ReleaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Snapshot of the custom target types referenced by the targets taken at release creation time.
+func (o ReleaseOutput) CustomTargetTypeSnapshots() CustomTargetTypeResponseArrayOutput {
+	return o.ApplyT(func(v *Release) CustomTargetTypeResponseArrayOutput { return v.CustomTargetTypeSnapshots }).(CustomTargetTypeResponseArrayOutput)
+}
+
 func (o ReleaseOutput) DeliveryPipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.DeliveryPipelineId }).(pulumi.StringOutput)
 }
@@ -306,7 +313,7 @@ func (o ReleaseOutput) RenderState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.RenderState }).(pulumi.StringOutput)
 }
 
-// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 func (o ReleaseOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }

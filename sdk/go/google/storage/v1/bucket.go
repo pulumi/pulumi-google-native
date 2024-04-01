@@ -35,6 +35,8 @@ type Bucket struct {
 	Encryption BucketEncryptionResponseOutput `pulumi:"encryption"`
 	// HTTP 1.1 Entity tag for the bucket.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The bucket's hierarchical namespace configuration.
+	HierarchicalNamespace BucketHierarchicalNamespaceResponseOutput `pulumi:"hierarchicalNamespace"`
 	// The bucket's IAM configuration.
 	IamConfiguration BucketIamConfigurationResponseOutput `pulumi:"iamConfiguration"`
 	// The kind of item this is. For buckets, this is always storage#bucket.
@@ -155,6 +157,8 @@ type bucketArgs struct {
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// HTTP 1.1 Entity tag for the bucket.
 	Etag *string `pulumi:"etag"`
+	// The bucket's hierarchical namespace configuration.
+	HierarchicalNamespace *BucketHierarchicalNamespace `pulumi:"hierarchicalNamespace"`
 	// The bucket's IAM configuration.
 	IamConfiguration *BucketIamConfiguration `pulumi:"iamConfiguration"`
 	// The ID of the bucket. For buckets, the id and name properties are the same.
@@ -235,6 +239,8 @@ type BucketArgs struct {
 	Encryption BucketEncryptionPtrInput
 	// HTTP 1.1 Entity tag for the bucket.
 	Etag pulumi.StringPtrInput
+	// The bucket's hierarchical namespace configuration.
+	HierarchicalNamespace BucketHierarchicalNamespacePtrInput
 	// The bucket's IAM configuration.
 	IamConfiguration BucketIamConfigurationPtrInput
 	// The ID of the bucket. For buckets, the id and name properties are the same.
@@ -378,6 +384,11 @@ func (o BucketOutput) Encryption() BucketEncryptionResponseOutput {
 // HTTP 1.1 Entity tag for the bucket.
 func (o BucketOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The bucket's hierarchical namespace configuration.
+func (o BucketOutput) HierarchicalNamespace() BucketHierarchicalNamespaceResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketHierarchicalNamespaceResponseOutput { return v.HierarchicalNamespace }).(BucketHierarchicalNamespaceResponseOutput)
 }
 
 // The bucket's IAM configuration.

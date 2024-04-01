@@ -41,6 +41,8 @@ type InstanceConfig struct {
 	Replicas ReplicaInfoResponseArrayOutput `pulumi:"replicas"`
 	// The current instance config state. Applicable only for USER_MANAGED configs.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The storage limit in bytes per processing unit.
+	StorageLimitPerProcessingUnit pulumi.StringOutput `pulumi:"storageLimitPerProcessingUnit"`
 }
 
 // NewInstanceConfig registers a new resource with the given unique name, arguments, and options.
@@ -233,6 +235,11 @@ func (o InstanceConfigOutput) Replicas() ReplicaInfoResponseArrayOutput {
 // The current instance config state. Applicable only for USER_MANAGED configs.
 func (o InstanceConfigOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The storage limit in bytes per processing unit.
+func (o InstanceConfigOutput) StorageLimitPerProcessingUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceConfig) pulumi.StringOutput { return v.StorageLimitPerProcessingUnit }).(pulumi.StringOutput)
 }
 
 func init() {

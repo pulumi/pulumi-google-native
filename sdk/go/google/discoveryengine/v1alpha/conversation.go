@@ -17,14 +17,13 @@ import (
 type Conversation struct {
 	pulumi.CustomResourceState
 
-	CollectionId pulumi.StringOutput `pulumi:"collectionId"`
-	DataStoreId  pulumi.StringOutput `pulumi:"dataStoreId"`
+	DataStoreId pulumi.StringOutput `pulumi:"dataStoreId"`
 	// The time the conversation finished.
 	EndTime  pulumi.StringOutput `pulumi:"endTime"`
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Conversation messages.
 	Messages GoogleCloudDiscoveryengineV1alphaConversationMessageResponseArrayOutput `pulumi:"messages"`
-	// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+	// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The time the conversation started.
@@ -42,14 +41,10 @@ func NewConversation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CollectionId == nil {
-		return nil, errors.New("invalid value for required argument 'CollectionId'")
-	}
 	if args.DataStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'DataStoreId'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
-		"collectionId",
 		"dataStoreId",
 		"location",
 		"project",
@@ -88,12 +83,11 @@ func (ConversationState) ElementType() reflect.Type {
 }
 
 type conversationArgs struct {
-	CollectionId string  `pulumi:"collectionId"`
-	DataStoreId  string  `pulumi:"dataStoreId"`
-	Location     *string `pulumi:"location"`
+	DataStoreId string  `pulumi:"dataStoreId"`
+	Location    *string `pulumi:"location"`
 	// Conversation messages.
 	Messages []GoogleCloudDiscoveryengineV1alphaConversationMessage `pulumi:"messages"`
-	// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+	// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The state of the Conversation.
@@ -104,12 +98,11 @@ type conversationArgs struct {
 
 // The set of arguments for constructing a Conversation resource.
 type ConversationArgs struct {
-	CollectionId pulumi.StringInput
-	DataStoreId  pulumi.StringInput
-	Location     pulumi.StringPtrInput
+	DataStoreId pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// Conversation messages.
 	Messages GoogleCloudDiscoveryengineV1alphaConversationMessageArrayInput
-	// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+	// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The state of the Conversation.
@@ -155,10 +148,6 @@ func (o ConversationOutput) ToConversationOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ConversationOutput) CollectionId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.CollectionId }).(pulumi.StringOutput)
-}
-
 func (o ConversationOutput) DataStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.DataStoreId }).(pulumi.StringOutput)
 }
@@ -179,7 +168,7 @@ func (o ConversationOutput) Messages() GoogleCloudDiscoveryengineV1alphaConversa
 	}).(GoogleCloudDiscoveryengineV1alphaConversationMessageResponseArrayOutput)
 }
 
-// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
 func (o ConversationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

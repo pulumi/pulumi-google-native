@@ -46,6 +46,8 @@ type LookupEventSubscriptionResult struct {
 	Subscriber string `pulumi:"subscriber"`
 	// Optional. Link for Subscriber of the current EventSubscription.
 	SubscriberLink string `pulumi:"subscriberLink"`
+	// Optional. Configuration for configuring the trigger
+	TriggerConfigVariables []ConfigVariableResponse `pulumi:"triggerConfigVariables"`
 	// Updated time.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -126,6 +128,11 @@ func (o LookupEventSubscriptionResultOutput) Subscriber() pulumi.StringOutput {
 // Optional. Link for Subscriber of the current EventSubscription.
 func (o LookupEventSubscriptionResultOutput) SubscriberLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventSubscriptionResult) string { return v.SubscriberLink }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration for configuring the trigger
+func (o LookupEventSubscriptionResultOutput) TriggerConfigVariables() ConfigVariableResponseArrayOutput {
+	return o.ApplyT(func(v LookupEventSubscriptionResult) []ConfigVariableResponse { return v.TriggerConfigVariables }).(ConfigVariableResponseArrayOutput)
 }
 
 // Updated time.

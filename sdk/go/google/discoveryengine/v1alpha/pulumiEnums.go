@@ -368,6 +368,183 @@ func (in *dataStoreContentConfigPtr) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// The state of the Conversation.
+type DataStoreConversationStateEnum string
+
+const (
+	// Unknown.
+	DataStoreConversationStateEnumStateUnspecified = DataStoreConversationStateEnum("STATE_UNSPECIFIED")
+	// Conversation is currently open.
+	DataStoreConversationStateEnumInProgress = DataStoreConversationStateEnum("IN_PROGRESS")
+	// Conversation has been completed.
+	DataStoreConversationStateEnumCompleted = DataStoreConversationStateEnum("COMPLETED")
+)
+
+func (DataStoreConversationStateEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreConversationStateEnum)(nil)).Elem()
+}
+
+func (e DataStoreConversationStateEnum) ToDataStoreConversationStateEnumOutput() DataStoreConversationStateEnumOutput {
+	return pulumi.ToOutput(e).(DataStoreConversationStateEnumOutput)
+}
+
+func (e DataStoreConversationStateEnum) ToDataStoreConversationStateEnumOutputWithContext(ctx context.Context) DataStoreConversationStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DataStoreConversationStateEnumOutput)
+}
+
+func (e DataStoreConversationStateEnum) ToDataStoreConversationStateEnumPtrOutput() DataStoreConversationStateEnumPtrOutput {
+	return e.ToDataStoreConversationStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e DataStoreConversationStateEnum) ToDataStoreConversationStateEnumPtrOutputWithContext(ctx context.Context) DataStoreConversationStateEnumPtrOutput {
+	return DataStoreConversationStateEnum(e).ToDataStoreConversationStateEnumOutputWithContext(ctx).ToDataStoreConversationStateEnumPtrOutputWithContext(ctx)
+}
+
+func (e DataStoreConversationStateEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataStoreConversationStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataStoreConversationStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DataStoreConversationStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DataStoreConversationStateEnumOutput struct{ *pulumi.OutputState }
+
+func (DataStoreConversationStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreConversationStateEnum)(nil)).Elem()
+}
+
+func (o DataStoreConversationStateEnumOutput) ToDataStoreConversationStateEnumOutput() DataStoreConversationStateEnumOutput {
+	return o
+}
+
+func (o DataStoreConversationStateEnumOutput) ToDataStoreConversationStateEnumOutputWithContext(ctx context.Context) DataStoreConversationStateEnumOutput {
+	return o
+}
+
+func (o DataStoreConversationStateEnumOutput) ToDataStoreConversationStateEnumPtrOutput() DataStoreConversationStateEnumPtrOutput {
+	return o.ToDataStoreConversationStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreConversationStateEnumOutput) ToDataStoreConversationStateEnumPtrOutputWithContext(ctx context.Context) DataStoreConversationStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreConversationStateEnum) *DataStoreConversationStateEnum {
+		return &v
+	}).(DataStoreConversationStateEnumPtrOutput)
+}
+
+func (o DataStoreConversationStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DataStoreConversationStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataStoreConversationStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DataStoreConversationStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreConversationStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataStoreConversationStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataStoreConversationStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreConversationStateEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreConversationStateEnum)(nil)).Elem()
+}
+
+func (o DataStoreConversationStateEnumPtrOutput) ToDataStoreConversationStateEnumPtrOutput() DataStoreConversationStateEnumPtrOutput {
+	return o
+}
+
+func (o DataStoreConversationStateEnumPtrOutput) ToDataStoreConversationStateEnumPtrOutputWithContext(ctx context.Context) DataStoreConversationStateEnumPtrOutput {
+	return o
+}
+
+func (o DataStoreConversationStateEnumPtrOutput) Elem() DataStoreConversationStateEnumOutput {
+	return o.ApplyT(func(v *DataStoreConversationStateEnum) DataStoreConversationStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreConversationStateEnum
+		return ret
+	}).(DataStoreConversationStateEnumOutput)
+}
+
+func (o DataStoreConversationStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreConversationStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DataStoreConversationStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataStoreConversationStateEnumInput is an input type that accepts values of the DataStoreConversationStateEnum enum
+// A concrete instance of `DataStoreConversationStateEnumInput` can be one of the following:
+//
+//	DataStoreConversationStateEnumStateUnspecified
+//	DataStoreConversationStateEnumInProgress
+//	DataStoreConversationStateEnumCompleted
+type DataStoreConversationStateEnumInput interface {
+	pulumi.Input
+
+	ToDataStoreConversationStateEnumOutput() DataStoreConversationStateEnumOutput
+	ToDataStoreConversationStateEnumOutputWithContext(context.Context) DataStoreConversationStateEnumOutput
+}
+
+var dataStoreConversationStateEnumPtrType = reflect.TypeOf((**DataStoreConversationStateEnum)(nil)).Elem()
+
+type DataStoreConversationStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreConversationStateEnumPtrOutput() DataStoreConversationStateEnumPtrOutput
+	ToDataStoreConversationStateEnumPtrOutputWithContext(context.Context) DataStoreConversationStateEnumPtrOutput
+}
+
+type dataStoreConversationStateEnumPtr string
+
+func DataStoreConversationStateEnumPtr(v string) DataStoreConversationStateEnumPtrInput {
+	return (*dataStoreConversationStateEnumPtr)(&v)
+}
+
+func (*dataStoreConversationStateEnumPtr) ElementType() reflect.Type {
+	return dataStoreConversationStateEnumPtrType
+}
+
+func (in *dataStoreConversationStateEnumPtr) ToDataStoreConversationStateEnumPtrOutput() DataStoreConversationStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(DataStoreConversationStateEnumPtrOutput)
+}
+
+func (in *dataStoreConversationStateEnumPtr) ToDataStoreConversationStateEnumPtrOutputWithContext(ctx context.Context) DataStoreConversationStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DataStoreConversationStateEnumPtrOutput)
+}
+
+func (in *dataStoreConversationStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*DataStoreConversationStateEnum] {
+	return pulumix.Output[*DataStoreConversationStateEnum]{
+		OutputState: in.ToDataStoreConversationStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Immutable. The industry vertical that the data store registers.
 type DataStoreIndustryVertical string
 
@@ -378,6 +555,8 @@ const (
 	DataStoreIndustryVerticalGeneric = DataStoreIndustryVertical("GENERIC")
 	// The media industry vertical.
 	DataStoreIndustryVerticalMedia = DataStoreIndustryVertical("MEDIA")
+	// The healthcare FHIR vertical.
+	DataStoreIndustryVerticalHealthcareFhir = DataStoreIndustryVertical("HEALTHCARE_FHIR")
 )
 
 func (DataStoreIndustryVertical) ElementType() reflect.Type {
@@ -505,6 +684,7 @@ func (o DataStoreIndustryVerticalPtrOutput) ToStringPtrOutputWithContext(ctx con
 //	DataStoreIndustryVerticalIndustryVerticalUnspecified
 //	DataStoreIndustryVerticalGeneric
 //	DataStoreIndustryVerticalMedia
+//	DataStoreIndustryVerticalHealthcareFhir
 type DataStoreIndustryVerticalInput interface {
 	pulumi.Input
 
@@ -556,6 +736,8 @@ const (
 	DataStoreSolutionTypesItemSolutionTypeSearch = DataStoreSolutionTypesItem("SOLUTION_TYPE_SEARCH")
 	// Used for use cases related to the Generative AI agent.
 	DataStoreSolutionTypesItemSolutionTypeChat = DataStoreSolutionTypesItem("SOLUTION_TYPE_CHAT")
+	// Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+	DataStoreSolutionTypesItemSolutionTypeGenerativeChat = DataStoreSolutionTypesItem("SOLUTION_TYPE_GENERATIVE_CHAT")
 )
 
 func (DataStoreSolutionTypesItem) ElementType() reflect.Type {
@@ -684,6 +866,7 @@ func (o DataStoreSolutionTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx co
 //	DataStoreSolutionTypesItemSolutionTypeRecommendation
 //	DataStoreSolutionTypesItemSolutionTypeSearch
 //	DataStoreSolutionTypesItemSolutionTypeChat
+//	DataStoreSolutionTypesItemSolutionTypeGenerativeChat
 type DataStoreSolutionTypesItemInput interface {
 	pulumi.Input
 
@@ -769,6 +952,183 @@ func (o DataStoreSolutionTypesItemArrayOutput) Index(i pulumi.IntInput) DataStor
 	}).(DataStoreSolutionTypesItemOutput)
 }
 
+// The state of the Conversation.
+type EngineConversationStateEnum string
+
+const (
+	// Unknown.
+	EngineConversationStateEnumStateUnspecified = EngineConversationStateEnum("STATE_UNSPECIFIED")
+	// Conversation is currently open.
+	EngineConversationStateEnumInProgress = EngineConversationStateEnum("IN_PROGRESS")
+	// Conversation has been completed.
+	EngineConversationStateEnumCompleted = EngineConversationStateEnum("COMPLETED")
+)
+
+func (EngineConversationStateEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*EngineConversationStateEnum)(nil)).Elem()
+}
+
+func (e EngineConversationStateEnum) ToEngineConversationStateEnumOutput() EngineConversationStateEnumOutput {
+	return pulumi.ToOutput(e).(EngineConversationStateEnumOutput)
+}
+
+func (e EngineConversationStateEnum) ToEngineConversationStateEnumOutputWithContext(ctx context.Context) EngineConversationStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EngineConversationStateEnumOutput)
+}
+
+func (e EngineConversationStateEnum) ToEngineConversationStateEnumPtrOutput() EngineConversationStateEnumPtrOutput {
+	return e.ToEngineConversationStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e EngineConversationStateEnum) ToEngineConversationStateEnumPtrOutputWithContext(ctx context.Context) EngineConversationStateEnumPtrOutput {
+	return EngineConversationStateEnum(e).ToEngineConversationStateEnumOutputWithContext(ctx).ToEngineConversationStateEnumPtrOutputWithContext(ctx)
+}
+
+func (e EngineConversationStateEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EngineConversationStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EngineConversationStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EngineConversationStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EngineConversationStateEnumOutput struct{ *pulumi.OutputState }
+
+func (EngineConversationStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EngineConversationStateEnum)(nil)).Elem()
+}
+
+func (o EngineConversationStateEnumOutput) ToEngineConversationStateEnumOutput() EngineConversationStateEnumOutput {
+	return o
+}
+
+func (o EngineConversationStateEnumOutput) ToEngineConversationStateEnumOutputWithContext(ctx context.Context) EngineConversationStateEnumOutput {
+	return o
+}
+
+func (o EngineConversationStateEnumOutput) ToEngineConversationStateEnumPtrOutput() EngineConversationStateEnumPtrOutput {
+	return o.ToEngineConversationStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o EngineConversationStateEnumOutput) ToEngineConversationStateEnumPtrOutputWithContext(ctx context.Context) EngineConversationStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EngineConversationStateEnum) *EngineConversationStateEnum {
+		return &v
+	}).(EngineConversationStateEnumPtrOutput)
+}
+
+func (o EngineConversationStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EngineConversationStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EngineConversationStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EngineConversationStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EngineConversationStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EngineConversationStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EngineConversationStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (EngineConversationStateEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EngineConversationStateEnum)(nil)).Elem()
+}
+
+func (o EngineConversationStateEnumPtrOutput) ToEngineConversationStateEnumPtrOutput() EngineConversationStateEnumPtrOutput {
+	return o
+}
+
+func (o EngineConversationStateEnumPtrOutput) ToEngineConversationStateEnumPtrOutputWithContext(ctx context.Context) EngineConversationStateEnumPtrOutput {
+	return o
+}
+
+func (o EngineConversationStateEnumPtrOutput) Elem() EngineConversationStateEnumOutput {
+	return o.ApplyT(func(v *EngineConversationStateEnum) EngineConversationStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret EngineConversationStateEnum
+		return ret
+	}).(EngineConversationStateEnumOutput)
+}
+
+func (o EngineConversationStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EngineConversationStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EngineConversationStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EngineConversationStateEnumInput is an input type that accepts values of the EngineConversationStateEnum enum
+// A concrete instance of `EngineConversationStateEnumInput` can be one of the following:
+//
+//	EngineConversationStateEnumStateUnspecified
+//	EngineConversationStateEnumInProgress
+//	EngineConversationStateEnumCompleted
+type EngineConversationStateEnumInput interface {
+	pulumi.Input
+
+	ToEngineConversationStateEnumOutput() EngineConversationStateEnumOutput
+	ToEngineConversationStateEnumOutputWithContext(context.Context) EngineConversationStateEnumOutput
+}
+
+var engineConversationStateEnumPtrType = reflect.TypeOf((**EngineConversationStateEnum)(nil)).Elem()
+
+type EngineConversationStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToEngineConversationStateEnumPtrOutput() EngineConversationStateEnumPtrOutput
+	ToEngineConversationStateEnumPtrOutputWithContext(context.Context) EngineConversationStateEnumPtrOutput
+}
+
+type engineConversationStateEnumPtr string
+
+func EngineConversationStateEnumPtr(v string) EngineConversationStateEnumPtrInput {
+	return (*engineConversationStateEnumPtr)(&v)
+}
+
+func (*engineConversationStateEnumPtr) ElementType() reflect.Type {
+	return engineConversationStateEnumPtrType
+}
+
+func (in *engineConversationStateEnumPtr) ToEngineConversationStateEnumPtrOutput() EngineConversationStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(EngineConversationStateEnumPtrOutput)
+}
+
+func (in *engineConversationStateEnumPtr) ToEngineConversationStateEnumPtrOutputWithContext(ctx context.Context) EngineConversationStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EngineConversationStateEnumPtrOutput)
+}
+
+func (in *engineConversationStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*EngineConversationStateEnum] {
+	return pulumix.Output[*EngineConversationStateEnum]{
+		OutputState: in.ToEngineConversationStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
 type EngineIndustryVertical string
 
@@ -779,6 +1139,8 @@ const (
 	EngineIndustryVerticalGeneric = EngineIndustryVertical("GENERIC")
 	// The media industry vertical.
 	EngineIndustryVerticalMedia = EngineIndustryVertical("MEDIA")
+	// The healthcare FHIR vertical.
+	EngineIndustryVerticalHealthcareFhir = EngineIndustryVertical("HEALTHCARE_FHIR")
 )
 
 func (EngineIndustryVertical) ElementType() reflect.Type {
@@ -906,6 +1268,7 @@ func (o EngineIndustryVerticalPtrOutput) ToStringPtrOutputWithContext(ctx contex
 //	EngineIndustryVerticalIndustryVerticalUnspecified
 //	EngineIndustryVerticalGeneric
 //	EngineIndustryVerticalMedia
+//	EngineIndustryVerticalHealthcareFhir
 type EngineIndustryVerticalInput interface {
 	pulumi.Input
 
@@ -958,6 +1321,8 @@ const (
 	EngineSolutionTypeSolutionTypeSearch = EngineSolutionType("SOLUTION_TYPE_SEARCH")
 	// Used for use cases related to the Generative AI agent.
 	EngineSolutionTypeSolutionTypeChat = EngineSolutionType("SOLUTION_TYPE_CHAT")
+	// Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+	EngineSolutionTypeSolutionTypeGenerativeChat = EngineSolutionType("SOLUTION_TYPE_GENERATIVE_CHAT")
 )
 
 func (EngineSolutionType) ElementType() reflect.Type {
@@ -1086,6 +1451,7 @@ func (o EngineSolutionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //	EngineSolutionTypeSolutionTypeRecommendation
 //	EngineSolutionTypeSolutionTypeSearch
 //	EngineSolutionTypeSolutionTypeChat
+//	EngineSolutionTypeSolutionTypeGenerativeChat
 type EngineSolutionTypeInput interface {
 	pulumi.Input
 
@@ -1928,16 +2294,197 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReas
 	}).(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemOutput)
 }
 
+// The type of the target site, e.g., whether the site is to be included or excluded.
+type TargetSiteType string
+
+const (
+	// This value is unused. In this case, server behavior defaults to Type.INCLUDE.
+	TargetSiteTypeTypeUnspecified = TargetSiteType("TYPE_UNSPECIFIED")
+	// Include the target site.
+	TargetSiteTypeInclude = TargetSiteType("INCLUDE")
+	// Exclude the target site.
+	TargetSiteTypeExclude = TargetSiteType("EXCLUDE")
+)
+
+func (TargetSiteType) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSiteType)(nil)).Elem()
+}
+
+func (e TargetSiteType) ToTargetSiteTypeOutput() TargetSiteTypeOutput {
+	return pulumi.ToOutput(e).(TargetSiteTypeOutput)
+}
+
+func (e TargetSiteType) ToTargetSiteTypeOutputWithContext(ctx context.Context) TargetSiteTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TargetSiteTypeOutput)
+}
+
+func (e TargetSiteType) ToTargetSiteTypePtrOutput() TargetSiteTypePtrOutput {
+	return e.ToTargetSiteTypePtrOutputWithContext(context.Background())
+}
+
+func (e TargetSiteType) ToTargetSiteTypePtrOutputWithContext(ctx context.Context) TargetSiteTypePtrOutput {
+	return TargetSiteType(e).ToTargetSiteTypeOutputWithContext(ctx).ToTargetSiteTypePtrOutputWithContext(ctx)
+}
+
+func (e TargetSiteType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetSiteType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetSiteType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TargetSiteType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TargetSiteTypeOutput struct{ *pulumi.OutputState }
+
+func (TargetSiteTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSiteType)(nil)).Elem()
+}
+
+func (o TargetSiteTypeOutput) ToTargetSiteTypeOutput() TargetSiteTypeOutput {
+	return o
+}
+
+func (o TargetSiteTypeOutput) ToTargetSiteTypeOutputWithContext(ctx context.Context) TargetSiteTypeOutput {
+	return o
+}
+
+func (o TargetSiteTypeOutput) ToTargetSiteTypePtrOutput() TargetSiteTypePtrOutput {
+	return o.ToTargetSiteTypePtrOutputWithContext(context.Background())
+}
+
+func (o TargetSiteTypeOutput) ToTargetSiteTypePtrOutputWithContext(ctx context.Context) TargetSiteTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetSiteType) *TargetSiteType {
+		return &v
+	}).(TargetSiteTypePtrOutput)
+}
+
+func (o TargetSiteTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TargetSiteTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetSiteType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TargetSiteTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetSiteTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetSiteType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TargetSiteTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TargetSiteTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetSiteType)(nil)).Elem()
+}
+
+func (o TargetSiteTypePtrOutput) ToTargetSiteTypePtrOutput() TargetSiteTypePtrOutput {
+	return o
+}
+
+func (o TargetSiteTypePtrOutput) ToTargetSiteTypePtrOutputWithContext(ctx context.Context) TargetSiteTypePtrOutput {
+	return o
+}
+
+func (o TargetSiteTypePtrOutput) Elem() TargetSiteTypeOutput {
+	return o.ApplyT(func(v *TargetSiteType) TargetSiteType {
+		if v != nil {
+			return *v
+		}
+		var ret TargetSiteType
+		return ret
+	}).(TargetSiteTypeOutput)
+}
+
+func (o TargetSiteTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetSiteTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TargetSiteType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TargetSiteTypeInput is an input type that accepts values of the TargetSiteType enum
+// A concrete instance of `TargetSiteTypeInput` can be one of the following:
+//
+//	TargetSiteTypeTypeUnspecified
+//	TargetSiteTypeInclude
+//	TargetSiteTypeExclude
+type TargetSiteTypeInput interface {
+	pulumi.Input
+
+	ToTargetSiteTypeOutput() TargetSiteTypeOutput
+	ToTargetSiteTypeOutputWithContext(context.Context) TargetSiteTypeOutput
+}
+
+var targetSiteTypePtrType = reflect.TypeOf((**TargetSiteType)(nil)).Elem()
+
+type TargetSiteTypePtrInput interface {
+	pulumi.Input
+
+	ToTargetSiteTypePtrOutput() TargetSiteTypePtrOutput
+	ToTargetSiteTypePtrOutputWithContext(context.Context) TargetSiteTypePtrOutput
+}
+
+type targetSiteTypePtr string
+
+func TargetSiteTypePtr(v string) TargetSiteTypePtrInput {
+	return (*targetSiteTypePtr)(&v)
+}
+
+func (*targetSiteTypePtr) ElementType() reflect.Type {
+	return targetSiteTypePtrType
+}
+
+func (in *targetSiteTypePtr) ToTargetSiteTypePtrOutput() TargetSiteTypePtrOutput {
+	return pulumi.ToOutput(in).(TargetSiteTypePtrOutput)
+}
+
+func (in *targetSiteTypePtr) ToTargetSiteTypePtrOutputWithContext(ctx context.Context) TargetSiteTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TargetSiteTypePtrOutput)
+}
+
+func (in *targetSiteTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetSiteType] {
+	return pulumix.Output[*TargetSiteType]{
+		OutputState: in.ToTargetSiteTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationStateEnumInput)(nil)).Elem(), ConversationStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationStateEnumPtrInput)(nil)).Elem(), ConversationStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreContentConfigInput)(nil)).Elem(), DataStoreContentConfig("CONTENT_CONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreContentConfigPtrInput)(nil)).Elem(), DataStoreContentConfig("CONTENT_CONFIG_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreConversationStateEnumInput)(nil)).Elem(), DataStoreConversationStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreConversationStateEnumPtrInput)(nil)).Elem(), DataStoreConversationStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndustryVerticalInput)(nil)).Elem(), DataStoreIndustryVertical("INDUSTRY_VERTICAL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndustryVerticalPtrInput)(nil)).Elem(), DataStoreIndustryVertical("INDUSTRY_VERTICAL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreSolutionTypesItemInput)(nil)).Elem(), DataStoreSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreSolutionTypesItemPtrInput)(nil)).Elem(), DataStoreSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreSolutionTypesItemArrayInput)(nil)).Elem(), DataStoreSolutionTypesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineConversationStateEnumInput)(nil)).Elem(), EngineConversationStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineConversationStateEnumPtrInput)(nil)).Elem(), EngineConversationStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EngineIndustryVerticalInput)(nil)).Elem(), EngineIndustryVertical("INDUSTRY_VERTICAL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EngineIndustryVerticalPtrInput)(nil)).Elem(), EngineIndustryVertical("INDUSTRY_VERTICAL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EngineSolutionTypeInput)(nil)).Elem(), EngineSolutionType("SOLUTION_TYPE_UNSPECIFIED"))
@@ -1952,15 +2499,21 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem("SUMMARY_SKIPPED_REASON_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem("SUMMARY_SKIPPED_REASON_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteTypeInput)(nil)).Elem(), TargetSiteType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteTypePtrInput)(nil)).Elem(), TargetSiteType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ConversationStateEnumOutput{})
 	pulumi.RegisterOutputType(ConversationStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreContentConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreContentConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreConversationStateEnumOutput{})
+	pulumi.RegisterOutputType(DataStoreConversationStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreIndustryVerticalOutput{})
 	pulumi.RegisterOutputType(DataStoreIndustryVerticalPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreSolutionTypesItemOutput{})
 	pulumi.RegisterOutputType(DataStoreSolutionTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreSolutionTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(EngineConversationStateEnumOutput{})
+	pulumi.RegisterOutputType(EngineConversationStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(EngineIndustryVerticalOutput{})
 	pulumi.RegisterOutputType(EngineIndustryVerticalPtrOutput{})
 	pulumi.RegisterOutputType(EngineSolutionTypeOutput{})
@@ -1975,4 +2528,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutput{})
+	pulumi.RegisterOutputType(TargetSiteTypeOutput{})
+	pulumi.RegisterOutputType(TargetSiteTypePtrOutput{})
 }

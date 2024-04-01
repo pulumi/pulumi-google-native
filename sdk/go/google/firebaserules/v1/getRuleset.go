@@ -28,6 +28,8 @@ type LookupRulesetArgs struct {
 }
 
 type LookupRulesetResult struct {
+	// Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+	AttachmentPoint string `pulumi:"attachmentPoint"`
 	// Time the `Ruleset` was created.
 	CreateTime string `pulumi:"createTime"`
 	// The metadata for this ruleset.
@@ -72,6 +74,11 @@ func (o LookupRulesetResultOutput) ToLookupRulesetResultOutput() LookupRulesetRe
 
 func (o LookupRulesetResultOutput) ToLookupRulesetResultOutputWithContext(ctx context.Context) LookupRulesetResultOutput {
 	return o
+}
+
+// Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+func (o LookupRulesetResultOutput) AttachmentPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRulesetResult) string { return v.AttachmentPoint }).(pulumi.StringOutput)
 }
 
 // Time the `Ruleset` was created.

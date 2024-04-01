@@ -39,15 +39,17 @@ type Registration struct {
 	// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
 	PendingContactSettings ContactSettingsResponseOutput `pulumi:"pendingContactSettings"`
 	Project                pulumi.StringOutput           `pulumi:"project"`
+	// Current domain management provider.
+	Provider pulumi.StringOutput `pulumi:"provider"`
 	// The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
 	RegisterFailureReason pulumi.StringOutput `pulumi:"registerFailureReason"`
 	// The state of the `Registration`
 	State pulumi.StringOutput `pulumi:"state"`
 	// Set of options for the `contact_settings.privacy` field that this `Registration` supports.
 	SupportedPrivacy pulumi.StringArrayOutput `pulumi:"supportedPrivacy"`
-	// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+	// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
 	//
-	// Deprecated: Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+	// Deprecated: Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
 	TransferFailureReason pulumi.StringOutput `pulumi:"transferFailureReason"`
 }
 
@@ -246,6 +248,11 @@ func (o RegistrationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Current domain management provider.
+func (o RegistrationOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.Provider }).(pulumi.StringOutput)
+}
+
 // The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
 func (o RegistrationOutput) RegisterFailureReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.RegisterFailureReason }).(pulumi.StringOutput)
@@ -261,9 +268,9 @@ func (o RegistrationOutput) SupportedPrivacy() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringArrayOutput { return v.SupportedPrivacy }).(pulumi.StringArrayOutput)
 }
 
-// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
 //
-// Deprecated: Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+// Deprecated: Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
 func (o RegistrationOutput) TransferFailureReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.TransferFailureReason }).(pulumi.StringOutput)
 }

@@ -27,6 +27,8 @@ type Folder struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewFolder registers a new resource with the given unique name, arguments, and options.
@@ -80,6 +82,8 @@ type folderArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
 	Parent string `pulumi:"parent"`
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Folder resource.
@@ -88,6 +92,8 @@ type FolderArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
 	Parent pulumi.StringInput
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags pulumi.StringMapInput
 }
 
 func (FolderArgs) ElementType() reflect.Type {
@@ -150,6 +156,11 @@ func (o FolderOutput) Name() pulumi.StringOutput {
 // Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 func (o FolderOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+func (o FolderOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

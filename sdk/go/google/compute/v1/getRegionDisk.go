@@ -41,6 +41,8 @@ type LookupRegionDiskResult struct {
 	Description string `pulumi:"description"`
 	// Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
 	DiskEncryptionKey CustomerEncryptionKeyResponse `pulumi:"diskEncryptionKey"`
+	// Whether this disk is using confidential compute mode.
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
 	// Type of the resource. Always compute#disk for disks.
@@ -69,7 +71,7 @@ type LookupRegionDiskResult struct {
 	PhysicalBlockSizeBytes string `pulumi:"physicalBlockSizeBytes"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops string `pulumi:"provisionedIops"`
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
 	ProvisionedThroughput string `pulumi:"provisionedThroughput"`
 	// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
@@ -79,6 +81,8 @@ type LookupRegionDiskResult struct {
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Status information for the disk resource.
 	ResourceStatus DiskResourceStatusResponse `pulumi:"resourceStatus"`
+	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
@@ -99,6 +103,10 @@ type LookupRegionDiskResult struct {
 	SourceImageEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceImageEncryptionKey"`
 	// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 	SourceImageId string `pulumi:"sourceImageId"`
+	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+	SourceInstantSnapshot string `pulumi:"sourceInstantSnapshot"`
+	// The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+	SourceInstantSnapshotId string `pulumi:"sourceInstantSnapshotId"`
 	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot
 	SourceSnapshot string `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
@@ -109,6 +117,8 @@ type LookupRegionDiskResult struct {
 	SourceStorageObject string `pulumi:"sourceStorageObject"`
 	// The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting.
 	Status string `pulumi:"status"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool string `pulumi:"storagePool"`
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
 	Type string `pulumi:"type"`
 	// Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
@@ -184,6 +194,11 @@ func (o LookupRegionDiskResultOutput) DiskEncryptionKey() CustomerEncryptionKeyR
 	return o.ApplyT(func(v LookupRegionDiskResult) CustomerEncryptionKeyResponse { return v.DiskEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
 }
 
+// Whether this disk is using confidential compute mode.
+func (o LookupRegionDiskResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
 // A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 func (o LookupRegionDiskResultOutput) GuestOsFeatures() GuestOsFeatureResponseArrayOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) []GuestOsFeatureResponse { return v.GuestOsFeatures }).(GuestOsFeatureResponseArrayOutput)
@@ -254,7 +269,7 @@ func (o LookupRegionDiskResultOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.ProvisionedIops }).(pulumi.StringOutput)
 }
 
-// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
 func (o LookupRegionDiskResultOutput) ProvisionedThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
@@ -277,6 +292,11 @@ func (o LookupRegionDiskResultOutput) ResourcePolicies() pulumi.StringArrayOutpu
 // Status information for the disk resource.
 func (o LookupRegionDiskResultOutput) ResourceStatus() DiskResourceStatusResponseOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) DiskResourceStatusResponse { return v.ResourceStatus }).(DiskResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o LookupRegionDiskResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.
@@ -329,6 +349,16 @@ func (o LookupRegionDiskResultOutput) SourceImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SourceImageId }).(pulumi.StringOutput)
 }
 
+// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+func (o LookupRegionDiskResultOutput) SourceInstantSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SourceInstantSnapshot }).(pulumi.StringOutput)
+}
+
+// The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+func (o LookupRegionDiskResultOutput) SourceInstantSnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SourceInstantSnapshotId }).(pulumi.StringOutput)
+}
+
 // The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot
 func (o LookupRegionDiskResultOutput) SourceSnapshot() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SourceSnapshot }).(pulumi.StringOutput)
@@ -352,6 +382,11 @@ func (o LookupRegionDiskResultOutput) SourceStorageObject() pulumi.StringOutput 
 // The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting.
 func (o LookupRegionDiskResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+func (o LookupRegionDiskResultOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.StoragePool }).(pulumi.StringOutput)
 }
 
 // URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.

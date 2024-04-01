@@ -236,6 +236,10 @@ const (
 	WorkloadComplianceRegimeIl2 = WorkloadComplianceRegime("IL2")
 	// Assured Workloads for Japan Regions
 	WorkloadComplianceRegimeJpRegionsAndSupport = WorkloadComplianceRegime("JP_REGIONS_AND_SUPPORT")
+	// KSA R5 Controls.
+	WorkloadComplianceRegimeKsaRegionsAndSupportWithSovereigntyControls = WorkloadComplianceRegime("KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS")
+	// Assured Workloads Free Regions
+	WorkloadComplianceRegimeFreeRegions = WorkloadComplianceRegime("FREE_REGIONS")
 )
 
 func (WorkloadComplianceRegime) ElementType() reflect.Type {
@@ -379,6 +383,8 @@ func (o WorkloadComplianceRegimePtrOutput) ToStringPtrOutputWithContext(ctx cont
 //	WorkloadComplianceRegimeIl5
 //	WorkloadComplianceRegimeIl2
 //	WorkloadComplianceRegimeJpRegionsAndSupport
+//	WorkloadComplianceRegimeKsaRegionsAndSupportWithSovereigntyControls
+//	WorkloadComplianceRegimeFreeRegions
 type WorkloadComplianceRegimeInput interface {
 	pulumi.Input
 

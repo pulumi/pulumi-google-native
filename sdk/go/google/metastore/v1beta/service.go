@@ -52,6 +52,8 @@ type Service struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Scaling configuration of the metastore service.
 	ScalingConfig ScalingConfigResponseOutput `pulumi:"scalingConfig"`
+	// Optional. The configuration of scheduled backup for the metastore service.
+	ScheduledBackup ScheduledBackupResponseOutput `pulumi:"scheduledBackup"`
 	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The current state of the metastore service.
@@ -145,6 +147,8 @@ type serviceArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Scaling configuration of the metastore service.
 	ScalingConfig *ScalingConfig `pulumi:"scalingConfig"`
+	// Optional. The configuration of scheduled backup for the metastore service.
+	ScheduledBackup *ScheduledBackup `pulumi:"scheduledBackup"`
 	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
 	ServiceId string `pulumi:"serviceId"`
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -183,6 +187,8 @@ type ServiceArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Scaling configuration of the metastore service.
 	ScalingConfig ScalingConfigPtrInput
+	// Optional. The configuration of scheduled backup for the metastore service.
+	ScheduledBackup ScheduledBackupPtrInput
 	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
 	ServiceId pulumi.StringInput
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -319,6 +325,11 @@ func (o ServiceOutput) RequestId() pulumi.StringPtrOutput {
 // Scaling configuration of the metastore service.
 func (o ServiceOutput) ScalingConfig() ScalingConfigResponseOutput {
 	return o.ApplyT(func(v *Service) ScalingConfigResponseOutput { return v.ScalingConfig }).(ScalingConfigResponseOutput)
+}
+
+// Optional. The configuration of scheduled backup for the metastore service.
+func (o ServiceOutput) ScheduledBackup() ScheduledBackupResponseOutput {
+	return o.ApplyT(func(v *Service) ScheduledBackupResponseOutput { return v.ScheduledBackup }).(ScheduledBackupResponseOutput)
 }
 
 // Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.

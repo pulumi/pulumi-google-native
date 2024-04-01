@@ -1287,7 +1287,7 @@ func (o GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput
 	}).(pulumi.IntOutput)
 }
 
-// The conversation source, which is a combination of transcript, audio, and metadata.
+// The conversation source, which is a combination of transcript and audio.
 type GoogleCloudContactcenterinsightsV1ConversationDataSource struct {
 	// The source when the conversation comes from Dialogflow.
 	DialogflowSource *GoogleCloudContactcenterinsightsV1DialogflowSource `pulumi:"dialogflowSource"`
@@ -1306,7 +1306,7 @@ type GoogleCloudContactcenterinsightsV1ConversationDataSourceInput interface {
 	ToGoogleCloudContactcenterinsightsV1ConversationDataSourceOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1ConversationDataSourceOutput
 }
 
-// The conversation source, which is a combination of transcript, audio, and metadata.
+// The conversation source, which is a combination of transcript and audio.
 type GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs struct {
 	// The source when the conversation comes from Dialogflow.
 	DialogflowSource GoogleCloudContactcenterinsightsV1DialogflowSourcePtrInput `pulumi:"dialogflowSource"`
@@ -1367,7 +1367,7 @@ func (i *googleCloudContactcenterinsightsV1ConversationDataSourcePtrType) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrOutput)
 }
 
-// The conversation source, which is a combination of transcript, audio, and metadata.
+// The conversation source, which is a combination of transcript and audio.
 type GoogleCloudContactcenterinsightsV1ConversationDataSourceOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContactcenterinsightsV1ConversationDataSourceOutput) ElementType() reflect.Type {
@@ -1450,7 +1450,7 @@ func (o GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrOutput) GcsSo
 	}).(GoogleCloudContactcenterinsightsV1GcsSourcePtrOutput)
 }
 
-// The conversation source, which is a combination of transcript, audio, and metadata.
+// The conversation source, which is a combination of transcript and audio.
 type GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse struct {
 	// The source when the conversation comes from Dialogflow.
 	DialogflowSource GoogleCloudContactcenterinsightsV1DialogflowSourceResponse `pulumi:"dialogflowSource"`
@@ -1458,7 +1458,7 @@ type GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse struct {
 	GcsSource GoogleCloudContactcenterinsightsV1GcsSourceResponse `pulumi:"gcsSource"`
 }
 
-// The conversation source, which is a combination of transcript, audio, and metadata.
+// The conversation source, which is a combination of transcript and audio.
 type GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput) ElementType() reflect.Type {
@@ -1604,6 +1604,470 @@ func (o GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput)
 // A user-specified ID representing the participant.
 func (o GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationParticipantResponse) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// Conversation metadata related to quality management.
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadata struct {
+	// Information about agents involved in the call.
+	AgentInfo []GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo `pulumi:"agentInfo"`
+	// An arbitrary integer value indicating the customer's satisfaction rating.
+	CustomerSatisfactionRating *int `pulumi:"customerSatisfactionRating"`
+	// An arbitrary string value specifying the menu path the customer took.
+	MenuPath *string `pulumi:"menuPath"`
+	// The amount of time the customer waited to connect with an agent.
+	WaitDuration *string `pulumi:"waitDuration"`
+}
+
+// GoogleCloudContactcenterinsightsV1ConversationQualityMetadataInput is an input type that accepts GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs and GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1ConversationQualityMetadataInput` via:
+//
+//	GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs{...}
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput
+	ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput
+}
+
+// Conversation metadata related to quality management.
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs struct {
+	// Information about agents involved in the call.
+	AgentInfo GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayInput `pulumi:"agentInfo"`
+	// An arbitrary integer value indicating the customer's satisfaction rating.
+	CustomerSatisfactionRating pulumi.IntPtrInput `pulumi:"customerSatisfactionRating"`
+	// An arbitrary string value specifying the menu path the customer took.
+	MenuPath pulumi.StringPtrInput `pulumi:"menuPath"`
+	// The amount of time the customer waited to connect with an agent.
+	WaitDuration pulumi.StringPtrInput `pulumi:"waitDuration"`
+}
+
+func (GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationQualityMetadata)(nil)).Elem()
+}
+
+func (i GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput)
+}
+
+func (i GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput).ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrInput is an input type that accepts GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs, GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtr and GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrInput` via:
+//
+//	        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput
+	ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput
+}
+
+type googleCloudContactcenterinsightsV1ConversationQualityMetadataPtrType GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs
+
+func GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtr(v *GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrInput {
+	return (*googleCloudContactcenterinsightsV1ConversationQualityMetadataPtrType)(v)
+}
+
+func (*googleCloudContactcenterinsightsV1ConversationQualityMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1ConversationQualityMetadata)(nil)).Elem()
+}
+
+func (i *googleCloudContactcenterinsightsV1ConversationQualityMetadataPtrType) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudContactcenterinsightsV1ConversationQualityMetadataPtrType) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput)
+}
+
+// Conversation metadata related to quality management.
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationQualityMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput {
+	return o.ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1ConversationQualityMetadata) *GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
+		return &v
+	}).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput)
+}
+
+// Information about agents involved in the call.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput) AgentInfo() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadata) []GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
+		return v.AgentInfo
+	}).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput)
+}
+
+// An arbitrary integer value indicating the customer's satisfaction rating.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput) CustomerSatisfactionRating() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadata) *int {
+		return v.CustomerSatisfactionRating
+	}).(pulumi.IntPtrOutput)
+}
+
+// An arbitrary string value specifying the menu path the customer took.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput) MenuPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadata) *string { return v.MenuPath }).(pulumi.StringPtrOutput)
+}
+
+// The amount of time the customer waited to connect with an agent.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput) WaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadata) *string { return v.WaitDuration }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1ConversationQualityMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput) Elem() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ConversationQualityMetadata) GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1ConversationQualityMetadata
+		return ret
+	}).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput)
+}
+
+// Information about agents involved in the call.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput) AgentInfo() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ConversationQualityMetadata) []GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
+		if v == nil {
+			return nil
+		}
+		return v.AgentInfo
+	}).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput)
+}
+
+// An arbitrary integer value indicating the customer's satisfaction rating.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput) CustomerSatisfactionRating() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ConversationQualityMetadata) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerSatisfactionRating
+	}).(pulumi.IntPtrOutput)
+}
+
+// An arbitrary string value specifying the menu path the customer took.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput) MenuPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ConversationQualityMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MenuPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of time the customer waited to connect with an agent.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput) WaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ConversationQualityMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WaitDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information about an agent involved in the conversation.
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo struct {
+	// A user-specified string representing the agent.
+	AgentId *string `pulumi:"agentId"`
+	// The agent's name.
+	DisplayName *string `pulumi:"displayName"`
+	// A user-provided string indicating the outcome of the agent's segment of the call.
+	DispositionCode *string `pulumi:"dispositionCode"`
+	// A user-specified string representing the agent's team.
+	Team *string `pulumi:"team"`
+}
+
+// GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoInput is an input type that accepts GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs and GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoInput` via:
+//
+//	GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs{...}
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput
+	ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput
+}
+
+// Information about an agent involved in the conversation.
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs struct {
+	// A user-specified string representing the agent.
+	AgentId pulumi.StringPtrInput `pulumi:"agentId"`
+	// The agent's name.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// A user-provided string indicating the outcome of the agent's segment of the call.
+	DispositionCode pulumi.StringPtrInput `pulumi:"dispositionCode"`
+	// A user-specified string representing the agent's team.
+	Team pulumi.StringPtrInput `pulumi:"team"`
+}
+
+func (GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo)(nil)).Elem()
+}
+
+func (i GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput)
+}
+
+// GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayInput is an input type that accepts GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArray and GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayInput` via:
+//
+//	GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArray{ GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs{...} }
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput
+	ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput
+}
+
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArray []GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoInput
+
+func (GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo)(nil)).Elem()
+}
+
+func (i GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArray) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArray) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput)
+}
+
+// Information about an agent involved in the conversation.
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput {
+	return o
+}
+
+// A user-specified string representing the agent.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput) AgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo) *string {
+		return v.AgentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The agent's name.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A user-provided string indicating the outcome of the agent's segment of the call.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput) DispositionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo) *string {
+		return v.DispositionCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// A user-specified string representing the agent's team.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput) Team() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo) *string { return v.Team }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput) Index(i pulumi.IntInput) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
+		return vs[0].([]GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo)[vs[1].(int)]
+	}).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput)
+}
+
+// Information about an agent involved in the conversation.
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse struct {
+	// A user-specified string representing the agent.
+	AgentId string `pulumi:"agentId"`
+	// The agent's name.
+	DisplayName string `pulumi:"displayName"`
+	// A user-provided string indicating the outcome of the agent's segment of the call.
+	DispositionCode string `pulumi:"dispositionCode"`
+	// A user-specified string representing the agent's team.
+	Team string `pulumi:"team"`
+}
+
+// Information about an agent involved in the conversation.
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput {
+	return o
+}
+
+// A user-specified string representing the agent.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse) string {
+		return v.AgentId
+	}).(pulumi.StringOutput)
+}
+
+// The agent's name.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse) string {
+		return v.DisplayName
+	}).(pulumi.StringOutput)
+}
+
+// A user-provided string indicating the outcome of the agent's segment of the call.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput) DispositionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse) string {
+		return v.DispositionCode
+	}).(pulumi.StringOutput)
+}
+
+// A user-specified string representing the agent's team.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput) Team() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse) string {
+		return v.Team
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse {
+		return vs[0].([]GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse)[vs[1].(int)]
+	}).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput)
+}
+
+// Conversation metadata related to quality management.
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse struct {
+	// Information about agents involved in the call.
+	AgentInfo []GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse `pulumi:"agentInfo"`
+	// An arbitrary integer value indicating the customer's satisfaction rating.
+	CustomerSatisfactionRating int `pulumi:"customerSatisfactionRating"`
+	// An arbitrary string value specifying the menu path the customer took.
+	MenuPath string `pulumi:"menuPath"`
+	// The amount of time the customer waited to connect with an agent.
+	WaitDuration string `pulumi:"waitDuration"`
+}
+
+// Conversation metadata related to quality management.
+type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput {
+	return o
+}
+
+// Information about agents involved in the call.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput) AgentInfo() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse) []GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse {
+		return v.AgentInfo
+	}).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput)
+}
+
+// An arbitrary integer value indicating the customer's satisfaction rating.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput) CustomerSatisfactionRating() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse) int {
+		return v.CustomerSatisfactionRating
+	}).(pulumi.IntOutput)
+}
+
+// An arbitrary string value specifying the menu path the customer took.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput) MenuPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse) string {
+		return v.MenuPath
+	}).(pulumi.StringOutput)
+}
+
+// The amount of time the customer waited to connect with an agent.
+func (o GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput) WaitDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse) string {
+		return v.WaitDuration
+	}).(pulumi.StringOutput)
 }
 
 // Conversation summarization suggestion data.
@@ -3592,6 +4056,165 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponseArrayOutput) In
 	}).(GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponseOutput)
 }
 
+// DLP resources used for redaction while ingesting conversations.
+type GoogleCloudContactcenterinsightsV1RedactionConfig struct {
+	// The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}`
+	DeidentifyTemplate *string `pulumi:"deidentifyTemplate"`
+	// The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}`
+	InspectTemplate *string `pulumi:"inspectTemplate"`
+}
+
+// GoogleCloudContactcenterinsightsV1RedactionConfigInput is an input type that accepts GoogleCloudContactcenterinsightsV1RedactionConfigArgs and GoogleCloudContactcenterinsightsV1RedactionConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1RedactionConfigInput` via:
+//
+//	GoogleCloudContactcenterinsightsV1RedactionConfigArgs{...}
+type GoogleCloudContactcenterinsightsV1RedactionConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1RedactionConfigOutput() GoogleCloudContactcenterinsightsV1RedactionConfigOutput
+	ToGoogleCloudContactcenterinsightsV1RedactionConfigOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1RedactionConfigOutput
+}
+
+// DLP resources used for redaction while ingesting conversations.
+type GoogleCloudContactcenterinsightsV1RedactionConfigArgs struct {
+	// The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}`
+	DeidentifyTemplate pulumi.StringPtrInput `pulumi:"deidentifyTemplate"`
+	// The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}`
+	InspectTemplate pulumi.StringPtrInput `pulumi:"inspectTemplate"`
+}
+
+func (GoogleCloudContactcenterinsightsV1RedactionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1RedactionConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudContactcenterinsightsV1RedactionConfigArgs) ToGoogleCloudContactcenterinsightsV1RedactionConfigOutput() GoogleCloudContactcenterinsightsV1RedactionConfigOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1RedactionConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1RedactionConfigArgs) ToGoogleCloudContactcenterinsightsV1RedactionConfigOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1RedactionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1RedactionConfigOutput)
+}
+
+func (i GoogleCloudContactcenterinsightsV1RedactionConfigArgs) ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput() GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1RedactionConfigArgs) ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1RedactionConfigOutput).ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudContactcenterinsightsV1RedactionConfigPtrInput is an input type that accepts GoogleCloudContactcenterinsightsV1RedactionConfigArgs, GoogleCloudContactcenterinsightsV1RedactionConfigPtr and GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1RedactionConfigPtrInput` via:
+//
+//	        GoogleCloudContactcenterinsightsV1RedactionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudContactcenterinsightsV1RedactionConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput() GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput
+	ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput
+}
+
+type googleCloudContactcenterinsightsV1RedactionConfigPtrType GoogleCloudContactcenterinsightsV1RedactionConfigArgs
+
+func GoogleCloudContactcenterinsightsV1RedactionConfigPtr(v *GoogleCloudContactcenterinsightsV1RedactionConfigArgs) GoogleCloudContactcenterinsightsV1RedactionConfigPtrInput {
+	return (*googleCloudContactcenterinsightsV1RedactionConfigPtrType)(v)
+}
+
+func (*googleCloudContactcenterinsightsV1RedactionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1RedactionConfig)(nil)).Elem()
+}
+
+func (i *googleCloudContactcenterinsightsV1RedactionConfigPtrType) ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput() GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudContactcenterinsightsV1RedactionConfigPtrType) ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput)
+}
+
+// DLP resources used for redaction while ingesting conversations.
+type GoogleCloudContactcenterinsightsV1RedactionConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1RedactionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1RedactionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigOutput) ToGoogleCloudContactcenterinsightsV1RedactionConfigOutput() GoogleCloudContactcenterinsightsV1RedactionConfigOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigOutput) ToGoogleCloudContactcenterinsightsV1RedactionConfigOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1RedactionConfigOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigOutput) ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput() GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput {
+	return o.ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigOutput) ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1RedactionConfig) *GoogleCloudContactcenterinsightsV1RedactionConfig {
+		return &v
+	}).(GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput)
+}
+
+// The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}`
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigOutput) DeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1RedactionConfig) *string { return v.DeidentifyTemplate }).(pulumi.StringPtrOutput)
+}
+
+// The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}`
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigOutput) InspectTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1RedactionConfig) *string { return v.InspectTemplate }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1RedactionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput) ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput() GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput) ToGoogleCloudContactcenterinsightsV1RedactionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput) Elem() GoogleCloudContactcenterinsightsV1RedactionConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1RedactionConfig) GoogleCloudContactcenterinsightsV1RedactionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1RedactionConfig
+		return ret
+	}).(GoogleCloudContactcenterinsightsV1RedactionConfigOutput)
+}
+
+// The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}`
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput) DeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1RedactionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeidentifyTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}`
+func (o GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput) InspectTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1RedactionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InspectTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
 // An annotation that was generated during the customer and agent interaction.
 type GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse struct {
 	// The unique identifier of the annotation. Format: projects/{project}/locations/{location}/conversationDatasets/{dataset}/conversationDataItems/{data_item}/conversationAnnotations/{annotation}
@@ -3880,6 +4503,146 @@ func (o GoogleCloudContactcenterinsightsV1SmartReplyDataResponseOutput) Reply() 
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1SmartReplyDataResponse) string { return v.Reply }).(pulumi.StringOutput)
 }
 
+// Speech-to-Text configuration.
+type GoogleCloudContactcenterinsightsV1SpeechConfig struct {
+	// The fully-qualified Speech Recognizer resource name. Format: `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+	SpeechRecognizer *string `pulumi:"speechRecognizer"`
+}
+
+// GoogleCloudContactcenterinsightsV1SpeechConfigInput is an input type that accepts GoogleCloudContactcenterinsightsV1SpeechConfigArgs and GoogleCloudContactcenterinsightsV1SpeechConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1SpeechConfigInput` via:
+//
+//	GoogleCloudContactcenterinsightsV1SpeechConfigArgs{...}
+type GoogleCloudContactcenterinsightsV1SpeechConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1SpeechConfigOutput() GoogleCloudContactcenterinsightsV1SpeechConfigOutput
+	ToGoogleCloudContactcenterinsightsV1SpeechConfigOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1SpeechConfigOutput
+}
+
+// Speech-to-Text configuration.
+type GoogleCloudContactcenterinsightsV1SpeechConfigArgs struct {
+	// The fully-qualified Speech Recognizer resource name. Format: `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+	SpeechRecognizer pulumi.StringPtrInput `pulumi:"speechRecognizer"`
+}
+
+func (GoogleCloudContactcenterinsightsV1SpeechConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1SpeechConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudContactcenterinsightsV1SpeechConfigArgs) ToGoogleCloudContactcenterinsightsV1SpeechConfigOutput() GoogleCloudContactcenterinsightsV1SpeechConfigOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1SpeechConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1SpeechConfigArgs) ToGoogleCloudContactcenterinsightsV1SpeechConfigOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1SpeechConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1SpeechConfigOutput)
+}
+
+func (i GoogleCloudContactcenterinsightsV1SpeechConfigArgs) ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput() GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1SpeechConfigArgs) ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1SpeechConfigOutput).ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudContactcenterinsightsV1SpeechConfigPtrInput is an input type that accepts GoogleCloudContactcenterinsightsV1SpeechConfigArgs, GoogleCloudContactcenterinsightsV1SpeechConfigPtr and GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1SpeechConfigPtrInput` via:
+//
+//	        GoogleCloudContactcenterinsightsV1SpeechConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudContactcenterinsightsV1SpeechConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput() GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput
+	ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput
+}
+
+type googleCloudContactcenterinsightsV1SpeechConfigPtrType GoogleCloudContactcenterinsightsV1SpeechConfigArgs
+
+func GoogleCloudContactcenterinsightsV1SpeechConfigPtr(v *GoogleCloudContactcenterinsightsV1SpeechConfigArgs) GoogleCloudContactcenterinsightsV1SpeechConfigPtrInput {
+	return (*googleCloudContactcenterinsightsV1SpeechConfigPtrType)(v)
+}
+
+func (*googleCloudContactcenterinsightsV1SpeechConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1SpeechConfig)(nil)).Elem()
+}
+
+func (i *googleCloudContactcenterinsightsV1SpeechConfigPtrType) ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput() GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudContactcenterinsightsV1SpeechConfigPtrType) ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput)
+}
+
+// Speech-to-Text configuration.
+type GoogleCloudContactcenterinsightsV1SpeechConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1SpeechConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1SpeechConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1SpeechConfigOutput) ToGoogleCloudContactcenterinsightsV1SpeechConfigOutput() GoogleCloudContactcenterinsightsV1SpeechConfigOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1SpeechConfigOutput) ToGoogleCloudContactcenterinsightsV1SpeechConfigOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1SpeechConfigOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1SpeechConfigOutput) ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput() GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput {
+	return o.ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudContactcenterinsightsV1SpeechConfigOutput) ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1SpeechConfig) *GoogleCloudContactcenterinsightsV1SpeechConfig {
+		return &v
+	}).(GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput)
+}
+
+// The fully-qualified Speech Recognizer resource name. Format: `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+func (o GoogleCloudContactcenterinsightsV1SpeechConfigOutput) SpeechRecognizer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1SpeechConfig) *string { return v.SpeechRecognizer }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1SpeechConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput) ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput() GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput) ToGoogleCloudContactcenterinsightsV1SpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput) Elem() GoogleCloudContactcenterinsightsV1SpeechConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1SpeechConfig) GoogleCloudContactcenterinsightsV1SpeechConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1SpeechConfig
+		return ret
+	}).(GoogleCloudContactcenterinsightsV1SpeechConfigOutput)
+}
+
+// The fully-qualified Speech Recognizer resource name. Format: `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+func (o GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput) SpeechRecognizer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1SpeechConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpeechRecognizer
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs{})
@@ -3889,6 +4652,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationDataSourceInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationQualityMetadataInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1DialogflowSourceInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1DialogflowSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1DialogflowSourcePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1DialogflowSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ExactMatchConfigInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ExactMatchConfigArgs{})
@@ -3903,6 +4670,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1RedactionConfigInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1RedactionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1RedactionConfigPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1RedactionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1SpeechConfigInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1SpeechConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1SpeechConfigPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1SpeechConfigArgs{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnalysisResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput{})
@@ -3926,6 +4697,13 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput{})
@@ -3968,10 +4746,14 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1RedactionConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1RedactionConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1SentimentDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1SilenceDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1SmartReplyDataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1SpeechConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1SpeechConfigPtrOutput{})
 }

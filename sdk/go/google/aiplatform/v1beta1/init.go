@@ -57,6 +57,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureGroupFeature{}
 	case "google-native:aiplatform/v1beta1:FeatureOnlineStore":
 		r = &FeatureOnlineStore{}
+	case "google-native:aiplatform/v1beta1:FeatureOnlineStoreFeatureViewIamBinding":
+		r = &FeatureOnlineStoreFeatureViewIamBinding{}
+	case "google-native:aiplatform/v1beta1:FeatureOnlineStoreFeatureViewIamMember":
+		r = &FeatureOnlineStoreFeatureViewIamMember{}
+	case "google-native:aiplatform/v1beta1:FeatureOnlineStoreFeatureViewIamPolicy":
+		r = &FeatureOnlineStoreFeatureViewIamPolicy{}
+	case "google-native:aiplatform/v1beta1:FeatureOnlineStoreIamBinding":
+		r = &FeatureOnlineStoreIamBinding{}
+	case "google-native:aiplatform/v1beta1:FeatureOnlineStoreIamMember":
+		r = &FeatureOnlineStoreIamMember{}
+	case "google-native:aiplatform/v1beta1:FeatureOnlineStoreIamPolicy":
+		r = &FeatureOnlineStoreIamPolicy{}
 	case "google-native:aiplatform/v1beta1:FeatureStoreFeature":
 		r = &FeatureStoreFeature{}
 	case "google-native:aiplatform/v1beta1:FeatureView":
@@ -85,6 +97,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MetadataSchema{}
 	case "google-native:aiplatform/v1beta1:MetadataStore":
 		r = &MetadataStore{}
+	case "google-native:aiplatform/v1beta1:Model":
+		r = &Model{}
 	case "google-native:aiplatform/v1beta1:ModelDeploymentMonitoringJob":
 		r = &ModelDeploymentMonitoringJob{}
 	case "google-native:aiplatform/v1beta1:ModelIamBinding":
@@ -107,6 +121,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PersistentResource{}
 	case "google-native:aiplatform/v1beta1:PipelineJob":
 		r = &PipelineJob{}
+	case "google-native:aiplatform/v1beta1:RagCorpora":
+		r = &RagCorpora{}
+	case "google-native:aiplatform/v1beta1:ReasoningEngine":
+		r = &ReasoningEngine{}
 	case "google-native:aiplatform/v1beta1:Run":
 		r = &Run{}
 	case "google-native:aiplatform/v1beta1:Schedule":

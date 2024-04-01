@@ -381,6 +381,8 @@ const (
 	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceCa = GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("CA")
 	// Fastly
 	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceFastly = GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("FASTLY")
+	// Cloudflare
+	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceCloudflare = GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("CLOUDFLARE")
 )
 
 func (GoogleCloudRecaptchaenterpriseV1WafSettingsWafService) ElementType() reflect.Type {
@@ -508,6 +510,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WafSettingsWafServicePtrOutput) ToString
 //	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceWafServiceUnspecified
 //	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceCa
 //	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceFastly
+//	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceCloudflare
 type GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceInput interface {
 	pulumi.Input
 

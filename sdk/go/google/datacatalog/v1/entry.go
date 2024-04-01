@@ -40,6 +40,8 @@ type Entry struct {
 	EntryGroupId pulumi.StringOutput `pulumi:"entryGroupId"`
 	// Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
 	EntryId pulumi.StringOutput `pulumi:"entryId"`
+	// FeatureonlineStore spec for Vertex AI Feature Store.
+	FeatureOnlineStoreSpec GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponseOutput `pulumi:"featureOnlineStoreSpec"`
 	// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
 	FilesetSpec GoogleCloudDatacatalogV1FilesetSpecResponseOutput `pulumi:"filesetSpec"`
 	// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries.
@@ -57,7 +59,7 @@ type Entry struct {
 	LookerSystemSpec GoogleCloudDatacatalogV1LookerSystemSpecResponseOutput `pulumi:"lookerSystemSpec"`
 	// Model specification.
 	ModelSpec GoogleCloudDatacatalogV1ModelSpecResponseOutput `pulumi:"modelSpec"`
-	// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
+	// Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Additional information related to the entry. Private to the current user.
 	PersonalDetails GoogleCloudDatacatalogV1PersonalDetailsResponseOutput `pulumi:"personalDetails"`
@@ -152,6 +154,8 @@ type entryArgs struct {
 	EntryGroupId string  `pulumi:"entryGroupId"`
 	// Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
 	EntryId string `pulumi:"entryId"`
+	// FeatureonlineStore spec for Vertex AI Feature Store.
+	FeatureOnlineStoreSpec *GoogleCloudDatacatalogV1FeatureOnlineStoreSpec `pulumi:"featureOnlineStoreSpec"`
 	// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
 	FilesetSpec *GoogleCloudDatacatalogV1FilesetSpec `pulumi:"filesetSpec"`
 	// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries.
@@ -207,6 +211,8 @@ type EntryArgs struct {
 	EntryGroupId pulumi.StringInput
 	// Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
 	EntryId pulumi.StringInput
+	// FeatureonlineStore spec for Vertex AI Feature Store.
+	FeatureOnlineStoreSpec GoogleCloudDatacatalogV1FeatureOnlineStoreSpecPtrInput
 	// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
 	FilesetSpec GoogleCloudDatacatalogV1FilesetSpecPtrInput
 	// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries.
@@ -345,6 +351,13 @@ func (o EntryOutput) EntryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.EntryId }).(pulumi.StringOutput)
 }
 
+// FeatureonlineStore spec for Vertex AI Feature Store.
+func (o EntryOutput) FeatureOnlineStoreSpec() GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponseOutput {
+		return v.FeatureOnlineStoreSpec
+	}).(GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponseOutput)
+}
+
 // Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
 func (o EntryOutput) FilesetSpec() GoogleCloudDatacatalogV1FilesetSpecResponseOutput {
 	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1FilesetSpecResponseOutput { return v.FilesetSpec }).(GoogleCloudDatacatalogV1FilesetSpecResponseOutput)
@@ -389,7 +402,7 @@ func (o EntryOutput) ModelSpec() GoogleCloudDatacatalogV1ModelSpecResponseOutput
 	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1ModelSpecResponseOutput { return v.ModelSpec }).(GoogleCloudDatacatalogV1ModelSpecResponseOutput)
 }
 
-// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
+// Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
 func (o EntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

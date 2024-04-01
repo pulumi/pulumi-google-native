@@ -381,6 +381,10 @@ const (
 	ExtensionChainExtensionSupportedEventsItemResponseHeaders = ExtensionChainExtensionSupportedEventsItem("RESPONSE_HEADERS")
 	// If included in `supported_events`, the extension is called when the HTTP response body arrives.
 	ExtensionChainExtensionSupportedEventsItemResponseBody = ExtensionChainExtensionSupportedEventsItem("RESPONSE_BODY")
+	// If included in `supported_events`, the extension is called when the HTTP request trailers arrives.
+	ExtensionChainExtensionSupportedEventsItemRequestTrailers = ExtensionChainExtensionSupportedEventsItem("REQUEST_TRAILERS")
+	// If included in `supported_events`, the extension is called when the HTTP response trailers arrives.
+	ExtensionChainExtensionSupportedEventsItemResponseTrailers = ExtensionChainExtensionSupportedEventsItem("RESPONSE_TRAILERS")
 )
 
 func (ExtensionChainExtensionSupportedEventsItem) ElementType() reflect.Type {
@@ -510,6 +514,8 @@ func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) ToStringPtrOutputWi
 //	ExtensionChainExtensionSupportedEventsItemRequestBody
 //	ExtensionChainExtensionSupportedEventsItemResponseHeaders
 //	ExtensionChainExtensionSupportedEventsItemResponseBody
+//	ExtensionChainExtensionSupportedEventsItemRequestTrailers
+//	ExtensionChainExtensionSupportedEventsItemResponseTrailers
 type ExtensionChainExtensionSupportedEventsItemInput interface {
 	pulumi.Input
 
@@ -593,6 +599,360 @@ func (o ExtensionChainExtensionSupportedEventsItemArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExtensionChainExtensionSupportedEventsItem {
 		return vs[0].([]ExtensionChainExtensionSupportedEventsItem)[vs[1].(int)]
 	}).(ExtensionChainExtensionSupportedEventsItemOutput)
+}
+
+// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+type GatewayEnvoyHeaders string
+
+const (
+	// Defaults to NONE.
+	GatewayEnvoyHeadersEnvoyHeadersUnspecified = GatewayEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED")
+	// Suppress envoy debug headers.
+	GatewayEnvoyHeadersNone = GatewayEnvoyHeaders("NONE")
+	// Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+	GatewayEnvoyHeadersDebugHeaders = GatewayEnvoyHeaders("DEBUG_HEADERS")
+)
+
+func (GatewayEnvoyHeaders) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayEnvoyHeaders)(nil)).Elem()
+}
+
+func (e GatewayEnvoyHeaders) ToGatewayEnvoyHeadersOutput() GatewayEnvoyHeadersOutput {
+	return pulumi.ToOutput(e).(GatewayEnvoyHeadersOutput)
+}
+
+func (e GatewayEnvoyHeaders) ToGatewayEnvoyHeadersOutputWithContext(ctx context.Context) GatewayEnvoyHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GatewayEnvoyHeadersOutput)
+}
+
+func (e GatewayEnvoyHeaders) ToGatewayEnvoyHeadersPtrOutput() GatewayEnvoyHeadersPtrOutput {
+	return e.ToGatewayEnvoyHeadersPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayEnvoyHeaders) ToGatewayEnvoyHeadersPtrOutputWithContext(ctx context.Context) GatewayEnvoyHeadersPtrOutput {
+	return GatewayEnvoyHeaders(e).ToGatewayEnvoyHeadersOutputWithContext(ctx).ToGatewayEnvoyHeadersPtrOutputWithContext(ctx)
+}
+
+func (e GatewayEnvoyHeaders) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayEnvoyHeaders) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayEnvoyHeaders) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayEnvoyHeaders) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GatewayEnvoyHeadersOutput struct{ *pulumi.OutputState }
+
+func (GatewayEnvoyHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayEnvoyHeaders)(nil)).Elem()
+}
+
+func (o GatewayEnvoyHeadersOutput) ToGatewayEnvoyHeadersOutput() GatewayEnvoyHeadersOutput {
+	return o
+}
+
+func (o GatewayEnvoyHeadersOutput) ToGatewayEnvoyHeadersOutputWithContext(ctx context.Context) GatewayEnvoyHeadersOutput {
+	return o
+}
+
+func (o GatewayEnvoyHeadersOutput) ToGatewayEnvoyHeadersPtrOutput() GatewayEnvoyHeadersPtrOutput {
+	return o.ToGatewayEnvoyHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayEnvoyHeadersOutput) ToGatewayEnvoyHeadersPtrOutputWithContext(ctx context.Context) GatewayEnvoyHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayEnvoyHeaders) *GatewayEnvoyHeaders {
+		return &v
+	}).(GatewayEnvoyHeadersPtrOutput)
+}
+
+func (o GatewayEnvoyHeadersOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GatewayEnvoyHeadersOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayEnvoyHeaders) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GatewayEnvoyHeadersOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayEnvoyHeadersOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayEnvoyHeaders) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayEnvoyHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayEnvoyHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayEnvoyHeaders)(nil)).Elem()
+}
+
+func (o GatewayEnvoyHeadersPtrOutput) ToGatewayEnvoyHeadersPtrOutput() GatewayEnvoyHeadersPtrOutput {
+	return o
+}
+
+func (o GatewayEnvoyHeadersPtrOutput) ToGatewayEnvoyHeadersPtrOutputWithContext(ctx context.Context) GatewayEnvoyHeadersPtrOutput {
+	return o
+}
+
+func (o GatewayEnvoyHeadersPtrOutput) Elem() GatewayEnvoyHeadersOutput {
+	return o.ApplyT(func(v *GatewayEnvoyHeaders) GatewayEnvoyHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayEnvoyHeaders
+		return ret
+	}).(GatewayEnvoyHeadersOutput)
+}
+
+func (o GatewayEnvoyHeadersPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayEnvoyHeadersPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GatewayEnvoyHeaders) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GatewayEnvoyHeadersInput is an input type that accepts values of the GatewayEnvoyHeaders enum
+// A concrete instance of `GatewayEnvoyHeadersInput` can be one of the following:
+//
+//	GatewayEnvoyHeadersEnvoyHeadersUnspecified
+//	GatewayEnvoyHeadersNone
+//	GatewayEnvoyHeadersDebugHeaders
+type GatewayEnvoyHeadersInput interface {
+	pulumi.Input
+
+	ToGatewayEnvoyHeadersOutput() GatewayEnvoyHeadersOutput
+	ToGatewayEnvoyHeadersOutputWithContext(context.Context) GatewayEnvoyHeadersOutput
+}
+
+var gatewayEnvoyHeadersPtrType = reflect.TypeOf((**GatewayEnvoyHeaders)(nil)).Elem()
+
+type GatewayEnvoyHeadersPtrInput interface {
+	pulumi.Input
+
+	ToGatewayEnvoyHeadersPtrOutput() GatewayEnvoyHeadersPtrOutput
+	ToGatewayEnvoyHeadersPtrOutputWithContext(context.Context) GatewayEnvoyHeadersPtrOutput
+}
+
+type gatewayEnvoyHeadersPtr string
+
+func GatewayEnvoyHeadersPtr(v string) GatewayEnvoyHeadersPtrInput {
+	return (*gatewayEnvoyHeadersPtr)(&v)
+}
+
+func (*gatewayEnvoyHeadersPtr) ElementType() reflect.Type {
+	return gatewayEnvoyHeadersPtrType
+}
+
+func (in *gatewayEnvoyHeadersPtr) ToGatewayEnvoyHeadersPtrOutput() GatewayEnvoyHeadersPtrOutput {
+	return pulumi.ToOutput(in).(GatewayEnvoyHeadersPtrOutput)
+}
+
+func (in *gatewayEnvoyHeadersPtr) ToGatewayEnvoyHeadersPtrOutputWithContext(ctx context.Context) GatewayEnvoyHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GatewayEnvoyHeadersPtrOutput)
+}
+
+func (in *gatewayEnvoyHeadersPtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayEnvoyHeaders] {
+	return pulumix.Output[*GatewayEnvoyHeaders]{
+		OutputState: in.ToGatewayEnvoyHeadersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+type GatewayIpVersion string
+
+const (
+	// The type when IP version is not specified. Defaults to IPV4.
+	GatewayIpVersionIpVersionUnspecified = GatewayIpVersion("IP_VERSION_UNSPECIFIED")
+	// The type for IP version 4.
+	GatewayIpVersionIpv4 = GatewayIpVersion("IPV4")
+	// The type for IP version 6.
+	GatewayIpVersionIpv6 = GatewayIpVersion("IPV6")
+)
+
+func (GatewayIpVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayIpVersion)(nil)).Elem()
+}
+
+func (e GatewayIpVersion) ToGatewayIpVersionOutput() GatewayIpVersionOutput {
+	return pulumi.ToOutput(e).(GatewayIpVersionOutput)
+}
+
+func (e GatewayIpVersion) ToGatewayIpVersionOutputWithContext(ctx context.Context) GatewayIpVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GatewayIpVersionOutput)
+}
+
+func (e GatewayIpVersion) ToGatewayIpVersionPtrOutput() GatewayIpVersionPtrOutput {
+	return e.ToGatewayIpVersionPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayIpVersion) ToGatewayIpVersionPtrOutputWithContext(ctx context.Context) GatewayIpVersionPtrOutput {
+	return GatewayIpVersion(e).ToGatewayIpVersionOutputWithContext(ctx).ToGatewayIpVersionPtrOutputWithContext(ctx)
+}
+
+func (e GatewayIpVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayIpVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayIpVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayIpVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GatewayIpVersionOutput struct{ *pulumi.OutputState }
+
+func (GatewayIpVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayIpVersion)(nil)).Elem()
+}
+
+func (o GatewayIpVersionOutput) ToGatewayIpVersionOutput() GatewayIpVersionOutput {
+	return o
+}
+
+func (o GatewayIpVersionOutput) ToGatewayIpVersionOutputWithContext(ctx context.Context) GatewayIpVersionOutput {
+	return o
+}
+
+func (o GatewayIpVersionOutput) ToGatewayIpVersionPtrOutput() GatewayIpVersionPtrOutput {
+	return o.ToGatewayIpVersionPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayIpVersionOutput) ToGatewayIpVersionPtrOutputWithContext(ctx context.Context) GatewayIpVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayIpVersion) *GatewayIpVersion {
+		return &v
+	}).(GatewayIpVersionPtrOutput)
+}
+
+func (o GatewayIpVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GatewayIpVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayIpVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GatewayIpVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayIpVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayIpVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayIpVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayIpVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayIpVersion)(nil)).Elem()
+}
+
+func (o GatewayIpVersionPtrOutput) ToGatewayIpVersionPtrOutput() GatewayIpVersionPtrOutput {
+	return o
+}
+
+func (o GatewayIpVersionPtrOutput) ToGatewayIpVersionPtrOutputWithContext(ctx context.Context) GatewayIpVersionPtrOutput {
+	return o
+}
+
+func (o GatewayIpVersionPtrOutput) Elem() GatewayIpVersionOutput {
+	return o.ApplyT(func(v *GatewayIpVersion) GatewayIpVersion {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayIpVersion
+		return ret
+	}).(GatewayIpVersionOutput)
+}
+
+func (o GatewayIpVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GatewayIpVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GatewayIpVersionInput is an input type that accepts values of the GatewayIpVersion enum
+// A concrete instance of `GatewayIpVersionInput` can be one of the following:
+//
+//	GatewayIpVersionIpVersionUnspecified
+//	GatewayIpVersionIpv4
+//	GatewayIpVersionIpv6
+type GatewayIpVersionInput interface {
+	pulumi.Input
+
+	ToGatewayIpVersionOutput() GatewayIpVersionOutput
+	ToGatewayIpVersionOutputWithContext(context.Context) GatewayIpVersionOutput
+}
+
+var gatewayIpVersionPtrType = reflect.TypeOf((**GatewayIpVersion)(nil)).Elem()
+
+type GatewayIpVersionPtrInput interface {
+	pulumi.Input
+
+	ToGatewayIpVersionPtrOutput() GatewayIpVersionPtrOutput
+	ToGatewayIpVersionPtrOutputWithContext(context.Context) GatewayIpVersionPtrOutput
+}
+
+type gatewayIpVersionPtr string
+
+func GatewayIpVersionPtr(v string) GatewayIpVersionPtrInput {
+	return (*gatewayIpVersionPtr)(&v)
+}
+
+func (*gatewayIpVersionPtr) ElementType() reflect.Type {
+	return gatewayIpVersionPtrType
+}
+
+func (in *gatewayIpVersionPtr) ToGatewayIpVersionPtrOutput() GatewayIpVersionPtrOutput {
+	return pulumi.ToOutput(in).(GatewayIpVersionPtrOutput)
+}
+
+func (in *gatewayIpVersionPtr) ToGatewayIpVersionPtrOutputWithContext(ctx context.Context) GatewayIpVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GatewayIpVersionPtrOutput)
+}
+
+func (in *gatewayIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayIpVersion] {
+	return pulumix.Output[*GatewayIpVersion]{
+		OutputState: in.ToGatewayIpVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
@@ -1666,7 +2026,184 @@ func (in *lbTrafficExtensionLoadBalancingSchemePtr) ToOutput(ctx context.Context
 	}
 }
 
-// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+type MeshEnvoyHeaders string
+
+const (
+	// Defaults to NONE.
+	MeshEnvoyHeadersEnvoyHeadersUnspecified = MeshEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED")
+	// Suppress envoy debug headers.
+	MeshEnvoyHeadersNone = MeshEnvoyHeaders("NONE")
+	// Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+	MeshEnvoyHeadersDebugHeaders = MeshEnvoyHeaders("DEBUG_HEADERS")
+)
+
+func (MeshEnvoyHeaders) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshEnvoyHeaders)(nil)).Elem()
+}
+
+func (e MeshEnvoyHeaders) ToMeshEnvoyHeadersOutput() MeshEnvoyHeadersOutput {
+	return pulumi.ToOutput(e).(MeshEnvoyHeadersOutput)
+}
+
+func (e MeshEnvoyHeaders) ToMeshEnvoyHeadersOutputWithContext(ctx context.Context) MeshEnvoyHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MeshEnvoyHeadersOutput)
+}
+
+func (e MeshEnvoyHeaders) ToMeshEnvoyHeadersPtrOutput() MeshEnvoyHeadersPtrOutput {
+	return e.ToMeshEnvoyHeadersPtrOutputWithContext(context.Background())
+}
+
+func (e MeshEnvoyHeaders) ToMeshEnvoyHeadersPtrOutputWithContext(ctx context.Context) MeshEnvoyHeadersPtrOutput {
+	return MeshEnvoyHeaders(e).ToMeshEnvoyHeadersOutputWithContext(ctx).ToMeshEnvoyHeadersPtrOutputWithContext(ctx)
+}
+
+func (e MeshEnvoyHeaders) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MeshEnvoyHeaders) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MeshEnvoyHeaders) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MeshEnvoyHeaders) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MeshEnvoyHeadersOutput struct{ *pulumi.OutputState }
+
+func (MeshEnvoyHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshEnvoyHeaders)(nil)).Elem()
+}
+
+func (o MeshEnvoyHeadersOutput) ToMeshEnvoyHeadersOutput() MeshEnvoyHeadersOutput {
+	return o
+}
+
+func (o MeshEnvoyHeadersOutput) ToMeshEnvoyHeadersOutputWithContext(ctx context.Context) MeshEnvoyHeadersOutput {
+	return o
+}
+
+func (o MeshEnvoyHeadersOutput) ToMeshEnvoyHeadersPtrOutput() MeshEnvoyHeadersPtrOutput {
+	return o.ToMeshEnvoyHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o MeshEnvoyHeadersOutput) ToMeshEnvoyHeadersPtrOutputWithContext(ctx context.Context) MeshEnvoyHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MeshEnvoyHeaders) *MeshEnvoyHeaders {
+		return &v
+	}).(MeshEnvoyHeadersPtrOutput)
+}
+
+func (o MeshEnvoyHeadersOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MeshEnvoyHeadersOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MeshEnvoyHeaders) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MeshEnvoyHeadersOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MeshEnvoyHeadersOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MeshEnvoyHeaders) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MeshEnvoyHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (MeshEnvoyHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshEnvoyHeaders)(nil)).Elem()
+}
+
+func (o MeshEnvoyHeadersPtrOutput) ToMeshEnvoyHeadersPtrOutput() MeshEnvoyHeadersPtrOutput {
+	return o
+}
+
+func (o MeshEnvoyHeadersPtrOutput) ToMeshEnvoyHeadersPtrOutputWithContext(ctx context.Context) MeshEnvoyHeadersPtrOutput {
+	return o
+}
+
+func (o MeshEnvoyHeadersPtrOutput) Elem() MeshEnvoyHeadersOutput {
+	return o.ApplyT(func(v *MeshEnvoyHeaders) MeshEnvoyHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret MeshEnvoyHeaders
+		return ret
+	}).(MeshEnvoyHeadersOutput)
+}
+
+func (o MeshEnvoyHeadersPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MeshEnvoyHeadersPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MeshEnvoyHeaders) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MeshEnvoyHeadersInput is an input type that accepts values of the MeshEnvoyHeaders enum
+// A concrete instance of `MeshEnvoyHeadersInput` can be one of the following:
+//
+//	MeshEnvoyHeadersEnvoyHeadersUnspecified
+//	MeshEnvoyHeadersNone
+//	MeshEnvoyHeadersDebugHeaders
+type MeshEnvoyHeadersInput interface {
+	pulumi.Input
+
+	ToMeshEnvoyHeadersOutput() MeshEnvoyHeadersOutput
+	ToMeshEnvoyHeadersOutputWithContext(context.Context) MeshEnvoyHeadersOutput
+}
+
+var meshEnvoyHeadersPtrType = reflect.TypeOf((**MeshEnvoyHeaders)(nil)).Elem()
+
+type MeshEnvoyHeadersPtrInput interface {
+	pulumi.Input
+
+	ToMeshEnvoyHeadersPtrOutput() MeshEnvoyHeadersPtrOutput
+	ToMeshEnvoyHeadersPtrOutputWithContext(context.Context) MeshEnvoyHeadersPtrOutput
+}
+
+type meshEnvoyHeadersPtr string
+
+func MeshEnvoyHeadersPtr(v string) MeshEnvoyHeadersPtrInput {
+	return (*meshEnvoyHeadersPtr)(&v)
+}
+
+func (*meshEnvoyHeadersPtr) ElementType() reflect.Type {
+	return meshEnvoyHeadersPtrType
+}
+
+func (in *meshEnvoyHeadersPtr) ToMeshEnvoyHeadersPtrOutput() MeshEnvoyHeadersPtrOutput {
+	return pulumi.ToOutput(in).(MeshEnvoyHeadersPtrOutput)
+}
+
+func (in *meshEnvoyHeadersPtr) ToMeshEnvoyHeadersPtrOutputWithContext(ctx context.Context) MeshEnvoyHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MeshEnvoyHeadersPtrOutput)
+}
+
+func (in *meshEnvoyHeadersPtr) ToOutput(ctx context.Context) pulumix.Output[*MeshEnvoyHeaders] {
+	return pulumix.Output[*MeshEnvoyHeaders]{
+		OutputState: in.ToMeshEnvoyHeadersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
 type MetadataLabelMatcherMetadataLabelMatchCriteria string
 
 const (
@@ -2034,6 +2571,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainExtensionSupportedEventsItemInput)(nil)).Elem(), ExtensionChainExtensionSupportedEventsItem("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainExtensionSupportedEventsItemPtrInput)(nil)).Elem(), ExtensionChainExtensionSupportedEventsItem("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainExtensionSupportedEventsItemArrayInput)(nil)).Elem(), ExtensionChainExtensionSupportedEventsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayEnvoyHeadersInput)(nil)).Elem(), GatewayEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayEnvoyHeadersPtrInput)(nil)).Elem(), GatewayEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIpVersionInput)(nil)).Elem(), GatewayIpVersion("IP_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIpVersionPtrInput)(nil)).Elem(), GatewayIpVersion("IP_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTypeInput)(nil)).Elem(), GatewayType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTypePtrInput)(nil)).Elem(), GatewayType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteHeaderMatchTypeInput)(nil)).Elem(), GrpcRouteHeaderMatchType("TYPE_UNSPECIFIED"))
@@ -2046,6 +2587,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LbRouteExtensionLoadBalancingSchemePtrInput)(nil)).Elem(), LbRouteExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionLoadBalancingSchemeInput)(nil)).Elem(), LbTrafficExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionLoadBalancingSchemePtrInput)(nil)).Elem(), LbTrafficExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshEnvoyHeadersInput)(nil)).Elem(), MeshEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshEnvoyHeadersPtrInput)(nil)).Elem(), MeshEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelMatcherMetadataLabelMatchCriteriaInput)(nil)).Elem(), MetadataLabelMatcherMetadataLabelMatchCriteria("METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelMatcherMetadataLabelMatchCriteriaPtrInput)(nil)).Elem(), MetadataLabelMatcherMetadataLabelMatchCriteria("METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPolicyLoadBalancingAlgorithmInput)(nil)).Elem(), ServiceLbPolicyLoadBalancingAlgorithm("LOAD_BALANCING_ALGORITHM_UNSPECIFIED"))
@@ -2057,6 +2600,10 @@ func init() {
 	pulumi.RegisterOutputType(ExtensionChainExtensionSupportedEventsItemOutput{})
 	pulumi.RegisterOutputType(ExtensionChainExtensionSupportedEventsItemPtrOutput{})
 	pulumi.RegisterOutputType(ExtensionChainExtensionSupportedEventsItemArrayOutput{})
+	pulumi.RegisterOutputType(GatewayEnvoyHeadersOutput{})
+	pulumi.RegisterOutputType(GatewayEnvoyHeadersPtrOutput{})
+	pulumi.RegisterOutputType(GatewayIpVersionOutput{})
+	pulumi.RegisterOutputType(GatewayIpVersionPtrOutput{})
 	pulumi.RegisterOutputType(GatewayTypeOutput{})
 	pulumi.RegisterOutputType(GatewayTypePtrOutput{})
 	pulumi.RegisterOutputType(GrpcRouteHeaderMatchTypeOutput{})
@@ -2069,6 +2616,8 @@ func init() {
 	pulumi.RegisterOutputType(LbRouteExtensionLoadBalancingSchemePtrOutput{})
 	pulumi.RegisterOutputType(LbTrafficExtensionLoadBalancingSchemeOutput{})
 	pulumi.RegisterOutputType(LbTrafficExtensionLoadBalancingSchemePtrOutput{})
+	pulumi.RegisterOutputType(MeshEnvoyHeadersOutput{})
+	pulumi.RegisterOutputType(MeshEnvoyHeadersPtrOutput{})
 	pulumi.RegisterOutputType(MetadataLabelMatcherMetadataLabelMatchCriteriaOutput{})
 	pulumi.RegisterOutputType(MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLbPolicyLoadBalancingAlgorithmOutput{})

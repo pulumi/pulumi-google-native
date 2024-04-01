@@ -15,7 +15,7 @@ var _ = internal.GetEnvOrDefault
 
 // Dynamic group metadata like queries and status.
 type DynamicGroupMetadata struct {
-	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 	Queries []DynamicGroupQuery `pulumi:"queries"`
 }
 
@@ -32,7 +32,7 @@ type DynamicGroupMetadataInput interface {
 
 // Dynamic group metadata like queries and status.
 type DynamicGroupMetadataArgs struct {
-	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 	Queries DynamicGroupQueryArrayInput `pulumi:"queries"`
 }
 
@@ -114,7 +114,7 @@ func (o DynamicGroupMetadataOutput) ToDynamicGroupMetadataPtrOutputWithContext(c
 	}).(DynamicGroupMetadataPtrOutput)
 }
 
-// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 func (o DynamicGroupMetadataOutput) Queries() DynamicGroupQueryArrayOutput {
 	return o.ApplyT(func(v DynamicGroupMetadata) []DynamicGroupQuery { return v.Queries }).(DynamicGroupQueryArrayOutput)
 }
@@ -143,7 +143,7 @@ func (o DynamicGroupMetadataPtrOutput) Elem() DynamicGroupMetadataOutput {
 	}).(DynamicGroupMetadataOutput)
 }
 
-// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 func (o DynamicGroupMetadataPtrOutput) Queries() DynamicGroupQueryArrayOutput {
 	return o.ApplyT(func(v *DynamicGroupMetadata) []DynamicGroupQuery {
 		if v == nil {
@@ -155,7 +155,7 @@ func (o DynamicGroupMetadataPtrOutput) Queries() DynamicGroupQueryArrayOutput {
 
 // Dynamic group metadata like queries and status.
 type DynamicGroupMetadataResponse struct {
-	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 	Queries []DynamicGroupQueryResponse `pulumi:"queries"`
 	// Status of the dynamic group.
 	Status DynamicGroupStatusResponse `pulumi:"status"`
@@ -176,7 +176,7 @@ func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponseOutput
 	return o
 }
 
-// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
 func (o DynamicGroupMetadataResponseOutput) Queries() DynamicGroupQueryResponseArrayOutput {
 	return o.ApplyT(func(v DynamicGroupMetadataResponse) []DynamicGroupQueryResponse { return v.Queries }).(DynamicGroupQueryResponseArrayOutput)
 }
@@ -383,7 +383,7 @@ func (o DynamicGroupStatusResponseOutput) StatusTime() pulumi.StringOutput {
 
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKey struct {
-	// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
+	// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. Email addresses need to adhere to [name guidelines for users and groups](https://support.google.com/a/answer/9193374). For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
 	Id *string `pulumi:"id"`
 	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 	Namespace *string `pulumi:"namespace"`
@@ -402,7 +402,7 @@ type EntityKeyInput interface {
 
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyArgs struct {
-	// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
+	// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. Email addresses need to adhere to [name guidelines for users and groups](https://support.google.com/a/answer/9193374). For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
@@ -435,7 +435,7 @@ func (o EntityKeyOutput) ToEntityKeyOutputWithContext(ctx context.Context) Entit
 	return o
 }
 
-// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
+// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. Email addresses need to adhere to [name guidelines for users and groups](https://support.google.com/a/answer/9193374). For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
 func (o EntityKeyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityKey) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -732,6 +732,384 @@ func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) Verifie
 // Whether Google Play Protect Verify Apps is enabled.
 func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) VerifyAppsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) bool { return v.VerifyAppsEnabled }).(pulumi.BoolOutput)
+}
+
+// Contains information about browser profiles reported by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+type GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse struct {
+	// Represents the current state of the [Chrome browser attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+	ChromeBrowserInfo GoogleAppsCloudidentityDevicesV1BrowserInfoResponse `pulumi:"chromeBrowserInfo"`
+	// Chrome profile ID that is exposed by the Chrome API. It is unique for each device.
+	ChromeProfileId string `pulumi:"chromeProfileId"`
+	// Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+	LastProfileSyncTime string `pulumi:"lastProfileSyncTime"`
+}
+
+// Contains information about browser profiles reported by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+type GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse)(nil)).Elem()
+}
+
+func (o GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput) ToGoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput() GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput {
+	return o
+}
+
+func (o GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput) ToGoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput {
+	return o
+}
+
+// Represents the current state of the [Chrome browser attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+func (o GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput) ChromeBrowserInfo() GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse) GoogleAppsCloudidentityDevicesV1BrowserInfoResponse {
+		return v.ChromeBrowserInfo
+	}).(GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput)
+}
+
+// Chrome profile ID that is exposed by the Chrome API. It is unique for each device.
+func (o GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput) ChromeProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse) string { return v.ChromeProfileId }).(pulumi.StringOutput)
+}
+
+// Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+func (o GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput) LastProfileSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse) string { return v.LastProfileSyncTime }).(pulumi.StringOutput)
+}
+
+type GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse)(nil)).Elem()
+}
+
+func (o GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput) ToGoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput() GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput {
+	return o
+}
+
+func (o GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput) ToGoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput {
+	return o
+}
+
+func (o GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput) Index(i pulumi.IntInput) GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse {
+		return vs[0].([]GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse)[vs[1].(int)]
+	}).(GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput)
+}
+
+// Browser-specific fields reported by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1). LINT.IfChange
+type GoogleAppsCloudidentityDevicesV1BrowserInfoResponse struct {
+	// Browser's management state.
+	BrowserManagementState string `pulumi:"browserManagementState"`
+	// Version of the request initiating browser.
+	BrowserVersion string `pulumi:"browserVersion"`
+	// Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
+	IsBuiltInDnsClientEnabled bool `pulumi:"isBuiltInDnsClientEnabled"`
+	// Current state of [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+	IsBulkDataEntryAnalysisEnabled bool `pulumi:"isBulkDataEntryAnalysisEnabled"`
+	// Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+	IsChromeCleanupEnabled bool `pulumi:"isChromeCleanupEnabled"`
+	// Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
+	IsChromeRemoteDesktopAppBlocked bool `pulumi:"isChromeRemoteDesktopAppBlocked"`
+	// Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+	IsFileDownloadAnalysisEnabled bool `pulumi:"isFileDownloadAnalysisEnabled"`
+	// Current state of [file upload analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+	IsFileUploadAnalysisEnabled bool `pulumi:"isFileUploadAnalysisEnabled"`
+	// Current state of [real-time URL check](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode). Set to true if provider list from Chrome is non-empty.
+	IsRealtimeUrlCheckEnabled bool `pulumi:"isRealtimeUrlCheckEnabled"`
+	// Current state of [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+	IsSecurityEventAnalysisEnabled bool `pulumi:"isSecurityEventAnalysisEnabled"`
+	// Current state of [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
+	IsSiteIsolationEnabled bool `pulumi:"isSiteIsolationEnabled"`
+	// Current state of [third-party blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
+	IsThirdPartyBlockingEnabled bool `pulumi:"isThirdPartyBlockingEnabled"`
+	// Current state of [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
+	PasswordProtectionWarningTrigger string `pulumi:"passwordProtectionWarningTrigger"`
+	// Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
+	SafeBrowsingProtectionLevel string `pulumi:"safeBrowsingProtectionLevel"`
+}
+
+// Browser-specific fields reported by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1). LINT.IfChange
+type GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1BrowserInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) ToGoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput() GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput {
+	return o
+}
+
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) ToGoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput {
+	return o
+}
+
+// Browser's management state.
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) BrowserManagementState() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) string { return v.BrowserManagementState }).(pulumi.StringOutput)
+}
+
+// Version of the request initiating browser.
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) BrowserVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) string { return v.BrowserVersion }).(pulumi.StringOutput)
+}
+
+// Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) IsBuiltInDnsClientEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) bool { return v.IsBuiltInDnsClientEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) IsBulkDataEntryAnalysisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) bool {
+		return v.IsBulkDataEntryAnalysisEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) IsChromeCleanupEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) bool { return v.IsChromeCleanupEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) IsChromeRemoteDesktopAppBlocked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) bool {
+		return v.IsChromeRemoteDesktopAppBlocked
+	}).(pulumi.BoolOutput)
+}
+
+// Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) IsFileDownloadAnalysisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) bool {
+		return v.IsFileDownloadAnalysisEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// Current state of [file upload analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) IsFileUploadAnalysisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) bool { return v.IsFileUploadAnalysisEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [real-time URL check](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode). Set to true if provider list from Chrome is non-empty.
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) IsRealtimeUrlCheckEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) bool { return v.IsRealtimeUrlCheckEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) IsSecurityEventAnalysisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) bool {
+		return v.IsSecurityEventAnalysisEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// Current state of [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) IsSiteIsolationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) bool { return v.IsSiteIsolationEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [third-party blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) IsThirdPartyBlockingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) bool { return v.IsThirdPartyBlockingEnabled }).(pulumi.BoolOutput)
+}
+
+// Current state of [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) PasswordProtectionWarningTrigger() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) string {
+		return v.PasswordProtectionWarningTrigger
+	}).(pulumi.StringOutput)
+}
+
+// Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
+func (o GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput) SafeBrowsingProtectionLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1BrowserInfoResponse) string {
+		return v.SafeBrowsingProtectionLevel
+	}).(pulumi.StringOutput)
+}
+
+// Stores information about a certificate.
+type GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse struct {
+	// The X.509 extension for CertificateTemplate.
+	CertificateTemplate GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse `pulumi:"certificateTemplate"`
+	// The encoded certificate fingerprint.
+	Fingerprint string `pulumi:"fingerprint"`
+	// The name of the issuer of this certificate.
+	Issuer string `pulumi:"issuer"`
+	// Serial number of the certificate, Example: "123456789".
+	SerialNumber string `pulumi:"serialNumber"`
+	// The subject name of this certificate.
+	Subject string `pulumi:"subject"`
+	// The certificate thumbprint.
+	Thumbprint string `pulumi:"thumbprint"`
+	// Validation state of this certificate.
+	ValidationState string `pulumi:"validationState"`
+	// Certificate not valid at or after this timestamp.
+	ValidityExpirationTime string `pulumi:"validityExpirationTime"`
+	// Certificate not valid before this timestamp.
+	ValidityStartTime string `pulumi:"validityStartTime"`
+}
+
+// Stores information about a certificate.
+type GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse)(nil)).Elem()
+}
+
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) ToGoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput() GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput {
+	return o
+}
+
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) ToGoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput {
+	return o
+}
+
+// The X.509 extension for CertificateTemplate.
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) CertificateTemplate() GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse) GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse {
+		return v.CertificateTemplate
+	}).(GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput)
+}
+
+// The encoded certificate fingerprint.
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The name of the issuer of this certificate.
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// Serial number of the certificate, Example: "123456789".
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse) string { return v.SerialNumber }).(pulumi.StringOutput)
+}
+
+// The subject name of this certificate.
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+// The certificate thumbprint.
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+// Validation state of this certificate.
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) ValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse) string { return v.ValidationState }).(pulumi.StringOutput)
+}
+
+// Certificate not valid at or after this timestamp.
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) ValidityExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse) string {
+		return v.ValidityExpirationTime
+	}).(pulumi.StringOutput)
+}
+
+// Certificate not valid before this timestamp.
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput) ValidityStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse) string {
+		return v.ValidityStartTime
+	}).(pulumi.StringOutput)
+}
+
+type GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse)(nil)).Elem()
+}
+
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput) ToGoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput() GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput {
+	return o
+}
+
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput) ToGoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput {
+	return o
+}
+
+func (o GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput) Index(i pulumi.IntInput) GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse {
+		return vs[0].([]GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse)[vs[1].(int)]
+	}).(GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput)
+}
+
+// CertificateTemplate (v3 Extension in X.509).
+type GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse struct {
+	// The Major version of the template. Example: 100.
+	MajorVersion int `pulumi:"majorVersion"`
+	// The minor version of the template. Example: 12.
+	MinorVersion int `pulumi:"minorVersion"`
+}
+
+// CertificateTemplate (v3 Extension in X.509).
+type GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse)(nil)).Elem()
+}
+
+func (o GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput) ToGoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput() GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput {
+	return o
+}
+
+func (o GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput) ToGoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput {
+	return o
+}
+
+// The Major version of the template. Example: 100.
+func (o GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput) MajorVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse) int { return v.MajorVersion }).(pulumi.IntOutput)
+}
+
+// The minor version of the template. Example: 12.
+func (o GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput) MinorVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse) int { return v.MinorVersion }).(pulumi.IntOutput)
+}
+
+// Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device.
+type GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse struct {
+	// Additional signals reported by Endpoint Verification. It includes the following attributes: 1. Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes): file, folder, and binary attributes; registry entries; and properties in a plist.
+	AdditionalSignals map[string]string `pulumi:"additionalSignals"`
+	// Details of browser profiles reported by Endpoint Verification.
+	BrowserAttributes []GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse `pulumi:"browserAttributes"`
+	// Details of certificates.
+	CertificateAttributes []GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse `pulumi:"certificateAttributes"`
+}
+
+// Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device.
+type GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse)(nil)).Elem()
+}
+
+func (o GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput) ToGoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput() GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput {
+	return o
+}
+
+func (o GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput) ToGoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput {
+	return o
+}
+
+// Additional signals reported by Endpoint Verification. It includes the following attributes: 1. Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes): file, folder, and binary attributes; registry entries; and properties in a plist.
+func (o GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput) AdditionalSignals() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse) map[string]string {
+		return v.AdditionalSignals
+	}).(pulumi.StringMapOutput)
+}
+
+// Details of browser profiles reported by Endpoint Verification.
+func (o GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput) BrowserAttributes() GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse) []GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse {
+		return v.BrowserAttributes
+	}).(GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput)
+}
+
+// Details of certificates.
+func (o GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput) CertificateAttributes() GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse) []GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse {
+		return v.CertificateAttributes
+	}).(GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput)
 }
 
 // A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
@@ -1996,6 +2374,13 @@ func init() {
 	pulumi.RegisterOutputType(ExpiryDetailPtrOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailResponseOutput{})
 	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput{})
+	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseOutput{})
+	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1BrowserAttributesResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1BrowserInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseOutput{})
+	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1CertificateAttributesResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1CertificateTemplateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput{})
 	pulumi.RegisterOutputType(MembershipRoleOutput{})
 	pulumi.RegisterOutputType(MembershipRoleArrayOutput{})
 	pulumi.RegisterOutputType(MembershipRoleResponseOutput{})

@@ -34,7 +34,7 @@ type LookupWorkflowConfigResult struct {
 	CronSchedule string `pulumi:"cronSchedule"`
 	// Optional. If left unset, a default InvocationConfig will be used.
 	InvocationConfig InvocationConfigResponse `pulumi:"invocationConfig"`
-	// The workflow config's name.
+	// Identifier. The workflow config's name.
 	Name string `pulumi:"name"`
 	// Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
 	RecentScheduledExecutionRecords []ScheduledExecutionRecordResponse `pulumi:"recentScheduledExecutionRecords"`
@@ -92,7 +92,7 @@ func (o LookupWorkflowConfigResultOutput) InvocationConfig() InvocationConfigRes
 	return o.ApplyT(func(v LookupWorkflowConfigResult) InvocationConfigResponse { return v.InvocationConfig }).(InvocationConfigResponseOutput)
 }
 
-// The workflow config's name.
+// Identifier. The workflow config's name.
 func (o LookupWorkflowConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }

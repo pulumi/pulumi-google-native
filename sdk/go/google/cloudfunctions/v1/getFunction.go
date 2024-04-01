@@ -30,6 +30,7 @@ type LookupFunctionArgs struct {
 }
 
 type LookupFunctionResult struct {
+	AutomaticUpdatePolicy AutomaticUpdatePolicyResponse `pulumi:"automaticUpdatePolicy"`
 	// The amount of memory in MB available for a function. Defaults to 256MB.
 	AvailableMemoryMb int `pulumi:"availableMemoryMb"`
 	// Build environment variables that shall be available during build time.
@@ -38,11 +39,13 @@ type LookupFunctionResult struct {
 	BuildId string `pulumi:"buildId"`
 	// The Cloud Build Name of the function deployment. `projects//locations//builds/`.
 	BuildName string `pulumi:"buildName"`
+	// Optional. A service account the user provides for use with Cloud Build.
+	BuildServiceAccount string `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
 	BuildWorkerPool string `pulumi:"buildWorkerPool"`
 	// User-provided description of a function.
 	Description string `pulumi:"description"`
-	// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+	// Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 	DockerRegistry string `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository string `pulumi:"dockerRepository"`
@@ -69,7 +72,8 @@ type LookupFunctionResult struct {
 	// Deprecated: use vpc_connector
 	//
 	// Deprecated: Deprecated: use vpc_connector
-	Network string `pulumi:"network"`
+	Network              string                       `pulumi:"network"`
+	OnDeployUpdatePolicy OnDeployUpdatePolicyResponse `pulumi:"onDeployUpdatePolicy"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime string `pulumi:"runtime"`
 	// Secret environment variables configuration.
@@ -138,6 +142,10 @@ func (o LookupFunctionResultOutput) ToLookupFunctionResultOutputWithContext(ctx 
 	return o
 }
 
+func (o LookupFunctionResultOutput) AutomaticUpdatePolicy() AutomaticUpdatePolicyResponseOutput {
+	return o.ApplyT(func(v LookupFunctionResult) AutomaticUpdatePolicyResponse { return v.AutomaticUpdatePolicy }).(AutomaticUpdatePolicyResponseOutput)
+}
+
 // The amount of memory in MB available for a function. Defaults to 256MB.
 func (o LookupFunctionResultOutput) AvailableMemoryMb() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupFunctionResult) int { return v.AvailableMemoryMb }).(pulumi.IntOutput)
@@ -158,6 +166,11 @@ func (o LookupFunctionResultOutput) BuildName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildName }).(pulumi.StringOutput)
 }
 
+// Optional. A service account the user provides for use with Cloud Build.
+func (o LookupFunctionResultOutput) BuildServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildServiceAccount }).(pulumi.StringOutput)
+}
+
 // Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
 func (o LookupFunctionResultOutput) BuildWorkerPool() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildWorkerPool }).(pulumi.StringOutput)
@@ -168,7 +181,7 @@ func (o LookupFunctionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+// Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 func (o LookupFunctionResultOutput) DockerRegistry() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.DockerRegistry }).(pulumi.StringOutput)
 }
@@ -233,6 +246,10 @@ func (o LookupFunctionResultOutput) Name() pulumi.StringOutput {
 // Deprecated: Deprecated: use vpc_connector
 func (o LookupFunctionResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupFunctionResultOutput) OnDeployUpdatePolicy() OnDeployUpdatePolicyResponseOutput {
+	return o.ApplyT(func(v LookupFunctionResult) OnDeployUpdatePolicyResponse { return v.OnDeployUpdatePolicy }).(OnDeployUpdatePolicyResponseOutput)
 }
 
 // The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).

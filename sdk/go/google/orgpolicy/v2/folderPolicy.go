@@ -23,7 +23,9 @@ type FolderPolicy struct {
 	Alternate GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput `pulumi:"alternate"`
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 	DryRunSpec GoogleCloudOrgpolicyV2PolicySpecResponseOutput `pulumi:"dryRunSpec"`
-	FolderId   pulumi.StringOutput                            `pulumi:"folderId"`
+	// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag     pulumi.StringOutput `pulumi:"etag"`
+	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Basic information about the Organization Policy.
@@ -83,7 +85,9 @@ type folderPolicyArgs struct {
 	Alternate *GoogleCloudOrgpolicyV2AlternatePolicySpec `pulumi:"alternate"`
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 	DryRunSpec *GoogleCloudOrgpolicyV2PolicySpec `pulumi:"dryRunSpec"`
-	FolderId   string                            `pulumi:"folderId"`
+	// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag     *string `pulumi:"etag"`
+	FolderId string  `pulumi:"folderId"`
 	// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name *string `pulumi:"name"`
 	// Basic information about the Organization Policy.
@@ -98,7 +102,9 @@ type FolderPolicyArgs struct {
 	Alternate GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 	DryRunSpec GoogleCloudOrgpolicyV2PolicySpecPtrInput
-	FolderId   pulumi.StringInput
+	// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag     pulumi.StringPtrInput
+	FolderId pulumi.StringInput
 	// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringPtrInput
 	// Basic information about the Organization Policy.
@@ -152,6 +158,11 @@ func (o FolderPolicyOutput) Alternate() GoogleCloudOrgpolicyV2AlternatePolicySpe
 // Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 func (o FolderPolicyOutput) DryRunSpec() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
 	return o.ApplyT(func(v *FolderPolicy) GoogleCloudOrgpolicyV2PolicySpecResponseOutput { return v.DryRunSpec }).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
+}
+
+// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o FolderPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 func (o FolderPolicyOutput) FolderId() pulumi.StringOutput {

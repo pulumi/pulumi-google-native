@@ -30,7 +30,9 @@ type LookupInstanceGroupManagerResizeRequestArgs struct {
 }
 
 type LookupInstanceGroupManagerResizeRequestResult struct {
-	// The count of instances to create as part of this resize request.
+	// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+	//
+	// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 	Count int `pulumi:"count"`
 	// The creation timestamp for this resize request in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
@@ -40,7 +42,9 @@ type LookupInstanceGroupManagerResizeRequestResult struct {
 	Kind string `pulumi:"kind"`
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name string `pulumi:"name"`
-	// When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+	// This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+	//
+	// Deprecated: This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
 	QueuingPolicy QueuingPolicyResponse `pulumi:"queuingPolicy"`
 	// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
 	RequestedRunDuration DurationResponse `pulumi:"requestedRunDuration"`
@@ -96,7 +100,9 @@ func (o LookupInstanceGroupManagerResizeRequestResultOutput) ToLookupInstanceGro
 	return o
 }
 
-// The count of instances to create as part of this resize request.
+// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+//
+// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 func (o LookupInstanceGroupManagerResizeRequestResultOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) int { return v.Count }).(pulumi.IntOutput)
 }
@@ -121,7 +127,9 @@ func (o LookupInstanceGroupManagerResizeRequestResultOutput) Name() pulumi.Strin
 	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+// This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+//
+// Deprecated: This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
 func (o LookupInstanceGroupManagerResizeRequestResultOutput) QueuingPolicy() QueuingPolicyResponseOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) QueuingPolicyResponse { return v.QueuingPolicy }).(QueuingPolicyResponseOutput)
 }

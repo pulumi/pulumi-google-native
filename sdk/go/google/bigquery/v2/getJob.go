@@ -29,17 +29,19 @@ type LookupJobArgs struct {
 }
 
 type LookupJobResult struct {
-	// [Required] Describes the job configuration.
+	// Describes the job configuration.
 	Configuration JobConfigurationResponse `pulumi:"configuration"`
 	// A hash of this resource.
 	Etag string `pulumi:"etag"`
 	// If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
-	JobCreationReason interface{} `pulumi:"jobCreationReason"`
-	// [Optional] Reference describing the unique-per-user name of the job.
+	JobCreationReason JobCreationReasonResponse `pulumi:"jobCreationReason"`
+	// Optional. Reference describing the unique-per-user name of the job.
 	JobReference JobReferenceResponse `pulumi:"jobReference"`
 	// The type of the resource.
 	Kind string `pulumi:"kind"`
-	// A URL that can be used to access this resource again.
+	// [Full-projection-only] String representation of identity of requesting party. Populated for both first- and third-party identities. Only present for APIs that support third-party identities.
+	PrincipalSubject string `pulumi:"principalSubject"`
+	// A URL that can be used to access the resource again.
 	SelfLink string `pulumi:"selfLink"`
 	// Information about the job, including starting time and ending time of the job.
 	Statistics JobStatisticsResponse `pulumi:"statistics"`
@@ -86,7 +88,7 @@ func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// [Required] Describes the job configuration.
+// Describes the job configuration.
 func (o LookupJobResultOutput) Configuration() JobConfigurationResponseOutput {
 	return o.ApplyT(func(v LookupJobResult) JobConfigurationResponse { return v.Configuration }).(JobConfigurationResponseOutput)
 }
@@ -97,11 +99,11 @@ func (o LookupJobResultOutput) Etag() pulumi.StringOutput {
 }
 
 // If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
-func (o LookupJobResultOutput) JobCreationReason() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupJobResult) interface{} { return v.JobCreationReason }).(pulumi.AnyOutput)
+func (o LookupJobResultOutput) JobCreationReason() JobCreationReasonResponseOutput {
+	return o.ApplyT(func(v LookupJobResult) JobCreationReasonResponse { return v.JobCreationReason }).(JobCreationReasonResponseOutput)
 }
 
-// [Optional] Reference describing the unique-per-user name of the job.
+// Optional. Reference describing the unique-per-user name of the job.
 func (o LookupJobResultOutput) JobReference() JobReferenceResponseOutput {
 	return o.ApplyT(func(v LookupJobResult) JobReferenceResponse { return v.JobReference }).(JobReferenceResponseOutput)
 }
@@ -111,7 +113,12 @@ func (o LookupJobResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// A URL that can be used to access this resource again.
+// [Full-projection-only] String representation of identity of requesting party. Populated for both first- and third-party identities. Only present for APIs that support third-party identities.
+func (o LookupJobResultOutput) PrincipalSubject() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.PrincipalSubject }).(pulumi.StringOutput)
+}
+
+// A URL that can be used to access the resource again.
 func (o LookupJobResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }

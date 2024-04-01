@@ -617,6 +617,59 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// This is a subset of the FirewallEndpointAssociation message, containing fields to be used by the consumer.
+type FirewallEndpointAssociationReferenceResponse struct {
+	// The resource name of the FirewallEndpointAssociation. Format: projects/{project}/locations/{location}/firewallEndpointAssociations/{id}
+	Name string `pulumi:"name"`
+	// The VPC network associated. Format: projects/{project}/global/networks/{name}.
+	Network string `pulumi:"network"`
+}
+
+// This is a subset of the FirewallEndpointAssociation message, containing fields to be used by the consumer.
+type FirewallEndpointAssociationReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (FirewallEndpointAssociationReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallEndpointAssociationReferenceResponse)(nil)).Elem()
+}
+
+func (o FirewallEndpointAssociationReferenceResponseOutput) ToFirewallEndpointAssociationReferenceResponseOutput() FirewallEndpointAssociationReferenceResponseOutput {
+	return o
+}
+
+func (o FirewallEndpointAssociationReferenceResponseOutput) ToFirewallEndpointAssociationReferenceResponseOutputWithContext(ctx context.Context) FirewallEndpointAssociationReferenceResponseOutput {
+	return o
+}
+
+// The resource name of the FirewallEndpointAssociation. Format: projects/{project}/locations/{location}/firewallEndpointAssociations/{id}
+func (o FirewallEndpointAssociationReferenceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallEndpointAssociationReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The VPC network associated. Format: projects/{project}/global/networks/{name}.
+func (o FirewallEndpointAssociationReferenceResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallEndpointAssociationReferenceResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type FirewallEndpointAssociationReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallEndpointAssociationReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallEndpointAssociationReferenceResponse)(nil)).Elem()
+}
+
+func (o FirewallEndpointAssociationReferenceResponseArrayOutput) ToFirewallEndpointAssociationReferenceResponseArrayOutput() FirewallEndpointAssociationReferenceResponseArrayOutput {
+	return o
+}
+
+func (o FirewallEndpointAssociationReferenceResponseArrayOutput) ToFirewallEndpointAssociationReferenceResponseArrayOutputWithContext(ctx context.Context) FirewallEndpointAssociationReferenceResponseArrayOutput {
+	return o
+}
+
+func (o FirewallEndpointAssociationReferenceResponseArrayOutput) Index(i pulumi.IntInput) FirewallEndpointAssociationReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallEndpointAssociationReferenceResponse {
+		return vs[0].([]FirewallEndpointAssociationReferenceResponse)[vs[1].(int)]
+	}).(FirewallEndpointAssociationReferenceResponseOutput)
+}
+
 // Specification of certificate provider. Defines the mechanism to obtain the certificate and private key for peer to peer authentication.
 type GoogleCloudNetworksecurityV1CertificateProvider struct {
 	// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
@@ -1311,9 +1364,9 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -1332,9 +1385,9 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -1395,12 +1448,12 @@ func (o GoogleIamV1BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -1429,9 +1482,9 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -1455,12 +1508,12 @@ func (o GoogleIamV1BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -2057,6 +2110,168 @@ func (o RuleResponseArrayOutput) Index(i pulumi.IntInput) RuleResponseOutput {
 	}).(RuleResponseOutput)
 }
 
+// Defines what action to take for a specific severity match.
+type SeverityOverride struct {
+	// Threat action override.
+	Action SeverityOverrideAction `pulumi:"action"`
+	// Severity level to match.
+	Severity SeverityOverrideSeverity `pulumi:"severity"`
+}
+
+// SeverityOverrideInput is an input type that accepts SeverityOverrideArgs and SeverityOverrideOutput values.
+// You can construct a concrete instance of `SeverityOverrideInput` via:
+//
+//	SeverityOverrideArgs{...}
+type SeverityOverrideInput interface {
+	pulumi.Input
+
+	ToSeverityOverrideOutput() SeverityOverrideOutput
+	ToSeverityOverrideOutputWithContext(context.Context) SeverityOverrideOutput
+}
+
+// Defines what action to take for a specific severity match.
+type SeverityOverrideArgs struct {
+	// Threat action override.
+	Action SeverityOverrideActionInput `pulumi:"action"`
+	// Severity level to match.
+	Severity SeverityOverrideSeverityInput `pulumi:"severity"`
+}
+
+func (SeverityOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SeverityOverride)(nil)).Elem()
+}
+
+func (i SeverityOverrideArgs) ToSeverityOverrideOutput() SeverityOverrideOutput {
+	return i.ToSeverityOverrideOutputWithContext(context.Background())
+}
+
+func (i SeverityOverrideArgs) ToSeverityOverrideOutputWithContext(ctx context.Context) SeverityOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SeverityOverrideOutput)
+}
+
+// SeverityOverrideArrayInput is an input type that accepts SeverityOverrideArray and SeverityOverrideArrayOutput values.
+// You can construct a concrete instance of `SeverityOverrideArrayInput` via:
+//
+//	SeverityOverrideArray{ SeverityOverrideArgs{...} }
+type SeverityOverrideArrayInput interface {
+	pulumi.Input
+
+	ToSeverityOverrideArrayOutput() SeverityOverrideArrayOutput
+	ToSeverityOverrideArrayOutputWithContext(context.Context) SeverityOverrideArrayOutput
+}
+
+type SeverityOverrideArray []SeverityOverrideInput
+
+func (SeverityOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SeverityOverride)(nil)).Elem()
+}
+
+func (i SeverityOverrideArray) ToSeverityOverrideArrayOutput() SeverityOverrideArrayOutput {
+	return i.ToSeverityOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i SeverityOverrideArray) ToSeverityOverrideArrayOutputWithContext(ctx context.Context) SeverityOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SeverityOverrideArrayOutput)
+}
+
+// Defines what action to take for a specific severity match.
+type SeverityOverrideOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SeverityOverride)(nil)).Elem()
+}
+
+func (o SeverityOverrideOutput) ToSeverityOverrideOutput() SeverityOverrideOutput {
+	return o
+}
+
+func (o SeverityOverrideOutput) ToSeverityOverrideOutputWithContext(ctx context.Context) SeverityOverrideOutput {
+	return o
+}
+
+// Threat action override.
+func (o SeverityOverrideOutput) Action() SeverityOverrideActionOutput {
+	return o.ApplyT(func(v SeverityOverride) SeverityOverrideAction { return v.Action }).(SeverityOverrideActionOutput)
+}
+
+// Severity level to match.
+func (o SeverityOverrideOutput) Severity() SeverityOverrideSeverityOutput {
+	return o.ApplyT(func(v SeverityOverride) SeverityOverrideSeverity { return v.Severity }).(SeverityOverrideSeverityOutput)
+}
+
+type SeverityOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SeverityOverride)(nil)).Elem()
+}
+
+func (o SeverityOverrideArrayOutput) ToSeverityOverrideArrayOutput() SeverityOverrideArrayOutput {
+	return o
+}
+
+func (o SeverityOverrideArrayOutput) ToSeverityOverrideArrayOutputWithContext(ctx context.Context) SeverityOverrideArrayOutput {
+	return o
+}
+
+func (o SeverityOverrideArrayOutput) Index(i pulumi.IntInput) SeverityOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SeverityOverride {
+		return vs[0].([]SeverityOverride)[vs[1].(int)]
+	}).(SeverityOverrideOutput)
+}
+
+// Defines what action to take for a specific severity match.
+type SeverityOverrideResponse struct {
+	// Threat action override.
+	Action string `pulumi:"action"`
+	// Severity level to match.
+	Severity string `pulumi:"severity"`
+}
+
+// Defines what action to take for a specific severity match.
+type SeverityOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SeverityOverrideResponse)(nil)).Elem()
+}
+
+func (o SeverityOverrideResponseOutput) ToSeverityOverrideResponseOutput() SeverityOverrideResponseOutput {
+	return o
+}
+
+func (o SeverityOverrideResponseOutput) ToSeverityOverrideResponseOutputWithContext(ctx context.Context) SeverityOverrideResponseOutput {
+	return o
+}
+
+// Threat action override.
+func (o SeverityOverrideResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v SeverityOverrideResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Severity level to match.
+func (o SeverityOverrideResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v SeverityOverrideResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type SeverityOverrideResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SeverityOverrideResponse)(nil)).Elem()
+}
+
+func (o SeverityOverrideResponseArrayOutput) ToSeverityOverrideResponseArrayOutput() SeverityOverrideResponseArrayOutput {
+	return o
+}
+
+func (o SeverityOverrideResponseArrayOutput) ToSeverityOverrideResponseArrayOutputWithContext(ctx context.Context) SeverityOverrideResponseArrayOutput {
+	return o
+}
+
+func (o SeverityOverrideResponseArrayOutput) Index(i pulumi.IntInput) SeverityOverrideResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SeverityOverrideResponse {
+		return vs[0].([]SeverityOverrideResponse)[vs[1].(int)]
+	}).(SeverityOverrideResponseOutput)
+}
+
 // Specification of traffic source attributes.
 type Source struct {
 	// Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided. The IP addresses of any load balancers or proxies should be considered untrusted.
@@ -2217,6 +2432,367 @@ func (o SourceResponseArrayOutput) Index(i pulumi.IntInput) SourceResponseOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SourceResponse {
 		return vs[0].([]SourceResponse)[vs[1].(int)]
 	}).(SourceResponseOutput)
+}
+
+// Defines what action to take for a specific threat_id match.
+type ThreatOverride struct {
+	// Threat action override. For some threat types, only a subset of actions applies.
+	Action ThreatOverrideAction `pulumi:"action"`
+	// Vendor-specific ID of a threat to override.
+	ThreatId string `pulumi:"threatId"`
+}
+
+// ThreatOverrideInput is an input type that accepts ThreatOverrideArgs and ThreatOverrideOutput values.
+// You can construct a concrete instance of `ThreatOverrideInput` via:
+//
+//	ThreatOverrideArgs{...}
+type ThreatOverrideInput interface {
+	pulumi.Input
+
+	ToThreatOverrideOutput() ThreatOverrideOutput
+	ToThreatOverrideOutputWithContext(context.Context) ThreatOverrideOutput
+}
+
+// Defines what action to take for a specific threat_id match.
+type ThreatOverrideArgs struct {
+	// Threat action override. For some threat types, only a subset of actions applies.
+	Action ThreatOverrideActionInput `pulumi:"action"`
+	// Vendor-specific ID of a threat to override.
+	ThreatId pulumi.StringInput `pulumi:"threatId"`
+}
+
+func (ThreatOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatOverride)(nil)).Elem()
+}
+
+func (i ThreatOverrideArgs) ToThreatOverrideOutput() ThreatOverrideOutput {
+	return i.ToThreatOverrideOutputWithContext(context.Background())
+}
+
+func (i ThreatOverrideArgs) ToThreatOverrideOutputWithContext(ctx context.Context) ThreatOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatOverrideOutput)
+}
+
+// ThreatOverrideArrayInput is an input type that accepts ThreatOverrideArray and ThreatOverrideArrayOutput values.
+// You can construct a concrete instance of `ThreatOverrideArrayInput` via:
+//
+//	ThreatOverrideArray{ ThreatOverrideArgs{...} }
+type ThreatOverrideArrayInput interface {
+	pulumi.Input
+
+	ToThreatOverrideArrayOutput() ThreatOverrideArrayOutput
+	ToThreatOverrideArrayOutputWithContext(context.Context) ThreatOverrideArrayOutput
+}
+
+type ThreatOverrideArray []ThreatOverrideInput
+
+func (ThreatOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ThreatOverride)(nil)).Elem()
+}
+
+func (i ThreatOverrideArray) ToThreatOverrideArrayOutput() ThreatOverrideArrayOutput {
+	return i.ToThreatOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i ThreatOverrideArray) ToThreatOverrideArrayOutputWithContext(ctx context.Context) ThreatOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatOverrideArrayOutput)
+}
+
+// Defines what action to take for a specific threat_id match.
+type ThreatOverrideOutput struct{ *pulumi.OutputState }
+
+func (ThreatOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatOverride)(nil)).Elem()
+}
+
+func (o ThreatOverrideOutput) ToThreatOverrideOutput() ThreatOverrideOutput {
+	return o
+}
+
+func (o ThreatOverrideOutput) ToThreatOverrideOutputWithContext(ctx context.Context) ThreatOverrideOutput {
+	return o
+}
+
+// Threat action override. For some threat types, only a subset of actions applies.
+func (o ThreatOverrideOutput) Action() ThreatOverrideActionOutput {
+	return o.ApplyT(func(v ThreatOverride) ThreatOverrideAction { return v.Action }).(ThreatOverrideActionOutput)
+}
+
+// Vendor-specific ID of a threat to override.
+func (o ThreatOverrideOutput) ThreatId() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreatOverride) string { return v.ThreatId }).(pulumi.StringOutput)
+}
+
+type ThreatOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (ThreatOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ThreatOverride)(nil)).Elem()
+}
+
+func (o ThreatOverrideArrayOutput) ToThreatOverrideArrayOutput() ThreatOverrideArrayOutput {
+	return o
+}
+
+func (o ThreatOverrideArrayOutput) ToThreatOverrideArrayOutputWithContext(ctx context.Context) ThreatOverrideArrayOutput {
+	return o
+}
+
+func (o ThreatOverrideArrayOutput) Index(i pulumi.IntInput) ThreatOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ThreatOverride {
+		return vs[0].([]ThreatOverride)[vs[1].(int)]
+	}).(ThreatOverrideOutput)
+}
+
+// Defines what action to take for a specific threat_id match.
+type ThreatOverrideResponse struct {
+	// Threat action override. For some threat types, only a subset of actions applies.
+	Action string `pulumi:"action"`
+	// Vendor-specific ID of a threat to override.
+	ThreatId string `pulumi:"threatId"`
+	// Type of the threat (read only).
+	Type string `pulumi:"type"`
+}
+
+// Defines what action to take for a specific threat_id match.
+type ThreatOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (ThreatOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatOverrideResponse)(nil)).Elem()
+}
+
+func (o ThreatOverrideResponseOutput) ToThreatOverrideResponseOutput() ThreatOverrideResponseOutput {
+	return o
+}
+
+func (o ThreatOverrideResponseOutput) ToThreatOverrideResponseOutputWithContext(ctx context.Context) ThreatOverrideResponseOutput {
+	return o
+}
+
+// Threat action override. For some threat types, only a subset of actions applies.
+func (o ThreatOverrideResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreatOverrideResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Vendor-specific ID of a threat to override.
+func (o ThreatOverrideResponseOutput) ThreatId() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreatOverrideResponse) string { return v.ThreatId }).(pulumi.StringOutput)
+}
+
+// Type of the threat (read only).
+func (o ThreatOverrideResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreatOverrideResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ThreatOverrideResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ThreatOverrideResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ThreatOverrideResponse)(nil)).Elem()
+}
+
+func (o ThreatOverrideResponseArrayOutput) ToThreatOverrideResponseArrayOutput() ThreatOverrideResponseArrayOutput {
+	return o
+}
+
+func (o ThreatOverrideResponseArrayOutput) ToThreatOverrideResponseArrayOutputWithContext(ctx context.Context) ThreatOverrideResponseArrayOutput {
+	return o
+}
+
+func (o ThreatOverrideResponseArrayOutput) Index(i pulumi.IntInput) ThreatOverrideResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ThreatOverrideResponse {
+		return vs[0].([]ThreatOverrideResponse)[vs[1].(int)]
+	}).(ThreatOverrideResponseOutput)
+}
+
+// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+type ThreatPreventionProfile struct {
+	// Optional. Configuration for overriding threats actions by severity match.
+	SeverityOverrides []SeverityOverride `pulumi:"severityOverrides"`
+	// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+	ThreatOverrides []ThreatOverride `pulumi:"threatOverrides"`
+}
+
+// ThreatPreventionProfileInput is an input type that accepts ThreatPreventionProfileArgs and ThreatPreventionProfileOutput values.
+// You can construct a concrete instance of `ThreatPreventionProfileInput` via:
+//
+//	ThreatPreventionProfileArgs{...}
+type ThreatPreventionProfileInput interface {
+	pulumi.Input
+
+	ToThreatPreventionProfileOutput() ThreatPreventionProfileOutput
+	ToThreatPreventionProfileOutputWithContext(context.Context) ThreatPreventionProfileOutput
+}
+
+// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+type ThreatPreventionProfileArgs struct {
+	// Optional. Configuration for overriding threats actions by severity match.
+	SeverityOverrides SeverityOverrideArrayInput `pulumi:"severityOverrides"`
+	// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+	ThreatOverrides ThreatOverrideArrayInput `pulumi:"threatOverrides"`
+}
+
+func (ThreatPreventionProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatPreventionProfile)(nil)).Elem()
+}
+
+func (i ThreatPreventionProfileArgs) ToThreatPreventionProfileOutput() ThreatPreventionProfileOutput {
+	return i.ToThreatPreventionProfileOutputWithContext(context.Background())
+}
+
+func (i ThreatPreventionProfileArgs) ToThreatPreventionProfileOutputWithContext(ctx context.Context) ThreatPreventionProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatPreventionProfileOutput)
+}
+
+func (i ThreatPreventionProfileArgs) ToThreatPreventionProfilePtrOutput() ThreatPreventionProfilePtrOutput {
+	return i.ToThreatPreventionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ThreatPreventionProfileArgs) ToThreatPreventionProfilePtrOutputWithContext(ctx context.Context) ThreatPreventionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatPreventionProfileOutput).ToThreatPreventionProfilePtrOutputWithContext(ctx)
+}
+
+// ThreatPreventionProfilePtrInput is an input type that accepts ThreatPreventionProfileArgs, ThreatPreventionProfilePtr and ThreatPreventionProfilePtrOutput values.
+// You can construct a concrete instance of `ThreatPreventionProfilePtrInput` via:
+//
+//	        ThreatPreventionProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ThreatPreventionProfilePtrInput interface {
+	pulumi.Input
+
+	ToThreatPreventionProfilePtrOutput() ThreatPreventionProfilePtrOutput
+	ToThreatPreventionProfilePtrOutputWithContext(context.Context) ThreatPreventionProfilePtrOutput
+}
+
+type threatPreventionProfilePtrType ThreatPreventionProfileArgs
+
+func ThreatPreventionProfilePtr(v *ThreatPreventionProfileArgs) ThreatPreventionProfilePtrInput {
+	return (*threatPreventionProfilePtrType)(v)
+}
+
+func (*threatPreventionProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreatPreventionProfile)(nil)).Elem()
+}
+
+func (i *threatPreventionProfilePtrType) ToThreatPreventionProfilePtrOutput() ThreatPreventionProfilePtrOutput {
+	return i.ToThreatPreventionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *threatPreventionProfilePtrType) ToThreatPreventionProfilePtrOutputWithContext(ctx context.Context) ThreatPreventionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatPreventionProfilePtrOutput)
+}
+
+// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+type ThreatPreventionProfileOutput struct{ *pulumi.OutputState }
+
+func (ThreatPreventionProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatPreventionProfile)(nil)).Elem()
+}
+
+func (o ThreatPreventionProfileOutput) ToThreatPreventionProfileOutput() ThreatPreventionProfileOutput {
+	return o
+}
+
+func (o ThreatPreventionProfileOutput) ToThreatPreventionProfileOutputWithContext(ctx context.Context) ThreatPreventionProfileOutput {
+	return o
+}
+
+func (o ThreatPreventionProfileOutput) ToThreatPreventionProfilePtrOutput() ThreatPreventionProfilePtrOutput {
+	return o.ToThreatPreventionProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ThreatPreventionProfileOutput) ToThreatPreventionProfilePtrOutputWithContext(ctx context.Context) ThreatPreventionProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ThreatPreventionProfile) *ThreatPreventionProfile {
+		return &v
+	}).(ThreatPreventionProfilePtrOutput)
+}
+
+// Optional. Configuration for overriding threats actions by severity match.
+func (o ThreatPreventionProfileOutput) SeverityOverrides() SeverityOverrideArrayOutput {
+	return o.ApplyT(func(v ThreatPreventionProfile) []SeverityOverride { return v.SeverityOverrides }).(SeverityOverrideArrayOutput)
+}
+
+// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+func (o ThreatPreventionProfileOutput) ThreatOverrides() ThreatOverrideArrayOutput {
+	return o.ApplyT(func(v ThreatPreventionProfile) []ThreatOverride { return v.ThreatOverrides }).(ThreatOverrideArrayOutput)
+}
+
+type ThreatPreventionProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ThreatPreventionProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreatPreventionProfile)(nil)).Elem()
+}
+
+func (o ThreatPreventionProfilePtrOutput) ToThreatPreventionProfilePtrOutput() ThreatPreventionProfilePtrOutput {
+	return o
+}
+
+func (o ThreatPreventionProfilePtrOutput) ToThreatPreventionProfilePtrOutputWithContext(ctx context.Context) ThreatPreventionProfilePtrOutput {
+	return o
+}
+
+func (o ThreatPreventionProfilePtrOutput) Elem() ThreatPreventionProfileOutput {
+	return o.ApplyT(func(v *ThreatPreventionProfile) ThreatPreventionProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ThreatPreventionProfile
+		return ret
+	}).(ThreatPreventionProfileOutput)
+}
+
+// Optional. Configuration for overriding threats actions by severity match.
+func (o ThreatPreventionProfilePtrOutput) SeverityOverrides() SeverityOverrideArrayOutput {
+	return o.ApplyT(func(v *ThreatPreventionProfile) []SeverityOverride {
+		if v == nil {
+			return nil
+		}
+		return v.SeverityOverrides
+	}).(SeverityOverrideArrayOutput)
+}
+
+// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+func (o ThreatPreventionProfilePtrOutput) ThreatOverrides() ThreatOverrideArrayOutput {
+	return o.ApplyT(func(v *ThreatPreventionProfile) []ThreatOverride {
+		if v == nil {
+			return nil
+		}
+		return v.ThreatOverrides
+	}).(ThreatOverrideArrayOutput)
+}
+
+// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+type ThreatPreventionProfileResponse struct {
+	// Optional. Configuration for overriding threats actions by severity match.
+	SeverityOverrides []SeverityOverrideResponse `pulumi:"severityOverrides"`
+	// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+	ThreatOverrides []ThreatOverrideResponse `pulumi:"threatOverrides"`
+}
+
+// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+type ThreatPreventionProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (ThreatPreventionProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatPreventionProfileResponse)(nil)).Elem()
+}
+
+func (o ThreatPreventionProfileResponseOutput) ToThreatPreventionProfileResponseOutput() ThreatPreventionProfileResponseOutput {
+	return o
+}
+
+func (o ThreatPreventionProfileResponseOutput) ToThreatPreventionProfileResponseOutputWithContext(ctx context.Context) ThreatPreventionProfileResponseOutput {
+	return o
+}
+
+// Optional. Configuration for overriding threats actions by severity match.
+func (o ThreatPreventionProfileResponseOutput) SeverityOverrides() SeverityOverrideResponseArrayOutput {
+	return o.ApplyT(func(v ThreatPreventionProfileResponse) []SeverityOverrideResponse { return v.SeverityOverrides }).(SeverityOverrideResponseArrayOutput)
+}
+
+// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+func (o ThreatPreventionProfileResponseOutput) ThreatOverrides() ThreatOverrideResponseArrayOutput {
+	return o.ApplyT(func(v ThreatPreventionProfileResponse) []ThreatOverrideResponse { return v.ThreatOverrides }).(ThreatOverrideResponseArrayOutput)
 }
 
 // Specification of ValidationCA. Defines the mechanism to obtain the Certificate Authority certificate to validate the peer certificate.
@@ -2404,8 +2980,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyPtrInput)(nil)).Elem(), MTLSPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTypeInput)(nil)).Elem(), RuleTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTypeArrayInput)(nil)).Elem(), RuleTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SeverityOverrideInput)(nil)).Elem(), SeverityOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SeverityOverrideArrayInput)(nil)).Elem(), SeverityOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceArrayInput)(nil)).Elem(), SourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThreatOverrideInput)(nil)).Elem(), ThreatOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThreatOverrideArrayInput)(nil)).Elem(), ThreatOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThreatPreventionProfileInput)(nil)).Elem(), ThreatPreventionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThreatPreventionProfilePtrInput)(nil)).Elem(), ThreatPreventionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationCAInput)(nil)).Elem(), ValidationCAArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationCAArrayInput)(nil)).Elem(), ValidationCAArray{})
 	pulumi.RegisterOutputType(CertificateProviderInstanceOutput{})
@@ -2418,6 +3000,8 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FirewallEndpointAssociationReferenceResponseOutput{})
+	pulumi.RegisterOutputType(FirewallEndpointAssociationReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1CertificateProviderOutput{})
 	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1CertificateProviderPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1CertificateProviderResponseOutput{})
@@ -2446,10 +3030,21 @@ func init() {
 	pulumi.RegisterOutputType(RuleTypeArrayOutput{})
 	pulumi.RegisterOutputType(RuleResponseOutput{})
 	pulumi.RegisterOutputType(RuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideArrayOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideResponseOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideResponseArrayOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourceArrayOutput{})
 	pulumi.RegisterOutputType(SourceResponseOutput{})
 	pulumi.RegisterOutputType(SourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(ThreatOverrideOutput{})
+	pulumi.RegisterOutputType(ThreatOverrideArrayOutput{})
+	pulumi.RegisterOutputType(ThreatOverrideResponseOutput{})
+	pulumi.RegisterOutputType(ThreatOverrideResponseArrayOutput{})
+	pulumi.RegisterOutputType(ThreatPreventionProfileOutput{})
+	pulumi.RegisterOutputType(ThreatPreventionProfilePtrOutput{})
+	pulumi.RegisterOutputType(ThreatPreventionProfileResponseOutput{})
 	pulumi.RegisterOutputType(ValidationCAOutput{})
 	pulumi.RegisterOutputType(ValidationCAArrayOutput{})
 	pulumi.RegisterOutputType(ValidationCAResponseOutput{})

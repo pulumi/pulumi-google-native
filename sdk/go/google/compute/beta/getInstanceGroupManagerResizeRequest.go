@@ -30,7 +30,9 @@ type LookupInstanceGroupManagerResizeRequestArgs struct {
 }
 
 type LookupInstanceGroupManagerResizeRequestResult struct {
-	// The count of instances to create as part of this resize request.
+	// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+	//
+	// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 	Count int `pulumi:"count"`
 	// The creation timestamp for this resize request in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
@@ -94,7 +96,9 @@ func (o LookupInstanceGroupManagerResizeRequestResultOutput) ToLookupInstanceGro
 	return o
 }
 
-// The count of instances to create as part of this resize request.
+// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+//
+// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 func (o LookupInstanceGroupManagerResizeRequestResultOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) int { return v.Count }).(pulumi.IntOutput)
 }

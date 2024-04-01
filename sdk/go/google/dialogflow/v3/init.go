@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Experiment{}
 	case "google-native:dialogflow/v3:Flow":
 		r = &Flow{}
+	case "google-native:dialogflow/v3:Generator":
+		r = &Generator{}
 	case "google-native:dialogflow/v3:Intent":
 		r = &Intent{}
 	case "google-native:dialogflow/v3:Page":

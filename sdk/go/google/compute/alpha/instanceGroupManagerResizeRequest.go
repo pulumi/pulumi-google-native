@@ -16,7 +16,9 @@ import (
 type InstanceGroupManagerResizeRequest struct {
 	pulumi.CustomResourceState
 
-	// The count of instances to create as part of this resize request.
+	// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+	//
+	// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 	Count pulumi.IntOutput `pulumi:"count"`
 	// The creation timestamp for this resize request in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -28,7 +30,9 @@ type InstanceGroupManagerResizeRequest struct {
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+	// This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+	//
+	// Deprecated: This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
 	QueuingPolicy QueuingPolicyResponseOutput `pulumi:"queuingPolicy"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
@@ -96,7 +100,9 @@ func (InstanceGroupManagerResizeRequestState) ElementType() reflect.Type {
 }
 
 type instanceGroupManagerResizeRequestArgs struct {
-	// The count of instances to create as part of this resize request.
+	// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+	//
+	// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 	Count *int `pulumi:"count"`
 	// An optional description of this resource.
 	Description          *string `pulumi:"description"`
@@ -104,7 +110,9 @@ type instanceGroupManagerResizeRequestArgs struct {
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+	// This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+	//
+	// Deprecated: This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
 	QueuingPolicy *QueuingPolicy `pulumi:"queuingPolicy"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
@@ -117,7 +125,9 @@ type instanceGroupManagerResizeRequestArgs struct {
 
 // The set of arguments for constructing a InstanceGroupManagerResizeRequest resource.
 type InstanceGroupManagerResizeRequestArgs struct {
-	// The count of instances to create as part of this resize request.
+	// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+	//
+	// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 	Count pulumi.IntPtrInput
 	// An optional description of this resource.
 	Description          pulumi.StringPtrInput
@@ -125,7 +135,9 @@ type InstanceGroupManagerResizeRequestArgs struct {
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+	// This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+	//
+	// Deprecated: This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
 	QueuingPolicy QueuingPolicyPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
@@ -173,7 +185,9 @@ func (o InstanceGroupManagerResizeRequestOutput) ToInstanceGroupManagerResizeReq
 	return o
 }
 
-// The count of instances to create as part of this resize request.
+// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+//
+// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 func (o InstanceGroupManagerResizeRequestOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) pulumi.IntOutput { return v.Count }).(pulumi.IntOutput)
 }
@@ -206,7 +220,9 @@ func (o InstanceGroupManagerResizeRequestOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+// This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+//
+// Deprecated: This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
 func (o InstanceGroupManagerResizeRequestOutput) QueuingPolicy() QueuingPolicyResponseOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) QueuingPolicyResponseOutput { return v.QueuingPolicy }).(QueuingPolicyResponseOutput)
 }

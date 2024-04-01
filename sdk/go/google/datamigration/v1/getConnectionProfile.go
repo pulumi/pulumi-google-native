@@ -51,6 +51,8 @@ type LookupConnectionProfileResult struct {
 	Postgresql PostgreSqlConnectionProfileResponse `pulumi:"postgresql"`
 	// The database provider.
 	Provider string `pulumi:"provider"`
+	// Connection profile for a SQL Server data source.
+	Sqlserver SqlServerConnectionProfileResponse `pulumi:"sqlserver"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State string `pulumi:"state"`
 	// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -147,6 +149,11 @@ func (o LookupConnectionProfileResultOutput) Postgresql() PostgreSqlConnectionPr
 // The database provider.
 func (o LookupConnectionProfileResultOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionProfileResult) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// Connection profile for a SQL Server data source.
+func (o LookupConnectionProfileResultOutput) Sqlserver() SqlServerConnectionProfileResponseOutput {
+	return o.ApplyT(func(v LookupConnectionProfileResult) SqlServerConnectionProfileResponse { return v.Sqlserver }).(SqlServerConnectionProfileResponseOutput)
 }
 
 // The current connection profile state (e.g. DRAFT, READY, or FAILED).

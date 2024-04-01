@@ -13,6 +13,152 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// AuthorizedNetwork contains metadata for an authorized network.
+type AuthorizedNetwork struct {
+	// CIDR range for one authorzied network of the instance.
+	CidrRange *string `pulumi:"cidrRange"`
+}
+
+// AuthorizedNetworkInput is an input type that accepts AuthorizedNetworkArgs and AuthorizedNetworkOutput values.
+// You can construct a concrete instance of `AuthorizedNetworkInput` via:
+//
+//	AuthorizedNetworkArgs{...}
+type AuthorizedNetworkInput interface {
+	pulumi.Input
+
+	ToAuthorizedNetworkOutput() AuthorizedNetworkOutput
+	ToAuthorizedNetworkOutputWithContext(context.Context) AuthorizedNetworkOutput
+}
+
+// AuthorizedNetwork contains metadata for an authorized network.
+type AuthorizedNetworkArgs struct {
+	// CIDR range for one authorzied network of the instance.
+	CidrRange pulumi.StringPtrInput `pulumi:"cidrRange"`
+}
+
+func (AuthorizedNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedNetwork)(nil)).Elem()
+}
+
+func (i AuthorizedNetworkArgs) ToAuthorizedNetworkOutput() AuthorizedNetworkOutput {
+	return i.ToAuthorizedNetworkOutputWithContext(context.Background())
+}
+
+func (i AuthorizedNetworkArgs) ToAuthorizedNetworkOutputWithContext(ctx context.Context) AuthorizedNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedNetworkOutput)
+}
+
+// AuthorizedNetworkArrayInput is an input type that accepts AuthorizedNetworkArray and AuthorizedNetworkArrayOutput values.
+// You can construct a concrete instance of `AuthorizedNetworkArrayInput` via:
+//
+//	AuthorizedNetworkArray{ AuthorizedNetworkArgs{...} }
+type AuthorizedNetworkArrayInput interface {
+	pulumi.Input
+
+	ToAuthorizedNetworkArrayOutput() AuthorizedNetworkArrayOutput
+	ToAuthorizedNetworkArrayOutputWithContext(context.Context) AuthorizedNetworkArrayOutput
+}
+
+type AuthorizedNetworkArray []AuthorizedNetworkInput
+
+func (AuthorizedNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorizedNetwork)(nil)).Elem()
+}
+
+func (i AuthorizedNetworkArray) ToAuthorizedNetworkArrayOutput() AuthorizedNetworkArrayOutput {
+	return i.ToAuthorizedNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i AuthorizedNetworkArray) ToAuthorizedNetworkArrayOutputWithContext(ctx context.Context) AuthorizedNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedNetworkArrayOutput)
+}
+
+// AuthorizedNetwork contains metadata for an authorized network.
+type AuthorizedNetworkOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedNetwork)(nil)).Elem()
+}
+
+func (o AuthorizedNetworkOutput) ToAuthorizedNetworkOutput() AuthorizedNetworkOutput {
+	return o
+}
+
+func (o AuthorizedNetworkOutput) ToAuthorizedNetworkOutputWithContext(ctx context.Context) AuthorizedNetworkOutput {
+	return o
+}
+
+// CIDR range for one authorzied network of the instance.
+func (o AuthorizedNetworkOutput) CidrRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorizedNetwork) *string { return v.CidrRange }).(pulumi.StringPtrOutput)
+}
+
+type AuthorizedNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorizedNetwork)(nil)).Elem()
+}
+
+func (o AuthorizedNetworkArrayOutput) ToAuthorizedNetworkArrayOutput() AuthorizedNetworkArrayOutput {
+	return o
+}
+
+func (o AuthorizedNetworkArrayOutput) ToAuthorizedNetworkArrayOutputWithContext(ctx context.Context) AuthorizedNetworkArrayOutput {
+	return o
+}
+
+func (o AuthorizedNetworkArrayOutput) Index(i pulumi.IntInput) AuthorizedNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthorizedNetwork {
+		return vs[0].([]AuthorizedNetwork)[vs[1].(int)]
+	}).(AuthorizedNetworkOutput)
+}
+
+// AuthorizedNetwork contains metadata for an authorized network.
+type AuthorizedNetworkResponse struct {
+	// CIDR range for one authorzied network of the instance.
+	CidrRange string `pulumi:"cidrRange"`
+}
+
+// AuthorizedNetwork contains metadata for an authorized network.
+type AuthorizedNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedNetworkResponse)(nil)).Elem()
+}
+
+func (o AuthorizedNetworkResponseOutput) ToAuthorizedNetworkResponseOutput() AuthorizedNetworkResponseOutput {
+	return o
+}
+
+func (o AuthorizedNetworkResponseOutput) ToAuthorizedNetworkResponseOutputWithContext(ctx context.Context) AuthorizedNetworkResponseOutput {
+	return o
+}
+
+// CIDR range for one authorzied network of the instance.
+func (o AuthorizedNetworkResponseOutput) CidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthorizedNetworkResponse) string { return v.CidrRange }).(pulumi.StringOutput)
+}
+
+type AuthorizedNetworkResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedNetworkResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorizedNetworkResponse)(nil)).Elem()
+}
+
+func (o AuthorizedNetworkResponseArrayOutput) ToAuthorizedNetworkResponseArrayOutput() AuthorizedNetworkResponseArrayOutput {
+	return o
+}
+
+func (o AuthorizedNetworkResponseArrayOutput) ToAuthorizedNetworkResponseArrayOutputWithContext(ctx context.Context) AuthorizedNetworkResponseArrayOutput {
+	return o
+}
+
+func (o AuthorizedNetworkResponseArrayOutput) Index(i pulumi.IntInput) AuthorizedNetworkResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthorizedNetworkResponse {
+		return vs[0].([]AuthorizedNetworkResponse)[vs[1].(int)]
+	}).(AuthorizedNetworkResponseOutput)
+}
+
 // Message describing the user-specified automated backup policy. All fields in the automated backup policy are optional. Defaults for each field are provided if they are not set.
 type AutomatedBackupPolicy struct {
 	// The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed. The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it defaults to 1 hour.
@@ -851,6 +997,184 @@ func (o ContinuousBackupInfoResponseOutput) Schedule() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v ContinuousBackupInfoResponse) []string { return v.Schedule }).(pulumi.StringArrayOutput)
 }
 
+// DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this deny period. The start_date must be less than the end_date.
+type DenyMaintenancePeriod struct {
+	// Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be before the end.
+	EndDate *GoogleTypeDate `pulumi:"endDate"`
+	// Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be the same or after the start.
+	StartDate *GoogleTypeDate `pulumi:"startDate"`
+	// Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC
+	Time *GoogleTypeTimeOfDay `pulumi:"time"`
+}
+
+// DenyMaintenancePeriodInput is an input type that accepts DenyMaintenancePeriodArgs and DenyMaintenancePeriodOutput values.
+// You can construct a concrete instance of `DenyMaintenancePeriodInput` via:
+//
+//	DenyMaintenancePeriodArgs{...}
+type DenyMaintenancePeriodInput interface {
+	pulumi.Input
+
+	ToDenyMaintenancePeriodOutput() DenyMaintenancePeriodOutput
+	ToDenyMaintenancePeriodOutputWithContext(context.Context) DenyMaintenancePeriodOutput
+}
+
+// DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this deny period. The start_date must be less than the end_date.
+type DenyMaintenancePeriodArgs struct {
+	// Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be before the end.
+	EndDate GoogleTypeDatePtrInput `pulumi:"endDate"`
+	// Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be the same or after the start.
+	StartDate GoogleTypeDatePtrInput `pulumi:"startDate"`
+	// Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC
+	Time GoogleTypeTimeOfDayPtrInput `pulumi:"time"`
+}
+
+func (DenyMaintenancePeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (i DenyMaintenancePeriodArgs) ToDenyMaintenancePeriodOutput() DenyMaintenancePeriodOutput {
+	return i.ToDenyMaintenancePeriodOutputWithContext(context.Background())
+}
+
+func (i DenyMaintenancePeriodArgs) ToDenyMaintenancePeriodOutputWithContext(ctx context.Context) DenyMaintenancePeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyMaintenancePeriodOutput)
+}
+
+// DenyMaintenancePeriodArrayInput is an input type that accepts DenyMaintenancePeriodArray and DenyMaintenancePeriodArrayOutput values.
+// You can construct a concrete instance of `DenyMaintenancePeriodArrayInput` via:
+//
+//	DenyMaintenancePeriodArray{ DenyMaintenancePeriodArgs{...} }
+type DenyMaintenancePeriodArrayInput interface {
+	pulumi.Input
+
+	ToDenyMaintenancePeriodArrayOutput() DenyMaintenancePeriodArrayOutput
+	ToDenyMaintenancePeriodArrayOutputWithContext(context.Context) DenyMaintenancePeriodArrayOutput
+}
+
+type DenyMaintenancePeriodArray []DenyMaintenancePeriodInput
+
+func (DenyMaintenancePeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (i DenyMaintenancePeriodArray) ToDenyMaintenancePeriodArrayOutput() DenyMaintenancePeriodArrayOutput {
+	return i.ToDenyMaintenancePeriodArrayOutputWithContext(context.Background())
+}
+
+func (i DenyMaintenancePeriodArray) ToDenyMaintenancePeriodArrayOutputWithContext(ctx context.Context) DenyMaintenancePeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyMaintenancePeriodArrayOutput)
+}
+
+// DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this deny period. The start_date must be less than the end_date.
+type DenyMaintenancePeriodOutput struct{ *pulumi.OutputState }
+
+func (DenyMaintenancePeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (o DenyMaintenancePeriodOutput) ToDenyMaintenancePeriodOutput() DenyMaintenancePeriodOutput {
+	return o
+}
+
+func (o DenyMaintenancePeriodOutput) ToDenyMaintenancePeriodOutputWithContext(ctx context.Context) DenyMaintenancePeriodOutput {
+	return o
+}
+
+// Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be before the end.
+func (o DenyMaintenancePeriodOutput) EndDate() GoogleTypeDatePtrOutput {
+	return o.ApplyT(func(v DenyMaintenancePeriod) *GoogleTypeDate { return v.EndDate }).(GoogleTypeDatePtrOutput)
+}
+
+// Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be the same or after the start.
+func (o DenyMaintenancePeriodOutput) StartDate() GoogleTypeDatePtrOutput {
+	return o.ApplyT(func(v DenyMaintenancePeriod) *GoogleTypeDate { return v.StartDate }).(GoogleTypeDatePtrOutput)
+}
+
+// Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC
+func (o DenyMaintenancePeriodOutput) Time() GoogleTypeTimeOfDayPtrOutput {
+	return o.ApplyT(func(v DenyMaintenancePeriod) *GoogleTypeTimeOfDay { return v.Time }).(GoogleTypeTimeOfDayPtrOutput)
+}
+
+type DenyMaintenancePeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (DenyMaintenancePeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (o DenyMaintenancePeriodArrayOutput) ToDenyMaintenancePeriodArrayOutput() DenyMaintenancePeriodArrayOutput {
+	return o
+}
+
+func (o DenyMaintenancePeriodArrayOutput) ToDenyMaintenancePeriodArrayOutputWithContext(ctx context.Context) DenyMaintenancePeriodArrayOutput {
+	return o
+}
+
+func (o DenyMaintenancePeriodArrayOutput) Index(i pulumi.IntInput) DenyMaintenancePeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DenyMaintenancePeriod {
+		return vs[0].([]DenyMaintenancePeriod)[vs[1].(int)]
+	}).(DenyMaintenancePeriodOutput)
+}
+
+// DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this deny period. The start_date must be less than the end_date.
+type DenyMaintenancePeriodResponse struct {
+	// Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be before the end.
+	EndDate GoogleTypeDateResponse `pulumi:"endDate"`
+	// Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be the same or after the start.
+	StartDate GoogleTypeDateResponse `pulumi:"startDate"`
+	// Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC
+	Time GoogleTypeTimeOfDayResponse `pulumi:"time"`
+}
+
+// DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this deny period. The start_date must be less than the end_date.
+type DenyMaintenancePeriodResponseOutput struct{ *pulumi.OutputState }
+
+func (DenyMaintenancePeriodResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyMaintenancePeriodResponse)(nil)).Elem()
+}
+
+func (o DenyMaintenancePeriodResponseOutput) ToDenyMaintenancePeriodResponseOutput() DenyMaintenancePeriodResponseOutput {
+	return o
+}
+
+func (o DenyMaintenancePeriodResponseOutput) ToDenyMaintenancePeriodResponseOutputWithContext(ctx context.Context) DenyMaintenancePeriodResponseOutput {
+	return o
+}
+
+// Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be before the end.
+func (o DenyMaintenancePeriodResponseOutput) EndDate() GoogleTypeDateResponseOutput {
+	return o.ApplyT(func(v DenyMaintenancePeriodResponse) GoogleTypeDateResponse { return v.EndDate }).(GoogleTypeDateResponseOutput)
+}
+
+// Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be the same or after the start.
+func (o DenyMaintenancePeriodResponseOutput) StartDate() GoogleTypeDateResponseOutput {
+	return o.ApplyT(func(v DenyMaintenancePeriodResponse) GoogleTypeDateResponse { return v.StartDate }).(GoogleTypeDateResponseOutput)
+}
+
+// Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC
+func (o DenyMaintenancePeriodResponseOutput) Time() GoogleTypeTimeOfDayResponseOutput {
+	return o.ApplyT(func(v DenyMaintenancePeriodResponse) GoogleTypeTimeOfDayResponse { return v.Time }).(GoogleTypeTimeOfDayResponseOutput)
+}
+
+type DenyMaintenancePeriodResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DenyMaintenancePeriodResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DenyMaintenancePeriodResponse)(nil)).Elem()
+}
+
+func (o DenyMaintenancePeriodResponseArrayOutput) ToDenyMaintenancePeriodResponseArrayOutput() DenyMaintenancePeriodResponseArrayOutput {
+	return o
+}
+
+func (o DenyMaintenancePeriodResponseArrayOutput) ToDenyMaintenancePeriodResponseArrayOutputWithContext(ctx context.Context) DenyMaintenancePeriodResponseArrayOutput {
+	return o
+}
+
+func (o DenyMaintenancePeriodResponseArrayOutput) Index(i pulumi.IntInput) DenyMaintenancePeriodResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DenyMaintenancePeriodResponse {
+		return vs[0].([]DenyMaintenancePeriodResponse)[vs[1].(int)]
+	}).(DenyMaintenancePeriodResponseOutput)
+}
+
 // EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 type EncryptionConfig struct {
 	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
@@ -1050,6 +1374,518 @@ func (o EncryptionInfoResponseOutput) KmsKeyVersions() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v EncryptionInfoResponse) []string { return v.KmsKeyVersions }).(pulumi.StringArrayOutput)
 }
 
+// Cluster level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+type GeminiClusterConfig struct {
+}
+
+// GeminiClusterConfigInput is an input type that accepts GeminiClusterConfigArgs and GeminiClusterConfigOutput values.
+// You can construct a concrete instance of `GeminiClusterConfigInput` via:
+//
+//	GeminiClusterConfigArgs{...}
+type GeminiClusterConfigInput interface {
+	pulumi.Input
+
+	ToGeminiClusterConfigOutput() GeminiClusterConfigOutput
+	ToGeminiClusterConfigOutputWithContext(context.Context) GeminiClusterConfigOutput
+}
+
+// Cluster level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+type GeminiClusterConfigArgs struct {
+}
+
+func (GeminiClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeminiClusterConfig)(nil)).Elem()
+}
+
+func (i GeminiClusterConfigArgs) ToGeminiClusterConfigOutput() GeminiClusterConfigOutput {
+	return i.ToGeminiClusterConfigOutputWithContext(context.Background())
+}
+
+func (i GeminiClusterConfigArgs) ToGeminiClusterConfigOutputWithContext(ctx context.Context) GeminiClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeminiClusterConfigOutput)
+}
+
+func (i GeminiClusterConfigArgs) ToGeminiClusterConfigPtrOutput() GeminiClusterConfigPtrOutput {
+	return i.ToGeminiClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GeminiClusterConfigArgs) ToGeminiClusterConfigPtrOutputWithContext(ctx context.Context) GeminiClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeminiClusterConfigOutput).ToGeminiClusterConfigPtrOutputWithContext(ctx)
+}
+
+// GeminiClusterConfigPtrInput is an input type that accepts GeminiClusterConfigArgs, GeminiClusterConfigPtr and GeminiClusterConfigPtrOutput values.
+// You can construct a concrete instance of `GeminiClusterConfigPtrInput` via:
+//
+//	        GeminiClusterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeminiClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToGeminiClusterConfigPtrOutput() GeminiClusterConfigPtrOutput
+	ToGeminiClusterConfigPtrOutputWithContext(context.Context) GeminiClusterConfigPtrOutput
+}
+
+type geminiClusterConfigPtrType GeminiClusterConfigArgs
+
+func GeminiClusterConfigPtr(v *GeminiClusterConfigArgs) GeminiClusterConfigPtrInput {
+	return (*geminiClusterConfigPtrType)(v)
+}
+
+func (*geminiClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeminiClusterConfig)(nil)).Elem()
+}
+
+func (i *geminiClusterConfigPtrType) ToGeminiClusterConfigPtrOutput() GeminiClusterConfigPtrOutput {
+	return i.ToGeminiClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *geminiClusterConfigPtrType) ToGeminiClusterConfigPtrOutputWithContext(ctx context.Context) GeminiClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeminiClusterConfigPtrOutput)
+}
+
+// Cluster level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+type GeminiClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (GeminiClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeminiClusterConfig)(nil)).Elem()
+}
+
+func (o GeminiClusterConfigOutput) ToGeminiClusterConfigOutput() GeminiClusterConfigOutput {
+	return o
+}
+
+func (o GeminiClusterConfigOutput) ToGeminiClusterConfigOutputWithContext(ctx context.Context) GeminiClusterConfigOutput {
+	return o
+}
+
+func (o GeminiClusterConfigOutput) ToGeminiClusterConfigPtrOutput() GeminiClusterConfigPtrOutput {
+	return o.ToGeminiClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GeminiClusterConfigOutput) ToGeminiClusterConfigPtrOutputWithContext(ctx context.Context) GeminiClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeminiClusterConfig) *GeminiClusterConfig {
+		return &v
+	}).(GeminiClusterConfigPtrOutput)
+}
+
+type GeminiClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GeminiClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeminiClusterConfig)(nil)).Elem()
+}
+
+func (o GeminiClusterConfigPtrOutput) ToGeminiClusterConfigPtrOutput() GeminiClusterConfigPtrOutput {
+	return o
+}
+
+func (o GeminiClusterConfigPtrOutput) ToGeminiClusterConfigPtrOutputWithContext(ctx context.Context) GeminiClusterConfigPtrOutput {
+	return o
+}
+
+func (o GeminiClusterConfigPtrOutput) Elem() GeminiClusterConfigOutput {
+	return o.ApplyT(func(v *GeminiClusterConfig) GeminiClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GeminiClusterConfig
+		return ret
+	}).(GeminiClusterConfigOutput)
+}
+
+// Cluster level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+type GeminiClusterConfigResponse struct {
+	// Whether the Gemini in Databases add-on is enabled for the cluster. It will be true only if the add-on has been enabled for the billing account corresponding to the cluster. Its status is toggled from the Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
+	Entitled bool `pulumi:"entitled"`
+}
+
+// Cluster level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+type GeminiClusterConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GeminiClusterConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeminiClusterConfigResponse)(nil)).Elem()
+}
+
+func (o GeminiClusterConfigResponseOutput) ToGeminiClusterConfigResponseOutput() GeminiClusterConfigResponseOutput {
+	return o
+}
+
+func (o GeminiClusterConfigResponseOutput) ToGeminiClusterConfigResponseOutputWithContext(ctx context.Context) GeminiClusterConfigResponseOutput {
+	return o
+}
+
+// Whether the Gemini in Databases add-on is enabled for the cluster. It will be true only if the add-on has been enabled for the billing account corresponding to the cluster. Its status is toggled from the Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
+func (o GeminiClusterConfigResponseOutput) Entitled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GeminiClusterConfigResponse) bool { return v.Entitled }).(pulumi.BoolOutput)
+}
+
+// Instance level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+type GeminiInstanceConfig struct {
+}
+
+// GeminiInstanceConfigInput is an input type that accepts GeminiInstanceConfigArgs and GeminiInstanceConfigOutput values.
+// You can construct a concrete instance of `GeminiInstanceConfigInput` via:
+//
+//	GeminiInstanceConfigArgs{...}
+type GeminiInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGeminiInstanceConfigOutput() GeminiInstanceConfigOutput
+	ToGeminiInstanceConfigOutputWithContext(context.Context) GeminiInstanceConfigOutput
+}
+
+// Instance level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+type GeminiInstanceConfigArgs struct {
+}
+
+func (GeminiInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeminiInstanceConfig)(nil)).Elem()
+}
+
+func (i GeminiInstanceConfigArgs) ToGeminiInstanceConfigOutput() GeminiInstanceConfigOutput {
+	return i.ToGeminiInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GeminiInstanceConfigArgs) ToGeminiInstanceConfigOutputWithContext(ctx context.Context) GeminiInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeminiInstanceConfigOutput)
+}
+
+func (i GeminiInstanceConfigArgs) ToGeminiInstanceConfigPtrOutput() GeminiInstanceConfigPtrOutput {
+	return i.ToGeminiInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GeminiInstanceConfigArgs) ToGeminiInstanceConfigPtrOutputWithContext(ctx context.Context) GeminiInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeminiInstanceConfigOutput).ToGeminiInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// GeminiInstanceConfigPtrInput is an input type that accepts GeminiInstanceConfigArgs, GeminiInstanceConfigPtr and GeminiInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `GeminiInstanceConfigPtrInput` via:
+//
+//	        GeminiInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeminiInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToGeminiInstanceConfigPtrOutput() GeminiInstanceConfigPtrOutput
+	ToGeminiInstanceConfigPtrOutputWithContext(context.Context) GeminiInstanceConfigPtrOutput
+}
+
+type geminiInstanceConfigPtrType GeminiInstanceConfigArgs
+
+func GeminiInstanceConfigPtr(v *GeminiInstanceConfigArgs) GeminiInstanceConfigPtrInput {
+	return (*geminiInstanceConfigPtrType)(v)
+}
+
+func (*geminiInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeminiInstanceConfig)(nil)).Elem()
+}
+
+func (i *geminiInstanceConfigPtrType) ToGeminiInstanceConfigPtrOutput() GeminiInstanceConfigPtrOutput {
+	return i.ToGeminiInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *geminiInstanceConfigPtrType) ToGeminiInstanceConfigPtrOutputWithContext(ctx context.Context) GeminiInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeminiInstanceConfigPtrOutput)
+}
+
+// Instance level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+type GeminiInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GeminiInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeminiInstanceConfig)(nil)).Elem()
+}
+
+func (o GeminiInstanceConfigOutput) ToGeminiInstanceConfigOutput() GeminiInstanceConfigOutput {
+	return o
+}
+
+func (o GeminiInstanceConfigOutput) ToGeminiInstanceConfigOutputWithContext(ctx context.Context) GeminiInstanceConfigOutput {
+	return o
+}
+
+func (o GeminiInstanceConfigOutput) ToGeminiInstanceConfigPtrOutput() GeminiInstanceConfigPtrOutput {
+	return o.ToGeminiInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GeminiInstanceConfigOutput) ToGeminiInstanceConfigPtrOutputWithContext(ctx context.Context) GeminiInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeminiInstanceConfig) *GeminiInstanceConfig {
+		return &v
+	}).(GeminiInstanceConfigPtrOutput)
+}
+
+type GeminiInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GeminiInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeminiInstanceConfig)(nil)).Elem()
+}
+
+func (o GeminiInstanceConfigPtrOutput) ToGeminiInstanceConfigPtrOutput() GeminiInstanceConfigPtrOutput {
+	return o
+}
+
+func (o GeminiInstanceConfigPtrOutput) ToGeminiInstanceConfigPtrOutputWithContext(ctx context.Context) GeminiInstanceConfigPtrOutput {
+	return o
+}
+
+func (o GeminiInstanceConfigPtrOutput) Elem() GeminiInstanceConfigOutput {
+	return o.ApplyT(func(v *GeminiInstanceConfig) GeminiInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GeminiInstanceConfig
+		return ret
+	}).(GeminiInstanceConfigOutput)
+}
+
+// Instance level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+type GeminiInstanceConfigResponse struct {
+	// Whether the Gemini in Databases add-on is enabled for the instance. It will be true only if the add-on has been enabled for the billing account corresponding to the instance. Its status is toggled from the Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
+	Entitled bool `pulumi:"entitled"`
+}
+
+// Instance level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+type GeminiInstanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GeminiInstanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeminiInstanceConfigResponse)(nil)).Elem()
+}
+
+func (o GeminiInstanceConfigResponseOutput) ToGeminiInstanceConfigResponseOutput() GeminiInstanceConfigResponseOutput {
+	return o
+}
+
+func (o GeminiInstanceConfigResponseOutput) ToGeminiInstanceConfigResponseOutputWithContext(ctx context.Context) GeminiInstanceConfigResponseOutput {
+	return o
+}
+
+// Whether the Gemini in Databases add-on is enabled for the instance. It will be true only if the add-on has been enabled for the billing account corresponding to the instance. Its status is toggled from the Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
+func (o GeminiInstanceConfigResponseOutput) Entitled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GeminiInstanceConfigResponse) bool { return v.Entitled }).(pulumi.BoolOutput)
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type GoogleTypeDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// GoogleTypeDateInput is an input type that accepts GoogleTypeDateArgs and GoogleTypeDateOutput values.
+// You can construct a concrete instance of `GoogleTypeDateInput` via:
+//
+//	GoogleTypeDateArgs{...}
+type GoogleTypeDateInput interface {
+	pulumi.Input
+
+	ToGoogleTypeDateOutput() GoogleTypeDateOutput
+	ToGoogleTypeDateOutputWithContext(context.Context) GoogleTypeDateOutput
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type GoogleTypeDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (GoogleTypeDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDate)(nil)).Elem()
+}
+
+func (i GoogleTypeDateArgs) ToGoogleTypeDateOutput() GoogleTypeDateOutput {
+	return i.ToGoogleTypeDateOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeDateArgs) ToGoogleTypeDateOutputWithContext(ctx context.Context) GoogleTypeDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateOutput)
+}
+
+func (i GoogleTypeDateArgs) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
+	return i.ToGoogleTypeDatePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeDateArgs) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateOutput).ToGoogleTypeDatePtrOutputWithContext(ctx)
+}
+
+// GoogleTypeDatePtrInput is an input type that accepts GoogleTypeDateArgs, GoogleTypeDatePtr and GoogleTypeDatePtrOutput values.
+// You can construct a concrete instance of `GoogleTypeDatePtrInput` via:
+//
+//	        GoogleTypeDateArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleTypeDatePtrInput interface {
+	pulumi.Input
+
+	ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput
+	ToGoogleTypeDatePtrOutputWithContext(context.Context) GoogleTypeDatePtrOutput
+}
+
+type googleTypeDatePtrType GoogleTypeDateArgs
+
+func GoogleTypeDatePtr(v *GoogleTypeDateArgs) GoogleTypeDatePtrInput {
+	return (*googleTypeDatePtrType)(v)
+}
+
+func (*googleTypeDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeDate)(nil)).Elem()
+}
+
+func (i *googleTypeDatePtrType) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
+	return i.ToGoogleTypeDatePtrOutputWithContext(context.Background())
+}
+
+func (i *googleTypeDatePtrType) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDatePtrOutput)
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type GoogleTypeDateOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDate)(nil)).Elem()
+}
+
+func (o GoogleTypeDateOutput) ToGoogleTypeDateOutput() GoogleTypeDateOutput {
+	return o
+}
+
+func (o GoogleTypeDateOutput) ToGoogleTypeDateOutputWithContext(ctx context.Context) GoogleTypeDateOutput {
+	return o
+}
+
+func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
+	return o.ToGoogleTypeDatePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDate) *GoogleTypeDate {
+		return &v
+	}).(GoogleTypeDatePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o GoogleTypeDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o GoogleTypeDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o GoogleTypeDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type GoogleTypeDatePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeDate)(nil)).Elem()
+}
+
+func (o GoogleTypeDatePtrOutput) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
+	return o
+}
+
+func (o GoogleTypeDatePtrOutput) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
+	return o
+}
+
+func (o GoogleTypeDatePtrOutput) Elem() GoogleTypeDateOutput {
+	return o.ApplyT(func(v *GoogleTypeDate) GoogleTypeDate {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeDate
+		return ret
+	}).(GoogleTypeDateOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o GoogleTypeDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o GoogleTypeDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o GoogleTypeDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type GoogleTypeDateResponse struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year int `pulumi:"year"`
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type GoogleTypeDateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDateResponse)(nil)).Elem()
+}
+
+func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutput() GoogleTypeDateResponseOutput {
+	return o
+}
+
+func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutputWithContext(ctx context.Context) GoogleTypeDateResponseOutput {
+	return o
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o GoogleTypeDateResponseOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o GoogleTypeDateResponseOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Month }).(pulumi.IntOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o GoogleTypeDateResponseOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Year }).(pulumi.IntOutput)
+}
+
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type GoogleTypeTimeOfDay struct {
 	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1097,6 +1933,47 @@ func (i GoogleTypeTimeOfDayArgs) ToGoogleTypeTimeOfDayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeTimeOfDayOutput)
 }
 
+func (i GoogleTypeTimeOfDayArgs) ToGoogleTypeTimeOfDayPtrOutput() GoogleTypeTimeOfDayPtrOutput {
+	return i.ToGoogleTypeTimeOfDayPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeTimeOfDayArgs) ToGoogleTypeTimeOfDayPtrOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeTimeOfDayOutput).ToGoogleTypeTimeOfDayPtrOutputWithContext(ctx)
+}
+
+// GoogleTypeTimeOfDayPtrInput is an input type that accepts GoogleTypeTimeOfDayArgs, GoogleTypeTimeOfDayPtr and GoogleTypeTimeOfDayPtrOutput values.
+// You can construct a concrete instance of `GoogleTypeTimeOfDayPtrInput` via:
+//
+//	        GoogleTypeTimeOfDayArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleTypeTimeOfDayPtrInput interface {
+	pulumi.Input
+
+	ToGoogleTypeTimeOfDayPtrOutput() GoogleTypeTimeOfDayPtrOutput
+	ToGoogleTypeTimeOfDayPtrOutputWithContext(context.Context) GoogleTypeTimeOfDayPtrOutput
+}
+
+type googleTypeTimeOfDayPtrType GoogleTypeTimeOfDayArgs
+
+func GoogleTypeTimeOfDayPtr(v *GoogleTypeTimeOfDayArgs) GoogleTypeTimeOfDayPtrInput {
+	return (*googleTypeTimeOfDayPtrType)(v)
+}
+
+func (*googleTypeTimeOfDayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeTimeOfDay)(nil)).Elem()
+}
+
+func (i *googleTypeTimeOfDayPtrType) ToGoogleTypeTimeOfDayPtrOutput() GoogleTypeTimeOfDayPtrOutput {
+	return i.ToGoogleTypeTimeOfDayPtrOutputWithContext(context.Background())
+}
+
+func (i *googleTypeTimeOfDayPtrType) ToGoogleTypeTimeOfDayPtrOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeTimeOfDayPtrOutput)
+}
+
 // GoogleTypeTimeOfDayArrayInput is an input type that accepts GoogleTypeTimeOfDayArray and GoogleTypeTimeOfDayArrayOutput values.
 // You can construct a concrete instance of `GoogleTypeTimeOfDayArrayInput` via:
 //
@@ -1137,6 +2014,16 @@ func (o GoogleTypeTimeOfDayOutput) ToGoogleTypeTimeOfDayOutputWithContext(ctx co
 	return o
 }
 
+func (o GoogleTypeTimeOfDayOutput) ToGoogleTypeTimeOfDayPtrOutput() GoogleTypeTimeOfDayPtrOutput {
+	return o.ToGoogleTypeTimeOfDayPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleTypeTimeOfDayOutput) ToGoogleTypeTimeOfDayPtrOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeTimeOfDay) *GoogleTypeTimeOfDay {
+		return &v
+	}).(GoogleTypeTimeOfDayPtrOutput)
+}
+
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 func (o GoogleTypeTimeOfDayOutput) Hours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleTypeTimeOfDay) *int { return v.Hours }).(pulumi.IntPtrOutput)
@@ -1155,6 +2042,70 @@ func (o GoogleTypeTimeOfDayOutput) Nanos() pulumi.IntPtrOutput {
 // Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
 func (o GoogleTypeTimeOfDayOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleTypeTimeOfDay) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type GoogleTypeTimeOfDayPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeTimeOfDayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeTimeOfDay)(nil)).Elem()
+}
+
+func (o GoogleTypeTimeOfDayPtrOutput) ToGoogleTypeTimeOfDayPtrOutput() GoogleTypeTimeOfDayPtrOutput {
+	return o
+}
+
+func (o GoogleTypeTimeOfDayPtrOutput) ToGoogleTypeTimeOfDayPtrOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayPtrOutput {
+	return o
+}
+
+func (o GoogleTypeTimeOfDayPtrOutput) Elem() GoogleTypeTimeOfDayOutput {
+	return o.ApplyT(func(v *GoogleTypeTimeOfDay) GoogleTypeTimeOfDay {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeTimeOfDay
+		return ret
+	}).(GoogleTypeTimeOfDayOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o GoogleTypeTimeOfDayPtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeTimeOfDay) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o GoogleTypeTimeOfDayPtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeTimeOfDay) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o GoogleTypeTimeOfDayPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeTimeOfDay) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o GoogleTypeTimeOfDayPtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeTimeOfDay) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type GoogleTypeTimeOfDayArrayOutput struct{ *pulumi.OutputState }
@@ -1242,6 +2193,198 @@ func (o GoogleTypeTimeOfDayResponseArrayOutput) Index(i pulumi.IntInput) GoogleT
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleTypeTimeOfDayResponse {
 		return vs[0].([]GoogleTypeTimeOfDayResponse)[vs[1].(int)]
 	}).(GoogleTypeTimeOfDayResponseOutput)
+}
+
+// Metadata related to instance level network configuration.
+type InstanceNetworkConfig struct {
+	// Optional. A list of external network authorized to access this instance.
+	AuthorizedExternalNetworks []AuthorizedNetwork `pulumi:"authorizedExternalNetworks"`
+	// Optional. Enabling public ip for the instance.
+	EnablePublicIp *bool `pulumi:"enablePublicIp"`
+}
+
+// InstanceNetworkConfigInput is an input type that accepts InstanceNetworkConfigArgs and InstanceNetworkConfigOutput values.
+// You can construct a concrete instance of `InstanceNetworkConfigInput` via:
+//
+//	InstanceNetworkConfigArgs{...}
+type InstanceNetworkConfigInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkConfigOutput() InstanceNetworkConfigOutput
+	ToInstanceNetworkConfigOutputWithContext(context.Context) InstanceNetworkConfigOutput
+}
+
+// Metadata related to instance level network configuration.
+type InstanceNetworkConfigArgs struct {
+	// Optional. A list of external network authorized to access this instance.
+	AuthorizedExternalNetworks AuthorizedNetworkArrayInput `pulumi:"authorizedExternalNetworks"`
+	// Optional. Enabling public ip for the instance.
+	EnablePublicIp pulumi.BoolPtrInput `pulumi:"enablePublicIp"`
+}
+
+func (InstanceNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigOutput() InstanceNetworkConfigOutput {
+	return i.ToInstanceNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigOutputWithContext(ctx context.Context) InstanceNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigOutput)
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return i.ToInstanceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigOutput).ToInstanceNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkConfigPtrInput is an input type that accepts InstanceNetworkConfigArgs, InstanceNetworkConfigPtr and InstanceNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkConfigPtrInput` via:
+//
+//	        InstanceNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput
+	ToInstanceNetworkConfigPtrOutputWithContext(context.Context) InstanceNetworkConfigPtrOutput
+}
+
+type instanceNetworkConfigPtrType InstanceNetworkConfigArgs
+
+func InstanceNetworkConfigPtr(v *InstanceNetworkConfigArgs) InstanceNetworkConfigPtrInput {
+	return (*instanceNetworkConfigPtrType)(v)
+}
+
+func (*instanceNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (i *instanceNetworkConfigPtrType) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return i.ToInstanceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkConfigPtrType) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigPtrOutput)
+}
+
+// Metadata related to instance level network configuration.
+type InstanceNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigOutput() InstanceNetworkConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigOutputWithContext(ctx context.Context) InstanceNetworkConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return o.ToInstanceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkConfig) *InstanceNetworkConfig {
+		return &v
+	}).(InstanceNetworkConfigPtrOutput)
+}
+
+// Optional. A list of external network authorized to access this instance.
+func (o InstanceNetworkConfigOutput) AuthorizedExternalNetworks() AuthorizedNetworkArrayOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) []AuthorizedNetwork { return v.AuthorizedExternalNetworks }).(AuthorizedNetworkArrayOutput)
+}
+
+// Optional. Enabling public ip for the instance.
+func (o InstanceNetworkConfigOutput) EnablePublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) *bool { return v.EnablePublicIp }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigPtrOutput) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigPtrOutput) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigPtrOutput) Elem() InstanceNetworkConfigOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) InstanceNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkConfig
+		return ret
+	}).(InstanceNetworkConfigOutput)
+}
+
+// Optional. A list of external network authorized to access this instance.
+func (o InstanceNetworkConfigPtrOutput) AuthorizedExternalNetworks() AuthorizedNetworkArrayOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) []AuthorizedNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizedExternalNetworks
+	}).(AuthorizedNetworkArrayOutput)
+}
+
+// Optional. Enabling public ip for the instance.
+func (o InstanceNetworkConfigPtrOutput) EnablePublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePublicIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Metadata related to instance level network configuration.
+type InstanceNetworkConfigResponse struct {
+	// Optional. A list of external network authorized to access this instance.
+	AuthorizedExternalNetworks []AuthorizedNetworkResponse `pulumi:"authorizedExternalNetworks"`
+	// Optional. Enabling public ip for the instance.
+	EnablePublicIp bool `pulumi:"enablePublicIp"`
+}
+
+// Metadata related to instance level network configuration.
+type InstanceNetworkConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfigResponse)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigResponseOutput) ToInstanceNetworkConfigResponseOutput() InstanceNetworkConfigResponseOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigResponseOutput) ToInstanceNetworkConfigResponseOutputWithContext(ctx context.Context) InstanceNetworkConfigResponseOutput {
+	return o
+}
+
+// Optional. A list of external network authorized to access this instance.
+func (o InstanceNetworkConfigResponseOutput) AuthorizedExternalNetworks() AuthorizedNetworkResponseArrayOutput {
+	return o.ApplyT(func(v InstanceNetworkConfigResponse) []AuthorizedNetworkResponse { return v.AuthorizedExternalNetworks }).(AuthorizedNetworkResponseArrayOutput)
+}
+
+// Optional. Enabling public ip for the instance.
+func (o InstanceNetworkConfigResponseOutput) EnablePublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceNetworkConfigResponse) bool { return v.EnablePublicIp }).(pulumi.BoolOutput)
 }
 
 // MachineConfig describes the configuration of a machine.
@@ -1410,6 +2553,388 @@ func (o MachineConfigResponseOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v MachineConfigResponse) int { return v.CpuCount }).(pulumi.IntOutput)
 }
 
+// MaintenanceSchedule stores the maintenance schedule generated from the MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The schedule is cleared once the update takes place. This field cannot be manually changed; modify the MaintenanceUpdatePolicy instead.
+type MaintenanceScheduleResponse struct {
+	// The scheduled start time for the maintenance.
+	StartTime string `pulumi:"startTime"`
+}
+
+// MaintenanceSchedule stores the maintenance schedule generated from the MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The schedule is cleared once the update takes place. This field cannot be manually changed; modify the MaintenanceUpdatePolicy instead.
+type MaintenanceScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceScheduleResponse)(nil)).Elem()
+}
+
+func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutput() MaintenanceScheduleResponseOutput {
+	return o
+}
+
+func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutputWithContext(ctx context.Context) MaintenanceScheduleResponseOutput {
+	return o
+}
+
+// The scheduled start time for the maintenance.
+func (o MaintenanceScheduleResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// MaintenanceUpdatePolicy defines the policy for system updates.
+type MaintenanceUpdatePolicy struct {
+	// Periods to deny maintenance. Currently limited to 1.
+	DenyMaintenancePeriods []DenyMaintenancePeriod `pulumi:"denyMaintenancePeriods"`
+	// Preferred windows to perform maintenance. Currently limited to 1.
+	MaintenanceWindows []MaintenanceWindow `pulumi:"maintenanceWindows"`
+}
+
+// MaintenanceUpdatePolicyInput is an input type that accepts MaintenanceUpdatePolicyArgs and MaintenanceUpdatePolicyOutput values.
+// You can construct a concrete instance of `MaintenanceUpdatePolicyInput` via:
+//
+//	MaintenanceUpdatePolicyArgs{...}
+type MaintenanceUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToMaintenanceUpdatePolicyOutput() MaintenanceUpdatePolicyOutput
+	ToMaintenanceUpdatePolicyOutputWithContext(context.Context) MaintenanceUpdatePolicyOutput
+}
+
+// MaintenanceUpdatePolicy defines the policy for system updates.
+type MaintenanceUpdatePolicyArgs struct {
+	// Periods to deny maintenance. Currently limited to 1.
+	DenyMaintenancePeriods DenyMaintenancePeriodArrayInput `pulumi:"denyMaintenancePeriods"`
+	// Preferred windows to perform maintenance. Currently limited to 1.
+	MaintenanceWindows MaintenanceWindowArrayInput `pulumi:"maintenanceWindows"`
+}
+
+func (MaintenanceUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceUpdatePolicy)(nil)).Elem()
+}
+
+func (i MaintenanceUpdatePolicyArgs) ToMaintenanceUpdatePolicyOutput() MaintenanceUpdatePolicyOutput {
+	return i.ToMaintenanceUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i MaintenanceUpdatePolicyArgs) ToMaintenanceUpdatePolicyOutputWithContext(ctx context.Context) MaintenanceUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceUpdatePolicyOutput)
+}
+
+func (i MaintenanceUpdatePolicyArgs) ToMaintenanceUpdatePolicyPtrOutput() MaintenanceUpdatePolicyPtrOutput {
+	return i.ToMaintenanceUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i MaintenanceUpdatePolicyArgs) ToMaintenanceUpdatePolicyPtrOutputWithContext(ctx context.Context) MaintenanceUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceUpdatePolicyOutput).ToMaintenanceUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// MaintenanceUpdatePolicyPtrInput is an input type that accepts MaintenanceUpdatePolicyArgs, MaintenanceUpdatePolicyPtr and MaintenanceUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `MaintenanceUpdatePolicyPtrInput` via:
+//
+//	        MaintenanceUpdatePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type MaintenanceUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceUpdatePolicyPtrOutput() MaintenanceUpdatePolicyPtrOutput
+	ToMaintenanceUpdatePolicyPtrOutputWithContext(context.Context) MaintenanceUpdatePolicyPtrOutput
+}
+
+type maintenanceUpdatePolicyPtrType MaintenanceUpdatePolicyArgs
+
+func MaintenanceUpdatePolicyPtr(v *MaintenanceUpdatePolicyArgs) MaintenanceUpdatePolicyPtrInput {
+	return (*maintenanceUpdatePolicyPtrType)(v)
+}
+
+func (*maintenanceUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceUpdatePolicy)(nil)).Elem()
+}
+
+func (i *maintenanceUpdatePolicyPtrType) ToMaintenanceUpdatePolicyPtrOutput() MaintenanceUpdatePolicyPtrOutput {
+	return i.ToMaintenanceUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *maintenanceUpdatePolicyPtrType) ToMaintenanceUpdatePolicyPtrOutputWithContext(ctx context.Context) MaintenanceUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceUpdatePolicyPtrOutput)
+}
+
+// MaintenanceUpdatePolicy defines the policy for system updates.
+type MaintenanceUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceUpdatePolicy)(nil)).Elem()
+}
+
+func (o MaintenanceUpdatePolicyOutput) ToMaintenanceUpdatePolicyOutput() MaintenanceUpdatePolicyOutput {
+	return o
+}
+
+func (o MaintenanceUpdatePolicyOutput) ToMaintenanceUpdatePolicyOutputWithContext(ctx context.Context) MaintenanceUpdatePolicyOutput {
+	return o
+}
+
+func (o MaintenanceUpdatePolicyOutput) ToMaintenanceUpdatePolicyPtrOutput() MaintenanceUpdatePolicyPtrOutput {
+	return o.ToMaintenanceUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceUpdatePolicyOutput) ToMaintenanceUpdatePolicyPtrOutputWithContext(ctx context.Context) MaintenanceUpdatePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceUpdatePolicy) *MaintenanceUpdatePolicy {
+		return &v
+	}).(MaintenanceUpdatePolicyPtrOutput)
+}
+
+// Periods to deny maintenance. Currently limited to 1.
+func (o MaintenanceUpdatePolicyOutput) DenyMaintenancePeriods() DenyMaintenancePeriodArrayOutput {
+	return o.ApplyT(func(v MaintenanceUpdatePolicy) []DenyMaintenancePeriod { return v.DenyMaintenancePeriods }).(DenyMaintenancePeriodArrayOutput)
+}
+
+// Preferred windows to perform maintenance. Currently limited to 1.
+func (o MaintenanceUpdatePolicyOutput) MaintenanceWindows() MaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v MaintenanceUpdatePolicy) []MaintenanceWindow { return v.MaintenanceWindows }).(MaintenanceWindowArrayOutput)
+}
+
+type MaintenanceUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceUpdatePolicy)(nil)).Elem()
+}
+
+func (o MaintenanceUpdatePolicyPtrOutput) ToMaintenanceUpdatePolicyPtrOutput() MaintenanceUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o MaintenanceUpdatePolicyPtrOutput) ToMaintenanceUpdatePolicyPtrOutputWithContext(ctx context.Context) MaintenanceUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o MaintenanceUpdatePolicyPtrOutput) Elem() MaintenanceUpdatePolicyOutput {
+	return o.ApplyT(func(v *MaintenanceUpdatePolicy) MaintenanceUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceUpdatePolicy
+		return ret
+	}).(MaintenanceUpdatePolicyOutput)
+}
+
+// Periods to deny maintenance. Currently limited to 1.
+func (o MaintenanceUpdatePolicyPtrOutput) DenyMaintenancePeriods() DenyMaintenancePeriodArrayOutput {
+	return o.ApplyT(func(v *MaintenanceUpdatePolicy) []DenyMaintenancePeriod {
+		if v == nil {
+			return nil
+		}
+		return v.DenyMaintenancePeriods
+	}).(DenyMaintenancePeriodArrayOutput)
+}
+
+// Preferred windows to perform maintenance. Currently limited to 1.
+func (o MaintenanceUpdatePolicyPtrOutput) MaintenanceWindows() MaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v *MaintenanceUpdatePolicy) []MaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceWindows
+	}).(MaintenanceWindowArrayOutput)
+}
+
+// MaintenanceUpdatePolicy defines the policy for system updates.
+type MaintenanceUpdatePolicyResponse struct {
+	// Periods to deny maintenance. Currently limited to 1.
+	DenyMaintenancePeriods []DenyMaintenancePeriodResponse `pulumi:"denyMaintenancePeriods"`
+	// Preferred windows to perform maintenance. Currently limited to 1.
+	MaintenanceWindows []MaintenanceWindowResponse `pulumi:"maintenanceWindows"`
+}
+
+// MaintenanceUpdatePolicy defines the policy for system updates.
+type MaintenanceUpdatePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceUpdatePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceUpdatePolicyResponse)(nil)).Elem()
+}
+
+func (o MaintenanceUpdatePolicyResponseOutput) ToMaintenanceUpdatePolicyResponseOutput() MaintenanceUpdatePolicyResponseOutput {
+	return o
+}
+
+func (o MaintenanceUpdatePolicyResponseOutput) ToMaintenanceUpdatePolicyResponseOutputWithContext(ctx context.Context) MaintenanceUpdatePolicyResponseOutput {
+	return o
+}
+
+// Periods to deny maintenance. Currently limited to 1.
+func (o MaintenanceUpdatePolicyResponseOutput) DenyMaintenancePeriods() DenyMaintenancePeriodResponseArrayOutput {
+	return o.ApplyT(func(v MaintenanceUpdatePolicyResponse) []DenyMaintenancePeriodResponse {
+		return v.DenyMaintenancePeriods
+	}).(DenyMaintenancePeriodResponseArrayOutput)
+}
+
+// Preferred windows to perform maintenance. Currently limited to 1.
+func (o MaintenanceUpdatePolicyResponseOutput) MaintenanceWindows() MaintenanceWindowResponseArrayOutput {
+	return o.ApplyT(func(v MaintenanceUpdatePolicyResponse) []MaintenanceWindowResponse { return v.MaintenanceWindows }).(MaintenanceWindowResponseArrayOutput)
+}
+
+// MaintenanceWindow specifies a preferred day and time for maintenance.
+type MaintenanceWindow struct {
+	// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+	Day *MaintenanceWindowDay `pulumi:"day"`
+	// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+	StartTime *GoogleTypeTimeOfDay `pulumi:"startTime"`
+}
+
+// MaintenanceWindowInput is an input type that accepts MaintenanceWindowArgs and MaintenanceWindowOutput values.
+// You can construct a concrete instance of `MaintenanceWindowInput` via:
+//
+//	MaintenanceWindowArgs{...}
+type MaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowOutput() MaintenanceWindowOutput
+	ToMaintenanceWindowOutputWithContext(context.Context) MaintenanceWindowOutput
+}
+
+// MaintenanceWindow specifies a preferred day and time for maintenance.
+type MaintenanceWindowArgs struct {
+	// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+	Day MaintenanceWindowDayPtrInput `pulumi:"day"`
+	// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+	StartTime GoogleTypeTimeOfDayPtrInput `pulumi:"startTime"`
+}
+
+func (MaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindow)(nil)).Elem()
+}
+
+func (i MaintenanceWindowArgs) ToMaintenanceWindowOutput() MaintenanceWindowOutput {
+	return i.ToMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowArgs) ToMaintenanceWindowOutputWithContext(ctx context.Context) MaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput)
+}
+
+// MaintenanceWindowArrayInput is an input type that accepts MaintenanceWindowArray and MaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `MaintenanceWindowArrayInput` via:
+//
+//	MaintenanceWindowArray{ MaintenanceWindowArgs{...} }
+type MaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowArrayOutput() MaintenanceWindowArrayOutput
+	ToMaintenanceWindowArrayOutputWithContext(context.Context) MaintenanceWindowArrayOutput
+}
+
+type MaintenanceWindowArray []MaintenanceWindowInput
+
+func (MaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaintenanceWindow)(nil)).Elem()
+}
+
+func (i MaintenanceWindowArray) ToMaintenanceWindowArrayOutput() MaintenanceWindowArrayOutput {
+	return i.ToMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowArray) ToMaintenanceWindowArrayOutputWithContext(ctx context.Context) MaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowArrayOutput)
+}
+
+// MaintenanceWindow specifies a preferred day and time for maintenance.
+type MaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindow)(nil)).Elem()
+}
+
+func (o MaintenanceWindowOutput) ToMaintenanceWindowOutput() MaintenanceWindowOutput {
+	return o
+}
+
+func (o MaintenanceWindowOutput) ToMaintenanceWindowOutputWithContext(ctx context.Context) MaintenanceWindowOutput {
+	return o
+}
+
+// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+func (o MaintenanceWindowOutput) Day() MaintenanceWindowDayPtrOutput {
+	return o.ApplyT(func(v MaintenanceWindow) *MaintenanceWindowDay { return v.Day }).(MaintenanceWindowDayPtrOutput)
+}
+
+// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+func (o MaintenanceWindowOutput) StartTime() GoogleTypeTimeOfDayPtrOutput {
+	return o.ApplyT(func(v MaintenanceWindow) *GoogleTypeTimeOfDay { return v.StartTime }).(GoogleTypeTimeOfDayPtrOutput)
+}
+
+type MaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaintenanceWindow)(nil)).Elem()
+}
+
+func (o MaintenanceWindowArrayOutput) ToMaintenanceWindowArrayOutput() MaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o MaintenanceWindowArrayOutput) ToMaintenanceWindowArrayOutputWithContext(ctx context.Context) MaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o MaintenanceWindowArrayOutput) Index(i pulumi.IntInput) MaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaintenanceWindow {
+		return vs[0].([]MaintenanceWindow)[vs[1].(int)]
+	}).(MaintenanceWindowOutput)
+}
+
+// MaintenanceWindow specifies a preferred day and time for maintenance.
+type MaintenanceWindowResponse struct {
+	// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+	Day string `pulumi:"day"`
+	// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+	StartTime GoogleTypeTimeOfDayResponse `pulumi:"startTime"`
+}
+
+// MaintenanceWindow specifies a preferred day and time for maintenance.
+type MaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithContext(ctx context.Context) MaintenanceWindowResponseOutput {
+	return o
+}
+
+// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+func (o MaintenanceWindowResponseOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+func (o MaintenanceWindowResponseOutput) StartTime() GoogleTypeTimeOfDayResponseOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) GoogleTypeTimeOfDayResponse { return v.StartTime }).(GoogleTypeTimeOfDayResponseOutput)
+}
+
+type MaintenanceWindowResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o MaintenanceWindowResponseArrayOutput) ToMaintenanceWindowResponseArrayOutput() MaintenanceWindowResponseArrayOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponseArrayOutput) ToMaintenanceWindowResponseArrayOutputWithContext(ctx context.Context) MaintenanceWindowResponseArrayOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponseArrayOutput) Index(i pulumi.IntInput) MaintenanceWindowResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaintenanceWindowResponse {
+		return vs[0].([]MaintenanceWindowResponse)[vs[1].(int)]
+	}).(MaintenanceWindowResponseOutput)
+}
+
 // Subset of the source instance configuration that is available when reading the cluster resource.
 type MigrationSourceResponse struct {
 	// The host and port of the on-premises instance in host:port format
@@ -1454,7 +2979,7 @@ func (o MigrationSourceResponseOutput) SourceType() pulumi.StringOutput {
 type NetworkConfig struct {
 	// Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
-	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 	Network *string `pulumi:"network"`
 }
 
@@ -1473,7 +2998,7 @@ type NetworkConfigInput interface {
 type NetworkConfigArgs struct {
 	// Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
-	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 }
 
@@ -1560,7 +3085,7 @@ func (o NetworkConfigOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -1599,7 +3124,7 @@ func (o NetworkConfigPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
 		if v == nil {
@@ -1613,7 +3138,7 @@ func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 type NetworkConfigResponse struct {
 	// Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 	AllocatedIpRange string `pulumi:"allocatedIpRange"`
-	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 	Network string `pulumi:"network"`
 }
 
@@ -1637,7 +3162,7 @@ func (o NetworkConfigResponseOutput) AllocatedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
 }
 
-// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -1702,6 +3227,335 @@ func (o NodeResponseArrayOutput) Index(i pulumi.IntInput) NodeResponseOutput {
 	}).(NodeResponseOutput)
 }
 
+// Observability Instance specific configuration.
+type ObservabilityInstanceConfig struct {
+	// Observability feature status for an instance. This is a read-only flag and modifiable only by producer API. This flag is turned "off" by default.
+	Enabled *bool `pulumi:"enabled"`
+	// Query string length. The default value is 10k.
+	MaxQueryStringLength *int `pulumi:"maxQueryStringLength"`
+	// Preserve comments in query string for an instance. This flag is turned "off" by default.
+	PreserveComments *bool `pulumi:"preserveComments"`
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 to 20 is considered valid.
+	QueryPlansPerMinute *int `pulumi:"queryPlansPerMinute"`
+	// Record application tags for an instance. This flag is turned "off" by default.
+	RecordApplicationTags *bool `pulumi:"recordApplicationTags"`
+	// Track actively running queries on the instance. If not set, this flag is "off" by default.
+	TrackActiveQueries *bool `pulumi:"trackActiveQueries"`
+	// Track wait events during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on.
+	TrackWaitEvents *bool `pulumi:"trackWaitEvents"`
+}
+
+// ObservabilityInstanceConfigInput is an input type that accepts ObservabilityInstanceConfigArgs and ObservabilityInstanceConfigOutput values.
+// You can construct a concrete instance of `ObservabilityInstanceConfigInput` via:
+//
+//	ObservabilityInstanceConfigArgs{...}
+type ObservabilityInstanceConfigInput interface {
+	pulumi.Input
+
+	ToObservabilityInstanceConfigOutput() ObservabilityInstanceConfigOutput
+	ToObservabilityInstanceConfigOutputWithContext(context.Context) ObservabilityInstanceConfigOutput
+}
+
+// Observability Instance specific configuration.
+type ObservabilityInstanceConfigArgs struct {
+	// Observability feature status for an instance. This is a read-only flag and modifiable only by producer API. This flag is turned "off" by default.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Query string length. The default value is 10k.
+	MaxQueryStringLength pulumi.IntPtrInput `pulumi:"maxQueryStringLength"`
+	// Preserve comments in query string for an instance. This flag is turned "off" by default.
+	PreserveComments pulumi.BoolPtrInput `pulumi:"preserveComments"`
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 to 20 is considered valid.
+	QueryPlansPerMinute pulumi.IntPtrInput `pulumi:"queryPlansPerMinute"`
+	// Record application tags for an instance. This flag is turned "off" by default.
+	RecordApplicationTags pulumi.BoolPtrInput `pulumi:"recordApplicationTags"`
+	// Track actively running queries on the instance. If not set, this flag is "off" by default.
+	TrackActiveQueries pulumi.BoolPtrInput `pulumi:"trackActiveQueries"`
+	// Track wait events during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on.
+	TrackWaitEvents pulumi.BoolPtrInput `pulumi:"trackWaitEvents"`
+}
+
+func (ObservabilityInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObservabilityInstanceConfig)(nil)).Elem()
+}
+
+func (i ObservabilityInstanceConfigArgs) ToObservabilityInstanceConfigOutput() ObservabilityInstanceConfigOutput {
+	return i.ToObservabilityInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i ObservabilityInstanceConfigArgs) ToObservabilityInstanceConfigOutputWithContext(ctx context.Context) ObservabilityInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObservabilityInstanceConfigOutput)
+}
+
+func (i ObservabilityInstanceConfigArgs) ToObservabilityInstanceConfigPtrOutput() ObservabilityInstanceConfigPtrOutput {
+	return i.ToObservabilityInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ObservabilityInstanceConfigArgs) ToObservabilityInstanceConfigPtrOutputWithContext(ctx context.Context) ObservabilityInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObservabilityInstanceConfigOutput).ToObservabilityInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// ObservabilityInstanceConfigPtrInput is an input type that accepts ObservabilityInstanceConfigArgs, ObservabilityInstanceConfigPtr and ObservabilityInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `ObservabilityInstanceConfigPtrInput` via:
+//
+//	        ObservabilityInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ObservabilityInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToObservabilityInstanceConfigPtrOutput() ObservabilityInstanceConfigPtrOutput
+	ToObservabilityInstanceConfigPtrOutputWithContext(context.Context) ObservabilityInstanceConfigPtrOutput
+}
+
+type observabilityInstanceConfigPtrType ObservabilityInstanceConfigArgs
+
+func ObservabilityInstanceConfigPtr(v *ObservabilityInstanceConfigArgs) ObservabilityInstanceConfigPtrInput {
+	return (*observabilityInstanceConfigPtrType)(v)
+}
+
+func (*observabilityInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObservabilityInstanceConfig)(nil)).Elem()
+}
+
+func (i *observabilityInstanceConfigPtrType) ToObservabilityInstanceConfigPtrOutput() ObservabilityInstanceConfigPtrOutput {
+	return i.ToObservabilityInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *observabilityInstanceConfigPtrType) ToObservabilityInstanceConfigPtrOutputWithContext(ctx context.Context) ObservabilityInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObservabilityInstanceConfigPtrOutput)
+}
+
+// Observability Instance specific configuration.
+type ObservabilityInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (ObservabilityInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObservabilityInstanceConfig)(nil)).Elem()
+}
+
+func (o ObservabilityInstanceConfigOutput) ToObservabilityInstanceConfigOutput() ObservabilityInstanceConfigOutput {
+	return o
+}
+
+func (o ObservabilityInstanceConfigOutput) ToObservabilityInstanceConfigOutputWithContext(ctx context.Context) ObservabilityInstanceConfigOutput {
+	return o
+}
+
+func (o ObservabilityInstanceConfigOutput) ToObservabilityInstanceConfigPtrOutput() ObservabilityInstanceConfigPtrOutput {
+	return o.ToObservabilityInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ObservabilityInstanceConfigOutput) ToObservabilityInstanceConfigPtrOutputWithContext(ctx context.Context) ObservabilityInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObservabilityInstanceConfig) *ObservabilityInstanceConfig {
+		return &v
+	}).(ObservabilityInstanceConfigPtrOutput)
+}
+
+// Observability feature status for an instance. This is a read-only flag and modifiable only by producer API. This flag is turned "off" by default.
+func (o ObservabilityInstanceConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Query string length. The default value is 10k.
+func (o ObservabilityInstanceConfigOutput) MaxQueryStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfig) *int { return v.MaxQueryStringLength }).(pulumi.IntPtrOutput)
+}
+
+// Preserve comments in query string for an instance. This flag is turned "off" by default.
+func (o ObservabilityInstanceConfigOutput) PreserveComments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfig) *bool { return v.PreserveComments }).(pulumi.BoolPtrOutput)
+}
+
+// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 to 20 is considered valid.
+func (o ObservabilityInstanceConfigOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfig) *int { return v.QueryPlansPerMinute }).(pulumi.IntPtrOutput)
+}
+
+// Record application tags for an instance. This flag is turned "off" by default.
+func (o ObservabilityInstanceConfigOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfig) *bool { return v.RecordApplicationTags }).(pulumi.BoolPtrOutput)
+}
+
+// Track actively running queries on the instance. If not set, this flag is "off" by default.
+func (o ObservabilityInstanceConfigOutput) TrackActiveQueries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfig) *bool { return v.TrackActiveQueries }).(pulumi.BoolPtrOutput)
+}
+
+// Track wait events during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on.
+func (o ObservabilityInstanceConfigOutput) TrackWaitEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfig) *bool { return v.TrackWaitEvents }).(pulumi.BoolPtrOutput)
+}
+
+type ObservabilityInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ObservabilityInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObservabilityInstanceConfig)(nil)).Elem()
+}
+
+func (o ObservabilityInstanceConfigPtrOutput) ToObservabilityInstanceConfigPtrOutput() ObservabilityInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ObservabilityInstanceConfigPtrOutput) ToObservabilityInstanceConfigPtrOutputWithContext(ctx context.Context) ObservabilityInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ObservabilityInstanceConfigPtrOutput) Elem() ObservabilityInstanceConfigOutput {
+	return o.ApplyT(func(v *ObservabilityInstanceConfig) ObservabilityInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ObservabilityInstanceConfig
+		return ret
+	}).(ObservabilityInstanceConfigOutput)
+}
+
+// Observability feature status for an instance. This is a read-only flag and modifiable only by producer API. This flag is turned "off" by default.
+func (o ObservabilityInstanceConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObservabilityInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Query string length. The default value is 10k.
+func (o ObservabilityInstanceConfigPtrOutput) MaxQueryStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ObservabilityInstanceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxQueryStringLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Preserve comments in query string for an instance. This flag is turned "off" by default.
+func (o ObservabilityInstanceConfigPtrOutput) PreserveComments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObservabilityInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreserveComments
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 to 20 is considered valid.
+func (o ObservabilityInstanceConfigPtrOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ObservabilityInstanceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueryPlansPerMinute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Record application tags for an instance. This flag is turned "off" by default.
+func (o ObservabilityInstanceConfigPtrOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObservabilityInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RecordApplicationTags
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Track actively running queries on the instance. If not set, this flag is "off" by default.
+func (o ObservabilityInstanceConfigPtrOutput) TrackActiveQueries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObservabilityInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackActiveQueries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Track wait events during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on.
+func (o ObservabilityInstanceConfigPtrOutput) TrackWaitEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObservabilityInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackWaitEvents
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Observability Instance specific configuration.
+type ObservabilityInstanceConfigResponse struct {
+	// Observability feature status for an instance. This is a read-only flag and modifiable only by producer API. This flag is turned "off" by default.
+	Enabled bool `pulumi:"enabled"`
+	// Query string length. The default value is 10k.
+	MaxQueryStringLength int `pulumi:"maxQueryStringLength"`
+	// Preserve comments in query string for an instance. This flag is turned "off" by default.
+	PreserveComments bool `pulumi:"preserveComments"`
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 to 20 is considered valid.
+	QueryPlansPerMinute int `pulumi:"queryPlansPerMinute"`
+	// Record application tags for an instance. This flag is turned "off" by default.
+	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
+	// Track actively running queries on the instance. If not set, this flag is "off" by default.
+	TrackActiveQueries bool `pulumi:"trackActiveQueries"`
+	// Track wait event types during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on. This is read-only flag and only modifiable by producer API.
+	TrackWaitEventTypes bool `pulumi:"trackWaitEventTypes"`
+	// Track wait events during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on.
+	TrackWaitEvents bool `pulumi:"trackWaitEvents"`
+}
+
+// Observability Instance specific configuration.
+type ObservabilityInstanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ObservabilityInstanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObservabilityInstanceConfigResponse)(nil)).Elem()
+}
+
+func (o ObservabilityInstanceConfigResponseOutput) ToObservabilityInstanceConfigResponseOutput() ObservabilityInstanceConfigResponseOutput {
+	return o
+}
+
+func (o ObservabilityInstanceConfigResponseOutput) ToObservabilityInstanceConfigResponseOutputWithContext(ctx context.Context) ObservabilityInstanceConfigResponseOutput {
+	return o
+}
+
+// Observability feature status for an instance. This is a read-only flag and modifiable only by producer API. This flag is turned "off" by default.
+func (o ObservabilityInstanceConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Query string length. The default value is 10k.
+func (o ObservabilityInstanceConfigResponseOutput) MaxQueryStringLength() pulumi.IntOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfigResponse) int { return v.MaxQueryStringLength }).(pulumi.IntOutput)
+}
+
+// Preserve comments in query string for an instance. This flag is turned "off" by default.
+func (o ObservabilityInstanceConfigResponseOutput) PreserveComments() pulumi.BoolOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfigResponse) bool { return v.PreserveComments }).(pulumi.BoolOutput)
+}
+
+// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 to 20 is considered valid.
+func (o ObservabilityInstanceConfigResponseOutput) QueryPlansPerMinute() pulumi.IntOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfigResponse) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
+}
+
+// Record application tags for an instance. This flag is turned "off" by default.
+func (o ObservabilityInstanceConfigResponseOutput) RecordApplicationTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfigResponse) bool { return v.RecordApplicationTags }).(pulumi.BoolOutput)
+}
+
+// Track actively running queries on the instance. If not set, this flag is "off" by default.
+func (o ObservabilityInstanceConfigResponseOutput) TrackActiveQueries() pulumi.BoolOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfigResponse) bool { return v.TrackActiveQueries }).(pulumi.BoolOutput)
+}
+
+// Track wait event types during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on. This is read-only flag and only modifiable by producer API.
+func (o ObservabilityInstanceConfigResponseOutput) TrackWaitEventTypes() pulumi.BoolOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfigResponse) bool { return v.TrackWaitEventTypes }).(pulumi.BoolOutput)
+}
+
+// Track wait events during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on.
+func (o ObservabilityInstanceConfigResponseOutput) TrackWaitEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v ObservabilityInstanceConfigResponse) bool { return v.TrackWaitEvents }).(pulumi.BoolOutput)
+}
+
 // Configuration for the primary cluster. It has the list of clusters that are replicating from this cluster. This should be set if and only if the cluster is of type PRIMARY.
 type PrimaryConfigResponse struct {
 	// Names of the clusters that are replicating from this cluster.
@@ -1726,6 +3580,352 @@ func (o PrimaryConfigResponseOutput) ToPrimaryConfigResponseOutputWithContext(ct
 // Names of the clusters that are replicating from this cluster.
 func (o PrimaryConfigResponseOutput) SecondaryClusterNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrimaryConfigResponse) []string { return v.SecondaryClusterNames }).(pulumi.StringArrayOutput)
+}
+
+// PscConfig contains PSC related configuration at a cluster level.
+type PscConfig struct {
+	// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+	PscEnabled *bool `pulumi:"pscEnabled"`
+}
+
+// PscConfigInput is an input type that accepts PscConfigArgs and PscConfigOutput values.
+// You can construct a concrete instance of `PscConfigInput` via:
+//
+//	PscConfigArgs{...}
+type PscConfigInput interface {
+	pulumi.Input
+
+	ToPscConfigOutput() PscConfigOutput
+	ToPscConfigOutputWithContext(context.Context) PscConfigOutput
+}
+
+// PscConfig contains PSC related configuration at a cluster level.
+type PscConfigArgs struct {
+	// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+	PscEnabled pulumi.BoolPtrInput `pulumi:"pscEnabled"`
+}
+
+func (PscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfig)(nil)).Elem()
+}
+
+func (i PscConfigArgs) ToPscConfigOutput() PscConfigOutput {
+	return i.ToPscConfigOutputWithContext(context.Background())
+}
+
+func (i PscConfigArgs) ToPscConfigOutputWithContext(ctx context.Context) PscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigOutput)
+}
+
+func (i PscConfigArgs) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return i.ToPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PscConfigArgs) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigOutput).ToPscConfigPtrOutputWithContext(ctx)
+}
+
+// PscConfigPtrInput is an input type that accepts PscConfigArgs, PscConfigPtr and PscConfigPtrOutput values.
+// You can construct a concrete instance of `PscConfigPtrInput` via:
+//
+//	        PscConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PscConfigPtrInput interface {
+	pulumi.Input
+
+	ToPscConfigPtrOutput() PscConfigPtrOutput
+	ToPscConfigPtrOutputWithContext(context.Context) PscConfigPtrOutput
+}
+
+type pscConfigPtrType PscConfigArgs
+
+func PscConfigPtr(v *PscConfigArgs) PscConfigPtrInput {
+	return (*pscConfigPtrType)(v)
+}
+
+func (*pscConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PscConfig)(nil)).Elem()
+}
+
+func (i *pscConfigPtrType) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return i.ToPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pscConfigPtrType) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigPtrOutput)
+}
+
+// PscConfig contains PSC related configuration at a cluster level.
+type PscConfigOutput struct{ *pulumi.OutputState }
+
+func (PscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfig)(nil)).Elem()
+}
+
+func (o PscConfigOutput) ToPscConfigOutput() PscConfigOutput {
+	return o
+}
+
+func (o PscConfigOutput) ToPscConfigOutputWithContext(ctx context.Context) PscConfigOutput {
+	return o
+}
+
+func (o PscConfigOutput) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return o.ToPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PscConfigOutput) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PscConfig) *PscConfig {
+		return &v
+	}).(PscConfigPtrOutput)
+}
+
+// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+func (o PscConfigOutput) PscEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PscConfig) *bool { return v.PscEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type PscConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PscConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PscConfig)(nil)).Elem()
+}
+
+func (o PscConfigPtrOutput) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return o
+}
+
+func (o PscConfigPtrOutput) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return o
+}
+
+func (o PscConfigPtrOutput) Elem() PscConfigOutput {
+	return o.ApplyT(func(v *PscConfig) PscConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PscConfig
+		return ret
+	}).(PscConfigOutput)
+}
+
+// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+func (o PscConfigPtrOutput) PscEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PscConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PscEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// PscConfig contains PSC related configuration at a cluster level.
+type PscConfigResponse struct {
+	// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+	PscEnabled bool `pulumi:"pscEnabled"`
+}
+
+// PscConfig contains PSC related configuration at a cluster level.
+type PscConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PscConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfigResponse)(nil)).Elem()
+}
+
+func (o PscConfigResponseOutput) ToPscConfigResponseOutput() PscConfigResponseOutput {
+	return o
+}
+
+func (o PscConfigResponseOutput) ToPscConfigResponseOutputWithContext(ctx context.Context) PscConfigResponseOutput {
+	return o
+}
+
+// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+func (o PscConfigResponseOutput) PscEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v PscConfigResponse) bool { return v.PscEnabled }).(pulumi.BoolOutput)
+}
+
+// PscInstanceConfig contains PSC related configuration at an instance level.
+type PscInstanceConfig struct {
+	// Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+}
+
+// PscInstanceConfigInput is an input type that accepts PscInstanceConfigArgs and PscInstanceConfigOutput values.
+// You can construct a concrete instance of `PscInstanceConfigInput` via:
+//
+//	PscInstanceConfigArgs{...}
+type PscInstanceConfigInput interface {
+	pulumi.Input
+
+	ToPscInstanceConfigOutput() PscInstanceConfigOutput
+	ToPscInstanceConfigOutputWithContext(context.Context) PscInstanceConfigOutput
+}
+
+// PscInstanceConfig contains PSC related configuration at an instance level.
+type PscInstanceConfigArgs struct {
+	// Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+}
+
+func (PscInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscInstanceConfig)(nil)).Elem()
+}
+
+func (i PscInstanceConfigArgs) ToPscInstanceConfigOutput() PscInstanceConfigOutput {
+	return i.ToPscInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i PscInstanceConfigArgs) ToPscInstanceConfigOutputWithContext(ctx context.Context) PscInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscInstanceConfigOutput)
+}
+
+func (i PscInstanceConfigArgs) ToPscInstanceConfigPtrOutput() PscInstanceConfigPtrOutput {
+	return i.ToPscInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PscInstanceConfigArgs) ToPscInstanceConfigPtrOutputWithContext(ctx context.Context) PscInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscInstanceConfigOutput).ToPscInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// PscInstanceConfigPtrInput is an input type that accepts PscInstanceConfigArgs, PscInstanceConfigPtr and PscInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `PscInstanceConfigPtrInput` via:
+//
+//	        PscInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PscInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToPscInstanceConfigPtrOutput() PscInstanceConfigPtrOutput
+	ToPscInstanceConfigPtrOutputWithContext(context.Context) PscInstanceConfigPtrOutput
+}
+
+type pscInstanceConfigPtrType PscInstanceConfigArgs
+
+func PscInstanceConfigPtr(v *PscInstanceConfigArgs) PscInstanceConfigPtrInput {
+	return (*pscInstanceConfigPtrType)(v)
+}
+
+func (*pscInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PscInstanceConfig)(nil)).Elem()
+}
+
+func (i *pscInstanceConfigPtrType) ToPscInstanceConfigPtrOutput() PscInstanceConfigPtrOutput {
+	return i.ToPscInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pscInstanceConfigPtrType) ToPscInstanceConfigPtrOutputWithContext(ctx context.Context) PscInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscInstanceConfigPtrOutput)
+}
+
+// PscInstanceConfig contains PSC related configuration at an instance level.
+type PscInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (PscInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscInstanceConfig)(nil)).Elem()
+}
+
+func (o PscInstanceConfigOutput) ToPscInstanceConfigOutput() PscInstanceConfigOutput {
+	return o
+}
+
+func (o PscInstanceConfigOutput) ToPscInstanceConfigOutputWithContext(ctx context.Context) PscInstanceConfigOutput {
+	return o
+}
+
+func (o PscInstanceConfigOutput) ToPscInstanceConfigPtrOutput() PscInstanceConfigPtrOutput {
+	return o.ToPscInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PscInstanceConfigOutput) ToPscInstanceConfigPtrOutputWithContext(ctx context.Context) PscInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PscInstanceConfig) *PscInstanceConfig {
+		return &v
+	}).(PscInstanceConfigPtrOutput)
+}
+
+// Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+func (o PscInstanceConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PscInstanceConfig) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
+}
+
+type PscInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PscInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PscInstanceConfig)(nil)).Elem()
+}
+
+func (o PscInstanceConfigPtrOutput) ToPscInstanceConfigPtrOutput() PscInstanceConfigPtrOutput {
+	return o
+}
+
+func (o PscInstanceConfigPtrOutput) ToPscInstanceConfigPtrOutputWithContext(ctx context.Context) PscInstanceConfigPtrOutput {
+	return o
+}
+
+func (o PscInstanceConfigPtrOutput) Elem() PscInstanceConfigOutput {
+	return o.ApplyT(func(v *PscInstanceConfig) PscInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PscInstanceConfig
+		return ret
+	}).(PscInstanceConfigOutput)
+}
+
+// Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+func (o PscInstanceConfigPtrOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PscInstanceConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedConsumerProjects
+	}).(pulumi.StringArrayOutput)
+}
+
+// PscInstanceConfig contains PSC related configuration at an instance level.
+type PscInstanceConfigResponse struct {
+	// Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// The DNS name of the instance for PSC connectivity. Name convention: ...alloydb-psc.goog
+	PscDnsName string `pulumi:"pscDnsName"`
+	// The service attachment created when Private Service Connect (PSC) is enabled for the instance. The name of the resource will be in the format of `projects//regions//serviceAttachments/`
+	ServiceAttachmentLink string `pulumi:"serviceAttachmentLink"`
+}
+
+// PscInstanceConfig contains PSC related configuration at an instance level.
+type PscInstanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PscInstanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscInstanceConfigResponse)(nil)).Elem()
+}
+
+func (o PscInstanceConfigResponseOutput) ToPscInstanceConfigResponseOutput() PscInstanceConfigResponseOutput {
+	return o
+}
+
+func (o PscInstanceConfigResponseOutput) ToPscInstanceConfigResponseOutputWithContext(ctx context.Context) PscInstanceConfigResponseOutput {
+	return o
+}
+
+// Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+func (o PscInstanceConfigResponseOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PscInstanceConfigResponse) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
+}
+
+// The DNS name of the instance for PSC connectivity. Name convention: ...alloydb-psc.goog
+func (o PscInstanceConfigResponseOutput) PscDnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v PscInstanceConfigResponse) string { return v.PscDnsName }).(pulumi.StringOutput)
+}
+
+// The service attachment created when Private Service Connect (PSC) is enabled for the instance. The name of the resource will be in the format of `projects//regions//serviceAttachments/`
+func (o PscInstanceConfigResponseOutput) ServiceAttachmentLink() pulumi.StringOutput {
+	return o.ApplyT(func(v PscInstanceConfigResponse) string { return v.ServiceAttachmentLink }).(pulumi.StringOutput)
 }
 
 // A backup's position in a quantity-based retention queue, of backups with the same source cluster and type, with length, retention, specified by the backup's retention policy. Once the position is greater than the retention, the backup is eligible to be garbage collected. Example: 5 backups from the same source cluster and type with a quantity-based retention of 3 and denoted by backup_id (position, retention). Safe: backup_5 (1, 3), backup_4, (2, 3), backup_3 (3, 3). Awaiting garbage collection: backup_2 (4, 3), backup_1 (5, 3)
@@ -3412,20 +5612,43 @@ func (o WeeklyScheduleResponseOutput) StartTimes() GoogleTypeTimeOfDayResponseAr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedNetworkInput)(nil)).Elem(), AuthorizedNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedNetworkArrayInput)(nil)).Elem(), AuthorizedNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomatedBackupPolicyInput)(nil)).Elem(), AutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomatedBackupPolicyPtrInput)(nil)).Elem(), AutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientConnectionConfigInput)(nil)).Elem(), ClientConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientConnectionConfigPtrInput)(nil)).Elem(), ClientConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContinuousBackupConfigInput)(nil)).Elem(), ContinuousBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContinuousBackupConfigPtrInput)(nil)).Elem(), ContinuousBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyMaintenancePeriodInput)(nil)).Elem(), DenyMaintenancePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyMaintenancePeriodArrayInput)(nil)).Elem(), DenyMaintenancePeriodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeminiClusterConfigInput)(nil)).Elem(), GeminiClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeminiClusterConfigPtrInput)(nil)).Elem(), GeminiClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeminiInstanceConfigInput)(nil)).Elem(), GeminiInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeminiInstanceConfigPtrInput)(nil)).Elem(), GeminiInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDateInput)(nil)).Elem(), GoogleTypeDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDatePtrInput)(nil)).Elem(), GoogleTypeDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeTimeOfDayInput)(nil)).Elem(), GoogleTypeTimeOfDayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeTimeOfDayPtrInput)(nil)).Elem(), GoogleTypeTimeOfDayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeTimeOfDayArrayInput)(nil)).Elem(), GoogleTypeTimeOfDayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigInput)(nil)).Elem(), MachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigPtrInput)(nil)).Elem(), MachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceUpdatePolicyInput)(nil)).Elem(), MaintenanceUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceUpdatePolicyPtrInput)(nil)).Elem(), MaintenanceUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowArrayInput)(nil)).Elem(), MaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObservabilityInstanceConfigInput)(nil)).Elem(), ObservabilityInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObservabilityInstanceConfigPtrInput)(nil)).Elem(), ObservabilityInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigInput)(nil)).Elem(), PscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigPtrInput)(nil)).Elem(), PscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PscInstanceConfigInput)(nil)).Elem(), PscInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PscInstanceConfigPtrInput)(nil)).Elem(), PscInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuantityBasedRetentionInput)(nil)).Elem(), QuantityBasedRetentionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuantityBasedRetentionPtrInput)(nil)).Elem(), QuantityBasedRetentionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryInsightsInstanceConfigInput)(nil)).Elem(), QueryInsightsInstanceConfigArgs{})
@@ -3444,6 +5667,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPtrInput)(nil)).Elem(), UserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyScheduleInput)(nil)).Elem(), WeeklyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklySchedulePtrInput)(nil)).Elem(), WeeklyScheduleArgs{})
+	pulumi.RegisterOutputType(AuthorizedNetworkOutput{})
+	pulumi.RegisterOutputType(AuthorizedNetworkArrayOutput{})
+	pulumi.RegisterOutputType(AuthorizedNetworkResponseOutput{})
+	pulumi.RegisterOutputType(AuthorizedNetworkResponseArrayOutput{})
 	pulumi.RegisterOutputType(AutomatedBackupPolicyOutput{})
 	pulumi.RegisterOutputType(AutomatedBackupPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AutomatedBackupPolicyResponseOutput{})
@@ -3455,24 +5682,58 @@ func init() {
 	pulumi.RegisterOutputType(ContinuousBackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(ContinuousBackupConfigResponseOutput{})
 	pulumi.RegisterOutputType(ContinuousBackupInfoResponseOutput{})
+	pulumi.RegisterOutputType(DenyMaintenancePeriodOutput{})
+	pulumi.RegisterOutputType(DenyMaintenancePeriodArrayOutput{})
+	pulumi.RegisterOutputType(DenyMaintenancePeriodResponseOutput{})
+	pulumi.RegisterOutputType(DenyMaintenancePeriodResponseArrayOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionInfoResponseOutput{})
+	pulumi.RegisterOutputType(GeminiClusterConfigOutput{})
+	pulumi.RegisterOutputType(GeminiClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(GeminiClusterConfigResponseOutput{})
+	pulumi.RegisterOutputType(GeminiInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GeminiInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(GeminiInstanceConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDateOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDateResponseOutput{})
 	pulumi.RegisterOutputType(GoogleTypeTimeOfDayOutput{})
+	pulumi.RegisterOutputType(GoogleTypeTimeOfDayPtrOutput{})
 	pulumi.RegisterOutputType(GoogleTypeTimeOfDayArrayOutput{})
 	pulumi.RegisterOutputType(GoogleTypeTimeOfDayResponseOutput{})
 	pulumi.RegisterOutputType(GoogleTypeTimeOfDayResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(MachineConfigOutput{})
 	pulumi.RegisterOutputType(MachineConfigPtrOutput{})
 	pulumi.RegisterOutputType(MachineConfigResponseOutput{})
+	pulumi.RegisterOutputType(MaintenanceScheduleResponseOutput{})
+	pulumi.RegisterOutputType(MaintenanceUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(MaintenanceUpdatePolicyPtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceUpdatePolicyResponseOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowResponseArrayOutput{})
 	pulumi.RegisterOutputType(MigrationSourceResponseOutput{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodeResponseOutput{})
 	pulumi.RegisterOutputType(NodeResponseArrayOutput{})
+	pulumi.RegisterOutputType(ObservabilityInstanceConfigOutput{})
+	pulumi.RegisterOutputType(ObservabilityInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ObservabilityInstanceConfigResponseOutput{})
 	pulumi.RegisterOutputType(PrimaryConfigResponseOutput{})
+	pulumi.RegisterOutputType(PscConfigOutput{})
+	pulumi.RegisterOutputType(PscConfigPtrOutput{})
+	pulumi.RegisterOutputType(PscConfigResponseOutput{})
+	pulumi.RegisterOutputType(PscInstanceConfigOutput{})
+	pulumi.RegisterOutputType(PscInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(PscInstanceConfigResponseOutput{})
 	pulumi.RegisterOutputType(QuantityBasedExpiryResponseOutput{})
 	pulumi.RegisterOutputType(QuantityBasedRetentionOutput{})
 	pulumi.RegisterOutputType(QuantityBasedRetentionPtrOutput{})

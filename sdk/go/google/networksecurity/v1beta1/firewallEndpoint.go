@@ -13,13 +13,14 @@ import (
 )
 
 // Creates a new FirewallEndpoint in a given project and location.
-// Auto-naming is currently not supported for this resource.
 type FirewallEndpoint struct {
 	pulumi.CustomResourceState
 
 	// List of networks that are associated with this endpoint in the local zone. This is a projection of the FirewallEndpointAssociations pointing at this endpoint. A network will only appear in this list after traffic routing is fully configured. Format: projects/{project}/global/networks/{name}.
 	AssociatedNetworks pulumi.StringArrayOutput `pulumi:"associatedNetworks"`
-	// Optional. Project to bill on endpoint uptime usage.
+	// List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured.
+	Associations FirewallEndpointAssociationReferenceResponseArrayOutput `pulumi:"associations"`
+	// Project to bill on endpoint uptime usage.
 	BillingProjectId pulumi.StringOutput `pulumi:"billingProjectId"`
 	// Create time stamp
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -30,7 +31,7 @@ type FirewallEndpoint struct {
 	// Optional. Labels as key value pairs
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// name of resource
+	// Immutable. Identifier. name of resource
 	Name           pulumi.StringOutput `pulumi:"name"`
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
@@ -50,6 +51,9 @@ func NewFirewallEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BillingProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'BillingProjectId'")
+	}
 	if args.FirewallEndpointId == nil {
 		return nil, errors.New("invalid value for required argument 'FirewallEndpointId'")
 	}
@@ -95,31 +99,35 @@ func (FirewallEndpointState) ElementType() reflect.Type {
 }
 
 type firewallEndpointArgs struct {
-	// Optional. Project to bill on endpoint uptime usage.
-	BillingProjectId *string `pulumi:"billingProjectId"`
+	// Project to bill on endpoint uptime usage.
+	BillingProjectId string `pulumi:"billingProjectId"`
 	// Optional. Description of the firewall endpoint. Max length 2048 characters.
 	Description *string `pulumi:"description"`
 	// Required. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_id from the method_signature of Create RPC.
 	FirewallEndpointId string `pulumi:"firewallEndpointId"`
 	// Optional. Labels as key value pairs
-	Labels         map[string]string `pulumi:"labels"`
-	Location       *string           `pulumi:"location"`
-	OrganizationId string            `pulumi:"organizationId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
+	// Immutable. Identifier. name of resource
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a FirewallEndpoint resource.
 type FirewallEndpointArgs struct {
-	// Optional. Project to bill on endpoint uptime usage.
-	BillingProjectId pulumi.StringPtrInput
+	// Project to bill on endpoint uptime usage.
+	BillingProjectId pulumi.StringInput
 	// Optional. Description of the firewall endpoint. Max length 2048 characters.
 	Description pulumi.StringPtrInput
 	// Required. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_id from the method_signature of Create RPC.
 	FirewallEndpointId pulumi.StringInput
 	// Optional. Labels as key value pairs
-	Labels         pulumi.StringMapInput
-	Location       pulumi.StringPtrInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
+	// Immutable. Identifier. name of resource
+	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
@@ -167,7 +175,14 @@ func (o FirewallEndpointOutput) AssociatedNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringArrayOutput { return v.AssociatedNetworks }).(pulumi.StringArrayOutput)
 }
 
-// Optional. Project to bill on endpoint uptime usage.
+// List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured.
+func (o FirewallEndpointOutput) Associations() FirewallEndpointAssociationReferenceResponseArrayOutput {
+	return o.ApplyT(func(v *FirewallEndpoint) FirewallEndpointAssociationReferenceResponseArrayOutput {
+		return v.Associations
+	}).(FirewallEndpointAssociationReferenceResponseArrayOutput)
+}
+
+// Project to bill on endpoint uptime usage.
 func (o FirewallEndpointOutput) BillingProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringOutput { return v.BillingProjectId }).(pulumi.StringOutput)
 }
@@ -196,7 +211,7 @@ func (o FirewallEndpointOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// name of resource
+// Immutable. Identifier. name of resource
 func (o FirewallEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

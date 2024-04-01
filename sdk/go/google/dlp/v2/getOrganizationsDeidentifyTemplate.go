@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+// Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
 func LookupOrganizationsDeidentifyTemplate(ctx *pulumi.Context, args *LookupOrganizationsDeidentifyTemplateArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationsDeidentifyTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationsDeidentifyTemplateResult

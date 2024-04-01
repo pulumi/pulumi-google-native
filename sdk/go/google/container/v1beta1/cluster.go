@@ -155,6 +155,8 @@ type Cluster struct {
 	ResourceLabels pulumi.StringMapOutput `pulumi:"resourceLabels"`
 	// Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
 	ResourceUsageExportConfig ResourceUsageExportConfigResponseOutput `pulumi:"resourceUsageExportConfig"`
+	// Secret CSI driver configuration.
+	SecretManagerConfig SecretManagerConfigResponseOutput `pulumi:"secretManagerConfig"`
 	// Enable/Disable Security Posture API features for the cluster.
 	SecurityPostureConfig SecurityPostureConfigResponseOutput `pulumi:"securityPostureConfig"`
 	// [Output only] Server-defined URL for the resource.
@@ -361,6 +363,8 @@ type clusterArgs struct {
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
 	ResourceUsageExportConfig *ResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
+	// Secret CSI driver configuration.
+	SecretManagerConfig *SecretManagerConfig `pulumi:"secretManagerConfig"`
 	// Enable/Disable Security Posture API features for the cluster.
 	SecurityPostureConfig *SecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// Shielded Nodes configuration.
@@ -512,6 +516,8 @@ type ClusterArgs struct {
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
 	ResourceUsageExportConfig ResourceUsageExportConfigPtrInput
+	// Secret CSI driver configuration.
+	SecretManagerConfig SecretManagerConfigPtrInput
 	// Enable/Disable Security Posture API features for the cluster.
 	SecurityPostureConfig SecurityPostureConfigPtrInput
 	// Shielded Nodes configuration.
@@ -927,6 +933,11 @@ func (o ClusterOutput) ResourceLabels() pulumi.StringMapOutput {
 // Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
 func (o ClusterOutput) ResourceUsageExportConfig() ResourceUsageExportConfigResponseOutput {
 	return o.ApplyT(func(v *Cluster) ResourceUsageExportConfigResponseOutput { return v.ResourceUsageExportConfig }).(ResourceUsageExportConfigResponseOutput)
+}
+
+// Secret CSI driver configuration.
+func (o ClusterOutput) SecretManagerConfig() SecretManagerConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) SecretManagerConfigResponseOutput { return v.SecretManagerConfig }).(SecretManagerConfigResponseOutput)
 }
 
 // Enable/Disable Security Posture API features for the cluster.

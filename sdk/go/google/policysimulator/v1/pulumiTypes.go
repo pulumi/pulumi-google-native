@@ -13,6 +13,1987 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+type GoogleCloudOrgpolicyV2AlternatePolicySpec struct {
+	// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+	Launch *string `pulumi:"launch"`
+	// Specify constraint for configurations of Google Cloud resources.
+	Spec *GoogleCloudOrgpolicyV2PolicySpec `pulumi:"spec"`
+}
+
+// GoogleCloudOrgpolicyV2AlternatePolicySpecInput is an input type that accepts GoogleCloudOrgpolicyV2AlternatePolicySpecArgs and GoogleCloudOrgpolicyV2AlternatePolicySpecOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2AlternatePolicySpecInput` via:
+//
+//	GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{...}
+type GoogleCloudOrgpolicyV2AlternatePolicySpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecOutput
+	ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutputWithContext(context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecOutput
+}
+
+// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+type GoogleCloudOrgpolicyV2AlternatePolicySpecArgs struct {
+	// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+	Launch pulumi.StringPtrInput `pulumi:"launch"`
+	// Specify constraint for configurations of Google Cloud resources.
+	Spec GoogleCloudOrgpolicyV2PolicySpecPtrInput `pulumi:"spec"`
+}
+
+func (GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2AlternatePolicySpec)(nil)).Elem()
+}
+
+func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
+	return i.ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2AlternatePolicySpecOutput)
+}
+
+func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2AlternatePolicySpecOutput).ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput is an input type that accepts GoogleCloudOrgpolicyV2AlternatePolicySpecArgs, GoogleCloudOrgpolicyV2AlternatePolicySpecPtr and GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput` via:
+//
+//	        GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput
+	ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput
+}
+
+type googleCloudOrgpolicyV2AlternatePolicySpecPtrType GoogleCloudOrgpolicyV2AlternatePolicySpecArgs
+
+func GoogleCloudOrgpolicyV2AlternatePolicySpecPtr(v *GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput {
+	return (*googleCloudOrgpolicyV2AlternatePolicySpecPtrType)(v)
+}
+
+func (*googleCloudOrgpolicyV2AlternatePolicySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2AlternatePolicySpec)(nil)).Elem()
+}
+
+func (i *googleCloudOrgpolicyV2AlternatePolicySpecPtrType) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudOrgpolicyV2AlternatePolicySpecPtrType) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput)
+}
+
+// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+type GoogleCloudOrgpolicyV2AlternatePolicySpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2AlternatePolicySpec)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return o.ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2AlternatePolicySpec) *GoogleCloudOrgpolicyV2AlternatePolicySpec {
+		return &v
+	}).(GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput)
+}
+
+// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) Launch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2AlternatePolicySpec) *string { return v.Launch }).(pulumi.StringPtrOutput)
+}
+
+// Specify constraint for configurations of Google Cloud resources.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2AlternatePolicySpec) *GoogleCloudOrgpolicyV2PolicySpec { return v.Spec }).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
+}
+
+type GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2AlternatePolicySpec)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) Elem() GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2AlternatePolicySpec) GoogleCloudOrgpolicyV2AlternatePolicySpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2AlternatePolicySpec
+		return ret
+	}).(GoogleCloudOrgpolicyV2AlternatePolicySpecOutput)
+}
+
+// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) Launch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2AlternatePolicySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Launch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify constraint for configurations of Google Cloud resources.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2AlternatePolicySpec) *GoogleCloudOrgpolicyV2PolicySpec {
+		if v == nil {
+			return nil
+		}
+		return v.Spec
+	}).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
+}
+
+// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+type GoogleCloudOrgpolicyV2AlternatePolicySpecResponse struct {
+	// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+	Launch string `pulumi:"launch"`
+	// Specify constraint for configurations of Google Cloud resources.
+	Spec GoogleCloudOrgpolicyV2PolicySpecResponse `pulumi:"spec"`
+}
+
+// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+type GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2AlternatePolicySpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput {
+	return o
+}
+
+// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) Launch() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2AlternatePolicySpecResponse) string { return v.Launch }).(pulumi.StringOutput)
+}
+
+// Specify constraint for configurations of Google Cloud resources.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2AlternatePolicySpecResponse) GoogleCloudOrgpolicyV2PolicySpecResponse {
+		return v.Spec
+	}).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
+}
+
+// A custom constraint defined by customers which can *only* be applied to the given resource types and organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating a custom constraint itself does NOT apply any policy enforcement*.
+type GoogleCloudOrgpolicyV2CustomConstraint struct {
+	// Allow or deny type.
+	ActionType *GoogleCloudOrgpolicyV2CustomConstraintActionType `pulumi:"actionType"`
+	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+	Condition *string `pulumi:"condition"`
+	// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
+	Description *string `pulumi:"description"`
+	// One line display name for the UI. The max length of the display_name is 200 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// All the operations being applied for this constraint.
+	MethodTypes []GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem `pulumi:"methodTypes"`
+	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+	Name *string `pulumi:"name"`
+	// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+	ResourceTypes []string `pulumi:"resourceTypes"`
+}
+
+// GoogleCloudOrgpolicyV2CustomConstraintInput is an input type that accepts GoogleCloudOrgpolicyV2CustomConstraintArgs and GoogleCloudOrgpolicyV2CustomConstraintOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2CustomConstraintInput` via:
+//
+//	GoogleCloudOrgpolicyV2CustomConstraintArgs{...}
+type GoogleCloudOrgpolicyV2CustomConstraintInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2CustomConstraintOutput() GoogleCloudOrgpolicyV2CustomConstraintOutput
+	ToGoogleCloudOrgpolicyV2CustomConstraintOutputWithContext(context.Context) GoogleCloudOrgpolicyV2CustomConstraintOutput
+}
+
+// A custom constraint defined by customers which can *only* be applied to the given resource types and organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating a custom constraint itself does NOT apply any policy enforcement*.
+type GoogleCloudOrgpolicyV2CustomConstraintArgs struct {
+	// Allow or deny type.
+	ActionType GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrInput `pulumi:"actionType"`
+	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// One line display name for the UI. The max length of the display_name is 200 characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// All the operations being applied for this constraint.
+	MethodTypes GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayInput `pulumi:"methodTypes"`
+	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
+}
+
+func (GoogleCloudOrgpolicyV2CustomConstraintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraint)(nil)).Elem()
+}
+
+func (i GoogleCloudOrgpolicyV2CustomConstraintArgs) ToGoogleCloudOrgpolicyV2CustomConstraintOutput() GoogleCloudOrgpolicyV2CustomConstraintOutput {
+	return i.ToGoogleCloudOrgpolicyV2CustomConstraintOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2CustomConstraintArgs) ToGoogleCloudOrgpolicyV2CustomConstraintOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2CustomConstraintOutput)
+}
+
+func (i GoogleCloudOrgpolicyV2CustomConstraintArgs) ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutput() GoogleCloudOrgpolicyV2CustomConstraintPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2CustomConstraintArgs) ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2CustomConstraintOutput).ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudOrgpolicyV2CustomConstraintPtrInput is an input type that accepts GoogleCloudOrgpolicyV2CustomConstraintArgs, GoogleCloudOrgpolicyV2CustomConstraintPtr and GoogleCloudOrgpolicyV2CustomConstraintPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2CustomConstraintPtrInput` via:
+//
+//	        GoogleCloudOrgpolicyV2CustomConstraintArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudOrgpolicyV2CustomConstraintPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutput() GoogleCloudOrgpolicyV2CustomConstraintPtrOutput
+	ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutputWithContext(context.Context) GoogleCloudOrgpolicyV2CustomConstraintPtrOutput
+}
+
+type googleCloudOrgpolicyV2CustomConstraintPtrType GoogleCloudOrgpolicyV2CustomConstraintArgs
+
+func GoogleCloudOrgpolicyV2CustomConstraintPtr(v *GoogleCloudOrgpolicyV2CustomConstraintArgs) GoogleCloudOrgpolicyV2CustomConstraintPtrInput {
+	return (*googleCloudOrgpolicyV2CustomConstraintPtrType)(v)
+}
+
+func (*googleCloudOrgpolicyV2CustomConstraintPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2CustomConstraint)(nil)).Elem()
+}
+
+func (i *googleCloudOrgpolicyV2CustomConstraintPtrType) ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutput() GoogleCloudOrgpolicyV2CustomConstraintPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudOrgpolicyV2CustomConstraintPtrType) ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2CustomConstraintPtrOutput)
+}
+
+// A custom constraint defined by customers which can *only* be applied to the given resource types and organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating a custom constraint itself does NOT apply any policy enforcement*.
+type GoogleCloudOrgpolicyV2CustomConstraintOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2CustomConstraintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraint)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) ToGoogleCloudOrgpolicyV2CustomConstraintOutput() GoogleCloudOrgpolicyV2CustomConstraintOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) ToGoogleCloudOrgpolicyV2CustomConstraintOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutput() GoogleCloudOrgpolicyV2CustomConstraintPtrOutput {
+	return o.ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2CustomConstraint) *GoogleCloudOrgpolicyV2CustomConstraint {
+		return &v
+	}).(GoogleCloudOrgpolicyV2CustomConstraintPtrOutput)
+}
+
+// Allow or deny type.
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) ActionType() GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraint) *GoogleCloudOrgpolicyV2CustomConstraintActionType {
+		return v.ActionType
+	}).(GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput)
+}
+
+// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraint) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraint) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// One line display name for the UI. The max length of the display_name is 200 characters.
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraint) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// All the operations being applied for this constraint.
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) MethodTypes() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraint) []GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem {
+		return v.MethodTypes
+	}).(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput)
+}
+
+// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraint) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+func (o GoogleCloudOrgpolicyV2CustomConstraintOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraint) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudOrgpolicyV2CustomConstraintPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2CustomConstraint)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutput() GoogleCloudOrgpolicyV2CustomConstraintPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) ToGoogleCloudOrgpolicyV2CustomConstraintPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) Elem() GoogleCloudOrgpolicyV2CustomConstraintOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2CustomConstraint) GoogleCloudOrgpolicyV2CustomConstraint {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2CustomConstraint
+		return ret
+	}).(GoogleCloudOrgpolicyV2CustomConstraintOutput)
+}
+
+// Allow or deny type.
+func (o GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) ActionType() GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2CustomConstraint) *GoogleCloudOrgpolicyV2CustomConstraintActionType {
+		if v == nil {
+			return nil
+		}
+		return v.ActionType
+	}).(GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput)
+}
+
+// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+func (o GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2CustomConstraint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Condition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
+func (o GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2CustomConstraint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// One line display name for the UI. The max length of the display_name is 200 characters.
+func (o GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2CustomConstraint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// All the operations being applied for this constraint.
+func (o GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) MethodTypes() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2CustomConstraint) []GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem {
+		if v == nil {
+			return nil
+		}
+		return v.MethodTypes
+	}).(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput)
+}
+
+// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+func (o GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2CustomConstraint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+func (o GoogleCloudOrgpolicyV2CustomConstraintPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2CustomConstraint) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// A custom constraint defined by customers which can *only* be applied to the given resource types and organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating a custom constraint itself does NOT apply any policy enforcement*.
+type GoogleCloudOrgpolicyV2CustomConstraintResponse struct {
+	// Allow or deny type.
+	ActionType string `pulumi:"actionType"`
+	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+	Condition string `pulumi:"condition"`
+	// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
+	Description string `pulumi:"description"`
+	// One line display name for the UI. The max length of the display_name is 200 characters.
+	DisplayName string `pulumi:"displayName"`
+	// All the operations being applied for this constraint.
+	MethodTypes []string `pulumi:"methodTypes"`
+	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+	Name string `pulumi:"name"`
+	// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+	ResourceTypes []string `pulumi:"resourceTypes"`
+	// The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// A custom constraint defined by customers which can *only* be applied to the given resource types and organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating a custom constraint itself does NOT apply any policy enforcement*.
+type GoogleCloudOrgpolicyV2CustomConstraintResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) ToGoogleCloudOrgpolicyV2CustomConstraintResponseOutput() GoogleCloudOrgpolicyV2CustomConstraintResponseOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) ToGoogleCloudOrgpolicyV2CustomConstraintResponseOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintResponseOutput {
+	return o
+}
+
+// Allow or deny type.
+func (o GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraintResponse) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+func (o GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) Condition() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraintResponse) string { return v.Condition }).(pulumi.StringOutput)
+}
+
+// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
+func (o GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraintResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// One line display name for the UI. The max length of the display_name is 200 characters.
+func (o GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraintResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// All the operations being applied for this constraint.
+func (o GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) MethodTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraintResponse) []string { return v.MethodTypes }).(pulumi.StringArrayOutput)
+}
+
+// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+func (o GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraintResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+func (o GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraintResponse) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+func (o GoogleCloudOrgpolicyV2CustomConstraintResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2CustomConstraintResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
+type GoogleCloudOrgpolicyV2Policy struct {
+	// Deprecated.
+	//
+	// Deprecated: Deprecated.
+	Alternate *GoogleCloudOrgpolicyV2AlternatePolicySpec `pulumi:"alternate"`
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	DryRunSpec *GoogleCloudOrgpolicyV2PolicySpec `pulumi:"dryRunSpec"`
+	// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
+	// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+	Name *string `pulumi:"name"`
+	// Basic information about the Organization Policy.
+	Spec *GoogleCloudOrgpolicyV2PolicySpec `pulumi:"spec"`
+}
+
+// GoogleCloudOrgpolicyV2PolicyInput is an input type that accepts GoogleCloudOrgpolicyV2PolicyArgs and GoogleCloudOrgpolicyV2PolicyOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicyInput` via:
+//
+//	GoogleCloudOrgpolicyV2PolicyArgs{...}
+type GoogleCloudOrgpolicyV2PolicyInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2PolicyOutput() GoogleCloudOrgpolicyV2PolicyOutput
+	ToGoogleCloudOrgpolicyV2PolicyOutputWithContext(context.Context) GoogleCloudOrgpolicyV2PolicyOutput
+}
+
+// Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
+type GoogleCloudOrgpolicyV2PolicyArgs struct {
+	// Deprecated.
+	//
+	// Deprecated: Deprecated.
+	Alternate GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput `pulumi:"alternate"`
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	DryRunSpec GoogleCloudOrgpolicyV2PolicySpecPtrInput `pulumi:"dryRunSpec"`
+	// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
+	// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Basic information about the Organization Policy.
+	Spec GoogleCloudOrgpolicyV2PolicySpecPtrInput `pulumi:"spec"`
+}
+
+func (GoogleCloudOrgpolicyV2PolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2Policy)(nil)).Elem()
+}
+
+func (i GoogleCloudOrgpolicyV2PolicyArgs) ToGoogleCloudOrgpolicyV2PolicyOutput() GoogleCloudOrgpolicyV2PolicyOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicyOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2PolicyArgs) ToGoogleCloudOrgpolicyV2PolicyOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicyOutput)
+}
+
+func (i GoogleCloudOrgpolicyV2PolicyArgs) ToGoogleCloudOrgpolicyV2PolicyPtrOutput() GoogleCloudOrgpolicyV2PolicyPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2PolicyArgs) ToGoogleCloudOrgpolicyV2PolicyPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicyOutput).ToGoogleCloudOrgpolicyV2PolicyPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudOrgpolicyV2PolicyPtrInput is an input type that accepts GoogleCloudOrgpolicyV2PolicyArgs, GoogleCloudOrgpolicyV2PolicyPtr and GoogleCloudOrgpolicyV2PolicyPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicyPtrInput` via:
+//
+//	        GoogleCloudOrgpolicyV2PolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudOrgpolicyV2PolicyPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2PolicyPtrOutput() GoogleCloudOrgpolicyV2PolicyPtrOutput
+	ToGoogleCloudOrgpolicyV2PolicyPtrOutputWithContext(context.Context) GoogleCloudOrgpolicyV2PolicyPtrOutput
+}
+
+type googleCloudOrgpolicyV2PolicyPtrType GoogleCloudOrgpolicyV2PolicyArgs
+
+func GoogleCloudOrgpolicyV2PolicyPtr(v *GoogleCloudOrgpolicyV2PolicyArgs) GoogleCloudOrgpolicyV2PolicyPtrInput {
+	return (*googleCloudOrgpolicyV2PolicyPtrType)(v)
+}
+
+func (*googleCloudOrgpolicyV2PolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2Policy)(nil)).Elem()
+}
+
+func (i *googleCloudOrgpolicyV2PolicyPtrType) ToGoogleCloudOrgpolicyV2PolicyPtrOutput() GoogleCloudOrgpolicyV2PolicyPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudOrgpolicyV2PolicyPtrType) ToGoogleCloudOrgpolicyV2PolicyPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicyPtrOutput)
+}
+
+// Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
+type GoogleCloudOrgpolicyV2PolicyOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2Policy)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicyOutput) ToGoogleCloudOrgpolicyV2PolicyOutput() GoogleCloudOrgpolicyV2PolicyOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicyOutput) ToGoogleCloudOrgpolicyV2PolicyOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicyOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicyOutput) ToGoogleCloudOrgpolicyV2PolicyPtrOutput() GoogleCloudOrgpolicyV2PolicyPtrOutput {
+	return o.ToGoogleCloudOrgpolicyV2PolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2PolicyOutput) ToGoogleCloudOrgpolicyV2PolicyPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2Policy) *GoogleCloudOrgpolicyV2Policy {
+		return &v
+	}).(GoogleCloudOrgpolicyV2PolicyPtrOutput)
+}
+
+// Deprecated.
+//
+// Deprecated: Deprecated.
+func (o GoogleCloudOrgpolicyV2PolicyOutput) Alternate() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2Policy) *GoogleCloudOrgpolicyV2AlternatePolicySpec { return v.Alternate }).(GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput)
+}
+
+// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+func (o GoogleCloudOrgpolicyV2PolicyOutput) DryRunSpec() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2Policy) *GoogleCloudOrgpolicyV2PolicySpec { return v.DryRunSpec }).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
+}
+
+// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o GoogleCloudOrgpolicyV2PolicyOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2Policy) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+func (o GoogleCloudOrgpolicyV2PolicyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2Policy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Basic information about the Organization Policy.
+func (o GoogleCloudOrgpolicyV2PolicyOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2Policy) *GoogleCloudOrgpolicyV2PolicySpec { return v.Spec }).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
+}
+
+type GoogleCloudOrgpolicyV2PolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2Policy)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicyPtrOutput) ToGoogleCloudOrgpolicyV2PolicyPtrOutput() GoogleCloudOrgpolicyV2PolicyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicyPtrOutput) ToGoogleCloudOrgpolicyV2PolicyPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicyPtrOutput) Elem() GoogleCloudOrgpolicyV2PolicyOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2Policy) GoogleCloudOrgpolicyV2Policy {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2Policy
+		return ret
+	}).(GoogleCloudOrgpolicyV2PolicyOutput)
+}
+
+// Deprecated.
+//
+// Deprecated: Deprecated.
+func (o GoogleCloudOrgpolicyV2PolicyPtrOutput) Alternate() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2Policy) *GoogleCloudOrgpolicyV2AlternatePolicySpec {
+		if v == nil {
+			return nil
+		}
+		return v.Alternate
+	}).(GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput)
+}
+
+// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+func (o GoogleCloudOrgpolicyV2PolicyPtrOutput) DryRunSpec() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2Policy) *GoogleCloudOrgpolicyV2PolicySpec {
+		if v == nil {
+			return nil
+		}
+		return v.DryRunSpec
+	}).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
+}
+
+// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o GoogleCloudOrgpolicyV2PolicyPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2Policy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+func (o GoogleCloudOrgpolicyV2PolicyPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2Policy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Basic information about the Organization Policy.
+func (o GoogleCloudOrgpolicyV2PolicyPtrOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2Policy) *GoogleCloudOrgpolicyV2PolicySpec {
+		if v == nil {
+			return nil
+		}
+		return v.Spec
+	}).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
+}
+
+// Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
+type GoogleCloudOrgpolicyV2PolicyResponse struct {
+	// Deprecated.
+	//
+	// Deprecated: Deprecated.
+	Alternate GoogleCloudOrgpolicyV2AlternatePolicySpecResponse `pulumi:"alternate"`
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	DryRunSpec GoogleCloudOrgpolicyV2PolicySpecResponse `pulumi:"dryRunSpec"`
+	// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag string `pulumi:"etag"`
+	// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+	Name string `pulumi:"name"`
+	// Basic information about the Organization Policy.
+	Spec GoogleCloudOrgpolicyV2PolicySpecResponse `pulumi:"spec"`
+}
+
+// Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
+type GoogleCloudOrgpolicyV2PolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicyResponseOutput) ToGoogleCloudOrgpolicyV2PolicyResponseOutput() GoogleCloudOrgpolicyV2PolicyResponseOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicyResponseOutput) ToGoogleCloudOrgpolicyV2PolicyResponseOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicyResponseOutput {
+	return o
+}
+
+// Deprecated.
+//
+// Deprecated: Deprecated.
+func (o GoogleCloudOrgpolicyV2PolicyResponseOutput) Alternate() GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicyResponse) GoogleCloudOrgpolicyV2AlternatePolicySpecResponse {
+		return v.Alternate
+	}).(GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput)
+}
+
+// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+func (o GoogleCloudOrgpolicyV2PolicyResponseOutput) DryRunSpec() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicyResponse) GoogleCloudOrgpolicyV2PolicySpecResponse {
+		return v.DryRunSpec
+	}).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
+}
+
+// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o GoogleCloudOrgpolicyV2PolicyResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicyResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+func (o GoogleCloudOrgpolicyV2PolicyResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicyResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Basic information about the Organization Policy.
+func (o GoogleCloudOrgpolicyV2PolicyResponseOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicyResponse) GoogleCloudOrgpolicyV2PolicySpecResponse { return v.Spec }).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
+}
+
+// Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
+type GoogleCloudOrgpolicyV2PolicySpec struct {
+	// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+	Etag *string `pulumi:"etag"`
+	// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+	InheritFromParent *bool `pulumi:"inheritFromParent"`
+	// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+	Reset *bool `pulumi:"reset"`
+	// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+	Rules []GoogleCloudOrgpolicyV2PolicySpecPolicyRule `pulumi:"rules"`
+}
+
+// GoogleCloudOrgpolicyV2PolicySpecInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecArgs and GoogleCloudOrgpolicyV2PolicySpecOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecInput` via:
+//
+//	GoogleCloudOrgpolicyV2PolicySpecArgs{...}
+type GoogleCloudOrgpolicyV2PolicySpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2PolicySpecOutput() GoogleCloudOrgpolicyV2PolicySpecOutput
+	ToGoogleCloudOrgpolicyV2PolicySpecOutputWithContext(context.Context) GoogleCloudOrgpolicyV2PolicySpecOutput
+}
+
+// Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
+type GoogleCloudOrgpolicyV2PolicySpecArgs struct {
+	// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
+	// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+	InheritFromParent pulumi.BoolPtrInput `pulumi:"inheritFromParent"`
+	// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+	Reset pulumi.BoolPtrInput `pulumi:"reset"`
+	// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+	Rules GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput `pulumi:"rules"`
+}
+
+func (GoogleCloudOrgpolicyV2PolicySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpec)(nil)).Elem()
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecArgs) ToGoogleCloudOrgpolicyV2PolicySpecOutput() GoogleCloudOrgpolicyV2PolicySpecOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicySpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecArgs) ToGoogleCloudOrgpolicyV2PolicySpecOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecOutput)
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecArgs) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecArgs) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecOutput).ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudOrgpolicyV2PolicySpecPtrInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecArgs, GoogleCloudOrgpolicyV2PolicySpecPtr and GoogleCloudOrgpolicyV2PolicySpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPtrInput` via:
+//
+//	        GoogleCloudOrgpolicyV2PolicySpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudOrgpolicyV2PolicySpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2PolicySpecPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPtrOutput
+	ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(context.Context) GoogleCloudOrgpolicyV2PolicySpecPtrOutput
+}
+
+type googleCloudOrgpolicyV2PolicySpecPtrType GoogleCloudOrgpolicyV2PolicySpecArgs
+
+func GoogleCloudOrgpolicyV2PolicySpecPtr(v *GoogleCloudOrgpolicyV2PolicySpecArgs) GoogleCloudOrgpolicyV2PolicySpecPtrInput {
+	return (*googleCloudOrgpolicyV2PolicySpecPtrType)(v)
+}
+
+func (*googleCloudOrgpolicyV2PolicySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2PolicySpec)(nil)).Elem()
+}
+
+func (i *googleCloudOrgpolicyV2PolicySpecPtrType) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudOrgpolicyV2PolicySpecPtrType) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
+}
+
+// Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
+type GoogleCloudOrgpolicyV2PolicySpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpec)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecOutput) ToGoogleCloudOrgpolicyV2PolicySpecOutput() GoogleCloudOrgpolicyV2PolicySpecOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecOutput) ToGoogleCloudOrgpolicyV2PolicySpecOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecOutput) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o.ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecOutput) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2PolicySpec) *GoogleCloudOrgpolicyV2PolicySpec {
+		return &v
+	}).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
+}
+
+// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+func (o GoogleCloudOrgpolicyV2PolicySpecOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpec) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecOutput) InheritFromParent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpec) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
+}
+
+// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+func (o GoogleCloudOrgpolicyV2PolicySpecOutput) Reset() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpec) *bool { return v.Reset }).(pulumi.BoolPtrOutput)
+}
+
+// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+func (o GoogleCloudOrgpolicyV2PolicySpecOutput) Rules() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpec) []GoogleCloudOrgpolicyV2PolicySpecPolicyRule { return v.Rules }).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput)
+}
+
+type GoogleCloudOrgpolicyV2PolicySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2PolicySpec)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) Elem() GoogleCloudOrgpolicyV2PolicySpecOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpec) GoogleCloudOrgpolicyV2PolicySpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2PolicySpec
+		return ret
+	}).(GoogleCloudOrgpolicyV2PolicySpecOutput)
+}
+
+// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) InheritFromParent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InheritFromParent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) Reset() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Reset
+	}).(pulumi.BoolPtrOutput)
+}
+
+// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) Rules() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpec) []GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput)
+}
+
+// A rule used to express this policy.
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRule struct {
+	// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+	AllowAll *bool `pulumi:"allowAll"`
+	// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+	Condition *GoogleTypeExpr `pulumi:"condition"`
+	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+	DenyAll *bool `pulumi:"denyAll"`
+	// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
+	Enforce *bool `pulumi:"enforce"`
+	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+	Values *GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues `pulumi:"values"`
+}
+
+// GoogleCloudOrgpolicyV2PolicySpecPolicyRuleInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs and GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPolicyRuleInput` via:
+//
+//	GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs{...}
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput
+	ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutputWithContext(context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput
+}
+
+// A rule used to express this policy.
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs struct {
+	// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+	AllowAll pulumi.BoolPtrInput `pulumi:"allowAll"`
+	// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
+	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+	DenyAll pulumi.BoolPtrInput `pulumi:"denyAll"`
+	// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
+	Enforce pulumi.BoolPtrInput `pulumi:"enforce"`
+	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+	Values GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput `pulumi:"values"`
+}
+
+func (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRule)(nil)).Elem()
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput)
+}
+
+// GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray and GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput` via:
+//
+//	GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray{ GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs{...} }
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput
+	ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutputWithContext(context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput
+}
+
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray []GoogleCloudOrgpolicyV2PolicySpecPolicyRuleInput
+
+func (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudOrgpolicyV2PolicySpecPolicyRule)(nil)).Elem()
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput)
+}
+
+// A rule used to express this policy.
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRule)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput {
+	return o
+}
+
+// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) AllowAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRule) *bool { return v.AllowAll }).(pulumi.BoolPtrOutput)
+}
+
+// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) Condition() GoogleTypeExprPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRule) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
+}
+
+// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) DenyAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRule) *bool { return v.DenyAll }).(pulumi.BoolPtrOutput)
+}
+
+// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRule) *bool { return v.Enforce }).(pulumi.BoolPtrOutput)
+}
+
+// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) Values() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRule) *GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
+		return v.Values
+	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput)
+}
+
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudOrgpolicyV2PolicySpecPolicyRule)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput) Index(i pulumi.IntInput) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
+		return vs[0].([]GoogleCloudOrgpolicyV2PolicySpecPolicyRule)[vs[1].(int)]
+	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput)
+}
+
+// A rule used to express this policy.
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse struct {
+	// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+	AllowAll bool `pulumi:"allowAll"`
+	// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+	Condition GoogleTypeExprResponse `pulumi:"condition"`
+	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+	DenyAll bool `pulumi:"denyAll"`
+	// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
+	Enforce bool `pulumi:"enforce"`
+	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+	Values GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse `pulumi:"values"`
+}
+
+// A rule used to express this policy.
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput {
+	return o
+}
+
+// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) AllowAll() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse) bool { return v.AllowAll }).(pulumi.BoolOutput)
+}
+
+// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) Condition() GoogleTypeExprResponseOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
+}
+
+// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) DenyAll() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse) bool { return v.DenyAll }).(pulumi.BoolOutput)
+}
+
+// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) Values() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse {
+		return v.Values
+	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput)
+}
+
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse {
+		return vs[0].([]GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse)[vs[1].(int)]
+	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput)
+}
+
+// A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues struct {
+	// List of values allowed at this resource.
+	AllowedValues []string `pulumi:"allowedValues"`
+	// List of values denied at this resource.
+	DeniedValues []string `pulumi:"deniedValues"`
+}
+
+// GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs and GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesInput` via:
+//
+//	GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{...}
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput
+	ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutputWithContext(context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput
+}
+
+// A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs struct {
+	// List of values allowed at this resource.
+	AllowedValues pulumi.StringArrayInput `pulumi:"allowedValues"`
+	// List of values denied at this resource.
+	DeniedValues pulumi.StringArrayInput `pulumi:"deniedValues"`
+}
+
+func (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues)(nil)).Elem()
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput)
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput).ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs, GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtr and GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput` via:
+//
+//	        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput
+	ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput
+}
+
+type googleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrType GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs
+
+func GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtr(v *GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput {
+	return (*googleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrType)(v)
+}
+
+func (*googleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues)(nil)).Elem()
+}
+
+func (i *googleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrType) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrType) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput)
+}
+
+// A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
+	return o.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues) *GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
+		return &v
+	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput)
+}
+
+// List of values allowed at this resource.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) AllowedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues) []string { return v.AllowedValues }).(pulumi.StringArrayOutput)
+}
+
+// List of values denied at this resource.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) DeniedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues) []string { return v.DeniedValues }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) Elem() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
+		return ret
+	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput)
+}
+
+// List of values allowed at this resource.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) AllowedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of values denied at this resource.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) DeniedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DeniedValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse struct {
+	// List of values allowed at this resource.
+	AllowedValues []string `pulumi:"allowedValues"`
+	// List of values denied at this resource.
+	DeniedValues []string `pulumi:"deniedValues"`
+}
+
+// A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
+type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput {
+	return o
+}
+
+// List of values allowed at this resource.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput) AllowedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse) []string {
+		return v.AllowedValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of values denied at this resource.
+func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput) DeniedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse) []string { return v.DeniedValues }).(pulumi.StringArrayOutput)
+}
+
+// Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
+type GoogleCloudOrgpolicyV2PolicySpecResponse struct {
+	// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+	Etag string `pulumi:"etag"`
+	// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+	InheritFromParent bool `pulumi:"inheritFromParent"`
+	// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+	Reset bool `pulumi:"reset"`
+	// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+	Rules []GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse `pulumi:"rules"`
+	// The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
+type GoogleCloudOrgpolicyV2PolicySpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2PolicySpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2PolicySpecResponseOutput() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2PolicySpecResponseOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
+	return o
+}
+
+// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) InheritFromParent() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecResponse) bool { return v.InheritFromParent }).(pulumi.BoolOutput)
+}
+
+// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) Reset() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecResponse) bool { return v.Reset }).(pulumi.BoolOutput)
+}
+
+// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) Rules() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecResponse) []GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse {
+		return v.Rules
+	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput)
+}
+
+// The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The proposed changes to OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlay struct {
+	// Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the same name will be overridden in the simulation. That is, violations will be determined as if all custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each request evaluates a single constraint.
+	CustomConstraints []GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay `pulumi:"customConstraints"`
+	// Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated.
+	Policies []GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay `pulumi:"policies"`
+}
+
+// GoogleCloudPolicysimulatorV1OrgPolicyOverlayInput is an input type that accepts GoogleCloudPolicysimulatorV1OrgPolicyOverlayArgs and GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput values.
+// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1OrgPolicyOverlayInput` via:
+//
+//	GoogleCloudPolicysimulatorV1OrgPolicyOverlayArgs{...}
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput
+	ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput
+}
+
+// The proposed changes to OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayArgs struct {
+	// Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the same name will be overridden in the simulation. That is, violations will be determined as if all custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each request evaluates a single constraint.
+	CustomConstraints GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayInput `pulumi:"customConstraints"`
+	// Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated.
+	Policies GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayInput `pulumi:"policies"`
+}
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlay)(nil)).Elem()
+}
+
+func (i GoogleCloudPolicysimulatorV1OrgPolicyOverlayArgs) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput {
+	return i.ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudPolicysimulatorV1OrgPolicyOverlayArgs) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput)
+}
+
+// The proposed changes to OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlay)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput {
+	return o
+}
+
+// Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the same name will be overridden in the simulation. That is, violations will be determined as if all custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each request evaluates a single constraint.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput) CustomConstraints() GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlay) []GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay {
+		return v.CustomConstraints
+	}).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput)
+}
+
+// Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput) Policies() GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlay) []GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay {
+		return v.Policies
+	}).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput)
+}
+
+// A change to an OrgPolicy custom constraint.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay struct {
+	// Optional. The new or updated custom constraint.
+	CustomConstraint *GoogleCloudOrgpolicyV2CustomConstraint `pulumi:"customConstraint"`
+	// Optional. Resource the constraint is attached to. Example: "organization/987654"
+	CustomConstraintParent *string `pulumi:"customConstraintParent"`
+}
+
+// GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayInput is an input type that accepts GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArgs and GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput values.
+// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayInput` via:
+//
+//	GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArgs{...}
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput
+	ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput
+}
+
+// A change to an OrgPolicy custom constraint.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArgs struct {
+	// Optional. The new or updated custom constraint.
+	CustomConstraint GoogleCloudOrgpolicyV2CustomConstraintPtrInput `pulumi:"customConstraint"`
+	// Optional. Resource the constraint is attached to. Example: "organization/987654"
+	CustomConstraintParent pulumi.StringPtrInput `pulumi:"customConstraintParent"`
+}
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay)(nil)).Elem()
+}
+
+func (i GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArgs) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput {
+	return i.ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArgs) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput)
+}
+
+// GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayInput is an input type that accepts GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArray and GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayInput` via:
+//
+//	GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArray{ GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArgs{...} }
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput
+	ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput
+}
+
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArray []GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayInput
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay)(nil)).Elem()
+}
+
+func (i GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArray) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput {
+	return i.ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArray) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput)
+}
+
+// A change to an OrgPolicy custom constraint.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput {
+	return o
+}
+
+// Optional. The new or updated custom constraint.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput) CustomConstraint() GoogleCloudOrgpolicyV2CustomConstraintPtrOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay) *GoogleCloudOrgpolicyV2CustomConstraint {
+		return v.CustomConstraint
+	}).(GoogleCloudOrgpolicyV2CustomConstraintPtrOutput)
+}
+
+// Optional. Resource the constraint is attached to. Example: "organization/987654"
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput) CustomConstraintParent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay) *string {
+		return v.CustomConstraintParent
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput) Index(i pulumi.IntInput) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay {
+		return vs[0].([]GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay)[vs[1].(int)]
+	}).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput)
+}
+
+// A change to an OrgPolicy custom constraint.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse struct {
+	// Optional. The new or updated custom constraint.
+	CustomConstraint GoogleCloudOrgpolicyV2CustomConstraintResponse `pulumi:"customConstraint"`
+	// Optional. Resource the constraint is attached to. Example: "organization/987654"
+	CustomConstraintParent string `pulumi:"customConstraintParent"`
+}
+
+// A change to an OrgPolicy custom constraint.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput {
+	return o
+}
+
+// Optional. The new or updated custom constraint.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput) CustomConstraint() GoogleCloudOrgpolicyV2CustomConstraintResponseOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse) GoogleCloudOrgpolicyV2CustomConstraintResponse {
+		return v.CustomConstraint
+	}).(GoogleCloudOrgpolicyV2CustomConstraintResponseOutput)
+}
+
+// Optional. Resource the constraint is attached to. Example: "organization/987654"
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput) CustomConstraintParent() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse) string {
+		return v.CustomConstraintParent
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse {
+		return vs[0].([]GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse)[vs[1].(int)]
+	}).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput)
+}
+
+// A change to an OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay struct {
+	// Optional. The new or updated OrgPolicy.
+	Policy *GoogleCloudOrgpolicyV2Policy `pulumi:"policy"`
+	// Optional. The parent of the policy we are attaching to. Example: "projects/123456"
+	PolicyParent *string `pulumi:"policyParent"`
+}
+
+// GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayInput is an input type that accepts GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArgs and GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput values.
+// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayInput` via:
+//
+//	GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArgs{...}
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput
+	ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput
+}
+
+// A change to an OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArgs struct {
+	// Optional. The new or updated OrgPolicy.
+	Policy GoogleCloudOrgpolicyV2PolicyPtrInput `pulumi:"policy"`
+	// Optional. The parent of the policy we are attaching to. Example: "projects/123456"
+	PolicyParent pulumi.StringPtrInput `pulumi:"policyParent"`
+}
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay)(nil)).Elem()
+}
+
+func (i GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArgs) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput {
+	return i.ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArgs) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput)
+}
+
+// GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayInput is an input type that accepts GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArray and GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayInput` via:
+//
+//	GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArray{ GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArgs{...} }
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput
+	ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput
+}
+
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArray []GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayInput
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay)(nil)).Elem()
+}
+
+func (i GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArray) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput {
+	return i.ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArray) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput)
+}
+
+// A change to an OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput {
+	return o
+}
+
+// Optional. The new or updated OrgPolicy.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput) Policy() GoogleCloudOrgpolicyV2PolicyPtrOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay) *GoogleCloudOrgpolicyV2Policy {
+		return v.Policy
+	}).(GoogleCloudOrgpolicyV2PolicyPtrOutput)
+}
+
+// Optional. The parent of the policy we are attaching to. Example: "projects/123456"
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput) PolicyParent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay) *string { return v.PolicyParent }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput) Index(i pulumi.IntInput) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay {
+		return vs[0].([]GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay)[vs[1].(int)]
+	}).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput)
+}
+
+// A change to an OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse struct {
+	// Optional. The new or updated OrgPolicy.
+	Policy GoogleCloudOrgpolicyV2PolicyResponse `pulumi:"policy"`
+	// Optional. The parent of the policy we are attaching to. Example: "projects/123456"
+	PolicyParent string `pulumi:"policyParent"`
+}
+
+// A change to an OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput {
+	return o
+}
+
+// Optional. The new or updated OrgPolicy.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput) Policy() GoogleCloudOrgpolicyV2PolicyResponseOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse) GoogleCloudOrgpolicyV2PolicyResponse {
+		return v.Policy
+	}).(GoogleCloudOrgpolicyV2PolicyResponseOutput)
+}
+
+// Optional. The parent of the policy we are attaching to. Example: "projects/123456"
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput) PolicyParent() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse) string {
+		return v.PolicyParent
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse {
+		return vs[0].([]GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse)[vs[1].(int)]
+	}).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput)
+}
+
+// The proposed changes to OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponse struct {
+	// Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the same name will be overridden in the simulation. That is, violations will be determined as if all custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each request evaluates a single constraint.
+	CustomConstraints []GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse `pulumi:"customConstraints"`
+	// Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated.
+	Policies []GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse `pulumi:"policies"`
+}
+
+// The proposed changes to OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutput() GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutput {
+	return o
+}
+
+// Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the same name will be overridden in the simulation. That is, violations will be determined as if all custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each request evaluates a single constraint.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutput) CustomConstraints() GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponse) []GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse {
+		return v.CustomConstraints
+	}).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput)
+}
+
+// Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutput) Policies() GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponse) []GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse {
+		return v.Policies
+	}).(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput)
+}
+
+// A summary of the state of all resources scanned for compliance with the changed OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponse struct {
+	// Number of scanned resources with zero violations.
+	Compliant int `pulumi:"compliant"`
+	// Number of resources that returned an error when scanned.
+	Errors int `pulumi:"errors"`
+	// Number of scanned resources with at least one violation.
+	Noncompliant int `pulumi:"noncompliant"`
+	// Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant + error
+	Scanned int `pulumi:"scanned"`
+	// Number of resources where the constraint was not enforced, i.e. the Policy set `enforced: false` for that resource.
+	Unenforced int `pulumi:"unenforced"`
+}
+
+// A summary of the state of all resources scanned for compliance with the changed OrgPolicy.
+type GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput() GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput) ToGoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput {
+	return o
+}
+
+// Number of scanned resources with zero violations.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput) Compliant() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponse) int {
+		return v.Compliant
+	}).(pulumi.IntOutput)
+}
+
+// Number of resources that returned an error when scanned.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput) Errors() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponse) int {
+		return v.Errors
+	}).(pulumi.IntOutput)
+}
+
+// Number of scanned resources with at least one violation.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput) Noncompliant() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponse) int {
+		return v.Noncompliant
+	}).(pulumi.IntOutput)
+}
+
+// Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant + error
+func (o GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput) Scanned() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponse) int {
+		return v.Scanned
+	}).(pulumi.IntOutput)
+}
+
+// Number of resources where the constraint was not enforced, i.e. the Policy set `enforced: false` for that resource.
+func (o GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput) Unenforced() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponse) int {
+		return v.Unenforced
+	}).(pulumi.IntOutput)
+}
+
 // The configuration used for a Replay.
 type GoogleCloudPolicysimulatorV1ReplayConfig struct {
 	// The logs to use as input for the Replay.
@@ -217,10 +2198,306 @@ func (o GoogleTypeDateResponseOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Year }).(pulumi.IntOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExpr struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression *string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// GoogleTypeExprInput is an input type that accepts GoogleTypeExprArgs and GoogleTypeExprOutput values.
+// You can construct a concrete instance of `GoogleTypeExprInput` via:
+//
+//	GoogleTypeExprArgs{...}
+type GoogleTypeExprInput interface {
+	pulumi.Input
+
+	ToGoogleTypeExprOutput() GoogleTypeExprOutput
+	ToGoogleTypeExprOutputWithContext(context.Context) GoogleTypeExprOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (GoogleTypeExprArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeExpr)(nil)).Elem()
+}
+
+func (i GoogleTypeExprArgs) ToGoogleTypeExprOutput() GoogleTypeExprOutput {
+	return i.ToGoogleTypeExprOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeExprArgs) ToGoogleTypeExprOutputWithContext(ctx context.Context) GoogleTypeExprOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput)
+}
+
+func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
+	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput).ToGoogleTypeExprPtrOutputWithContext(ctx)
+}
+
+// GoogleTypeExprPtrInput is an input type that accepts GoogleTypeExprArgs, GoogleTypeExprPtr and GoogleTypeExprPtrOutput values.
+// You can construct a concrete instance of `GoogleTypeExprPtrInput` via:
+//
+//	        GoogleTypeExprArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleTypeExprPtrInput interface {
+	pulumi.Input
+
+	ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput
+	ToGoogleTypeExprPtrOutputWithContext(context.Context) GoogleTypeExprPtrOutput
+}
+
+type googleTypeExprPtrType GoogleTypeExprArgs
+
+func GoogleTypeExprPtr(v *GoogleTypeExprArgs) GoogleTypeExprPtrInput {
+	return (*googleTypeExprPtrType)(v)
+}
+
+func (*googleTypeExprPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeExpr)(nil)).Elem()
+}
+
+func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
+	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
+}
+
+func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeExprOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeExpr)(nil)).Elem()
+}
+
+func (o GoogleTypeExprOutput) ToGoogleTypeExprOutput() GoogleTypeExprOutput {
+	return o
+}
+
+func (o GoogleTypeExprOutput) ToGoogleTypeExprOutputWithContext(ctx context.Context) GoogleTypeExprOutput {
+	return o
+}
+
+func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
+	return o.ToGoogleTypeExprPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
+		return &v
+	}).(GoogleTypeExprPtrOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o GoogleTypeExprOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeExpr) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o GoogleTypeExprOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeExpr) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o GoogleTypeExprOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeExpr) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o GoogleTypeExprOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeExpr) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type GoogleTypeExprPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeExprPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeExpr)(nil)).Elem()
+}
+
+func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
+	return o
+}
+
+func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
+	return o
+}
+
+func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
+	return o.ApplyT(func(v *GoogleTypeExpr) GoogleTypeExpr {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeExpr
+		return ret
+	}).(GoogleTypeExprOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o GoogleTypeExprPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o GoogleTypeExprPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o GoogleTypeExprPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o GoogleTypeExprPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeExprResponse)(nil)).Elem()
+}
+
+func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutput() GoogleTypeExprResponseOutput {
+	return o
+}
+
+func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(ctx context.Context) GoogleTypeExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o GoogleTypeExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o GoogleTypeExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o GoogleTypeExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o GoogleTypeExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2AlternatePolicySpecInput)(nil)).Elem(), GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintInput)(nil)).Elem(), GoogleCloudOrgpolicyV2CustomConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2CustomConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicyInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicyPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1OrgPolicyOverlayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1ReplayConfigInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1ReplayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprInput)(nil)).Elem(), GoogleTypeExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprPtrInput)(nil)).Elem(), GoogleTypeExprArgs{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2AlternatePolicySpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2CustomConstraintOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2CustomConstraintPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2CustomConstraintResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicyOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicyPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicyResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyOverlayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1ReplayConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponseOutput{})
 	pulumi.RegisterOutputType(GoogleTypeDateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleTypeExprOutput{})
+	pulumi.RegisterOutputType(GoogleTypeExprPtrOutput{})
+	pulumi.RegisterOutputType(GoogleTypeExprResponseOutput{})
 }

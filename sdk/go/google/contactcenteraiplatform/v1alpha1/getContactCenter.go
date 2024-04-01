@@ -47,6 +47,8 @@ type LookupContactCenterResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// name of resource
 	Name string `pulumi:"name"`
+	// A list of UJET components that should be privately accessed. This field is set by reading settings from the data plane. For more information about the format of the component please refer to go/ccaip-vpc-sc-org-policy. This field is must be fully populated only for Create/Update resource operations. The main use case for this field is OrgPolicy checks via CPE.
+	PrivateComponents []string `pulumi:"privateComponents"`
 	// Optional. Params that sets up Google as IdP.
 	SamlParams SAMLParamsResponse `pulumi:"samlParams"`
 	// The state of this contact center.
@@ -139,6 +141,11 @@ func (o LookupContactCenterResultOutput) Labels() pulumi.StringMapOutput {
 // name of resource
 func (o LookupContactCenterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContactCenterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of UJET components that should be privately accessed. This field is set by reading settings from the data plane. For more information about the format of the component please refer to go/ccaip-vpc-sc-org-policy. This field is must be fully populated only for Create/Update resource operations. The main use case for this field is OrgPolicy checks via CPE.
+func (o LookupContactCenterResultOutput) PrivateComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupContactCenterResult) []string { return v.PrivateComponents }).(pulumi.StringArrayOutput)
 }
 
 // Optional. Params that sets up Google as IdP.

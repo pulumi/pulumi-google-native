@@ -51,6 +51,8 @@ type LookupInstanceResult struct {
 	ProxyUri string `pulumi:"proxyUri"`
 	// The state of this instance.
 	State string `pulumi:"state"`
+	// The workforce pools proxy endpoint that is used to access the Jupyter notebook.
+	ThirdPartyProxyUrl string `pulumi:"thirdPartyProxyUrl"`
 	// Instance update time.
 	UpdateTime string `pulumi:"updateTime"`
 	// The upgrade history of this instance.
@@ -147,6 +149,11 @@ func (o LookupInstanceResultOutput) ProxyUri() pulumi.StringOutput {
 // The state of this instance.
 func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The workforce pools proxy endpoint that is used to access the Jupyter notebook.
+func (o LookupInstanceResultOutput) ThirdPartyProxyUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ThirdPartyProxyUrl }).(pulumi.StringOutput)
 }
 
 // Instance update time.

@@ -6801,7 +6801,7 @@ func (o PubsubConfigResponseOutput) Topic() pulumi.StringOutput {
 type PullRequestFilter struct {
 	// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch *string `pulumi:"branch"`
-	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+	// If CommentControl is enabled, depending on the setting, builds may not fire until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is in the pull request description. Only PR comments that contain `/gcbrun` will trigger builds. If CommentControl is set to disabled, comments with `/gcbrun` from a user with repository write permission or above will still trigger builds to run.
 	CommentControl *PullRequestFilterCommentControl `pulumi:"commentControl"`
 	// If true, branches that do NOT match the git_ref will trigger a build.
 	InvertRegex *bool `pulumi:"invertRegex"`
@@ -6822,7 +6822,7 @@ type PullRequestFilterInput interface {
 type PullRequestFilterArgs struct {
 	// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+	// If CommentControl is enabled, depending on the setting, builds may not fire until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is in the pull request description. Only PR comments that contain `/gcbrun` will trigger builds. If CommentControl is set to disabled, comments with `/gcbrun` from a user with repository write permission or above will still trigger builds to run.
 	CommentControl PullRequestFilterCommentControlPtrInput `pulumi:"commentControl"`
 	// If true, branches that do NOT match the git_ref will trigger a build.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
@@ -6911,7 +6911,7 @@ func (o PullRequestFilterOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PullRequestFilter) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
-// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+// If CommentControl is enabled, depending on the setting, builds may not fire until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is in the pull request description. Only PR comments that contain `/gcbrun` will trigger builds. If CommentControl is set to disabled, comments with `/gcbrun` from a user with repository write permission or above will still trigger builds to run.
 func (o PullRequestFilterOutput) CommentControl() PullRequestFilterCommentControlPtrOutput {
 	return o.ApplyT(func(v PullRequestFilter) *PullRequestFilterCommentControl { return v.CommentControl }).(PullRequestFilterCommentControlPtrOutput)
 }
@@ -6955,7 +6955,7 @@ func (o PullRequestFilterPtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+// If CommentControl is enabled, depending on the setting, builds may not fire until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is in the pull request description. Only PR comments that contain `/gcbrun` will trigger builds. If CommentControl is set to disabled, comments with `/gcbrun` from a user with repository write permission or above will still trigger builds to run.
 func (o PullRequestFilterPtrOutput) CommentControl() PullRequestFilterCommentControlPtrOutput {
 	return o.ApplyT(func(v *PullRequestFilter) *PullRequestFilterCommentControl {
 		if v == nil {
@@ -6979,7 +6979,7 @@ func (o PullRequestFilterPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 type PullRequestFilterResponse struct {
 	// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch string `pulumi:"branch"`
-	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+	// If CommentControl is enabled, depending on the setting, builds may not fire until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is in the pull request description. Only PR comments that contain `/gcbrun` will trigger builds. If CommentControl is set to disabled, comments with `/gcbrun` from a user with repository write permission or above will still trigger builds to run.
 	CommentControl string `pulumi:"commentControl"`
 	// If true, branches that do NOT match the git_ref will trigger a build.
 	InvertRegex bool `pulumi:"invertRegex"`
@@ -7005,7 +7005,7 @@ func (o PullRequestFilterResponseOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v PullRequestFilterResponse) string { return v.Branch }).(pulumi.StringOutput)
 }
 
-// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+// If CommentControl is enabled, depending on the setting, builds may not fire until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is in the pull request description. Only PR comments that contain `/gcbrun` will trigger builds. If CommentControl is set to disabled, comments with `/gcbrun` from a user with repository write permission or above will still trigger builds to run.
 func (o PullRequestFilterResponseOutput) CommentControl() pulumi.StringOutput {
 	return o.ApplyT(func(v PullRequestFilterResponse) string { return v.CommentControl }).(pulumi.StringOutput)
 }

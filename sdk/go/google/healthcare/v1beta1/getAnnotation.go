@@ -37,7 +37,7 @@ type LookupAnnotationResult struct {
 	CustomData map[string]string `pulumi:"customData"`
 	// Annotations for images. For example, bounding polygons.
 	ImageAnnotation ImageAnnotationResponse `pulumi:"imageAnnotation"`
-	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+	// Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
 	Name string `pulumi:"name"`
 	// Annotations for resource. For example, classification tags.
 	ResourceAnnotation ResourceAnnotationResponse `pulumi:"resourceAnnotation"`
@@ -99,7 +99,7 @@ func (o LookupAnnotationResultOutput) ImageAnnotation() ImageAnnotationResponseO
 	return o.ApplyT(func(v LookupAnnotationResult) ImageAnnotationResponse { return v.ImageAnnotation }).(ImageAnnotationResponseOutput)
 }
 
-// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+// Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
 func (o LookupAnnotationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnnotationResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -56,7 +56,7 @@ type LookupWorkflowResult struct {
 	StateError StateErrorResponse `pulumi:"stateError"`
 	// The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
 	UpdateTime string `pulumi:"updateTime"`
-	// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
 	UserEnvVars map[string]string `pulumi:"userEnvVars"`
 }
 
@@ -163,7 +163,7 @@ func (o LookupWorkflowResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
 func (o LookupWorkflowResultOutput) UserEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) map[string]string { return v.UserEnvVars }).(pulumi.StringMapOutput)
 }

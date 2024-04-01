@@ -81,7 +81,7 @@ type LookupRegionDiskResult struct {
 	PhysicalBlockSizeBytes string `pulumi:"physicalBlockSizeBytes"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops string `pulumi:"provisionedIops"`
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
 	ProvisionedThroughput string `pulumi:"provisionedThroughput"`
 	// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
@@ -91,6 +91,8 @@ type LookupRegionDiskResult struct {
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Status information for the disk resource.
 	ResourceStatus DiskResourceStatusResponse `pulumi:"resourceStatus"`
+	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
@@ -125,6 +127,8 @@ type LookupRegionDiskResult struct {
 	SourceStorageObject string `pulumi:"sourceStorageObject"`
 	// The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting.
 	Status string `pulumi:"status"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool string `pulumi:"storagePool"`
 	// [Deprecated] Storage type of the persistent disk.
 	//
 	// Deprecated: [Deprecated] Storage type of the persistent disk.
@@ -303,7 +307,7 @@ func (o LookupRegionDiskResultOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.ProvisionedIops }).(pulumi.StringOutput)
 }
 
-// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
 func (o LookupRegionDiskResultOutput) ProvisionedThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
@@ -326,6 +330,11 @@ func (o LookupRegionDiskResultOutput) ResourcePolicies() pulumi.StringArrayOutpu
 // Status information for the disk resource.
 func (o LookupRegionDiskResultOutput) ResourceStatus() DiskResourceStatusResponseOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) DiskResourceStatusResponse { return v.ResourceStatus }).(DiskResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o LookupRegionDiskResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.
@@ -411,6 +420,11 @@ func (o LookupRegionDiskResultOutput) SourceStorageObject() pulumi.StringOutput 
 // The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting.
 func (o LookupRegionDiskResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+func (o LookupRegionDiskResultOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.StoragePool }).(pulumi.StringOutput)
 }
 
 // [Deprecated] Storage type of the persistent disk.

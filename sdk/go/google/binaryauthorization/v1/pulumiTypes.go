@@ -177,7 +177,7 @@ func (o AttestationAuthenticatorResponseArrayOutput) Index(i pulumi.IntInput) At
 
 // Specifies the locations for fetching the provenance attestations.
 type AttestationSource struct {
-	// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
+	// The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10.
 	ContainerAnalysisAttestationProjects []string `pulumi:"containerAnalysisAttestationProjects"`
 }
 
@@ -194,7 +194,7 @@ type AttestationSourceInput interface {
 
 // Specifies the locations for fetching the provenance attestations.
 type AttestationSourceArgs struct {
-	// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
+	// The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10.
 	ContainerAnalysisAttestationProjects pulumi.StringArrayInput `pulumi:"containerAnalysisAttestationProjects"`
 }
 
@@ -276,7 +276,7 @@ func (o AttestationSourceOutput) ToAttestationSourcePtrOutputWithContext(ctx con
 	}).(AttestationSourcePtrOutput)
 }
 
-// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
+// The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10.
 func (o AttestationSourceOutput) ContainerAnalysisAttestationProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttestationSource) []string { return v.ContainerAnalysisAttestationProjects }).(pulumi.StringArrayOutput)
 }
@@ -305,7 +305,7 @@ func (o AttestationSourcePtrOutput) Elem() AttestationSourceOutput {
 	}).(AttestationSourceOutput)
 }
 
-// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
+// The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10.
 func (o AttestationSourcePtrOutput) ContainerAnalysisAttestationProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttestationSource) []string {
 		if v == nil {
@@ -317,7 +317,7 @@ func (o AttestationSourcePtrOutput) ContainerAnalysisAttestationProjects() pulum
 
 // Specifies the locations for fetching the provenance attestations.
 type AttestationSourceResponse struct {
-	// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
+	// The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10.
 	ContainerAnalysisAttestationProjects []string `pulumi:"containerAnalysisAttestationProjects"`
 }
 
@@ -336,7 +336,7 @@ func (o AttestationSourceResponseOutput) ToAttestationSourceResponseOutputWithCo
 	return o
 }
 
-// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
+// The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10.
 func (o AttestationSourceResponseOutput) ContainerAnalysisAttestationProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttestationSourceResponse) []string { return v.ContainerAnalysisAttestationProjects }).(pulumi.StringArrayOutput)
 }
@@ -532,9 +532,9 @@ func (o AttestorPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) AttestorP
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -553,9 +553,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -616,12 +616,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -650,9 +650,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -676,12 +676,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -716,6 +716,8 @@ type Check struct {
 	ImageAllowlist *ImageAllowlist `pulumi:"imageAllowlist"`
 	// Optional. Require that an image is no older than a configured expiration time. Image age is determined by its upload time.
 	ImageFreshnessCheck *ImageFreshnessCheck `pulumi:"imageFreshnessCheck"`
+	// Optional. Require that an image was signed by Cosign with a trusted key. This check requires that both the image and signature are stored in Artifact Registry.
+	SigstoreSignatureCheck *SigstoreSignatureCheck `pulumi:"sigstoreSignatureCheck"`
 	// Optional. Require a SimpleSigning-type attestation for every image in the deployment.
 	SimpleSigningAttestationCheck *SimpleSigningAttestationCheck `pulumi:"simpleSigningAttestationCheck"`
 	// Optional. Require that an image was built by a trusted builder (such as Google Cloud Build), meets requirements for Supply chain Levels for Software Artifacts (SLSA), and was built from a trusted source code repostitory.
@@ -747,6 +749,8 @@ type CheckArgs struct {
 	ImageAllowlist ImageAllowlistPtrInput `pulumi:"imageAllowlist"`
 	// Optional. Require that an image is no older than a configured expiration time. Image age is determined by its upload time.
 	ImageFreshnessCheck ImageFreshnessCheckPtrInput `pulumi:"imageFreshnessCheck"`
+	// Optional. Require that an image was signed by Cosign with a trusted key. This check requires that both the image and signature are stored in Artifact Registry.
+	SigstoreSignatureCheck SigstoreSignatureCheckPtrInput `pulumi:"sigstoreSignatureCheck"`
 	// Optional. Require a SimpleSigning-type attestation for every image in the deployment.
 	SimpleSigningAttestationCheck SimpleSigningAttestationCheckPtrInput `pulumi:"simpleSigningAttestationCheck"`
 	// Optional. Require that an image was built by a trusted builder (such as Google Cloud Build), meets requirements for Supply chain Levels for Software Artifacts (SLSA), and was built from a trusted source code repostitory.
@@ -829,6 +833,11 @@ func (o CheckOutput) ImageFreshnessCheck() ImageFreshnessCheckPtrOutput {
 	return o.ApplyT(func(v Check) *ImageFreshnessCheck { return v.ImageFreshnessCheck }).(ImageFreshnessCheckPtrOutput)
 }
 
+// Optional. Require that an image was signed by Cosign with a trusted key. This check requires that both the image and signature are stored in Artifact Registry.
+func (o CheckOutput) SigstoreSignatureCheck() SigstoreSignatureCheckPtrOutput {
+	return o.ApplyT(func(v Check) *SigstoreSignatureCheck { return v.SigstoreSignatureCheck }).(SigstoreSignatureCheckPtrOutput)
+}
+
 // Optional. Require a SimpleSigning-type attestation for every image in the deployment.
 func (o CheckOutput) SimpleSigningAttestationCheck() SimpleSigningAttestationCheckPtrOutput {
 	return o.ApplyT(func(v Check) *SimpleSigningAttestationCheck { return v.SimpleSigningAttestationCheck }).(SimpleSigningAttestationCheckPtrOutput)
@@ -879,6 +888,8 @@ type CheckResponse struct {
 	ImageAllowlist ImageAllowlistResponse `pulumi:"imageAllowlist"`
 	// Optional. Require that an image is no older than a configured expiration time. Image age is determined by its upload time.
 	ImageFreshnessCheck ImageFreshnessCheckResponse `pulumi:"imageFreshnessCheck"`
+	// Optional. Require that an image was signed by Cosign with a trusted key. This check requires that both the image and signature are stored in Artifact Registry.
+	SigstoreSignatureCheck SigstoreSignatureCheckResponse `pulumi:"sigstoreSignatureCheck"`
 	// Optional. Require a SimpleSigning-type attestation for every image in the deployment.
 	SimpleSigningAttestationCheck SimpleSigningAttestationCheckResponse `pulumi:"simpleSigningAttestationCheck"`
 	// Optional. Require that an image was built by a trusted builder (such as Google Cloud Build), meets requirements for Supply chain Levels for Software Artifacts (SLSA), and was built from a trusted source code repostitory.
@@ -922,6 +933,11 @@ func (o CheckResponseOutput) ImageAllowlist() ImageAllowlistResponseOutput {
 // Optional. Require that an image is no older than a configured expiration time. Image age is determined by its upload time.
 func (o CheckResponseOutput) ImageFreshnessCheck() ImageFreshnessCheckResponseOutput {
 	return o.ApplyT(func(v CheckResponse) ImageFreshnessCheckResponse { return v.ImageFreshnessCheck }).(ImageFreshnessCheckResponseOutput)
+}
+
+// Optional. Require that an image was signed by Cosign with a trusted key. This check requires that both the image and signature are stored in Artifact Registry.
+func (o CheckResponseOutput) SigstoreSignatureCheck() SigstoreSignatureCheckResponseOutput {
+	return o.ApplyT(func(v CheckResponse) SigstoreSignatureCheckResponse { return v.SigstoreSignatureCheck }).(SigstoreSignatureCheckResponseOutput)
 }
 
 // Optional. Require a SimpleSigning-type attestation for every image in the deployment.
@@ -2567,11 +2583,566 @@ func (o ScopeResponseOutput) KubernetesServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v ScopeResponse) string { return v.KubernetesServiceAccount }).(pulumi.StringOutput)
 }
 
+// A Sigstore authority, used to verify signatures that are created by Sigstore. An authority is analogous to an attestation authenticator, verifying that a signature is valid or invalid.
+type SigstoreAuthority struct {
+	// Optional. A user-provided name for this `SigstoreAuthority`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
+	DisplayName *string `pulumi:"displayName"`
+	// A simple set of public keys. A signature is considered valid if any keys in the set validate the signature.
+	PublicKeySet SigstorePublicKeySet `pulumi:"publicKeySet"`
+}
+
+// SigstoreAuthorityInput is an input type that accepts SigstoreAuthorityArgs and SigstoreAuthorityOutput values.
+// You can construct a concrete instance of `SigstoreAuthorityInput` via:
+//
+//	SigstoreAuthorityArgs{...}
+type SigstoreAuthorityInput interface {
+	pulumi.Input
+
+	ToSigstoreAuthorityOutput() SigstoreAuthorityOutput
+	ToSigstoreAuthorityOutputWithContext(context.Context) SigstoreAuthorityOutput
+}
+
+// A Sigstore authority, used to verify signatures that are created by Sigstore. An authority is analogous to an attestation authenticator, verifying that a signature is valid or invalid.
+type SigstoreAuthorityArgs struct {
+	// Optional. A user-provided name for this `SigstoreAuthority`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// A simple set of public keys. A signature is considered valid if any keys in the set validate the signature.
+	PublicKeySet SigstorePublicKeySetInput `pulumi:"publicKeySet"`
+}
+
+func (SigstoreAuthorityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstoreAuthority)(nil)).Elem()
+}
+
+func (i SigstoreAuthorityArgs) ToSigstoreAuthorityOutput() SigstoreAuthorityOutput {
+	return i.ToSigstoreAuthorityOutputWithContext(context.Background())
+}
+
+func (i SigstoreAuthorityArgs) ToSigstoreAuthorityOutputWithContext(ctx context.Context) SigstoreAuthorityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigstoreAuthorityOutput)
+}
+
+// SigstoreAuthorityArrayInput is an input type that accepts SigstoreAuthorityArray and SigstoreAuthorityArrayOutput values.
+// You can construct a concrete instance of `SigstoreAuthorityArrayInput` via:
+//
+//	SigstoreAuthorityArray{ SigstoreAuthorityArgs{...} }
+type SigstoreAuthorityArrayInput interface {
+	pulumi.Input
+
+	ToSigstoreAuthorityArrayOutput() SigstoreAuthorityArrayOutput
+	ToSigstoreAuthorityArrayOutputWithContext(context.Context) SigstoreAuthorityArrayOutput
+}
+
+type SigstoreAuthorityArray []SigstoreAuthorityInput
+
+func (SigstoreAuthorityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SigstoreAuthority)(nil)).Elem()
+}
+
+func (i SigstoreAuthorityArray) ToSigstoreAuthorityArrayOutput() SigstoreAuthorityArrayOutput {
+	return i.ToSigstoreAuthorityArrayOutputWithContext(context.Background())
+}
+
+func (i SigstoreAuthorityArray) ToSigstoreAuthorityArrayOutputWithContext(ctx context.Context) SigstoreAuthorityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigstoreAuthorityArrayOutput)
+}
+
+// A Sigstore authority, used to verify signatures that are created by Sigstore. An authority is analogous to an attestation authenticator, verifying that a signature is valid or invalid.
+type SigstoreAuthorityOutput struct{ *pulumi.OutputState }
+
+func (SigstoreAuthorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstoreAuthority)(nil)).Elem()
+}
+
+func (o SigstoreAuthorityOutput) ToSigstoreAuthorityOutput() SigstoreAuthorityOutput {
+	return o
+}
+
+func (o SigstoreAuthorityOutput) ToSigstoreAuthorityOutputWithContext(ctx context.Context) SigstoreAuthorityOutput {
+	return o
+}
+
+// Optional. A user-provided name for this `SigstoreAuthority`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
+func (o SigstoreAuthorityOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SigstoreAuthority) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// A simple set of public keys. A signature is considered valid if any keys in the set validate the signature.
+func (o SigstoreAuthorityOutput) PublicKeySet() SigstorePublicKeySetOutput {
+	return o.ApplyT(func(v SigstoreAuthority) SigstorePublicKeySet { return v.PublicKeySet }).(SigstorePublicKeySetOutput)
+}
+
+type SigstoreAuthorityArrayOutput struct{ *pulumi.OutputState }
+
+func (SigstoreAuthorityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SigstoreAuthority)(nil)).Elem()
+}
+
+func (o SigstoreAuthorityArrayOutput) ToSigstoreAuthorityArrayOutput() SigstoreAuthorityArrayOutput {
+	return o
+}
+
+func (o SigstoreAuthorityArrayOutput) ToSigstoreAuthorityArrayOutputWithContext(ctx context.Context) SigstoreAuthorityArrayOutput {
+	return o
+}
+
+func (o SigstoreAuthorityArrayOutput) Index(i pulumi.IntInput) SigstoreAuthorityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SigstoreAuthority {
+		return vs[0].([]SigstoreAuthority)[vs[1].(int)]
+	}).(SigstoreAuthorityOutput)
+}
+
+// A Sigstore authority, used to verify signatures that are created by Sigstore. An authority is analogous to an attestation authenticator, verifying that a signature is valid or invalid.
+type SigstoreAuthorityResponse struct {
+	// Optional. A user-provided name for this `SigstoreAuthority`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
+	DisplayName string `pulumi:"displayName"`
+	// A simple set of public keys. A signature is considered valid if any keys in the set validate the signature.
+	PublicKeySet SigstorePublicKeySetResponse `pulumi:"publicKeySet"`
+}
+
+// A Sigstore authority, used to verify signatures that are created by Sigstore. An authority is analogous to an attestation authenticator, verifying that a signature is valid or invalid.
+type SigstoreAuthorityResponseOutput struct{ *pulumi.OutputState }
+
+func (SigstoreAuthorityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstoreAuthorityResponse)(nil)).Elem()
+}
+
+func (o SigstoreAuthorityResponseOutput) ToSigstoreAuthorityResponseOutput() SigstoreAuthorityResponseOutput {
+	return o
+}
+
+func (o SigstoreAuthorityResponseOutput) ToSigstoreAuthorityResponseOutputWithContext(ctx context.Context) SigstoreAuthorityResponseOutput {
+	return o
+}
+
+// Optional. A user-provided name for this `SigstoreAuthority`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
+func (o SigstoreAuthorityResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v SigstoreAuthorityResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A simple set of public keys. A signature is considered valid if any keys in the set validate the signature.
+func (o SigstoreAuthorityResponseOutput) PublicKeySet() SigstorePublicKeySetResponseOutput {
+	return o.ApplyT(func(v SigstoreAuthorityResponse) SigstorePublicKeySetResponse { return v.PublicKeySet }).(SigstorePublicKeySetResponseOutput)
+}
+
+type SigstoreAuthorityResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SigstoreAuthorityResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SigstoreAuthorityResponse)(nil)).Elem()
+}
+
+func (o SigstoreAuthorityResponseArrayOutput) ToSigstoreAuthorityResponseArrayOutput() SigstoreAuthorityResponseArrayOutput {
+	return o
+}
+
+func (o SigstoreAuthorityResponseArrayOutput) ToSigstoreAuthorityResponseArrayOutputWithContext(ctx context.Context) SigstoreAuthorityResponseArrayOutput {
+	return o
+}
+
+func (o SigstoreAuthorityResponseArrayOutput) Index(i pulumi.IntInput) SigstoreAuthorityResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SigstoreAuthorityResponse {
+		return vs[0].([]SigstoreAuthorityResponse)[vs[1].(int)]
+	}).(SigstoreAuthorityResponseOutput)
+}
+
+// A Sigstore public key. `SigstorePublicKey` is the public key material used to authenticate Sigstore signatures.
+type SigstorePublicKey struct {
+	// The public key material in PEM format.
+	PublicKeyPem *string `pulumi:"publicKeyPem"`
+}
+
+// SigstorePublicKeyInput is an input type that accepts SigstorePublicKeyArgs and SigstorePublicKeyOutput values.
+// You can construct a concrete instance of `SigstorePublicKeyInput` via:
+//
+//	SigstorePublicKeyArgs{...}
+type SigstorePublicKeyInput interface {
+	pulumi.Input
+
+	ToSigstorePublicKeyOutput() SigstorePublicKeyOutput
+	ToSigstorePublicKeyOutputWithContext(context.Context) SigstorePublicKeyOutput
+}
+
+// A Sigstore public key. `SigstorePublicKey` is the public key material used to authenticate Sigstore signatures.
+type SigstorePublicKeyArgs struct {
+	// The public key material in PEM format.
+	PublicKeyPem pulumi.StringPtrInput `pulumi:"publicKeyPem"`
+}
+
+func (SigstorePublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstorePublicKey)(nil)).Elem()
+}
+
+func (i SigstorePublicKeyArgs) ToSigstorePublicKeyOutput() SigstorePublicKeyOutput {
+	return i.ToSigstorePublicKeyOutputWithContext(context.Background())
+}
+
+func (i SigstorePublicKeyArgs) ToSigstorePublicKeyOutputWithContext(ctx context.Context) SigstorePublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigstorePublicKeyOutput)
+}
+
+// SigstorePublicKeyArrayInput is an input type that accepts SigstorePublicKeyArray and SigstorePublicKeyArrayOutput values.
+// You can construct a concrete instance of `SigstorePublicKeyArrayInput` via:
+//
+//	SigstorePublicKeyArray{ SigstorePublicKeyArgs{...} }
+type SigstorePublicKeyArrayInput interface {
+	pulumi.Input
+
+	ToSigstorePublicKeyArrayOutput() SigstorePublicKeyArrayOutput
+	ToSigstorePublicKeyArrayOutputWithContext(context.Context) SigstorePublicKeyArrayOutput
+}
+
+type SigstorePublicKeyArray []SigstorePublicKeyInput
+
+func (SigstorePublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SigstorePublicKey)(nil)).Elem()
+}
+
+func (i SigstorePublicKeyArray) ToSigstorePublicKeyArrayOutput() SigstorePublicKeyArrayOutput {
+	return i.ToSigstorePublicKeyArrayOutputWithContext(context.Background())
+}
+
+func (i SigstorePublicKeyArray) ToSigstorePublicKeyArrayOutputWithContext(ctx context.Context) SigstorePublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigstorePublicKeyArrayOutput)
+}
+
+// A Sigstore public key. `SigstorePublicKey` is the public key material used to authenticate Sigstore signatures.
+type SigstorePublicKeyOutput struct{ *pulumi.OutputState }
+
+func (SigstorePublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstorePublicKey)(nil)).Elem()
+}
+
+func (o SigstorePublicKeyOutput) ToSigstorePublicKeyOutput() SigstorePublicKeyOutput {
+	return o
+}
+
+func (o SigstorePublicKeyOutput) ToSigstorePublicKeyOutputWithContext(ctx context.Context) SigstorePublicKeyOutput {
+	return o
+}
+
+// The public key material in PEM format.
+func (o SigstorePublicKeyOutput) PublicKeyPem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SigstorePublicKey) *string { return v.PublicKeyPem }).(pulumi.StringPtrOutput)
+}
+
+type SigstorePublicKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (SigstorePublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SigstorePublicKey)(nil)).Elem()
+}
+
+func (o SigstorePublicKeyArrayOutput) ToSigstorePublicKeyArrayOutput() SigstorePublicKeyArrayOutput {
+	return o
+}
+
+func (o SigstorePublicKeyArrayOutput) ToSigstorePublicKeyArrayOutputWithContext(ctx context.Context) SigstorePublicKeyArrayOutput {
+	return o
+}
+
+func (o SigstorePublicKeyArrayOutput) Index(i pulumi.IntInput) SigstorePublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SigstorePublicKey {
+		return vs[0].([]SigstorePublicKey)[vs[1].(int)]
+	}).(SigstorePublicKeyOutput)
+}
+
+// A Sigstore public key. `SigstorePublicKey` is the public key material used to authenticate Sigstore signatures.
+type SigstorePublicKeyResponse struct {
+	// The public key material in PEM format.
+	PublicKeyPem string `pulumi:"publicKeyPem"`
+}
+
+// A Sigstore public key. `SigstorePublicKey` is the public key material used to authenticate Sigstore signatures.
+type SigstorePublicKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (SigstorePublicKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstorePublicKeyResponse)(nil)).Elem()
+}
+
+func (o SigstorePublicKeyResponseOutput) ToSigstorePublicKeyResponseOutput() SigstorePublicKeyResponseOutput {
+	return o
+}
+
+func (o SigstorePublicKeyResponseOutput) ToSigstorePublicKeyResponseOutputWithContext(ctx context.Context) SigstorePublicKeyResponseOutput {
+	return o
+}
+
+// The public key material in PEM format.
+func (o SigstorePublicKeyResponseOutput) PublicKeyPem() pulumi.StringOutput {
+	return o.ApplyT(func(v SigstorePublicKeyResponse) string { return v.PublicKeyPem }).(pulumi.StringOutput)
+}
+
+type SigstorePublicKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SigstorePublicKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SigstorePublicKeyResponse)(nil)).Elem()
+}
+
+func (o SigstorePublicKeyResponseArrayOutput) ToSigstorePublicKeyResponseArrayOutput() SigstorePublicKeyResponseArrayOutput {
+	return o
+}
+
+func (o SigstorePublicKeyResponseArrayOutput) ToSigstorePublicKeyResponseArrayOutputWithContext(ctx context.Context) SigstorePublicKeyResponseArrayOutput {
+	return o
+}
+
+func (o SigstorePublicKeyResponseArrayOutput) Index(i pulumi.IntInput) SigstorePublicKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SigstorePublicKeyResponse {
+		return vs[0].([]SigstorePublicKeyResponse)[vs[1].(int)]
+	}).(SigstorePublicKeyResponseOutput)
+}
+
+// A bundle of Sigstore public keys, used to verify Sigstore signatures. A signature is authenticated by a `SigstorePublicKeySet` if any of the keys verify it.
+type SigstorePublicKeySet struct {
+	// `public_keys` must have at least one entry.
+	PublicKeys []SigstorePublicKey `pulumi:"publicKeys"`
+}
+
+// SigstorePublicKeySetInput is an input type that accepts SigstorePublicKeySetArgs and SigstorePublicKeySetOutput values.
+// You can construct a concrete instance of `SigstorePublicKeySetInput` via:
+//
+//	SigstorePublicKeySetArgs{...}
+type SigstorePublicKeySetInput interface {
+	pulumi.Input
+
+	ToSigstorePublicKeySetOutput() SigstorePublicKeySetOutput
+	ToSigstorePublicKeySetOutputWithContext(context.Context) SigstorePublicKeySetOutput
+}
+
+// A bundle of Sigstore public keys, used to verify Sigstore signatures. A signature is authenticated by a `SigstorePublicKeySet` if any of the keys verify it.
+type SigstorePublicKeySetArgs struct {
+	// `public_keys` must have at least one entry.
+	PublicKeys SigstorePublicKeyArrayInput `pulumi:"publicKeys"`
+}
+
+func (SigstorePublicKeySetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstorePublicKeySet)(nil)).Elem()
+}
+
+func (i SigstorePublicKeySetArgs) ToSigstorePublicKeySetOutput() SigstorePublicKeySetOutput {
+	return i.ToSigstorePublicKeySetOutputWithContext(context.Background())
+}
+
+func (i SigstorePublicKeySetArgs) ToSigstorePublicKeySetOutputWithContext(ctx context.Context) SigstorePublicKeySetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigstorePublicKeySetOutput)
+}
+
+// A bundle of Sigstore public keys, used to verify Sigstore signatures. A signature is authenticated by a `SigstorePublicKeySet` if any of the keys verify it.
+type SigstorePublicKeySetOutput struct{ *pulumi.OutputState }
+
+func (SigstorePublicKeySetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstorePublicKeySet)(nil)).Elem()
+}
+
+func (o SigstorePublicKeySetOutput) ToSigstorePublicKeySetOutput() SigstorePublicKeySetOutput {
+	return o
+}
+
+func (o SigstorePublicKeySetOutput) ToSigstorePublicKeySetOutputWithContext(ctx context.Context) SigstorePublicKeySetOutput {
+	return o
+}
+
+// `public_keys` must have at least one entry.
+func (o SigstorePublicKeySetOutput) PublicKeys() SigstorePublicKeyArrayOutput {
+	return o.ApplyT(func(v SigstorePublicKeySet) []SigstorePublicKey { return v.PublicKeys }).(SigstorePublicKeyArrayOutput)
+}
+
+// A bundle of Sigstore public keys, used to verify Sigstore signatures. A signature is authenticated by a `SigstorePublicKeySet` if any of the keys verify it.
+type SigstorePublicKeySetResponse struct {
+	// `public_keys` must have at least one entry.
+	PublicKeys []SigstorePublicKeyResponse `pulumi:"publicKeys"`
+}
+
+// A bundle of Sigstore public keys, used to verify Sigstore signatures. A signature is authenticated by a `SigstorePublicKeySet` if any of the keys verify it.
+type SigstorePublicKeySetResponseOutput struct{ *pulumi.OutputState }
+
+func (SigstorePublicKeySetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstorePublicKeySetResponse)(nil)).Elem()
+}
+
+func (o SigstorePublicKeySetResponseOutput) ToSigstorePublicKeySetResponseOutput() SigstorePublicKeySetResponseOutput {
+	return o
+}
+
+func (o SigstorePublicKeySetResponseOutput) ToSigstorePublicKeySetResponseOutputWithContext(ctx context.Context) SigstorePublicKeySetResponseOutput {
+	return o
+}
+
+// `public_keys` must have at least one entry.
+func (o SigstorePublicKeySetResponseOutput) PublicKeys() SigstorePublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v SigstorePublicKeySetResponse) []SigstorePublicKeyResponse { return v.PublicKeys }).(SigstorePublicKeyResponseArrayOutput)
+}
+
+// A Sigstore signature check, which verifies the Sigstore signature associated with an image.
+type SigstoreSignatureCheck struct {
+	// The authorities required by this check to verify the signature. A signature only needs to be verified by one authority to pass the check.
+	SigstoreAuthorities []SigstoreAuthority `pulumi:"sigstoreAuthorities"`
+}
+
+// SigstoreSignatureCheckInput is an input type that accepts SigstoreSignatureCheckArgs and SigstoreSignatureCheckOutput values.
+// You can construct a concrete instance of `SigstoreSignatureCheckInput` via:
+//
+//	SigstoreSignatureCheckArgs{...}
+type SigstoreSignatureCheckInput interface {
+	pulumi.Input
+
+	ToSigstoreSignatureCheckOutput() SigstoreSignatureCheckOutput
+	ToSigstoreSignatureCheckOutputWithContext(context.Context) SigstoreSignatureCheckOutput
+}
+
+// A Sigstore signature check, which verifies the Sigstore signature associated with an image.
+type SigstoreSignatureCheckArgs struct {
+	// The authorities required by this check to verify the signature. A signature only needs to be verified by one authority to pass the check.
+	SigstoreAuthorities SigstoreAuthorityArrayInput `pulumi:"sigstoreAuthorities"`
+}
+
+func (SigstoreSignatureCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstoreSignatureCheck)(nil)).Elem()
+}
+
+func (i SigstoreSignatureCheckArgs) ToSigstoreSignatureCheckOutput() SigstoreSignatureCheckOutput {
+	return i.ToSigstoreSignatureCheckOutputWithContext(context.Background())
+}
+
+func (i SigstoreSignatureCheckArgs) ToSigstoreSignatureCheckOutputWithContext(ctx context.Context) SigstoreSignatureCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigstoreSignatureCheckOutput)
+}
+
+func (i SigstoreSignatureCheckArgs) ToSigstoreSignatureCheckPtrOutput() SigstoreSignatureCheckPtrOutput {
+	return i.ToSigstoreSignatureCheckPtrOutputWithContext(context.Background())
+}
+
+func (i SigstoreSignatureCheckArgs) ToSigstoreSignatureCheckPtrOutputWithContext(ctx context.Context) SigstoreSignatureCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigstoreSignatureCheckOutput).ToSigstoreSignatureCheckPtrOutputWithContext(ctx)
+}
+
+// SigstoreSignatureCheckPtrInput is an input type that accepts SigstoreSignatureCheckArgs, SigstoreSignatureCheckPtr and SigstoreSignatureCheckPtrOutput values.
+// You can construct a concrete instance of `SigstoreSignatureCheckPtrInput` via:
+//
+//	        SigstoreSignatureCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type SigstoreSignatureCheckPtrInput interface {
+	pulumi.Input
+
+	ToSigstoreSignatureCheckPtrOutput() SigstoreSignatureCheckPtrOutput
+	ToSigstoreSignatureCheckPtrOutputWithContext(context.Context) SigstoreSignatureCheckPtrOutput
+}
+
+type sigstoreSignatureCheckPtrType SigstoreSignatureCheckArgs
+
+func SigstoreSignatureCheckPtr(v *SigstoreSignatureCheckArgs) SigstoreSignatureCheckPtrInput {
+	return (*sigstoreSignatureCheckPtrType)(v)
+}
+
+func (*sigstoreSignatureCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SigstoreSignatureCheck)(nil)).Elem()
+}
+
+func (i *sigstoreSignatureCheckPtrType) ToSigstoreSignatureCheckPtrOutput() SigstoreSignatureCheckPtrOutput {
+	return i.ToSigstoreSignatureCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *sigstoreSignatureCheckPtrType) ToSigstoreSignatureCheckPtrOutputWithContext(ctx context.Context) SigstoreSignatureCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigstoreSignatureCheckPtrOutput)
+}
+
+// A Sigstore signature check, which verifies the Sigstore signature associated with an image.
+type SigstoreSignatureCheckOutput struct{ *pulumi.OutputState }
+
+func (SigstoreSignatureCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstoreSignatureCheck)(nil)).Elem()
+}
+
+func (o SigstoreSignatureCheckOutput) ToSigstoreSignatureCheckOutput() SigstoreSignatureCheckOutput {
+	return o
+}
+
+func (o SigstoreSignatureCheckOutput) ToSigstoreSignatureCheckOutputWithContext(ctx context.Context) SigstoreSignatureCheckOutput {
+	return o
+}
+
+func (o SigstoreSignatureCheckOutput) ToSigstoreSignatureCheckPtrOutput() SigstoreSignatureCheckPtrOutput {
+	return o.ToSigstoreSignatureCheckPtrOutputWithContext(context.Background())
+}
+
+func (o SigstoreSignatureCheckOutput) ToSigstoreSignatureCheckPtrOutputWithContext(ctx context.Context) SigstoreSignatureCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SigstoreSignatureCheck) *SigstoreSignatureCheck {
+		return &v
+	}).(SigstoreSignatureCheckPtrOutput)
+}
+
+// The authorities required by this check to verify the signature. A signature only needs to be verified by one authority to pass the check.
+func (o SigstoreSignatureCheckOutput) SigstoreAuthorities() SigstoreAuthorityArrayOutput {
+	return o.ApplyT(func(v SigstoreSignatureCheck) []SigstoreAuthority { return v.SigstoreAuthorities }).(SigstoreAuthorityArrayOutput)
+}
+
+type SigstoreSignatureCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (SigstoreSignatureCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SigstoreSignatureCheck)(nil)).Elem()
+}
+
+func (o SigstoreSignatureCheckPtrOutput) ToSigstoreSignatureCheckPtrOutput() SigstoreSignatureCheckPtrOutput {
+	return o
+}
+
+func (o SigstoreSignatureCheckPtrOutput) ToSigstoreSignatureCheckPtrOutputWithContext(ctx context.Context) SigstoreSignatureCheckPtrOutput {
+	return o
+}
+
+func (o SigstoreSignatureCheckPtrOutput) Elem() SigstoreSignatureCheckOutput {
+	return o.ApplyT(func(v *SigstoreSignatureCheck) SigstoreSignatureCheck {
+		if v != nil {
+			return *v
+		}
+		var ret SigstoreSignatureCheck
+		return ret
+	}).(SigstoreSignatureCheckOutput)
+}
+
+// The authorities required by this check to verify the signature. A signature only needs to be verified by one authority to pass the check.
+func (o SigstoreSignatureCheckPtrOutput) SigstoreAuthorities() SigstoreAuthorityArrayOutput {
+	return o.ApplyT(func(v *SigstoreSignatureCheck) []SigstoreAuthority {
+		if v == nil {
+			return nil
+		}
+		return v.SigstoreAuthorities
+	}).(SigstoreAuthorityArrayOutput)
+}
+
+// A Sigstore signature check, which verifies the Sigstore signature associated with an image.
+type SigstoreSignatureCheckResponse struct {
+	// The authorities required by this check to verify the signature. A signature only needs to be verified by one authority to pass the check.
+	SigstoreAuthorities []SigstoreAuthorityResponse `pulumi:"sigstoreAuthorities"`
+}
+
+// A Sigstore signature check, which verifies the Sigstore signature associated with an image.
+type SigstoreSignatureCheckResponseOutput struct{ *pulumi.OutputState }
+
+func (SigstoreSignatureCheckResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigstoreSignatureCheckResponse)(nil)).Elem()
+}
+
+func (o SigstoreSignatureCheckResponseOutput) ToSigstoreSignatureCheckResponseOutput() SigstoreSignatureCheckResponseOutput {
+	return o
+}
+
+func (o SigstoreSignatureCheckResponseOutput) ToSigstoreSignatureCheckResponseOutputWithContext(ctx context.Context) SigstoreSignatureCheckResponseOutput {
+	return o
+}
+
+// The authorities required by this check to verify the signature. A signature only needs to be verified by one authority to pass the check.
+func (o SigstoreSignatureCheckResponseOutput) SigstoreAuthorities() SigstoreAuthorityResponseArrayOutput {
+	return o.ApplyT(func(v SigstoreSignatureCheckResponse) []SigstoreAuthorityResponse { return v.SigstoreAuthorities }).(SigstoreAuthorityResponseArrayOutput)
+}
+
 // Require a signed [DSSE](https://github.com/secure-systems-lab/dsse) attestation with type SimpleSigning.
 type SimpleSigningAttestationCheck struct {
 	// The authenticators required by this check to verify an attestation. Typically this is one or more PKIX public keys for signature verification. Only one authenticator needs to consider an attestation verified in order for an attestation to be considered fully authenticated. In otherwords, this list of authenticators is an "OR" of the authenticator results. At least one authenticator is required.
 	AttestationAuthenticators []AttestationAuthenticator `pulumi:"attestationAuthenticators"`
-	// Optional. The projects where attestations are stored as Container Analysis Occurrences. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only 'AttestationOccurrence' kinds are considered. In the future, additional Occurrence kinds may be added to the query.
+	// Optional. The projects where attestations are stored as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only `AttestationOccurrence` kinds are considered. In the future, additional Occurrence kinds may be added to the query. Maximum number of `container_analysis_attestation_projects` allowed in each `SimpleSigningAttestationCheck` is 10.
 	ContainerAnalysisAttestationProjects []string `pulumi:"containerAnalysisAttestationProjects"`
 }
 
@@ -2590,7 +3161,7 @@ type SimpleSigningAttestationCheckInput interface {
 type SimpleSigningAttestationCheckArgs struct {
 	// The authenticators required by this check to verify an attestation. Typically this is one or more PKIX public keys for signature verification. Only one authenticator needs to consider an attestation verified in order for an attestation to be considered fully authenticated. In otherwords, this list of authenticators is an "OR" of the authenticator results. At least one authenticator is required.
 	AttestationAuthenticators AttestationAuthenticatorArrayInput `pulumi:"attestationAuthenticators"`
-	// Optional. The projects where attestations are stored as Container Analysis Occurrences. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only 'AttestationOccurrence' kinds are considered. In the future, additional Occurrence kinds may be added to the query.
+	// Optional. The projects where attestations are stored as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only `AttestationOccurrence` kinds are considered. In the future, additional Occurrence kinds may be added to the query. Maximum number of `container_analysis_attestation_projects` allowed in each `SimpleSigningAttestationCheck` is 10.
 	ContainerAnalysisAttestationProjects pulumi.StringArrayInput `pulumi:"containerAnalysisAttestationProjects"`
 }
 
@@ -2677,7 +3248,7 @@ func (o SimpleSigningAttestationCheckOutput) AttestationAuthenticators() Attesta
 	return o.ApplyT(func(v SimpleSigningAttestationCheck) []AttestationAuthenticator { return v.AttestationAuthenticators }).(AttestationAuthenticatorArrayOutput)
 }
 
-// Optional. The projects where attestations are stored as Container Analysis Occurrences. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only 'AttestationOccurrence' kinds are considered. In the future, additional Occurrence kinds may be added to the query.
+// Optional. The projects where attestations are stored as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only `AttestationOccurrence` kinds are considered. In the future, additional Occurrence kinds may be added to the query. Maximum number of `container_analysis_attestation_projects` allowed in each `SimpleSigningAttestationCheck` is 10.
 func (o SimpleSigningAttestationCheckOutput) ContainerAnalysisAttestationProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SimpleSigningAttestationCheck) []string { return v.ContainerAnalysisAttestationProjects }).(pulumi.StringArrayOutput)
 }
@@ -2716,7 +3287,7 @@ func (o SimpleSigningAttestationCheckPtrOutput) AttestationAuthenticators() Atte
 	}).(AttestationAuthenticatorArrayOutput)
 }
 
-// Optional. The projects where attestations are stored as Container Analysis Occurrences. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only 'AttestationOccurrence' kinds are considered. In the future, additional Occurrence kinds may be added to the query.
+// Optional. The projects where attestations are stored as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only `AttestationOccurrence` kinds are considered. In the future, additional Occurrence kinds may be added to the query. Maximum number of `container_analysis_attestation_projects` allowed in each `SimpleSigningAttestationCheck` is 10.
 func (o SimpleSigningAttestationCheckPtrOutput) ContainerAnalysisAttestationProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SimpleSigningAttestationCheck) []string {
 		if v == nil {
@@ -2730,7 +3301,7 @@ func (o SimpleSigningAttestationCheckPtrOutput) ContainerAnalysisAttestationProj
 type SimpleSigningAttestationCheckResponse struct {
 	// The authenticators required by this check to verify an attestation. Typically this is one or more PKIX public keys for signature verification. Only one authenticator needs to consider an attestation verified in order for an attestation to be considered fully authenticated. In otherwords, this list of authenticators is an "OR" of the authenticator results. At least one authenticator is required.
 	AttestationAuthenticators []AttestationAuthenticatorResponse `pulumi:"attestationAuthenticators"`
-	// Optional. The projects where attestations are stored as Container Analysis Occurrences. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only 'AttestationOccurrence' kinds are considered. In the future, additional Occurrence kinds may be added to the query.
+	// Optional. The projects where attestations are stored as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only `AttestationOccurrence` kinds are considered. In the future, additional Occurrence kinds may be added to the query. Maximum number of `container_analysis_attestation_projects` allowed in each `SimpleSigningAttestationCheck` is 10.
 	ContainerAnalysisAttestationProjects []string `pulumi:"containerAnalysisAttestationProjects"`
 }
 
@@ -2756,7 +3327,7 @@ func (o SimpleSigningAttestationCheckResponseOutput) AttestationAuthenticators()
 	}).(AttestationAuthenticatorResponseArrayOutput)
 }
 
-// Optional. The projects where attestations are stored as Container Analysis Occurrences. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only 'AttestationOccurrence' kinds are considered. In the future, additional Occurrence kinds may be added to the query.
+// Optional. The projects where attestations are stored as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only `AttestationOccurrence` kinds are considered. In the future, additional Occurrence kinds may be added to the query. Maximum number of `container_analysis_attestation_projects` allowed in each `SimpleSigningAttestationCheck` is 10.
 func (o SimpleSigningAttestationCheckResponseOutput) ContainerAnalysisAttestationProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SimpleSigningAttestationCheckResponse) []string { return v.ContainerAnalysisAttestationProjects }).(pulumi.StringArrayOutput)
 }
@@ -3492,7 +4063,7 @@ type VulnerabilityCheck struct {
 	AllowedCves []string `pulumi:"allowedCves"`
 	// Optional. A list of specific CVEs to always raise warnings about even if the vulnerability level meets `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will block vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
 	BlockedCves []string `pulumi:"blockedCves"`
-	// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check.
+	// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10.
 	ContainerAnalysisVulnerabilityProjects []string `pulumi:"containerAnalysisVulnerabilityProjects"`
 	// The threshold for severity for which a fix is currently available. This field is required and must be set.
 	MaximumFixableSeverity VulnerabilityCheckMaximumFixableSeverity `pulumi:"maximumFixableSeverity"`
@@ -3517,7 +4088,7 @@ type VulnerabilityCheckArgs struct {
 	AllowedCves pulumi.StringArrayInput `pulumi:"allowedCves"`
 	// Optional. A list of specific CVEs to always raise warnings about even if the vulnerability level meets `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will block vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
 	BlockedCves pulumi.StringArrayInput `pulumi:"blockedCves"`
-	// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check.
+	// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10.
 	ContainerAnalysisVulnerabilityProjects pulumi.StringArrayInput `pulumi:"containerAnalysisVulnerabilityProjects"`
 	// The threshold for severity for which a fix is currently available. This field is required and must be set.
 	MaximumFixableSeverity VulnerabilityCheckMaximumFixableSeverityInput `pulumi:"maximumFixableSeverity"`
@@ -3613,7 +4184,7 @@ func (o VulnerabilityCheckOutput) BlockedCves() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VulnerabilityCheck) []string { return v.BlockedCves }).(pulumi.StringArrayOutput)
 }
 
-// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check.
+// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10.
 func (o VulnerabilityCheckOutput) ContainerAnalysisVulnerabilityProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VulnerabilityCheck) []string { return v.ContainerAnalysisVulnerabilityProjects }).(pulumi.StringArrayOutput)
 }
@@ -3674,7 +4245,7 @@ func (o VulnerabilityCheckPtrOutput) BlockedCves() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check.
+// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10.
 func (o VulnerabilityCheckPtrOutput) ContainerAnalysisVulnerabilityProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VulnerabilityCheck) []string {
 		if v == nil {
@@ -3710,7 +4281,7 @@ type VulnerabilityCheckResponse struct {
 	AllowedCves []string `pulumi:"allowedCves"`
 	// Optional. A list of specific CVEs to always raise warnings about even if the vulnerability level meets `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will block vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
 	BlockedCves []string `pulumi:"blockedCves"`
-	// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check.
+	// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10.
 	ContainerAnalysisVulnerabilityProjects []string `pulumi:"containerAnalysisVulnerabilityProjects"`
 	// The threshold for severity for which a fix is currently available. This field is required and must be set.
 	MaximumFixableSeverity string `pulumi:"maximumFixableSeverity"`
@@ -3743,7 +4314,7 @@ func (o VulnerabilityCheckResponseOutput) BlockedCves() pulumi.StringArrayOutput
 	return o.ApplyT(func(v VulnerabilityCheckResponse) []string { return v.BlockedCves }).(pulumi.StringArrayOutput)
 }
 
-// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check.
+// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10.
 func (o VulnerabilityCheckResponseOutput) ContainerAnalysisVulnerabilityProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VulnerabilityCheckResponse) []string { return v.ContainerAnalysisVulnerabilityProjects }).(pulumi.StringArrayOutput)
 }
@@ -3786,6 +4357,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PkixPublicKeySetPtrInput)(nil)).Elem(), PkixPublicKeySetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeInput)(nil)).Elem(), ScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopePtrInput)(nil)).Elem(), ScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SigstoreAuthorityInput)(nil)).Elem(), SigstoreAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SigstoreAuthorityArrayInput)(nil)).Elem(), SigstoreAuthorityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SigstorePublicKeyInput)(nil)).Elem(), SigstorePublicKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SigstorePublicKeyArrayInput)(nil)).Elem(), SigstorePublicKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SigstorePublicKeySetInput)(nil)).Elem(), SigstorePublicKeySetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SigstoreSignatureCheckInput)(nil)).Elem(), SigstoreSignatureCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SigstoreSignatureCheckPtrInput)(nil)).Elem(), SigstoreSignatureCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SimpleSigningAttestationCheckInput)(nil)).Elem(), SimpleSigningAttestationCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SimpleSigningAttestationCheckPtrInput)(nil)).Elem(), SimpleSigningAttestationCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaCheckInput)(nil)).Elem(), SlsaCheckArgs{})
@@ -3844,6 +4422,19 @@ func init() {
 	pulumi.RegisterOutputType(ScopeOutput{})
 	pulumi.RegisterOutputType(ScopePtrOutput{})
 	pulumi.RegisterOutputType(ScopeResponseOutput{})
+	pulumi.RegisterOutputType(SigstoreAuthorityOutput{})
+	pulumi.RegisterOutputType(SigstoreAuthorityArrayOutput{})
+	pulumi.RegisterOutputType(SigstoreAuthorityResponseOutput{})
+	pulumi.RegisterOutputType(SigstoreAuthorityResponseArrayOutput{})
+	pulumi.RegisterOutputType(SigstorePublicKeyOutput{})
+	pulumi.RegisterOutputType(SigstorePublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(SigstorePublicKeyResponseOutput{})
+	pulumi.RegisterOutputType(SigstorePublicKeyResponseArrayOutput{})
+	pulumi.RegisterOutputType(SigstorePublicKeySetOutput{})
+	pulumi.RegisterOutputType(SigstorePublicKeySetResponseOutput{})
+	pulumi.RegisterOutputType(SigstoreSignatureCheckOutput{})
+	pulumi.RegisterOutputType(SigstoreSignatureCheckPtrOutput{})
+	pulumi.RegisterOutputType(SigstoreSignatureCheckResponseOutput{})
 	pulumi.RegisterOutputType(SimpleSigningAttestationCheckOutput{})
 	pulumi.RegisterOutputType(SimpleSigningAttestationCheckPtrOutput{})
 	pulumi.RegisterOutputType(SimpleSigningAttestationCheckResponseOutput{})

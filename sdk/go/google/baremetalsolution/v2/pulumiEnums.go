@@ -1451,6 +1451,8 @@ const (
 	VolumeConfigPerformanceTierVolumePerformanceTierAssigned = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_ASSIGNED")
 	// High throughput aggregates.
 	VolumeConfigPerformanceTierVolumePerformanceTierHt = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_HT")
+	// QoS 2.0 high performance storage.
+	VolumeConfigPerformanceTierVolumePerformanceTierQos2Performance = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE")
 )
 
 func (VolumeConfigPerformanceTier) ElementType() reflect.Type {
@@ -1579,6 +1581,7 @@ func (o VolumeConfigPerformanceTierPtrOutput) ToStringPtrOutputWithContext(ctx c
 //	VolumeConfigPerformanceTierVolumePerformanceTierShared
 //	VolumeConfigPerformanceTierVolumePerformanceTierAssigned
 //	VolumeConfigPerformanceTierVolumePerformanceTierHt
+//	VolumeConfigPerformanceTierVolumePerformanceTierQos2Performance
 type VolumeConfigPerformanceTierInput interface {
 	pulumi.Input
 

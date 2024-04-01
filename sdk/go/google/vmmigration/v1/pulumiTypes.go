@@ -3111,6 +3111,25 @@ func (o ComputeSchedulingResponseOutput) RestartType() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeSchedulingResponse) string { return v.RestartType }).(pulumi.StringOutput)
 }
 
+// CreatingImageStep contains specific step details.
+type CreatingImageStepResponse struct {
+}
+
+// CreatingImageStep contains specific step details.
+type CreatingImageStepResponseOutput struct{ *pulumi.OutputState }
+
+func (CreatingImageStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreatingImageStepResponse)(nil)).Elem()
+}
+
+func (o CreatingImageStepResponseOutput) ToCreatingImageStepResponseOutput() CreatingImageStepResponseOutput {
+	return o
+}
+
+func (o CreatingImageStepResponseOutput) ToCreatingImageStepResponseOutputWithContext(ctx context.Context) CreatingImageStepResponseOutput {
+	return o
+}
+
 // CutoverForecast holds information about future CutoverJobs of a MigratingVm.
 type CutoverForecastResponse struct {
 	// Estimation of the CutoverJob duration.
@@ -3417,6 +3436,146 @@ func (o CycleStepResponseArrayOutput) Index(i pulumi.IntInput) CycleStepResponse
 	}).(CycleStepResponseOutput)
 }
 
+// Mentions that the image import is not using OS adaptation process.
+type DataDiskImageImport struct {
+}
+
+// DataDiskImageImportInput is an input type that accepts DataDiskImageImportArgs and DataDiskImageImportOutput values.
+// You can construct a concrete instance of `DataDiskImageImportInput` via:
+//
+//	DataDiskImageImportArgs{...}
+type DataDiskImageImportInput interface {
+	pulumi.Input
+
+	ToDataDiskImageImportOutput() DataDiskImageImportOutput
+	ToDataDiskImageImportOutputWithContext(context.Context) DataDiskImageImportOutput
+}
+
+// Mentions that the image import is not using OS adaptation process.
+type DataDiskImageImportArgs struct {
+}
+
+func (DataDiskImageImportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataDiskImageImport)(nil)).Elem()
+}
+
+func (i DataDiskImageImportArgs) ToDataDiskImageImportOutput() DataDiskImageImportOutput {
+	return i.ToDataDiskImageImportOutputWithContext(context.Background())
+}
+
+func (i DataDiskImageImportArgs) ToDataDiskImageImportOutputWithContext(ctx context.Context) DataDiskImageImportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataDiskImageImportOutput)
+}
+
+func (i DataDiskImageImportArgs) ToDataDiskImageImportPtrOutput() DataDiskImageImportPtrOutput {
+	return i.ToDataDiskImageImportPtrOutputWithContext(context.Background())
+}
+
+func (i DataDiskImageImportArgs) ToDataDiskImageImportPtrOutputWithContext(ctx context.Context) DataDiskImageImportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataDiskImageImportOutput).ToDataDiskImageImportPtrOutputWithContext(ctx)
+}
+
+// DataDiskImageImportPtrInput is an input type that accepts DataDiskImageImportArgs, DataDiskImageImportPtr and DataDiskImageImportPtrOutput values.
+// You can construct a concrete instance of `DataDiskImageImportPtrInput` via:
+//
+//	        DataDiskImageImportArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataDiskImageImportPtrInput interface {
+	pulumi.Input
+
+	ToDataDiskImageImportPtrOutput() DataDiskImageImportPtrOutput
+	ToDataDiskImageImportPtrOutputWithContext(context.Context) DataDiskImageImportPtrOutput
+}
+
+type dataDiskImageImportPtrType DataDiskImageImportArgs
+
+func DataDiskImageImportPtr(v *DataDiskImageImportArgs) DataDiskImageImportPtrInput {
+	return (*dataDiskImageImportPtrType)(v)
+}
+
+func (*dataDiskImageImportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataDiskImageImport)(nil)).Elem()
+}
+
+func (i *dataDiskImageImportPtrType) ToDataDiskImageImportPtrOutput() DataDiskImageImportPtrOutput {
+	return i.ToDataDiskImageImportPtrOutputWithContext(context.Background())
+}
+
+func (i *dataDiskImageImportPtrType) ToDataDiskImageImportPtrOutputWithContext(ctx context.Context) DataDiskImageImportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataDiskImageImportPtrOutput)
+}
+
+// Mentions that the image import is not using OS adaptation process.
+type DataDiskImageImportOutput struct{ *pulumi.OutputState }
+
+func (DataDiskImageImportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataDiskImageImport)(nil)).Elem()
+}
+
+func (o DataDiskImageImportOutput) ToDataDiskImageImportOutput() DataDiskImageImportOutput {
+	return o
+}
+
+func (o DataDiskImageImportOutput) ToDataDiskImageImportOutputWithContext(ctx context.Context) DataDiskImageImportOutput {
+	return o
+}
+
+func (o DataDiskImageImportOutput) ToDataDiskImageImportPtrOutput() DataDiskImageImportPtrOutput {
+	return o.ToDataDiskImageImportPtrOutputWithContext(context.Background())
+}
+
+func (o DataDiskImageImportOutput) ToDataDiskImageImportPtrOutputWithContext(ctx context.Context) DataDiskImageImportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataDiskImageImport) *DataDiskImageImport {
+		return &v
+	}).(DataDiskImageImportPtrOutput)
+}
+
+type DataDiskImageImportPtrOutput struct{ *pulumi.OutputState }
+
+func (DataDiskImageImportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataDiskImageImport)(nil)).Elem()
+}
+
+func (o DataDiskImageImportPtrOutput) ToDataDiskImageImportPtrOutput() DataDiskImageImportPtrOutput {
+	return o
+}
+
+func (o DataDiskImageImportPtrOutput) ToDataDiskImageImportPtrOutputWithContext(ctx context.Context) DataDiskImageImportPtrOutput {
+	return o
+}
+
+func (o DataDiskImageImportPtrOutput) Elem() DataDiskImageImportOutput {
+	return o.ApplyT(func(v *DataDiskImageImport) DataDiskImageImport {
+		if v != nil {
+			return *v
+		}
+		var ret DataDiskImageImport
+		return ret
+	}).(DataDiskImageImportOutput)
+}
+
+// Mentions that the image import is not using OS adaptation process.
+type DataDiskImageImportResponse struct {
+}
+
+// Mentions that the image import is not using OS adaptation process.
+type DataDiskImageImportResponseOutput struct{ *pulumi.OutputState }
+
+func (DataDiskImageImportResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataDiskImageImportResponse)(nil)).Elem()
+}
+
+func (o DataDiskImageImportResponseOutput) ToDataDiskImageImportResponseOutput() DataDiskImageImportResponseOutput {
+	return o
+}
+
+func (o DataDiskImageImportResponseOutput) ToDataDiskImageImportResponseOutputWithContext(ctx context.Context) DataDiskImageImportResponseOutput {
+	return o
+}
+
 // Contains details about the image source used to create the disk.
 type DiskImageDefaults struct {
 	// The Image resource used when creating the disk.
@@ -3581,6 +3740,408 @@ func (o DiskImageDefaultsResponseOutput) ToDiskImageDefaultsResponseOutputWithCo
 // The Image resource used when creating the disk.
 func (o DiskImageDefaultsResponseOutput) SourceImage() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskImageDefaultsResponse) string { return v.SourceImage }).(pulumi.StringOutput)
+}
+
+// The target details of the image resource that will be created by the import job.
+type DiskImageTargetDetails struct {
+	// Optional. Additional licenses to assign to the image.
+	AdditionalLicenses []string `pulumi:"additionalLicenses"`
+	// Optional. Use to skip OS adaptation process.
+	DataDiskImageImport *DataDiskImageImport `pulumi:"dataDiskImageImport"`
+	// Optional. An optional description of the image.
+	Description *string `pulumi:"description"`
+	// Optional. Immutable. The encryption to apply to the image.
+	Encryption *Encryption `pulumi:"encryption"`
+	// Optional. The name of the image family to which the new image belongs.
+	FamilyName *string `pulumi:"familyName"`
+	// The name of the image to be created.
+	ImageName string `pulumi:"imageName"`
+	// Optional. A map of labels to associate with the image.
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. Use to set the parameters relevant for the OS adaptation process.
+	OsAdaptationParameters *ImageImportOsAdaptationParameters `pulumi:"osAdaptationParameters"`
+	// Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected.
+	SingleRegionStorage *bool `pulumi:"singleRegionStorage"`
+	// Reference to the TargetProject resource that represents the target project in which the imported image will be created.
+	TargetProject string `pulumi:"targetProject"`
+}
+
+// DiskImageTargetDetailsInput is an input type that accepts DiskImageTargetDetailsArgs and DiskImageTargetDetailsOutput values.
+// You can construct a concrete instance of `DiskImageTargetDetailsInput` via:
+//
+//	DiskImageTargetDetailsArgs{...}
+type DiskImageTargetDetailsInput interface {
+	pulumi.Input
+
+	ToDiskImageTargetDetailsOutput() DiskImageTargetDetailsOutput
+	ToDiskImageTargetDetailsOutputWithContext(context.Context) DiskImageTargetDetailsOutput
+}
+
+// The target details of the image resource that will be created by the import job.
+type DiskImageTargetDetailsArgs struct {
+	// Optional. Additional licenses to assign to the image.
+	AdditionalLicenses pulumi.StringArrayInput `pulumi:"additionalLicenses"`
+	// Optional. Use to skip OS adaptation process.
+	DataDiskImageImport DataDiskImageImportPtrInput `pulumi:"dataDiskImageImport"`
+	// Optional. An optional description of the image.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Optional. Immutable. The encryption to apply to the image.
+	Encryption EncryptionPtrInput `pulumi:"encryption"`
+	// Optional. The name of the image family to which the new image belongs.
+	FamilyName pulumi.StringPtrInput `pulumi:"familyName"`
+	// The name of the image to be created.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// Optional. A map of labels to associate with the image.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Optional. Use to set the parameters relevant for the OS adaptation process.
+	OsAdaptationParameters ImageImportOsAdaptationParametersPtrInput `pulumi:"osAdaptationParameters"`
+	// Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected.
+	SingleRegionStorage pulumi.BoolPtrInput `pulumi:"singleRegionStorage"`
+	// Reference to the TargetProject resource that represents the target project in which the imported image will be created.
+	TargetProject pulumi.StringInput `pulumi:"targetProject"`
+}
+
+func (DiskImageTargetDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskImageTargetDetails)(nil)).Elem()
+}
+
+func (i DiskImageTargetDetailsArgs) ToDiskImageTargetDetailsOutput() DiskImageTargetDetailsOutput {
+	return i.ToDiskImageTargetDetailsOutputWithContext(context.Background())
+}
+
+func (i DiskImageTargetDetailsArgs) ToDiskImageTargetDetailsOutputWithContext(ctx context.Context) DiskImageTargetDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskImageTargetDetailsOutput)
+}
+
+func (i DiskImageTargetDetailsArgs) ToDiskImageTargetDetailsPtrOutput() DiskImageTargetDetailsPtrOutput {
+	return i.ToDiskImageTargetDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i DiskImageTargetDetailsArgs) ToDiskImageTargetDetailsPtrOutputWithContext(ctx context.Context) DiskImageTargetDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskImageTargetDetailsOutput).ToDiskImageTargetDetailsPtrOutputWithContext(ctx)
+}
+
+// DiskImageTargetDetailsPtrInput is an input type that accepts DiskImageTargetDetailsArgs, DiskImageTargetDetailsPtr and DiskImageTargetDetailsPtrOutput values.
+// You can construct a concrete instance of `DiskImageTargetDetailsPtrInput` via:
+//
+//	        DiskImageTargetDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiskImageTargetDetailsPtrInput interface {
+	pulumi.Input
+
+	ToDiskImageTargetDetailsPtrOutput() DiskImageTargetDetailsPtrOutput
+	ToDiskImageTargetDetailsPtrOutputWithContext(context.Context) DiskImageTargetDetailsPtrOutput
+}
+
+type diskImageTargetDetailsPtrType DiskImageTargetDetailsArgs
+
+func DiskImageTargetDetailsPtr(v *DiskImageTargetDetailsArgs) DiskImageTargetDetailsPtrInput {
+	return (*diskImageTargetDetailsPtrType)(v)
+}
+
+func (*diskImageTargetDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskImageTargetDetails)(nil)).Elem()
+}
+
+func (i *diskImageTargetDetailsPtrType) ToDiskImageTargetDetailsPtrOutput() DiskImageTargetDetailsPtrOutput {
+	return i.ToDiskImageTargetDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *diskImageTargetDetailsPtrType) ToDiskImageTargetDetailsPtrOutputWithContext(ctx context.Context) DiskImageTargetDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskImageTargetDetailsPtrOutput)
+}
+
+// The target details of the image resource that will be created by the import job.
+type DiskImageTargetDetailsOutput struct{ *pulumi.OutputState }
+
+func (DiskImageTargetDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskImageTargetDetails)(nil)).Elem()
+}
+
+func (o DiskImageTargetDetailsOutput) ToDiskImageTargetDetailsOutput() DiskImageTargetDetailsOutput {
+	return o
+}
+
+func (o DiskImageTargetDetailsOutput) ToDiskImageTargetDetailsOutputWithContext(ctx context.Context) DiskImageTargetDetailsOutput {
+	return o
+}
+
+func (o DiskImageTargetDetailsOutput) ToDiskImageTargetDetailsPtrOutput() DiskImageTargetDetailsPtrOutput {
+	return o.ToDiskImageTargetDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o DiskImageTargetDetailsOutput) ToDiskImageTargetDetailsPtrOutputWithContext(ctx context.Context) DiskImageTargetDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskImageTargetDetails) *DiskImageTargetDetails {
+		return &v
+	}).(DiskImageTargetDetailsPtrOutput)
+}
+
+// Optional. Additional licenses to assign to the image.
+func (o DiskImageTargetDetailsOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiskImageTargetDetails) []string { return v.AdditionalLicenses }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Use to skip OS adaptation process.
+func (o DiskImageTargetDetailsOutput) DataDiskImageImport() DataDiskImageImportPtrOutput {
+	return o.ApplyT(func(v DiskImageTargetDetails) *DataDiskImageImport { return v.DataDiskImageImport }).(DataDiskImageImportPtrOutput)
+}
+
+// Optional. An optional description of the image.
+func (o DiskImageTargetDetailsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskImageTargetDetails) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Immutable. The encryption to apply to the image.
+func (o DiskImageTargetDetailsOutput) Encryption() EncryptionPtrOutput {
+	return o.ApplyT(func(v DiskImageTargetDetails) *Encryption { return v.Encryption }).(EncryptionPtrOutput)
+}
+
+// Optional. The name of the image family to which the new image belongs.
+func (o DiskImageTargetDetailsOutput) FamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskImageTargetDetails) *string { return v.FamilyName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the image to be created.
+func (o DiskImageTargetDetailsOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskImageTargetDetails) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// Optional. A map of labels to associate with the image.
+func (o DiskImageTargetDetailsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiskImageTargetDetails) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Use to set the parameters relevant for the OS adaptation process.
+func (o DiskImageTargetDetailsOutput) OsAdaptationParameters() ImageImportOsAdaptationParametersPtrOutput {
+	return o.ApplyT(func(v DiskImageTargetDetails) *ImageImportOsAdaptationParameters { return v.OsAdaptationParameters }).(ImageImportOsAdaptationParametersPtrOutput)
+}
+
+// Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected.
+func (o DiskImageTargetDetailsOutput) SingleRegionStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DiskImageTargetDetails) *bool { return v.SingleRegionStorage }).(pulumi.BoolPtrOutput)
+}
+
+// Reference to the TargetProject resource that represents the target project in which the imported image will be created.
+func (o DiskImageTargetDetailsOutput) TargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskImageTargetDetails) string { return v.TargetProject }).(pulumi.StringOutput)
+}
+
+type DiskImageTargetDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskImageTargetDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskImageTargetDetails)(nil)).Elem()
+}
+
+func (o DiskImageTargetDetailsPtrOutput) ToDiskImageTargetDetailsPtrOutput() DiskImageTargetDetailsPtrOutput {
+	return o
+}
+
+func (o DiskImageTargetDetailsPtrOutput) ToDiskImageTargetDetailsPtrOutputWithContext(ctx context.Context) DiskImageTargetDetailsPtrOutput {
+	return o
+}
+
+func (o DiskImageTargetDetailsPtrOutput) Elem() DiskImageTargetDetailsOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) DiskImageTargetDetails {
+		if v != nil {
+			return *v
+		}
+		var ret DiskImageTargetDetails
+		return ret
+	}).(DiskImageTargetDetailsOutput)
+}
+
+// Optional. Additional licenses to assign to the image.
+func (o DiskImageTargetDetailsPtrOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalLicenses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Use to skip OS adaptation process.
+func (o DiskImageTargetDetailsPtrOutput) DataDiskImageImport() DataDiskImageImportPtrOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) *DataDiskImageImport {
+		if v == nil {
+			return nil
+		}
+		return v.DataDiskImageImport
+	}).(DataDiskImageImportPtrOutput)
+}
+
+// Optional. An optional description of the image.
+func (o DiskImageTargetDetailsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Immutable. The encryption to apply to the image.
+func (o DiskImageTargetDetailsPtrOutput) Encryption() EncryptionPtrOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) *Encryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(EncryptionPtrOutput)
+}
+
+// Optional. The name of the image family to which the new image belongs.
+func (o DiskImageTargetDetailsPtrOutput) FamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the image to be created.
+func (o DiskImageTargetDetailsPtrOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A map of labels to associate with the image.
+func (o DiskImageTargetDetailsPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Use to set the parameters relevant for the OS adaptation process.
+func (o DiskImageTargetDetailsPtrOutput) OsAdaptationParameters() ImageImportOsAdaptationParametersPtrOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) *ImageImportOsAdaptationParameters {
+		if v == nil {
+			return nil
+		}
+		return v.OsAdaptationParameters
+	}).(ImageImportOsAdaptationParametersPtrOutput)
+}
+
+// Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected.
+func (o DiskImageTargetDetailsPtrOutput) SingleRegionStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SingleRegionStorage
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Reference to the TargetProject resource that represents the target project in which the imported image will be created.
+func (o DiskImageTargetDetailsPtrOutput) TargetProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskImageTargetDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetProject
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target details of the image resource that will be created by the import job.
+type DiskImageTargetDetailsResponse struct {
+	// Optional. Additional licenses to assign to the image.
+	AdditionalLicenses []string `pulumi:"additionalLicenses"`
+	// Optional. Use to skip OS adaptation process.
+	DataDiskImageImport DataDiskImageImportResponse `pulumi:"dataDiskImageImport"`
+	// Optional. An optional description of the image.
+	Description string `pulumi:"description"`
+	// Optional. Immutable. The encryption to apply to the image.
+	Encryption EncryptionResponse `pulumi:"encryption"`
+	// Optional. The name of the image family to which the new image belongs.
+	FamilyName string `pulumi:"familyName"`
+	// The name of the image to be created.
+	ImageName string `pulumi:"imageName"`
+	// Optional. A map of labels to associate with the image.
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. Use to set the parameters relevant for the OS adaptation process.
+	OsAdaptationParameters ImageImportOsAdaptationParametersResponse `pulumi:"osAdaptationParameters"`
+	// Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected.
+	SingleRegionStorage bool `pulumi:"singleRegionStorage"`
+	// Reference to the TargetProject resource that represents the target project in which the imported image will be created.
+	TargetProject string `pulumi:"targetProject"`
+}
+
+// The target details of the image resource that will be created by the import job.
+type DiskImageTargetDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskImageTargetDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskImageTargetDetailsResponse)(nil)).Elem()
+}
+
+func (o DiskImageTargetDetailsResponseOutput) ToDiskImageTargetDetailsResponseOutput() DiskImageTargetDetailsResponseOutput {
+	return o
+}
+
+func (o DiskImageTargetDetailsResponseOutput) ToDiskImageTargetDetailsResponseOutputWithContext(ctx context.Context) DiskImageTargetDetailsResponseOutput {
+	return o
+}
+
+// Optional. Additional licenses to assign to the image.
+func (o DiskImageTargetDetailsResponseOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiskImageTargetDetailsResponse) []string { return v.AdditionalLicenses }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Use to skip OS adaptation process.
+func (o DiskImageTargetDetailsResponseOutput) DataDiskImageImport() DataDiskImageImportResponseOutput {
+	return o.ApplyT(func(v DiskImageTargetDetailsResponse) DataDiskImageImportResponse { return v.DataDiskImageImport }).(DataDiskImageImportResponseOutput)
+}
+
+// Optional. An optional description of the image.
+func (o DiskImageTargetDetailsResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskImageTargetDetailsResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Immutable. The encryption to apply to the image.
+func (o DiskImageTargetDetailsResponseOutput) Encryption() EncryptionResponseOutput {
+	return o.ApplyT(func(v DiskImageTargetDetailsResponse) EncryptionResponse { return v.Encryption }).(EncryptionResponseOutput)
+}
+
+// Optional. The name of the image family to which the new image belongs.
+func (o DiskImageTargetDetailsResponseOutput) FamilyName() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskImageTargetDetailsResponse) string { return v.FamilyName }).(pulumi.StringOutput)
+}
+
+// The name of the image to be created.
+func (o DiskImageTargetDetailsResponseOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskImageTargetDetailsResponse) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// Optional. A map of labels to associate with the image.
+func (o DiskImageTargetDetailsResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiskImageTargetDetailsResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Use to set the parameters relevant for the OS adaptation process.
+func (o DiskImageTargetDetailsResponseOutput) OsAdaptationParameters() ImageImportOsAdaptationParametersResponseOutput {
+	return o.ApplyT(func(v DiskImageTargetDetailsResponse) ImageImportOsAdaptationParametersResponse {
+		return v.OsAdaptationParameters
+	}).(ImageImportOsAdaptationParametersResponseOutput)
+}
+
+// Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected.
+func (o DiskImageTargetDetailsResponseOutput) SingleRegionStorage() pulumi.BoolOutput {
+	return o.ApplyT(func(v DiskImageTargetDetailsResponse) bool { return v.SingleRegionStorage }).(pulumi.BoolOutput)
+}
+
+// Reference to the TargetProject resource that represents the target project in which the imported image will be created.
+func (o DiskImageTargetDetailsResponseOutput) TargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskImageTargetDetailsResponse) string { return v.TargetProject }).(pulumi.StringOutput)
 }
 
 // Details for a disk only migration.
@@ -4438,6 +4999,409 @@ func (o EncryptionResponseOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionResponse) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
+// ImageImportJob describes the progress and result of an image import.
+type ImageImportJobResponse struct {
+	// The path to the Cloud Storage file from which the image should be imported.
+	CloudStorageUri string `pulumi:"cloudStorageUri"`
+	// The time the image import was created (as an API call, not when it was actually created in the target).
+	CreateTime string `pulumi:"createTime"`
+	// The resource paths of the resources created by the image import job.
+	CreatedResources []string `pulumi:"createdResources"`
+	// Target details used to import a disk image.
+	DiskImageTargetDetails DiskImageTargetDetailsResponse `pulumi:"diskImageTargetDetails"`
+	// The time the image import was ended.
+	EndTime string `pulumi:"endTime"`
+	// Provides details on the error that led to the image import state in case of an error.
+	Errors []StatusResponse `pulumi:"errors"`
+	// The resource path of the ImageImportJob.
+	Name string `pulumi:"name"`
+	// The state of the image import.
+	State string `pulumi:"state"`
+	// The image import steps list representing its progress.
+	Steps []ImageImportStepResponse `pulumi:"steps"`
+	// Warnings that occurred during the image import.
+	Warnings []MigrationWarningResponse `pulumi:"warnings"`
+}
+
+// ImageImportJob describes the progress and result of an image import.
+type ImageImportJobResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageImportJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImportJobResponse)(nil)).Elem()
+}
+
+func (o ImageImportJobResponseOutput) ToImageImportJobResponseOutput() ImageImportJobResponseOutput {
+	return o
+}
+
+func (o ImageImportJobResponseOutput) ToImageImportJobResponseOutputWithContext(ctx context.Context) ImageImportJobResponseOutput {
+	return o
+}
+
+// The path to the Cloud Storage file from which the image should be imported.
+func (o ImageImportJobResponseOutput) CloudStorageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageImportJobResponse) string { return v.CloudStorageUri }).(pulumi.StringOutput)
+}
+
+// The time the image import was created (as an API call, not when it was actually created in the target).
+func (o ImageImportJobResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageImportJobResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The resource paths of the resources created by the image import job.
+func (o ImageImportJobResponseOutput) CreatedResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ImageImportJobResponse) []string { return v.CreatedResources }).(pulumi.StringArrayOutput)
+}
+
+// Target details used to import a disk image.
+func (o ImageImportJobResponseOutput) DiskImageTargetDetails() DiskImageTargetDetailsResponseOutput {
+	return o.ApplyT(func(v ImageImportJobResponse) DiskImageTargetDetailsResponse { return v.DiskImageTargetDetails }).(DiskImageTargetDetailsResponseOutput)
+}
+
+// The time the image import was ended.
+func (o ImageImportJobResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageImportJobResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Provides details on the error that led to the image import state in case of an error.
+func (o ImageImportJobResponseOutput) Errors() StatusResponseArrayOutput {
+	return o.ApplyT(func(v ImageImportJobResponse) []StatusResponse { return v.Errors }).(StatusResponseArrayOutput)
+}
+
+// The resource path of the ImageImportJob.
+func (o ImageImportJobResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageImportJobResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the image import.
+func (o ImageImportJobResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageImportJobResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The image import steps list representing its progress.
+func (o ImageImportJobResponseOutput) Steps() ImageImportStepResponseArrayOutput {
+	return o.ApplyT(func(v ImageImportJobResponse) []ImageImportStepResponse { return v.Steps }).(ImageImportStepResponseArrayOutput)
+}
+
+// Warnings that occurred during the image import.
+func (o ImageImportJobResponseOutput) Warnings() MigrationWarningResponseArrayOutput {
+	return o.ApplyT(func(v ImageImportJobResponse) []MigrationWarningResponse { return v.Warnings }).(MigrationWarningResponseArrayOutput)
+}
+
+type ImageImportJobResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageImportJobResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageImportJobResponse)(nil)).Elem()
+}
+
+func (o ImageImportJobResponseArrayOutput) ToImageImportJobResponseArrayOutput() ImageImportJobResponseArrayOutput {
+	return o
+}
+
+func (o ImageImportJobResponseArrayOutput) ToImageImportJobResponseArrayOutputWithContext(ctx context.Context) ImageImportJobResponseArrayOutput {
+	return o
+}
+
+func (o ImageImportJobResponseArrayOutput) Index(i pulumi.IntInput) ImageImportJobResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageImportJobResponse {
+		return vs[0].([]ImageImportJobResponse)[vs[1].(int)]
+	}).(ImageImportJobResponseOutput)
+}
+
+// Parameters affecting the OS adaptation process.
+type ImageImportOsAdaptationParameters struct {
+	// Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID).
+	Generalize *bool `pulumi:"generalize"`
+	// Optional. Choose which type of license to apply to the imported image.
+	LicenseType *ImageImportOsAdaptationParametersLicenseType `pulumi:"licenseType"`
+}
+
+// ImageImportOsAdaptationParametersInput is an input type that accepts ImageImportOsAdaptationParametersArgs and ImageImportOsAdaptationParametersOutput values.
+// You can construct a concrete instance of `ImageImportOsAdaptationParametersInput` via:
+//
+//	ImageImportOsAdaptationParametersArgs{...}
+type ImageImportOsAdaptationParametersInput interface {
+	pulumi.Input
+
+	ToImageImportOsAdaptationParametersOutput() ImageImportOsAdaptationParametersOutput
+	ToImageImportOsAdaptationParametersOutputWithContext(context.Context) ImageImportOsAdaptationParametersOutput
+}
+
+// Parameters affecting the OS adaptation process.
+type ImageImportOsAdaptationParametersArgs struct {
+	// Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID).
+	Generalize pulumi.BoolPtrInput `pulumi:"generalize"`
+	// Optional. Choose which type of license to apply to the imported image.
+	LicenseType ImageImportOsAdaptationParametersLicenseTypePtrInput `pulumi:"licenseType"`
+}
+
+func (ImageImportOsAdaptationParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImportOsAdaptationParameters)(nil)).Elem()
+}
+
+func (i ImageImportOsAdaptationParametersArgs) ToImageImportOsAdaptationParametersOutput() ImageImportOsAdaptationParametersOutput {
+	return i.ToImageImportOsAdaptationParametersOutputWithContext(context.Background())
+}
+
+func (i ImageImportOsAdaptationParametersArgs) ToImageImportOsAdaptationParametersOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportOsAdaptationParametersOutput)
+}
+
+func (i ImageImportOsAdaptationParametersArgs) ToImageImportOsAdaptationParametersPtrOutput() ImageImportOsAdaptationParametersPtrOutput {
+	return i.ToImageImportOsAdaptationParametersPtrOutputWithContext(context.Background())
+}
+
+func (i ImageImportOsAdaptationParametersArgs) ToImageImportOsAdaptationParametersPtrOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportOsAdaptationParametersOutput).ToImageImportOsAdaptationParametersPtrOutputWithContext(ctx)
+}
+
+// ImageImportOsAdaptationParametersPtrInput is an input type that accepts ImageImportOsAdaptationParametersArgs, ImageImportOsAdaptationParametersPtr and ImageImportOsAdaptationParametersPtrOutput values.
+// You can construct a concrete instance of `ImageImportOsAdaptationParametersPtrInput` via:
+//
+//	        ImageImportOsAdaptationParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageImportOsAdaptationParametersPtrInput interface {
+	pulumi.Input
+
+	ToImageImportOsAdaptationParametersPtrOutput() ImageImportOsAdaptationParametersPtrOutput
+	ToImageImportOsAdaptationParametersPtrOutputWithContext(context.Context) ImageImportOsAdaptationParametersPtrOutput
+}
+
+type imageImportOsAdaptationParametersPtrType ImageImportOsAdaptationParametersArgs
+
+func ImageImportOsAdaptationParametersPtr(v *ImageImportOsAdaptationParametersArgs) ImageImportOsAdaptationParametersPtrInput {
+	return (*imageImportOsAdaptationParametersPtrType)(v)
+}
+
+func (*imageImportOsAdaptationParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImportOsAdaptationParameters)(nil)).Elem()
+}
+
+func (i *imageImportOsAdaptationParametersPtrType) ToImageImportOsAdaptationParametersPtrOutput() ImageImportOsAdaptationParametersPtrOutput {
+	return i.ToImageImportOsAdaptationParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *imageImportOsAdaptationParametersPtrType) ToImageImportOsAdaptationParametersPtrOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportOsAdaptationParametersPtrOutput)
+}
+
+// Parameters affecting the OS adaptation process.
+type ImageImportOsAdaptationParametersOutput struct{ *pulumi.OutputState }
+
+func (ImageImportOsAdaptationParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImportOsAdaptationParameters)(nil)).Elem()
+}
+
+func (o ImageImportOsAdaptationParametersOutput) ToImageImportOsAdaptationParametersOutput() ImageImportOsAdaptationParametersOutput {
+	return o
+}
+
+func (o ImageImportOsAdaptationParametersOutput) ToImageImportOsAdaptationParametersOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersOutput {
+	return o
+}
+
+func (o ImageImportOsAdaptationParametersOutput) ToImageImportOsAdaptationParametersPtrOutput() ImageImportOsAdaptationParametersPtrOutput {
+	return o.ToImageImportOsAdaptationParametersPtrOutputWithContext(context.Background())
+}
+
+func (o ImageImportOsAdaptationParametersOutput) ToImageImportOsAdaptationParametersPtrOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageImportOsAdaptationParameters) *ImageImportOsAdaptationParameters {
+		return &v
+	}).(ImageImportOsAdaptationParametersPtrOutput)
+}
+
+// Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID).
+func (o ImageImportOsAdaptationParametersOutput) Generalize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ImageImportOsAdaptationParameters) *bool { return v.Generalize }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Choose which type of license to apply to the imported image.
+func (o ImageImportOsAdaptationParametersOutput) LicenseType() ImageImportOsAdaptationParametersLicenseTypePtrOutput {
+	return o.ApplyT(func(v ImageImportOsAdaptationParameters) *ImageImportOsAdaptationParametersLicenseType {
+		return v.LicenseType
+	}).(ImageImportOsAdaptationParametersLicenseTypePtrOutput)
+}
+
+type ImageImportOsAdaptationParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageImportOsAdaptationParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImportOsAdaptationParameters)(nil)).Elem()
+}
+
+func (o ImageImportOsAdaptationParametersPtrOutput) ToImageImportOsAdaptationParametersPtrOutput() ImageImportOsAdaptationParametersPtrOutput {
+	return o
+}
+
+func (o ImageImportOsAdaptationParametersPtrOutput) ToImageImportOsAdaptationParametersPtrOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersPtrOutput {
+	return o
+}
+
+func (o ImageImportOsAdaptationParametersPtrOutput) Elem() ImageImportOsAdaptationParametersOutput {
+	return o.ApplyT(func(v *ImageImportOsAdaptationParameters) ImageImportOsAdaptationParameters {
+		if v != nil {
+			return *v
+		}
+		var ret ImageImportOsAdaptationParameters
+		return ret
+	}).(ImageImportOsAdaptationParametersOutput)
+}
+
+// Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID).
+func (o ImageImportOsAdaptationParametersPtrOutput) Generalize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageImportOsAdaptationParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Generalize
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Choose which type of license to apply to the imported image.
+func (o ImageImportOsAdaptationParametersPtrOutput) LicenseType() ImageImportOsAdaptationParametersLicenseTypePtrOutput {
+	return o.ApplyT(func(v *ImageImportOsAdaptationParameters) *ImageImportOsAdaptationParametersLicenseType {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseType
+	}).(ImageImportOsAdaptationParametersLicenseTypePtrOutput)
+}
+
+// Parameters affecting the OS adaptation process.
+type ImageImportOsAdaptationParametersResponse struct {
+	// Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID).
+	Generalize bool `pulumi:"generalize"`
+	// Optional. Choose which type of license to apply to the imported image.
+	LicenseType string `pulumi:"licenseType"`
+}
+
+// Parameters affecting the OS adaptation process.
+type ImageImportOsAdaptationParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageImportOsAdaptationParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImportOsAdaptationParametersResponse)(nil)).Elem()
+}
+
+func (o ImageImportOsAdaptationParametersResponseOutput) ToImageImportOsAdaptationParametersResponseOutput() ImageImportOsAdaptationParametersResponseOutput {
+	return o
+}
+
+func (o ImageImportOsAdaptationParametersResponseOutput) ToImageImportOsAdaptationParametersResponseOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersResponseOutput {
+	return o
+}
+
+// Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID).
+func (o ImageImportOsAdaptationParametersResponseOutput) Generalize() pulumi.BoolOutput {
+	return o.ApplyT(func(v ImageImportOsAdaptationParametersResponse) bool { return v.Generalize }).(pulumi.BoolOutput)
+}
+
+// Optional. Choose which type of license to apply to the imported image.
+func (o ImageImportOsAdaptationParametersResponseOutput) LicenseType() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageImportOsAdaptationParametersResponse) string { return v.LicenseType }).(pulumi.StringOutput)
+}
+
+// ImageImportStep holds information about the image import step progress.
+type ImageImportStepResponse struct {
+	// Adapting OS step.
+	AdaptingOs AdaptingOSStepResponse `pulumi:"adaptingOs"`
+	// Creating image step.
+	CreatingImage CreatingImageStepResponse `pulumi:"creatingImage"`
+	// The time the step has ended.
+	EndTime string `pulumi:"endTime"`
+	// Initializing step.
+	Initializing InitializingImageImportStepResponse `pulumi:"initializing"`
+	// Loading source files step.
+	LoadingSourceFiles LoadingImageSourceFilesStepResponse `pulumi:"loadingSourceFiles"`
+	// The time the step has started.
+	StartTime string `pulumi:"startTime"`
+}
+
+// ImageImportStep holds information about the image import step progress.
+type ImageImportStepResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageImportStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImportStepResponse)(nil)).Elem()
+}
+
+func (o ImageImportStepResponseOutput) ToImageImportStepResponseOutput() ImageImportStepResponseOutput {
+	return o
+}
+
+func (o ImageImportStepResponseOutput) ToImageImportStepResponseOutputWithContext(ctx context.Context) ImageImportStepResponseOutput {
+	return o
+}
+
+// Adapting OS step.
+func (o ImageImportStepResponseOutput) AdaptingOs() AdaptingOSStepResponseOutput {
+	return o.ApplyT(func(v ImageImportStepResponse) AdaptingOSStepResponse { return v.AdaptingOs }).(AdaptingOSStepResponseOutput)
+}
+
+// Creating image step.
+func (o ImageImportStepResponseOutput) CreatingImage() CreatingImageStepResponseOutput {
+	return o.ApplyT(func(v ImageImportStepResponse) CreatingImageStepResponse { return v.CreatingImage }).(CreatingImageStepResponseOutput)
+}
+
+// The time the step has ended.
+func (o ImageImportStepResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageImportStepResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Initializing step.
+func (o ImageImportStepResponseOutput) Initializing() InitializingImageImportStepResponseOutput {
+	return o.ApplyT(func(v ImageImportStepResponse) InitializingImageImportStepResponse { return v.Initializing }).(InitializingImageImportStepResponseOutput)
+}
+
+// Loading source files step.
+func (o ImageImportStepResponseOutput) LoadingSourceFiles() LoadingImageSourceFilesStepResponseOutput {
+	return o.ApplyT(func(v ImageImportStepResponse) LoadingImageSourceFilesStepResponse { return v.LoadingSourceFiles }).(LoadingImageSourceFilesStepResponseOutput)
+}
+
+// The time the step has started.
+func (o ImageImportStepResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageImportStepResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type ImageImportStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageImportStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageImportStepResponse)(nil)).Elem()
+}
+
+func (o ImageImportStepResponseArrayOutput) ToImageImportStepResponseArrayOutput() ImageImportStepResponseArrayOutput {
+	return o
+}
+
+func (o ImageImportStepResponseArrayOutput) ToImageImportStepResponseArrayOutputWithContext(ctx context.Context) ImageImportStepResponseArrayOutput {
+	return o
+}
+
+func (o ImageImportStepResponseArrayOutput) Index(i pulumi.IntInput) ImageImportStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageImportStepResponse {
+		return vs[0].([]ImageImportStepResponse)[vs[1].(int)]
+	}).(ImageImportStepResponseOutput)
+}
+
+// InitializingImageImportStep contains specific step details.
+type InitializingImageImportStepResponse struct {
+}
+
+// InitializingImageImportStep contains specific step details.
+type InitializingImageImportStepResponseOutput struct{ *pulumi.OutputState }
+
+func (InitializingImageImportStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InitializingImageImportStepResponse)(nil)).Elem()
+}
+
+func (o InitializingImageImportStepResponseOutput) ToInitializingImageImportStepResponseOutput() InitializingImageImportStepResponseOutput {
+	return o
+}
+
+func (o InitializingImageImportStepResponseOutput) ToInitializingImageImportStepResponseOutputWithContext(ctx context.Context) InitializingImageImportStepResponseOutput {
+	return o
+}
+
 // InitializingReplicationStep contains specific step details.
 type InitializingReplicationStepResponse struct {
 }
@@ -4527,6 +5491,25 @@ func (o LinkResponseArrayOutput) Index(i pulumi.IntInput) LinkResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LinkResponse {
 		return vs[0].([]LinkResponse)[vs[1].(int)]
 	}).(LinkResponseOutput)
+}
+
+// LoadingImageSourceFilesStep contains specific step details.
+type LoadingImageSourceFilesStepResponse struct {
+}
+
+// LoadingImageSourceFilesStep contains specific step details.
+type LoadingImageSourceFilesStepResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadingImageSourceFilesStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadingImageSourceFilesStepResponse)(nil)).Elem()
+}
+
+func (o LoadingImageSourceFilesStepResponseOutput) ToLoadingImageSourceFilesStepResponseOutput() LoadingImageSourceFilesStepResponseOutput {
+	return o
+}
+
+func (o LoadingImageSourceFilesStepResponseOutput) ToLoadingImageSourceFilesStepResponseOutputWithContext(ctx context.Context) LoadingImageSourceFilesStepResponseOutput {
+	return o
 }
 
 // Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
@@ -5736,6 +6719,26 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type StatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseArrayOutput) ToStatusResponseArrayOutput() StatusResponseArrayOutput {
+	return o
+}
+
+func (o StatusResponseArrayOutput) ToStatusResponseArrayOutputWithContext(ctx context.Context) StatusResponseArrayOutput {
+	return o
+}
+
+func (o StatusResponseArrayOutput) Index(i pulumi.IntInput) StatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatusResponse {
+		return vs[0].([]StatusResponse)[vs[1].(int)]
+	}).(StatusResponseOutput)
 }
 
 // Tag is an AWS tag representation.
@@ -7506,14 +8509,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsPtrInput)(nil)).Elem(), ComputeEngineTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingInput)(nil)).Elem(), ComputeSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingPtrInput)(nil)).Elem(), ComputeSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataDiskImageImportInput)(nil)).Elem(), DataDiskImageImportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataDiskImageImportPtrInput)(nil)).Elem(), DataDiskImageImportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskImageDefaultsInput)(nil)).Elem(), DiskImageDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskImageDefaultsPtrInput)(nil)).Elem(), DiskImageDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskImageTargetDetailsInput)(nil)).Elem(), DiskImageTargetDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskImageTargetDetailsPtrInput)(nil)).Elem(), DiskImageTargetDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisksMigrationDisksTargetDefaultsInput)(nil)).Elem(), DisksMigrationDisksTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisksMigrationDisksTargetDefaultsPtrInput)(nil)).Elem(), DisksMigrationDisksTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisksMigrationVmTargetDefaultsInput)(nil)).Elem(), DisksMigrationVmTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisksMigrationVmTargetDefaultsPtrInput)(nil)).Elem(), DisksMigrationVmTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionInput)(nil)).Elem(), EncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionPtrInput)(nil)).Elem(), EncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportOsAdaptationParametersInput)(nil)).Elem(), ImageImportOsAdaptationParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportOsAdaptationParametersPtrInput)(nil)).Elem(), ImageImportOsAdaptationParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceInput)(nil)).Elem(), NetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceArrayInput)(nil)).Elem(), NetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistentDiskDefaultsInput)(nil)).Elem(), PersistentDiskDefaultsArgs{})
@@ -7574,6 +8583,7 @@ func init() {
 	pulumi.RegisterOutputType(ComputeSchedulingOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingResponseOutput{})
+	pulumi.RegisterOutputType(CreatingImageStepResponseOutput{})
 	pulumi.RegisterOutputType(CutoverForecastResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseArrayOutput{})
@@ -7581,9 +8591,15 @@ func init() {
 	pulumi.RegisterOutputType(CutoverStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(CycleStepResponseOutput{})
 	pulumi.RegisterOutputType(CycleStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataDiskImageImportOutput{})
+	pulumi.RegisterOutputType(DataDiskImageImportPtrOutput{})
+	pulumi.RegisterOutputType(DataDiskImageImportResponseOutput{})
 	pulumi.RegisterOutputType(DiskImageDefaultsOutput{})
 	pulumi.RegisterOutputType(DiskImageDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(DiskImageDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(DiskImageTargetDetailsOutput{})
+	pulumi.RegisterOutputType(DiskImageTargetDetailsPtrOutput{})
+	pulumi.RegisterOutputType(DiskImageTargetDetailsResponseOutput{})
 	pulumi.RegisterOutputType(DisksMigrationDisksTargetDefaultsOutput{})
 	pulumi.RegisterOutputType(DisksMigrationDisksTargetDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(DisksMigrationDisksTargetDefaultsResponseOutput{})
@@ -7595,10 +8611,19 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionOutput{})
 	pulumi.RegisterOutputType(EncryptionPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionResponseOutput{})
+	pulumi.RegisterOutputType(ImageImportJobResponseOutput{})
+	pulumi.RegisterOutputType(ImageImportJobResponseArrayOutput{})
+	pulumi.RegisterOutputType(ImageImportOsAdaptationParametersOutput{})
+	pulumi.RegisterOutputType(ImageImportOsAdaptationParametersPtrOutput{})
+	pulumi.RegisterOutputType(ImageImportOsAdaptationParametersResponseOutput{})
+	pulumi.RegisterOutputType(ImageImportStepResponseOutput{})
+	pulumi.RegisterOutputType(ImageImportStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(InitializingImageImportStepResponseOutput{})
 	pulumi.RegisterOutputType(InitializingReplicationStepResponseOutput{})
 	pulumi.RegisterOutputType(InstantiatingMigratedVMStepResponseOutput{})
 	pulumi.RegisterOutputType(LinkResponseOutput{})
 	pulumi.RegisterOutputType(LinkResponseArrayOutput{})
+	pulumi.RegisterOutputType(LoadingImageSourceFilesStepResponseOutput{})
 	pulumi.RegisterOutputType(LocalizedMessageResponseOutput{})
 	pulumi.RegisterOutputType(MigrationWarningResponseOutput{})
 	pulumi.RegisterOutputType(MigrationWarningResponseArrayOutput{})
@@ -7626,6 +8651,7 @@ func init() {
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseArrayOutput{})
 	pulumi.RegisterOutputType(ShuttingDownSourceVMStepResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(TagOutput{})
 	pulumi.RegisterOutputType(TagArrayOutput{})
 	pulumi.RegisterOutputType(TagResponseOutput{})

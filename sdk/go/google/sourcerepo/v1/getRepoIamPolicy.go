@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+// Gets the IAM policy policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 func LookupRepoIamPolicy(ctx *pulumi.Context, args *LookupRepoIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRepoIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRepoIamPolicyResult

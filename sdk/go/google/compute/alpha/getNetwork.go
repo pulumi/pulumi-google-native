@@ -54,6 +54,8 @@ type LookupNetworkResult struct {
 	Name string `pulumi:"name"`
 	// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
 	NetworkFirewallPolicyEnforcementOrder string `pulumi:"networkFirewallPolicyEnforcementOrder"`
+	// A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name}
+	NetworkPlacement string `pulumi:"networkPlacement"`
 	// A list of network peerings for the resource.
 	Peerings []NetworkPeeringResponse `pulumi:"peerings"`
 	// URL of the region where the regional network resides. This field is not applicable to global network. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -164,6 +166,11 @@ func (o LookupNetworkResultOutput) Name() pulumi.StringOutput {
 // The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
 func (o LookupNetworkResultOutput) NetworkFirewallPolicyEnforcementOrder() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.NetworkFirewallPolicyEnforcementOrder }).(pulumi.StringOutput)
+}
+
+// A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name}
+func (o LookupNetworkResultOutput) NetworkPlacement() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.NetworkPlacement }).(pulumi.StringOutput)
 }
 
 // A list of network peerings for the resource.

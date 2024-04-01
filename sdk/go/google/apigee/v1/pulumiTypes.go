@@ -66,6 +66,198 @@ func (o GoogleCloudApigeeV1APIProductAssociationResponseArrayOutput) Index(i pul
 	}).(GoogleCloudApigeeV1APIProductAssociationResponseOutput)
 }
 
+// Access logging configuration enables customers to ship the access logs from the tenant projects to their own project's cloud logging. The feature is at the instance level ad disabled by default. It can be enabled during CreateInstance or UpdateInstance.
+type GoogleCloudApigeeV1AccessLoggingConfig struct {
+	// Optional. Boolean flag that specifies whether the customer access log feature is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Optional. Ship the access log entries that match the status_code defined in the filter. The status_code is the only expected/supported filter field. (Ex: status_code) The filter will parse it to the Common Expression Language semantics for expression evaluation to build the filter condition. (Ex: "filter": status_code >= 200 && status_code < 300 )
+	Filter *string `pulumi:"filter"`
+}
+
+// GoogleCloudApigeeV1AccessLoggingConfigInput is an input type that accepts GoogleCloudApigeeV1AccessLoggingConfigArgs and GoogleCloudApigeeV1AccessLoggingConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AccessLoggingConfigInput` via:
+//
+//	GoogleCloudApigeeV1AccessLoggingConfigArgs{...}
+type GoogleCloudApigeeV1AccessLoggingConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AccessLoggingConfigOutput() GoogleCloudApigeeV1AccessLoggingConfigOutput
+	ToGoogleCloudApigeeV1AccessLoggingConfigOutputWithContext(context.Context) GoogleCloudApigeeV1AccessLoggingConfigOutput
+}
+
+// Access logging configuration enables customers to ship the access logs from the tenant projects to their own project's cloud logging. The feature is at the instance level ad disabled by default. It can be enabled during CreateInstance or UpdateInstance.
+type GoogleCloudApigeeV1AccessLoggingConfigArgs struct {
+	// Optional. Boolean flag that specifies whether the customer access log feature is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Optional. Ship the access log entries that match the status_code defined in the filter. The status_code is the only expected/supported filter field. (Ex: status_code) The filter will parse it to the Common Expression Language semantics for expression evaluation to build the filter condition. (Ex: "filter": status_code >= 200 && status_code < 300 )
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+}
+
+func (GoogleCloudApigeeV1AccessLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AccessLoggingConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1AccessLoggingConfigArgs) ToGoogleCloudApigeeV1AccessLoggingConfigOutput() GoogleCloudApigeeV1AccessLoggingConfigOutput {
+	return i.ToGoogleCloudApigeeV1AccessLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AccessLoggingConfigArgs) ToGoogleCloudApigeeV1AccessLoggingConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AccessLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AccessLoggingConfigOutput)
+}
+
+func (i GoogleCloudApigeeV1AccessLoggingConfigArgs) ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutput() GoogleCloudApigeeV1AccessLoggingConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AccessLoggingConfigArgs) ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AccessLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AccessLoggingConfigOutput).ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1AccessLoggingConfigPtrInput is an input type that accepts GoogleCloudApigeeV1AccessLoggingConfigArgs, GoogleCloudApigeeV1AccessLoggingConfigPtr and GoogleCloudApigeeV1AccessLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AccessLoggingConfigPtrInput` via:
+//
+//	        GoogleCloudApigeeV1AccessLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudApigeeV1AccessLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutput() GoogleCloudApigeeV1AccessLoggingConfigPtrOutput
+	ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutputWithContext(context.Context) GoogleCloudApigeeV1AccessLoggingConfigPtrOutput
+}
+
+type googleCloudApigeeV1AccessLoggingConfigPtrType GoogleCloudApigeeV1AccessLoggingConfigArgs
+
+func GoogleCloudApigeeV1AccessLoggingConfigPtr(v *GoogleCloudApigeeV1AccessLoggingConfigArgs) GoogleCloudApigeeV1AccessLoggingConfigPtrInput {
+	return (*googleCloudApigeeV1AccessLoggingConfigPtrType)(v)
+}
+
+func (*googleCloudApigeeV1AccessLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AccessLoggingConfig)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1AccessLoggingConfigPtrType) ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutput() GoogleCloudApigeeV1AccessLoggingConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1AccessLoggingConfigPtrType) ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AccessLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AccessLoggingConfigPtrOutput)
+}
+
+// Access logging configuration enables customers to ship the access logs from the tenant projects to their own project's cloud logging. The feature is at the instance level ad disabled by default. It can be enabled during CreateInstance or UpdateInstance.
+type GoogleCloudApigeeV1AccessLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AccessLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AccessLoggingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AccessLoggingConfigOutput) ToGoogleCloudApigeeV1AccessLoggingConfigOutput() GoogleCloudApigeeV1AccessLoggingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AccessLoggingConfigOutput) ToGoogleCloudApigeeV1AccessLoggingConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AccessLoggingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AccessLoggingConfigOutput) ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutput() GoogleCloudApigeeV1AccessLoggingConfigPtrOutput {
+	return o.ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1AccessLoggingConfigOutput) ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AccessLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1AccessLoggingConfig) *GoogleCloudApigeeV1AccessLoggingConfig {
+		return &v
+	}).(GoogleCloudApigeeV1AccessLoggingConfigPtrOutput)
+}
+
+// Optional. Boolean flag that specifies whether the customer access log feature is enabled.
+func (o GoogleCloudApigeeV1AccessLoggingConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AccessLoggingConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Ship the access log entries that match the status_code defined in the filter. The status_code is the only expected/supported filter field. (Ex: status_code) The filter will parse it to the Common Expression Language semantics for expression evaluation to build the filter condition. (Ex: "filter": status_code >= 200 && status_code < 300 )
+func (o GoogleCloudApigeeV1AccessLoggingConfigOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AccessLoggingConfig) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudApigeeV1AccessLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AccessLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AccessLoggingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AccessLoggingConfigPtrOutput) ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutput() GoogleCloudApigeeV1AccessLoggingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AccessLoggingConfigPtrOutput) ToGoogleCloudApigeeV1AccessLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AccessLoggingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AccessLoggingConfigPtrOutput) Elem() GoogleCloudApigeeV1AccessLoggingConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AccessLoggingConfig) GoogleCloudApigeeV1AccessLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1AccessLoggingConfig
+		return ret
+	}).(GoogleCloudApigeeV1AccessLoggingConfigOutput)
+}
+
+// Optional. Boolean flag that specifies whether the customer access log feature is enabled.
+func (o GoogleCloudApigeeV1AccessLoggingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AccessLoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Ship the access log entries that match the status_code defined in the filter. The status_code is the only expected/supported filter field. (Ex: status_code) The filter will parse it to the Common Expression Language semantics for expression evaluation to build the filter condition. (Ex: "filter": status_code >= 200 && status_code < 300 )
+func (o GoogleCloudApigeeV1AccessLoggingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AccessLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access logging configuration enables customers to ship the access logs from the tenant projects to their own project's cloud logging. The feature is at the instance level ad disabled by default. It can be enabled during CreateInstance or UpdateInstance.
+type GoogleCloudApigeeV1AccessLoggingConfigResponse struct {
+	// Optional. Boolean flag that specifies whether the customer access log feature is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Optional. Ship the access log entries that match the status_code defined in the filter. The status_code is the only expected/supported filter field. (Ex: status_code) The filter will parse it to the Common Expression Language semantics for expression evaluation to build the filter condition. (Ex: "filter": status_code >= 200 && status_code < 300 )
+	Filter string `pulumi:"filter"`
+}
+
+// Access logging configuration enables customers to ship the access logs from the tenant projects to their own project's cloud logging. The feature is at the instance level ad disabled by default. It can be enabled during CreateInstance or UpdateInstance.
+type GoogleCloudApigeeV1AccessLoggingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AccessLoggingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AccessLoggingConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AccessLoggingConfigResponseOutput) ToGoogleCloudApigeeV1AccessLoggingConfigResponseOutput() GoogleCloudApigeeV1AccessLoggingConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AccessLoggingConfigResponseOutput) ToGoogleCloudApigeeV1AccessLoggingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AccessLoggingConfigResponseOutput {
+	return o
+}
+
+// Optional. Boolean flag that specifies whether the customer access log feature is enabled.
+func (o GoogleCloudApigeeV1AccessLoggingConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AccessLoggingConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Optional. Ship the access log entries that match the status_code defined in the filter. The status_code is the only expected/supported filter field. (Ex: status_code) The filter will parse it to the Common Expression Language semantics for expression evaluation to build the filter condition. (Ex: "filter": status_code >= 200 && status_code < 300 )
+func (o GoogleCloudApigeeV1AccessLoggingConfigResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AccessLoggingConfigResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
 // Add-on configurations for the Apigee organization.
 type GoogleCloudApigeeV1AddonsConfig struct {
 	// Configuration for the Advanced API Ops add-on.
@@ -775,6 +967,161 @@ func (o GoogleCloudApigeeV1ApiCategoryResponseOutput) SiteId() pulumi.StringOutp
 // Time the category was last modified in milliseconds since epoch.
 func (o GoogleCloudApigeeV1ApiCategoryResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1ApiCategoryResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// `ApiDoc` represents an API catalog item. Catalog items are used in two ways in a portal: - Users can browse and interact with a visual representation of the API documentation - The `api_product_name` field provides a link to a backing [API product] (/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts). Through this link, portal users can create and manage developer apps linked to one or more API products.
+type GoogleCloudApigeeV1ApiDocResponse struct {
+	// Optional. Boolean flag that manages user access to the catalog item. When true, the catalog item has public visibility and can be viewed anonymously; otherwise, only registered users may view it. Note: when the parent portal is enrolled in the [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature), and this flag is set to false, visibility is set to an indeterminate state and must be explicitly specified in the management UI (see [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)). Additionally, when enrolled in the audience management feature, updates to this flag will be ignored as visibility permissions must be updated in the management UI.
+	AnonAllowed bool `pulumi:"anonAllowed"`
+	// Immutable. The `name` field of the associated [API product](/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts). A portal may have only one catalog item associated with a given API product.
+	ApiProductName string `pulumi:"apiProductName"`
+	// Optional. The IDs of the API categories to which this catalog item belongs.
+	CategoryIds []string `pulumi:"categoryIds"`
+	// Optional. Description of the catalog item. Max length is 10,000 characters.
+	Description string `pulumi:"description"`
+	// Optional. Immutable. DEPRECATED: use the `apiProductName` field instead
+	//
+	// Deprecated: Optional. Immutable. DEPRECATED: use the `apiProductName` field instead
+	EdgeAPIProductName string `pulumi:"edgeAPIProductName"`
+	// Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+	//
+	// Deprecated: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+	GraphqlEndpointUrl string `pulumi:"graphqlEndpointUrl"`
+	// Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+	//
+	// Deprecated: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+	GraphqlSchema string `pulumi:"graphqlSchema"`
+	// Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+	//
+	// Deprecated: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+	GraphqlSchemaDisplayName string `pulumi:"graphqlSchemaDisplayName"`
+	// Optional. Location of the image used for the catalog item in the catalog. For portal files, this can have the format `/files/{filename}`. Max length is 2,083 characters.
+	ImageUrl string `pulumi:"imageUrl"`
+	// Time the catalog item was last modified in milliseconds since epoch.
+	Modified string `pulumi:"modified"`
+	// Optional. Denotes whether the catalog item is published to the portal or is in a draft state. When the parent portal is enrolled in the [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature), the visibility can be set to public on creation by setting the anonAllowed flag to true or further managed in the management UI (see [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)) before it can be visible to any users. If not enrolled in the audience management feature, the visibility is managed by the `anonAllowed` flag.
+	Published bool `pulumi:"published"`
+	// Optional. Whether a callback URL is required when this catalog item's API product is enabled in a developer app. When true, a portal user will be required to input a URL when managing the app (this is typically used for the app's OAuth flow).
+	RequireCallbackUrl bool `pulumi:"requireCallbackUrl"`
+	// The ID of the parent portal.
+	SiteId string `pulumi:"siteId"`
+	// Optional. DEPRECATED: DO NOT USE
+	//
+	// Deprecated: Optional. DEPRECATED: DO NOT USE
+	SpecId string `pulumi:"specId"`
+	// The user-facing name of the catalog item. `title` must be a non-empty string with a max length of 255 characters.
+	Title string `pulumi:"title"`
+	// Optional. DEPRECATED: use the `published` field instead
+	//
+	// Deprecated: Optional. DEPRECATED: use the `published` field instead
+	Visibility bool `pulumi:"visibility"`
+}
+
+// `ApiDoc` represents an API catalog item. Catalog items are used in two ways in a portal: - Users can browse and interact with a visual representation of the API documentation - The `api_product_name` field provides a link to a backing [API product] (/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts). Through this link, portal users can create and manage developer apps linked to one or more API products.
+type GoogleCloudApigeeV1ApiDocResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1ApiDocResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1ApiDocResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) ToGoogleCloudApigeeV1ApiDocResponseOutput() GoogleCloudApigeeV1ApiDocResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) ToGoogleCloudApigeeV1ApiDocResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiDocResponseOutput {
+	return o
+}
+
+// Optional. Boolean flag that manages user access to the catalog item. When true, the catalog item has public visibility and can be viewed anonymously; otherwise, only registered users may view it. Note: when the parent portal is enrolled in the [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature), and this flag is set to false, visibility is set to an indeterminate state and must be explicitly specified in the management UI (see [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)). Additionally, when enrolled in the audience management feature, updates to this flag will be ignored as visibility permissions must be updated in the management UI.
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) AnonAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) bool { return v.AnonAllowed }).(pulumi.BoolOutput)
+}
+
+// Immutable. The `name` field of the associated [API product](/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts). A portal may have only one catalog item associated with a given API product.
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) ApiProductName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.ApiProductName }).(pulumi.StringOutput)
+}
+
+// Optional. The IDs of the API categories to which this catalog item belongs.
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) CategoryIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) []string { return v.CategoryIds }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Description of the catalog item. Max length is 10,000 characters.
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Immutable. DEPRECATED: use the `apiProductName` field instead
+//
+// Deprecated: Optional. Immutable. DEPRECATED: use the `apiProductName` field instead
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) EdgeAPIProductName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.EdgeAPIProductName }).(pulumi.StringOutput)
+}
+
+// Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+//
+// Deprecated: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) GraphqlEndpointUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.GraphqlEndpointUrl }).(pulumi.StringOutput)
+}
+
+// Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+//
+// Deprecated: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) GraphqlSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.GraphqlSchema }).(pulumi.StringOutput)
+}
+
+// Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+//
+// Deprecated: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) GraphqlSchemaDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.GraphqlSchemaDisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Location of the image used for the catalog item in the catalog. For portal files, this can have the format `/files/{filename}`. Max length is 2,083 characters.
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) ImageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.ImageUrl }).(pulumi.StringOutput)
+}
+
+// Time the catalog item was last modified in milliseconds since epoch.
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) Modified() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.Modified }).(pulumi.StringOutput)
+}
+
+// Optional. Denotes whether the catalog item is published to the portal or is in a draft state. When the parent portal is enrolled in the [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature), the visibility can be set to public on creation by setting the anonAllowed flag to true or further managed in the management UI (see [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)) before it can be visible to any users. If not enrolled in the audience management feature, the visibility is managed by the `anonAllowed` flag.
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) Published() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) bool { return v.Published }).(pulumi.BoolOutput)
+}
+
+// Optional. Whether a callback URL is required when this catalog item's API product is enabled in a developer app. When true, a portal user will be required to input a URL when managing the app (this is typically used for the app's OAuth flow).
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) RequireCallbackUrl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) bool { return v.RequireCallbackUrl }).(pulumi.BoolOutput)
+}
+
+// The ID of the parent portal.
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.SiteId }).(pulumi.StringOutput)
+}
+
+// Optional. DEPRECATED: DO NOT USE
+//
+// Deprecated: Optional. DEPRECATED: DO NOT USE
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) SpecId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.SpecId }).(pulumi.StringOutput)
+}
+
+// The user-facing name of the catalog item. `title` must be a non-empty string with a max length of 255 characters.
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Optional. DEPRECATED: use the `published` field instead
+//
+// Deprecated: Optional. DEPRECATED: use the `published` field instead
+func (o GoogleCloudApigeeV1ApiDocResponseOutput) Visibility() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiDocResponse) bool { return v.Visibility }).(pulumi.BoolOutput)
 }
 
 type GoogleCloudApigeeV1ApiProductRefResponse struct {
@@ -6853,12 +7200,24 @@ func (o GoogleCloudApigeeV1SecurityActionAllowResponseOutput) ToGoogleCloudApige
 	return o
 }
 
-// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then this is interpreted as: enforce the action if the incoming request has ((api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "Robot Abuser"] then this is interpreted as: enforce the action if the incoming request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than ip_address_ranges and bot_reasons cannot be ANDed.
 type GoogleCloudApigeeV1SecurityActionConditionConfig struct {
-	// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
+	// Optional. A list of access_tokens. Limit 1000 per action.
+	AccessTokens []string `pulumi:"accessTokens"`
+	// Optional. A list of API keys. Limit 1000 per action.
+	ApiKeys []string `pulumi:"apiKeys"`
+	// Optional. A list of API Products. Limit 1000 per action.
+	ApiProducts []string `pulumi:"apiProducts"`
+	// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
 	BotReasons []string `pulumi:"botReasons"`
+	// Optional. A list of developer apps. Limit 1000 per action.
+	DeveloperApps []string `pulumi:"developerApps"`
+	// Optional. A list of developers. Limit 1000 per action.
+	Developers []string `pulumi:"developers"`
 	// Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
 	IpAddressRanges []string `pulumi:"ipAddressRanges"`
+	// Optional. A list of user agents to deny. We look for exact matches. Limit 50 per action.
+	UserAgents []string `pulumi:"userAgents"`
 }
 
 // GoogleCloudApigeeV1SecurityActionConditionConfigInput is an input type that accepts GoogleCloudApigeeV1SecurityActionConditionConfigArgs and GoogleCloudApigeeV1SecurityActionConditionConfigOutput values.
@@ -6872,12 +7231,24 @@ type GoogleCloudApigeeV1SecurityActionConditionConfigInput interface {
 	ToGoogleCloudApigeeV1SecurityActionConditionConfigOutputWithContext(context.Context) GoogleCloudApigeeV1SecurityActionConditionConfigOutput
 }
 
-// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then this is interpreted as: enforce the action if the incoming request has ((api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "Robot Abuser"] then this is interpreted as: enforce the action if the incoming request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than ip_address_ranges and bot_reasons cannot be ANDed.
 type GoogleCloudApigeeV1SecurityActionConditionConfigArgs struct {
-	// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
+	// Optional. A list of access_tokens. Limit 1000 per action.
+	AccessTokens pulumi.StringArrayInput `pulumi:"accessTokens"`
+	// Optional. A list of API keys. Limit 1000 per action.
+	ApiKeys pulumi.StringArrayInput `pulumi:"apiKeys"`
+	// Optional. A list of API Products. Limit 1000 per action.
+	ApiProducts pulumi.StringArrayInput `pulumi:"apiProducts"`
+	// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
 	BotReasons pulumi.StringArrayInput `pulumi:"botReasons"`
+	// Optional. A list of developer apps. Limit 1000 per action.
+	DeveloperApps pulumi.StringArrayInput `pulumi:"developerApps"`
+	// Optional. A list of developers. Limit 1000 per action.
+	Developers pulumi.StringArrayInput `pulumi:"developers"`
 	// Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
 	IpAddressRanges pulumi.StringArrayInput `pulumi:"ipAddressRanges"`
+	// Optional. A list of user agents to deny. We look for exact matches. Limit 50 per action.
+	UserAgents pulumi.StringArrayInput `pulumi:"userAgents"`
 }
 
 func (GoogleCloudApigeeV1SecurityActionConditionConfigArgs) ElementType() reflect.Type {
@@ -6892,7 +7263,7 @@ func (i GoogleCloudApigeeV1SecurityActionConditionConfigArgs) ToGoogleCloudApige
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1SecurityActionConditionConfigOutput)
 }
 
-// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then this is interpreted as: enforce the action if the incoming request has ((api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "Robot Abuser"] then this is interpreted as: enforce the action if the incoming request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than ip_address_ranges and bot_reasons cannot be ANDed.
 type GoogleCloudApigeeV1SecurityActionConditionConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1SecurityActionConditionConfigOutput) ElementType() reflect.Type {
@@ -6907,9 +7278,34 @@ func (o GoogleCloudApigeeV1SecurityActionConditionConfigOutput) ToGoogleCloudApi
 	return o
 }
 
-// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
+// Optional. A list of access_tokens. Limit 1000 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigOutput) AccessTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfig) []string { return v.AccessTokens }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of API keys. Limit 1000 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigOutput) ApiKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfig) []string { return v.ApiKeys }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of API Products. Limit 1000 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigOutput) ApiProducts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfig) []string { return v.ApiProducts }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
 func (o GoogleCloudApigeeV1SecurityActionConditionConfigOutput) BotReasons() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfig) []string { return v.BotReasons }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of developer apps. Limit 1000 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigOutput) DeveloperApps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfig) []string { return v.DeveloperApps }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of developers. Limit 1000 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigOutput) Developers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfig) []string { return v.Developers }).(pulumi.StringArrayOutput)
 }
 
 // Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
@@ -6917,15 +7313,32 @@ func (o GoogleCloudApigeeV1SecurityActionConditionConfigOutput) IpAddressRanges(
 	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfig) []string { return v.IpAddressRanges }).(pulumi.StringArrayOutput)
 }
 
-// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then this is interpreted as: enforce the action if the incoming request has ((api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
-type GoogleCloudApigeeV1SecurityActionConditionConfigResponse struct {
-	// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
-	BotReasons []string `pulumi:"botReasons"`
-	// Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
-	IpAddressRanges []string `pulumi:"ipAddressRanges"`
+// Optional. A list of user agents to deny. We look for exact matches. Limit 50 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfig) []string { return v.UserAgents }).(pulumi.StringArrayOutput)
 }
 
-// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then this is interpreted as: enforce the action if the incoming request has ((api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "Robot Abuser"] then this is interpreted as: enforce the action if the incoming request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than ip_address_ranges and bot_reasons cannot be ANDed.
+type GoogleCloudApigeeV1SecurityActionConditionConfigResponse struct {
+	// Optional. A list of access_tokens. Limit 1000 per action.
+	AccessTokens []string `pulumi:"accessTokens"`
+	// Optional. A list of API keys. Limit 1000 per action.
+	ApiKeys []string `pulumi:"apiKeys"`
+	// Optional. A list of API Products. Limit 1000 per action.
+	ApiProducts []string `pulumi:"apiProducts"`
+	// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
+	BotReasons []string `pulumi:"botReasons"`
+	// Optional. A list of developer apps. Limit 1000 per action.
+	DeveloperApps []string `pulumi:"developerApps"`
+	// Optional. A list of developers. Limit 1000 per action.
+	Developers []string `pulumi:"developers"`
+	// Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+	IpAddressRanges []string `pulumi:"ipAddressRanges"`
+	// Optional. A list of user agents to deny. We look for exact matches. Limit 50 per action.
+	UserAgents []string `pulumi:"userAgents"`
+}
+
+// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "Robot Abuser"] then this is interpreted as: enforce the action if the incoming request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than ip_address_ranges and bot_reasons cannot be ANDed.
 type GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput) ElementType() reflect.Type {
@@ -6940,14 +7353,44 @@ func (o GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput) ToGoogle
 	return o
 }
 
-// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
+// Optional. A list of access_tokens. Limit 1000 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput) AccessTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfigResponse) []string { return v.AccessTokens }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of API keys. Limit 1000 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput) ApiKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfigResponse) []string { return v.ApiKeys }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of API Products. Limit 1000 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput) ApiProducts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfigResponse) []string { return v.ApiProducts }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
 func (o GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput) BotReasons() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfigResponse) []string { return v.BotReasons }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of developer apps. Limit 1000 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput) DeveloperApps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfigResponse) []string { return v.DeveloperApps }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of developers. Limit 1000 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput) Developers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfigResponse) []string { return v.Developers }).(pulumi.StringArrayOutput)
 }
 
 // Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
 func (o GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput) IpAddressRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfigResponse) []string { return v.IpAddressRanges }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of user agents to deny. We look for exact matches. Limit 50 per action.
+func (o GoogleCloudApigeeV1SecurityActionConditionConfigResponseOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityActionConditionConfigResponse) []string { return v.UserAgents }).(pulumi.StringArrayOutput)
 }
 
 // Message that should be set in case of a Deny Action.
@@ -9085,9 +9528,9 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *GoogleTypeExpr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -9106,9 +9549,9 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -9169,12 +9612,12 @@ func (o GoogleIamV1BindingOutput) Condition() GoogleTypeExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -9203,9 +9646,9 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -9229,12 +9672,12 @@ func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutp
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -9722,6 +10165,8 @@ func (o GoogleTypeMoneyResponseOutput) Units() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1AccessLoggingConfigInput)(nil)).Elem(), GoogleCloudApigeeV1AccessLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1AccessLoggingConfigPtrInput)(nil)).Elem(), GoogleCloudApigeeV1AccessLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1AddonsConfigInput)(nil)).Elem(), GoogleCloudApigeeV1AddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1AddonsConfigPtrInput)(nil)).Elem(), GoogleCloudApigeeV1AddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1AdvancedApiOpsConfigInput)(nil)).Elem(), GoogleCloudApigeeV1AdvancedApiOpsConfigArgs{})
@@ -9824,6 +10269,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeMoneyPtrInput)(nil)).Elem(), GoogleTypeMoneyArgs{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1APIProductAssociationResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1APIProductAssociationResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AccessLoggingConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AccessLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AccessLoggingConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AddonsConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AddonsConfigResponseOutput{})
@@ -9834,6 +10282,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AnalyticsConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AnalyticsConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiCategoryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiDocResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiSecurityConfigOutput{})

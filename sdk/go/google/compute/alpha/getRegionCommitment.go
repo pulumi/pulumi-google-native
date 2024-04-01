@@ -53,7 +53,7 @@ type LookupRegionCommitmentResult struct {
 	Plan string `pulumi:"plan"`
 	// URL of the region where this commitment may be used.
 	Region string `pulumi:"region"`
-	// List of create-on-create reseravtions for this commitment.
+	// List of create-on-create reservations for this commitment.
 	Reservations []ReservationResponse `pulumi:"reservations"`
 	// Status information for Commitment resource.
 	ResourceStatus CommitmentResourceStatusResponse `pulumi:"resourceStatus"`
@@ -172,7 +172,7 @@ func (o LookupRegionCommitmentResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// List of create-on-create reseravtions for this commitment.
+// List of create-on-create reservations for this commitment.
 func (o LookupRegionCommitmentResultOutput) Reservations() ReservationResponseArrayOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) []ReservationResponse { return v.Reservations }).(ReservationResponseArrayOutput)
 }

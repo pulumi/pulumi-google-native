@@ -25,6 +25,7 @@ func LookupInstanceTemplate(ctx *pulumi.Context, args *LookupInstanceTemplateArg
 type LookupInstanceTemplateArgs struct {
 	InstanceTemplate string  `pulumi:"instanceTemplate"`
 	Project          *string `pulumi:"project"`
+	View             *string `pulumi:"view"`
 }
 
 type LookupInstanceTemplateResult struct {
@@ -64,6 +65,7 @@ func LookupInstanceTemplateOutput(ctx *pulumi.Context, args LookupInstanceTempla
 type LookupInstanceTemplateOutputArgs struct {
 	InstanceTemplate pulumi.StringInput    `pulumi:"instanceTemplate"`
 	Project          pulumi.StringPtrInput `pulumi:"project"`
+	View             pulumi.StringPtrInput `pulumi:"view"`
 }
 
 func (LookupInstanceTemplateOutputArgs) ElementType() reflect.Type {

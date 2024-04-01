@@ -13,7 +13,180 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+// The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key.
+type GoogleFirestoreAdminV1CmekConfig struct {
+	// Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GoogleFirestoreAdminV1CmekConfigInput is an input type that accepts GoogleFirestoreAdminV1CmekConfigArgs and GoogleFirestoreAdminV1CmekConfigOutput values.
+// You can construct a concrete instance of `GoogleFirestoreAdminV1CmekConfigInput` via:
+//
+//	GoogleFirestoreAdminV1CmekConfigArgs{...}
+type GoogleFirestoreAdminV1CmekConfigInput interface {
+	pulumi.Input
+
+	ToGoogleFirestoreAdminV1CmekConfigOutput() GoogleFirestoreAdminV1CmekConfigOutput
+	ToGoogleFirestoreAdminV1CmekConfigOutputWithContext(context.Context) GoogleFirestoreAdminV1CmekConfigOutput
+}
+
+// The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key.
+type GoogleFirestoreAdminV1CmekConfigArgs struct {
+	// Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GoogleFirestoreAdminV1CmekConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1CmekConfig)(nil)).Elem()
+}
+
+func (i GoogleFirestoreAdminV1CmekConfigArgs) ToGoogleFirestoreAdminV1CmekConfigOutput() GoogleFirestoreAdminV1CmekConfigOutput {
+	return i.ToGoogleFirestoreAdminV1CmekConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleFirestoreAdminV1CmekConfigArgs) ToGoogleFirestoreAdminV1CmekConfigOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1CmekConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1CmekConfigOutput)
+}
+
+func (i GoogleFirestoreAdminV1CmekConfigArgs) ToGoogleFirestoreAdminV1CmekConfigPtrOutput() GoogleFirestoreAdminV1CmekConfigPtrOutput {
+	return i.ToGoogleFirestoreAdminV1CmekConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleFirestoreAdminV1CmekConfigArgs) ToGoogleFirestoreAdminV1CmekConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1CmekConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1CmekConfigOutput).ToGoogleFirestoreAdminV1CmekConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleFirestoreAdminV1CmekConfigPtrInput is an input type that accepts GoogleFirestoreAdminV1CmekConfigArgs, GoogleFirestoreAdminV1CmekConfigPtr and GoogleFirestoreAdminV1CmekConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleFirestoreAdminV1CmekConfigPtrInput` via:
+//
+//	        GoogleFirestoreAdminV1CmekConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleFirestoreAdminV1CmekConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleFirestoreAdminV1CmekConfigPtrOutput() GoogleFirestoreAdminV1CmekConfigPtrOutput
+	ToGoogleFirestoreAdminV1CmekConfigPtrOutputWithContext(context.Context) GoogleFirestoreAdminV1CmekConfigPtrOutput
+}
+
+type googleFirestoreAdminV1CmekConfigPtrType GoogleFirestoreAdminV1CmekConfigArgs
+
+func GoogleFirestoreAdminV1CmekConfigPtr(v *GoogleFirestoreAdminV1CmekConfigArgs) GoogleFirestoreAdminV1CmekConfigPtrInput {
+	return (*googleFirestoreAdminV1CmekConfigPtrType)(v)
+}
+
+func (*googleFirestoreAdminV1CmekConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleFirestoreAdminV1CmekConfig)(nil)).Elem()
+}
+
+func (i *googleFirestoreAdminV1CmekConfigPtrType) ToGoogleFirestoreAdminV1CmekConfigPtrOutput() GoogleFirestoreAdminV1CmekConfigPtrOutput {
+	return i.ToGoogleFirestoreAdminV1CmekConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleFirestoreAdminV1CmekConfigPtrType) ToGoogleFirestoreAdminV1CmekConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1CmekConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1CmekConfigPtrOutput)
+}
+
+// The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key.
+type GoogleFirestoreAdminV1CmekConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1CmekConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1CmekConfig)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1CmekConfigOutput) ToGoogleFirestoreAdminV1CmekConfigOutput() GoogleFirestoreAdminV1CmekConfigOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1CmekConfigOutput) ToGoogleFirestoreAdminV1CmekConfigOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1CmekConfigOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1CmekConfigOutput) ToGoogleFirestoreAdminV1CmekConfigPtrOutput() GoogleFirestoreAdminV1CmekConfigPtrOutput {
+	return o.ToGoogleFirestoreAdminV1CmekConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleFirestoreAdminV1CmekConfigOutput) ToGoogleFirestoreAdminV1CmekConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1CmekConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleFirestoreAdminV1CmekConfig) *GoogleFirestoreAdminV1CmekConfig {
+		return &v
+	}).(GoogleFirestoreAdminV1CmekConfigPtrOutput)
+}
+
+// Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o GoogleFirestoreAdminV1CmekConfigOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1CmekConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GoogleFirestoreAdminV1CmekConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1CmekConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleFirestoreAdminV1CmekConfig)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1CmekConfigPtrOutput) ToGoogleFirestoreAdminV1CmekConfigPtrOutput() GoogleFirestoreAdminV1CmekConfigPtrOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1CmekConfigPtrOutput) ToGoogleFirestoreAdminV1CmekConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1CmekConfigPtrOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1CmekConfigPtrOutput) Elem() GoogleFirestoreAdminV1CmekConfigOutput {
+	return o.ApplyT(func(v *GoogleFirestoreAdminV1CmekConfig) GoogleFirestoreAdminV1CmekConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleFirestoreAdminV1CmekConfig
+		return ret
+	}).(GoogleFirestoreAdminV1CmekConfigOutput)
+}
+
+// Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o GoogleFirestoreAdminV1CmekConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleFirestoreAdminV1CmekConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key.
+type GoogleFirestoreAdminV1CmekConfigResponse struct {
+	// Currently in-use [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions). During [key rotation](https://cloud.google.com/kms/docs/key-rotation), there can be multiple in-use key versions. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+	ActiveKeyVersion []string `pulumi:"activeKeyVersion"`
+	// Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key.
+type GoogleFirestoreAdminV1CmekConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1CmekConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1CmekConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1CmekConfigResponseOutput) ToGoogleFirestoreAdminV1CmekConfigResponseOutput() GoogleFirestoreAdminV1CmekConfigResponseOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1CmekConfigResponseOutput) ToGoogleFirestoreAdminV1CmekConfigResponseOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1CmekConfigResponseOutput {
+	return o
+}
+
+// Currently in-use [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions). During [key rotation](https://cloud.google.com/kms/docs/key-rotation), there can be multiple in-use key versions. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+func (o GoogleFirestoreAdminV1CmekConfigResponseOutput) ActiveKeyVersion() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1CmekConfigResponse) []string { return v.ActiveKeyVersion }).(pulumi.StringArrayOutput)
+}
+
+// Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o GoogleFirestoreAdminV1CmekConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1CmekConfigResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.
 type GoogleFirestoreAdminV1DailyRecurrence struct {
 }
 
@@ -28,7 +201,7 @@ type GoogleFirestoreAdminV1DailyRecurrenceInput interface {
 	ToGoogleFirestoreAdminV1DailyRecurrenceOutputWithContext(context.Context) GoogleFirestoreAdminV1DailyRecurrenceOutput
 }
 
-// Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+// Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.
 type GoogleFirestoreAdminV1DailyRecurrenceArgs struct {
 }
 
@@ -85,7 +258,7 @@ func (i *googleFirestoreAdminV1DailyRecurrencePtrType) ToGoogleFirestoreAdminV1D
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1DailyRecurrencePtrOutput)
 }
 
-// Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+// Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.
 type GoogleFirestoreAdminV1DailyRecurrenceOutput struct{ *pulumi.OutputState }
 
 func (GoogleFirestoreAdminV1DailyRecurrenceOutput) ElementType() reflect.Type {
@@ -134,11 +307,11 @@ func (o GoogleFirestoreAdminV1DailyRecurrencePtrOutput) Elem() GoogleFirestoreAd
 	}).(GoogleFirestoreAdminV1DailyRecurrenceOutput)
 }
 
-// Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+// Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.
 type GoogleFirestoreAdminV1DailyRecurrenceResponse struct {
 }
 
-// Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+// Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.
 type GoogleFirestoreAdminV1DailyRecurrenceResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleFirestoreAdminV1DailyRecurrenceResponseOutput) ElementType() reflect.Type {
@@ -854,6 +1027,8 @@ func (o GoogleFirestoreAdminV1WeeklyRecurrenceResponseOutput) Day() pulumi.Strin
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1CmekConfigInput)(nil)).Elem(), GoogleFirestoreAdminV1CmekConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1CmekConfigPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1CmekConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1DailyRecurrenceInput)(nil)).Elem(), GoogleFirestoreAdminV1DailyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1DailyRecurrencePtrInput)(nil)).Elem(), GoogleFirestoreAdminV1DailyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1FlatIndexInput)(nil)).Elem(), GoogleFirestoreAdminV1FlatIndexArgs{})
@@ -864,6 +1039,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1VectorConfigPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1VectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1WeeklyRecurrenceInput)(nil)).Elem(), GoogleFirestoreAdminV1WeeklyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1WeeklyRecurrencePtrInput)(nil)).Elem(), GoogleFirestoreAdminV1WeeklyRecurrenceArgs{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1CmekConfigOutput{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1CmekConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1CmekConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1DailyRecurrenceOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1DailyRecurrencePtrOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1DailyRecurrenceResponseOutput{})

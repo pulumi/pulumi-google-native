@@ -28,6 +28,8 @@ type LookupConnectivityTestArgs struct {
 }
 
 type LookupConnectivityTestResult struct {
+	// Whether the test should skip firewall checking. If not provided, we assume false.
+	BypassFirewallChecks bool `pulumi:"bypassFirewallChecks"`
 	// The time the test was created.
 	CreateTime string `pulumi:"createTime"`
 	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
@@ -88,6 +90,11 @@ func (o LookupConnectivityTestResultOutput) ToLookupConnectivityTestResultOutput
 
 func (o LookupConnectivityTestResultOutput) ToLookupConnectivityTestResultOutputWithContext(ctx context.Context) LookupConnectivityTestResultOutput {
 	return o
+}
+
+// Whether the test should skip firewall checking. If not provided, we assume false.
+func (o LookupConnectivityTestResultOutput) BypassFirewallChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupConnectivityTestResult) bool { return v.BypassFirewallChecks }).(pulumi.BoolOutput)
 }
 
 // The time the test was created.

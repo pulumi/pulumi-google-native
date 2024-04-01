@@ -27,7 +27,7 @@ type ConsentArtifact struct {
 	Location          pulumi.StringOutput     `pulumi:"location"`
 	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// User's UUID provided by the client.
@@ -105,7 +105,7 @@ type consentArtifactArgs struct {
 	Location          *string    `pulumi:"location"`
 	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// User's UUID provided by the client.
@@ -129,7 +129,7 @@ type ConsentArtifactArgs struct {
 	Location          pulumi.StringPtrInput
 	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
 	Metadata pulumi.StringMapInput
-	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// User's UUID provided by the client.
@@ -209,7 +209,7 @@ func (o ConsentArtifactOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
+// Identifier. Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 func (o ConsentArtifactOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

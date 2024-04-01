@@ -31,6 +31,10 @@ type LookupConnectionArgs struct {
 type LookupConnectionResult struct {
 	// Allows clients to store small amounts of arbitrary data.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Configuration for connections to Bitbucket Cloud.
+	BitbucketCloudConfig BitbucketCloudConfigResponse `pulumi:"bitbucketCloudConfig"`
+	// Configuration for connections to Bitbucket Data Center.
+	BitbucketDataCenterConfig BitbucketDataCenterConfigResponse `pulumi:"bitbucketDataCenterConfig"`
 	// Server assigned timestamp for when the connection was created.
 	CreateTime string `pulumi:"createTime"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
@@ -93,6 +97,16 @@ func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(
 // Allows clients to store small amounts of arbitrary data.
 func (o LookupConnectionResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupConnectionResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Configuration for connections to Bitbucket Cloud.
+func (o LookupConnectionResultOutput) BitbucketCloudConfig() BitbucketCloudConfigResponseOutput {
+	return o.ApplyT(func(v LookupConnectionResult) BitbucketCloudConfigResponse { return v.BitbucketCloudConfig }).(BitbucketCloudConfigResponseOutput)
+}
+
+// Configuration for connections to Bitbucket Data Center.
+func (o LookupConnectionResultOutput) BitbucketDataCenterConfig() BitbucketDataCenterConfigResponseOutput {
+	return o.ApplyT(func(v LookupConnectionResult) BitbucketDataCenterConfigResponse { return v.BitbucketDataCenterConfig }).(BitbucketDataCenterConfigResponseOutput)
 }
 
 // Server assigned timestamp for when the connection was created.

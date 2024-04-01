@@ -31,31 +31,31 @@ type LookupTableArgs struct {
 }
 
 type LookupTableResult struct {
-	// [Optional] Specifies the configuration of a BigLake managed table.
+	// Optional. Specifies the configuration of a BigLake managed table.
 	BiglakeConfiguration BigLakeConfigurationResponse `pulumi:"biglakeConfiguration"`
-	// Clone definition.
+	// Contains information about the clone. This value is set via the clone operation.
 	CloneDefinition CloneDefinitionResponse `pulumi:"cloneDefinition"`
-	// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+	// Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
 	Clustering ClusteringResponse `pulumi:"clustering"`
 	// The time when this table was created, in milliseconds since the epoch.
 	CreationTime string `pulumi:"creationTime"`
-	// The default collation of the table.
+	// Optional. Defines the default collation specification of new STRING fields in the table. During table creation or update, if a STRING field is added to this table without explicit collation specified, then the table inherits the table default collation. A change to this field affects only fields added afterwards, and does not alter the existing fields. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
 	DefaultCollation string `pulumi:"defaultCollation"`
-	// The default rounding mode of the table.
+	// Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
 	DefaultRoundingMode string `pulumi:"defaultRoundingMode"`
-	// [Optional] A user-friendly description of this table.
+	// Optional. A user-friendly description of this table.
 	Description string `pulumi:"description"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
 	EncryptionConfiguration EncryptionConfigurationResponse `pulumi:"encryptionConfiguration"`
-	// A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+	// A hash of this resource.
 	Etag string `pulumi:"etag"`
-	// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+	// Optional. The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
 	ExpirationTime string `pulumi:"expirationTime"`
-	// [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+	// Optional. Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
 	ExternalDataConfiguration ExternalDataConfigurationResponse `pulumi:"externalDataConfiguration"`
-	// [Optional] A descriptive name for this table.
+	// Optional. A descriptive name for this table.
 	FriendlyName string `pulumi:"friendlyName"`
-	// The type of the resource.
+	// The type of resource ID.
 	Kind string `pulumi:"kind"`
 	// The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
 	Labels map[string]string `pulumi:"labels"`
@@ -63,19 +63,23 @@ type LookupTableResult struct {
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
 	// The geographic location where the table resides. This value is inherited from the dataset.
 	Location string `pulumi:"location"`
-	// [Optional] Materialized view definition.
+	// Optional. The materialized view definition.
 	MaterializedView MaterializedViewDefinitionResponse `pulumi:"materializedView"`
-	// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+	// The materialized view status.
+	MaterializedViewStatus MaterializedViewStatusResponse `pulumi:"materializedViewStatus"`
+	// Optional. The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
 	MaxStaleness string `pulumi:"maxStaleness"`
-	// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+	// Deprecated.
+	//
+	// Deprecated: Deprecated.
 	Model ModelDefinitionResponse `pulumi:"model"`
 	// Number of logical bytes that are less than 90 days old.
 	NumActiveLogicalBytes string `pulumi:"numActiveLogicalBytes"`
 	// Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
 	NumActivePhysicalBytes string `pulumi:"numActivePhysicalBytes"`
-	// The size of this table in bytes, excluding any data in the streaming buffer.
+	// The size of this table in logical bytes, excluding any data in the streaming buffer.
 	NumBytes string `pulumi:"numBytes"`
-	// The number of bytes in the table that are considered "long-term storage".
+	// The number of logical bytes in the table that are considered "long-term storage".
 	NumLongTermBytes string `pulumi:"numLongTermBytes"`
 	// Number of logical bytes that are more than 90 days old.
 	NumLongTermLogicalBytes string `pulumi:"numLongTermLogicalBytes"`
@@ -83,7 +87,7 @@ type LookupTableResult struct {
 	NumLongTermPhysicalBytes string `pulumi:"numLongTermPhysicalBytes"`
 	// The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
 	NumPartitions string `pulumi:"numPartitions"`
-	// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+	// The physical size of this table in bytes. This includes storage used for time travel.
 	NumPhysicalBytes string `pulumi:"numPhysicalBytes"`
 	// The number of rows of data in this table, excluding any data in the streaming buffer.
 	NumRows string `pulumi:"numRows"`
@@ -93,29 +97,35 @@ type LookupTableResult struct {
 	NumTotalLogicalBytes string `pulumi:"numTotalLogicalBytes"`
 	// The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
 	NumTotalPhysicalBytes string `pulumi:"numTotalPhysicalBytes"`
-	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+	// The partition information for all table formats, including managed partitioned tables, hive partitioned tables, and iceberg partitioned tables.
+	PartitionDefinition PartitioningDefinitionResponse `pulumi:"partitionDefinition"`
+	// If specified, configures range partitioning for this table.
 	RangePartitioning RangePartitioningResponse `pulumi:"rangePartitioning"`
-	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+	// Optional. Output only. Table references of all replicas currently active on the table.
+	Replicas []TableReferenceResponse `pulumi:"replicas"`
+	// Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
 	RequirePartitionFilter bool `pulumi:"requirePartitionFilter"`
 	// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
 	ResourceTags map[string]string `pulumi:"resourceTags"`
-	// [Optional] Describes the schema of this table.
+	// Optional. Describes the schema of this table.
 	Schema TableSchemaResponse `pulumi:"schema"`
 	// A URL that can be used to access this resource again.
 	SelfLink string `pulumi:"selfLink"`
-	// Snapshot definition.
+	// Contains information about the snapshot. This value is set via snapshot creation.
 	SnapshotDefinition SnapshotDefinitionResponse `pulumi:"snapshotDefinition"`
 	// Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 	StreamingBuffer StreamingbufferResponse `pulumi:"streamingBuffer"`
-	// [Optional] The table constraints on the table.
+	// Optional. Tables Primary Key and Foreign Key information
 	TableConstraints TableConstraintsResponse `pulumi:"tableConstraints"`
-	// [Required] Reference describing the ID of this table.
+	// Reference describing the ID of this table.
 	TableReference TableReferenceResponse `pulumi:"tableReference"`
-	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+	// Optional. Table replication info for table created `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+	TableReplicationInfo TableReplicationInfoResponse `pulumi:"tableReplicationInfo"`
+	// If specified, configures time-based partitioning for this table.
 	TimePartitioning TimePartitioningResponse `pulumi:"timePartitioning"`
-	// Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+	// Describes the table type. The following values are supported: * `TABLE`: A normal BigQuery table. * `VIEW`: A virtual table defined by a SQL query. * `EXTERNAL`: A table that references data stored in an external storage system, such as Google Cloud Storage. * `MATERIALIZED_VIEW`: A precomputed view defined by a SQL query. * `SNAPSHOT`: An immutable BigQuery table that preserves the contents of a base table at a particular time. See additional information on [table snapshots](/bigquery/docs/table-snapshots-intro). The default value is `TABLE`.
 	Type string `pulumi:"type"`
-	// [Optional] The view definition.
+	// Optional. The view definition.
 	View ViewDefinitionResponse `pulumi:"view"`
 }
 
@@ -158,17 +168,17 @@ func (o LookupTableResultOutput) ToLookupTableResultOutputWithContext(ctx contex
 	return o
 }
 
-// [Optional] Specifies the configuration of a BigLake managed table.
+// Optional. Specifies the configuration of a BigLake managed table.
 func (o LookupTableResultOutput) BiglakeConfiguration() BigLakeConfigurationResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) BigLakeConfigurationResponse { return v.BiglakeConfiguration }).(BigLakeConfigurationResponseOutput)
 }
 
-// Clone definition.
+// Contains information about the clone. This value is set via the clone operation.
 func (o LookupTableResultOutput) CloneDefinition() CloneDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) CloneDefinitionResponse { return v.CloneDefinition }).(CloneDefinitionResponseOutput)
 }
 
-// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+// Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
 func (o LookupTableResultOutput) Clustering() ClusteringResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) ClusteringResponse { return v.Clustering }).(ClusteringResponseOutput)
 }
@@ -178,17 +188,17 @@ func (o LookupTableResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// The default collation of the table.
+// Optional. Defines the default collation specification of new STRING fields in the table. During table creation or update, if a STRING field is added to this table without explicit collation specified, then the table inherits the table default collation. A change to this field affects only fields added afterwards, and does not alter the existing fields. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * ”: empty string. Default to case-sensitive behavior.
 func (o LookupTableResultOutput) DefaultCollation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.DefaultCollation }).(pulumi.StringOutput)
 }
 
-// The default rounding mode of the table.
+// Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
 func (o LookupTableResultOutput) DefaultRoundingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.DefaultRoundingMode }).(pulumi.StringOutput)
 }
 
-// [Optional] A user-friendly description of this table.
+// Optional. A user-friendly description of this table.
 func (o LookupTableResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -198,27 +208,27 @@ func (o LookupTableResultOutput) EncryptionConfiguration() EncryptionConfigurati
 	return o.ApplyT(func(v LookupTableResult) EncryptionConfigurationResponse { return v.EncryptionConfiguration }).(EncryptionConfigurationResponseOutput)
 }
 
-// A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+// A hash of this resource.
 func (o LookupTableResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+// Optional. The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
 func (o LookupTableResultOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
-// [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+// Optional. Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
 func (o LookupTableResultOutput) ExternalDataConfiguration() ExternalDataConfigurationResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) ExternalDataConfigurationResponse { return v.ExternalDataConfiguration }).(ExternalDataConfigurationResponseOutput)
 }
 
-// [Optional] A descriptive name for this table.
+// Optional. A descriptive name for this table.
 func (o LookupTableResultOutput) FriendlyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.FriendlyName }).(pulumi.StringOutput)
 }
 
-// The type of the resource.
+// The type of resource ID.
 func (o LookupTableResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -238,17 +248,24 @@ func (o LookupTableResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// [Optional] Materialized view definition.
+// Optional. The materialized view definition.
 func (o LookupTableResultOutput) MaterializedView() MaterializedViewDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) MaterializedViewDefinitionResponse { return v.MaterializedView }).(MaterializedViewDefinitionResponseOutput)
 }
 
-// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+// The materialized view status.
+func (o LookupTableResultOutput) MaterializedViewStatus() MaterializedViewStatusResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) MaterializedViewStatusResponse { return v.MaterializedViewStatus }).(MaterializedViewStatusResponseOutput)
+}
+
+// Optional. The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
 func (o LookupTableResultOutput) MaxStaleness() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.MaxStaleness }).(pulumi.StringOutput)
 }
 
-// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+// Deprecated.
+//
+// Deprecated: Deprecated.
 func (o LookupTableResultOutput) Model() ModelDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) ModelDefinitionResponse { return v.Model }).(ModelDefinitionResponseOutput)
 }
@@ -263,12 +280,12 @@ func (o LookupTableResultOutput) NumActivePhysicalBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.NumActivePhysicalBytes }).(pulumi.StringOutput)
 }
 
-// The size of this table in bytes, excluding any data in the streaming buffer.
+// The size of this table in logical bytes, excluding any data in the streaming buffer.
 func (o LookupTableResultOutput) NumBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.NumBytes }).(pulumi.StringOutput)
 }
 
-// The number of bytes in the table that are considered "long-term storage".
+// The number of logical bytes in the table that are considered "long-term storage".
 func (o LookupTableResultOutput) NumLongTermBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.NumLongTermBytes }).(pulumi.StringOutput)
 }
@@ -288,7 +305,7 @@ func (o LookupTableResultOutput) NumPartitions() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.NumPartitions }).(pulumi.StringOutput)
 }
 
-// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+// The physical size of this table in bytes. This includes storage used for time travel.
 func (o LookupTableResultOutput) NumPhysicalBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.NumPhysicalBytes }).(pulumi.StringOutput)
 }
@@ -313,12 +330,22 @@ func (o LookupTableResultOutput) NumTotalPhysicalBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.NumTotalPhysicalBytes }).(pulumi.StringOutput)
 }
 
-// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+// The partition information for all table formats, including managed partitioned tables, hive partitioned tables, and iceberg partitioned tables.
+func (o LookupTableResultOutput) PartitionDefinition() PartitioningDefinitionResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) PartitioningDefinitionResponse { return v.PartitionDefinition }).(PartitioningDefinitionResponseOutput)
+}
+
+// If specified, configures range partitioning for this table.
 func (o LookupTableResultOutput) RangePartitioning() RangePartitioningResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) RangePartitioningResponse { return v.RangePartitioning }).(RangePartitioningResponseOutput)
 }
 
-// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+// Optional. Output only. Table references of all replicas currently active on the table.
+func (o LookupTableResultOutput) Replicas() TableReferenceResponseArrayOutput {
+	return o.ApplyT(func(v LookupTableResult) []TableReferenceResponse { return v.Replicas }).(TableReferenceResponseArrayOutput)
+}
+
+// Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
 func (o LookupTableResultOutput) RequirePartitionFilter() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTableResult) bool { return v.RequirePartitionFilter }).(pulumi.BoolOutput)
 }
@@ -328,7 +355,7 @@ func (o LookupTableResultOutput) ResourceTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTableResult) map[string]string { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
 
-// [Optional] Describes the schema of this table.
+// Optional. Describes the schema of this table.
 func (o LookupTableResultOutput) Schema() TableSchemaResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) TableSchemaResponse { return v.Schema }).(TableSchemaResponseOutput)
 }
@@ -338,7 +365,7 @@ func (o LookupTableResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Snapshot definition.
+// Contains information about the snapshot. This value is set via snapshot creation.
 func (o LookupTableResultOutput) SnapshotDefinition() SnapshotDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) SnapshotDefinitionResponse { return v.SnapshotDefinition }).(SnapshotDefinitionResponseOutput)
 }
@@ -348,27 +375,32 @@ func (o LookupTableResultOutput) StreamingBuffer() StreamingbufferResponseOutput
 	return o.ApplyT(func(v LookupTableResult) StreamingbufferResponse { return v.StreamingBuffer }).(StreamingbufferResponseOutput)
 }
 
-// [Optional] The table constraints on the table.
+// Optional. Tables Primary Key and Foreign Key information
 func (o LookupTableResultOutput) TableConstraints() TableConstraintsResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) TableConstraintsResponse { return v.TableConstraints }).(TableConstraintsResponseOutput)
 }
 
-// [Required] Reference describing the ID of this table.
+// Reference describing the ID of this table.
 func (o LookupTableResultOutput) TableReference() TableReferenceResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) TableReferenceResponse { return v.TableReference }).(TableReferenceResponseOutput)
 }
 
-// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+// Optional. Table replication info for table created `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+func (o LookupTableResultOutput) TableReplicationInfo() TableReplicationInfoResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) TableReplicationInfoResponse { return v.TableReplicationInfo }).(TableReplicationInfoResponseOutput)
+}
+
+// If specified, configures time-based partitioning for this table.
 func (o LookupTableResultOutput) TimePartitioning() TimePartitioningResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) TimePartitioningResponse { return v.TimePartitioning }).(TimePartitioningResponseOutput)
 }
 
-// Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+// Describes the table type. The following values are supported: * `TABLE`: A normal BigQuery table. * `VIEW`: A virtual table defined by a SQL query. * `EXTERNAL`: A table that references data stored in an external storage system, such as Google Cloud Storage. * `MATERIALIZED_VIEW`: A precomputed view defined by a SQL query. * `SNAPSHOT`: An immutable BigQuery table that preserves the contents of a base table at a particular time. See additional information on [table snapshots](/bigquery/docs/table-snapshots-intro). The default value is `TABLE`.
 func (o LookupTableResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// [Optional] The view definition.
+// Optional. The view definition.
 func (o LookupTableResultOutput) View() ViewDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) ViewDefinitionResponse { return v.View }).(ViewDefinitionResponseOutput)
 }

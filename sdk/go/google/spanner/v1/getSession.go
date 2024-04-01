@@ -38,6 +38,8 @@ type LookupSessionResult struct {
 	CreatorRole string `pulumi:"creatorRole"`
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
 	Labels map[string]string `pulumi:"labels"`
+	// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+	Multiplexed bool `pulumi:"multiplexed"`
 	// The name of the session. This is always system-assigned.
 	Name string `pulumi:"name"`
 }
@@ -98,6 +100,11 @@ func (o LookupSessionResultOutput) CreatorRole() pulumi.StringOutput {
 // The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
 func (o LookupSessionResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSessionResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+func (o LookupSessionResultOutput) Multiplexed() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSessionResult) bool { return v.Multiplexed }).(pulumi.BoolOutput)
 }
 
 // The name of the session. This is always system-assigned.

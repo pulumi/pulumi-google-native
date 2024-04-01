@@ -44,12 +44,16 @@ type LookupOrganizationSinkResult struct {
 	Filter string `pulumi:"filter"`
 	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
 	IncludeChildren bool `pulumi:"includeChildren"`
-	// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+	// Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+	InterceptChildren bool `pulumi:"interceptChildren"`
+	// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First character has to be alphanumeric.
 	Name string `pulumi:"name"`
 	// Deprecated. This field is unused.
 	//
 	// Deprecated: Deprecated. This field is unused.
 	OutputVersionFormat string `pulumi:"outputVersionFormat"`
+	// The resource name of the sink. "projects/[PROJECT_ID]/sinks/[SINK_NAME] "organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME] "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME] "folders/[FOLDER_ID]/sinks/[SINK_NAME] For example: projects/my_project/sinks/SINK_NAME
+	ResourceName string `pulumi:"resourceName"`
 	// The last update timestamp of the sink.This field may not be present for older sinks.
 	UpdateTime string `pulumi:"updateTime"`
 	// An IAM identity—a service account or group—under which Cloud Logging writes the exported log entries to the sink's destination. This field is either set by specifying custom_writer_identity or set automatically by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.Sinks that have a destination that is a log bucket in the same project as the sink cannot have a writer_identity and no additional permissions are required.
@@ -132,7 +136,12 @@ func (o LookupOrganizationSinkResultOutput) IncludeChildren() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupOrganizationSinkResult) bool { return v.IncludeChildren }).(pulumi.BoolOutput)
 }
 
-// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+// Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+func (o LookupOrganizationSinkResultOutput) InterceptChildren() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupOrganizationSinkResult) bool { return v.InterceptChildren }).(pulumi.BoolOutput)
+}
+
+// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First character has to be alphanumeric.
 func (o LookupOrganizationSinkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationSinkResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -142,6 +151,11 @@ func (o LookupOrganizationSinkResultOutput) Name() pulumi.StringOutput {
 // Deprecated: Deprecated. This field is unused.
 func (o LookupOrganizationSinkResultOutput) OutputVersionFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationSinkResult) string { return v.OutputVersionFormat }).(pulumi.StringOutput)
+}
+
+// The resource name of the sink. "projects/[PROJECT_ID]/sinks/[SINK_NAME] "organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME] "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME] "folders/[FOLDER_ID]/sinks/[SINK_NAME] For example: projects/my_project/sinks/SINK_NAME
+func (o LookupOrganizationSinkResultOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationSinkResult) string { return v.ResourceName }).(pulumi.StringOutput)
 }
 
 // The last update timestamp of the sink.This field may not be present for older sinks.

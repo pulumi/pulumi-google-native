@@ -17,12 +17,12 @@ type Hl7V2Store struct {
 	pulumi.CustomResourceState
 
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
-	// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	Hl7V2StoreId pulumi.StringPtrOutput `pulumi:"hl7V2StoreId"`
+	// Required. The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	Hl7V2StoreId pulumi.StringOutput `pulumi:"hl7V2StoreId"`
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+	// Identifier. Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent as part of the notification. Supplied by the client.
 	NotificationConfigs Hl7V2NotificationConfigResponseArrayOutput `pulumi:"notificationConfigs"`
@@ -43,8 +43,12 @@ func NewHl7V2Store(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
+	if args.Hl7V2StoreId == nil {
+		return nil, errors.New("invalid value for required argument 'Hl7V2StoreId'")
+	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"datasetId",
+		"hl7V2StoreId",
 		"location",
 		"project",
 	})
@@ -83,12 +87,12 @@ func (Hl7V2StoreState) ElementType() reflect.Type {
 
 type hl7V2StoreArgs struct {
 	DatasetId string `pulumi:"datasetId"`
-	// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	Hl7V2StoreId *string `pulumi:"hl7V2StoreId"`
+	// Required. The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	Hl7V2StoreId string `pulumi:"hl7V2StoreId"`
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+	// Identifier. Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
 	Name *string `pulumi:"name"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent as part of the notification. Supplied by the client.
 	NotificationConfigs []Hl7V2NotificationConfig `pulumi:"notificationConfigs"`
@@ -102,12 +106,12 @@ type hl7V2StoreArgs struct {
 // The set of arguments for constructing a Hl7V2Store resource.
 type Hl7V2StoreArgs struct {
 	DatasetId pulumi.StringInput
-	// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	Hl7V2StoreId pulumi.StringPtrInput
+	// Required. The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	Hl7V2StoreId pulumi.StringInput
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+	// Identifier. Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
 	Name pulumi.StringPtrInput
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent as part of the notification. Supplied by the client.
 	NotificationConfigs Hl7V2NotificationConfigArrayInput
@@ -159,9 +163,9 @@ func (o Hl7V2StoreOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-func (o Hl7V2StoreOutput) Hl7V2StoreId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringPtrOutput { return v.Hl7V2StoreId }).(pulumi.StringPtrOutput)
+// Required. The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+func (o Hl7V2StoreOutput) Hl7V2StoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringOutput { return v.Hl7V2StoreId }).(pulumi.StringOutput)
 }
 
 // User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
@@ -173,7 +177,7 @@ func (o Hl7V2StoreOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+// Identifier. Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
 func (o Hl7V2StoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

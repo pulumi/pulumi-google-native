@@ -51,11 +51,13 @@ type LookupFeatureStoreFeatureResult struct {
 	MonitoringStatsAnomalies []GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponse `pulumi:"monitoringStatsAnomalies"`
 	// Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name string `pulumi:"name"`
+	// Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+	PointOfContact string `pulumi:"pointOfContact"`
 	// Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was most recently updated.
 	UpdateTime string `pulumi:"updateTime"`
 	// Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
 	ValueType string `pulumi:"valueType"`
-	// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+	// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
 	VersionColumnName string `pulumi:"versionColumnName"`
 }
 
@@ -151,6 +153,11 @@ func (o LookupFeatureStoreFeatureResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureStoreFeatureResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+func (o LookupFeatureStoreFeatureResultOutput) PointOfContact() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureStoreFeatureResult) string { return v.PointOfContact }).(pulumi.StringOutput)
+}
+
 // Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was most recently updated.
 func (o LookupFeatureStoreFeatureResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureStoreFeatureResult) string { return v.UpdateTime }).(pulumi.StringOutput)
@@ -161,7 +168,7 @@ func (o LookupFeatureStoreFeatureResultOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureStoreFeatureResult) string { return v.ValueType }).(pulumi.StringOutput)
 }
 
-// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
 func (o LookupFeatureStoreFeatureResultOutput) VersionColumnName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureStoreFeatureResult) string { return v.VersionColumnName }).(pulumi.StringOutput)
 }

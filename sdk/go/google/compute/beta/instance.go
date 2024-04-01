@@ -69,6 +69,8 @@ type Instance struct {
 	NetworkPerformanceConfig NetworkPerformanceConfigResponseOutput `pulumi:"networkPerformanceConfig"`
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceParamsResponseOutput `pulumi:"params"`
+	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata pulumi.StringMapOutput `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType pulumi.StringOutput `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -82,6 +84,8 @@ type Instance struct {
 	ResourcePolicies pulumi.StringArrayOutput `pulumi:"resourcePolicies"`
 	// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
 	ResourceStatus ResourceStatusResponseOutput `pulumi:"resourceStatus"`
+	// Reserved for future use.
+	SatisfiesPzi pulumi.BoolOutput `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Sets the scheduling options for this instance.
@@ -196,6 +200,8 @@ type instanceArgs struct {
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceParams `pulumi:"params"`
+	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType *InstancePostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -268,6 +274,8 @@ type InstanceArgs struct {
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceParamsPtrInput
+	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata pulumi.StringMapInput
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType InstancePostKeyRevocationActionTypePtrInput
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -475,6 +483,11 @@ func (o InstanceOutput) Params() InstanceParamsResponseOutput {
 	return o.ApplyT(func(v *Instance) InstanceParamsResponseOutput { return v.Params }).(InstanceParamsResponseOutput)
 }
 
+// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+func (o InstanceOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PartnerMetadata }).(pulumi.StringMapOutput)
+}
+
 // PostKeyRevocationActionType of the instance.
 func (o InstanceOutput) PostKeyRevocationActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PostKeyRevocationActionType }).(pulumi.StringOutput)
@@ -507,6 +520,11 @@ func (o InstanceOutput) ResourcePolicies() pulumi.StringArrayOutput {
 // Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
 func (o InstanceOutput) ResourceStatus() ResourceStatusResponseOutput {
 	return o.ApplyT(func(v *Instance) ResourceStatusResponseOutput { return v.ResourceStatus }).(ResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o InstanceOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

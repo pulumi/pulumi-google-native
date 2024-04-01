@@ -13,7 +13,6 @@ import (
 )
 
 // Creates a new WorkflowConfig in a given Repository.
-// Auto-naming is currently not supported for this resource.
 type WorkflowConfig struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +21,7 @@ type WorkflowConfig struct {
 	// Optional. If left unset, a default InvocationConfig will be used.
 	InvocationConfig InvocationConfigResponseOutput `pulumi:"invocationConfig"`
 	Location         pulumi.StringOutput            `pulumi:"location"`
-	// The workflow config's name.
+	// Identifier. The workflow config's name.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
@@ -97,7 +96,9 @@ type workflowConfigArgs struct {
 	// Optional. If left unset, a default InvocationConfig will be used.
 	InvocationConfig *InvocationConfig `pulumi:"invocationConfig"`
 	Location         *string           `pulumi:"location"`
-	Project          *string           `pulumi:"project"`
+	// Identifier. The workflow config's name.
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
 	// The name of the release config whose release_compilation_result should be executed. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
 	ReleaseConfig string `pulumi:"releaseConfig"`
 	RepositoryId  string `pulumi:"repositoryId"`
@@ -114,7 +115,9 @@ type WorkflowConfigArgs struct {
 	// Optional. If left unset, a default InvocationConfig will be used.
 	InvocationConfig InvocationConfigPtrInput
 	Location         pulumi.StringPtrInput
-	Project          pulumi.StringPtrInput
+	// Identifier. The workflow config's name.
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// The name of the release config whose release_compilation_result should be executed. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
 	ReleaseConfig pulumi.StringInput
 	RepositoryId  pulumi.StringInput
@@ -175,7 +178,7 @@ func (o WorkflowConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The workflow config's name.
+// Identifier. The workflow config's name.
 func (o WorkflowConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

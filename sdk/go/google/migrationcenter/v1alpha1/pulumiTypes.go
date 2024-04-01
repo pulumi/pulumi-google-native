@@ -15,7 +15,7 @@ var _ = internal.GetEnvOrDefault
 
 // The user preferences relating to Compute Engine target platform.
 type ComputeEnginePreferences struct {
-	// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+	// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
 	LicenseType *ComputeEnginePreferencesLicenseType `pulumi:"licenseType"`
 	// Preferences concerning the machine types to consider on Compute Engine.
 	MachinePreferences *MachinePreferences `pulumi:"machinePreferences"`
@@ -36,7 +36,7 @@ type ComputeEnginePreferencesInput interface {
 
 // The user preferences relating to Compute Engine target platform.
 type ComputeEnginePreferencesArgs struct {
-	// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+	// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
 	LicenseType ComputeEnginePreferencesLicenseTypePtrInput `pulumi:"licenseType"`
 	// Preferences concerning the machine types to consider on Compute Engine.
 	MachinePreferences MachinePreferencesPtrInput `pulumi:"machinePreferences"`
@@ -122,7 +122,7 @@ func (o ComputeEnginePreferencesOutput) ToComputeEnginePreferencesPtrOutputWithC
 	}).(ComputeEnginePreferencesPtrOutput)
 }
 
-// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
 func (o ComputeEnginePreferencesOutput) LicenseType() ComputeEnginePreferencesLicenseTypePtrOutput {
 	return o.ApplyT(func(v ComputeEnginePreferences) *ComputeEnginePreferencesLicenseType { return v.LicenseType }).(ComputeEnginePreferencesLicenseTypePtrOutput)
 }
@@ -163,7 +163,7 @@ func (o ComputeEnginePreferencesPtrOutput) Elem() ComputeEnginePreferencesOutput
 	}).(ComputeEnginePreferencesOutput)
 }
 
-// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
 func (o ComputeEnginePreferencesPtrOutput) LicenseType() ComputeEnginePreferencesLicenseTypePtrOutput {
 	return o.ApplyT(func(v *ComputeEnginePreferences) *ComputeEnginePreferencesLicenseType {
 		if v == nil {
@@ -195,7 +195,7 @@ func (o ComputeEnginePreferencesPtrOutput) PersistentDiskType() ComputeEnginePre
 
 // The user preferences relating to Compute Engine target platform.
 type ComputeEnginePreferencesResponse struct {
-	// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+	// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
 	LicenseType string `pulumi:"licenseType"`
 	// Preferences concerning the machine types to consider on Compute Engine.
 	MachinePreferences MachinePreferencesResponse `pulumi:"machinePreferences"`
@@ -218,7 +218,7 @@ func (o ComputeEnginePreferencesResponseOutput) ToComputeEnginePreferencesRespon
 	return o
 }
 
-// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
 func (o ComputeEnginePreferencesResponseOutput) LicenseType() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEnginePreferencesResponse) string { return v.LicenseType }).(pulumi.StringOutput)
 }
@@ -1709,9 +1709,9 @@ type ReportSummaryAssetAggregateStatsResponse struct {
 	MemoryUtilization ReportSummaryChartDataResponse `pulumi:"memoryUtilization"`
 	// Total memory split into Used/Free buckets.
 	MemoryUtilizationChart ReportSummaryUtilizationChartDataResponse `pulumi:"memoryUtilizationChart"`
-	// Count of assets grouped by Operating System families.
+	// Count of assets grouped by Operating System families. Only present for virtual machines.
 	OperatingSystem ReportSummaryChartDataResponse `pulumi:"operatingSystem"`
-	// Histogram showing a distribution of memory sizes.
+	// Histogram showing a distribution of storage sizes.
 	StorageBytesHistogram ReportSummaryHistogramChartDataResponse `pulumi:"storageBytesHistogram"`
 	// Total storage split into Used/Free buckets.
 	StorageUtilization ReportSummaryChartDataResponse `pulumi:"storageUtilization"`
@@ -1775,14 +1775,14 @@ func (o ReportSummaryAssetAggregateStatsResponseOutput) MemoryUtilizationChart()
 	}).(ReportSummaryUtilizationChartDataResponseOutput)
 }
 
-// Count of assets grouped by Operating System families.
+// Count of assets grouped by Operating System families. Only present for virtual machines.
 func (o ReportSummaryAssetAggregateStatsResponseOutput) OperatingSystem() ReportSummaryChartDataResponseOutput {
 	return o.ApplyT(func(v ReportSummaryAssetAggregateStatsResponse) ReportSummaryChartDataResponse {
 		return v.OperatingSystem
 	}).(ReportSummaryChartDataResponseOutput)
 }
 
-// Histogram showing a distribution of memory sizes.
+// Histogram showing a distribution of storage sizes.
 func (o ReportSummaryAssetAggregateStatsResponseOutput) StorageBytesHistogram() ReportSummaryHistogramChartDataResponseOutput {
 	return o.ApplyT(func(v ReportSummaryAssetAggregateStatsResponse) ReportSummaryHistogramChartDataResponse {
 		return v.StorageBytesHistogram
@@ -1906,9 +1906,9 @@ func (o ReportSummaryChartDataResponseOutput) DataPoints() ReportSummaryChartDat
 type ReportSummaryGroupFindingResponse struct {
 	// Summary statistics for all the assets in this group.
 	AssetAggregateStats ReportSummaryAssetAggregateStatsResponse `pulumi:"assetAggregateStats"`
-	// Description for the Group.
+	// Description for this group finding.
 	Description string `pulumi:"description"`
-	// Display Name for the Group.
+	// Display Name for this group finding.
 	DisplayName string `pulumi:"displayName"`
 	// This field is deprecated, do not rely on it having a value.
 	//
@@ -1940,12 +1940,12 @@ func (o ReportSummaryGroupFindingResponseOutput) AssetAggregateStats() ReportSum
 	}).(ReportSummaryAssetAggregateStatsResponseOutput)
 }
 
-// Description for the Group.
+// Description for this group finding.
 func (o ReportSummaryGroupFindingResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportSummaryGroupFindingResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Display Name for the Group.
+// Display Name for this group finding.
 func (o ReportSummaryGroupFindingResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportSummaryGroupFindingResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -1990,15 +1990,15 @@ type ReportSummaryGroupPreferenceSetFindingResponse struct {
 	Description string `pulumi:"description"`
 	// Display Name of the Preference Set
 	DisplayName string `pulumi:"displayName"`
-	// A set of findings that applies to all machines in the input.
+	// A set of findings that applies to all virtual machines in the input. Only present for virtual machines.
 	MachineFinding ReportSummaryMachineFindingResponse `pulumi:"machineFinding"`
 	// A set of preferences that applies to all machines in the context.
 	MachinePreferences VirtualMachinePreferencesResponse `pulumi:"machinePreferences"`
 	// Compute monthly cost for this preference set.
 	MonthlyCostCompute MoneyResponse `pulumi:"monthlyCostCompute"`
-	// Network Egress monthly cost for this preference set.
+	// Network Egress monthly cost for this preference set. Only present for virtual machines.
 	MonthlyCostNetworkEgress MoneyResponse `pulumi:"monthlyCostNetworkEgress"`
-	// Licensing monthly cost for this preference set.
+	// Operating system licensing monthly cost for this preference set. Only present for virtual machines.
 	MonthlyCostOsLicense MoneyResponse `pulumi:"monthlyCostOsLicense"`
 	// Miscellaneous monthly cost for this preference set.
 	MonthlyCostOther MoneyResponse `pulumi:"monthlyCostOther"`
@@ -2010,11 +2010,11 @@ type ReportSummaryGroupPreferenceSetFindingResponse struct {
 	PreferredRegion string `pulumi:"preferredRegion"`
 	// Text describing the pricing track specified for this Preference Set
 	PricingTrack string `pulumi:"pricingTrack"`
-	// A set of findings that applies to Stole-Tenant machines in the input.
+	// A set of findings that applies to Stole-Tenant machines in the input. Only present for virtual machines.
 	SoleTenantFinding ReportSummarySoleTenantFindingResponse `pulumi:"soleTenantFinding"`
 	// Text describing the business priority specified for this Preference Set
 	TopPriority string `pulumi:"topPriority"`
-	// A set of findings that applies to VMWare machines in the input.
+	// A set of findings that applies to VMWare machines in the input. Only present for virtual machines.
 	VmwareEngineFinding ReportSummaryVMWareEngineFindingResponse `pulumi:"vmwareEngineFinding"`
 }
 
@@ -2043,7 +2043,7 @@ func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) DisplayName() pulu
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// A set of findings that applies to all machines in the input.
+// A set of findings that applies to all virtual machines in the input. Only present for virtual machines.
 func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) MachineFinding() ReportSummaryMachineFindingResponseOutput {
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) ReportSummaryMachineFindingResponse {
 		return v.MachineFinding
@@ -2062,14 +2062,14 @@ func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) MonthlyCostCompute
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) MoneyResponse { return v.MonthlyCostCompute }).(MoneyResponseOutput)
 }
 
-// Network Egress monthly cost for this preference set.
+// Network Egress monthly cost for this preference set. Only present for virtual machines.
 func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) MonthlyCostNetworkEgress() MoneyResponseOutput {
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) MoneyResponse {
 		return v.MonthlyCostNetworkEgress
 	}).(MoneyResponseOutput)
 }
 
-// Licensing monthly cost for this preference set.
+// Operating system licensing monthly cost for this preference set. Only present for virtual machines.
 func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) MonthlyCostOsLicense() MoneyResponseOutput {
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) MoneyResponse { return v.MonthlyCostOsLicense }).(MoneyResponseOutput)
 }
@@ -2099,7 +2099,7 @@ func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) PricingTrack() pul
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) string { return v.PricingTrack }).(pulumi.StringOutput)
 }
 
-// A set of findings that applies to Stole-Tenant machines in the input.
+// A set of findings that applies to Stole-Tenant machines in the input. Only present for virtual machines.
 func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) SoleTenantFinding() ReportSummarySoleTenantFindingResponseOutput {
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) ReportSummarySoleTenantFindingResponse {
 		return v.SoleTenantFinding
@@ -2111,7 +2111,7 @@ func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) TopPriority() pulu
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) string { return v.TopPriority }).(pulumi.StringOutput)
 }
 
-// A set of findings that applies to VMWare machines in the input.
+// A set of findings that applies to VMWare machines in the input. Only present for virtual machines.
 func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) VmwareEngineFinding() ReportSummaryVMWareEngineFindingResponseOutput {
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) ReportSummaryVMWareEngineFindingResponse {
 		return v.VmwareEngineFinding
@@ -2330,7 +2330,7 @@ func (o ReportSummaryMachineSeriesAllocationResponseArrayOutput) Index(i pulumi.
 
 // Describes the Summary view of a Report, which contains aggregated values for all the groups and preference sets included in this Report.
 type ReportSummaryResponse struct {
-	// Aggregate statistics for all the assets across all the groups.
+	// Aggregate statistics for unique assets across all the groups.
 	AllAssetsStats ReportSummaryAssetAggregateStatsResponse `pulumi:"allAssetsStats"`
 	// Findings for each Group included in this report.
 	GroupFindings []ReportSummaryGroupFindingResponse `pulumi:"groupFindings"`
@@ -2351,7 +2351,7 @@ func (o ReportSummaryResponseOutput) ToReportSummaryResponseOutputWithContext(ct
 	return o
 }
 
-// Aggregate statistics for all the assets across all the groups.
+// Aggregate statistics for unique assets across all the groups.
 func (o ReportSummaryResponseOutput) AllAssetsStats() ReportSummaryAssetAggregateStatsResponseOutput {
 	return o.ApplyT(func(v ReportSummaryResponse) ReportSummaryAssetAggregateStatsResponse { return v.AllAssetsStats }).(ReportSummaryAssetAggregateStatsResponseOutput)
 }
@@ -3014,6 +3014,66 @@ func (o SoleTenantNodeTypeResponseArrayOutput) Index(i pulumi.IntInput) SoleTena
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SoleTenantNodeTypeResponse {
 		return vs[0].([]SoleTenantNodeTypeResponse)[vs[1].(int)]
 	}).(SoleTenantNodeTypeResponseOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type StatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseArrayOutput) ToStatusResponseArrayOutput() StatusResponseArrayOutput {
+	return o
+}
+
+func (o StatusResponseArrayOutput) ToStatusResponseArrayOutputWithContext(ctx context.Context) StatusResponseArrayOutput {
+	return o
+}
+
+func (o StatusResponseArrayOutput) Index(i pulumi.IntInput) StatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatusResponse {
+		return vs[0].([]StatusResponse)[vs[1].(int)]
+	}).(StatusResponseOutput)
 }
 
 // A resource that contains a URI to which a data file can be uploaded.
@@ -4366,6 +4426,8 @@ func init() {
 	pulumi.RegisterOutputType(SoleTenantNodeTypeArrayOutput{})
 	pulumi.RegisterOutputType(SoleTenantNodeTypeResponseOutput{})
 	pulumi.RegisterOutputType(SoleTenantNodeTypeResponseArrayOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(UploadFileInfoOutput{})
 	pulumi.RegisterOutputType(UploadFileInfoPtrOutput{})
 	pulumi.RegisterOutputType(UploadFileInfoResponseOutput{})

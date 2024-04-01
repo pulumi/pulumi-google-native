@@ -25,7 +25,7 @@ type EntryGroup struct {
 	// Required. The ID of the entry group to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
 	EntryGroupId pulumi.StringOutput `pulumi:"entryGroupId"`
 	Location     pulumi.StringOutput `pulumi:"location"`
-	// The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
+	// Identifier. The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 }
@@ -86,7 +86,7 @@ type entryGroupArgs struct {
 	// Required. The ID of the entry group to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
 	EntryGroupId string  `pulumi:"entryGroupId"`
 	Location     *string `pulumi:"location"`
-	// The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
+	// Identifier. The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
@@ -100,7 +100,7 @@ type EntryGroupArgs struct {
 	// Required. The ID of the entry group to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
 	EntryGroupId pulumi.StringInput
 	Location     pulumi.StringPtrInput
-	// The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
+	// Identifier. The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }
@@ -168,7 +168,7 @@ func (o EntryGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
+// Identifier. The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
 func (o EntryGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

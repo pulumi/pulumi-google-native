@@ -33,8 +33,9 @@ type LookupHealthCheckResult struct {
 	// Creation timestamp in 3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description     string                  `pulumi:"description"`
-	GrpcHealthCheck GRPCHealthCheckResponse `pulumi:"grpcHealthCheck"`
+	Description        string                     `pulumi:"description"`
+	GrpcHealthCheck    GRPCHealthCheckResponse    `pulumi:"grpcHealthCheck"`
+	GrpcTlsHealthCheck GRPCTLSHealthCheckResponse `pulumi:"grpcTlsHealthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold int                      `pulumi:"healthyThreshold"`
 	Http2HealthCheck HTTP2HealthCheckResponse `pulumi:"http2HealthCheck"`
@@ -118,6 +119,10 @@ func (o LookupHealthCheckResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupHealthCheckResultOutput) GrpcHealthCheck() GRPCHealthCheckResponseOutput {
 	return o.ApplyT(func(v LookupHealthCheckResult) GRPCHealthCheckResponse { return v.GrpcHealthCheck }).(GRPCHealthCheckResponseOutput)
+}
+
+func (o LookupHealthCheckResultOutput) GrpcTlsHealthCheck() GRPCTLSHealthCheckResponseOutput {
+	return o.ApplyT(func(v LookupHealthCheckResult) GRPCTLSHealthCheckResponse { return v.GrpcTlsHealthCheck }).(GRPCTLSHealthCheckResponseOutput)
 }
 
 // A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.

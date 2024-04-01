@@ -1459,9 +1459,9 @@ func (o BinaryAuthorizationConfigResponseOutput) PolicyBindings() PolicyBindingR
 type BindingType struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -1480,9 +1480,9 @@ type BindingTypeInput interface {
 type BindingTypeArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -1543,12 +1543,12 @@ func (o BindingTypeOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v BindingType) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingTypeOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingType) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingTypeOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BindingType) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -1577,9 +1577,9 @@ func (o BindingTypeArrayOutput) Index(i pulumi.IntInput) BindingTypeOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -1603,12 +1603,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -2534,6 +2534,8 @@ type CommonFeatureSpec struct {
 	Appdevexperience *AppDevExperienceFeatureSpec `pulumi:"appdevexperience"`
 	// ClusterUpgrade (fleet-based) feature spec.
 	Clusterupgrade *ClusterUpgradeFleetSpec `pulumi:"clusterupgrade"`
+	// DataplaneV2 feature spec.
+	Dataplanev2 *DataplaneV2FeatureSpec `pulumi:"dataplanev2"`
 	// FleetObservability feature spec.
 	Fleetobservability *FleetObservabilityFeatureSpec `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
@@ -2559,6 +2561,8 @@ type CommonFeatureSpecArgs struct {
 	Appdevexperience AppDevExperienceFeatureSpecPtrInput `pulumi:"appdevexperience"`
 	// ClusterUpgrade (fleet-based) feature spec.
 	Clusterupgrade ClusterUpgradeFleetSpecPtrInput `pulumi:"clusterupgrade"`
+	// DataplaneV2 feature spec.
+	Dataplanev2 DataplaneV2FeatureSpecPtrInput `pulumi:"dataplanev2"`
 	// FleetObservability feature spec.
 	Fleetobservability FleetObservabilityFeatureSpecPtrInput `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
@@ -2658,6 +2662,11 @@ func (o CommonFeatureSpecOutput) Clusterupgrade() ClusterUpgradeFleetSpecPtrOutp
 	return o.ApplyT(func(v CommonFeatureSpec) *ClusterUpgradeFleetSpec { return v.Clusterupgrade }).(ClusterUpgradeFleetSpecPtrOutput)
 }
 
+// DataplaneV2 feature spec.
+func (o CommonFeatureSpecOutput) Dataplanev2() DataplaneV2FeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *DataplaneV2FeatureSpec { return v.Dataplanev2 }).(DataplaneV2FeatureSpecPtrOutput)
+}
+
 // FleetObservability feature spec.
 func (o CommonFeatureSpecOutput) Fleetobservability() FleetObservabilityFeatureSpecPtrOutput {
 	return o.ApplyT(func(v CommonFeatureSpec) *FleetObservabilityFeatureSpec { return v.Fleetobservability }).(FleetObservabilityFeatureSpecPtrOutput)
@@ -2722,6 +2731,16 @@ func (o CommonFeatureSpecPtrOutput) Clusterupgrade() ClusterUpgradeFleetSpecPtrO
 	}).(ClusterUpgradeFleetSpecPtrOutput)
 }
 
+// DataplaneV2 feature spec.
+func (o CommonFeatureSpecPtrOutput) Dataplanev2() DataplaneV2FeatureSpecPtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) *DataplaneV2FeatureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Dataplanev2
+	}).(DataplaneV2FeatureSpecPtrOutput)
+}
+
 // FleetObservability feature spec.
 func (o CommonFeatureSpecPtrOutput) Fleetobservability() FleetObservabilityFeatureSpecPtrOutput {
 	return o.ApplyT(func(v *CommonFeatureSpec) *FleetObservabilityFeatureSpec {
@@ -2750,6 +2769,8 @@ type CommonFeatureSpecResponse struct {
 	Appdevexperience AppDevExperienceFeatureSpecResponse `pulumi:"appdevexperience"`
 	// ClusterUpgrade (fleet-based) feature spec.
 	Clusterupgrade ClusterUpgradeFleetSpecResponse `pulumi:"clusterupgrade"`
+	// DataplaneV2 feature spec.
+	Dataplanev2 DataplaneV2FeatureSpecResponse `pulumi:"dataplanev2"`
 	// FleetObservability feature spec.
 	Fleetobservability FleetObservabilityFeatureSpecResponse `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
@@ -2784,6 +2805,11 @@ func (o CommonFeatureSpecResponseOutput) Appdevexperience() AppDevExperienceFeat
 // ClusterUpgrade (fleet-based) feature spec.
 func (o CommonFeatureSpecResponseOutput) Clusterupgrade() ClusterUpgradeFleetSpecResponseOutput {
 	return o.ApplyT(func(v CommonFeatureSpecResponse) ClusterUpgradeFleetSpecResponse { return v.Clusterupgrade }).(ClusterUpgradeFleetSpecResponseOutput)
+}
+
+// DataplaneV2 feature spec.
+func (o CommonFeatureSpecResponseOutput) Dataplanev2() DataplaneV2FeatureSpecResponseOutput {
+	return o.ApplyT(func(v CommonFeatureSpecResponse) DataplaneV2FeatureSpecResponse { return v.Dataplanev2 }).(DataplaneV2FeatureSpecResponseOutput)
 }
 
 // FleetObservability feature spec.
@@ -3269,7 +3295,7 @@ type ConfigManagementConfigSync struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Git repo configuration for the cluster.
 	Git *ConfigManagementGitConfig `pulumi:"git"`
-	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
 	MetricsGcpServiceAccountEmail *string `pulumi:"metricsGcpServiceAccountEmail"`
 	// OCI repo configuration for the cluster
 	Oci *ConfigManagementOciConfig `pulumi:"oci"`
@@ -3300,7 +3326,7 @@ type ConfigManagementConfigSyncArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Git repo configuration for the cluster.
 	Git ConfigManagementGitConfigPtrInput `pulumi:"git"`
-	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
 	MetricsGcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"metricsGcpServiceAccountEmail"`
 	// OCI repo configuration for the cluster
 	Oci ConfigManagementOciConfigPtrInput `pulumi:"oci"`
@@ -3405,7 +3431,7 @@ func (o ConfigManagementConfigSyncOutput) Git() ConfigManagementGitConfigPtrOutp
 	return o.ApplyT(func(v ConfigManagementConfigSync) *ConfigManagementGitConfig { return v.Git }).(ConfigManagementGitConfigPtrOutput)
 }
 
-// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
 func (o ConfigManagementConfigSyncOutput) MetricsGcpServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigManagementConfigSync) *string { return v.MetricsGcpServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
@@ -3481,7 +3507,7 @@ func (o ConfigManagementConfigSyncPtrOutput) Git() ConfigManagementGitConfigPtrO
 	}).(ConfigManagementGitConfigPtrOutput)
 }
 
-// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
 func (o ConfigManagementConfigSyncPtrOutput) MetricsGcpServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigManagementConfigSync) *string {
 		if v == nil {
@@ -3531,7 +3557,7 @@ type ConfigManagementConfigSyncResponse struct {
 	Enabled bool `pulumi:"enabled"`
 	// Git repo configuration for the cluster.
 	Git ConfigManagementGitConfigResponse `pulumi:"git"`
-	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
 	MetricsGcpServiceAccountEmail string `pulumi:"metricsGcpServiceAccountEmail"`
 	// OCI repo configuration for the cluster
 	Oci ConfigManagementOciConfigResponse `pulumi:"oci"`
@@ -3573,7 +3599,7 @@ func (o ConfigManagementConfigSyncResponseOutput) Git() ConfigManagementGitConfi
 	return o.ApplyT(func(v ConfigManagementConfigSyncResponse) ConfigManagementGitConfigResponse { return v.Git }).(ConfigManagementGitConfigResponseOutput)
 }
 
-// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
 func (o ConfigManagementConfigSyncResponseOutput) MetricsGcpServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigManagementConfigSyncResponse) string { return v.MetricsGcpServiceAccountEmail }).(pulumi.StringOutput)
 }
@@ -4173,6 +4199,8 @@ type ConfigManagementMembershipSpec struct {
 	ConfigSync *ConfigManagementConfigSync `pulumi:"configSync"`
 	// Hierarchy Controller configuration for the cluster.
 	HierarchyController *ConfigManagementHierarchyControllerConfig `pulumi:"hierarchyController"`
+	// Enables automatic Feature management.
+	Management *ConfigManagementMembershipSpecManagement `pulumi:"management"`
 	// Policy Controller configuration for the cluster.
 	PolicyController *ConfigManagementPolicyController `pulumi:"policyController"`
 	// Version of ACM installed.
@@ -4202,6 +4230,8 @@ type ConfigManagementMembershipSpecArgs struct {
 	ConfigSync ConfigManagementConfigSyncPtrInput `pulumi:"configSync"`
 	// Hierarchy Controller configuration for the cluster.
 	HierarchyController ConfigManagementHierarchyControllerConfigPtrInput `pulumi:"hierarchyController"`
+	// Enables automatic Feature management.
+	Management ConfigManagementMembershipSpecManagementPtrInput `pulumi:"management"`
 	// Policy Controller configuration for the cluster.
 	PolicyController ConfigManagementPolicyControllerPtrInput `pulumi:"policyController"`
 	// Version of ACM installed.
@@ -4310,6 +4340,11 @@ func (o ConfigManagementMembershipSpecOutput) HierarchyController() ConfigManage
 	}).(ConfigManagementHierarchyControllerConfigPtrOutput)
 }
 
+// Enables automatic Feature management.
+func (o ConfigManagementMembershipSpecOutput) Management() ConfigManagementMembershipSpecManagementPtrOutput {
+	return o.ApplyT(func(v ConfigManagementMembershipSpec) *ConfigManagementMembershipSpecManagement { return v.Management }).(ConfigManagementMembershipSpecManagementPtrOutput)
+}
+
 // Policy Controller configuration for the cluster.
 func (o ConfigManagementMembershipSpecOutput) PolicyController() ConfigManagementPolicyControllerPtrOutput {
 	return o.ApplyT(func(v ConfigManagementMembershipSpec) *ConfigManagementPolicyController { return v.PolicyController }).(ConfigManagementPolicyControllerPtrOutput)
@@ -4386,6 +4421,16 @@ func (o ConfigManagementMembershipSpecPtrOutput) HierarchyController() ConfigMan
 	}).(ConfigManagementHierarchyControllerConfigPtrOutput)
 }
 
+// Enables automatic Feature management.
+func (o ConfigManagementMembershipSpecPtrOutput) Management() ConfigManagementMembershipSpecManagementPtrOutput {
+	return o.ApplyT(func(v *ConfigManagementMembershipSpec) *ConfigManagementMembershipSpecManagement {
+		if v == nil {
+			return nil
+		}
+		return v.Management
+	}).(ConfigManagementMembershipSpecManagementPtrOutput)
+}
+
 // Policy Controller configuration for the cluster.
 func (o ConfigManagementMembershipSpecPtrOutput) PolicyController() ConfigManagementPolicyControllerPtrOutput {
 	return o.ApplyT(func(v *ConfigManagementMembershipSpec) *ConfigManagementPolicyController {
@@ -4418,6 +4463,8 @@ type ConfigManagementMembershipSpecResponse struct {
 	ConfigSync ConfigManagementConfigSyncResponse `pulumi:"configSync"`
 	// Hierarchy Controller configuration for the cluster.
 	HierarchyController ConfigManagementHierarchyControllerConfigResponse `pulumi:"hierarchyController"`
+	// Enables automatic Feature management.
+	Management string `pulumi:"management"`
 	// Policy Controller configuration for the cluster.
 	PolicyController ConfigManagementPolicyControllerResponse `pulumi:"policyController"`
 	// Version of ACM installed.
@@ -4463,6 +4510,11 @@ func (o ConfigManagementMembershipSpecResponseOutput) HierarchyController() Conf
 	return o.ApplyT(func(v ConfigManagementMembershipSpecResponse) ConfigManagementHierarchyControllerConfigResponse {
 		return v.HierarchyController
 	}).(ConfigManagementHierarchyControllerConfigResponseOutput)
+}
+
+// Enables automatic Feature management.
+func (o ConfigManagementMembershipSpecResponseOutput) Management() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementMembershipSpecResponse) string { return v.Management }).(pulumi.StringOutput)
 }
 
 // Policy Controller configuration for the cluster.
@@ -5272,6 +5324,172 @@ func (o ConfigManagementPolicyControllerResponseOutput) TemplateLibraryInstalled
 // Last time this membership spec was updated.
 func (o ConfigManagementPolicyControllerResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigManagementPolicyControllerResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// **Dataplane V2**: Spec
+type DataplaneV2FeatureSpec struct {
+	// Enable dataplane-v2 based encryption for multiple clusters.
+	EnableEncryption *bool `pulumi:"enableEncryption"`
+}
+
+// DataplaneV2FeatureSpecInput is an input type that accepts DataplaneV2FeatureSpecArgs and DataplaneV2FeatureSpecOutput values.
+// You can construct a concrete instance of `DataplaneV2FeatureSpecInput` via:
+//
+//	DataplaneV2FeatureSpecArgs{...}
+type DataplaneV2FeatureSpecInput interface {
+	pulumi.Input
+
+	ToDataplaneV2FeatureSpecOutput() DataplaneV2FeatureSpecOutput
+	ToDataplaneV2FeatureSpecOutputWithContext(context.Context) DataplaneV2FeatureSpecOutput
+}
+
+// **Dataplane V2**: Spec
+type DataplaneV2FeatureSpecArgs struct {
+	// Enable dataplane-v2 based encryption for multiple clusters.
+	EnableEncryption pulumi.BoolPtrInput `pulumi:"enableEncryption"`
+}
+
+func (DataplaneV2FeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataplaneV2FeatureSpec)(nil)).Elem()
+}
+
+func (i DataplaneV2FeatureSpecArgs) ToDataplaneV2FeatureSpecOutput() DataplaneV2FeatureSpecOutput {
+	return i.ToDataplaneV2FeatureSpecOutputWithContext(context.Background())
+}
+
+func (i DataplaneV2FeatureSpecArgs) ToDataplaneV2FeatureSpecOutputWithContext(ctx context.Context) DataplaneV2FeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataplaneV2FeatureSpecOutput)
+}
+
+func (i DataplaneV2FeatureSpecArgs) ToDataplaneV2FeatureSpecPtrOutput() DataplaneV2FeatureSpecPtrOutput {
+	return i.ToDataplaneV2FeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i DataplaneV2FeatureSpecArgs) ToDataplaneV2FeatureSpecPtrOutputWithContext(ctx context.Context) DataplaneV2FeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataplaneV2FeatureSpecOutput).ToDataplaneV2FeatureSpecPtrOutputWithContext(ctx)
+}
+
+// DataplaneV2FeatureSpecPtrInput is an input type that accepts DataplaneV2FeatureSpecArgs, DataplaneV2FeatureSpecPtr and DataplaneV2FeatureSpecPtrOutput values.
+// You can construct a concrete instance of `DataplaneV2FeatureSpecPtrInput` via:
+//
+//	        DataplaneV2FeatureSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataplaneV2FeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToDataplaneV2FeatureSpecPtrOutput() DataplaneV2FeatureSpecPtrOutput
+	ToDataplaneV2FeatureSpecPtrOutputWithContext(context.Context) DataplaneV2FeatureSpecPtrOutput
+}
+
+type dataplaneV2FeatureSpecPtrType DataplaneV2FeatureSpecArgs
+
+func DataplaneV2FeatureSpecPtr(v *DataplaneV2FeatureSpecArgs) DataplaneV2FeatureSpecPtrInput {
+	return (*dataplaneV2FeatureSpecPtrType)(v)
+}
+
+func (*dataplaneV2FeatureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataplaneV2FeatureSpec)(nil)).Elem()
+}
+
+func (i *dataplaneV2FeatureSpecPtrType) ToDataplaneV2FeatureSpecPtrOutput() DataplaneV2FeatureSpecPtrOutput {
+	return i.ToDataplaneV2FeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *dataplaneV2FeatureSpecPtrType) ToDataplaneV2FeatureSpecPtrOutputWithContext(ctx context.Context) DataplaneV2FeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataplaneV2FeatureSpecPtrOutput)
+}
+
+// **Dataplane V2**: Spec
+type DataplaneV2FeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (DataplaneV2FeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataplaneV2FeatureSpec)(nil)).Elem()
+}
+
+func (o DataplaneV2FeatureSpecOutput) ToDataplaneV2FeatureSpecOutput() DataplaneV2FeatureSpecOutput {
+	return o
+}
+
+func (o DataplaneV2FeatureSpecOutput) ToDataplaneV2FeatureSpecOutputWithContext(ctx context.Context) DataplaneV2FeatureSpecOutput {
+	return o
+}
+
+func (o DataplaneV2FeatureSpecOutput) ToDataplaneV2FeatureSpecPtrOutput() DataplaneV2FeatureSpecPtrOutput {
+	return o.ToDataplaneV2FeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o DataplaneV2FeatureSpecOutput) ToDataplaneV2FeatureSpecPtrOutputWithContext(ctx context.Context) DataplaneV2FeatureSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataplaneV2FeatureSpec) *DataplaneV2FeatureSpec {
+		return &v
+	}).(DataplaneV2FeatureSpecPtrOutput)
+}
+
+// Enable dataplane-v2 based encryption for multiple clusters.
+func (o DataplaneV2FeatureSpecOutput) EnableEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataplaneV2FeatureSpec) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
+}
+
+type DataplaneV2FeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DataplaneV2FeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataplaneV2FeatureSpec)(nil)).Elem()
+}
+
+func (o DataplaneV2FeatureSpecPtrOutput) ToDataplaneV2FeatureSpecPtrOutput() DataplaneV2FeatureSpecPtrOutput {
+	return o
+}
+
+func (o DataplaneV2FeatureSpecPtrOutput) ToDataplaneV2FeatureSpecPtrOutputWithContext(ctx context.Context) DataplaneV2FeatureSpecPtrOutput {
+	return o
+}
+
+func (o DataplaneV2FeatureSpecPtrOutput) Elem() DataplaneV2FeatureSpecOutput {
+	return o.ApplyT(func(v *DataplaneV2FeatureSpec) DataplaneV2FeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DataplaneV2FeatureSpec
+		return ret
+	}).(DataplaneV2FeatureSpecOutput)
+}
+
+// Enable dataplane-v2 based encryption for multiple clusters.
+func (o DataplaneV2FeatureSpecPtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataplaneV2FeatureSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// **Dataplane V2**: Spec
+type DataplaneV2FeatureSpecResponse struct {
+	// Enable dataplane-v2 based encryption for multiple clusters.
+	EnableEncryption bool `pulumi:"enableEncryption"`
+}
+
+// **Dataplane V2**: Spec
+type DataplaneV2FeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (DataplaneV2FeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataplaneV2FeatureSpecResponse)(nil)).Elem()
+}
+
+func (o DataplaneV2FeatureSpecResponseOutput) ToDataplaneV2FeatureSpecResponseOutput() DataplaneV2FeatureSpecResponseOutput {
+	return o
+}
+
+func (o DataplaneV2FeatureSpecResponseOutput) ToDataplaneV2FeatureSpecResponseOutputWithContext(ctx context.Context) DataplaneV2FeatureSpecResponseOutput {
+	return o
+}
+
+// Enable dataplane-v2 based encryption for multiple clusters.
+func (o DataplaneV2FeatureSpecResponseOutput) EnableEncryption() pulumi.BoolOutput {
+	return o.ApplyT(func(v DataplaneV2FeatureSpecResponse) bool { return v.EnableEncryption }).(pulumi.BoolOutput)
 }
 
 // DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
@@ -6871,12 +7089,16 @@ type IdentityServiceAuthMethod struct {
 	AzureadConfig *IdentityServiceAzureADConfig `pulumi:"azureadConfig"`
 	// GoogleConfig specific configuration.
 	GoogleConfig *IdentityServiceGoogleConfig `pulumi:"googleConfig"`
+	// LDAP specific configuration.
+	LdapConfig *IdentityServiceLdapConfig `pulumi:"ldapConfig"`
 	// Identifier for auth config.
 	Name *string `pulumi:"name"`
 	// OIDC specific configuration.
 	OidcConfig *IdentityServiceOidcConfig `pulumi:"oidcConfig"`
 	// Proxy server address to use for auth method.
 	Proxy *string `pulumi:"proxy"`
+	// SAML specific configuration.
+	SamlConfig *IdentityServiceSamlConfig `pulumi:"samlConfig"`
 }
 
 // IdentityServiceAuthMethodInput is an input type that accepts IdentityServiceAuthMethodArgs and IdentityServiceAuthMethodOutput values.
@@ -6896,12 +7118,16 @@ type IdentityServiceAuthMethodArgs struct {
 	AzureadConfig IdentityServiceAzureADConfigPtrInput `pulumi:"azureadConfig"`
 	// GoogleConfig specific configuration.
 	GoogleConfig IdentityServiceGoogleConfigPtrInput `pulumi:"googleConfig"`
+	// LDAP specific configuration.
+	LdapConfig IdentityServiceLdapConfigPtrInput `pulumi:"ldapConfig"`
 	// Identifier for auth config.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// OIDC specific configuration.
 	OidcConfig IdentityServiceOidcConfigPtrInput `pulumi:"oidcConfig"`
 	// Proxy server address to use for auth method.
 	Proxy pulumi.StringPtrInput `pulumi:"proxy"`
+	// SAML specific configuration.
+	SamlConfig IdentityServiceSamlConfigPtrInput `pulumi:"samlConfig"`
 }
 
 func (IdentityServiceAuthMethodArgs) ElementType() reflect.Type {
@@ -6966,6 +7192,11 @@ func (o IdentityServiceAuthMethodOutput) GoogleConfig() IdentityServiceGoogleCon
 	return o.ApplyT(func(v IdentityServiceAuthMethod) *IdentityServiceGoogleConfig { return v.GoogleConfig }).(IdentityServiceGoogleConfigPtrOutput)
 }
 
+// LDAP specific configuration.
+func (o IdentityServiceAuthMethodOutput) LdapConfig() IdentityServiceLdapConfigPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethod) *IdentityServiceLdapConfig { return v.LdapConfig }).(IdentityServiceLdapConfigPtrOutput)
+}
+
 // Identifier for auth config.
 func (o IdentityServiceAuthMethodOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityServiceAuthMethod) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -6979,6 +7210,11 @@ func (o IdentityServiceAuthMethodOutput) OidcConfig() IdentityServiceOidcConfigP
 // Proxy server address to use for auth method.
 func (o IdentityServiceAuthMethodOutput) Proxy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityServiceAuthMethod) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+}
+
+// SAML specific configuration.
+func (o IdentityServiceAuthMethodOutput) SamlConfig() IdentityServiceSamlConfigPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethod) *IdentityServiceSamlConfig { return v.SamlConfig }).(IdentityServiceSamlConfigPtrOutput)
 }
 
 type IdentityServiceAuthMethodArrayOutput struct{ *pulumi.OutputState }
@@ -7007,12 +7243,16 @@ type IdentityServiceAuthMethodResponse struct {
 	AzureadConfig IdentityServiceAzureADConfigResponse `pulumi:"azureadConfig"`
 	// GoogleConfig specific configuration.
 	GoogleConfig IdentityServiceGoogleConfigResponse `pulumi:"googleConfig"`
+	// LDAP specific configuration.
+	LdapConfig IdentityServiceLdapConfigResponse `pulumi:"ldapConfig"`
 	// Identifier for auth config.
 	Name string `pulumi:"name"`
 	// OIDC specific configuration.
 	OidcConfig IdentityServiceOidcConfigResponse `pulumi:"oidcConfig"`
 	// Proxy server address to use for auth method.
 	Proxy string `pulumi:"proxy"`
+	// SAML specific configuration.
+	SamlConfig IdentityServiceSamlConfigResponse `pulumi:"samlConfig"`
 }
 
 // Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
@@ -7040,6 +7280,11 @@ func (o IdentityServiceAuthMethodResponseOutput) GoogleConfig() IdentityServiceG
 	return o.ApplyT(func(v IdentityServiceAuthMethodResponse) IdentityServiceGoogleConfigResponse { return v.GoogleConfig }).(IdentityServiceGoogleConfigResponseOutput)
 }
 
+// LDAP specific configuration.
+func (o IdentityServiceAuthMethodResponseOutput) LdapConfig() IdentityServiceLdapConfigResponseOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethodResponse) IdentityServiceLdapConfigResponse { return v.LdapConfig }).(IdentityServiceLdapConfigResponseOutput)
+}
+
 // Identifier for auth config.
 func (o IdentityServiceAuthMethodResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityServiceAuthMethodResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -7053,6 +7298,11 @@ func (o IdentityServiceAuthMethodResponseOutput) OidcConfig() IdentityServiceOid
 // Proxy server address to use for auth method.
 func (o IdentityServiceAuthMethodResponseOutput) Proxy() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityServiceAuthMethodResponse) string { return v.Proxy }).(pulumi.StringOutput)
+}
+
+// SAML specific configuration.
+func (o IdentityServiceAuthMethodResponseOutput) SamlConfig() IdentityServiceSamlConfigResponseOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethodResponse) IdentityServiceSamlConfigResponse { return v.SamlConfig }).(IdentityServiceSamlConfigResponseOutput)
 }
 
 type IdentityServiceAuthMethodResponseArrayOutput struct{ *pulumi.OutputState }
@@ -7081,10 +7331,14 @@ type IdentityServiceAzureADConfig struct {
 	ClientId *string `pulumi:"clientId"`
 	// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Optional. Format of the AzureAD groups that the client wants for auth.
+	GroupFormat *string `pulumi:"groupFormat"`
 	// The redirect URL that kubectl uses for authorization.
 	KubectlRedirectUri *string `pulumi:"kubectlRedirectUri"`
 	// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
 	Tenant *string `pulumi:"tenant"`
+	// Optional. Claim in the AzureAD ID Token that holds the user details.
+	UserClaim *string `pulumi:"userClaim"`
 }
 
 // IdentityServiceAzureADConfigInput is an input type that accepts IdentityServiceAzureADConfigArgs and IdentityServiceAzureADConfigOutput values.
@@ -7104,10 +7358,14 @@ type IdentityServiceAzureADConfigArgs struct {
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Optional. Format of the AzureAD groups that the client wants for auth.
+	GroupFormat pulumi.StringPtrInput `pulumi:"groupFormat"`
 	// The redirect URL that kubectl uses for authorization.
 	KubectlRedirectUri pulumi.StringPtrInput `pulumi:"kubectlRedirectUri"`
 	// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
 	Tenant pulumi.StringPtrInput `pulumi:"tenant"`
+	// Optional. Claim in the AzureAD ID Token that holds the user details.
+	UserClaim pulumi.StringPtrInput `pulumi:"userClaim"`
 }
 
 func (IdentityServiceAzureADConfigArgs) ElementType() reflect.Type {
@@ -7198,6 +7456,11 @@ func (o IdentityServiceAzureADConfigOutput) ClientSecret() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v IdentityServiceAzureADConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Format of the AzureAD groups that the client wants for auth.
+func (o IdentityServiceAzureADConfigOutput) GroupFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfig) *string { return v.GroupFormat }).(pulumi.StringPtrOutput)
+}
+
 // The redirect URL that kubectl uses for authorization.
 func (o IdentityServiceAzureADConfigOutput) KubectlRedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityServiceAzureADConfig) *string { return v.KubectlRedirectUri }).(pulumi.StringPtrOutput)
@@ -7206,6 +7469,11 @@ func (o IdentityServiceAzureADConfigOutput) KubectlRedirectUri() pulumi.StringPt
 // Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
 func (o IdentityServiceAzureADConfigOutput) Tenant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityServiceAzureADConfig) *string { return v.Tenant }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Claim in the AzureAD ID Token that holds the user details.
+func (o IdentityServiceAzureADConfigOutput) UserClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfig) *string { return v.UserClaim }).(pulumi.StringPtrOutput)
 }
 
 type IdentityServiceAzureADConfigPtrOutput struct{ *pulumi.OutputState }
@@ -7252,6 +7520,16 @@ func (o IdentityServiceAzureADConfigPtrOutput) ClientSecret() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Format of the AzureAD groups that the client wants for auth.
+func (o IdentityServiceAzureADConfigPtrOutput) GroupFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceAzureADConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupFormat
+	}).(pulumi.StringPtrOutput)
+}
+
 // The redirect URL that kubectl uses for authorization.
 func (o IdentityServiceAzureADConfigPtrOutput) KubectlRedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityServiceAzureADConfig) *string {
@@ -7272,6 +7550,16 @@ func (o IdentityServiceAzureADConfigPtrOutput) Tenant() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Claim in the AzureAD ID Token that holds the user details.
+func (o IdentityServiceAzureADConfigPtrOutput) UserClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceAzureADConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserClaim
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration for the AzureAD Auth flow.
 type IdentityServiceAzureADConfigResponse struct {
 	// ID for the registered client application that makes authentication requests to the Azure AD identity provider.
@@ -7280,10 +7568,14 @@ type IdentityServiceAzureADConfigResponse struct {
 	ClientSecret string `pulumi:"clientSecret"`
 	// Encrypted AzureAD client secret.
 	EncryptedClientSecret string `pulumi:"encryptedClientSecret"`
+	// Optional. Format of the AzureAD groups that the client wants for auth.
+	GroupFormat string `pulumi:"groupFormat"`
 	// The redirect URL that kubectl uses for authorization.
 	KubectlRedirectUri string `pulumi:"kubectlRedirectUri"`
 	// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
 	Tenant string `pulumi:"tenant"`
+	// Optional. Claim in the AzureAD ID Token that holds the user details.
+	UserClaim string `pulumi:"userClaim"`
 }
 
 // Configuration for the AzureAD Auth flow.
@@ -7316,6 +7608,11 @@ func (o IdentityServiceAzureADConfigResponseOutput) EncryptedClientSecret() pulu
 	return o.ApplyT(func(v IdentityServiceAzureADConfigResponse) string { return v.EncryptedClientSecret }).(pulumi.StringOutput)
 }
 
+// Optional. Format of the AzureAD groups that the client wants for auth.
+func (o IdentityServiceAzureADConfigResponseOutput) GroupFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfigResponse) string { return v.GroupFormat }).(pulumi.StringOutput)
+}
+
 // The redirect URL that kubectl uses for authorization.
 func (o IdentityServiceAzureADConfigResponseOutput) KubectlRedirectUri() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityServiceAzureADConfigResponse) string { return v.KubectlRedirectUri }).(pulumi.StringOutput)
@@ -7324,6 +7621,11 @@ func (o IdentityServiceAzureADConfigResponseOutput) KubectlRedirectUri() pulumi.
 // Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
 func (o IdentityServiceAzureADConfigResponseOutput) Tenant() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityServiceAzureADConfigResponse) string { return v.Tenant }).(pulumi.StringOutput)
+}
+
+// Optional. Claim in the AzureAD ID Token that holds the user details.
+func (o IdentityServiceAzureADConfigResponseOutput) UserClaim() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfigResponse) string { return v.UserClaim }).(pulumi.StringOutput)
 }
 
 // Configuration for the Google Plugin Auth flow.
@@ -7490,6 +7792,470 @@ func (o IdentityServiceGoogleConfigResponseOutput) ToIdentityServiceGoogleConfig
 // Disable automatic configuration of Google Plugin on supported platforms.
 func (o IdentityServiceGoogleConfigResponseOutput) Disable() pulumi.BoolOutput {
 	return o.ApplyT(func(v IdentityServiceGoogleConfigResponse) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+// Contains the properties for locating and authenticating groups in the directory.
+type IdentityServiceGroupConfig struct {
+	// The location of the subtree in the LDAP directory to search for group entries.
+	BaseDn string `pulumi:"baseDn"`
+	// Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to explicitly match only certain groups in order to reduce the amount of groups returned for each user. This defaults to "(objectClass=Group)".
+	Filter *string `pulumi:"filter"`
+	// Optional. The identifying name of each group a user belongs to. For example, if this is set to "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to "distinguishedName".
+	IdAttribute *string `pulumi:"idAttribute"`
+}
+
+// IdentityServiceGroupConfigInput is an input type that accepts IdentityServiceGroupConfigArgs and IdentityServiceGroupConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceGroupConfigInput` via:
+//
+//	IdentityServiceGroupConfigArgs{...}
+type IdentityServiceGroupConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceGroupConfigOutput() IdentityServiceGroupConfigOutput
+	ToIdentityServiceGroupConfigOutputWithContext(context.Context) IdentityServiceGroupConfigOutput
+}
+
+// Contains the properties for locating and authenticating groups in the directory.
+type IdentityServiceGroupConfigArgs struct {
+	// The location of the subtree in the LDAP directory to search for group entries.
+	BaseDn pulumi.StringInput `pulumi:"baseDn"`
+	// Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to explicitly match only certain groups in order to reduce the amount of groups returned for each user. This defaults to "(objectClass=Group)".
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Optional. The identifying name of each group a user belongs to. For example, if this is set to "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to "distinguishedName".
+	IdAttribute pulumi.StringPtrInput `pulumi:"idAttribute"`
+}
+
+func (IdentityServiceGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceGroupConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceGroupConfigArgs) ToIdentityServiceGroupConfigOutput() IdentityServiceGroupConfigOutput {
+	return i.ToIdentityServiceGroupConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceGroupConfigArgs) ToIdentityServiceGroupConfigOutputWithContext(ctx context.Context) IdentityServiceGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceGroupConfigOutput)
+}
+
+func (i IdentityServiceGroupConfigArgs) ToIdentityServiceGroupConfigPtrOutput() IdentityServiceGroupConfigPtrOutput {
+	return i.ToIdentityServiceGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceGroupConfigArgs) ToIdentityServiceGroupConfigPtrOutputWithContext(ctx context.Context) IdentityServiceGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceGroupConfigOutput).ToIdentityServiceGroupConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceGroupConfigPtrInput is an input type that accepts IdentityServiceGroupConfigArgs, IdentityServiceGroupConfigPtr and IdentityServiceGroupConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceGroupConfigPtrInput` via:
+//
+//	        IdentityServiceGroupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceGroupConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceGroupConfigPtrOutput() IdentityServiceGroupConfigPtrOutput
+	ToIdentityServiceGroupConfigPtrOutputWithContext(context.Context) IdentityServiceGroupConfigPtrOutput
+}
+
+type identityServiceGroupConfigPtrType IdentityServiceGroupConfigArgs
+
+func IdentityServiceGroupConfigPtr(v *IdentityServiceGroupConfigArgs) IdentityServiceGroupConfigPtrInput {
+	return (*identityServiceGroupConfigPtrType)(v)
+}
+
+func (*identityServiceGroupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceGroupConfig)(nil)).Elem()
+}
+
+func (i *identityServiceGroupConfigPtrType) ToIdentityServiceGroupConfigPtrOutput() IdentityServiceGroupConfigPtrOutput {
+	return i.ToIdentityServiceGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceGroupConfigPtrType) ToIdentityServiceGroupConfigPtrOutputWithContext(ctx context.Context) IdentityServiceGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceGroupConfigPtrOutput)
+}
+
+// Contains the properties for locating and authenticating groups in the directory.
+type IdentityServiceGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceGroupConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceGroupConfigOutput) ToIdentityServiceGroupConfigOutput() IdentityServiceGroupConfigOutput {
+	return o
+}
+
+func (o IdentityServiceGroupConfigOutput) ToIdentityServiceGroupConfigOutputWithContext(ctx context.Context) IdentityServiceGroupConfigOutput {
+	return o
+}
+
+func (o IdentityServiceGroupConfigOutput) ToIdentityServiceGroupConfigPtrOutput() IdentityServiceGroupConfigPtrOutput {
+	return o.ToIdentityServiceGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceGroupConfigOutput) ToIdentityServiceGroupConfigPtrOutputWithContext(ctx context.Context) IdentityServiceGroupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceGroupConfig) *IdentityServiceGroupConfig {
+		return &v
+	}).(IdentityServiceGroupConfigPtrOutput)
+}
+
+// The location of the subtree in the LDAP directory to search for group entries.
+func (o IdentityServiceGroupConfigOutput) BaseDn() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceGroupConfig) string { return v.BaseDn }).(pulumi.StringOutput)
+}
+
+// Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to explicitly match only certain groups in order to reduce the amount of groups returned for each user. This defaults to "(objectClass=Group)".
+func (o IdentityServiceGroupConfigOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceGroupConfig) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The identifying name of each group a user belongs to. For example, if this is set to "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to "distinguishedName".
+func (o IdentityServiceGroupConfigOutput) IdAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceGroupConfig) *string { return v.IdAttribute }).(pulumi.StringPtrOutput)
+}
+
+type IdentityServiceGroupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceGroupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceGroupConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceGroupConfigPtrOutput) ToIdentityServiceGroupConfigPtrOutput() IdentityServiceGroupConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceGroupConfigPtrOutput) ToIdentityServiceGroupConfigPtrOutputWithContext(ctx context.Context) IdentityServiceGroupConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceGroupConfigPtrOutput) Elem() IdentityServiceGroupConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceGroupConfig) IdentityServiceGroupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceGroupConfig
+		return ret
+	}).(IdentityServiceGroupConfigOutput)
+}
+
+// The location of the subtree in the LDAP directory to search for group entries.
+func (o IdentityServiceGroupConfigPtrOutput) BaseDn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceGroupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseDn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to explicitly match only certain groups in order to reduce the amount of groups returned for each user. This defaults to "(objectClass=Group)".
+func (o IdentityServiceGroupConfigPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceGroupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The identifying name of each group a user belongs to. For example, if this is set to "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to "distinguishedName".
+func (o IdentityServiceGroupConfigPtrOutput) IdAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceGroupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdAttribute
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains the properties for locating and authenticating groups in the directory.
+type IdentityServiceGroupConfigResponse struct {
+	// The location of the subtree in the LDAP directory to search for group entries.
+	BaseDn string `pulumi:"baseDn"`
+	// Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to explicitly match only certain groups in order to reduce the amount of groups returned for each user. This defaults to "(objectClass=Group)".
+	Filter string `pulumi:"filter"`
+	// Optional. The identifying name of each group a user belongs to. For example, if this is set to "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to "distinguishedName".
+	IdAttribute string `pulumi:"idAttribute"`
+}
+
+// Contains the properties for locating and authenticating groups in the directory.
+type IdentityServiceGroupConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceGroupConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceGroupConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceGroupConfigResponseOutput) ToIdentityServiceGroupConfigResponseOutput() IdentityServiceGroupConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceGroupConfigResponseOutput) ToIdentityServiceGroupConfigResponseOutputWithContext(ctx context.Context) IdentityServiceGroupConfigResponseOutput {
+	return o
+}
+
+// The location of the subtree in the LDAP directory to search for group entries.
+func (o IdentityServiceGroupConfigResponseOutput) BaseDn() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceGroupConfigResponse) string { return v.BaseDn }).(pulumi.StringOutput)
+}
+
+// Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to explicitly match only certain groups in order to reduce the amount of groups returned for each user. This defaults to "(objectClass=Group)".
+func (o IdentityServiceGroupConfigResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceGroupConfigResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Optional. The identifying name of each group a user belongs to. For example, if this is set to "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to "distinguishedName".
+func (o IdentityServiceGroupConfigResponseOutput) IdAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceGroupConfigResponse) string { return v.IdAttribute }).(pulumi.StringOutput)
+}
+
+// Configuration for the LDAP Auth flow.
+type IdentityServiceLdapConfig struct {
+	// Optional. Contains the properties for locating and authenticating groups in the directory.
+	Group *IdentityServiceGroupConfig `pulumi:"group"`
+	// Server settings for the external LDAP server.
+	Server IdentityServiceServerConfig `pulumi:"server"`
+	// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+	ServiceAccount IdentityServiceServiceAccountConfig `pulumi:"serviceAccount"`
+	// Defines where users exist in the LDAP directory.
+	User IdentityServiceUserConfig `pulumi:"user"`
+}
+
+// IdentityServiceLdapConfigInput is an input type that accepts IdentityServiceLdapConfigArgs and IdentityServiceLdapConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceLdapConfigInput` via:
+//
+//	IdentityServiceLdapConfigArgs{...}
+type IdentityServiceLdapConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceLdapConfigOutput() IdentityServiceLdapConfigOutput
+	ToIdentityServiceLdapConfigOutputWithContext(context.Context) IdentityServiceLdapConfigOutput
+}
+
+// Configuration for the LDAP Auth flow.
+type IdentityServiceLdapConfigArgs struct {
+	// Optional. Contains the properties for locating and authenticating groups in the directory.
+	Group IdentityServiceGroupConfigPtrInput `pulumi:"group"`
+	// Server settings for the external LDAP server.
+	Server IdentityServiceServerConfigInput `pulumi:"server"`
+	// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+	ServiceAccount IdentityServiceServiceAccountConfigInput `pulumi:"serviceAccount"`
+	// Defines where users exist in the LDAP directory.
+	User IdentityServiceUserConfigInput `pulumi:"user"`
+}
+
+func (IdentityServiceLdapConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceLdapConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceLdapConfigArgs) ToIdentityServiceLdapConfigOutput() IdentityServiceLdapConfigOutput {
+	return i.ToIdentityServiceLdapConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceLdapConfigArgs) ToIdentityServiceLdapConfigOutputWithContext(ctx context.Context) IdentityServiceLdapConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceLdapConfigOutput)
+}
+
+func (i IdentityServiceLdapConfigArgs) ToIdentityServiceLdapConfigPtrOutput() IdentityServiceLdapConfigPtrOutput {
+	return i.ToIdentityServiceLdapConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceLdapConfigArgs) ToIdentityServiceLdapConfigPtrOutputWithContext(ctx context.Context) IdentityServiceLdapConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceLdapConfigOutput).ToIdentityServiceLdapConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceLdapConfigPtrInput is an input type that accepts IdentityServiceLdapConfigArgs, IdentityServiceLdapConfigPtr and IdentityServiceLdapConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceLdapConfigPtrInput` via:
+//
+//	        IdentityServiceLdapConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceLdapConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceLdapConfigPtrOutput() IdentityServiceLdapConfigPtrOutput
+	ToIdentityServiceLdapConfigPtrOutputWithContext(context.Context) IdentityServiceLdapConfigPtrOutput
+}
+
+type identityServiceLdapConfigPtrType IdentityServiceLdapConfigArgs
+
+func IdentityServiceLdapConfigPtr(v *IdentityServiceLdapConfigArgs) IdentityServiceLdapConfigPtrInput {
+	return (*identityServiceLdapConfigPtrType)(v)
+}
+
+func (*identityServiceLdapConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceLdapConfig)(nil)).Elem()
+}
+
+func (i *identityServiceLdapConfigPtrType) ToIdentityServiceLdapConfigPtrOutput() IdentityServiceLdapConfigPtrOutput {
+	return i.ToIdentityServiceLdapConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceLdapConfigPtrType) ToIdentityServiceLdapConfigPtrOutputWithContext(ctx context.Context) IdentityServiceLdapConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceLdapConfigPtrOutput)
+}
+
+// Configuration for the LDAP Auth flow.
+type IdentityServiceLdapConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceLdapConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceLdapConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceLdapConfigOutput) ToIdentityServiceLdapConfigOutput() IdentityServiceLdapConfigOutput {
+	return o
+}
+
+func (o IdentityServiceLdapConfigOutput) ToIdentityServiceLdapConfigOutputWithContext(ctx context.Context) IdentityServiceLdapConfigOutput {
+	return o
+}
+
+func (o IdentityServiceLdapConfigOutput) ToIdentityServiceLdapConfigPtrOutput() IdentityServiceLdapConfigPtrOutput {
+	return o.ToIdentityServiceLdapConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceLdapConfigOutput) ToIdentityServiceLdapConfigPtrOutputWithContext(ctx context.Context) IdentityServiceLdapConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceLdapConfig) *IdentityServiceLdapConfig {
+		return &v
+	}).(IdentityServiceLdapConfigPtrOutput)
+}
+
+// Optional. Contains the properties for locating and authenticating groups in the directory.
+func (o IdentityServiceLdapConfigOutput) Group() IdentityServiceGroupConfigPtrOutput {
+	return o.ApplyT(func(v IdentityServiceLdapConfig) *IdentityServiceGroupConfig { return v.Group }).(IdentityServiceGroupConfigPtrOutput)
+}
+
+// Server settings for the external LDAP server.
+func (o IdentityServiceLdapConfigOutput) Server() IdentityServiceServerConfigOutput {
+	return o.ApplyT(func(v IdentityServiceLdapConfig) IdentityServiceServerConfig { return v.Server }).(IdentityServiceServerConfigOutput)
+}
+
+// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+func (o IdentityServiceLdapConfigOutput) ServiceAccount() IdentityServiceServiceAccountConfigOutput {
+	return o.ApplyT(func(v IdentityServiceLdapConfig) IdentityServiceServiceAccountConfig { return v.ServiceAccount }).(IdentityServiceServiceAccountConfigOutput)
+}
+
+// Defines where users exist in the LDAP directory.
+func (o IdentityServiceLdapConfigOutput) User() IdentityServiceUserConfigOutput {
+	return o.ApplyT(func(v IdentityServiceLdapConfig) IdentityServiceUserConfig { return v.User }).(IdentityServiceUserConfigOutput)
+}
+
+type IdentityServiceLdapConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceLdapConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceLdapConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceLdapConfigPtrOutput) ToIdentityServiceLdapConfigPtrOutput() IdentityServiceLdapConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceLdapConfigPtrOutput) ToIdentityServiceLdapConfigPtrOutputWithContext(ctx context.Context) IdentityServiceLdapConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceLdapConfigPtrOutput) Elem() IdentityServiceLdapConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceLdapConfig) IdentityServiceLdapConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceLdapConfig
+		return ret
+	}).(IdentityServiceLdapConfigOutput)
+}
+
+// Optional. Contains the properties for locating and authenticating groups in the directory.
+func (o IdentityServiceLdapConfigPtrOutput) Group() IdentityServiceGroupConfigPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceLdapConfig) *IdentityServiceGroupConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(IdentityServiceGroupConfigPtrOutput)
+}
+
+// Server settings for the external LDAP server.
+func (o IdentityServiceLdapConfigPtrOutput) Server() IdentityServiceServerConfigPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceLdapConfig) *IdentityServiceServerConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.Server
+	}).(IdentityServiceServerConfigPtrOutput)
+}
+
+// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+func (o IdentityServiceLdapConfigPtrOutput) ServiceAccount() IdentityServiceServiceAccountConfigPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceLdapConfig) *IdentityServiceServiceAccountConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(IdentityServiceServiceAccountConfigPtrOutput)
+}
+
+// Defines where users exist in the LDAP directory.
+func (o IdentityServiceLdapConfigPtrOutput) User() IdentityServiceUserConfigPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceLdapConfig) *IdentityServiceUserConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.User
+	}).(IdentityServiceUserConfigPtrOutput)
+}
+
+// Configuration for the LDAP Auth flow.
+type IdentityServiceLdapConfigResponse struct {
+	// Optional. Contains the properties for locating and authenticating groups in the directory.
+	Group IdentityServiceGroupConfigResponse `pulumi:"group"`
+	// Server settings for the external LDAP server.
+	Server IdentityServiceServerConfigResponse `pulumi:"server"`
+	// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+	ServiceAccount IdentityServiceServiceAccountConfigResponse `pulumi:"serviceAccount"`
+	// Defines where users exist in the LDAP directory.
+	User IdentityServiceUserConfigResponse `pulumi:"user"`
+}
+
+// Configuration for the LDAP Auth flow.
+type IdentityServiceLdapConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceLdapConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceLdapConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceLdapConfigResponseOutput) ToIdentityServiceLdapConfigResponseOutput() IdentityServiceLdapConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceLdapConfigResponseOutput) ToIdentityServiceLdapConfigResponseOutputWithContext(ctx context.Context) IdentityServiceLdapConfigResponseOutput {
+	return o
+}
+
+// Optional. Contains the properties for locating and authenticating groups in the directory.
+func (o IdentityServiceLdapConfigResponseOutput) Group() IdentityServiceGroupConfigResponseOutput {
+	return o.ApplyT(func(v IdentityServiceLdapConfigResponse) IdentityServiceGroupConfigResponse { return v.Group }).(IdentityServiceGroupConfigResponseOutput)
+}
+
+// Server settings for the external LDAP server.
+func (o IdentityServiceLdapConfigResponseOutput) Server() IdentityServiceServerConfigResponseOutput {
+	return o.ApplyT(func(v IdentityServiceLdapConfigResponse) IdentityServiceServerConfigResponse { return v.Server }).(IdentityServiceServerConfigResponseOutput)
+}
+
+// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+func (o IdentityServiceLdapConfigResponseOutput) ServiceAccount() IdentityServiceServiceAccountConfigResponseOutput {
+	return o.ApplyT(func(v IdentityServiceLdapConfigResponse) IdentityServiceServiceAccountConfigResponse {
+		return v.ServiceAccount
+	}).(IdentityServiceServiceAccountConfigResponseOutput)
+}
+
+// Defines where users exist in the LDAP directory.
+func (o IdentityServiceLdapConfigResponseOutput) User() IdentityServiceUserConfigResponseOutput {
+	return o.ApplyT(func(v IdentityServiceLdapConfigResponse) IdentityServiceUserConfigResponse { return v.User }).(IdentityServiceUserConfigResponseOutput)
 }
 
 // **Anthos Identity Service**: Configuration for a single Membership.
@@ -8143,6 +8909,1185 @@ func (o IdentityServiceOidcConfigResponseOutput) UserClaim() pulumi.StringOutput
 // Prefix to prepend to user name.
 func (o IdentityServiceOidcConfigResponseOutput) UserPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.UserPrefix }).(pulumi.StringOutput)
+}
+
+// Configuration for the SAML Auth flow.
+type IdentityServiceSamlConfig struct {
+	// Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel) used for getting the value from the resources. Take nickname as an example, in this case, `key` is "attribute.nickname" and `value` is "assertion.nickname".
+	AttributeMapping map[string]string `pulumi:"attributeMapping"`
+	// Optional. Prefix to prepend to group name.
+	GroupPrefix *string `pulumi:"groupPrefix"`
+	// Optional. The SAML attribute to read groups from. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `group_prefix`).
+	GroupsAttribute *string `pulumi:"groupsAttribute"`
+	// The list of IdP certificates to validate the SAML response against.
+	IdentityProviderCertificates []string `pulumi:"identityProviderCertificates"`
+	// The entity ID of the SAML IdP.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+	// The URI where the SAML IdP exposes the SSO service.
+	IdentityProviderSsoUri string `pulumi:"identityProviderSsoUri"`
+	// Optional. The SAML attribute to read username from. If unspecified, the username will be read from the NameID element of the assertion in SAML response. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `user_prefix`).
+	UserAttribute *string `pulumi:"userAttribute"`
+	// Optional. Prefix to prepend to user name.
+	UserPrefix *string `pulumi:"userPrefix"`
+}
+
+// IdentityServiceSamlConfigInput is an input type that accepts IdentityServiceSamlConfigArgs and IdentityServiceSamlConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceSamlConfigInput` via:
+//
+//	IdentityServiceSamlConfigArgs{...}
+type IdentityServiceSamlConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceSamlConfigOutput() IdentityServiceSamlConfigOutput
+	ToIdentityServiceSamlConfigOutputWithContext(context.Context) IdentityServiceSamlConfigOutput
+}
+
+// Configuration for the SAML Auth flow.
+type IdentityServiceSamlConfigArgs struct {
+	// Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel) used for getting the value from the resources. Take nickname as an example, in this case, `key` is "attribute.nickname" and `value` is "assertion.nickname".
+	AttributeMapping pulumi.StringMapInput `pulumi:"attributeMapping"`
+	// Optional. Prefix to prepend to group name.
+	GroupPrefix pulumi.StringPtrInput `pulumi:"groupPrefix"`
+	// Optional. The SAML attribute to read groups from. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `group_prefix`).
+	GroupsAttribute pulumi.StringPtrInput `pulumi:"groupsAttribute"`
+	// The list of IdP certificates to validate the SAML response against.
+	IdentityProviderCertificates pulumi.StringArrayInput `pulumi:"identityProviderCertificates"`
+	// The entity ID of the SAML IdP.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+	// The URI where the SAML IdP exposes the SSO service.
+	IdentityProviderSsoUri pulumi.StringInput `pulumi:"identityProviderSsoUri"`
+	// Optional. The SAML attribute to read username from. If unspecified, the username will be read from the NameID element of the assertion in SAML response. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `user_prefix`).
+	UserAttribute pulumi.StringPtrInput `pulumi:"userAttribute"`
+	// Optional. Prefix to prepend to user name.
+	UserPrefix pulumi.StringPtrInput `pulumi:"userPrefix"`
+}
+
+func (IdentityServiceSamlConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceSamlConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceSamlConfigArgs) ToIdentityServiceSamlConfigOutput() IdentityServiceSamlConfigOutput {
+	return i.ToIdentityServiceSamlConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceSamlConfigArgs) ToIdentityServiceSamlConfigOutputWithContext(ctx context.Context) IdentityServiceSamlConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceSamlConfigOutput)
+}
+
+func (i IdentityServiceSamlConfigArgs) ToIdentityServiceSamlConfigPtrOutput() IdentityServiceSamlConfigPtrOutput {
+	return i.ToIdentityServiceSamlConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceSamlConfigArgs) ToIdentityServiceSamlConfigPtrOutputWithContext(ctx context.Context) IdentityServiceSamlConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceSamlConfigOutput).ToIdentityServiceSamlConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceSamlConfigPtrInput is an input type that accepts IdentityServiceSamlConfigArgs, IdentityServiceSamlConfigPtr and IdentityServiceSamlConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceSamlConfigPtrInput` via:
+//
+//	        IdentityServiceSamlConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceSamlConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceSamlConfigPtrOutput() IdentityServiceSamlConfigPtrOutput
+	ToIdentityServiceSamlConfigPtrOutputWithContext(context.Context) IdentityServiceSamlConfigPtrOutput
+}
+
+type identityServiceSamlConfigPtrType IdentityServiceSamlConfigArgs
+
+func IdentityServiceSamlConfigPtr(v *IdentityServiceSamlConfigArgs) IdentityServiceSamlConfigPtrInput {
+	return (*identityServiceSamlConfigPtrType)(v)
+}
+
+func (*identityServiceSamlConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceSamlConfig)(nil)).Elem()
+}
+
+func (i *identityServiceSamlConfigPtrType) ToIdentityServiceSamlConfigPtrOutput() IdentityServiceSamlConfigPtrOutput {
+	return i.ToIdentityServiceSamlConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceSamlConfigPtrType) ToIdentityServiceSamlConfigPtrOutputWithContext(ctx context.Context) IdentityServiceSamlConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceSamlConfigPtrOutput)
+}
+
+// Configuration for the SAML Auth flow.
+type IdentityServiceSamlConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceSamlConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceSamlConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceSamlConfigOutput) ToIdentityServiceSamlConfigOutput() IdentityServiceSamlConfigOutput {
+	return o
+}
+
+func (o IdentityServiceSamlConfigOutput) ToIdentityServiceSamlConfigOutputWithContext(ctx context.Context) IdentityServiceSamlConfigOutput {
+	return o
+}
+
+func (o IdentityServiceSamlConfigOutput) ToIdentityServiceSamlConfigPtrOutput() IdentityServiceSamlConfigPtrOutput {
+	return o.ToIdentityServiceSamlConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceSamlConfigOutput) ToIdentityServiceSamlConfigPtrOutputWithContext(ctx context.Context) IdentityServiceSamlConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceSamlConfig) *IdentityServiceSamlConfig {
+		return &v
+	}).(IdentityServiceSamlConfigPtrOutput)
+}
+
+// Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel) used for getting the value from the resources. Take nickname as an example, in this case, `key` is "attribute.nickname" and `value` is "assertion.nickname".
+func (o IdentityServiceSamlConfigOutput) AttributeMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfig) map[string]string { return v.AttributeMapping }).(pulumi.StringMapOutput)
+}
+
+// Optional. Prefix to prepend to group name.
+func (o IdentityServiceSamlConfigOutput) GroupPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfig) *string { return v.GroupPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The SAML attribute to read groups from. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `group_prefix`).
+func (o IdentityServiceSamlConfigOutput) GroupsAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfig) *string { return v.GroupsAttribute }).(pulumi.StringPtrOutput)
+}
+
+// The list of IdP certificates to validate the SAML response against.
+func (o IdentityServiceSamlConfigOutput) IdentityProviderCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfig) []string { return v.IdentityProviderCertificates }).(pulumi.StringArrayOutput)
+}
+
+// The entity ID of the SAML IdP.
+func (o IdentityServiceSamlConfigOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfig) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+// The URI where the SAML IdP exposes the SSO service.
+func (o IdentityServiceSamlConfigOutput) IdentityProviderSsoUri() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfig) string { return v.IdentityProviderSsoUri }).(pulumi.StringOutput)
+}
+
+// Optional. The SAML attribute to read username from. If unspecified, the username will be read from the NameID element of the assertion in SAML response. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `user_prefix`).
+func (o IdentityServiceSamlConfigOutput) UserAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfig) *string { return v.UserAttribute }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Prefix to prepend to user name.
+func (o IdentityServiceSamlConfigOutput) UserPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfig) *string { return v.UserPrefix }).(pulumi.StringPtrOutput)
+}
+
+type IdentityServiceSamlConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceSamlConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceSamlConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceSamlConfigPtrOutput) ToIdentityServiceSamlConfigPtrOutput() IdentityServiceSamlConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceSamlConfigPtrOutput) ToIdentityServiceSamlConfigPtrOutputWithContext(ctx context.Context) IdentityServiceSamlConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceSamlConfigPtrOutput) Elem() IdentityServiceSamlConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceSamlConfig) IdentityServiceSamlConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceSamlConfig
+		return ret
+	}).(IdentityServiceSamlConfigOutput)
+}
+
+// Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel) used for getting the value from the resources. Take nickname as an example, in this case, `key` is "attribute.nickname" and `value` is "assertion.nickname".
+func (o IdentityServiceSamlConfigPtrOutput) AttributeMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *IdentityServiceSamlConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AttributeMapping
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Prefix to prepend to group name.
+func (o IdentityServiceSamlConfigPtrOutput) GroupPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceSamlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The SAML attribute to read groups from. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `group_prefix`).
+func (o IdentityServiceSamlConfigPtrOutput) GroupsAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceSamlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupsAttribute
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of IdP certificates to validate the SAML response against.
+func (o IdentityServiceSamlConfigPtrOutput) IdentityProviderCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdentityServiceSamlConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityProviderCertificates
+	}).(pulumi.StringArrayOutput)
+}
+
+// The entity ID of the SAML IdP.
+func (o IdentityServiceSamlConfigPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceSamlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI where the SAML IdP exposes the SSO service.
+func (o IdentityServiceSamlConfigPtrOutput) IdentityProviderSsoUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceSamlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderSsoUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The SAML attribute to read username from. If unspecified, the username will be read from the NameID element of the assertion in SAML response. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `user_prefix`).
+func (o IdentityServiceSamlConfigPtrOutput) UserAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceSamlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAttribute
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Prefix to prepend to user name.
+func (o IdentityServiceSamlConfigPtrOutput) UserPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceSamlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for the SAML Auth flow.
+type IdentityServiceSamlConfigResponse struct {
+	// Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel) used for getting the value from the resources. Take nickname as an example, in this case, `key` is "attribute.nickname" and `value` is "assertion.nickname".
+	AttributeMapping map[string]string `pulumi:"attributeMapping"`
+	// Optional. Prefix to prepend to group name.
+	GroupPrefix string `pulumi:"groupPrefix"`
+	// Optional. The SAML attribute to read groups from. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `group_prefix`).
+	GroupsAttribute string `pulumi:"groupsAttribute"`
+	// The list of IdP certificates to validate the SAML response against.
+	IdentityProviderCertificates []string `pulumi:"identityProviderCertificates"`
+	// The entity ID of the SAML IdP.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+	// The URI where the SAML IdP exposes the SSO service.
+	IdentityProviderSsoUri string `pulumi:"identityProviderSsoUri"`
+	// Optional. The SAML attribute to read username from. If unspecified, the username will be read from the NameID element of the assertion in SAML response. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `user_prefix`).
+	UserAttribute string `pulumi:"userAttribute"`
+	// Optional. Prefix to prepend to user name.
+	UserPrefix string `pulumi:"userPrefix"`
+}
+
+// Configuration for the SAML Auth flow.
+type IdentityServiceSamlConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceSamlConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceSamlConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceSamlConfigResponseOutput) ToIdentityServiceSamlConfigResponseOutput() IdentityServiceSamlConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceSamlConfigResponseOutput) ToIdentityServiceSamlConfigResponseOutputWithContext(ctx context.Context) IdentityServiceSamlConfigResponseOutput {
+	return o
+}
+
+// Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel) used for getting the value from the resources. Take nickname as an example, in this case, `key` is "attribute.nickname" and `value` is "assertion.nickname".
+func (o IdentityServiceSamlConfigResponseOutput) AttributeMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfigResponse) map[string]string { return v.AttributeMapping }).(pulumi.StringMapOutput)
+}
+
+// Optional. Prefix to prepend to group name.
+func (o IdentityServiceSamlConfigResponseOutput) GroupPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfigResponse) string { return v.GroupPrefix }).(pulumi.StringOutput)
+}
+
+// Optional. The SAML attribute to read groups from. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `group_prefix`).
+func (o IdentityServiceSamlConfigResponseOutput) GroupsAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfigResponse) string { return v.GroupsAttribute }).(pulumi.StringOutput)
+}
+
+// The list of IdP certificates to validate the SAML response against.
+func (o IdentityServiceSamlConfigResponseOutput) IdentityProviderCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfigResponse) []string { return v.IdentityProviderCertificates }).(pulumi.StringArrayOutput)
+}
+
+// The entity ID of the SAML IdP.
+func (o IdentityServiceSamlConfigResponseOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfigResponse) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+// The URI where the SAML IdP exposes the SSO service.
+func (o IdentityServiceSamlConfigResponseOutput) IdentityProviderSsoUri() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfigResponse) string { return v.IdentityProviderSsoUri }).(pulumi.StringOutput)
+}
+
+// Optional. The SAML attribute to read username from. If unspecified, the username will be read from the NameID element of the assertion in SAML response. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `user_prefix`).
+func (o IdentityServiceSamlConfigResponseOutput) UserAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfigResponse) string { return v.UserAttribute }).(pulumi.StringOutput)
+}
+
+// Optional. Prefix to prepend to user name.
+func (o IdentityServiceSamlConfigResponseOutput) UserPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSamlConfigResponse) string { return v.UserPrefix }).(pulumi.StringOutput)
+}
+
+// Server settings for the external LDAP server.
+type IdentityServiceServerConfig struct {
+	// Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server. This must be provided for the "ldaps" and "startTLS" connections.
+	CertificateAuthorityData *string `pulumi:"certificateAuthorityData"`
+	// Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is specified, the certificate_authority_data should not be empty.
+	ConnectionType *string `pulumi:"connectionType"`
+	// Defines the hostname or IP of the LDAP server. Port is optional and will default to 389, if unspecified. For example, "ldap.server.example" or "10.10.10.10:389".
+	Host string `pulumi:"host"`
+}
+
+// IdentityServiceServerConfigInput is an input type that accepts IdentityServiceServerConfigArgs and IdentityServiceServerConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceServerConfigInput` via:
+//
+//	IdentityServiceServerConfigArgs{...}
+type IdentityServiceServerConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceServerConfigOutput() IdentityServiceServerConfigOutput
+	ToIdentityServiceServerConfigOutputWithContext(context.Context) IdentityServiceServerConfigOutput
+}
+
+// Server settings for the external LDAP server.
+type IdentityServiceServerConfigArgs struct {
+	// Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server. This must be provided for the "ldaps" and "startTLS" connections.
+	CertificateAuthorityData pulumi.StringPtrInput `pulumi:"certificateAuthorityData"`
+	// Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is specified, the certificate_authority_data should not be empty.
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// Defines the hostname or IP of the LDAP server. Port is optional and will default to 389, if unspecified. For example, "ldap.server.example" or "10.10.10.10:389".
+	Host pulumi.StringInput `pulumi:"host"`
+}
+
+func (IdentityServiceServerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceServerConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceServerConfigArgs) ToIdentityServiceServerConfigOutput() IdentityServiceServerConfigOutput {
+	return i.ToIdentityServiceServerConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceServerConfigArgs) ToIdentityServiceServerConfigOutputWithContext(ctx context.Context) IdentityServiceServerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceServerConfigOutput)
+}
+
+func (i IdentityServiceServerConfigArgs) ToIdentityServiceServerConfigPtrOutput() IdentityServiceServerConfigPtrOutput {
+	return i.ToIdentityServiceServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceServerConfigArgs) ToIdentityServiceServerConfigPtrOutputWithContext(ctx context.Context) IdentityServiceServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceServerConfigOutput).ToIdentityServiceServerConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceServerConfigPtrInput is an input type that accepts IdentityServiceServerConfigArgs, IdentityServiceServerConfigPtr and IdentityServiceServerConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceServerConfigPtrInput` via:
+//
+//	        IdentityServiceServerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceServerConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceServerConfigPtrOutput() IdentityServiceServerConfigPtrOutput
+	ToIdentityServiceServerConfigPtrOutputWithContext(context.Context) IdentityServiceServerConfigPtrOutput
+}
+
+type identityServiceServerConfigPtrType IdentityServiceServerConfigArgs
+
+func IdentityServiceServerConfigPtr(v *IdentityServiceServerConfigArgs) IdentityServiceServerConfigPtrInput {
+	return (*identityServiceServerConfigPtrType)(v)
+}
+
+func (*identityServiceServerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceServerConfig)(nil)).Elem()
+}
+
+func (i *identityServiceServerConfigPtrType) ToIdentityServiceServerConfigPtrOutput() IdentityServiceServerConfigPtrOutput {
+	return i.ToIdentityServiceServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceServerConfigPtrType) ToIdentityServiceServerConfigPtrOutputWithContext(ctx context.Context) IdentityServiceServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceServerConfigPtrOutput)
+}
+
+// Server settings for the external LDAP server.
+type IdentityServiceServerConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceServerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceServerConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceServerConfigOutput) ToIdentityServiceServerConfigOutput() IdentityServiceServerConfigOutput {
+	return o
+}
+
+func (o IdentityServiceServerConfigOutput) ToIdentityServiceServerConfigOutputWithContext(ctx context.Context) IdentityServiceServerConfigOutput {
+	return o
+}
+
+func (o IdentityServiceServerConfigOutput) ToIdentityServiceServerConfigPtrOutput() IdentityServiceServerConfigPtrOutput {
+	return o.ToIdentityServiceServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceServerConfigOutput) ToIdentityServiceServerConfigPtrOutputWithContext(ctx context.Context) IdentityServiceServerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceServerConfig) *IdentityServiceServerConfig {
+		return &v
+	}).(IdentityServiceServerConfigPtrOutput)
+}
+
+// Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server. This must be provided for the "ldaps" and "startTLS" connections.
+func (o IdentityServiceServerConfigOutput) CertificateAuthorityData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceServerConfig) *string { return v.CertificateAuthorityData }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is specified, the certificate_authority_data should not be empty.
+func (o IdentityServiceServerConfigOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceServerConfig) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// Defines the hostname or IP of the LDAP server. Port is optional and will default to 389, if unspecified. For example, "ldap.server.example" or "10.10.10.10:389".
+func (o IdentityServiceServerConfigOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceServerConfig) string { return v.Host }).(pulumi.StringOutput)
+}
+
+type IdentityServiceServerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceServerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceServerConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceServerConfigPtrOutput) ToIdentityServiceServerConfigPtrOutput() IdentityServiceServerConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceServerConfigPtrOutput) ToIdentityServiceServerConfigPtrOutputWithContext(ctx context.Context) IdentityServiceServerConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceServerConfigPtrOutput) Elem() IdentityServiceServerConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceServerConfig) IdentityServiceServerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceServerConfig
+		return ret
+	}).(IdentityServiceServerConfigOutput)
+}
+
+// Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server. This must be provided for the "ldaps" and "startTLS" connections.
+func (o IdentityServiceServerConfigPtrOutput) CertificateAuthorityData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceServerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateAuthorityData
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is specified, the certificate_authority_data should not be empty.
+func (o IdentityServiceServerConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceServerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the hostname or IP of the LDAP server. Port is optional and will default to 389, if unspecified. For example, "ldap.server.example" or "10.10.10.10:389".
+func (o IdentityServiceServerConfigPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceServerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server settings for the external LDAP server.
+type IdentityServiceServerConfigResponse struct {
+	// Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server. This must be provided for the "ldaps" and "startTLS" connections.
+	CertificateAuthorityData string `pulumi:"certificateAuthorityData"`
+	// Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is specified, the certificate_authority_data should not be empty.
+	ConnectionType string `pulumi:"connectionType"`
+	// Defines the hostname or IP of the LDAP server. Port is optional and will default to 389, if unspecified. For example, "ldap.server.example" or "10.10.10.10:389".
+	Host string `pulumi:"host"`
+}
+
+// Server settings for the external LDAP server.
+type IdentityServiceServerConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceServerConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceServerConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceServerConfigResponseOutput) ToIdentityServiceServerConfigResponseOutput() IdentityServiceServerConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceServerConfigResponseOutput) ToIdentityServiceServerConfigResponseOutputWithContext(ctx context.Context) IdentityServiceServerConfigResponseOutput {
+	return o
+}
+
+// Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server. This must be provided for the "ldaps" and "startTLS" connections.
+func (o IdentityServiceServerConfigResponseOutput) CertificateAuthorityData() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceServerConfigResponse) string { return v.CertificateAuthorityData }).(pulumi.StringOutput)
+}
+
+// Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is specified, the certificate_authority_data should not be empty.
+func (o IdentityServiceServerConfigResponseOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceServerConfigResponse) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+// Defines the hostname or IP of the LDAP server. Port is optional and will default to 389, if unspecified. For example, "ldap.server.example" or "10.10.10.10:389".
+func (o IdentityServiceServerConfigResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceServerConfigResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+type IdentityServiceServiceAccountConfig struct {
+	// Credentials for basic auth.
+	SimpleBindCredentials *IdentityServiceSimpleBindCredentials `pulumi:"simpleBindCredentials"`
+}
+
+// IdentityServiceServiceAccountConfigInput is an input type that accepts IdentityServiceServiceAccountConfigArgs and IdentityServiceServiceAccountConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceServiceAccountConfigInput` via:
+//
+//	IdentityServiceServiceAccountConfigArgs{...}
+type IdentityServiceServiceAccountConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceServiceAccountConfigOutput() IdentityServiceServiceAccountConfigOutput
+	ToIdentityServiceServiceAccountConfigOutputWithContext(context.Context) IdentityServiceServiceAccountConfigOutput
+}
+
+// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+type IdentityServiceServiceAccountConfigArgs struct {
+	// Credentials for basic auth.
+	SimpleBindCredentials IdentityServiceSimpleBindCredentialsPtrInput `pulumi:"simpleBindCredentials"`
+}
+
+func (IdentityServiceServiceAccountConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceServiceAccountConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceServiceAccountConfigArgs) ToIdentityServiceServiceAccountConfigOutput() IdentityServiceServiceAccountConfigOutput {
+	return i.ToIdentityServiceServiceAccountConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceServiceAccountConfigArgs) ToIdentityServiceServiceAccountConfigOutputWithContext(ctx context.Context) IdentityServiceServiceAccountConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceServiceAccountConfigOutput)
+}
+
+func (i IdentityServiceServiceAccountConfigArgs) ToIdentityServiceServiceAccountConfigPtrOutput() IdentityServiceServiceAccountConfigPtrOutput {
+	return i.ToIdentityServiceServiceAccountConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceServiceAccountConfigArgs) ToIdentityServiceServiceAccountConfigPtrOutputWithContext(ctx context.Context) IdentityServiceServiceAccountConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceServiceAccountConfigOutput).ToIdentityServiceServiceAccountConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceServiceAccountConfigPtrInput is an input type that accepts IdentityServiceServiceAccountConfigArgs, IdentityServiceServiceAccountConfigPtr and IdentityServiceServiceAccountConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceServiceAccountConfigPtrInput` via:
+//
+//	        IdentityServiceServiceAccountConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceServiceAccountConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceServiceAccountConfigPtrOutput() IdentityServiceServiceAccountConfigPtrOutput
+	ToIdentityServiceServiceAccountConfigPtrOutputWithContext(context.Context) IdentityServiceServiceAccountConfigPtrOutput
+}
+
+type identityServiceServiceAccountConfigPtrType IdentityServiceServiceAccountConfigArgs
+
+func IdentityServiceServiceAccountConfigPtr(v *IdentityServiceServiceAccountConfigArgs) IdentityServiceServiceAccountConfigPtrInput {
+	return (*identityServiceServiceAccountConfigPtrType)(v)
+}
+
+func (*identityServiceServiceAccountConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceServiceAccountConfig)(nil)).Elem()
+}
+
+func (i *identityServiceServiceAccountConfigPtrType) ToIdentityServiceServiceAccountConfigPtrOutput() IdentityServiceServiceAccountConfigPtrOutput {
+	return i.ToIdentityServiceServiceAccountConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceServiceAccountConfigPtrType) ToIdentityServiceServiceAccountConfigPtrOutputWithContext(ctx context.Context) IdentityServiceServiceAccountConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceServiceAccountConfigPtrOutput)
+}
+
+// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+type IdentityServiceServiceAccountConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceServiceAccountConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceServiceAccountConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceServiceAccountConfigOutput) ToIdentityServiceServiceAccountConfigOutput() IdentityServiceServiceAccountConfigOutput {
+	return o
+}
+
+func (o IdentityServiceServiceAccountConfigOutput) ToIdentityServiceServiceAccountConfigOutputWithContext(ctx context.Context) IdentityServiceServiceAccountConfigOutput {
+	return o
+}
+
+func (o IdentityServiceServiceAccountConfigOutput) ToIdentityServiceServiceAccountConfigPtrOutput() IdentityServiceServiceAccountConfigPtrOutput {
+	return o.ToIdentityServiceServiceAccountConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceServiceAccountConfigOutput) ToIdentityServiceServiceAccountConfigPtrOutputWithContext(ctx context.Context) IdentityServiceServiceAccountConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceServiceAccountConfig) *IdentityServiceServiceAccountConfig {
+		return &v
+	}).(IdentityServiceServiceAccountConfigPtrOutput)
+}
+
+// Credentials for basic auth.
+func (o IdentityServiceServiceAccountConfigOutput) SimpleBindCredentials() IdentityServiceSimpleBindCredentialsPtrOutput {
+	return o.ApplyT(func(v IdentityServiceServiceAccountConfig) *IdentityServiceSimpleBindCredentials {
+		return v.SimpleBindCredentials
+	}).(IdentityServiceSimpleBindCredentialsPtrOutput)
+}
+
+type IdentityServiceServiceAccountConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceServiceAccountConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceServiceAccountConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceServiceAccountConfigPtrOutput) ToIdentityServiceServiceAccountConfigPtrOutput() IdentityServiceServiceAccountConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceServiceAccountConfigPtrOutput) ToIdentityServiceServiceAccountConfigPtrOutputWithContext(ctx context.Context) IdentityServiceServiceAccountConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceServiceAccountConfigPtrOutput) Elem() IdentityServiceServiceAccountConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceServiceAccountConfig) IdentityServiceServiceAccountConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceServiceAccountConfig
+		return ret
+	}).(IdentityServiceServiceAccountConfigOutput)
+}
+
+// Credentials for basic auth.
+func (o IdentityServiceServiceAccountConfigPtrOutput) SimpleBindCredentials() IdentityServiceSimpleBindCredentialsPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceServiceAccountConfig) *IdentityServiceSimpleBindCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.SimpleBindCredentials
+	}).(IdentityServiceSimpleBindCredentialsPtrOutput)
+}
+
+// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+type IdentityServiceServiceAccountConfigResponse struct {
+	// Credentials for basic auth.
+	SimpleBindCredentials IdentityServiceSimpleBindCredentialsResponse `pulumi:"simpleBindCredentials"`
+}
+
+// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+type IdentityServiceServiceAccountConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceServiceAccountConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceServiceAccountConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceServiceAccountConfigResponseOutput) ToIdentityServiceServiceAccountConfigResponseOutput() IdentityServiceServiceAccountConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceServiceAccountConfigResponseOutput) ToIdentityServiceServiceAccountConfigResponseOutputWithContext(ctx context.Context) IdentityServiceServiceAccountConfigResponseOutput {
+	return o
+}
+
+// Credentials for basic auth.
+func (o IdentityServiceServiceAccountConfigResponseOutput) SimpleBindCredentials() IdentityServiceSimpleBindCredentialsResponseOutput {
+	return o.ApplyT(func(v IdentityServiceServiceAccountConfigResponse) IdentityServiceSimpleBindCredentialsResponse {
+		return v.SimpleBindCredentials
+	}).(IdentityServiceSimpleBindCredentialsResponseOutput)
+}
+
+// The structure holds the LDAP simple binding credential.
+type IdentityServiceSimpleBindCredentials struct {
+	// The distinguished name(DN) of the service account object/user.
+	Dn string `pulumi:"dn"`
+	// Input only. The password of the service account object/user.
+	Password string `pulumi:"password"`
+}
+
+// IdentityServiceSimpleBindCredentialsInput is an input type that accepts IdentityServiceSimpleBindCredentialsArgs and IdentityServiceSimpleBindCredentialsOutput values.
+// You can construct a concrete instance of `IdentityServiceSimpleBindCredentialsInput` via:
+//
+//	IdentityServiceSimpleBindCredentialsArgs{...}
+type IdentityServiceSimpleBindCredentialsInput interface {
+	pulumi.Input
+
+	ToIdentityServiceSimpleBindCredentialsOutput() IdentityServiceSimpleBindCredentialsOutput
+	ToIdentityServiceSimpleBindCredentialsOutputWithContext(context.Context) IdentityServiceSimpleBindCredentialsOutput
+}
+
+// The structure holds the LDAP simple binding credential.
+type IdentityServiceSimpleBindCredentialsArgs struct {
+	// The distinguished name(DN) of the service account object/user.
+	Dn pulumi.StringInput `pulumi:"dn"`
+	// Input only. The password of the service account object/user.
+	Password pulumi.StringInput `pulumi:"password"`
+}
+
+func (IdentityServiceSimpleBindCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceSimpleBindCredentials)(nil)).Elem()
+}
+
+func (i IdentityServiceSimpleBindCredentialsArgs) ToIdentityServiceSimpleBindCredentialsOutput() IdentityServiceSimpleBindCredentialsOutput {
+	return i.ToIdentityServiceSimpleBindCredentialsOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceSimpleBindCredentialsArgs) ToIdentityServiceSimpleBindCredentialsOutputWithContext(ctx context.Context) IdentityServiceSimpleBindCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceSimpleBindCredentialsOutput)
+}
+
+func (i IdentityServiceSimpleBindCredentialsArgs) ToIdentityServiceSimpleBindCredentialsPtrOutput() IdentityServiceSimpleBindCredentialsPtrOutput {
+	return i.ToIdentityServiceSimpleBindCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceSimpleBindCredentialsArgs) ToIdentityServiceSimpleBindCredentialsPtrOutputWithContext(ctx context.Context) IdentityServiceSimpleBindCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceSimpleBindCredentialsOutput).ToIdentityServiceSimpleBindCredentialsPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceSimpleBindCredentialsPtrInput is an input type that accepts IdentityServiceSimpleBindCredentialsArgs, IdentityServiceSimpleBindCredentialsPtr and IdentityServiceSimpleBindCredentialsPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceSimpleBindCredentialsPtrInput` via:
+//
+//	        IdentityServiceSimpleBindCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceSimpleBindCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceSimpleBindCredentialsPtrOutput() IdentityServiceSimpleBindCredentialsPtrOutput
+	ToIdentityServiceSimpleBindCredentialsPtrOutputWithContext(context.Context) IdentityServiceSimpleBindCredentialsPtrOutput
+}
+
+type identityServiceSimpleBindCredentialsPtrType IdentityServiceSimpleBindCredentialsArgs
+
+func IdentityServiceSimpleBindCredentialsPtr(v *IdentityServiceSimpleBindCredentialsArgs) IdentityServiceSimpleBindCredentialsPtrInput {
+	return (*identityServiceSimpleBindCredentialsPtrType)(v)
+}
+
+func (*identityServiceSimpleBindCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceSimpleBindCredentials)(nil)).Elem()
+}
+
+func (i *identityServiceSimpleBindCredentialsPtrType) ToIdentityServiceSimpleBindCredentialsPtrOutput() IdentityServiceSimpleBindCredentialsPtrOutput {
+	return i.ToIdentityServiceSimpleBindCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceSimpleBindCredentialsPtrType) ToIdentityServiceSimpleBindCredentialsPtrOutputWithContext(ctx context.Context) IdentityServiceSimpleBindCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceSimpleBindCredentialsPtrOutput)
+}
+
+// The structure holds the LDAP simple binding credential.
+type IdentityServiceSimpleBindCredentialsOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceSimpleBindCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceSimpleBindCredentials)(nil)).Elem()
+}
+
+func (o IdentityServiceSimpleBindCredentialsOutput) ToIdentityServiceSimpleBindCredentialsOutput() IdentityServiceSimpleBindCredentialsOutput {
+	return o
+}
+
+func (o IdentityServiceSimpleBindCredentialsOutput) ToIdentityServiceSimpleBindCredentialsOutputWithContext(ctx context.Context) IdentityServiceSimpleBindCredentialsOutput {
+	return o
+}
+
+func (o IdentityServiceSimpleBindCredentialsOutput) ToIdentityServiceSimpleBindCredentialsPtrOutput() IdentityServiceSimpleBindCredentialsPtrOutput {
+	return o.ToIdentityServiceSimpleBindCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceSimpleBindCredentialsOutput) ToIdentityServiceSimpleBindCredentialsPtrOutputWithContext(ctx context.Context) IdentityServiceSimpleBindCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceSimpleBindCredentials) *IdentityServiceSimpleBindCredentials {
+		return &v
+	}).(IdentityServiceSimpleBindCredentialsPtrOutput)
+}
+
+// The distinguished name(DN) of the service account object/user.
+func (o IdentityServiceSimpleBindCredentialsOutput) Dn() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSimpleBindCredentials) string { return v.Dn }).(pulumi.StringOutput)
+}
+
+// Input only. The password of the service account object/user.
+func (o IdentityServiceSimpleBindCredentialsOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSimpleBindCredentials) string { return v.Password }).(pulumi.StringOutput)
+}
+
+type IdentityServiceSimpleBindCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceSimpleBindCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceSimpleBindCredentials)(nil)).Elem()
+}
+
+func (o IdentityServiceSimpleBindCredentialsPtrOutput) ToIdentityServiceSimpleBindCredentialsPtrOutput() IdentityServiceSimpleBindCredentialsPtrOutput {
+	return o
+}
+
+func (o IdentityServiceSimpleBindCredentialsPtrOutput) ToIdentityServiceSimpleBindCredentialsPtrOutputWithContext(ctx context.Context) IdentityServiceSimpleBindCredentialsPtrOutput {
+	return o
+}
+
+func (o IdentityServiceSimpleBindCredentialsPtrOutput) Elem() IdentityServiceSimpleBindCredentialsOutput {
+	return o.ApplyT(func(v *IdentityServiceSimpleBindCredentials) IdentityServiceSimpleBindCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceSimpleBindCredentials
+		return ret
+	}).(IdentityServiceSimpleBindCredentialsOutput)
+}
+
+// The distinguished name(DN) of the service account object/user.
+func (o IdentityServiceSimpleBindCredentialsPtrOutput) Dn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceSimpleBindCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Dn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password of the service account object/user.
+func (o IdentityServiceSimpleBindCredentialsPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceSimpleBindCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The structure holds the LDAP simple binding credential.
+type IdentityServiceSimpleBindCredentialsResponse struct {
+	// The distinguished name(DN) of the service account object/user.
+	Dn string `pulumi:"dn"`
+	// The encrypted password of the service account object/user.
+	EncryptedPassword string `pulumi:"encryptedPassword"`
+	// Input only. The password of the service account object/user.
+	Password string `pulumi:"password"`
+}
+
+// The structure holds the LDAP simple binding credential.
+type IdentityServiceSimpleBindCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceSimpleBindCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceSimpleBindCredentialsResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceSimpleBindCredentialsResponseOutput) ToIdentityServiceSimpleBindCredentialsResponseOutput() IdentityServiceSimpleBindCredentialsResponseOutput {
+	return o
+}
+
+func (o IdentityServiceSimpleBindCredentialsResponseOutput) ToIdentityServiceSimpleBindCredentialsResponseOutputWithContext(ctx context.Context) IdentityServiceSimpleBindCredentialsResponseOutput {
+	return o
+}
+
+// The distinguished name(DN) of the service account object/user.
+func (o IdentityServiceSimpleBindCredentialsResponseOutput) Dn() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSimpleBindCredentialsResponse) string { return v.Dn }).(pulumi.StringOutput)
+}
+
+// The encrypted password of the service account object/user.
+func (o IdentityServiceSimpleBindCredentialsResponseOutput) EncryptedPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSimpleBindCredentialsResponse) string { return v.EncryptedPassword }).(pulumi.StringOutput)
+}
+
+// Input only. The password of the service account object/user.
+func (o IdentityServiceSimpleBindCredentialsResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceSimpleBindCredentialsResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Defines where users exist in the LDAP directory.
+type IdentityServiceUserConfig struct {
+	// The location of the subtree in the LDAP directory to search for user entries.
+	BaseDn string `pulumi:"baseDn"`
+	// Optional. Filter to apply when searching for the user. This can be used to further restrict the user accounts which are allowed to login. This defaults to "(objectClass=User)".
+	Filter *string `pulumi:"filter"`
+	// Optional. Determines which attribute to use as the user's identity after they are authenticated. This is distinct from the loginAttribute field to allow users to login with a username, but then have their actual identifier be an email address or full Distinguished Name (DN). For example, setting loginAttribute to "sAMAccountName" and identifierAttribute to "userPrincipalName" would allow a user to login as "bsmith", but actual RBAC policies for the user would be written as "bsmith@example.com". Using "userPrincipalName" is recommended since this will be unique for each user. This defaults to "userPrincipalName".
+	IdAttribute *string `pulumi:"idAttribute"`
+	// Optional. The name of the attribute which matches against the input username. This is used to find the user in the LDAP database e.g. "(=)" and is combined with the optional filter field. This defaults to "userPrincipalName".
+	LoginAttribute *string `pulumi:"loginAttribute"`
+}
+
+// IdentityServiceUserConfigInput is an input type that accepts IdentityServiceUserConfigArgs and IdentityServiceUserConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceUserConfigInput` via:
+//
+//	IdentityServiceUserConfigArgs{...}
+type IdentityServiceUserConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceUserConfigOutput() IdentityServiceUserConfigOutput
+	ToIdentityServiceUserConfigOutputWithContext(context.Context) IdentityServiceUserConfigOutput
+}
+
+// Defines where users exist in the LDAP directory.
+type IdentityServiceUserConfigArgs struct {
+	// The location of the subtree in the LDAP directory to search for user entries.
+	BaseDn pulumi.StringInput `pulumi:"baseDn"`
+	// Optional. Filter to apply when searching for the user. This can be used to further restrict the user accounts which are allowed to login. This defaults to "(objectClass=User)".
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Optional. Determines which attribute to use as the user's identity after they are authenticated. This is distinct from the loginAttribute field to allow users to login with a username, but then have their actual identifier be an email address or full Distinguished Name (DN). For example, setting loginAttribute to "sAMAccountName" and identifierAttribute to "userPrincipalName" would allow a user to login as "bsmith", but actual RBAC policies for the user would be written as "bsmith@example.com". Using "userPrincipalName" is recommended since this will be unique for each user. This defaults to "userPrincipalName".
+	IdAttribute pulumi.StringPtrInput `pulumi:"idAttribute"`
+	// Optional. The name of the attribute which matches against the input username. This is used to find the user in the LDAP database e.g. "(=)" and is combined with the optional filter field. This defaults to "userPrincipalName".
+	LoginAttribute pulumi.StringPtrInput `pulumi:"loginAttribute"`
+}
+
+func (IdentityServiceUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceUserConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceUserConfigArgs) ToIdentityServiceUserConfigOutput() IdentityServiceUserConfigOutput {
+	return i.ToIdentityServiceUserConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceUserConfigArgs) ToIdentityServiceUserConfigOutputWithContext(ctx context.Context) IdentityServiceUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceUserConfigOutput)
+}
+
+func (i IdentityServiceUserConfigArgs) ToIdentityServiceUserConfigPtrOutput() IdentityServiceUserConfigPtrOutput {
+	return i.ToIdentityServiceUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceUserConfigArgs) ToIdentityServiceUserConfigPtrOutputWithContext(ctx context.Context) IdentityServiceUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceUserConfigOutput).ToIdentityServiceUserConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceUserConfigPtrInput is an input type that accepts IdentityServiceUserConfigArgs, IdentityServiceUserConfigPtr and IdentityServiceUserConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceUserConfigPtrInput` via:
+//
+//	        IdentityServiceUserConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceUserConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceUserConfigPtrOutput() IdentityServiceUserConfigPtrOutput
+	ToIdentityServiceUserConfigPtrOutputWithContext(context.Context) IdentityServiceUserConfigPtrOutput
+}
+
+type identityServiceUserConfigPtrType IdentityServiceUserConfigArgs
+
+func IdentityServiceUserConfigPtr(v *IdentityServiceUserConfigArgs) IdentityServiceUserConfigPtrInput {
+	return (*identityServiceUserConfigPtrType)(v)
+}
+
+func (*identityServiceUserConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceUserConfig)(nil)).Elem()
+}
+
+func (i *identityServiceUserConfigPtrType) ToIdentityServiceUserConfigPtrOutput() IdentityServiceUserConfigPtrOutput {
+	return i.ToIdentityServiceUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceUserConfigPtrType) ToIdentityServiceUserConfigPtrOutputWithContext(ctx context.Context) IdentityServiceUserConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceUserConfigPtrOutput)
+}
+
+// Defines where users exist in the LDAP directory.
+type IdentityServiceUserConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceUserConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceUserConfigOutput) ToIdentityServiceUserConfigOutput() IdentityServiceUserConfigOutput {
+	return o
+}
+
+func (o IdentityServiceUserConfigOutput) ToIdentityServiceUserConfigOutputWithContext(ctx context.Context) IdentityServiceUserConfigOutput {
+	return o
+}
+
+func (o IdentityServiceUserConfigOutput) ToIdentityServiceUserConfigPtrOutput() IdentityServiceUserConfigPtrOutput {
+	return o.ToIdentityServiceUserConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceUserConfigOutput) ToIdentityServiceUserConfigPtrOutputWithContext(ctx context.Context) IdentityServiceUserConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceUserConfig) *IdentityServiceUserConfig {
+		return &v
+	}).(IdentityServiceUserConfigPtrOutput)
+}
+
+// The location of the subtree in the LDAP directory to search for user entries.
+func (o IdentityServiceUserConfigOutput) BaseDn() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceUserConfig) string { return v.BaseDn }).(pulumi.StringOutput)
+}
+
+// Optional. Filter to apply when searching for the user. This can be used to further restrict the user accounts which are allowed to login. This defaults to "(objectClass=User)".
+func (o IdentityServiceUserConfigOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceUserConfig) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Determines which attribute to use as the user's identity after they are authenticated. This is distinct from the loginAttribute field to allow users to login with a username, but then have their actual identifier be an email address or full Distinguished Name (DN). For example, setting loginAttribute to "sAMAccountName" and identifierAttribute to "userPrincipalName" would allow a user to login as "bsmith", but actual RBAC policies for the user would be written as "bsmith@example.com". Using "userPrincipalName" is recommended since this will be unique for each user. This defaults to "userPrincipalName".
+func (o IdentityServiceUserConfigOutput) IdAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceUserConfig) *string { return v.IdAttribute }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the attribute which matches against the input username. This is used to find the user in the LDAP database e.g. "(=)" and is combined with the optional filter field. This defaults to "userPrincipalName".
+func (o IdentityServiceUserConfigOutput) LoginAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceUserConfig) *string { return v.LoginAttribute }).(pulumi.StringPtrOutput)
+}
+
+type IdentityServiceUserConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceUserConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceUserConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceUserConfigPtrOutput) ToIdentityServiceUserConfigPtrOutput() IdentityServiceUserConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceUserConfigPtrOutput) ToIdentityServiceUserConfigPtrOutputWithContext(ctx context.Context) IdentityServiceUserConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceUserConfigPtrOutput) Elem() IdentityServiceUserConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceUserConfig) IdentityServiceUserConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceUserConfig
+		return ret
+	}).(IdentityServiceUserConfigOutput)
+}
+
+// The location of the subtree in the LDAP directory to search for user entries.
+func (o IdentityServiceUserConfigPtrOutput) BaseDn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseDn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Filter to apply when searching for the user. This can be used to further restrict the user accounts which are allowed to login. This defaults to "(objectClass=User)".
+func (o IdentityServiceUserConfigPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Determines which attribute to use as the user's identity after they are authenticated. This is distinct from the loginAttribute field to allow users to login with a username, but then have their actual identifier be an email address or full Distinguished Name (DN). For example, setting loginAttribute to "sAMAccountName" and identifierAttribute to "userPrincipalName" would allow a user to login as "bsmith", but actual RBAC policies for the user would be written as "bsmith@example.com". Using "userPrincipalName" is recommended since this will be unique for each user. This defaults to "userPrincipalName".
+func (o IdentityServiceUserConfigPtrOutput) IdAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdAttribute
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the attribute which matches against the input username. This is used to find the user in the LDAP database e.g. "(=)" and is combined with the optional filter field. This defaults to "userPrincipalName".
+func (o IdentityServiceUserConfigPtrOutput) LoginAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoginAttribute
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines where users exist in the LDAP directory.
+type IdentityServiceUserConfigResponse struct {
+	// The location of the subtree in the LDAP directory to search for user entries.
+	BaseDn string `pulumi:"baseDn"`
+	// Optional. Filter to apply when searching for the user. This can be used to further restrict the user accounts which are allowed to login. This defaults to "(objectClass=User)".
+	Filter string `pulumi:"filter"`
+	// Optional. Determines which attribute to use as the user's identity after they are authenticated. This is distinct from the loginAttribute field to allow users to login with a username, but then have their actual identifier be an email address or full Distinguished Name (DN). For example, setting loginAttribute to "sAMAccountName" and identifierAttribute to "userPrincipalName" would allow a user to login as "bsmith", but actual RBAC policies for the user would be written as "bsmith@example.com". Using "userPrincipalName" is recommended since this will be unique for each user. This defaults to "userPrincipalName".
+	IdAttribute string `pulumi:"idAttribute"`
+	// Optional. The name of the attribute which matches against the input username. This is used to find the user in the LDAP database e.g. "(=)" and is combined with the optional filter field. This defaults to "userPrincipalName".
+	LoginAttribute string `pulumi:"loginAttribute"`
+}
+
+// Defines where users exist in the LDAP directory.
+type IdentityServiceUserConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceUserConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceUserConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceUserConfigResponseOutput) ToIdentityServiceUserConfigResponseOutput() IdentityServiceUserConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceUserConfigResponseOutput) ToIdentityServiceUserConfigResponseOutputWithContext(ctx context.Context) IdentityServiceUserConfigResponseOutput {
+	return o
+}
+
+// The location of the subtree in the LDAP directory to search for user entries.
+func (o IdentityServiceUserConfigResponseOutput) BaseDn() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceUserConfigResponse) string { return v.BaseDn }).(pulumi.StringOutput)
+}
+
+// Optional. Filter to apply when searching for the user. This can be used to further restrict the user accounts which are allowed to login. This defaults to "(objectClass=User)".
+func (o IdentityServiceUserConfigResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceUserConfigResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Optional. Determines which attribute to use as the user's identity after they are authenticated. This is distinct from the loginAttribute field to allow users to login with a username, but then have their actual identifier be an email address or full Distinguished Name (DN). For example, setting loginAttribute to "sAMAccountName" and identifierAttribute to "userPrincipalName" would allow a user to login as "bsmith", but actual RBAC policies for the user would be written as "bsmith@example.com". Using "userPrincipalName" is recommended since this will be unique for each user. This defaults to "userPrincipalName".
+func (o IdentityServiceUserConfigResponseOutput) IdAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceUserConfigResponse) string { return v.IdAttribute }).(pulumi.StringOutput)
+}
+
+// Optional. The name of the attribute which matches against the input username. This is used to find the user in the LDAP database e.g. "(=)" and is combined with the optional filter field. This defaults to "userPrincipalName".
+func (o IdentityServiceUserConfigResponseOutput) LoginAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceUserConfigResponse) string { return v.LoginAttribute }).(pulumi.StringOutput)
 }
 
 // KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
@@ -11827,6 +13772,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementPolicyControllerPtrInput)(nil)).Elem(), ConfigManagementPolicyControllerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementPolicyControllerMonitoringInput)(nil)).Elem(), ConfigManagementPolicyControllerMonitoringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementPolicyControllerMonitoringPtrInput)(nil)).Elem(), ConfigManagementPolicyControllerMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataplaneV2FeatureSpecInput)(nil)).Elem(), DataplaneV2FeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataplaneV2FeatureSpecPtrInput)(nil)).Elem(), DataplaneV2FeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultClusterConfigInput)(nil)).Elem(), DefaultClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultClusterConfigPtrInput)(nil)).Elem(), DefaultClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeClusterInput)(nil)).Elem(), EdgeClusterArgs{})
@@ -11847,10 +13794,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceAzureADConfigPtrInput)(nil)).Elem(), IdentityServiceAzureADConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceGoogleConfigInput)(nil)).Elem(), IdentityServiceGoogleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceGoogleConfigPtrInput)(nil)).Elem(), IdentityServiceGoogleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceGroupConfigInput)(nil)).Elem(), IdentityServiceGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceGroupConfigPtrInput)(nil)).Elem(), IdentityServiceGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceLdapConfigInput)(nil)).Elem(), IdentityServiceLdapConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceLdapConfigPtrInput)(nil)).Elem(), IdentityServiceLdapConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceMembershipSpecInput)(nil)).Elem(), IdentityServiceMembershipSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceMembershipSpecPtrInput)(nil)).Elem(), IdentityServiceMembershipSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceOidcConfigInput)(nil)).Elem(), IdentityServiceOidcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceOidcConfigPtrInput)(nil)).Elem(), IdentityServiceOidcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceSamlConfigInput)(nil)).Elem(), IdentityServiceSamlConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceSamlConfigPtrInput)(nil)).Elem(), IdentityServiceSamlConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceServerConfigInput)(nil)).Elem(), IdentityServiceServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceServerConfigPtrInput)(nil)).Elem(), IdentityServiceServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceServiceAccountConfigInput)(nil)).Elem(), IdentityServiceServiceAccountConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceServiceAccountConfigPtrInput)(nil)).Elem(), IdentityServiceServiceAccountConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceSimpleBindCredentialsInput)(nil)).Elem(), IdentityServiceSimpleBindCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceSimpleBindCredentialsPtrInput)(nil)).Elem(), IdentityServiceSimpleBindCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceUserConfigInput)(nil)).Elem(), IdentityServiceUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceUserConfigPtrInput)(nil)).Elem(), IdentityServiceUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourceInput)(nil)).Elem(), KubernetesResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourcePtrInput)(nil)).Elem(), KubernetesResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointInput)(nil)).Elem(), MembershipEndpointArgs{})
@@ -11963,6 +13924,9 @@ func init() {
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringPtrOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringResponseOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerResponseOutput{})
+	pulumi.RegisterOutputType(DataplaneV2FeatureSpecOutput{})
+	pulumi.RegisterOutputType(DataplaneV2FeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(DataplaneV2FeatureSpecResponseOutput{})
 	pulumi.RegisterOutputType(DefaultClusterConfigOutput{})
 	pulumi.RegisterOutputType(DefaultClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(DefaultClusterConfigResponseOutput{})
@@ -12003,12 +13967,33 @@ func init() {
 	pulumi.RegisterOutputType(IdentityServiceGoogleConfigOutput{})
 	pulumi.RegisterOutputType(IdentityServiceGoogleConfigPtrOutput{})
 	pulumi.RegisterOutputType(IdentityServiceGoogleConfigResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceGroupConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceGroupConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceGroupConfigResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceLdapConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceLdapConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceLdapConfigResponseOutput{})
 	pulumi.RegisterOutputType(IdentityServiceMembershipSpecOutput{})
 	pulumi.RegisterOutputType(IdentityServiceMembershipSpecPtrOutput{})
 	pulumi.RegisterOutputType(IdentityServiceMembershipSpecResponseOutput{})
 	pulumi.RegisterOutputType(IdentityServiceOidcConfigOutput{})
 	pulumi.RegisterOutputType(IdentityServiceOidcConfigPtrOutput{})
 	pulumi.RegisterOutputType(IdentityServiceOidcConfigResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceSamlConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceSamlConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceSamlConfigResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceServerConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceServerConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceServerConfigResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceServiceAccountConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceServiceAccountConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceServiceAccountConfigResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceSimpleBindCredentialsOutput{})
+	pulumi.RegisterOutputType(IdentityServiceSimpleBindCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceSimpleBindCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceUserConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceUserConfigResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesMetadataResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesResourceOutput{})
 	pulumi.RegisterOutputType(KubernetesResourcePtrOutput{})

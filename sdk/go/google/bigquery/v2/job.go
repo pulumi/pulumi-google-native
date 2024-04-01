@@ -7,27 +7,30 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Starts a new asynchronous job. Requires the Can View project role.
+// Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts.
 // Auto-naming is currently not supported for this resource.
 type Job struct {
 	pulumi.CustomResourceState
 
-	// [Required] Describes the job configuration.
+	// Describes the job configuration.
 	Configuration JobConfigurationResponseOutput `pulumi:"configuration"`
 	// A hash of this resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
-	JobCreationReason pulumi.AnyOutput `pulumi:"jobCreationReason"`
-	// [Optional] Reference describing the unique-per-user name of the job.
+	JobCreationReason JobCreationReasonResponseOutput `pulumi:"jobCreationReason"`
+	// Optional. Reference describing the unique-per-user name of the job.
 	JobReference JobReferenceResponseOutput `pulumi:"jobReference"`
 	// The type of the resource.
-	Kind    pulumi.StringOutput `pulumi:"kind"`
-	Project pulumi.StringOutput `pulumi:"project"`
-	// A URL that can be used to access this resource again.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// [Full-projection-only] String representation of identity of requesting party. Populated for both first- and third-party identities. Only present for APIs that support third-party identities.
+	PrincipalSubject pulumi.StringOutput `pulumi:"principalSubject"`
+	Project          pulumi.StringOutput `pulumi:"project"`
+	// A URL that can be used to access the resource again.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Information about the job, including starting time and ending time of the job.
 	Statistics JobStatisticsResponseOutput `pulumi:"statistics"`
@@ -41,9 +44,12 @@ type Job struct {
 func NewJob(ctx *pulumi.Context,
 	name string, args *JobArgs, opts ...pulumi.ResourceOption) (*Job, error) {
 	if args == nil {
-		args = &JobArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Configuration == nil {
+		return nil, errors.New("invalid value for required argument 'Configuration'")
+	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"project",
 	})
@@ -81,9 +87,9 @@ func (JobState) ElementType() reflect.Type {
 }
 
 type jobArgs struct {
-	// [Required] Describes the job configuration.
-	Configuration *JobConfiguration `pulumi:"configuration"`
-	// [Optional] Reference describing the unique-per-user name of the job.
+	// Describes the job configuration.
+	Configuration JobConfiguration `pulumi:"configuration"`
+	// Optional. Reference describing the unique-per-user name of the job.
 	JobReference *JobReference         `pulumi:"jobReference"`
 	Project      *string               `pulumi:"project"`
 	Source       pulumi.AssetOrArchive `pulumi:"source"`
@@ -91,9 +97,9 @@ type jobArgs struct {
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
-	// [Required] Describes the job configuration.
-	Configuration JobConfigurationPtrInput
-	// [Optional] Reference describing the unique-per-user name of the job.
+	// Describes the job configuration.
+	Configuration JobConfigurationInput
+	// Optional. Reference describing the unique-per-user name of the job.
 	JobReference JobReferencePtrInput
 	Project      pulumi.StringPtrInput
 	Source       pulumi.AssetOrArchiveInput
@@ -136,7 +142,7 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
 }
 
-// [Required] Describes the job configuration.
+// Describes the job configuration.
 func (o JobOutput) Configuration() JobConfigurationResponseOutput {
 	return o.ApplyT(func(v *Job) JobConfigurationResponseOutput { return v.Configuration }).(JobConfigurationResponseOutput)
 }
@@ -147,11 +153,11 @@ func (o JobOutput) Etag() pulumi.StringOutput {
 }
 
 // If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
-func (o JobOutput) JobCreationReason() pulumi.AnyOutput {
-	return o.ApplyT(func(v *Job) pulumi.AnyOutput { return v.JobCreationReason }).(pulumi.AnyOutput)
+func (o JobOutput) JobCreationReason() JobCreationReasonResponseOutput {
+	return o.ApplyT(func(v *Job) JobCreationReasonResponseOutput { return v.JobCreationReason }).(JobCreationReasonResponseOutput)
 }
 
-// [Optional] Reference describing the unique-per-user name of the job.
+// Optional. Reference describing the unique-per-user name of the job.
 func (o JobOutput) JobReference() JobReferenceResponseOutput {
 	return o.ApplyT(func(v *Job) JobReferenceResponseOutput { return v.JobReference }).(JobReferenceResponseOutput)
 }
@@ -161,11 +167,16 @@ func (o JobOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
+// [Full-projection-only] String representation of identity of requesting party. Populated for both first- and third-party identities. Only present for APIs that support third-party identities.
+func (o JobOutput) PrincipalSubject() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.PrincipalSubject }).(pulumi.StringOutput)
+}
+
 func (o JobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// A URL that can be used to access this resource again.
+// A URL that can be used to access the resource again.
 func (o JobOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }

@@ -33,7 +33,7 @@ type ProxyConfig struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Routing info to direct traffic to the proxy server.
 	RoutingInfo GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput `pulumi:"routingInfo"`
-	// Transport layer information to verify for the proxy server.
+	// Optional. Transport layer information to verify for the proxy server.
 	TransportInfo GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput `pulumi:"transportInfo"`
 	// Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -57,9 +57,6 @@ func NewProxyConfig(ctx *pulumi.Context,
 	}
 	if args.RoutingInfo == nil {
 		return nil, errors.New("invalid value for required argument 'RoutingInfo'")
-	}
-	if args.TransportInfo == nil {
-		return nil, errors.New("invalid value for required argument 'TransportInfo'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"organizationId",
@@ -111,8 +108,8 @@ type proxyConfigArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Routing info to direct traffic to the proxy server.
 	RoutingInfo GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo `pulumi:"routingInfo"`
-	// Transport layer information to verify for the proxy server.
-	TransportInfo GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo `pulumi:"transportInfo"`
+	// Optional. Transport layer information to verify for the proxy server.
+	TransportInfo *GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo `pulumi:"transportInfo"`
 }
 
 // The set of arguments for constructing a ProxyConfig resource.
@@ -129,8 +126,8 @@ type ProxyConfigArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Routing info to direct traffic to the proxy server.
 	RoutingInfo GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoInput
-	// Transport layer information to verify for the proxy server.
-	TransportInfo GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoInput
+	// Optional. Transport layer information to verify for the proxy server.
+	TransportInfo GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoPtrInput
 }
 
 func (ProxyConfigArgs) ElementType() reflect.Type {
@@ -217,7 +214,7 @@ func (o ProxyConfigOutput) RoutingInfo() GoogleCloudBeyondcorpPartnerservicesV1a
 	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput)
 }
 
-// Transport layer information to verify for the proxy server.
+// Optional. Transport layer information to verify for the proxy server.
 func (o ProxyConfigOutput) TransportInfo() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput {
 	return o.ApplyT(func(v *ProxyConfig) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput {
 		return v.TransportInfo

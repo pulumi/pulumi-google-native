@@ -13,6 +13,152 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// AuthorizedNetwork contains metadata for an authorized network.
+type AuthorizedNetwork struct {
+	// CIDR range for one authorzied network of the instance.
+	CidrRange *string `pulumi:"cidrRange"`
+}
+
+// AuthorizedNetworkInput is an input type that accepts AuthorizedNetworkArgs and AuthorizedNetworkOutput values.
+// You can construct a concrete instance of `AuthorizedNetworkInput` via:
+//
+//	AuthorizedNetworkArgs{...}
+type AuthorizedNetworkInput interface {
+	pulumi.Input
+
+	ToAuthorizedNetworkOutput() AuthorizedNetworkOutput
+	ToAuthorizedNetworkOutputWithContext(context.Context) AuthorizedNetworkOutput
+}
+
+// AuthorizedNetwork contains metadata for an authorized network.
+type AuthorizedNetworkArgs struct {
+	// CIDR range for one authorzied network of the instance.
+	CidrRange pulumi.StringPtrInput `pulumi:"cidrRange"`
+}
+
+func (AuthorizedNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedNetwork)(nil)).Elem()
+}
+
+func (i AuthorizedNetworkArgs) ToAuthorizedNetworkOutput() AuthorizedNetworkOutput {
+	return i.ToAuthorizedNetworkOutputWithContext(context.Background())
+}
+
+func (i AuthorizedNetworkArgs) ToAuthorizedNetworkOutputWithContext(ctx context.Context) AuthorizedNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedNetworkOutput)
+}
+
+// AuthorizedNetworkArrayInput is an input type that accepts AuthorizedNetworkArray and AuthorizedNetworkArrayOutput values.
+// You can construct a concrete instance of `AuthorizedNetworkArrayInput` via:
+//
+//	AuthorizedNetworkArray{ AuthorizedNetworkArgs{...} }
+type AuthorizedNetworkArrayInput interface {
+	pulumi.Input
+
+	ToAuthorizedNetworkArrayOutput() AuthorizedNetworkArrayOutput
+	ToAuthorizedNetworkArrayOutputWithContext(context.Context) AuthorizedNetworkArrayOutput
+}
+
+type AuthorizedNetworkArray []AuthorizedNetworkInput
+
+func (AuthorizedNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorizedNetwork)(nil)).Elem()
+}
+
+func (i AuthorizedNetworkArray) ToAuthorizedNetworkArrayOutput() AuthorizedNetworkArrayOutput {
+	return i.ToAuthorizedNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i AuthorizedNetworkArray) ToAuthorizedNetworkArrayOutputWithContext(ctx context.Context) AuthorizedNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedNetworkArrayOutput)
+}
+
+// AuthorizedNetwork contains metadata for an authorized network.
+type AuthorizedNetworkOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedNetwork)(nil)).Elem()
+}
+
+func (o AuthorizedNetworkOutput) ToAuthorizedNetworkOutput() AuthorizedNetworkOutput {
+	return o
+}
+
+func (o AuthorizedNetworkOutput) ToAuthorizedNetworkOutputWithContext(ctx context.Context) AuthorizedNetworkOutput {
+	return o
+}
+
+// CIDR range for one authorzied network of the instance.
+func (o AuthorizedNetworkOutput) CidrRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorizedNetwork) *string { return v.CidrRange }).(pulumi.StringPtrOutput)
+}
+
+type AuthorizedNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorizedNetwork)(nil)).Elem()
+}
+
+func (o AuthorizedNetworkArrayOutput) ToAuthorizedNetworkArrayOutput() AuthorizedNetworkArrayOutput {
+	return o
+}
+
+func (o AuthorizedNetworkArrayOutput) ToAuthorizedNetworkArrayOutputWithContext(ctx context.Context) AuthorizedNetworkArrayOutput {
+	return o
+}
+
+func (o AuthorizedNetworkArrayOutput) Index(i pulumi.IntInput) AuthorizedNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthorizedNetwork {
+		return vs[0].([]AuthorizedNetwork)[vs[1].(int)]
+	}).(AuthorizedNetworkOutput)
+}
+
+// AuthorizedNetwork contains metadata for an authorized network.
+type AuthorizedNetworkResponse struct {
+	// CIDR range for one authorzied network of the instance.
+	CidrRange string `pulumi:"cidrRange"`
+}
+
+// AuthorizedNetwork contains metadata for an authorized network.
+type AuthorizedNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedNetworkResponse)(nil)).Elem()
+}
+
+func (o AuthorizedNetworkResponseOutput) ToAuthorizedNetworkResponseOutput() AuthorizedNetworkResponseOutput {
+	return o
+}
+
+func (o AuthorizedNetworkResponseOutput) ToAuthorizedNetworkResponseOutputWithContext(ctx context.Context) AuthorizedNetworkResponseOutput {
+	return o
+}
+
+// CIDR range for one authorzied network of the instance.
+func (o AuthorizedNetworkResponseOutput) CidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthorizedNetworkResponse) string { return v.CidrRange }).(pulumi.StringOutput)
+}
+
+type AuthorizedNetworkResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedNetworkResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorizedNetworkResponse)(nil)).Elem()
+}
+
+func (o AuthorizedNetworkResponseArrayOutput) ToAuthorizedNetworkResponseArrayOutput() AuthorizedNetworkResponseArrayOutput {
+	return o
+}
+
+func (o AuthorizedNetworkResponseArrayOutput) ToAuthorizedNetworkResponseArrayOutputWithContext(ctx context.Context) AuthorizedNetworkResponseArrayOutput {
+	return o
+}
+
+func (o AuthorizedNetworkResponseArrayOutput) Index(i pulumi.IntInput) AuthorizedNetworkResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthorizedNetworkResponse {
+		return vs[0].([]AuthorizedNetworkResponse)[vs[1].(int)]
+	}).(AuthorizedNetworkResponseOutput)
+}
+
 // Message describing the user-specified automated backup policy. All fields in the automated backup policy are optional. Defaults for each field are provided if they are not set.
 type AutomatedBackupPolicy struct {
 	// The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed. The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it defaults to 1 hour.
@@ -1244,6 +1390,198 @@ func (o GoogleTypeTimeOfDayResponseArrayOutput) Index(i pulumi.IntInput) GoogleT
 	}).(GoogleTypeTimeOfDayResponseOutput)
 }
 
+// Metadata related to instance level network configuration.
+type InstanceNetworkConfig struct {
+	// Optional. A list of external network authorized to access this instance.
+	AuthorizedExternalNetworks []AuthorizedNetwork `pulumi:"authorizedExternalNetworks"`
+	// Optional. Enabling public ip for the instance.
+	EnablePublicIp *bool `pulumi:"enablePublicIp"`
+}
+
+// InstanceNetworkConfigInput is an input type that accepts InstanceNetworkConfigArgs and InstanceNetworkConfigOutput values.
+// You can construct a concrete instance of `InstanceNetworkConfigInput` via:
+//
+//	InstanceNetworkConfigArgs{...}
+type InstanceNetworkConfigInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkConfigOutput() InstanceNetworkConfigOutput
+	ToInstanceNetworkConfigOutputWithContext(context.Context) InstanceNetworkConfigOutput
+}
+
+// Metadata related to instance level network configuration.
+type InstanceNetworkConfigArgs struct {
+	// Optional. A list of external network authorized to access this instance.
+	AuthorizedExternalNetworks AuthorizedNetworkArrayInput `pulumi:"authorizedExternalNetworks"`
+	// Optional. Enabling public ip for the instance.
+	EnablePublicIp pulumi.BoolPtrInput `pulumi:"enablePublicIp"`
+}
+
+func (InstanceNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigOutput() InstanceNetworkConfigOutput {
+	return i.ToInstanceNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigOutputWithContext(ctx context.Context) InstanceNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigOutput)
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return i.ToInstanceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigOutput).ToInstanceNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkConfigPtrInput is an input type that accepts InstanceNetworkConfigArgs, InstanceNetworkConfigPtr and InstanceNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkConfigPtrInput` via:
+//
+//	        InstanceNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput
+	ToInstanceNetworkConfigPtrOutputWithContext(context.Context) InstanceNetworkConfigPtrOutput
+}
+
+type instanceNetworkConfigPtrType InstanceNetworkConfigArgs
+
+func InstanceNetworkConfigPtr(v *InstanceNetworkConfigArgs) InstanceNetworkConfigPtrInput {
+	return (*instanceNetworkConfigPtrType)(v)
+}
+
+func (*instanceNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (i *instanceNetworkConfigPtrType) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return i.ToInstanceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkConfigPtrType) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigPtrOutput)
+}
+
+// Metadata related to instance level network configuration.
+type InstanceNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigOutput() InstanceNetworkConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigOutputWithContext(ctx context.Context) InstanceNetworkConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return o.ToInstanceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkConfig) *InstanceNetworkConfig {
+		return &v
+	}).(InstanceNetworkConfigPtrOutput)
+}
+
+// Optional. A list of external network authorized to access this instance.
+func (o InstanceNetworkConfigOutput) AuthorizedExternalNetworks() AuthorizedNetworkArrayOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) []AuthorizedNetwork { return v.AuthorizedExternalNetworks }).(AuthorizedNetworkArrayOutput)
+}
+
+// Optional. Enabling public ip for the instance.
+func (o InstanceNetworkConfigOutput) EnablePublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) *bool { return v.EnablePublicIp }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigPtrOutput) ToInstanceNetworkConfigPtrOutput() InstanceNetworkConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigPtrOutput) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigPtrOutput) Elem() InstanceNetworkConfigOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) InstanceNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkConfig
+		return ret
+	}).(InstanceNetworkConfigOutput)
+}
+
+// Optional. A list of external network authorized to access this instance.
+func (o InstanceNetworkConfigPtrOutput) AuthorizedExternalNetworks() AuthorizedNetworkArrayOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) []AuthorizedNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizedExternalNetworks
+	}).(AuthorizedNetworkArrayOutput)
+}
+
+// Optional. Enabling public ip for the instance.
+func (o InstanceNetworkConfigPtrOutput) EnablePublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePublicIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Metadata related to instance level network configuration.
+type InstanceNetworkConfigResponse struct {
+	// Optional. A list of external network authorized to access this instance.
+	AuthorizedExternalNetworks []AuthorizedNetworkResponse `pulumi:"authorizedExternalNetworks"`
+	// Optional. Enabling public ip for the instance.
+	EnablePublicIp bool `pulumi:"enablePublicIp"`
+}
+
+// Metadata related to instance level network configuration.
+type InstanceNetworkConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfigResponse)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigResponseOutput) ToInstanceNetworkConfigResponseOutput() InstanceNetworkConfigResponseOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigResponseOutput) ToInstanceNetworkConfigResponseOutputWithContext(ctx context.Context) InstanceNetworkConfigResponseOutput {
+	return o
+}
+
+// Optional. A list of external network authorized to access this instance.
+func (o InstanceNetworkConfigResponseOutput) AuthorizedExternalNetworks() AuthorizedNetworkResponseArrayOutput {
+	return o.ApplyT(func(v InstanceNetworkConfigResponse) []AuthorizedNetworkResponse { return v.AuthorizedExternalNetworks }).(AuthorizedNetworkResponseArrayOutput)
+}
+
+// Optional. Enabling public ip for the instance.
+func (o InstanceNetworkConfigResponseOutput) EnablePublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceNetworkConfigResponse) bool { return v.EnablePublicIp }).(pulumi.BoolOutput)
+}
+
 // MachineConfig describes the configuration of a machine.
 type MachineConfig struct {
 	// The number of CPU's in the VM instance.
@@ -1454,7 +1792,7 @@ func (o MigrationSourceResponseOutput) SourceType() pulumi.StringOutput {
 type NetworkConfig struct {
 	// Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
-	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 	Network *string `pulumi:"network"`
 }
 
@@ -1473,7 +1811,7 @@ type NetworkConfigInput interface {
 type NetworkConfigArgs struct {
 	// Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
-	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 }
 
@@ -1560,7 +1898,7 @@ func (o NetworkConfigOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -1599,7 +1937,7 @@ func (o NetworkConfigPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
 		if v == nil {
@@ -1613,7 +1951,7 @@ func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 type NetworkConfigResponse struct {
 	// Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 	AllocatedIpRange string `pulumi:"allocatedIpRange"`
-	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 	Network string `pulumi:"network"`
 }
 
@@ -1637,7 +1975,7 @@ func (o NetworkConfigResponseOutput) AllocatedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
 }
 
-// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
 func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -3246,6 +3584,8 @@ func (o WeeklyScheduleResponseOutput) StartTimes() GoogleTypeTimeOfDayResponseAr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedNetworkInput)(nil)).Elem(), AuthorizedNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedNetworkArrayInput)(nil)).Elem(), AuthorizedNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomatedBackupPolicyInput)(nil)).Elem(), AutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomatedBackupPolicyPtrInput)(nil)).Elem(), AutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientConnectionConfigInput)(nil)).Elem(), ClientConnectionConfigArgs{})
@@ -3256,6 +3596,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeTimeOfDayInput)(nil)).Elem(), GoogleTypeTimeOfDayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeTimeOfDayArrayInput)(nil)).Elem(), GoogleTypeTimeOfDayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigInput)(nil)).Elem(), MachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigPtrInput)(nil)).Elem(), MachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
@@ -3276,6 +3618,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPtrInput)(nil)).Elem(), UserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyScheduleInput)(nil)).Elem(), WeeklyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklySchedulePtrInput)(nil)).Elem(), WeeklyScheduleArgs{})
+	pulumi.RegisterOutputType(AuthorizedNetworkOutput{})
+	pulumi.RegisterOutputType(AuthorizedNetworkArrayOutput{})
+	pulumi.RegisterOutputType(AuthorizedNetworkResponseOutput{})
+	pulumi.RegisterOutputType(AuthorizedNetworkResponseArrayOutput{})
 	pulumi.RegisterOutputType(AutomatedBackupPolicyOutput{})
 	pulumi.RegisterOutputType(AutomatedBackupPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AutomatedBackupPolicyResponseOutput{})
@@ -3295,6 +3641,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleTypeTimeOfDayArrayOutput{})
 	pulumi.RegisterOutputType(GoogleTypeTimeOfDayResponseOutput{})
 	pulumi.RegisterOutputType(GoogleTypeTimeOfDayResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(MachineConfigOutput{})
 	pulumi.RegisterOutputType(MachineConfigPtrOutput{})
 	pulumi.RegisterOutputType(MachineConfigResponseOutput{})

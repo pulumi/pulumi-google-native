@@ -44,6 +44,8 @@ type Provider struct {
 	WorkloadIdentityPoolId pulumi.StringOutput `pulumi:"workloadIdentityPoolId"`
 	// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
 	WorkloadIdentityPoolProviderId pulumi.StringOutput `pulumi:"workloadIdentityPoolProviderId"`
+	// An X.509-type identity provider.
+	X509 X509ResponseOutput `pulumi:"x509"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -120,6 +122,8 @@ type providerArgs struct {
 	WorkloadIdentityPoolId string `pulumi:"workloadIdentityPoolId"`
 	// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
 	WorkloadIdentityPoolProviderId string `pulumi:"workloadIdentityPoolProviderId"`
+	// An X.509-type identity provider.
+	X509 *X509 `pulumi:"x509"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -145,6 +149,8 @@ type ProviderArgs struct {
 	WorkloadIdentityPoolId pulumi.StringInput
 	// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
 	WorkloadIdentityPoolProviderId pulumi.StringInput
+	// An X.509-type identity provider.
+	X509 X509PtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -254,6 +260,11 @@ func (o ProviderOutput) WorkloadIdentityPoolId() pulumi.StringOutput {
 // Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
 func (o ProviderOutput) WorkloadIdentityPoolProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.WorkloadIdentityPoolProviderId }).(pulumi.StringOutput)
+}
+
+// An X.509-type identity provider.
+func (o ProviderOutput) X509() X509ResponseOutput {
+	return o.ApplyT(func(v *Provider) X509ResponseOutput { return v.X509 }).(X509ResponseOutput)
 }
 
 func init() {

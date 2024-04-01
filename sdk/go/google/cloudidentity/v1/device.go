@@ -44,6 +44,8 @@ type Device struct {
 	EnabledUsbDebugging pulumi.BoolOutput `pulumi:"enabledUsbDebugging"`
 	// Device encryption state.
 	EncryptionState pulumi.StringOutput `pulumi:"encryptionState"`
+	// Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
+	EndpointVerificationSpecificAttributes GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput `pulumi:"endpointVerificationSpecificAttributes"`
 	// Host name of the device.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// IMEI number of device if GSM device; empty otherwise.
@@ -261,6 +263,13 @@ func (o DeviceOutput) EnabledUsbDebugging() pulumi.BoolOutput {
 // Device encryption state.
 func (o DeviceOutput) EncryptionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.EncryptionState }).(pulumi.StringOutput)
+}
+
+// Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
+func (o DeviceOutput) EndpointVerificationSpecificAttributes() GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput {
+	return o.ApplyT(func(v *Device) GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput {
+		return v.EndpointVerificationSpecificAttributes
+	}).(GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponseOutput)
 }
 
 // Host name of the device.

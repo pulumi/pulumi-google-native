@@ -1292,11 +1292,11 @@ type GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant string
 const (
 	// No model variant specified. In this case Dialogflow defaults to USE_BEST_AVAILABLE.
 	GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantSpeechModelVariantUnspecified = GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant("SPEECH_MODEL_VARIANT_UNSPECIFIED")
-	// Use the best available variant of the Speech model that the caller is eligible for. Please see the [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging) for how to make your project eligible for enhanced models.
+	// Use the best available variant of the Speech model that the caller is eligible for.
 	GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantUseBestAvailable = GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant("USE_BEST_AVAILABLE")
 	// Use standard model variant even if an enhanced model is available. See the [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models) for details about enhanced models.
 	GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantUseStandard = GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant("USE_STANDARD")
-	// Use an enhanced model variant: * If an enhanced variant does not exist for the given model and request language, Dialogflow falls back to the standard variant. The [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models) describes which models have enhanced variants. * If the API caller isn't eligible for enhanced models, Dialogflow returns an error. Please see the [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging) for how to make your project eligible.
+	// Use an enhanced model variant: * If an enhanced variant does not exist for the given model and request language, Dialogflow falls back to the standard variant. The [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models) describes which models have enhanced variants.
 	GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantUseEnhanced = GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant("USE_ENHANCED")
 )
 
@@ -2366,6 +2366,186 @@ func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr) T
 func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod] {
 	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod]{
 		OutputState: in.ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Indicate the auth token type generated from the [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is sent in the Authorization header.
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth string
+
+const (
+	// Service agent auth type unspecified. Default to ID_TOKEN.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthServiceAgentAuthUnspecified = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth("SERVICE_AGENT_AUTH_UNSPECIFIED")
+	// No token used.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthNone = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth("NONE")
+	// Use [ID token](https://cloud.google.com/docs/authentication/token-types#id) generated from service agent. This can be used to access Cloud Function and Cloud Run after you grant Invoker role to `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthIdToken = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth("ID_TOKEN")
+	// Use [access token](https://cloud.google.com/docs/authentication/token-types#access) generated from service agent. This can be used to access other Google Cloud APIs after you grant required roles to `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthAccessToken = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth("ACCESS_TOKEN")
+)
+
+func (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput {
+	return GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth(e).ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth
+		return ret
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthInput is an input type that accepts values of the GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth enum
+// A concrete instance of `GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthInput` can be one of the following:
+//
+//	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthServiceAgentAuthUnspecified
+//	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthNone
+//	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthIdToken
+//	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthAccessToken
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput
+}
+
+var googleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtr string
+
+func GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtr(v string) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrInput {
+	return (*googleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrType
+}
+
+func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtr) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtr) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -3490,6 +3670,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult("TEST_RESULT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("HTTP_METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("HTTP_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth("SERVICE_AGENT_AUTH_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth("SERVICE_AGENT_AUTH_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType("WEBHOOK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType("WEBHOOK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingPurgeDataTypesItemInput)(nil)).Elem(), SecuritySettingPurgeDataTypesItem("PURGE_DATA_TYPE_UNSPECIFIED"))
@@ -3529,6 +3711,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput{})
 	pulumi.RegisterOutputType(SecuritySettingPurgeDataTypesItemOutput{})

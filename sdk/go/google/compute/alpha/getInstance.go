@@ -99,6 +99,8 @@ type LookupInstanceResult struct {
 	// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
 	ResourceStatus ResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Sets the scheduling options for this instance.
 	Scheduling SchedulingResponse `pulumi:"scheduling"`
@@ -345,6 +347,11 @@ func (o LookupInstanceResultOutput) ResourcePolicies() pulumi.StringArrayOutput 
 // Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
 func (o LookupInstanceResultOutput) ResourceStatus() ResourceStatusResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) ResourceStatusResponse { return v.ResourceStatus }).(ResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o LookupInstanceResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

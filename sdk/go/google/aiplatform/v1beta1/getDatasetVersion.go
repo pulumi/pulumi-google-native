@@ -35,8 +35,12 @@ type LookupDatasetVersionResult struct {
 	BigQueryDatasetName string `pulumi:"bigQueryDatasetName"`
 	// Timestamp when this DatasetVersion was created.
 	CreateTime string `pulumi:"createTime"`
+	// The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName string `pulumi:"displayName"`
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag string `pulumi:"etag"`
+	// Additional information about the DatasetVersion.
+	Metadata interface{} `pulumi:"metadata"`
 	// The resource name of the DatasetVersion.
 	Name string `pulumi:"name"`
 	// Timestamp when this DatasetVersion was last updated.
@@ -92,9 +96,19 @@ func (o LookupDatasetVersionResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetVersionResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+func (o LookupDatasetVersionResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetVersionResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
 // Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 func (o LookupDatasetVersionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetVersionResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Additional information about the DatasetVersion.
+func (o LookupDatasetVersionResultOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupDatasetVersionResult) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
 // The resource name of the DatasetVersion.

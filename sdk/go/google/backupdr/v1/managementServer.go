@@ -30,7 +30,7 @@ type ManagementServer struct {
 	ManagementServerId pulumi.StringOutput `pulumi:"managementServerId"`
 	// The hostname or ip address of the exposed AGM endpoints, used by clients to connect to AGM/RD graphical user interface and APIs.
 	ManagementUri ManagementURIResponseOutput `pulumi:"managementUri"`
-	// The resource name.
+	// Identifier. The resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.
 	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
@@ -41,7 +41,7 @@ type ManagementServer struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The ManagementServer state.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The type of the ManagementServer resource.
+	// Optional. The type of the ManagementServer resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time when the instance was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -63,9 +63,6 @@ func NewManagementServer(ctx *pulumi.Context,
 	}
 	if args.Networks == nil {
 		return nil, errors.New("invalid value for required argument 'Networks'")
-	}
-	if args.Type == nil {
-		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"location",
@@ -120,8 +117,8 @@ type managementServerArgs struct {
 	Project  *string         `pulumi:"project"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
-	// The type of the ManagementServer resource.
-	Type ManagementServerType `pulumi:"type"`
+	// Optional. The type of the ManagementServer resource.
+	Type *ManagementServerType `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ManagementServer resource.
@@ -140,8 +137,8 @@ type ManagementServerArgs struct {
 	Project  pulumi.StringPtrInput
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
-	// The type of the ManagementServer resource.
-	Type ManagementServerTypeInput
+	// Optional. The type of the ManagementServer resource.
+	Type ManagementServerTypePtrInput
 }
 
 func (ManagementServerArgs) ElementType() reflect.Type {
@@ -215,7 +212,7 @@ func (o ManagementServerOutput) ManagementUri() ManagementURIResponseOutput {
 	return o.ApplyT(func(v *ManagementServer) ManagementURIResponseOutput { return v.ManagementUri }).(ManagementURIResponseOutput)
 }
 
-// The resource name.
+// Identifier. The resource name.
 func (o ManagementServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -244,7 +241,7 @@ func (o ManagementServerOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The type of the ManagementServer resource.
+// Optional. The type of the ManagementServer resource.
 func (o ManagementServerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

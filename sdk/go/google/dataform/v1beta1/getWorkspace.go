@@ -30,7 +30,7 @@ type LookupWorkspaceArgs struct {
 }
 
 type LookupWorkspaceResult struct {
-	// The workspace's name.
+	// Identifier. The workspace's name.
 	Name string `pulumi:"name"`
 }
 
@@ -72,7 +72,7 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ct
 	return o
 }
 
-// The workspace's name.
+// Identifier. The workspace's name.
 func (o LookupWorkspaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -26,7 +26,7 @@ type Environment struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Display name for this environment.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+	// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.
 	ForwardProxyUri      pulumi.StringOutput `pulumi:"forwardProxyUri"`
 	HasAttachedFlowHooks pulumi.BoolOutput   `pulumi:"hasAttachedFlowHooks"`
 	// Last modification time of this environment as milliseconds since epoch.
@@ -99,7 +99,7 @@ type environmentArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Display name for this environment.
 	DisplayName *string `pulumi:"displayName"`
-	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+	// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.
 	ForwardProxyUri      *string `pulumi:"forwardProxyUri"`
 	HasAttachedFlowHooks *bool   `pulumi:"hasAttachedFlowHooks"`
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
@@ -123,7 +123,7 @@ type EnvironmentArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Display name for this environment.
 	DisplayName pulumi.StringPtrInput
-	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+	// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.
 	ForwardProxyUri      pulumi.StringPtrInput
 	HasAttachedFlowHooks pulumi.BoolPtrInput
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
@@ -199,7 +199,7 @@ func (o EnvironmentOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.
 func (o EnvironmentOutput) ForwardProxyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ForwardProxyUri }).(pulumi.StringOutput)
 }

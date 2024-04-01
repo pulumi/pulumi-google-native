@@ -53,6 +53,8 @@ type LookupAgentResult struct {
 	Locked bool `pulumi:"locked"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 	Name string `pulumi:"name"`
+	// Optional. Settings for end user personalization.
+	PersonalizationSettings GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettingsResponse `pulumi:"personalizationSettings"`
 	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
 	SecuritySettings string `pulumi:"securitySettings"`
 	// Speech recognition related settings.
@@ -170,6 +172,13 @@ func (o LookupAgentResultOutput) Locked() pulumi.BoolOutput {
 // The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 func (o LookupAgentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Settings for end user personalization.
+func (o LookupAgentResultOutput) PersonalizationSettings() GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettingsResponseOutput {
+	return o.ApplyT(func(v LookupAgentResult) GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettingsResponse {
+		return v.PersonalizationSettings
+	}).(GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettingsResponseOutput)
 }
 
 // Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.

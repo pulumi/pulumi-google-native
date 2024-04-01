@@ -28,10 +28,16 @@ type WorkstationConfig struct {
 	Degraded pulumi.BoolOutput `pulumi:"degraded"`
 	// Time when this workstation configuration was soft-deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
+	DisableTcpConnections pulumi.BoolOutput `pulumi:"disableTcpConnections"`
 	// Optional. Human-readable name for this workstation configuration.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+	EnableAuditAgent pulumi.BoolOutput `pulumi:"enableAuditAgent"`
 	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
 	EncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"encryptionKey"`
+	// Optional. Ephemeral directories which won't persist across workstation sessions.
+	EphemeralDirectories EphemeralDirectoryResponseArrayOutput `pulumi:"ephemeralDirectories"`
 	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Optional. Runtime host for the workstation.
@@ -120,10 +126,16 @@ type workstationConfigArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Optional. Container that runs upon startup for each workstation using this workstation configuration.
 	Container *Container `pulumi:"container"`
+	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
+	DisableTcpConnections *bool `pulumi:"disableTcpConnections"`
 	// Optional. Human-readable name for this workstation configuration.
 	DisplayName *string `pulumi:"displayName"`
+	// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+	EnableAuditAgent *bool `pulumi:"enableAuditAgent"`
 	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
 	EncryptionKey *CustomerEncryptionKey `pulumi:"encryptionKey"`
+	// Optional. Ephemeral directories which won't persist across workstation sessions.
+	EphemeralDirectories []EphemeralDirectory `pulumi:"ephemeralDirectories"`
 	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Optional. Runtime host for the workstation.
@@ -155,10 +167,16 @@ type WorkstationConfigArgs struct {
 	Annotations pulumi.StringMapInput
 	// Optional. Container that runs upon startup for each workstation using this workstation configuration.
 	Container ContainerPtrInput
+	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
+	DisableTcpConnections pulumi.BoolPtrInput
 	// Optional. Human-readable name for this workstation configuration.
 	DisplayName pulumi.StringPtrInput
+	// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+	EnableAuditAgent pulumi.BoolPtrInput
 	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
 	EncryptionKey CustomerEncryptionKeyPtrInput
+	// Optional. Ephemeral directories which won't persist across workstation sessions.
+	EphemeralDirectories EphemeralDirectoryArrayInput
 	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Optional. Runtime host for the workstation.
@@ -251,14 +269,29 @@ func (o WorkstationConfigOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
+func (o WorkstationConfigOutput) DisableTcpConnections() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.DisableTcpConnections }).(pulumi.BoolOutput)
+}
+
 // Optional. Human-readable name for this workstation configuration.
 func (o WorkstationConfigOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+func (o WorkstationConfigOutput) EnableAuditAgent() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.EnableAuditAgent }).(pulumi.BoolOutput)
+}
+
 // Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
 func (o WorkstationConfigOutput) EncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v *WorkstationConfig) CustomerEncryptionKeyResponseOutput { return v.EncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// Optional. Ephemeral directories which won't persist across workstation sessions.
+func (o WorkstationConfigOutput) EphemeralDirectories() EphemeralDirectoryResponseArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfig) EphemeralDirectoryResponseArrayOutput { return v.EphemeralDirectories }).(EphemeralDirectoryResponseArrayOutput)
 }
 
 // Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.

@@ -18,6 +18,10 @@ type Connection struct {
 
 	// Allows clients to store small amounts of arbitrary data.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Configuration for connections to Bitbucket Cloud.
+	BitbucketCloudConfig BitbucketCloudConfigResponseOutput `pulumi:"bitbucketCloudConfig"`
+	// Configuration for connections to Bitbucket Data Center.
+	BitbucketDataCenterConfig BitbucketDataCenterConfigResponseOutput `pulumi:"bitbucketDataCenterConfig"`
 	// Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
 	// Server assigned timestamp for when the connection was created.
@@ -95,6 +99,10 @@ func (ConnectionState) ElementType() reflect.Type {
 type connectionArgs struct {
 	// Allows clients to store small amounts of arbitrary data.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Configuration for connections to Bitbucket Cloud.
+	BitbucketCloudConfig *BitbucketCloudConfig `pulumi:"bitbucketCloudConfig"`
+	// Configuration for connections to Bitbucket Data Center.
+	BitbucketDataCenterConfig *BitbucketDataCenterConfig `pulumi:"bitbucketDataCenterConfig"`
 	// Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
 	ConnectionId string `pulumi:"connectionId"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
@@ -117,6 +125,10 @@ type connectionArgs struct {
 type ConnectionArgs struct {
 	// Allows clients to store small amounts of arbitrary data.
 	Annotations pulumi.StringMapInput
+	// Configuration for connections to Bitbucket Cloud.
+	BitbucketCloudConfig BitbucketCloudConfigPtrInput
+	// Configuration for connections to Bitbucket Data Center.
+	BitbucketDataCenterConfig BitbucketDataCenterConfigPtrInput
 	// Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
 	ConnectionId pulumi.StringInput
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
@@ -175,6 +187,16 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 // Allows clients to store small amounts of arbitrary data.
 func (o ConnectionOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Configuration for connections to Bitbucket Cloud.
+func (o ConnectionOutput) BitbucketCloudConfig() BitbucketCloudConfigResponseOutput {
+	return o.ApplyT(func(v *Connection) BitbucketCloudConfigResponseOutput { return v.BitbucketCloudConfig }).(BitbucketCloudConfigResponseOutput)
+}
+
+// Configuration for connections to Bitbucket Data Center.
+func (o ConnectionOutput) BitbucketDataCenterConfig() BitbucketDataCenterConfigResponseOutput {
+	return o.ApplyT(func(v *Connection) BitbucketDataCenterConfigResponseOutput { return v.BitbucketDataCenterConfig }).(BitbucketDataCenterConfigResponseOutput)
 }
 
 // Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.

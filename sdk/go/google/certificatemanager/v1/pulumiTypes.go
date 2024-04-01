@@ -13,6 +13,152 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// Defines an allowlisted certificate.
+type AllowlistedCertificate struct {
+	// PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+	PemCertificate string `pulumi:"pemCertificate"`
+}
+
+// AllowlistedCertificateInput is an input type that accepts AllowlistedCertificateArgs and AllowlistedCertificateOutput values.
+// You can construct a concrete instance of `AllowlistedCertificateInput` via:
+//
+//	AllowlistedCertificateArgs{...}
+type AllowlistedCertificateInput interface {
+	pulumi.Input
+
+	ToAllowlistedCertificateOutput() AllowlistedCertificateOutput
+	ToAllowlistedCertificateOutputWithContext(context.Context) AllowlistedCertificateOutput
+}
+
+// Defines an allowlisted certificate.
+type AllowlistedCertificateArgs struct {
+	// PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+	PemCertificate pulumi.StringInput `pulumi:"pemCertificate"`
+}
+
+func (AllowlistedCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowlistedCertificate)(nil)).Elem()
+}
+
+func (i AllowlistedCertificateArgs) ToAllowlistedCertificateOutput() AllowlistedCertificateOutput {
+	return i.ToAllowlistedCertificateOutputWithContext(context.Background())
+}
+
+func (i AllowlistedCertificateArgs) ToAllowlistedCertificateOutputWithContext(ctx context.Context) AllowlistedCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AllowlistedCertificateOutput)
+}
+
+// AllowlistedCertificateArrayInput is an input type that accepts AllowlistedCertificateArray and AllowlistedCertificateArrayOutput values.
+// You can construct a concrete instance of `AllowlistedCertificateArrayInput` via:
+//
+//	AllowlistedCertificateArray{ AllowlistedCertificateArgs{...} }
+type AllowlistedCertificateArrayInput interface {
+	pulumi.Input
+
+	ToAllowlistedCertificateArrayOutput() AllowlistedCertificateArrayOutput
+	ToAllowlistedCertificateArrayOutputWithContext(context.Context) AllowlistedCertificateArrayOutput
+}
+
+type AllowlistedCertificateArray []AllowlistedCertificateInput
+
+func (AllowlistedCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowlistedCertificate)(nil)).Elem()
+}
+
+func (i AllowlistedCertificateArray) ToAllowlistedCertificateArrayOutput() AllowlistedCertificateArrayOutput {
+	return i.ToAllowlistedCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i AllowlistedCertificateArray) ToAllowlistedCertificateArrayOutputWithContext(ctx context.Context) AllowlistedCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AllowlistedCertificateArrayOutput)
+}
+
+// Defines an allowlisted certificate.
+type AllowlistedCertificateOutput struct{ *pulumi.OutputState }
+
+func (AllowlistedCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowlistedCertificate)(nil)).Elem()
+}
+
+func (o AllowlistedCertificateOutput) ToAllowlistedCertificateOutput() AllowlistedCertificateOutput {
+	return o
+}
+
+func (o AllowlistedCertificateOutput) ToAllowlistedCertificateOutputWithContext(ctx context.Context) AllowlistedCertificateOutput {
+	return o
+}
+
+// PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+func (o AllowlistedCertificateOutput) PemCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v AllowlistedCertificate) string { return v.PemCertificate }).(pulumi.StringOutput)
+}
+
+type AllowlistedCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (AllowlistedCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowlistedCertificate)(nil)).Elem()
+}
+
+func (o AllowlistedCertificateArrayOutput) ToAllowlistedCertificateArrayOutput() AllowlistedCertificateArrayOutput {
+	return o
+}
+
+func (o AllowlistedCertificateArrayOutput) ToAllowlistedCertificateArrayOutputWithContext(ctx context.Context) AllowlistedCertificateArrayOutput {
+	return o
+}
+
+func (o AllowlistedCertificateArrayOutput) Index(i pulumi.IntInput) AllowlistedCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowlistedCertificate {
+		return vs[0].([]AllowlistedCertificate)[vs[1].(int)]
+	}).(AllowlistedCertificateOutput)
+}
+
+// Defines an allowlisted certificate.
+type AllowlistedCertificateResponse struct {
+	// PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+	PemCertificate string `pulumi:"pemCertificate"`
+}
+
+// Defines an allowlisted certificate.
+type AllowlistedCertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (AllowlistedCertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowlistedCertificateResponse)(nil)).Elem()
+}
+
+func (o AllowlistedCertificateResponseOutput) ToAllowlistedCertificateResponseOutput() AllowlistedCertificateResponseOutput {
+	return o
+}
+
+func (o AllowlistedCertificateResponseOutput) ToAllowlistedCertificateResponseOutputWithContext(ctx context.Context) AllowlistedCertificateResponseOutput {
+	return o
+}
+
+// PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+func (o AllowlistedCertificateResponseOutput) PemCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v AllowlistedCertificateResponse) string { return v.PemCertificate }).(pulumi.StringOutput)
+}
+
+type AllowlistedCertificateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AllowlistedCertificateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowlistedCertificateResponse)(nil)).Elem()
+}
+
+func (o AllowlistedCertificateResponseArrayOutput) ToAllowlistedCertificateResponseArrayOutput() AllowlistedCertificateResponseArrayOutput {
+	return o
+}
+
+func (o AllowlistedCertificateResponseArrayOutput) ToAllowlistedCertificateResponseArrayOutputWithContext(ctx context.Context) AllowlistedCertificateResponseArrayOutput {
+	return o
+}
+
+func (o AllowlistedCertificateResponseArrayOutput) Index(i pulumi.IntInput) AllowlistedCertificateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowlistedCertificateResponse {
+		return vs[0].([]AllowlistedCertificateResponse)[vs[1].(int)]
+	}).(AllowlistedCertificateResponseOutput)
+}
+
 // State of the latest attempt to authorize a domain for certificate issuance.
 type AuthorizationAttemptInfoResponse struct {
 	// Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use FailureReason enum.
@@ -1405,6 +1551,8 @@ func (o TrustStoreResponseArrayOutput) Index(i pulumi.IntInput) TrustStoreRespon
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowlistedCertificateInput)(nil)).Elem(), AllowlistedCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowlistedCertificateArrayInput)(nil)).Elem(), AllowlistedCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityConfigInput)(nil)).Elem(), CertificateAuthorityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityServiceConfigInput)(nil)).Elem(), CertificateAuthorityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityServiceConfigPtrInput)(nil)).Elem(), CertificateAuthorityServiceConfigArgs{})
@@ -1418,6 +1566,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TrustAnchorArrayInput)(nil)).Elem(), TrustAnchorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrustStoreInput)(nil)).Elem(), TrustStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrustStoreArrayInput)(nil)).Elem(), TrustStoreArray{})
+	pulumi.RegisterOutputType(AllowlistedCertificateOutput{})
+	pulumi.RegisterOutputType(AllowlistedCertificateArrayOutput{})
+	pulumi.RegisterOutputType(AllowlistedCertificateResponseOutput{})
+	pulumi.RegisterOutputType(AllowlistedCertificateResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuthorizationAttemptInfoResponseOutput{})
 	pulumi.RegisterOutputType(AuthorizationAttemptInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(CertificateAuthorityConfigOutput{})

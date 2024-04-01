@@ -349,9 +349,9 @@ func (o EncryptionConfigurationResponseOutput) KmsKeyName() pulumi.StringOutput 
 type ScheduleOptions struct {
 	// If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored.
 	DisableAutoScheduling *bool `pulumi:"disableAutoScheduling"`
-	// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+	// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 	EndTime *string `pulumi:"endTime"`
-	// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+	// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 	StartTime *string `pulumi:"startTime"`
 }
 
@@ -370,9 +370,9 @@ type ScheduleOptionsInput interface {
 type ScheduleOptionsArgs struct {
 	// If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored.
 	DisableAutoScheduling pulumi.BoolPtrInput `pulumi:"disableAutoScheduling"`
-	// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+	// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+	// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
@@ -459,12 +459,12 @@ func (o ScheduleOptionsOutput) DisableAutoScheduling() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ScheduleOptions) *bool { return v.DisableAutoScheduling }).(pulumi.BoolPtrOutput)
 }
 
-// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 func (o ScheduleOptionsOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduleOptions) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
-// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 func (o ScheduleOptionsOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduleOptions) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -503,7 +503,7 @@ func (o ScheduleOptionsPtrOutput) DisableAutoScheduling() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 func (o ScheduleOptionsPtrOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduleOptions) *string {
 		if v == nil {
@@ -513,7 +513,7 @@ func (o ScheduleOptionsPtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 func (o ScheduleOptionsPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduleOptions) *string {
 		if v == nil {
@@ -527,9 +527,9 @@ func (o ScheduleOptionsPtrOutput) StartTime() pulumi.StringPtrOutput {
 type ScheduleOptionsResponse struct {
 	// If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored.
 	DisableAutoScheduling bool `pulumi:"disableAutoScheduling"`
-	// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+	// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 	EndTime string `pulumi:"endTime"`
-	// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+	// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -553,12 +553,12 @@ func (o ScheduleOptionsResponseOutput) DisableAutoScheduling() pulumi.BoolOutput
 	return o.ApplyT(func(v ScheduleOptionsResponse) bool { return v.DisableAutoScheduling }).(pulumi.BoolOutput)
 }
 
-// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 func (o ScheduleOptionsResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleOptionsResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
+// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
 func (o ScheduleOptionsResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleOptionsResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }

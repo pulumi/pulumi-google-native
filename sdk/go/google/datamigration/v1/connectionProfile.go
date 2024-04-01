@@ -46,6 +46,8 @@ type ConnectionProfile struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
 	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
+	// Connection profile for a SQL Server data source.
+	Sqlserver SqlServerConnectionProfileResponseOutput `pulumi:"sqlserver"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State pulumi.StringOutput `pulumi:"state"`
 	// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -127,6 +129,8 @@ type connectionProfileArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
 	SkipValidation *bool `pulumi:"skipValidation"`
+	// Connection profile for a SQL Server data source.
+	Sqlserver *SqlServerConnectionProfile `pulumi:"sqlserver"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State *ConnectionProfileStateEnum `pulumi:"state"`
 }
@@ -159,6 +163,8 @@ type ConnectionProfileArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
 	SkipValidation pulumi.BoolPtrInput
+	// Connection profile for a SQL Server data source.
+	Sqlserver SqlServerConnectionProfilePtrInput
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State ConnectionProfileStateEnumPtrInput
 }
@@ -276,6 +282,11 @@ func (o ConnectionProfileOutput) RequestId() pulumi.StringPtrOutput {
 // Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
 func (o ConnectionProfileOutput) SkipValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.BoolPtrOutput { return v.SkipValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Connection profile for a SQL Server data source.
+func (o ConnectionProfileOutput) Sqlserver() SqlServerConnectionProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) SqlServerConnectionProfileResponseOutput { return v.Sqlserver }).(SqlServerConnectionProfileResponseOutput)
 }
 
 // The current connection profile state (e.g. DRAFT, READY, or FAILED).

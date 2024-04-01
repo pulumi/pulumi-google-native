@@ -25,7 +25,7 @@ type Engine struct {
 	CommonConfig GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponseOutput `pulumi:"commonConfig"`
 	// Timestamp the Recommendation Engine was created at.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary intializations.
+	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary initializations.
 	DataStoreIds pulumi.StringArrayOutput `pulumi:"dataStoreIds"`
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -115,7 +115,7 @@ type engineArgs struct {
 	CollectionId     string                                                   `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
 	CommonConfig *GoogleCloudDiscoveryengineV1alphaEngineCommonConfig `pulumi:"commonConfig"`
-	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary intializations.
+	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary initializations.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName string `pulumi:"displayName"`
@@ -144,7 +144,7 @@ type EngineArgs struct {
 	CollectionId     pulumi.StringInput
 	// Common config spec that specifies the metadata of the engine.
 	CommonConfig GoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrInput
-	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary intializations.
+	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary initializations.
 	DataStoreIds pulumi.StringArrayInput
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringInput
@@ -233,7 +233,7 @@ func (o EngineOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Engine) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary intializations.
+// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary initializations.
 func (o EngineOutput) DataStoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Engine) pulumi.StringArrayOutput { return v.DataStoreIds }).(pulumi.StringArrayOutput)
 }

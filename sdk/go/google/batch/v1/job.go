@@ -41,7 +41,7 @@ type Job struct {
 	Status JobStatusResponseOutput `pulumi:"status"`
 	// TaskGroups in the Job. Only one TaskGroup is supported now.
 	TaskGroups TaskGroupResponseArrayOutput `pulumi:"taskGroups"`
-	// A system generated unique ID (in UUID4 format) for the Job.
+	// A system generated unique ID for the Job.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The last time the Job was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -237,7 +237,7 @@ func (o JobOutput) TaskGroups() TaskGroupResponseArrayOutput {
 	return o.ApplyT(func(v *Job) TaskGroupResponseArrayOutput { return v.TaskGroups }).(TaskGroupResponseArrayOutput)
 }
 
-// A system generated unique ID (in UUID4 format) for the Job.
+// A system generated unique ID for the Job.
 func (o JobOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

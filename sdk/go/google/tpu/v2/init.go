@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:tpu/v2:Node":
 		r = &Node{}
+	case "google-native:tpu/v2:QueuedResource":
+		r = &QueuedResource{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

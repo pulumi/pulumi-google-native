@@ -58,6 +58,10 @@ type Snapshot struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// [Output only] ResourceStatus of the Snapshot resource
+	ResourceStatus SnapshotResourceStatusResponseOutput `pulumi:"resourceStatus"`
+	// Reserved for future use.
+	SatisfiesPzi pulumi.BoolOutput `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
@@ -362,6 +366,16 @@ func (o SnapshotOutput) Region() pulumi.StringOutput {
 // An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 func (o SnapshotOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// [Output only] ResourceStatus of the Snapshot resource
+func (o SnapshotOutput) ResourceStatus() SnapshotResourceStatusResponseOutput {
+	return o.ApplyT(func(v *Snapshot) SnapshotResourceStatusResponseOutput { return v.ResourceStatus }).(SnapshotResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o SnapshotOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.BoolOutput { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

@@ -39,7 +39,9 @@ type RegionHealthCheck struct {
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
-	SelfLink       pulumi.StringOutput          `pulumi:"selfLink"`
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing.
+	SourceRegions  pulumi.StringArrayOutput     `pulumi:"sourceRegions"`
 	SslHealthCheck SSLHealthCheckResponseOutput `pulumi:"sslHealthCheck"`
 	TcpHealthCheck TCPHealthCheckResponseOutput `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
@@ -117,7 +119,9 @@ type regionHealthCheckArgs struct {
 	Project *string `pulumi:"project"`
 	Region  string  `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-	RequestId      *string         `pulumi:"requestId"`
+	RequestId *string `pulumi:"requestId"`
+	// The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing.
+	SourceRegions  []string        `pulumi:"sourceRegions"`
 	SslHealthCheck *SSLHealthCheck `pulumi:"sslHealthCheck"`
 	TcpHealthCheck *TCPHealthCheck `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
@@ -149,7 +153,9 @@ type RegionHealthCheckArgs struct {
 	Project pulumi.StringPtrInput
 	Region  pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-	RequestId      pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
+	// The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing.
+	SourceRegions  pulumi.StringArrayInput
 	SslHealthCheck SSLHealthCheckPtrInput
 	TcpHealthCheck TCPHealthCheckPtrInput
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
@@ -264,6 +270,11 @@ func (o RegionHealthCheckOutput) RequestId() pulumi.StringPtrOutput {
 // Server-defined URL for the resource.
 func (o RegionHealthCheckOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing.
+func (o RegionHealthCheckOutput) SourceRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringArrayOutput { return v.SourceRegions }).(pulumi.StringArrayOutput)
 }
 
 func (o RegionHealthCheckOutput) SslHealthCheck() SSLHealthCheckResponseOutput {

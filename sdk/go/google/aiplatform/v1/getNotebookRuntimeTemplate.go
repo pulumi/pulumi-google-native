@@ -53,10 +53,16 @@ type LookupNotebookRuntimeTemplateResult struct {
 	Name string `pulumi:"name"`
 	// Optional. Network spec.
 	NetworkSpec GoogleCloudAiplatformV1NetworkSpecResponse `pulumi:"networkSpec"`
+	// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+	NetworkTags []string `pulumi:"networkTags"`
 	// Optional. Immutable. The type of the notebook runtime template.
 	NotebookRuntimeType string `pulumi:"notebookRuntimeType"`
+	// Optional. Reservation Affinity of the notebook runtime template.
+	ReservationAffinity GoogleCloudAiplatformV1NotebookReservationAffinityResponse `pulumi:"reservationAffinity"`
 	// The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
+	// Optional. Immutable. Runtime Shielded VM spec.
+	ShieldedVmConfig GoogleCloudAiplatformV1ShieldedVmConfigResponse `pulumi:"shieldedVmConfig"`
 	// Timestamp when this NotebookRuntimeTemplate was most recently updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -168,14 +174,33 @@ func (o LookupNotebookRuntimeTemplateResultOutput) NetworkSpec() GoogleCloudAipl
 	}).(GoogleCloudAiplatformV1NetworkSpecResponseOutput)
 }
 
+// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+func (o LookupNotebookRuntimeTemplateResultOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNotebookRuntimeTemplateResult) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
 // Optional. Immutable. The type of the notebook runtime template.
 func (o LookupNotebookRuntimeTemplateResultOutput) NotebookRuntimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookRuntimeTemplateResult) string { return v.NotebookRuntimeType }).(pulumi.StringOutput)
 }
 
+// Optional. Reservation Affinity of the notebook runtime template.
+func (o LookupNotebookRuntimeTemplateResultOutput) ReservationAffinity() GoogleCloudAiplatformV1NotebookReservationAffinityResponseOutput {
+	return o.ApplyT(func(v LookupNotebookRuntimeTemplateResult) GoogleCloudAiplatformV1NotebookReservationAffinityResponse {
+		return v.ReservationAffinity
+	}).(GoogleCloudAiplatformV1NotebookReservationAffinityResponseOutput)
+}
+
 // The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 func (o LookupNotebookRuntimeTemplateResultOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookRuntimeTemplateResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Optional. Immutable. Runtime Shielded VM spec.
+func (o LookupNotebookRuntimeTemplateResultOutput) ShieldedVmConfig() GoogleCloudAiplatformV1ShieldedVmConfigResponseOutput {
+	return o.ApplyT(func(v LookupNotebookRuntimeTemplateResult) GoogleCloudAiplatformV1ShieldedVmConfigResponse {
+		return v.ShieldedVmConfig
+	}).(GoogleCloudAiplatformV1ShieldedVmConfigResponseOutput)
 }
 
 // Timestamp when this NotebookRuntimeTemplate was most recently updated.

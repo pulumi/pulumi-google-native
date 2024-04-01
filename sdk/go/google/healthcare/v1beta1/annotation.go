@@ -25,7 +25,7 @@ type Annotation struct {
 	// Annotations for images. For example, bounding polygons.
 	ImageAnnotation ImageAnnotationResponseOutput `pulumi:"imageAnnotation"`
 	Location        pulumi.StringOutput           `pulumi:"location"`
-	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+	// Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Annotations for resource. For example, classification tags.
@@ -41,6 +41,9 @@ func NewAnnotation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AnnotationSource == nil {
+		return nil, errors.New("invalid value for required argument 'AnnotationSource'")
+	}
 	if args.AnnotationStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'AnnotationStoreId'")
 	}
@@ -88,15 +91,15 @@ func (AnnotationState) ElementType() reflect.Type {
 
 type annotationArgs struct {
 	// Details of the source.
-	AnnotationSource  *AnnotationSource `pulumi:"annotationSource"`
-	AnnotationStoreId string            `pulumi:"annotationStoreId"`
+	AnnotationSource  AnnotationSource `pulumi:"annotationSource"`
+	AnnotationStoreId string           `pulumi:"annotationStoreId"`
 	// Additional information for this annotation record, such as annotator and verifier information or study campaign.
 	CustomData map[string]string `pulumi:"customData"`
 	DatasetId  string            `pulumi:"datasetId"`
 	// Annotations for images. For example, bounding polygons.
 	ImageAnnotation *ImageAnnotation `pulumi:"imageAnnotation"`
 	Location        *string          `pulumi:"location"`
-	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+	// Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Annotations for resource. For example, classification tags.
@@ -108,7 +111,7 @@ type annotationArgs struct {
 // The set of arguments for constructing a Annotation resource.
 type AnnotationArgs struct {
 	// Details of the source.
-	AnnotationSource  AnnotationSourcePtrInput
+	AnnotationSource  AnnotationSourceInput
 	AnnotationStoreId pulumi.StringInput
 	// Additional information for this annotation record, such as annotator and verifier information or study campaign.
 	CustomData pulumi.StringMapInput
@@ -116,7 +119,7 @@ type AnnotationArgs struct {
 	// Annotations for images. For example, bounding polygons.
 	ImageAnnotation ImageAnnotationPtrInput
 	Location        pulumi.StringPtrInput
-	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+	// Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Annotations for resource. For example, classification tags.
@@ -189,7 +192,7 @@ func (o AnnotationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Annotation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+// Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
 func (o AnnotationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Annotation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

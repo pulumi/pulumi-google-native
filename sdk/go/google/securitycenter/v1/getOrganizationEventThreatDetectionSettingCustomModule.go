@@ -28,6 +28,8 @@ type LookupOrganizationEventThreatDetectionSettingCustomModuleArgs struct {
 }
 
 type LookupOrganizationEventThreatDetectionSettingCustomModuleResult struct {
+	// The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.
+	AncestorModule string `pulumi:"ancestorModule"`
 	// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
 	Config map[string]string `pulumi:"config"`
 	// The description for the module.
@@ -80,6 +82,13 @@ func (o LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput) T
 
 func (o LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput) ToLookupOrganizationEventThreatDetectionSettingCustomModuleResultOutputWithContext(ctx context.Context) LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput {
 	return o
+}
+
+// The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.
+func (o LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput) AncestorModule() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationEventThreatDetectionSettingCustomModuleResult) string {
+		return v.AncestorModule
+	}).(pulumi.StringOutput)
 }
 
 // Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.

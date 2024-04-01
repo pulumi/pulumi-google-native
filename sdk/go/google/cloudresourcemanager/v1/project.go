@@ -29,6 +29,8 @@ type Project struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber pulumi.StringOutput `pulumi:"projectNumber"`
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -85,6 +87,8 @@ type projectArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber *string `pulumi:"projectNumber"`
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -103,6 +107,8 @@ type ProjectArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber pulumi.StringPtrInput
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags pulumi.StringMapInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -175,6 +181,11 @@ func (o ProjectOutput) ProjectId() pulumi.StringOutput {
 // The number uniquely identifying the project. Example: `415104041262` Read-only.
 func (o ProjectOutput) ProjectNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectNumber }).(pulumi.StringOutput)
+}
+
+// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+func (o ProjectOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

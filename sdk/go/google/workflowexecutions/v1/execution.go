@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a new execution using the latest revision of the given workflow.
+// Creates a new execution using the latest revision of the given workflow. For more information, see Execute a workflow.
 // Auto-naming is currently not supported for this resource.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
@@ -23,6 +23,10 @@ type Execution struct {
 	Argument pulumi.StringOutput `pulumi:"argument"`
 	// The call logging level associated to this execution.
 	CallLogLevel pulumi.StringOutput `pulumi:"callLogLevel"`
+	// Marks the creation of the execution.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+	DisableConcurrencyQuotaOverflowBuffering pulumi.BoolOutput `pulumi:"disableConcurrencyQuotaOverflowBuffering"`
 	// Measures the duration of the execution.
 	Duration pulumi.StringOutput `pulumi:"duration"`
 	// Marks the end of execution, successful or not.
@@ -103,6 +107,8 @@ type executionArgs struct {
 	Argument *string `pulumi:"argument"`
 	// The call logging level associated to this execution.
 	CallLogLevel *ExecutionCallLogLevel `pulumi:"callLogLevel"`
+	// Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+	DisableConcurrencyQuotaOverflowBuffering *bool `pulumi:"disableConcurrencyQuotaOverflowBuffering"`
 	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
 	Labels     map[string]string `pulumi:"labels"`
 	Location   *string           `pulumi:"location"`
@@ -116,6 +122,8 @@ type ExecutionArgs struct {
 	Argument pulumi.StringPtrInput
 	// The call logging level associated to this execution.
 	CallLogLevel ExecutionCallLogLevelPtrInput
+	// Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+	DisableConcurrencyQuotaOverflowBuffering pulumi.BoolPtrInput
 	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
 	Labels     pulumi.StringMapInput
 	Location   pulumi.StringPtrInput
@@ -168,6 +176,16 @@ func (o ExecutionOutput) Argument() pulumi.StringOutput {
 // The call logging level associated to this execution.
 func (o ExecutionOutput) CallLogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.CallLogLevel }).(pulumi.StringOutput)
+}
+
+// Marks the creation of the execution.
+func (o ExecutionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+func (o ExecutionOutput) DisableConcurrencyQuotaOverflowBuffering() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Execution) pulumi.BoolOutput { return v.DisableConcurrencyQuotaOverflowBuffering }).(pulumi.BoolOutput)
 }
 
 // Measures the duration of the execution.

@@ -13,11 +13,11 @@ import (
 )
 
 // Creates a new Evaluation in a given project and location.
-// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-// on Google Cloud even though it will be deleted from Pulumi state.
 type Evaluation struct {
 	pulumi.CustomResourceState
 
+	// Optional. BigQuery destination
+	BigQueryDestination BigQueryDestinationResponseOutput `pulumi:"bigQueryDestination"`
 	// [Output only] Create time stamp
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The Cloud Storage bucket name for custom rules.
@@ -97,6 +97,8 @@ func (EvaluationState) ElementType() reflect.Type {
 }
 
 type evaluationArgs struct {
+	// Optional. BigQuery destination
+	BigQueryDestination *BigQueryDestination `pulumi:"bigQueryDestination"`
 	// The Cloud Storage bucket name for custom rules.
 	CustomRulesBucket *string `pulumi:"customRulesBucket"`
 	// Description of the Evaluation
@@ -121,6 +123,8 @@ type evaluationArgs struct {
 
 // The set of arguments for constructing a Evaluation resource.
 type EvaluationArgs struct {
+	// Optional. BigQuery destination
+	BigQueryDestination BigQueryDestinationPtrInput
 	// The Cloud Storage bucket name for custom rules.
 	CustomRulesBucket pulumi.StringPtrInput
 	// Description of the Evaluation
@@ -178,6 +182,11 @@ func (o EvaluationOutput) ToEvaluationOutput() EvaluationOutput {
 
 func (o EvaluationOutput) ToEvaluationOutputWithContext(ctx context.Context) EvaluationOutput {
 	return o
+}
+
+// Optional. BigQuery destination
+func (o EvaluationOutput) BigQueryDestination() BigQueryDestinationResponseOutput {
+	return o.ApplyT(func(v *Evaluation) BigQueryDestinationResponseOutput { return v.BigQueryDestination }).(BigQueryDestinationResponseOutput)
 }
 
 // [Output only] Create time stamp

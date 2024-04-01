@@ -15,9 +15,9 @@ import (
 type FutureReservation struct {
 	pulumi.CustomResourceState
 
-	// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
 	AutoCreatedReservationsDeleteTime pulumi.StringOutput `pulumi:"autoCreatedReservationsDeleteTime"`
-	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
 	AutoCreatedReservationsDuration DurationResponseOutput `pulumi:"autoCreatedReservationsDuration"`
 	// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
 	AutoDeleteAutoCreatedReservations pulumi.BoolOutput `pulumi:"autoDeleteAutoCreatedReservations"`
@@ -42,6 +42,8 @@ type FutureReservation struct {
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// List of Projects/Folders to share with.
 	ShareSettings ShareSettingsResponseOutput `pulumi:"shareSettings"`
+	// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation. If set to true,the delivered resevervation will have the same name as the future reservation.
+	SpecificReservationRequired pulumi.BoolOutput `pulumi:"specificReservationRequired"`
 	// Future Reservation configuration to indicate instance properties and total count.
 	SpecificSkuProperties FutureReservationSpecificSKUPropertiesResponseOutput `pulumi:"specificSkuProperties"`
 	// [Output only] Status of the Future Reservation
@@ -96,9 +98,9 @@ func (FutureReservationState) ElementType() reflect.Type {
 }
 
 type futureReservationArgs struct {
-	// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
 	AutoCreatedReservationsDeleteTime *string `pulumi:"autoCreatedReservationsDeleteTime"`
-	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
 	AutoCreatedReservationsDuration *Duration `pulumi:"autoCreatedReservationsDuration"`
 	// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
 	AutoDeleteAutoCreatedReservations *bool `pulumi:"autoDeleteAutoCreatedReservations"`
@@ -115,6 +117,8 @@ type futureReservationArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// List of Projects/Folders to share with.
 	ShareSettings *ShareSettings `pulumi:"shareSettings"`
+	// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation. If set to true,the delivered resevervation will have the same name as the future reservation.
+	SpecificReservationRequired *bool `pulumi:"specificReservationRequired"`
 	// Future Reservation configuration to indicate instance properties and total count.
 	SpecificSkuProperties *FutureReservationSpecificSKUProperties `pulumi:"specificSkuProperties"`
 	// Time window for this Future Reservation.
@@ -124,9 +128,9 @@ type futureReservationArgs struct {
 
 // The set of arguments for constructing a FutureReservation resource.
 type FutureReservationArgs struct {
-	// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
 	AutoCreatedReservationsDeleteTime pulumi.StringPtrInput
-	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
 	AutoCreatedReservationsDuration DurationPtrInput
 	// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
 	AutoDeleteAutoCreatedReservations pulumi.BoolPtrInput
@@ -143,6 +147,8 @@ type FutureReservationArgs struct {
 	RequestId pulumi.StringPtrInput
 	// List of Projects/Folders to share with.
 	ShareSettings ShareSettingsPtrInput
+	// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation. If set to true,the delivered resevervation will have the same name as the future reservation.
+	SpecificReservationRequired pulumi.BoolPtrInput
 	// Future Reservation configuration to indicate instance properties and total count.
 	SpecificSkuProperties FutureReservationSpecificSKUPropertiesPtrInput
 	// Time window for this Future Reservation.
@@ -187,12 +193,12 @@ func (o FutureReservationOutput) ToFutureReservationOutputWithContext(ctx contex
 	return o
 }
 
-// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
 func (o FutureReservationOutput) AutoCreatedReservationsDeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.AutoCreatedReservationsDeleteTime }).(pulumi.StringOutput)
 }
 
-// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
 func (o FutureReservationOutput) AutoCreatedReservationsDuration() DurationResponseOutput {
 	return o.ApplyT(func(v *FutureReservation) DurationResponseOutput { return v.AutoCreatedReservationsDuration }).(DurationResponseOutput)
 }
@@ -254,6 +260,11 @@ func (o FutureReservationOutput) SelfLinkWithId() pulumi.StringOutput {
 // List of Projects/Folders to share with.
 func (o FutureReservationOutput) ShareSettings() ShareSettingsResponseOutput {
 	return o.ApplyT(func(v *FutureReservation) ShareSettingsResponseOutput { return v.ShareSettings }).(ShareSettingsResponseOutput)
+}
+
+// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation. If set to true,the delivered resevervation will have the same name as the future reservation.
+func (o FutureReservationOutput) SpecificReservationRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.BoolOutput { return v.SpecificReservationRequired }).(pulumi.BoolOutput)
 }
 
 // Future Reservation configuration to indicate instance properties and total count.

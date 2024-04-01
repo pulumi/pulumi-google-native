@@ -26,7 +26,7 @@ type TransferConfig struct {
 	DatasetRegion pulumi.StringOutput `pulumi:"datasetRegion"`
 	// The BigQuery target dataset id.
 	DestinationDatasetId pulumi.StringOutput `pulumi:"destinationDatasetId"`
-	// Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+	// Is this config disabled. When set to true, no runs will be scheduled for this transfer config.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// User specified display name for the data transfer.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -35,11 +35,11 @@ type TransferConfig struct {
 	// The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
 	EncryptionConfiguration EncryptionConfigurationResponseOutput `pulumi:"encryptionConfiguration"`
 	Location                pulumi.StringOutput                   `pulumi:"location"`
-	// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+	// Identifier. The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Next time when data transfer will run.
 	NextRunTime pulumi.StringOutput `pulumi:"nextRunTime"`
-	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project_id}/topics/{topic_id}`
 	NotificationPubsubTopic pulumi.StringOutput `pulumi:"notificationPubsubTopic"`
 	// Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
 	OwnerInfo UserInfoResponseOutput `pulumi:"ownerInfo"`
@@ -117,7 +117,7 @@ type transferConfigArgs struct {
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// The BigQuery target dataset id.
 	DestinationDatasetId *string `pulumi:"destinationDatasetId"`
-	// Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+	// Is this config disabled. When set to true, no runs will be scheduled for this transfer config.
 	Disabled *bool `pulumi:"disabled"`
 	// User specified display name for the data transfer.
 	DisplayName *string `pulumi:"displayName"`
@@ -126,9 +126,9 @@ type transferConfigArgs struct {
 	// The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
 	EncryptionConfiguration *EncryptionConfiguration `pulumi:"encryptionConfiguration"`
 	Location                *string                  `pulumi:"location"`
-	// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+	// Identifier. The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name *string `pulumi:"name"`
-	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project_id}/topics/{topic_id}`
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params  map[string]string `pulumi:"params"`
@@ -157,7 +157,7 @@ type TransferConfigArgs struct {
 	DataSourceId pulumi.StringPtrInput
 	// The BigQuery target dataset id.
 	DestinationDatasetId pulumi.StringPtrInput
-	// Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+	// Is this config disabled. When set to true, no runs will be scheduled for this transfer config.
 	Disabled pulumi.BoolPtrInput
 	// User specified display name for the data transfer.
 	DisplayName pulumi.StringPtrInput
@@ -166,9 +166,9 @@ type TransferConfigArgs struct {
 	// The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
 	EncryptionConfiguration EncryptionConfigurationPtrInput
 	Location                pulumi.StringPtrInput
-	// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+	// Identifier. The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name pulumi.StringPtrInput
-	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project_id}/topics/{topic_id}`
 	NotificationPubsubTopic pulumi.StringPtrInput
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params  pulumi.StringMapInput
@@ -249,7 +249,7 @@ func (o TransferConfigOutput) DestinationDatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.DestinationDatasetId }).(pulumi.StringOutput)
 }
 
-// Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+// Is this config disabled. When set to true, no runs will be scheduled for this transfer config.
 func (o TransferConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -273,7 +273,7 @@ func (o TransferConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+// Identifier. The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 func (o TransferConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -283,7 +283,7 @@ func (o TransferConfigOutput) NextRunTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.NextRunTime }).(pulumi.StringOutput)
 }
 
-// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project_id}/topics/{topic_id}`
 func (o TransferConfigOutput) NotificationPubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.NotificationPubsubTopic }).(pulumi.StringOutput)
 }

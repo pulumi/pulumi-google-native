@@ -13,7 +13,6 @@ import (
 )
 
 // Creates a new FeatureOnlineStore in a given project and location.
-// Auto-naming is currently not supported for this resource.
 type FeatureOnlineStore struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +20,8 @@ type FeatureOnlineStore struct {
 	Bigtable GoogleCloudAiplatformV1FeatureOnlineStoreBigtableResponseOutput `pulumi:"bigtable"`
 	// Timestamp when this FeatureOnlineStore was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+	DedicatedServingEndpoint GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponseOutput `pulumi:"dedicatedServingEndpoint"`
 	// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
@@ -28,9 +29,11 @@ type FeatureOnlineStore struct {
 	// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+	Optimized GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponseOutput `pulumi:"optimized"`
+	Project   pulumi.StringOutput                                              `pulumi:"project"`
 	// State of the featureOnlineStore.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Timestamp when this FeatureOnlineStore was last updated.
@@ -88,6 +91,8 @@ func (FeatureOnlineStoreState) ElementType() reflect.Type {
 type featureOnlineStoreArgs struct {
 	// Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
 	Bigtable *GoogleCloudAiplatformV1FeatureOnlineStoreBigtable `pulumi:"bigtable"`
+	// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+	DedicatedServingEndpoint *GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint `pulumi:"dedicatedServingEndpoint"`
 	// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag *string `pulumi:"etag"`
 	// Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
@@ -95,13 +100,19 @@ type featureOnlineStoreArgs struct {
 	// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	Project  *string           `pulumi:"project"`
+	// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+	Name *string `pulumi:"name"`
+	// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+	Optimized *GoogleCloudAiplatformV1FeatureOnlineStoreOptimized `pulumi:"optimized"`
+	Project   *string                                             `pulumi:"project"`
 }
 
 // The set of arguments for constructing a FeatureOnlineStore resource.
 type FeatureOnlineStoreArgs struct {
 	// Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
 	Bigtable GoogleCloudAiplatformV1FeatureOnlineStoreBigtablePtrInput
+	// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+	DedicatedServingEndpoint GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointPtrInput
 	// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringPtrInput
 	// Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
@@ -109,7 +120,11 @@ type FeatureOnlineStoreArgs struct {
 	// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+	Name pulumi.StringPtrInput
+	// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+	Optimized GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedPtrInput
+	Project   pulumi.StringPtrInput
 }
 
 func (FeatureOnlineStoreArgs) ElementType() reflect.Type {
@@ -161,6 +176,13 @@ func (o FeatureOnlineStoreOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureOnlineStore) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+func (o FeatureOnlineStoreOutput) DedicatedServingEndpoint() GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponseOutput {
+	return o.ApplyT(func(v *FeatureOnlineStore) GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponseOutput {
+		return v.DedicatedServingEndpoint
+	}).(GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponseOutput)
+}
+
 // Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 func (o FeatureOnlineStoreOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureOnlineStore) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -180,9 +202,16 @@ func (o FeatureOnlineStoreOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureOnlineStore) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
 func (o FeatureOnlineStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureOnlineStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+func (o FeatureOnlineStoreOutput) Optimized() GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponseOutput {
+	return o.ApplyT(func(v *FeatureOnlineStore) GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponseOutput {
+		return v.Optimized
+	}).(GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponseOutput)
 }
 
 func (o FeatureOnlineStoreOutput) Project() pulumi.StringOutput {

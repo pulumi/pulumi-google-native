@@ -23,6 +23,8 @@ type TestMatrix struct {
 	ClientInfo ClientInfoResponseOutput `pulumi:"clientInfo"`
 	// The devices the tests are being executed on.
 	EnvironmentMatrix EnvironmentMatrixResponseOutput `pulumi:"environmentMatrix"`
+	// Details about why a matrix was deemed invalid. If multiple checks can be safely performed, they will be reported but no assumptions should be made about the length of this list.
+	ExtendedInvalidMatrixDetails MatrixErrorDetailResponseArrayOutput `pulumi:"extendedInvalidMatrixDetails"`
 	// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
 	FailFast pulumi.BoolOutput `pulumi:"failFast"`
 	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
@@ -184,6 +186,11 @@ func (o TestMatrixOutput) ClientInfo() ClientInfoResponseOutput {
 // The devices the tests are being executed on.
 func (o TestMatrixOutput) EnvironmentMatrix() EnvironmentMatrixResponseOutput {
 	return o.ApplyT(func(v *TestMatrix) EnvironmentMatrixResponseOutput { return v.EnvironmentMatrix }).(EnvironmentMatrixResponseOutput)
+}
+
+// Details about why a matrix was deemed invalid. If multiple checks can be safely performed, they will be reported but no assumptions should be made about the length of this list.
+func (o TestMatrixOutput) ExtendedInvalidMatrixDetails() MatrixErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v *TestMatrix) MatrixErrorDetailResponseArrayOutput { return v.ExtendedInvalidMatrixDetails }).(MatrixErrorDetailResponseArrayOutput)
 }
 
 // If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.

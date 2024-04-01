@@ -13,7 +13,6 @@ import (
 )
 
 // Creates a new FeatureGroup in a given project and location.
-// Auto-naming is currently not supported for this resource.
 type FeatureGroup struct {
 	pulumi.CustomResourceState
 
@@ -30,7 +29,7 @@ type FeatureGroup struct {
 	// Optional. The labels with user-defined metadata to organize your FeatureGroup. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureGroup(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+	// Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Timestamp when this FeatureGroup was last updated.
@@ -97,7 +96,9 @@ type featureGroupArgs struct {
 	// Optional. The labels with user-defined metadata to organize your FeatureGroup. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureGroup(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	Project  *string           `pulumi:"project"`
+	// Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a FeatureGroup resource.
@@ -113,7 +114,9 @@ type FeatureGroupArgs struct {
 	// Optional. The labels with user-defined metadata to organize your FeatureGroup. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureGroup(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 }
 
 func (FeatureGroupArgs) ElementType() reflect.Type {
@@ -189,7 +192,7 @@ func (o FeatureGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+// Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
 func (o FeatureGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

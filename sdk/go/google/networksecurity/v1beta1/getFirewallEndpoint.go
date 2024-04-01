@@ -31,7 +31,9 @@ type LookupFirewallEndpointArgs struct {
 type LookupFirewallEndpointResult struct {
 	// List of networks that are associated with this endpoint in the local zone. This is a projection of the FirewallEndpointAssociations pointing at this endpoint. A network will only appear in this list after traffic routing is fully configured. Format: projects/{project}/global/networks/{name}.
 	AssociatedNetworks []string `pulumi:"associatedNetworks"`
-	// Optional. Project to bill on endpoint uptime usage.
+	// List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured.
+	Associations []FirewallEndpointAssociationReferenceResponse `pulumi:"associations"`
+	// Project to bill on endpoint uptime usage.
 	BillingProjectId string `pulumi:"billingProjectId"`
 	// Create time stamp
 	CreateTime string `pulumi:"createTime"`
@@ -39,7 +41,7 @@ type LookupFirewallEndpointResult struct {
 	Description string `pulumi:"description"`
 	// Optional. Labels as key value pairs
 	Labels map[string]string `pulumi:"labels"`
-	// name of resource
+	// Immutable. Identifier. name of resource
 	Name string `pulumi:"name"`
 	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
 	Reconciling bool `pulumi:"reconciling"`
@@ -91,7 +93,14 @@ func (o LookupFirewallEndpointResultOutput) AssociatedNetworks() pulumi.StringAr
 	return o.ApplyT(func(v LookupFirewallEndpointResult) []string { return v.AssociatedNetworks }).(pulumi.StringArrayOutput)
 }
 
-// Optional. Project to bill on endpoint uptime usage.
+// List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured.
+func (o LookupFirewallEndpointResultOutput) Associations() FirewallEndpointAssociationReferenceResponseArrayOutput {
+	return o.ApplyT(func(v LookupFirewallEndpointResult) []FirewallEndpointAssociationReferenceResponse {
+		return v.Associations
+	}).(FirewallEndpointAssociationReferenceResponseArrayOutput)
+}
+
+// Project to bill on endpoint uptime usage.
 func (o LookupFirewallEndpointResultOutput) BillingProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallEndpointResult) string { return v.BillingProjectId }).(pulumi.StringOutput)
 }
@@ -111,7 +120,7 @@ func (o LookupFirewallEndpointResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFirewallEndpointResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// name of resource
+// Immutable. Identifier. name of resource
 func (o LookupFirewallEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }

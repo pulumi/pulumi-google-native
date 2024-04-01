@@ -17,13 +17,13 @@ import (
 type BillingAccountBucketLink struct {
 	pulumi.CustomResourceState
 
-	// The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+	// Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
 	BigqueryDataset  BigQueryDatasetResponseOutput `pulumi:"bigqueryDataset"`
 	BillingAccountId pulumi.StringOutput           `pulumi:"billingAccountId"`
 	BucketId         pulumi.StringOutput           `pulumi:"bucketId"`
 	// The creation timestamp of the link.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Describes this link.The maximum length of the description is 8000 characters.
+	// Optional. Describes this link.The maximum length of the description is 8000 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The resource lifecycle state.
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
@@ -90,32 +90,28 @@ func (BillingAccountBucketLinkState) ElementType() reflect.Type {
 }
 
 type billingAccountBucketLinkArgs struct {
-	// The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+	// Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
 	BigqueryDataset  *BigQueryDataset `pulumi:"bigqueryDataset"`
 	BillingAccountId string           `pulumi:"billingAccountId"`
 	BucketId         string           `pulumi:"bucketId"`
-	// Describes this link.The maximum length of the description is 8000 characters.
+	// Optional. Describes this link.The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it.
 	LinkId   string  `pulumi:"linkId"`
 	Location *string `pulumi:"location"`
-	// The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
-	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a BillingAccountBucketLink resource.
 type BillingAccountBucketLinkArgs struct {
-	// The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+	// Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
 	BigqueryDataset  BigQueryDatasetPtrInput
 	BillingAccountId pulumi.StringInput
 	BucketId         pulumi.StringInput
-	// Describes this link.The maximum length of the description is 8000 characters.
+	// Optional. Describes this link.The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it.
 	LinkId   pulumi.StringInput
 	Location pulumi.StringPtrInput
-	// The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
-	Name pulumi.StringPtrInput
 }
 
 func (BillingAccountBucketLinkArgs) ElementType() reflect.Type {
@@ -155,7 +151,7 @@ func (o BillingAccountBucketLinkOutput) ToBillingAccountBucketLinkOutputWithCont
 	return o
 }
 
-// The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+// Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
 func (o BillingAccountBucketLinkOutput) BigqueryDataset() BigQueryDatasetResponseOutput {
 	return o.ApplyT(func(v *BillingAccountBucketLink) BigQueryDatasetResponseOutput { return v.BigqueryDataset }).(BigQueryDatasetResponseOutput)
 }
@@ -173,7 +169,7 @@ func (o BillingAccountBucketLinkOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucketLink) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Describes this link.The maximum length of the description is 8000 characters.
+// Optional. Describes this link.The maximum length of the description is 8000 characters.
 func (o BillingAccountBucketLinkOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucketLink) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }

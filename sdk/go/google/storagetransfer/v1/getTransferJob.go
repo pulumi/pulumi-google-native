@@ -48,6 +48,8 @@ type LookupTransferJobResult struct {
 	NotificationConfig NotificationConfigResponse `pulumi:"notificationConfig"`
 	// The ID of the Google Cloud project that owns the job.
 	Project string `pulumi:"project"`
+	// Replication specification.
+	ReplicationSpec ReplicationSpecResponse `pulumi:"replicationSpec"`
 	// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
 	Schedule ScheduleResponse `pulumi:"schedule"`
 	// Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
@@ -140,6 +142,11 @@ func (o LookupTransferJobResultOutput) NotificationConfig() NotificationConfigRe
 // The ID of the Google Cloud project that owns the job.
 func (o LookupTransferJobResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransferJobResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Replication specification.
+func (o LookupTransferJobResultOutput) ReplicationSpec() ReplicationSpecResponseOutput {
+	return o.ApplyT(func(v LookupTransferJobResult) ReplicationSpecResponse { return v.ReplicationSpec }).(ReplicationSpecResponseOutput)
 }
 
 // Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.

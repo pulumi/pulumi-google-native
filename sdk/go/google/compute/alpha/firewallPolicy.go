@@ -31,6 +31,8 @@ type FirewallPolicy struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// A list of packet mirroring rules that belong to this policy.
+	PacketMirroringRules FirewallPolicyRuleResponseArrayOutput `pulumi:"packetMirroringRules"`
 	// The parent of the firewall policy. This field is not applicable to network firewall policies.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
@@ -103,6 +105,8 @@ type firewallPolicyArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
 	Name *string `pulumi:"name"`
+	// A list of packet mirroring rules that belong to this policy.
+	PacketMirroringRules []FirewallPolicyRule `pulumi:"packetMirroringRules"`
 	// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
 	ParentId *string `pulumi:"parentId"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -127,6 +131,8 @@ type FirewallPolicyArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
 	Name pulumi.StringPtrInput
+	// A list of packet mirroring rules that belong to this policy.
+	PacketMirroringRules FirewallPolicyRuleArrayInput
 	// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
 	ParentId pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -211,6 +217,11 @@ func (o FirewallPolicyOutput) Kind() pulumi.StringOutput {
 // Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
 func (o FirewallPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of packet mirroring rules that belong to this policy.
+func (o FirewallPolicyOutput) PacketMirroringRules() FirewallPolicyRuleResponseArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicy) FirewallPolicyRuleResponseArrayOutput { return v.PacketMirroringRules }).(FirewallPolicyRuleResponseArrayOutput)
 }
 
 // The parent of the firewall policy. This field is not applicable to network firewall policies.

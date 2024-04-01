@@ -825,6 +825,8 @@ func (o AutomationResourceSelectorResponseOutput) Targets() TargetAttributeRespo
 type AutomationRolloutMetadataResponse struct {
 	// The IDs of the AutomationRuns initiated by an advance rollout rule.
 	AdvanceAutomationRuns []string `pulumi:"advanceAutomationRuns"`
+	// The current AutomationRun repairing the rollout.
+	CurrentRepairAutomationRun string `pulumi:"currentRepairAutomationRun"`
 	// The ID of the AutomationRun initiated by a promote release rule.
 	PromoteAutomationRun string `pulumi:"promoteAutomationRun"`
 	// The IDs of the AutomationRuns initiated by a repair rollout rule.
@@ -849,6 +851,11 @@ func (o AutomationRolloutMetadataResponseOutput) ToAutomationRolloutMetadataResp
 // The IDs of the AutomationRuns initiated by an advance rollout rule.
 func (o AutomationRolloutMetadataResponseOutput) AdvanceAutomationRuns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AutomationRolloutMetadataResponse) []string { return v.AdvanceAutomationRuns }).(pulumi.StringArrayOutput)
+}
+
+// The current AutomationRun repairing the rollout.
+func (o AutomationRolloutMetadataResponseOutput) CurrentRepairAutomationRun() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRolloutMetadataResponse) string { return v.CurrentRepairAutomationRun }).(pulumi.StringOutput)
 }
 
 // The ID of the AutomationRun initiated by a promote release rule.
@@ -1071,9 +1078,9 @@ func (o AutomationRuleResponseArrayOutput) Index(i pulumi.IntInput) AutomationRu
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -1092,9 +1099,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -1155,12 +1162,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -1189,9 +1196,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -1215,12 +1222,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -1906,6 +1913,12 @@ func (o ChildRolloutJobsResponseOutput) CreateRolloutJobs() JobResponseArrayOutp
 type CloudRunConfig struct {
 	// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
 	AutomaticTrafficControl *bool `pulumi:"automaticTrafficControl"`
+	// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+	CanaryRevisionTags []string `pulumi:"canaryRevisionTags"`
+	// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+	PriorRevisionTags []string `pulumi:"priorRevisionTags"`
+	// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+	StableRevisionTags []string `pulumi:"stableRevisionTags"`
 }
 
 // CloudRunConfigInput is an input type that accepts CloudRunConfigArgs and CloudRunConfigOutput values.
@@ -1923,6 +1936,12 @@ type CloudRunConfigInput interface {
 type CloudRunConfigArgs struct {
 	// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
 	AutomaticTrafficControl pulumi.BoolPtrInput `pulumi:"automaticTrafficControl"`
+	// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+	CanaryRevisionTags pulumi.StringArrayInput `pulumi:"canaryRevisionTags"`
+	// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+	PriorRevisionTags pulumi.StringArrayInput `pulumi:"priorRevisionTags"`
+	// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+	StableRevisionTags pulumi.StringArrayInput `pulumi:"stableRevisionTags"`
 }
 
 func (CloudRunConfigArgs) ElementType() reflect.Type {
@@ -2008,6 +2027,21 @@ func (o CloudRunConfigOutput) AutomaticTrafficControl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CloudRunConfig) *bool { return v.AutomaticTrafficControl }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+func (o CloudRunConfigOutput) CanaryRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudRunConfig) []string { return v.CanaryRevisionTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+func (o CloudRunConfigOutput) PriorRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudRunConfig) []string { return v.PriorRevisionTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+func (o CloudRunConfigOutput) StableRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudRunConfig) []string { return v.StableRevisionTags }).(pulumi.StringArrayOutput)
+}
+
 type CloudRunConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (CloudRunConfigPtrOutput) ElementType() reflect.Type {
@@ -2042,10 +2076,46 @@ func (o CloudRunConfigPtrOutput) AutomaticTrafficControl() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+func (o CloudRunConfigPtrOutput) CanaryRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudRunConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CanaryRevisionTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+func (o CloudRunConfigPtrOutput) PriorRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudRunConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PriorRevisionTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+func (o CloudRunConfigPtrOutput) StableRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudRunConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StableRevisionTags
+	}).(pulumi.StringArrayOutput)
+}
+
 // CloudRunConfig contains the Cloud Run runtime configuration.
 type CloudRunConfigResponse struct {
 	// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
 	AutomaticTrafficControl bool `pulumi:"automaticTrafficControl"`
+	// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+	CanaryRevisionTags []string `pulumi:"canaryRevisionTags"`
+	// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+	PriorRevisionTags []string `pulumi:"priorRevisionTags"`
+	// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+	StableRevisionTags []string `pulumi:"stableRevisionTags"`
 }
 
 // CloudRunConfig contains the Cloud Run runtime configuration.
@@ -2066,6 +2136,21 @@ func (o CloudRunConfigResponseOutput) ToCloudRunConfigResponseOutputWithContext(
 // Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
 func (o CloudRunConfigResponseOutput) AutomaticTrafficControl() pulumi.BoolOutput {
 	return o.ApplyT(func(v CloudRunConfigResponse) bool { return v.AutomaticTrafficControl }).(pulumi.BoolOutput)
+}
+
+// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+func (o CloudRunConfigResponseOutput) CanaryRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudRunConfigResponse) []string { return v.CanaryRevisionTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+func (o CloudRunConfigResponseOutput) PriorRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudRunConfigResponse) []string { return v.PriorRevisionTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+func (o CloudRunConfigResponseOutput) StableRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudRunConfigResponse) []string { return v.StableRevisionTags }).(pulumi.StringArrayOutput)
 }
 
 // Information specifying where to deploy a Cloud Run Service.
@@ -2464,6 +2549,525 @@ func (o CustomCanaryDeploymentResponseOutput) ToCustomCanaryDeploymentResponseOu
 // Configuration for each phase in the canary deployment in the order executed.
 func (o CustomCanaryDeploymentResponseOutput) PhaseConfigs() PhaseConfigResponseArrayOutput {
 	return o.ApplyT(func(v CustomCanaryDeploymentResponse) []PhaseConfigResponse { return v.PhaseConfigs }).(PhaseConfigResponseArrayOutput)
+}
+
+// CustomMetadata contains information from a user-defined operation.
+type CustomMetadataResponse struct {
+	// Key-value pairs provided by the user-defined operation.
+	Values map[string]string `pulumi:"values"`
+}
+
+// CustomMetadata contains information from a user-defined operation.
+type CustomMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomMetadataResponse)(nil)).Elem()
+}
+
+func (o CustomMetadataResponseOutput) ToCustomMetadataResponseOutput() CustomMetadataResponseOutput {
+	return o
+}
+
+func (o CustomMetadataResponseOutput) ToCustomMetadataResponseOutputWithContext(ctx context.Context) CustomMetadataResponseOutput {
+	return o
+}
+
+// Key-value pairs provided by the user-defined operation.
+func (o CustomMetadataResponseOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CustomMetadataResponse) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+// Information specifying a Custom Target.
+type CustomTarget struct {
+	// The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+	CustomTargetType string `pulumi:"customTargetType"`
+}
+
+// CustomTargetInput is an input type that accepts CustomTargetArgs and CustomTargetOutput values.
+// You can construct a concrete instance of `CustomTargetInput` via:
+//
+//	CustomTargetArgs{...}
+type CustomTargetInput interface {
+	pulumi.Input
+
+	ToCustomTargetOutput() CustomTargetOutput
+	ToCustomTargetOutputWithContext(context.Context) CustomTargetOutput
+}
+
+// Information specifying a Custom Target.
+type CustomTargetArgs struct {
+	// The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+	CustomTargetType pulumi.StringInput `pulumi:"customTargetType"`
+}
+
+func (CustomTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTarget)(nil)).Elem()
+}
+
+func (i CustomTargetArgs) ToCustomTargetOutput() CustomTargetOutput {
+	return i.ToCustomTargetOutputWithContext(context.Background())
+}
+
+func (i CustomTargetArgs) ToCustomTargetOutputWithContext(ctx context.Context) CustomTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetOutput)
+}
+
+func (i CustomTargetArgs) ToCustomTargetPtrOutput() CustomTargetPtrOutput {
+	return i.ToCustomTargetPtrOutputWithContext(context.Background())
+}
+
+func (i CustomTargetArgs) ToCustomTargetPtrOutputWithContext(ctx context.Context) CustomTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetOutput).ToCustomTargetPtrOutputWithContext(ctx)
+}
+
+// CustomTargetPtrInput is an input type that accepts CustomTargetArgs, CustomTargetPtr and CustomTargetPtrOutput values.
+// You can construct a concrete instance of `CustomTargetPtrInput` via:
+//
+//	        CustomTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomTargetPtrInput interface {
+	pulumi.Input
+
+	ToCustomTargetPtrOutput() CustomTargetPtrOutput
+	ToCustomTargetPtrOutputWithContext(context.Context) CustomTargetPtrOutput
+}
+
+type customTargetPtrType CustomTargetArgs
+
+func CustomTargetPtr(v *CustomTargetArgs) CustomTargetPtrInput {
+	return (*customTargetPtrType)(v)
+}
+
+func (*customTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTarget)(nil)).Elem()
+}
+
+func (i *customTargetPtrType) ToCustomTargetPtrOutput() CustomTargetPtrOutput {
+	return i.ToCustomTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *customTargetPtrType) ToCustomTargetPtrOutputWithContext(ctx context.Context) CustomTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetPtrOutput)
+}
+
+// Information specifying a Custom Target.
+type CustomTargetOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTarget)(nil)).Elem()
+}
+
+func (o CustomTargetOutput) ToCustomTargetOutput() CustomTargetOutput {
+	return o
+}
+
+func (o CustomTargetOutput) ToCustomTargetOutputWithContext(ctx context.Context) CustomTargetOutput {
+	return o
+}
+
+func (o CustomTargetOutput) ToCustomTargetPtrOutput() CustomTargetPtrOutput {
+	return o.ToCustomTargetPtrOutputWithContext(context.Background())
+}
+
+func (o CustomTargetOutput) ToCustomTargetPtrOutputWithContext(ctx context.Context) CustomTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomTarget) *CustomTarget {
+		return &v
+	}).(CustomTargetPtrOutput)
+}
+
+// The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+func (o CustomTargetOutput) CustomTargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTarget) string { return v.CustomTargetType }).(pulumi.StringOutput)
+}
+
+type CustomTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTarget)(nil)).Elem()
+}
+
+func (o CustomTargetPtrOutput) ToCustomTargetPtrOutput() CustomTargetPtrOutput {
+	return o
+}
+
+func (o CustomTargetPtrOutput) ToCustomTargetPtrOutputWithContext(ctx context.Context) CustomTargetPtrOutput {
+	return o
+}
+
+func (o CustomTargetPtrOutput) Elem() CustomTargetOutput {
+	return o.ApplyT(func(v *CustomTarget) CustomTarget {
+		if v != nil {
+			return *v
+		}
+		var ret CustomTarget
+		return ret
+	}).(CustomTargetOutput)
+}
+
+// The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+func (o CustomTargetPtrOutput) CustomTargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomTargetType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information specifying a Custom Target.
+type CustomTargetResponse struct {
+	// The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+	CustomTargetType string `pulumi:"customTargetType"`
+}
+
+// Information specifying a Custom Target.
+type CustomTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetResponse)(nil)).Elem()
+}
+
+func (o CustomTargetResponseOutput) ToCustomTargetResponseOutput() CustomTargetResponseOutput {
+	return o
+}
+
+func (o CustomTargetResponseOutput) ToCustomTargetResponseOutputWithContext(ctx context.Context) CustomTargetResponseOutput {
+	return o
+}
+
+// The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+func (o CustomTargetResponseOutput) CustomTargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetResponse) string { return v.CustomTargetType }).(pulumi.StringOutput)
+}
+
+// CustomTargetSkaffoldActions represents the `CustomTargetType` configuration using Skaffold custom actions.
+type CustomTargetSkaffoldActions struct {
+	// The Skaffold custom action responsible for deploy operations.
+	DeployAction string `pulumi:"deployAction"`
+	// Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+	IncludeSkaffoldModules []SkaffoldModules `pulumi:"includeSkaffoldModules"`
+	// Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+	RenderAction *string `pulumi:"renderAction"`
+}
+
+// CustomTargetSkaffoldActionsInput is an input type that accepts CustomTargetSkaffoldActionsArgs and CustomTargetSkaffoldActionsOutput values.
+// You can construct a concrete instance of `CustomTargetSkaffoldActionsInput` via:
+//
+//	CustomTargetSkaffoldActionsArgs{...}
+type CustomTargetSkaffoldActionsInput interface {
+	pulumi.Input
+
+	ToCustomTargetSkaffoldActionsOutput() CustomTargetSkaffoldActionsOutput
+	ToCustomTargetSkaffoldActionsOutputWithContext(context.Context) CustomTargetSkaffoldActionsOutput
+}
+
+// CustomTargetSkaffoldActions represents the `CustomTargetType` configuration using Skaffold custom actions.
+type CustomTargetSkaffoldActionsArgs struct {
+	// The Skaffold custom action responsible for deploy operations.
+	DeployAction pulumi.StringInput `pulumi:"deployAction"`
+	// Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+	IncludeSkaffoldModules SkaffoldModulesArrayInput `pulumi:"includeSkaffoldModules"`
+	// Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+	RenderAction pulumi.StringPtrInput `pulumi:"renderAction"`
+}
+
+func (CustomTargetSkaffoldActionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetSkaffoldActions)(nil)).Elem()
+}
+
+func (i CustomTargetSkaffoldActionsArgs) ToCustomTargetSkaffoldActionsOutput() CustomTargetSkaffoldActionsOutput {
+	return i.ToCustomTargetSkaffoldActionsOutputWithContext(context.Background())
+}
+
+func (i CustomTargetSkaffoldActionsArgs) ToCustomTargetSkaffoldActionsOutputWithContext(ctx context.Context) CustomTargetSkaffoldActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetSkaffoldActionsOutput)
+}
+
+func (i CustomTargetSkaffoldActionsArgs) ToCustomTargetSkaffoldActionsPtrOutput() CustomTargetSkaffoldActionsPtrOutput {
+	return i.ToCustomTargetSkaffoldActionsPtrOutputWithContext(context.Background())
+}
+
+func (i CustomTargetSkaffoldActionsArgs) ToCustomTargetSkaffoldActionsPtrOutputWithContext(ctx context.Context) CustomTargetSkaffoldActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetSkaffoldActionsOutput).ToCustomTargetSkaffoldActionsPtrOutputWithContext(ctx)
+}
+
+// CustomTargetSkaffoldActionsPtrInput is an input type that accepts CustomTargetSkaffoldActionsArgs, CustomTargetSkaffoldActionsPtr and CustomTargetSkaffoldActionsPtrOutput values.
+// You can construct a concrete instance of `CustomTargetSkaffoldActionsPtrInput` via:
+//
+//	        CustomTargetSkaffoldActionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomTargetSkaffoldActionsPtrInput interface {
+	pulumi.Input
+
+	ToCustomTargetSkaffoldActionsPtrOutput() CustomTargetSkaffoldActionsPtrOutput
+	ToCustomTargetSkaffoldActionsPtrOutputWithContext(context.Context) CustomTargetSkaffoldActionsPtrOutput
+}
+
+type customTargetSkaffoldActionsPtrType CustomTargetSkaffoldActionsArgs
+
+func CustomTargetSkaffoldActionsPtr(v *CustomTargetSkaffoldActionsArgs) CustomTargetSkaffoldActionsPtrInput {
+	return (*customTargetSkaffoldActionsPtrType)(v)
+}
+
+func (*customTargetSkaffoldActionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetSkaffoldActions)(nil)).Elem()
+}
+
+func (i *customTargetSkaffoldActionsPtrType) ToCustomTargetSkaffoldActionsPtrOutput() CustomTargetSkaffoldActionsPtrOutput {
+	return i.ToCustomTargetSkaffoldActionsPtrOutputWithContext(context.Background())
+}
+
+func (i *customTargetSkaffoldActionsPtrType) ToCustomTargetSkaffoldActionsPtrOutputWithContext(ctx context.Context) CustomTargetSkaffoldActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetSkaffoldActionsPtrOutput)
+}
+
+// CustomTargetSkaffoldActions represents the `CustomTargetType` configuration using Skaffold custom actions.
+type CustomTargetSkaffoldActionsOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetSkaffoldActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetSkaffoldActions)(nil)).Elem()
+}
+
+func (o CustomTargetSkaffoldActionsOutput) ToCustomTargetSkaffoldActionsOutput() CustomTargetSkaffoldActionsOutput {
+	return o
+}
+
+func (o CustomTargetSkaffoldActionsOutput) ToCustomTargetSkaffoldActionsOutputWithContext(ctx context.Context) CustomTargetSkaffoldActionsOutput {
+	return o
+}
+
+func (o CustomTargetSkaffoldActionsOutput) ToCustomTargetSkaffoldActionsPtrOutput() CustomTargetSkaffoldActionsPtrOutput {
+	return o.ToCustomTargetSkaffoldActionsPtrOutputWithContext(context.Background())
+}
+
+func (o CustomTargetSkaffoldActionsOutput) ToCustomTargetSkaffoldActionsPtrOutputWithContext(ctx context.Context) CustomTargetSkaffoldActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomTargetSkaffoldActions) *CustomTargetSkaffoldActions {
+		return &v
+	}).(CustomTargetSkaffoldActionsPtrOutput)
+}
+
+// The Skaffold custom action responsible for deploy operations.
+func (o CustomTargetSkaffoldActionsOutput) DeployAction() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetSkaffoldActions) string { return v.DeployAction }).(pulumi.StringOutput)
+}
+
+// Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+func (o CustomTargetSkaffoldActionsOutput) IncludeSkaffoldModules() SkaffoldModulesArrayOutput {
+	return o.ApplyT(func(v CustomTargetSkaffoldActions) []SkaffoldModules { return v.IncludeSkaffoldModules }).(SkaffoldModulesArrayOutput)
+}
+
+// Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+func (o CustomTargetSkaffoldActionsOutput) RenderAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomTargetSkaffoldActions) *string { return v.RenderAction }).(pulumi.StringPtrOutput)
+}
+
+type CustomTargetSkaffoldActionsPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetSkaffoldActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetSkaffoldActions)(nil)).Elem()
+}
+
+func (o CustomTargetSkaffoldActionsPtrOutput) ToCustomTargetSkaffoldActionsPtrOutput() CustomTargetSkaffoldActionsPtrOutput {
+	return o
+}
+
+func (o CustomTargetSkaffoldActionsPtrOutput) ToCustomTargetSkaffoldActionsPtrOutputWithContext(ctx context.Context) CustomTargetSkaffoldActionsPtrOutput {
+	return o
+}
+
+func (o CustomTargetSkaffoldActionsPtrOutput) Elem() CustomTargetSkaffoldActionsOutput {
+	return o.ApplyT(func(v *CustomTargetSkaffoldActions) CustomTargetSkaffoldActions {
+		if v != nil {
+			return *v
+		}
+		var ret CustomTargetSkaffoldActions
+		return ret
+	}).(CustomTargetSkaffoldActionsOutput)
+}
+
+// The Skaffold custom action responsible for deploy operations.
+func (o CustomTargetSkaffoldActionsPtrOutput) DeployAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetSkaffoldActions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeployAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+func (o CustomTargetSkaffoldActionsPtrOutput) IncludeSkaffoldModules() SkaffoldModulesArrayOutput {
+	return o.ApplyT(func(v *CustomTargetSkaffoldActions) []SkaffoldModules {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeSkaffoldModules
+	}).(SkaffoldModulesArrayOutput)
+}
+
+// Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+func (o CustomTargetSkaffoldActionsPtrOutput) RenderAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetSkaffoldActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RenderAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// CustomTargetSkaffoldActions represents the `CustomTargetType` configuration using Skaffold custom actions.
+type CustomTargetSkaffoldActionsResponse struct {
+	// The Skaffold custom action responsible for deploy operations.
+	DeployAction string `pulumi:"deployAction"`
+	// Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+	IncludeSkaffoldModules []SkaffoldModulesResponse `pulumi:"includeSkaffoldModules"`
+	// Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+	RenderAction string `pulumi:"renderAction"`
+}
+
+// CustomTargetSkaffoldActions represents the `CustomTargetType` configuration using Skaffold custom actions.
+type CustomTargetSkaffoldActionsResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetSkaffoldActionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetSkaffoldActionsResponse)(nil)).Elem()
+}
+
+func (o CustomTargetSkaffoldActionsResponseOutput) ToCustomTargetSkaffoldActionsResponseOutput() CustomTargetSkaffoldActionsResponseOutput {
+	return o
+}
+
+func (o CustomTargetSkaffoldActionsResponseOutput) ToCustomTargetSkaffoldActionsResponseOutputWithContext(ctx context.Context) CustomTargetSkaffoldActionsResponseOutput {
+	return o
+}
+
+// The Skaffold custom action responsible for deploy operations.
+func (o CustomTargetSkaffoldActionsResponseOutput) DeployAction() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetSkaffoldActionsResponse) string { return v.DeployAction }).(pulumi.StringOutput)
+}
+
+// Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+func (o CustomTargetSkaffoldActionsResponseOutput) IncludeSkaffoldModules() SkaffoldModulesResponseArrayOutput {
+	return o.ApplyT(func(v CustomTargetSkaffoldActionsResponse) []SkaffoldModulesResponse { return v.IncludeSkaffoldModules }).(SkaffoldModulesResponseArrayOutput)
+}
+
+// Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+func (o CustomTargetSkaffoldActionsResponseOutput) RenderAction() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetSkaffoldActionsResponse) string { return v.RenderAction }).(pulumi.StringOutput)
+}
+
+// A `CustomTargetType` resource in the Cloud Deploy API. A `CustomTargetType` defines a type of custom target that can be referenced in a `Target` in order to facilitate deploying to other systems besides the supported runtimes.
+type CustomTargetTypeResponse struct {
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Time at which the `CustomTargetType` was created.
+	CreateTime string `pulumi:"createTime"`
+	// Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
+	CustomActions CustomTargetSkaffoldActionsResponse `pulumi:"customActions"`
+	// Resource id of the `CustomTargetType`.
+	CustomTargetTypeId string `pulumi:"customTargetTypeId"`
+	// Optional. Description of the `CustomTargetType`. Max length is 255 characters.
+	Description string `pulumi:"description"`
+	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag string `pulumi:"etag"`
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. Name of the `CustomTargetType`. Format is `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+	Name string `pulumi:"name"`
+	// Unique identifier of the `CustomTargetType`.
+	Uid string `pulumi:"uid"`
+	// Most recent time at which the `CustomTargetType` was updated.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// A `CustomTargetType` resource in the Cloud Deploy API. A `CustomTargetType` defines a type of custom target that can be referenced in a `Target` in order to facilitate deploying to other systems besides the supported runtimes.
+type CustomTargetTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeResponse)(nil)).Elem()
+}
+
+func (o CustomTargetTypeResponseOutput) ToCustomTargetTypeResponseOutput() CustomTargetTypeResponseOutput {
+	return o
+}
+
+func (o CustomTargetTypeResponseOutput) ToCustomTargetTypeResponseOutputWithContext(ctx context.Context) CustomTargetTypeResponseOutput {
+	return o
+}
+
+// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+func (o CustomTargetTypeResponseOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CustomTargetTypeResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Time at which the `CustomTargetType` was created.
+func (o CustomTargetTypeResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
+func (o CustomTargetTypeResponseOutput) CustomActions() CustomTargetSkaffoldActionsResponseOutput {
+	return o.ApplyT(func(v CustomTargetTypeResponse) CustomTargetSkaffoldActionsResponse { return v.CustomActions }).(CustomTargetSkaffoldActionsResponseOutput)
+}
+
+// Resource id of the `CustomTargetType`.
+func (o CustomTargetTypeResponseOutput) CustomTargetTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeResponse) string { return v.CustomTargetTypeId }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the `CustomTargetType`. Max length is 255 characters.
+func (o CustomTargetTypeResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o CustomTargetTypeResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+func (o CustomTargetTypeResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CustomTargetTypeResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Name of the `CustomTargetType`. Format is `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+func (o CustomTargetTypeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the `CustomTargetType`.
+func (o CustomTargetTypeResponseOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeResponse) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Most recent time at which the `CustomTargetType` was updated.
+func (o CustomTargetTypeResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type CustomTargetTypeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomTargetTypeResponse)(nil)).Elem()
+}
+
+func (o CustomTargetTypeResponseArrayOutput) ToCustomTargetTypeResponseArrayOutput() CustomTargetTypeResponseArrayOutput {
+	return o
+}
+
+func (o CustomTargetTypeResponseArrayOutput) ToCustomTargetTypeResponseArrayOutputWithContext(ctx context.Context) CustomTargetTypeResponseArrayOutput {
+	return o
+}
+
+func (o CustomTargetTypeResponseArrayOutput) Index(i pulumi.IntInput) CustomTargetTypeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomTargetTypeResponse {
+		return vs[0].([]CustomTargetTypeResponse)[vs[1].(int)]
+	}).(CustomTargetTypeResponseOutput)
 }
 
 // Execution using the default Cloud Build pool.
@@ -3478,6 +4082,8 @@ type GatewayServiceMesh struct {
 	RouteUpdateWaitTime *string `pulumi:"routeUpdateWaitTime"`
 	// Name of the Kubernetes Service.
 	Service string `pulumi:"service"`
+	// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+	StableCutbackDuration *string `pulumi:"stableCutbackDuration"`
 }
 
 // GatewayServiceMeshInput is an input type that accepts GatewayServiceMeshArgs and GatewayServiceMeshOutput values.
@@ -3501,6 +4107,8 @@ type GatewayServiceMeshArgs struct {
 	RouteUpdateWaitTime pulumi.StringPtrInput `pulumi:"routeUpdateWaitTime"`
 	// Name of the Kubernetes Service.
 	Service pulumi.StringInput `pulumi:"service"`
+	// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+	StableCutbackDuration pulumi.StringPtrInput `pulumi:"stableCutbackDuration"`
 }
 
 func (GatewayServiceMeshArgs) ElementType() reflect.Type {
@@ -3601,6 +4209,11 @@ func (o GatewayServiceMeshOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayServiceMesh) string { return v.Service }).(pulumi.StringOutput)
 }
 
+// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+func (o GatewayServiceMeshOutput) StableCutbackDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayServiceMesh) *string { return v.StableCutbackDuration }).(pulumi.StringPtrOutput)
+}
+
 type GatewayServiceMeshPtrOutput struct{ *pulumi.OutputState }
 
 func (GatewayServiceMeshPtrOutput) ElementType() reflect.Type {
@@ -3665,6 +4278,16 @@ func (o GatewayServiceMeshPtrOutput) Service() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+func (o GatewayServiceMeshPtrOutput) StableCutbackDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StableCutbackDuration
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information about the Kubernetes Gateway API service mesh configuration.
 type GatewayServiceMeshResponse struct {
 	// Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
@@ -3675,6 +4298,8 @@ type GatewayServiceMeshResponse struct {
 	RouteUpdateWaitTime string `pulumi:"routeUpdateWaitTime"`
 	// Name of the Kubernetes Service.
 	Service string `pulumi:"service"`
+	// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+	StableCutbackDuration string `pulumi:"stableCutbackDuration"`
 }
 
 // Information about the Kubernetes Gateway API service mesh configuration.
@@ -3710,6 +4335,11 @@ func (o GatewayServiceMeshResponseOutput) RouteUpdateWaitTime() pulumi.StringOut
 // Name of the Kubernetes Service.
 func (o GatewayServiceMeshResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayServiceMeshResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+func (o GatewayServiceMeshResponseOutput) StableCutbackDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayServiceMeshResponse) string { return v.StableCutbackDuration }).(pulumi.StringOutput)
 }
 
 // Information specifying a GKE Cluster.
@@ -4204,6 +4834,8 @@ type MetadataResponse struct {
 	Automation AutomationRolloutMetadataResponse `pulumi:"automation"`
 	// The name of the Cloud Run Service that is associated with a `Rollout`.
 	CloudRun CloudRunMetadataResponse `pulumi:"cloudRun"`
+	// Custom metadata provided by user-defined `Rollout` operations.
+	Custom CustomMetadataResponse `pulumi:"custom"`
 }
 
 // Metadata includes information associated with a `Rollout`.
@@ -4229,6 +4861,11 @@ func (o MetadataResponseOutput) Automation() AutomationRolloutMetadataResponseOu
 // The name of the Cloud Run Service that is associated with a `Rollout`.
 func (o MetadataResponseOutput) CloudRun() CloudRunMetadataResponseOutput {
 	return o.ApplyT(func(v MetadataResponse) CloudRunMetadataResponse { return v.CloudRun }).(CloudRunMetadataResponseOutput)
+}
+
+// Custom metadata provided by user-defined `Rollout` operations.
+func (o MetadataResponseOutput) Custom() CustomMetadataResponseOutput {
+	return o.ApplyT(func(v MetadataResponse) CustomMetadataResponse { return v.Custom }).(CustomMetadataResponseOutput)
 }
 
 // Information specifying a multiTarget.
@@ -5613,7 +6250,7 @@ func (o PromoteReleaseRuleResponseOutput) Wait() pulumi.StringOutput {
 type ReleaseConditionResponse struct {
 	// Details around the Releases's overall status.
 	ReleaseReadyCondition ReleaseReadyConditionResponse `pulumi:"releaseReadyCondition"`
-	// Details around the support state of the release's skaffold version.
+	// Details around the support state of the release's Skaffold version.
 	SkaffoldSupportedCondition SkaffoldSupportedConditionResponse `pulumi:"skaffoldSupportedCondition"`
 }
 
@@ -5637,7 +6274,7 @@ func (o ReleaseConditionResponseOutput) ReleaseReadyCondition() ReleaseReadyCond
 	return o.ApplyT(func(v ReleaseConditionResponse) ReleaseReadyConditionResponse { return v.ReleaseReadyCondition }).(ReleaseReadyConditionResponseOutput)
 }
 
-// Details around the support state of the release's skaffold version.
+// Details around the support state of the release's Skaffold version.
 func (o ReleaseConditionResponseOutput) SkaffoldSupportedCondition() SkaffoldSupportedConditionResponseOutput {
 	return o.ApplyT(func(v ReleaseConditionResponse) SkaffoldSupportedConditionResponse {
 		return v.SkaffoldSupportedCondition
@@ -6078,7 +6715,7 @@ func (o RepairRolloutRuleResponseOutput) SourcePhases() pulumi.StringArrayOutput
 
 // Retries the failed job.
 type Retry struct {
-	// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+	// Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
 	Attempts string `pulumi:"attempts"`
 	// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
 	BackoffMode *RetryBackoffMode `pulumi:"backoffMode"`
@@ -6099,7 +6736,7 @@ type RetryInput interface {
 
 // Retries the failed job.
 type RetryArgs struct {
-	// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+	// Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
 	Attempts pulumi.StringInput `pulumi:"attempts"`
 	// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
 	BackoffMode RetryBackoffModePtrInput `pulumi:"backoffMode"`
@@ -6185,7 +6822,7 @@ func (o RetryOutput) ToRetryPtrOutputWithContext(ctx context.Context) RetryPtrOu
 	}).(RetryPtrOutput)
 }
 
-// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+// Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
 func (o RetryOutput) Attempts() pulumi.StringOutput {
 	return o.ApplyT(func(v Retry) string { return v.Attempts }).(pulumi.StringOutput)
 }
@@ -6224,7 +6861,7 @@ func (o RetryPtrOutput) Elem() RetryOutput {
 	}).(RetryOutput)
 }
 
-// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+// Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
 func (o RetryPtrOutput) Attempts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Retry) *string {
 		if v == nil {
@@ -6256,7 +6893,7 @@ func (o RetryPtrOutput) Wait() pulumi.StringPtrOutput {
 
 // Retries the failed job.
 type RetryResponse struct {
-	// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+	// Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
 	Attempts string `pulumi:"attempts"`
 	// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
 	BackoffMode string `pulumi:"backoffMode"`
@@ -6279,7 +6916,7 @@ func (o RetryResponseOutput) ToRetryResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+// Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
 func (o RetryResponseOutput) Attempts() pulumi.StringOutput {
 	return o.ApplyT(func(v RetryResponse) string { return v.Attempts }).(pulumi.StringOutput)
 }
@@ -7036,19 +7673,607 @@ func (o ServiceNetworkingResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNetworkingResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
-// SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
+// Cloud Storage bucket containing Skaffold Config modules.
+type SkaffoldGCSSource struct {
+	// Optional. Relative path from the source to the Skaffold file.
+	Path *string `pulumi:"path"`
+	// Cloud Storage source paths to copy recursively. For example, providing "gs://my-bucket/dir/configs/*" will result in Skaffold copying all files within the "dir/configs" directory in the bucket "my-bucket".
+	Source string `pulumi:"source"`
+}
+
+// SkaffoldGCSSourceInput is an input type that accepts SkaffoldGCSSourceArgs and SkaffoldGCSSourceOutput values.
+// You can construct a concrete instance of `SkaffoldGCSSourceInput` via:
+//
+//	SkaffoldGCSSourceArgs{...}
+type SkaffoldGCSSourceInput interface {
+	pulumi.Input
+
+	ToSkaffoldGCSSourceOutput() SkaffoldGCSSourceOutput
+	ToSkaffoldGCSSourceOutputWithContext(context.Context) SkaffoldGCSSourceOutput
+}
+
+// Cloud Storage bucket containing Skaffold Config modules.
+type SkaffoldGCSSourceArgs struct {
+	// Optional. Relative path from the source to the Skaffold file.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Cloud Storage source paths to copy recursively. For example, providing "gs://my-bucket/dir/configs/*" will result in Skaffold copying all files within the "dir/configs" directory in the bucket "my-bucket".
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (SkaffoldGCSSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkaffoldGCSSource)(nil)).Elem()
+}
+
+func (i SkaffoldGCSSourceArgs) ToSkaffoldGCSSourceOutput() SkaffoldGCSSourceOutput {
+	return i.ToSkaffoldGCSSourceOutputWithContext(context.Background())
+}
+
+func (i SkaffoldGCSSourceArgs) ToSkaffoldGCSSourceOutputWithContext(ctx context.Context) SkaffoldGCSSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkaffoldGCSSourceOutput)
+}
+
+func (i SkaffoldGCSSourceArgs) ToSkaffoldGCSSourcePtrOutput() SkaffoldGCSSourcePtrOutput {
+	return i.ToSkaffoldGCSSourcePtrOutputWithContext(context.Background())
+}
+
+func (i SkaffoldGCSSourceArgs) ToSkaffoldGCSSourcePtrOutputWithContext(ctx context.Context) SkaffoldGCSSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkaffoldGCSSourceOutput).ToSkaffoldGCSSourcePtrOutputWithContext(ctx)
+}
+
+// SkaffoldGCSSourcePtrInput is an input type that accepts SkaffoldGCSSourceArgs, SkaffoldGCSSourcePtr and SkaffoldGCSSourcePtrOutput values.
+// You can construct a concrete instance of `SkaffoldGCSSourcePtrInput` via:
+//
+//	        SkaffoldGCSSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkaffoldGCSSourcePtrInput interface {
+	pulumi.Input
+
+	ToSkaffoldGCSSourcePtrOutput() SkaffoldGCSSourcePtrOutput
+	ToSkaffoldGCSSourcePtrOutputWithContext(context.Context) SkaffoldGCSSourcePtrOutput
+}
+
+type skaffoldGCSSourcePtrType SkaffoldGCSSourceArgs
+
+func SkaffoldGCSSourcePtr(v *SkaffoldGCSSourceArgs) SkaffoldGCSSourcePtrInput {
+	return (*skaffoldGCSSourcePtrType)(v)
+}
+
+func (*skaffoldGCSSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkaffoldGCSSource)(nil)).Elem()
+}
+
+func (i *skaffoldGCSSourcePtrType) ToSkaffoldGCSSourcePtrOutput() SkaffoldGCSSourcePtrOutput {
+	return i.ToSkaffoldGCSSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *skaffoldGCSSourcePtrType) ToSkaffoldGCSSourcePtrOutputWithContext(ctx context.Context) SkaffoldGCSSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkaffoldGCSSourcePtrOutput)
+}
+
+// Cloud Storage bucket containing Skaffold Config modules.
+type SkaffoldGCSSourceOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldGCSSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkaffoldGCSSource)(nil)).Elem()
+}
+
+func (o SkaffoldGCSSourceOutput) ToSkaffoldGCSSourceOutput() SkaffoldGCSSourceOutput {
+	return o
+}
+
+func (o SkaffoldGCSSourceOutput) ToSkaffoldGCSSourceOutputWithContext(ctx context.Context) SkaffoldGCSSourceOutput {
+	return o
+}
+
+func (o SkaffoldGCSSourceOutput) ToSkaffoldGCSSourcePtrOutput() SkaffoldGCSSourcePtrOutput {
+	return o.ToSkaffoldGCSSourcePtrOutputWithContext(context.Background())
+}
+
+func (o SkaffoldGCSSourceOutput) ToSkaffoldGCSSourcePtrOutputWithContext(ctx context.Context) SkaffoldGCSSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkaffoldGCSSource) *SkaffoldGCSSource {
+		return &v
+	}).(SkaffoldGCSSourcePtrOutput)
+}
+
+// Optional. Relative path from the source to the Skaffold file.
+func (o SkaffoldGCSSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkaffoldGCSSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Cloud Storage source paths to copy recursively. For example, providing "gs://my-bucket/dir/configs/*" will result in Skaffold copying all files within the "dir/configs" directory in the bucket "my-bucket".
+func (o SkaffoldGCSSourceOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v SkaffoldGCSSource) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type SkaffoldGCSSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldGCSSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkaffoldGCSSource)(nil)).Elem()
+}
+
+func (o SkaffoldGCSSourcePtrOutput) ToSkaffoldGCSSourcePtrOutput() SkaffoldGCSSourcePtrOutput {
+	return o
+}
+
+func (o SkaffoldGCSSourcePtrOutput) ToSkaffoldGCSSourcePtrOutputWithContext(ctx context.Context) SkaffoldGCSSourcePtrOutput {
+	return o
+}
+
+func (o SkaffoldGCSSourcePtrOutput) Elem() SkaffoldGCSSourceOutput {
+	return o.ApplyT(func(v *SkaffoldGCSSource) SkaffoldGCSSource {
+		if v != nil {
+			return *v
+		}
+		var ret SkaffoldGCSSource
+		return ret
+	}).(SkaffoldGCSSourceOutput)
+}
+
+// Optional. Relative path from the source to the Skaffold file.
+func (o SkaffoldGCSSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkaffoldGCSSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Storage source paths to copy recursively. For example, providing "gs://my-bucket/dir/configs/*" will result in Skaffold copying all files within the "dir/configs" directory in the bucket "my-bucket".
+func (o SkaffoldGCSSourcePtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkaffoldGCSSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Storage bucket containing Skaffold Config modules.
+type SkaffoldGCSSourceResponse struct {
+	// Optional. Relative path from the source to the Skaffold file.
+	Path string `pulumi:"path"`
+	// Cloud Storage source paths to copy recursively. For example, providing "gs://my-bucket/dir/configs/*" will result in Skaffold copying all files within the "dir/configs" directory in the bucket "my-bucket".
+	Source string `pulumi:"source"`
+}
+
+// Cloud Storage bucket containing Skaffold Config modules.
+type SkaffoldGCSSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldGCSSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkaffoldGCSSourceResponse)(nil)).Elem()
+}
+
+func (o SkaffoldGCSSourceResponseOutput) ToSkaffoldGCSSourceResponseOutput() SkaffoldGCSSourceResponseOutput {
+	return o
+}
+
+func (o SkaffoldGCSSourceResponseOutput) ToSkaffoldGCSSourceResponseOutputWithContext(ctx context.Context) SkaffoldGCSSourceResponseOutput {
+	return o
+}
+
+// Optional. Relative path from the source to the Skaffold file.
+func (o SkaffoldGCSSourceResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v SkaffoldGCSSourceResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Cloud Storage source paths to copy recursively. For example, providing "gs://my-bucket/dir/configs/*" will result in Skaffold copying all files within the "dir/configs" directory in the bucket "my-bucket".
+func (o SkaffoldGCSSourceResponseOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v SkaffoldGCSSourceResponse) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// Git repository containing Skaffold Config modules.
+type SkaffoldGitSource struct {
+	// Optional. Relative path from the repository root to the Skaffold file.
+	Path *string `pulumi:"path"`
+	// Optional. Git ref the package should be cloned from.
+	Ref *string `pulumi:"ref"`
+	// Git repository the package should be cloned from.
+	Repo string `pulumi:"repo"`
+}
+
+// SkaffoldGitSourceInput is an input type that accepts SkaffoldGitSourceArgs and SkaffoldGitSourceOutput values.
+// You can construct a concrete instance of `SkaffoldGitSourceInput` via:
+//
+//	SkaffoldGitSourceArgs{...}
+type SkaffoldGitSourceInput interface {
+	pulumi.Input
+
+	ToSkaffoldGitSourceOutput() SkaffoldGitSourceOutput
+	ToSkaffoldGitSourceOutputWithContext(context.Context) SkaffoldGitSourceOutput
+}
+
+// Git repository containing Skaffold Config modules.
+type SkaffoldGitSourceArgs struct {
+	// Optional. Relative path from the repository root to the Skaffold file.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Optional. Git ref the package should be cloned from.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+	// Git repository the package should be cloned from.
+	Repo pulumi.StringInput `pulumi:"repo"`
+}
+
+func (SkaffoldGitSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkaffoldGitSource)(nil)).Elem()
+}
+
+func (i SkaffoldGitSourceArgs) ToSkaffoldGitSourceOutput() SkaffoldGitSourceOutput {
+	return i.ToSkaffoldGitSourceOutputWithContext(context.Background())
+}
+
+func (i SkaffoldGitSourceArgs) ToSkaffoldGitSourceOutputWithContext(ctx context.Context) SkaffoldGitSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkaffoldGitSourceOutput)
+}
+
+func (i SkaffoldGitSourceArgs) ToSkaffoldGitSourcePtrOutput() SkaffoldGitSourcePtrOutput {
+	return i.ToSkaffoldGitSourcePtrOutputWithContext(context.Background())
+}
+
+func (i SkaffoldGitSourceArgs) ToSkaffoldGitSourcePtrOutputWithContext(ctx context.Context) SkaffoldGitSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkaffoldGitSourceOutput).ToSkaffoldGitSourcePtrOutputWithContext(ctx)
+}
+
+// SkaffoldGitSourcePtrInput is an input type that accepts SkaffoldGitSourceArgs, SkaffoldGitSourcePtr and SkaffoldGitSourcePtrOutput values.
+// You can construct a concrete instance of `SkaffoldGitSourcePtrInput` via:
+//
+//	        SkaffoldGitSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkaffoldGitSourcePtrInput interface {
+	pulumi.Input
+
+	ToSkaffoldGitSourcePtrOutput() SkaffoldGitSourcePtrOutput
+	ToSkaffoldGitSourcePtrOutputWithContext(context.Context) SkaffoldGitSourcePtrOutput
+}
+
+type skaffoldGitSourcePtrType SkaffoldGitSourceArgs
+
+func SkaffoldGitSourcePtr(v *SkaffoldGitSourceArgs) SkaffoldGitSourcePtrInput {
+	return (*skaffoldGitSourcePtrType)(v)
+}
+
+func (*skaffoldGitSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkaffoldGitSource)(nil)).Elem()
+}
+
+func (i *skaffoldGitSourcePtrType) ToSkaffoldGitSourcePtrOutput() SkaffoldGitSourcePtrOutput {
+	return i.ToSkaffoldGitSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *skaffoldGitSourcePtrType) ToSkaffoldGitSourcePtrOutputWithContext(ctx context.Context) SkaffoldGitSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkaffoldGitSourcePtrOutput)
+}
+
+// Git repository containing Skaffold Config modules.
+type SkaffoldGitSourceOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldGitSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkaffoldGitSource)(nil)).Elem()
+}
+
+func (o SkaffoldGitSourceOutput) ToSkaffoldGitSourceOutput() SkaffoldGitSourceOutput {
+	return o
+}
+
+func (o SkaffoldGitSourceOutput) ToSkaffoldGitSourceOutputWithContext(ctx context.Context) SkaffoldGitSourceOutput {
+	return o
+}
+
+func (o SkaffoldGitSourceOutput) ToSkaffoldGitSourcePtrOutput() SkaffoldGitSourcePtrOutput {
+	return o.ToSkaffoldGitSourcePtrOutputWithContext(context.Background())
+}
+
+func (o SkaffoldGitSourceOutput) ToSkaffoldGitSourcePtrOutputWithContext(ctx context.Context) SkaffoldGitSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkaffoldGitSource) *SkaffoldGitSource {
+		return &v
+	}).(SkaffoldGitSourcePtrOutput)
+}
+
+// Optional. Relative path from the repository root to the Skaffold file.
+func (o SkaffoldGitSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkaffoldGitSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Git ref the package should be cloned from.
+func (o SkaffoldGitSourceOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkaffoldGitSource) *string { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+// Git repository the package should be cloned from.
+func (o SkaffoldGitSourceOutput) Repo() pulumi.StringOutput {
+	return o.ApplyT(func(v SkaffoldGitSource) string { return v.Repo }).(pulumi.StringOutput)
+}
+
+type SkaffoldGitSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldGitSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkaffoldGitSource)(nil)).Elem()
+}
+
+func (o SkaffoldGitSourcePtrOutput) ToSkaffoldGitSourcePtrOutput() SkaffoldGitSourcePtrOutput {
+	return o
+}
+
+func (o SkaffoldGitSourcePtrOutput) ToSkaffoldGitSourcePtrOutputWithContext(ctx context.Context) SkaffoldGitSourcePtrOutput {
+	return o
+}
+
+func (o SkaffoldGitSourcePtrOutput) Elem() SkaffoldGitSourceOutput {
+	return o.ApplyT(func(v *SkaffoldGitSource) SkaffoldGitSource {
+		if v != nil {
+			return *v
+		}
+		var ret SkaffoldGitSource
+		return ret
+	}).(SkaffoldGitSourceOutput)
+}
+
+// Optional. Relative path from the repository root to the Skaffold file.
+func (o SkaffoldGitSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkaffoldGitSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Git ref the package should be cloned from.
+func (o SkaffoldGitSourcePtrOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkaffoldGitSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git repository the package should be cloned from.
+func (o SkaffoldGitSourcePtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkaffoldGitSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git repository containing Skaffold Config modules.
+type SkaffoldGitSourceResponse struct {
+	// Optional. Relative path from the repository root to the Skaffold file.
+	Path string `pulumi:"path"`
+	// Optional. Git ref the package should be cloned from.
+	Ref string `pulumi:"ref"`
+	// Git repository the package should be cloned from.
+	Repo string `pulumi:"repo"`
+}
+
+// Git repository containing Skaffold Config modules.
+type SkaffoldGitSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldGitSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkaffoldGitSourceResponse)(nil)).Elem()
+}
+
+func (o SkaffoldGitSourceResponseOutput) ToSkaffoldGitSourceResponseOutput() SkaffoldGitSourceResponseOutput {
+	return o
+}
+
+func (o SkaffoldGitSourceResponseOutput) ToSkaffoldGitSourceResponseOutputWithContext(ctx context.Context) SkaffoldGitSourceResponseOutput {
+	return o
+}
+
+// Optional. Relative path from the repository root to the Skaffold file.
+func (o SkaffoldGitSourceResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v SkaffoldGitSourceResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Optional. Git ref the package should be cloned from.
+func (o SkaffoldGitSourceResponseOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v SkaffoldGitSourceResponse) string { return v.Ref }).(pulumi.StringOutput)
+}
+
+// Git repository the package should be cloned from.
+func (o SkaffoldGitSourceResponseOutput) Repo() pulumi.StringOutput {
+	return o.ApplyT(func(v SkaffoldGitSourceResponse) string { return v.Repo }).(pulumi.StringOutput)
+}
+
+// Skaffold Config modules and their remote source.
+type SkaffoldModules struct {
+	// Optional. The Skaffold Config modules to use from the specified source.
+	Configs []string `pulumi:"configs"`
+	// Remote git repository containing the Skaffold Config modules.
+	Git *SkaffoldGitSource `pulumi:"git"`
+	// Cloud Storage bucket containing the Skaffold Config modules.
+	GoogleCloudStorage *SkaffoldGCSSource `pulumi:"googleCloudStorage"`
+}
+
+// SkaffoldModulesInput is an input type that accepts SkaffoldModulesArgs and SkaffoldModulesOutput values.
+// You can construct a concrete instance of `SkaffoldModulesInput` via:
+//
+//	SkaffoldModulesArgs{...}
+type SkaffoldModulesInput interface {
+	pulumi.Input
+
+	ToSkaffoldModulesOutput() SkaffoldModulesOutput
+	ToSkaffoldModulesOutputWithContext(context.Context) SkaffoldModulesOutput
+}
+
+// Skaffold Config modules and their remote source.
+type SkaffoldModulesArgs struct {
+	// Optional. The Skaffold Config modules to use from the specified source.
+	Configs pulumi.StringArrayInput `pulumi:"configs"`
+	// Remote git repository containing the Skaffold Config modules.
+	Git SkaffoldGitSourcePtrInput `pulumi:"git"`
+	// Cloud Storage bucket containing the Skaffold Config modules.
+	GoogleCloudStorage SkaffoldGCSSourcePtrInput `pulumi:"googleCloudStorage"`
+}
+
+func (SkaffoldModulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkaffoldModules)(nil)).Elem()
+}
+
+func (i SkaffoldModulesArgs) ToSkaffoldModulesOutput() SkaffoldModulesOutput {
+	return i.ToSkaffoldModulesOutputWithContext(context.Background())
+}
+
+func (i SkaffoldModulesArgs) ToSkaffoldModulesOutputWithContext(ctx context.Context) SkaffoldModulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkaffoldModulesOutput)
+}
+
+// SkaffoldModulesArrayInput is an input type that accepts SkaffoldModulesArray and SkaffoldModulesArrayOutput values.
+// You can construct a concrete instance of `SkaffoldModulesArrayInput` via:
+//
+//	SkaffoldModulesArray{ SkaffoldModulesArgs{...} }
+type SkaffoldModulesArrayInput interface {
+	pulumi.Input
+
+	ToSkaffoldModulesArrayOutput() SkaffoldModulesArrayOutput
+	ToSkaffoldModulesArrayOutputWithContext(context.Context) SkaffoldModulesArrayOutput
+}
+
+type SkaffoldModulesArray []SkaffoldModulesInput
+
+func (SkaffoldModulesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SkaffoldModules)(nil)).Elem()
+}
+
+func (i SkaffoldModulesArray) ToSkaffoldModulesArrayOutput() SkaffoldModulesArrayOutput {
+	return i.ToSkaffoldModulesArrayOutputWithContext(context.Background())
+}
+
+func (i SkaffoldModulesArray) ToSkaffoldModulesArrayOutputWithContext(ctx context.Context) SkaffoldModulesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkaffoldModulesArrayOutput)
+}
+
+// Skaffold Config modules and their remote source.
+type SkaffoldModulesOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldModulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkaffoldModules)(nil)).Elem()
+}
+
+func (o SkaffoldModulesOutput) ToSkaffoldModulesOutput() SkaffoldModulesOutput {
+	return o
+}
+
+func (o SkaffoldModulesOutput) ToSkaffoldModulesOutputWithContext(ctx context.Context) SkaffoldModulesOutput {
+	return o
+}
+
+// Optional. The Skaffold Config modules to use from the specified source.
+func (o SkaffoldModulesOutput) Configs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SkaffoldModules) []string { return v.Configs }).(pulumi.StringArrayOutput)
+}
+
+// Remote git repository containing the Skaffold Config modules.
+func (o SkaffoldModulesOutput) Git() SkaffoldGitSourcePtrOutput {
+	return o.ApplyT(func(v SkaffoldModules) *SkaffoldGitSource { return v.Git }).(SkaffoldGitSourcePtrOutput)
+}
+
+// Cloud Storage bucket containing the Skaffold Config modules.
+func (o SkaffoldModulesOutput) GoogleCloudStorage() SkaffoldGCSSourcePtrOutput {
+	return o.ApplyT(func(v SkaffoldModules) *SkaffoldGCSSource { return v.GoogleCloudStorage }).(SkaffoldGCSSourcePtrOutput)
+}
+
+type SkaffoldModulesArrayOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldModulesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SkaffoldModules)(nil)).Elem()
+}
+
+func (o SkaffoldModulesArrayOutput) ToSkaffoldModulesArrayOutput() SkaffoldModulesArrayOutput {
+	return o
+}
+
+func (o SkaffoldModulesArrayOutput) ToSkaffoldModulesArrayOutputWithContext(ctx context.Context) SkaffoldModulesArrayOutput {
+	return o
+}
+
+func (o SkaffoldModulesArrayOutput) Index(i pulumi.IntInput) SkaffoldModulesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SkaffoldModules {
+		return vs[0].([]SkaffoldModules)[vs[1].(int)]
+	}).(SkaffoldModulesOutput)
+}
+
+// Skaffold Config modules and their remote source.
+type SkaffoldModulesResponse struct {
+	// Optional. The Skaffold Config modules to use from the specified source.
+	Configs []string `pulumi:"configs"`
+	// Remote git repository containing the Skaffold Config modules.
+	Git SkaffoldGitSourceResponse `pulumi:"git"`
+	// Cloud Storage bucket containing the Skaffold Config modules.
+	GoogleCloudStorage SkaffoldGCSSourceResponse `pulumi:"googleCloudStorage"`
+}
+
+// Skaffold Config modules and their remote source.
+type SkaffoldModulesResponseOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldModulesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkaffoldModulesResponse)(nil)).Elem()
+}
+
+func (o SkaffoldModulesResponseOutput) ToSkaffoldModulesResponseOutput() SkaffoldModulesResponseOutput {
+	return o
+}
+
+func (o SkaffoldModulesResponseOutput) ToSkaffoldModulesResponseOutputWithContext(ctx context.Context) SkaffoldModulesResponseOutput {
+	return o
+}
+
+// Optional. The Skaffold Config modules to use from the specified source.
+func (o SkaffoldModulesResponseOutput) Configs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SkaffoldModulesResponse) []string { return v.Configs }).(pulumi.StringArrayOutput)
+}
+
+// Remote git repository containing the Skaffold Config modules.
+func (o SkaffoldModulesResponseOutput) Git() SkaffoldGitSourceResponseOutput {
+	return o.ApplyT(func(v SkaffoldModulesResponse) SkaffoldGitSourceResponse { return v.Git }).(SkaffoldGitSourceResponseOutput)
+}
+
+// Cloud Storage bucket containing the Skaffold Config modules.
+func (o SkaffoldModulesResponseOutput) GoogleCloudStorage() SkaffoldGCSSourceResponseOutput {
+	return o.ApplyT(func(v SkaffoldModulesResponse) SkaffoldGCSSourceResponse { return v.GoogleCloudStorage }).(SkaffoldGCSSourceResponseOutput)
+}
+
+type SkaffoldModulesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldModulesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SkaffoldModulesResponse)(nil)).Elem()
+}
+
+func (o SkaffoldModulesResponseArrayOutput) ToSkaffoldModulesResponseArrayOutput() SkaffoldModulesResponseArrayOutput {
+	return o
+}
+
+func (o SkaffoldModulesResponseArrayOutput) ToSkaffoldModulesResponseArrayOutputWithContext(ctx context.Context) SkaffoldModulesResponseArrayOutput {
+	return o
+}
+
+func (o SkaffoldModulesResponseArrayOutput) Index(i pulumi.IntInput) SkaffoldModulesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SkaffoldModulesResponse {
+		return vs[0].([]SkaffoldModulesResponse)[vs[1].(int)]
+	}).(SkaffoldModulesResponseOutput)
+}
+
+// SkaffoldSupportedCondition contains information about when support for the release's version of Skaffold ends.
 type SkaffoldSupportedConditionResponse struct {
-	// The time at which this release's version of skaffold will enter maintenance mode.
+	// The time at which this release's version of Skaffold will enter maintenance mode.
 	MaintenanceModeTime string `pulumi:"maintenanceModeTime"`
-	// The skaffold support state for this release's version of skaffold.
+	// The Skaffold support state for this release's version of Skaffold.
 	SkaffoldSupportState string `pulumi:"skaffoldSupportState"`
-	// True if the version of skaffold used by this release is supported.
+	// True if the version of Skaffold used by this release is supported.
 	Status bool `pulumi:"status"`
-	// The time at which this release's version of skaffold will no longer be supported.
+	// The time at which this release's version of Skaffold will no longer be supported.
 	SupportExpirationTime string `pulumi:"supportExpirationTime"`
 }
 
-// SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
+// SkaffoldSupportedCondition contains information about when support for the release's version of Skaffold ends.
 type SkaffoldSupportedConditionResponseOutput struct{ *pulumi.OutputState }
 
 func (SkaffoldSupportedConditionResponseOutput) ElementType() reflect.Type {
@@ -7063,22 +8288,22 @@ func (o SkaffoldSupportedConditionResponseOutput) ToSkaffoldSupportedConditionRe
 	return o
 }
 
-// The time at which this release's version of skaffold will enter maintenance mode.
+// The time at which this release's version of Skaffold will enter maintenance mode.
 func (o SkaffoldSupportedConditionResponseOutput) MaintenanceModeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SkaffoldSupportedConditionResponse) string { return v.MaintenanceModeTime }).(pulumi.StringOutput)
 }
 
-// The skaffold support state for this release's version of skaffold.
+// The Skaffold support state for this release's version of Skaffold.
 func (o SkaffoldSupportedConditionResponseOutput) SkaffoldSupportState() pulumi.StringOutput {
 	return o.ApplyT(func(v SkaffoldSupportedConditionResponse) string { return v.SkaffoldSupportState }).(pulumi.StringOutput)
 }
 
-// True if the version of skaffold used by this release is supported.
+// True if the version of Skaffold used by this release is supported.
 func (o SkaffoldSupportedConditionResponseOutput) Status() pulumi.BoolOutput {
 	return o.ApplyT(func(v SkaffoldSupportedConditionResponse) bool { return v.Status }).(pulumi.BoolOutput)
 }
 
-// The time at which this release's version of skaffold will no longer be supported.
+// The time at which this release's version of Skaffold will no longer be supported.
 func (o SkaffoldSupportedConditionResponseOutput) SupportExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SkaffoldSupportedConditionResponse) string { return v.SupportExpirationTime }).(pulumi.StringOutput)
 }
@@ -7687,7 +8912,7 @@ func (o StrategyResponseOutput) Standard() StandardResponseOutput {
 	return o.ApplyT(func(v StrategyResponse) StandardResponse { return v.Standard }).(StandardResponseOutput)
 }
 
-// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+// Contains criteria for selecting Targets.
 type TargetAttribute struct {
 	// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
 	Id *string `pulumi:"id"`
@@ -7706,7 +8931,7 @@ type TargetAttributeInput interface {
 	ToTargetAttributeOutputWithContext(context.Context) TargetAttributeOutput
 }
 
-// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+// Contains criteria for selecting Targets.
 type TargetAttributeArgs struct {
 	// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -7751,7 +8976,7 @@ func (i TargetAttributeArray) ToTargetAttributeArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TargetAttributeArrayOutput)
 }
 
-// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+// Contains criteria for selecting Targets.
 type TargetAttributeOutput struct{ *pulumi.OutputState }
 
 func (TargetAttributeOutput) ElementType() reflect.Type {
@@ -7796,13 +9021,13 @@ func (o TargetAttributeArrayOutput) Index(i pulumi.IntInput) TargetAttributeOutp
 	}).(TargetAttributeOutput)
 }
 
-// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+// Contains criteria for selecting Targets.
 type TargetAttributeResponse struct {
 	// Target labels.
 	Labels map[string]string `pulumi:"labels"`
 }
 
-// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+// Contains criteria for selecting Targets.
 type TargetAttributeResponseOutput struct{ *pulumi.OutputState }
 
 func (TargetAttributeResponseOutput) ElementType() reflect.Type {
@@ -7850,6 +9075,8 @@ type TargetResponse struct {
 	AnthosCluster AnthosClusterResponse `pulumi:"anthosCluster"`
 	// Time at which the `Target` was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. Information specifying a Custom Target.
+	CustomTarget CustomTargetResponse `pulumi:"customTarget"`
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -7906,6 +9133,11 @@ func (o TargetResponseOutput) AnthosCluster() AnthosClusterResponseOutput {
 // Time at which the `Target` was created.
 func (o TargetResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Information specifying a Custom Target.
+func (o TargetResponseOutput) CustomTarget() CustomTargetResponseOutput {
+	return o.ApplyT(func(v TargetResponse) CustomTargetResponse { return v.CustomTarget }).(CustomTargetResponseOutput)
 }
 
 // Optional. The deploy parameters to use for this target.
@@ -7993,7 +9225,7 @@ func (o TargetResponseArrayOutput) Index(i pulumi.IntInput) TargetResponseOutput
 	}).(TargetResponseOutput)
 }
 
-// TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
+// `TargetsPresentCondition` contains information on any Targets referenced in the Delivery Pipeline that do not actually exist.
 type TargetsPresentConditionResponse struct {
 	// The list of Target names that do not exist. For example, `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
 	MissingTargets []string `pulumi:"missingTargets"`
@@ -8003,7 +9235,7 @@ type TargetsPresentConditionResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
+// `TargetsPresentCondition` contains information on any Targets referenced in the Delivery Pipeline that do not actually exist.
 type TargetsPresentConditionResponseOutput struct{ *pulumi.OutputState }
 
 func (TargetsPresentConditionResponseOutput) ElementType() reflect.Type {
@@ -8111,6 +9343,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunLocationPtrInput)(nil)).Elem(), CloudRunLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomCanaryDeploymentInput)(nil)).Elem(), CustomCanaryDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomCanaryDeploymentPtrInput)(nil)).Elem(), CustomCanaryDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetInput)(nil)).Elem(), CustomTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetPtrInput)(nil)).Elem(), CustomTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetSkaffoldActionsInput)(nil)).Elem(), CustomTargetSkaffoldActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetSkaffoldActionsPtrInput)(nil)).Elem(), CustomTargetSkaffoldActionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolInput)(nil)).Elem(), DefaultPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolPtrInput)(nil)).Elem(), DefaultPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeployParametersInput)(nil)).Elem(), DeployParametersArgs{})
@@ -8151,6 +9387,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SerialPipelinePtrInput)(nil)).Elem(), SerialPipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkingInput)(nil)).Elem(), ServiceNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkingPtrInput)(nil)).Elem(), ServiceNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkaffoldGCSSourceInput)(nil)).Elem(), SkaffoldGCSSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkaffoldGCSSourcePtrInput)(nil)).Elem(), SkaffoldGCSSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkaffoldGitSourceInput)(nil)).Elem(), SkaffoldGitSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkaffoldGitSourcePtrInput)(nil)).Elem(), SkaffoldGitSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkaffoldModulesInput)(nil)).Elem(), SkaffoldModulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkaffoldModulesArrayInput)(nil)).Elem(), SkaffoldModulesArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageInput)(nil)).Elem(), StageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageArrayInput)(nil)).Elem(), StageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardInput)(nil)).Elem(), StandardArgs{})
@@ -8208,6 +9450,15 @@ func init() {
 	pulumi.RegisterOutputType(CustomCanaryDeploymentOutput{})
 	pulumi.RegisterOutputType(CustomCanaryDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(CustomCanaryDeploymentResponseOutput{})
+	pulumi.RegisterOutputType(CustomMetadataResponseOutput{})
+	pulumi.RegisterOutputType(CustomTargetOutput{})
+	pulumi.RegisterOutputType(CustomTargetPtrOutput{})
+	pulumi.RegisterOutputType(CustomTargetResponseOutput{})
+	pulumi.RegisterOutputType(CustomTargetSkaffoldActionsOutput{})
+	pulumi.RegisterOutputType(CustomTargetSkaffoldActionsPtrOutput{})
+	pulumi.RegisterOutputType(CustomTargetSkaffoldActionsResponseOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeResponseOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeResponseArrayOutput{})
 	pulumi.RegisterOutputType(DefaultPoolOutput{})
 	pulumi.RegisterOutputType(DefaultPoolPtrOutput{})
 	pulumi.RegisterOutputType(DefaultPoolResponseOutput{})
@@ -8286,6 +9537,16 @@ func init() {
 	pulumi.RegisterOutputType(ServiceNetworkingOutput{})
 	pulumi.RegisterOutputType(ServiceNetworkingPtrOutput{})
 	pulumi.RegisterOutputType(ServiceNetworkingResponseOutput{})
+	pulumi.RegisterOutputType(SkaffoldGCSSourceOutput{})
+	pulumi.RegisterOutputType(SkaffoldGCSSourcePtrOutput{})
+	pulumi.RegisterOutputType(SkaffoldGCSSourceResponseOutput{})
+	pulumi.RegisterOutputType(SkaffoldGitSourceOutput{})
+	pulumi.RegisterOutputType(SkaffoldGitSourcePtrOutput{})
+	pulumi.RegisterOutputType(SkaffoldGitSourceResponseOutput{})
+	pulumi.RegisterOutputType(SkaffoldModulesOutput{})
+	pulumi.RegisterOutputType(SkaffoldModulesArrayOutput{})
+	pulumi.RegisterOutputType(SkaffoldModulesResponseOutput{})
+	pulumi.RegisterOutputType(SkaffoldModulesResponseArrayOutput{})
 	pulumi.RegisterOutputType(SkaffoldSupportedConditionResponseOutput{})
 	pulumi.RegisterOutputType(StageOutput{})
 	pulumi.RegisterOutputType(StageArrayOutput{})

@@ -38,7 +38,9 @@ type Instance struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Last computed maintenance denial period for this instance.
 	LastDenyMaintenancePeriod DenyMaintenancePeriodResponseOutput `pulumi:"lastDenyMaintenancePeriod"`
-	Location                  pulumi.StringOutput                 `pulumi:"location"`
+	// Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+	LinkedLspProjectNumber pulumi.StringOutput `pulumi:"linkedLspProjectNumber"`
+	Location               pulumi.StringOutput `pulumi:"location"`
 	// Looker instance URI which can be used to access the Looker Instance UI.
 	LookerUri pulumi.StringOutput `pulumi:"lookerUri"`
 	// The Looker version that the instance is using.
@@ -127,8 +129,10 @@ type instanceArgs struct {
 	// Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Required. The unique instance identifier. Must contain only lowercase letters, numbers, or hyphens, with the first character a letter and the last a letter or a number. 63 characters maximum.
-	InstanceId string  `pulumi:"instanceId"`
-	Location   *string `pulumi:"location"`
+	InstanceId string `pulumi:"instanceId"`
+	// Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+	LinkedLspProjectNumber *string `pulumi:"linkedLspProjectNumber"`
+	Location               *string `pulumi:"location"`
 	// Maintenance schedule for this instance.
 	MaintenanceSchedule *MaintenanceSchedule `pulumi:"maintenanceSchedule"`
 	// Maintenance window for this instance.
@@ -161,7 +165,9 @@ type InstanceArgs struct {
 	EncryptionConfig EncryptionConfigPtrInput
 	// Required. The unique instance identifier. Must contain only lowercase letters, numbers, or hyphens, with the first character a letter and the last a letter or a number. 63 characters maximum.
 	InstanceId pulumi.StringInput
-	Location   pulumi.StringPtrInput
+	// Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+	LinkedLspProjectNumber pulumi.StringPtrInput
+	Location               pulumi.StringPtrInput
 	// Maintenance schedule for this instance.
 	MaintenanceSchedule MaintenanceSchedulePtrInput
 	// Maintenance window for this instance.
@@ -270,6 +276,11 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 // Last computed maintenance denial period for this instance.
 func (o InstanceOutput) LastDenyMaintenancePeriod() DenyMaintenancePeriodResponseOutput {
 	return o.ApplyT(func(v *Instance) DenyMaintenancePeriodResponseOutput { return v.LastDenyMaintenancePeriod }).(DenyMaintenancePeriodResponseOutput)
+}
+
+// Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+func (o InstanceOutput) LinkedLspProjectNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.LinkedLspProjectNumber }).(pulumi.StringOutput)
 }
 
 func (o InstanceOutput) Location() pulumi.StringOutput {

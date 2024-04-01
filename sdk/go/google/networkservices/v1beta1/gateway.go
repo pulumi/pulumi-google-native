@@ -24,10 +24,14 @@ type Gateway struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+	EnvoyHeaders pulumi.StringOutput `pulumi:"envoyHeaders"`
 	// Required. Short name of the Gateway resource to be created.
 	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
 	// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	GatewaySecurityPolicy pulumi.StringOutput `pulumi:"gatewaySecurityPolicy"`
+	// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
@@ -110,10 +114,14 @@ type gatewayArgs struct {
 	CertificateUrls []string `pulumi:"certificateUrls"`
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+	EnvoyHeaders *GatewayEnvoyHeaders `pulumi:"envoyHeaders"`
 	// Required. Short name of the Gateway resource to be created.
 	GatewayId string `pulumi:"gatewayId"`
 	// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	GatewaySecurityPolicy *string `pulumi:"gatewaySecurityPolicy"`
+	// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+	IpVersion *GatewayIpVersion `pulumi:"ipVersion"`
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -142,10 +150,14 @@ type GatewayArgs struct {
 	CertificateUrls pulumi.StringArrayInput
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+	EnvoyHeaders GatewayEnvoyHeadersPtrInput
 	// Required. Short name of the Gateway resource to be created.
 	GatewayId pulumi.StringInput
 	// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	GatewaySecurityPolicy pulumi.StringPtrInput
+	// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+	IpVersion GatewayIpVersionPtrInput
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -223,6 +235,11 @@ func (o GatewayOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+func (o GatewayOutput) EnvoyHeaders() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.EnvoyHeaders }).(pulumi.StringOutput)
+}
+
 // Required. Short name of the Gateway resource to be created.
 func (o GatewayOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
@@ -231,6 +248,11 @@ func (o GatewayOutput) GatewayId() pulumi.StringOutput {
 // Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 func (o GatewayOutput) GatewaySecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewaySecurityPolicy }).(pulumi.StringOutput)
+}
+
+// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+func (o GatewayOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
 }
 
 // Optional. Set of label tags associated with the Gateway resource.

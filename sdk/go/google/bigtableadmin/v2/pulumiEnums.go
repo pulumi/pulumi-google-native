@@ -545,6 +545,180 @@ func (in *clusterDefaultStorageTypePtr) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
+// The Compute Billing Owner for this Data Boost App Profile.
+type DataBoostIsolationReadOnlyComputeBillingOwner string
+
+const (
+	// Unspecified value.
+	DataBoostIsolationReadOnlyComputeBillingOwnerComputeBillingOwnerUnspecified = DataBoostIsolationReadOnlyComputeBillingOwner("COMPUTE_BILLING_OWNER_UNSPECIFIED")
+	// The host Cloud Project containing the targeted Bigtable Instance / Table pays for compute.
+	DataBoostIsolationReadOnlyComputeBillingOwnerHostPays = DataBoostIsolationReadOnlyComputeBillingOwner("HOST_PAYS")
+)
+
+func (DataBoostIsolationReadOnlyComputeBillingOwner) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataBoostIsolationReadOnlyComputeBillingOwner)(nil)).Elem()
+}
+
+func (e DataBoostIsolationReadOnlyComputeBillingOwner) ToDataBoostIsolationReadOnlyComputeBillingOwnerOutput() DataBoostIsolationReadOnlyComputeBillingOwnerOutput {
+	return pulumi.ToOutput(e).(DataBoostIsolationReadOnlyComputeBillingOwnerOutput)
+}
+
+func (e DataBoostIsolationReadOnlyComputeBillingOwner) ToDataBoostIsolationReadOnlyComputeBillingOwnerOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyComputeBillingOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DataBoostIsolationReadOnlyComputeBillingOwnerOutput)
+}
+
+func (e DataBoostIsolationReadOnlyComputeBillingOwner) ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput() DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput {
+	return e.ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutputWithContext(context.Background())
+}
+
+func (e DataBoostIsolationReadOnlyComputeBillingOwner) ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput {
+	return DataBoostIsolationReadOnlyComputeBillingOwner(e).ToDataBoostIsolationReadOnlyComputeBillingOwnerOutputWithContext(ctx).ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutputWithContext(ctx)
+}
+
+func (e DataBoostIsolationReadOnlyComputeBillingOwner) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataBoostIsolationReadOnlyComputeBillingOwner) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataBoostIsolationReadOnlyComputeBillingOwner) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DataBoostIsolationReadOnlyComputeBillingOwner) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DataBoostIsolationReadOnlyComputeBillingOwnerOutput struct{ *pulumi.OutputState }
+
+func (DataBoostIsolationReadOnlyComputeBillingOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataBoostIsolationReadOnlyComputeBillingOwner)(nil)).Elem()
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerOutput) ToDataBoostIsolationReadOnlyComputeBillingOwnerOutput() DataBoostIsolationReadOnlyComputeBillingOwnerOutput {
+	return o
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerOutput) ToDataBoostIsolationReadOnlyComputeBillingOwnerOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyComputeBillingOwnerOutput {
+	return o
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerOutput) ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput() DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput {
+	return o.ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutputWithContext(context.Background())
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerOutput) ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataBoostIsolationReadOnlyComputeBillingOwner) *DataBoostIsolationReadOnlyComputeBillingOwner {
+		return &v
+	}).(DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput)
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataBoostIsolationReadOnlyComputeBillingOwner) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataBoostIsolationReadOnlyComputeBillingOwner) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput struct{ *pulumi.OutputState }
+
+func (DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataBoostIsolationReadOnlyComputeBillingOwner)(nil)).Elem()
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput) ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput() DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput {
+	return o
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput) ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput {
+	return o
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput) Elem() DataBoostIsolationReadOnlyComputeBillingOwnerOutput {
+	return o.ApplyT(func(v *DataBoostIsolationReadOnlyComputeBillingOwner) DataBoostIsolationReadOnlyComputeBillingOwner {
+		if v != nil {
+			return *v
+		}
+		var ret DataBoostIsolationReadOnlyComputeBillingOwner
+		return ret
+	}).(DataBoostIsolationReadOnlyComputeBillingOwnerOutput)
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DataBoostIsolationReadOnlyComputeBillingOwner) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataBoostIsolationReadOnlyComputeBillingOwnerInput is an input type that accepts values of the DataBoostIsolationReadOnlyComputeBillingOwner enum
+// A concrete instance of `DataBoostIsolationReadOnlyComputeBillingOwnerInput` can be one of the following:
+//
+//	DataBoostIsolationReadOnlyComputeBillingOwnerComputeBillingOwnerUnspecified
+//	DataBoostIsolationReadOnlyComputeBillingOwnerHostPays
+type DataBoostIsolationReadOnlyComputeBillingOwnerInput interface {
+	pulumi.Input
+
+	ToDataBoostIsolationReadOnlyComputeBillingOwnerOutput() DataBoostIsolationReadOnlyComputeBillingOwnerOutput
+	ToDataBoostIsolationReadOnlyComputeBillingOwnerOutputWithContext(context.Context) DataBoostIsolationReadOnlyComputeBillingOwnerOutput
+}
+
+var dataBoostIsolationReadOnlyComputeBillingOwnerPtrType = reflect.TypeOf((**DataBoostIsolationReadOnlyComputeBillingOwner)(nil)).Elem()
+
+type DataBoostIsolationReadOnlyComputeBillingOwnerPtrInput interface {
+	pulumi.Input
+
+	ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput() DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput
+	ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutputWithContext(context.Context) DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput
+}
+
+type dataBoostIsolationReadOnlyComputeBillingOwnerPtr string
+
+func DataBoostIsolationReadOnlyComputeBillingOwnerPtr(v string) DataBoostIsolationReadOnlyComputeBillingOwnerPtrInput {
+	return (*dataBoostIsolationReadOnlyComputeBillingOwnerPtr)(&v)
+}
+
+func (*dataBoostIsolationReadOnlyComputeBillingOwnerPtr) ElementType() reflect.Type {
+	return dataBoostIsolationReadOnlyComputeBillingOwnerPtrType
+}
+
+func (in *dataBoostIsolationReadOnlyComputeBillingOwnerPtr) ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput() DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput {
+	return pulumi.ToOutput(in).(DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput)
+}
+
+func (in *dataBoostIsolationReadOnlyComputeBillingOwnerPtr) ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput)
+}
+
+func (in *dataBoostIsolationReadOnlyComputeBillingOwnerPtr) ToOutput(ctx context.Context) pulumix.Output[*DataBoostIsolationReadOnlyComputeBillingOwner] {
+	return pulumix.Output[*DataBoostIsolationReadOnlyComputeBillingOwner]{
+		OutputState: in.ToDataBoostIsolationReadOnlyComputeBillingOwnerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The type of the instance. Defaults to `PRODUCTION`.
 type InstanceType string
 
@@ -1080,6 +1254,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDefaultStorageTypeInput)(nil)).Elem(), ClusterDefaultStorageType("STORAGE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDefaultStorageTypePtrInput)(nil)).Elem(), ClusterDefaultStorageType("STORAGE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DataBoostIsolationReadOnlyComputeBillingOwnerInput)(nil)).Elem(), DataBoostIsolationReadOnlyComputeBillingOwner("COMPUTE_BILLING_OWNER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DataBoostIsolationReadOnlyComputeBillingOwnerPtrInput)(nil)).Elem(), DataBoostIsolationReadOnlyComputeBillingOwner("COMPUTE_BILLING_OWNER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypeInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypePtrInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardIsolationPriorityInput)(nil)).Elem(), StandardIsolationPriority("PRIORITY_UNSPECIFIED"))
@@ -1092,6 +1268,8 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultStorageTypeOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultStorageTypePtrOutput{})
+	pulumi.RegisterOutputType(DataBoostIsolationReadOnlyComputeBillingOwnerOutput{})
+	pulumi.RegisterOutputType(DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTypeOutput{})
 	pulumi.RegisterOutputType(InstanceTypePtrOutput{})
 	pulumi.RegisterOutputType(StandardIsolationPriorityOutput{})

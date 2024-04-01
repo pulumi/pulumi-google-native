@@ -11,6 +11,407 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Allow or deny type.
+type GoogleCloudOrgpolicyV2CustomConstraintActionType string
+
+const (
+	// Unspecified. Results in an error.
+	GoogleCloudOrgpolicyV2CustomConstraintActionTypeActionTypeUnspecified = GoogleCloudOrgpolicyV2CustomConstraintActionType("ACTION_TYPE_UNSPECIFIED")
+	// Allowed action type.
+	GoogleCloudOrgpolicyV2CustomConstraintActionTypeAllow = GoogleCloudOrgpolicyV2CustomConstraintActionType("ALLOW")
+	// Deny action type.
+	GoogleCloudOrgpolicyV2CustomConstraintActionTypeDeny = GoogleCloudOrgpolicyV2CustomConstraintActionType("DENY")
+)
+
+func (GoogleCloudOrgpolicyV2CustomConstraintActionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintActionType)(nil)).Elem()
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintActionType) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput() GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput)
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintActionType) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypeOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput)
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintActionType) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput() GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput {
+	return e.ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintActionType) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput {
+	return GoogleCloudOrgpolicyV2CustomConstraintActionType(e).ToGoogleCloudOrgpolicyV2CustomConstraintActionTypeOutputWithContext(ctx).ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintActionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintActionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintActionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintActionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintActionType)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput() GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypeOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput() GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput {
+	return o.ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2CustomConstraintActionType) *GoogleCloudOrgpolicyV2CustomConstraintActionType {
+		return &v
+	}).(GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput)
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudOrgpolicyV2CustomConstraintActionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudOrgpolicyV2CustomConstraintActionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2CustomConstraintActionType)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput() GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput) Elem() GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2CustomConstraintActionType) GoogleCloudOrgpolicyV2CustomConstraintActionType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2CustomConstraintActionType
+		return ret
+	}).(GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput)
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudOrgpolicyV2CustomConstraintActionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudOrgpolicyV2CustomConstraintActionTypeInput is an input type that accepts values of the GoogleCloudOrgpolicyV2CustomConstraintActionType enum
+// A concrete instance of `GoogleCloudOrgpolicyV2CustomConstraintActionTypeInput` can be one of the following:
+//
+//	GoogleCloudOrgpolicyV2CustomConstraintActionTypeActionTypeUnspecified
+//	GoogleCloudOrgpolicyV2CustomConstraintActionTypeAllow
+//	GoogleCloudOrgpolicyV2CustomConstraintActionTypeDeny
+type GoogleCloudOrgpolicyV2CustomConstraintActionTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput() GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput
+	ToGoogleCloudOrgpolicyV2CustomConstraintActionTypeOutputWithContext(context.Context) GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput
+}
+
+var googleCloudOrgpolicyV2CustomConstraintActionTypePtrType = reflect.TypeOf((**GoogleCloudOrgpolicyV2CustomConstraintActionType)(nil)).Elem()
+
+type GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput() GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput
+	ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutputWithContext(context.Context) GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput
+}
+
+type googleCloudOrgpolicyV2CustomConstraintActionTypePtr string
+
+func GoogleCloudOrgpolicyV2CustomConstraintActionTypePtr(v string) GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrInput {
+	return (*googleCloudOrgpolicyV2CustomConstraintActionTypePtr)(&v)
+}
+
+func (*googleCloudOrgpolicyV2CustomConstraintActionTypePtr) ElementType() reflect.Type {
+	return googleCloudOrgpolicyV2CustomConstraintActionTypePtrType
+}
+
+func (in *googleCloudOrgpolicyV2CustomConstraintActionTypePtr) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput() GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput)
+}
+
+func (in *googleCloudOrgpolicyV2CustomConstraintActionTypePtr) ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput)
+}
+
+func (in *googleCloudOrgpolicyV2CustomConstraintActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudOrgpolicyV2CustomConstraintActionType] {
+	return pulumix.Output[*GoogleCloudOrgpolicyV2CustomConstraintActionType]{
+		OutputState: in.ToGoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem string
+
+const (
+	// Unspecified. Results in an error.
+	GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemMethodTypeUnspecified = GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem("METHOD_TYPE_UNSPECIFIED")
+	// Constraint applied when creating the resource.
+	GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemCreate = GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem("CREATE")
+	// Constraint applied when updating the resource.
+	GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemUpdate = GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem("UPDATE")
+	// Constraint applied when deleting the resource. Not supported yet.
+	GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemDelete = GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem("DELETE")
+)
+
+func (GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem)(nil)).Elem()
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput {
+	return pulumi.ToOutput(e).(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput)
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput)
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput {
+	return e.ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput {
+	return GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem(e).ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutputWithContext(ctx).ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput {
+	return o.ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) *GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem {
+		return &v
+	}).(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput)
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput) Elem() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem
+		return ret
+	}).(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput)
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemInput is an input type that accepts values of the GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem enum
+// A concrete instance of `GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemInput` can be one of the following:
+//
+//	GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemMethodTypeUnspecified
+//	GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemCreate
+//	GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemUpdate
+//	GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemDelete
+type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput
+	ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutputWithContext(context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput
+}
+
+var googleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrType = reflect.TypeOf((**GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem)(nil)).Elem()
+
+type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput
+	ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutputWithContext(context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput
+}
+
+type googleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtr string
+
+func GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtr(v string) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrInput {
+	return (*googleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtr)(&v)
+}
+
+func (*googleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtr) ElementType() reflect.Type {
+	return googleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrType
+}
+
+func (in *googleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtr) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput)
+}
+
+func (in *googleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtr) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput)
+}
+
+func (in *googleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem] {
+	return pulumix.Output[*GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem]{
+		OutputState: in.ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayInput is an input type that accepts GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArray and GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayInput` via:
+//
+//	GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArray{ GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArgs{...} }
+type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput
+	ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutputWithContext(context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput
+}
+
+type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArray []GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem
+
+func (GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem)(nil)).Elem()
+}
+
+func (i GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArray) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput {
+	return i.ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArray) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput)
+}
+
+type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput() GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput) ToGoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput) Index(i pulumi.IntInput) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem {
+		return vs[0].([]GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem)[vs[1].(int)]
+	}).(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput)
+}
+
 // The logs to use as input for the Replay.
 type GoogleCloudPolicysimulatorV1ReplayConfigLogSource string
 
@@ -186,8 +587,18 @@ func (in *googleCloudPolicysimulatorV1ReplayConfigLogSourcePtr) ToOutput(ctx con
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintActionTypeInput)(nil)).Elem(), GoogleCloudOrgpolicyV2CustomConstraintActionType("ACTION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2CustomConstraintActionType("ACTION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemInput)(nil)).Elem(), GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem("METHOD_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem("METHOD_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayInput)(nil)).Elem(), GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1ReplayConfigLogSourceInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1ReplayConfigLogSource("LOG_SOURCE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1ReplayConfigLogSourcePtrInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1ReplayConfigLogSource("LOG_SOURCE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2CustomConstraintActionTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2CustomConstraintActionTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1ReplayConfigLogSourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1ReplayConfigLogSourcePtrOutput{})
 }

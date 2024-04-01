@@ -43,6 +43,8 @@ type Instance struct {
 	FailoverReplica InstanceFailoverReplicaResponseOutput `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
 	GceZone pulumi.StringOutput `pulumi:"gceZone"`
+	// Gemini configuration.
+	GeminiConfig GeminiInstanceConfigResponseOutput `pulumi:"geminiConfig"`
 	// The instance type.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The assigned IP addresses for the instance.
@@ -72,12 +74,14 @@ type Instance struct {
 	Project        pulumi.StringOutput `pulumi:"project"`
 	// The link to service attachment of PSC instance.
 	PscServiceAttachmentLink pulumi.StringOutput `pulumi:"pscServiceAttachmentLink"`
-	// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+	// The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Configuration specific to failover replicas and read replicas.
 	ReplicaConfiguration ReplicaConfigurationResponseOutput `pulumi:"replicaConfiguration"`
 	// The replicas of the instance.
 	ReplicaNames pulumi.StringArrayOutput `pulumi:"replicaNames"`
+	// Optional. The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+	ReplicationCluster ReplicationClusterResponseOutput `pulumi:"replicationCluster"`
 	// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
 	RootPassword pulumi.StringOutput `pulumi:"rootPassword"`
 	// The status indicating if instance satisfiesPzs. Reserved for future use.
@@ -167,6 +171,8 @@ type instanceArgs struct {
 	FailoverReplica *InstanceFailoverReplica `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
 	GceZone *string `pulumi:"gceZone"`
+	// Gemini configuration.
+	GeminiConfig *GeminiInstanceConfig `pulumi:"geminiConfig"`
 	// The instance type.
 	InstanceType *InstanceInstanceType `pulumi:"instanceType"`
 	// The assigned IP addresses for the instance.
@@ -191,12 +197,14 @@ type instanceArgs struct {
 	OutOfDiskReport *SqlOutOfDiskReport `pulumi:"outOfDiskReport"`
 	// The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
 	Project *string `pulumi:"project"`
-	// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+	// The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
 	Region *string `pulumi:"region"`
 	// Configuration specific to failover replicas and read replicas.
 	ReplicaConfiguration *ReplicaConfiguration `pulumi:"replicaConfiguration"`
 	// The replicas of the instance.
 	ReplicaNames []string `pulumi:"replicaNames"`
+	// Optional. The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+	ReplicationCluster *ReplicationCluster `pulumi:"replicationCluster"`
 	// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The status indicating if instance satisfiesPzs. Reserved for future use.
@@ -242,6 +250,8 @@ type InstanceArgs struct {
 	FailoverReplica InstanceFailoverReplicaPtrInput
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
 	GceZone pulumi.StringPtrInput
+	// Gemini configuration.
+	GeminiConfig GeminiInstanceConfigPtrInput
 	// The instance type.
 	InstanceType InstanceInstanceTypePtrInput
 	// The assigned IP addresses for the instance.
@@ -266,12 +276,14 @@ type InstanceArgs struct {
 	OutOfDiskReport SqlOutOfDiskReportPtrInput
 	// The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
 	Project pulumi.StringPtrInput
-	// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+	// The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
 	Region pulumi.StringPtrInput
 	// Configuration specific to failover replicas and read replicas.
 	ReplicaConfiguration ReplicaConfigurationPtrInput
 	// The replicas of the instance.
 	ReplicaNames pulumi.StringArrayInput
+	// Optional. The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+	ReplicationCluster ReplicationClusterPtrInput
 	// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
 	RootPassword pulumi.StringPtrInput
 	// The status indicating if instance satisfiesPzs. Reserved for future use.
@@ -399,6 +411,11 @@ func (o InstanceOutput) GceZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.GceZone }).(pulumi.StringOutput)
 }
 
+// Gemini configuration.
+func (o InstanceOutput) GeminiConfig() GeminiInstanceConfigResponseOutput {
+	return o.ApplyT(func(v *Instance) GeminiInstanceConfigResponseOutput { return v.GeminiConfig }).(GeminiInstanceConfigResponseOutput)
+}
+
 // The instance type.
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
@@ -467,7 +484,7 @@ func (o InstanceOutput) PscServiceAttachmentLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PscServiceAttachmentLink }).(pulumi.StringOutput)
 }
 
-// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+// The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
 func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -480,6 +497,11 @@ func (o InstanceOutput) ReplicaConfiguration() ReplicaConfigurationResponseOutpu
 // The replicas of the instance.
 func (o InstanceOutput) ReplicaNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.ReplicaNames }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+func (o InstanceOutput) ReplicationCluster() ReplicationClusterResponseOutput {
+	return o.ApplyT(func(v *Instance) ReplicationClusterResponseOutput { return v.ReplicationCluster }).(ReplicationClusterResponseOutput)
 }
 
 // Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.

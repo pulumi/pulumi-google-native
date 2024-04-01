@@ -30,6 +30,8 @@ type WorkstationCluster struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// Optional. Human-readable name for this workstation cluster.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Optional. Configuration options for a custom domain.
+	DomainConfig DomainConfigResponseOutput `pulumi:"domainConfig"`
 	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
@@ -107,6 +109,8 @@ type workstationClusterArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Optional. Human-readable name for this workstation cluster.
 	DisplayName *string `pulumi:"displayName"`
+	// Optional. Configuration options for a custom domain.
+	DomainConfig *DomainConfig `pulumi:"domainConfig"`
 	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
@@ -131,6 +135,8 @@ type WorkstationClusterArgs struct {
 	Annotations pulumi.StringMapInput
 	// Optional. Human-readable name for this workstation cluster.
 	DisplayName pulumi.StringPtrInput
+	// Optional. Configuration options for a custom domain.
+	DomainConfig DomainConfigPtrInput
 	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
@@ -219,6 +225,11 @@ func (o WorkstationClusterOutput) DeleteTime() pulumi.StringOutput {
 // Optional. Human-readable name for this workstation cluster.
 func (o WorkstationClusterOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration options for a custom domain.
+func (o WorkstationClusterOutput) DomainConfig() DomainConfigResponseOutput {
+	return o.ApplyT(func(v *WorkstationCluster) DomainConfigResponseOutput { return v.DomainConfig }).(DomainConfigResponseOutput)
 }
 
 // Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.

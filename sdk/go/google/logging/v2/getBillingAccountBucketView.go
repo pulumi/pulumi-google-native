@@ -32,9 +32,9 @@ type LookupBillingAccountBucketViewArgs struct {
 type LookupBillingAccountBucketViewResult struct {
 	// The creation timestamp of the view.
 	CreateTime string `pulumi:"createTime"`
-	// Describes this view.
+	// Optional. Describes this view.
 	Description string `pulumi:"description"`
-	// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+	// Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
 	Filter string `pulumi:"filter"`
 	// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
 	Name string `pulumi:"name"`
@@ -85,12 +85,12 @@ func (o LookupBillingAccountBucketViewResultOutput) CreateTime() pulumi.StringOu
 	return o.ApplyT(func(v LookupBillingAccountBucketViewResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Describes this view.
+// Optional. Describes this view.
 func (o LookupBillingAccountBucketViewResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingAccountBucketViewResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+// Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
 func (o LookupBillingAccountBucketViewResultOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingAccountBucketViewResult) string { return v.Filter }).(pulumi.StringOutput)
 }

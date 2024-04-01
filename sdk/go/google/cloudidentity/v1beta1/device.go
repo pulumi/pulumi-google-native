@@ -44,7 +44,7 @@ type Device struct {
 	EnabledUsbDebugging pulumi.BoolOutput `pulumi:"enabledUsbDebugging"`
 	// Device encryption state.
 	EncryptionState pulumi.StringOutput `pulumi:"encryptionState"`
-	// Attributes specific to Endpoint Verification devices.
+	// Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
 	EndpointVerificationSpecificAttributes EndpointVerificationSpecificAttributesResponseOutput `pulumi:"endpointVerificationSpecificAttributes"`
 	// Host name of the device.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
@@ -267,7 +267,7 @@ func (o DeviceOutput) EncryptionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.EncryptionState }).(pulumi.StringOutput)
 }
 
-// Attributes specific to Endpoint Verification devices.
+// Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
 func (o DeviceOutput) EndpointVerificationSpecificAttributes() EndpointVerificationSpecificAttributesResponseOutput {
 	return o.ApplyT(func(v *Device) EndpointVerificationSpecificAttributesResponseOutput {
 		return v.EndpointVerificationSpecificAttributes
