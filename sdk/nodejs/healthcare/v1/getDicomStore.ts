@@ -34,7 +34,7 @@ export interface GetDicomStoreResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+     * Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
      */
     readonly name: string;
     /**

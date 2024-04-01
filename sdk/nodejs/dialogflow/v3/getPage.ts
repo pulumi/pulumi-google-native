@@ -38,6 +38,10 @@ export interface GetPageResult {
      */
     readonly advancedSettings: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3AdvancedSettingsResponse;
     /**
+     * The description of the page. The maximum length is 500 characters.
+     */
+    readonly description: string;
+    /**
      * The human-readable name of the page, unique within the flow.
      */
     readonly displayName: string;

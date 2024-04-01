@@ -62,6 +62,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.v1.CustomerEncryptionKeyResponse>;
     /**
+     * Whether this disk is using confidential compute mode.
+     */
+    public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
+    /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.v1.GuestOsFeatureResponse[]>;
@@ -119,7 +123,7 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly provisionedIops!: pulumi.Output<string>;
     /**
-     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
      */
     public readonly provisionedThroughput!: pulumi.Output<string>;
     /**
@@ -142,6 +146,10 @@ export class Disk extends pulumi.CustomResource {
      * Status information for the disk resource.
      */
     public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.v1.DiskResourceStatusResponse>;
+    /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
     /**
      * Reserved for future use.
      */
@@ -183,6 +191,14 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly sourceImageId!: pulumi.Output<string>;
     /**
+     * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+     */
+    public readonly sourceInstantSnapshot!: pulumi.Output<string>;
+    /**
+     * The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+     */
+    public /*out*/ readonly sourceInstantSnapshotId!: pulumi.Output<string>;
+    /**
      * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
      */
     public readonly sourceSnapshot!: pulumi.Output<string>;
@@ -202,6 +218,10 @@ export class Disk extends pulumi.CustomResource {
      * The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting. 
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+     */
+    public readonly storagePool!: pulumi.Output<string>;
     /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
      */
@@ -227,6 +247,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
+            resourceInputs["enableConfidentialCompute"] = args ? args.enableConfidentialCompute : undefined;
             resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["licenseCodes"] = args ? args.licenseCodes : undefined;
@@ -246,9 +267,11 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceImage"] = args ? args.sourceImage : undefined;
             resourceInputs["sourceImageEncryptionKey"] = args ? args.sourceImageEncryptionKey : undefined;
+            resourceInputs["sourceInstantSnapshot"] = args ? args.sourceInstantSnapshot : undefined;
             resourceInputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["sourceStorageObject"] = args ? args.sourceStorageObject : undefined;
+            resourceInputs["storagePool"] = args ? args.storagePool : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["asyncSecondaryDisks"] = undefined /*out*/;
@@ -259,12 +282,14 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["lastDetachTimestamp"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sourceConsistencyGroupPolicy"] = undefined /*out*/;
             resourceInputs["sourceConsistencyGroupPolicyId"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceImageId"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
@@ -275,6 +300,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskEncryptionKey"] = undefined /*out*/;
+            resourceInputs["enableConfidentialCompute"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -296,6 +322,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sizeGb"] = undefined /*out*/;
@@ -306,11 +333,14 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceImage"] = undefined /*out*/;
             resourceInputs["sourceImageEncryptionKey"] = undefined /*out*/;
             resourceInputs["sourceImageId"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshot"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
             resourceInputs["sourceSnapshot"] = undefined /*out*/;
             resourceInputs["sourceSnapshotEncryptionKey"] = undefined /*out*/;
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
             resourceInputs["sourceStorageObject"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["storagePool"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
@@ -342,6 +372,10 @@ export interface DiskArgs {
      * Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.v1.CustomerEncryptionKeyArgs>;
+    /**
+     * Whether this disk is using confidential compute mode.
+     */
+    enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
      */
@@ -384,7 +418,7 @@ export interface DiskArgs {
      */
     provisionedIops?: pulumi.Input<string>;
     /**
-     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
      */
     provisionedThroughput?: pulumi.Input<string>;
     /**
@@ -416,6 +450,10 @@ export interface DiskArgs {
      */
     sourceImageEncryptionKey?: pulumi.Input<inputs.compute.v1.CustomerEncryptionKeyArgs>;
     /**
+     * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+     */
+    sourceInstantSnapshot?: pulumi.Input<string>;
+    /**
      * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
      */
     sourceSnapshot?: pulumi.Input<string>;
@@ -427,6 +465,10 @@ export interface DiskArgs {
      * The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
      */
     sourceStorageObject?: pulumi.Input<string>;
+    /**
+     * The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+     */
+    storagePool?: pulumi.Input<string>;
     /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
      */

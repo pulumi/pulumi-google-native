@@ -48,7 +48,7 @@ export interface GetInstanceResult {
      */
     readonly cryptoKeyConfig: outputs.datafusion.v1beta1.CryptoKeyConfigResponse;
     /**
-     * Optional. Reserved for future use.
+     * Optional. Option to enable the Dataplex Lineage Integration feature.
      */
     readonly dataplexDataLineageIntegrationEnabled: boolean;
     /**

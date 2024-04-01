@@ -53,7 +53,7 @@ export class ConsentStore extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
+     * Identifier. Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -123,7 +123,7 @@ export interface ConsentStoreArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
+     * Identifier. Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

@@ -2,6 +2,47 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const GoogleCloudOrgpolicyV2CustomConstraintActionType = {
+    /**
+     * Unspecified. Results in an error.
+     */
+    ActionTypeUnspecified: "ACTION_TYPE_UNSPECIFIED",
+    /**
+     * Allowed action type.
+     */
+    Allow: "ALLOW",
+    /**
+     * Deny action type.
+     */
+    Deny: "DENY",
+} as const;
+
+/**
+ * Allow or deny type.
+ */
+export type GoogleCloudOrgpolicyV2CustomConstraintActionType = (typeof GoogleCloudOrgpolicyV2CustomConstraintActionType)[keyof typeof GoogleCloudOrgpolicyV2CustomConstraintActionType];
+
+export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem = {
+    /**
+     * Unspecified. Results in an error.
+     */
+    MethodTypeUnspecified: "METHOD_TYPE_UNSPECIFIED",
+    /**
+     * Constraint applied when creating the resource.
+     */
+    Create: "CREATE",
+    /**
+     * Constraint applied when updating the resource.
+     */
+    Update: "UPDATE",
+    /**
+     * Constraint applied when deleting the resource. Not supported yet.
+     */
+    Delete: "DELETE",
+} as const;
+
+export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem = (typeof GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem)[keyof typeof GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem];
+
 export const GoogleCloudPolicysimulatorV1ReplayConfigLogSource = {
     /**
      * An unspecified log source. If the log source is unspecified, the Replay defaults to using `RECENT_ACCESSES`.

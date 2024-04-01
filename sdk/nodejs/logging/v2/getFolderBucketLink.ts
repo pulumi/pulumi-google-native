@@ -30,7 +30,7 @@ export interface GetFolderBucketLinkArgs {
 
 export interface GetFolderBucketLinkResult {
     /**
-     * The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+     * Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
      */
     readonly bigqueryDataset: outputs.logging.v2.BigQueryDatasetResponse;
     /**
@@ -38,7 +38,7 @@ export interface GetFolderBucketLinkResult {
      */
     readonly createTime: string;
     /**
-     * Describes this link.The maximum length of the description is 8000 characters.
+     * Optional. Describes this link.The maximum length of the description is 8000 characters.
      */
     readonly description: string;
     /**

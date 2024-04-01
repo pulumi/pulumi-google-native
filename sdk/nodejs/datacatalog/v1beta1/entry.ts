@@ -73,7 +73,7 @@ export class Entry extends pulumi.CustomResource {
     public readonly linkedResource!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
+     * Identifier. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;

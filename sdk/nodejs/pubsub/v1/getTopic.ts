@@ -26,6 +26,10 @@ export interface GetTopicArgs {
 
 export interface GetTopicResult {
     /**
+     * Optional. Settings for ingestion from a data source into this topic.
+     */
+    readonly ingestionDataSourceSettings: outputs.pubsub.v1.IngestionDataSourceSettingsResponse;
+    /**
      * Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
     readonly kmsKeyName: string;
@@ -53,6 +57,10 @@ export interface GetTopicResult {
      * Optional. Settings for validating messages published against a schema.
      */
     readonly schemaSettings: outputs.pubsub.v1.SchemaSettingsResponse;
+    /**
+     * An output-only field indicating the state of the topic.
+     */
+    readonly state: string;
 }
 /**
  * Gets the configuration of a topic.

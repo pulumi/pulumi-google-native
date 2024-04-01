@@ -28,7 +28,7 @@ export interface GetJobArgs {
 
 export interface GetJobResult {
     /**
-     * [Required] Describes the job configuration.
+     * Describes the job configuration.
      */
     readonly configuration: outputs.bigquery.v2.JobConfigurationResponse;
     /**
@@ -38,9 +38,9 @@ export interface GetJobResult {
     /**
      * If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
      */
-    readonly jobCreationReason: any;
+    readonly jobCreationReason: outputs.bigquery.v2.JobCreationReasonResponse;
     /**
-     * [Optional] Reference describing the unique-per-user name of the job.
+     * Optional. Reference describing the unique-per-user name of the job.
      */
     readonly jobReference: outputs.bigquery.v2.JobReferenceResponse;
     /**
@@ -48,7 +48,11 @@ export interface GetJobResult {
      */
     readonly kind: string;
     /**
-     * A URL that can be used to access this resource again.
+     * [Full-projection-only] String representation of identity of requesting party. Populated for both first- and third-party identities. Only present for APIs that support third-party identities.
+     */
+    readonly principalSubject: string;
+    /**
+     * A URL that can be used to access the resource again.
      */
     readonly selfLink: string;
     /**

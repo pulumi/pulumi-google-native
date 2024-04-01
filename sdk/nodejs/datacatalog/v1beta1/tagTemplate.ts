@@ -35,6 +35,10 @@ export class TagTemplate extends pulumi.CustomResource {
     }
 
     /**
+     * Transfer status of the TagTemplate
+     */
+    public /*out*/ readonly dataplexTransferStatus!: pulumi.Output<string>;
+    /**
      * The display name for this template. Defaults to an empty string.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -44,7 +48,7 @@ export class TagTemplate extends pulumi.CustomResource {
     public readonly fields!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+     * Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -76,7 +80,9 @@ export class TagTemplate extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tagTemplateId"] = args ? args.tagTemplateId : undefined;
+            resourceInputs["dataplexTransferStatus"] = undefined /*out*/;
         } else {
+            resourceInputs["dataplexTransferStatus"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["fields"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -105,7 +111,7 @@ export interface TagTemplateArgs {
     fields: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+     * Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

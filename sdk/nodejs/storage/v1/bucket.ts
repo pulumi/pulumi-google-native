@@ -78,6 +78,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly etag!: pulumi.Output<string>;
     /**
+     * The bucket's hierarchical namespace configuration.
+     */
+    public readonly hierarchicalNamespace!: pulumi.Output<outputs.storage.v1.BucketHierarchicalNamespaceResponse>;
+    /**
      * The bucket's IAM configuration.
      */
     public readonly iamConfiguration!: pulumi.Output<outputs.storage.v1.BucketIamConfigurationResponse>;
@@ -207,6 +211,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["enableObjectRetention"] = args ? args.enableObjectRetention : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["hierarchicalNamespace"] = args ? args.hierarchicalNamespace : undefined;
             resourceInputs["iamConfiguration"] = args ? args.iamConfiguration : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
@@ -246,6 +251,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["enableObjectRetention"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["hierarchicalNamespace"] = undefined /*out*/;
             resourceInputs["iamConfiguration"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -325,6 +331,10 @@ export interface BucketArgs {
      * HTTP 1.1 Entity tag for the bucket.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * The bucket's hierarchical namespace configuration.
+     */
+    hierarchicalNamespace?: pulumi.Input<inputs.storage.v1.BucketHierarchicalNamespaceArgs>;
     /**
      * The bucket's IAM configuration.
      */

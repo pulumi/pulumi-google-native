@@ -105,6 +105,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      * Named ports configured for the Instance Groups complementary to this Instance Group Manager.
      */
     public readonly namedPorts!: pulumi.Output<outputs.compute.beta.NamedPortResponse[]>;
+    /**
+     * Input only. Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerParamsResponse>;
     public readonly project!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     /**
@@ -186,6 +190,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
@@ -224,6 +229,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["listManagedInstancesResults"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namedPorts"] = undefined /*out*/;
+            resourceInputs["params"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -299,6 +305,10 @@ export interface RegionInstanceGroupManagerArgs {
      * Named ports configured for the Instance Groups complementary to this Instance Group Manager.
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.beta.NamedPortArgs>[]>;
+    /**
+     * Input only. Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    params?: pulumi.Input<inputs.compute.beta.InstanceGroupManagerParamsArgs>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     /**

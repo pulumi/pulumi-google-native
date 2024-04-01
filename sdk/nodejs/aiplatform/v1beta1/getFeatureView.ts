@@ -46,13 +46,25 @@ export interface GetFeatureViewResult {
      */
     readonly featureRegistrySource: outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse;
     /**
+     * Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     */
+    readonly indexConfig: outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse;
+    /**
      * Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
      */
     readonly labels: {[key: string]: string};
     /**
-     * Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+     * Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
      */
     readonly name: string;
+    /**
+     * A Service Account unique to this FeatureView. The role bigquery.dataViewer should be granted to this service account to allow Vertex AI Feature Store to sync data to the online store.
+     */
+    readonly serviceAccountEmail: string;
+    /**
+     * Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+     */
+    readonly serviceAgentType: string;
     /**
      * Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
      */
@@ -62,7 +74,9 @@ export interface GetFeatureViewResult {
      */
     readonly updateTime: string;
     /**
-     * Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * Optional. Deprecated: please use FeatureView.index_config instead.
+     *
+     * @deprecated Optional. Deprecated: please use FeatureView.index_config instead.
      */
     readonly vectorSearchConfig: outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse;
 }

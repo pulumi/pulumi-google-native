@@ -39,6 +39,10 @@ export class Ruleset extends pulumi.CustomResource {
     }
 
     /**
+     * Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+     */
+    public readonly attachmentPoint!: pulumi.Output<string>;
+    /**
      * Time the `Ruleset` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -70,12 +74,14 @@ export class Ruleset extends pulumi.CustomResource {
             if ((!args || args.source === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
+            resourceInputs["attachmentPoint"] = args ? args.attachmentPoint : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         } else {
+            resourceInputs["attachmentPoint"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -93,6 +99,10 @@ export class Ruleset extends pulumi.CustomResource {
  * The set of arguments for constructing a Ruleset resource.
  */
 export interface RulesetArgs {
+    /**
+     * Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+     */
+    attachmentPoint?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * `Source` for the `Ruleset`.

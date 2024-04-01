@@ -123,6 +123,14 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
+     * [Output only] ResourceStatus of the Snapshot resource
+     */
+    public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.alpha.SnapshotResourceStatusResponse>;
+    /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
+    /**
      * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
@@ -240,6 +248,8 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["licenseCodes"] = undefined /*out*/;
             resourceInputs["licenses"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -274,6 +284,8 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;

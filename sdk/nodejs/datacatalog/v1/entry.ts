@@ -84,6 +84,10 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly entryId!: pulumi.Output<string>;
     /**
+     * FeatureonlineStore spec for Vertex AI Feature Store.
+     */
+    public readonly featureOnlineStoreSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponse>;
+    /**
      * Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
      */
     public readonly filesetSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1FilesetSpecResponse>;
@@ -117,7 +121,7 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly modelSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1ModelSpecResponse>;
     /**
-     * The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
+     * Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -188,6 +192,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["entryGroupId"] = args ? args.entryGroupId : undefined;
             resourceInputs["entryId"] = args ? args.entryId : undefined;
+            resourceInputs["featureOnlineStoreSpec"] = args ? args.featureOnlineStoreSpec : undefined;
             resourceInputs["filesetSpec"] = args ? args.filesetSpec : undefined;
             resourceInputs["fullyQualifiedName"] = args ? args.fullyQualifiedName : undefined;
             resourceInputs["gcsFilesetSpec"] = args ? args.gcsFilesetSpec : undefined;
@@ -225,6 +230,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["entryGroupId"] = undefined /*out*/;
             resourceInputs["entryId"] = undefined /*out*/;
+            resourceInputs["featureOnlineStoreSpec"] = undefined /*out*/;
             resourceInputs["filesetSpec"] = undefined /*out*/;
             resourceInputs["fullyQualifiedName"] = undefined /*out*/;
             resourceInputs["gcsFilesetSpec"] = undefined /*out*/;
@@ -291,6 +297,10 @@ export interface EntryArgs {
      * Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
      */
     entryId: pulumi.Input<string>;
+    /**
+     * FeatureonlineStore spec for Vertex AI Feature Store.
+     */
+    featureOnlineStoreSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1FeatureOnlineStoreSpecArgs>;
     /**
      * Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
      */

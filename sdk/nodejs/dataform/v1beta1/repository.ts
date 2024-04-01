@@ -9,7 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Repository in a given project and location.
- * Auto-naming is currently not supported for this resource.
  */
 export class Repository extends pulumi.CustomResource {
     /**
@@ -39,6 +38,10 @@ export class Repository extends pulumi.CustomResource {
     }
 
     /**
+     * The timestamp of when the repository was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * Optional. The repository's user-friendly name.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -52,9 +55,9 @@ export class Repository extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The repository's name.
+     * Identifier. The repository's name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*&#47;secrets/*&#47;versions/*`. The file itself must be in a JSON format.
      */
@@ -95,14 +98,16 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["gitRemoteSettings"] = args ? args.gitRemoteSettings : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = args ? args.npmrcEnvironmentVariablesSecretVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["setAuthenticatedUserAdmin"] = args ? args.setAuthenticatedUserAdmin : undefined;
             resourceInputs["workspaceCompilationOverrides"] = args ? args.workspaceCompilationOverrides : undefined;
-            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
         } else {
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["gitRemoteSettings"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -139,6 +144,10 @@ export interface RepositoryArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Identifier. The repository's name.
+     */
+    name?: pulumi.Input<string>;
     /**
      * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*&#47;secrets/*&#47;versions/*`. The file itself must be in a JSON format.
      */

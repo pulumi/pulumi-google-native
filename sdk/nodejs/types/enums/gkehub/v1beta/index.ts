@@ -46,6 +46,26 @@ export const BinaryAuthorizationConfigEvaluationMode = {
  */
 export type BinaryAuthorizationConfigEvaluationMode = (typeof BinaryAuthorizationConfigEvaluationMode)[keyof typeof BinaryAuthorizationConfigEvaluationMode];
 
+export const ConfigManagementMembershipSpecManagement = {
+    /**
+     * Unspecified
+     */
+    ManagementUnspecified: "MANAGEMENT_UNSPECIFIED",
+    /**
+     * Google will manage the Feature for the cluster.
+     */
+    ManagementAutomatic: "MANAGEMENT_AUTOMATIC",
+    /**
+     * User will manually manage the Feature for the cluster.
+     */
+    ManagementManual: "MANAGEMENT_MANUAL",
+} as const;
+
+/**
+ * Enables automatic Feature management.
+ */
+export type ConfigManagementMembershipSpecManagement = (typeof ConfigManagementMembershipSpecManagement)[keyof typeof ConfigManagementMembershipSpecManagement];
+
 export const ConfigManagementPolicyControllerMonitoringBackendsItem = {
     /**
      * Backend cannot be determined

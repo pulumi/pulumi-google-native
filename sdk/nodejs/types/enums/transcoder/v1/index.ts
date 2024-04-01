@@ -42,6 +42,46 @@ export const DashConfigSegmentReferenceScheme = {
  */
 export type DashConfigSegmentReferenceScheme = (typeof DashConfigSegmentReferenceScheme)[keyof typeof DashConfigSegmentReferenceScheme];
 
+export const H264CodecSettingsFrameRateConversionStrategy = {
+    /**
+     * Unspecified frame rate conversion strategy.
+     */
+    FrameRateConversionStrategyUnspecified: "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED",
+    /**
+     * Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ > 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+     */
+    Downsample: "DOWNSAMPLE",
+    /**
+     * Drop or duplicate frames to match the specified frame rate.
+     */
+    DropDuplicate: "DROP_DUPLICATE",
+} as const;
+
+/**
+ * Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+ */
+export type H264CodecSettingsFrameRateConversionStrategy = (typeof H264CodecSettingsFrameRateConversionStrategy)[keyof typeof H264CodecSettingsFrameRateConversionStrategy];
+
+export const H265CodecSettingsFrameRateConversionStrategy = {
+    /**
+     * Unspecified frame rate conversion strategy.
+     */
+    FrameRateConversionStrategyUnspecified: "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED",
+    /**
+     * Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ > 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+     */
+    Downsample: "DOWNSAMPLE",
+    /**
+     * Drop or duplicate frames to match the specified frame rate.
+     */
+    DropDuplicate: "DROP_DUPLICATE",
+} as const;
+
+/**
+ * Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+ */
+export type H265CodecSettingsFrameRateConversionStrategy = (typeof H265CodecSettingsFrameRateConversionStrategy)[keyof typeof H265CodecSettingsFrameRateConversionStrategy];
+
 export const JobMode = {
     /**
      * The job processing mode is not specified.
@@ -101,3 +141,23 @@ export const ManifestType = {
  * Required. Type of the manifest.
  */
 export type ManifestType = (typeof ManifestType)[keyof typeof ManifestType];
+
+export const Vp9CodecSettingsFrameRateConversionStrategy = {
+    /**
+     * Unspecified frame rate conversion strategy.
+     */
+    FrameRateConversionStrategyUnspecified: "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED",
+    /**
+     * Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ > 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+     */
+    Downsample: "DOWNSAMPLE",
+    /**
+     * Drop or duplicate frames to match the specified frame rate.
+     */
+    DropDuplicate: "DROP_DUPLICATE",
+} as const;
+
+/**
+ * Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+ */
+export type Vp9CodecSettingsFrameRateConversionStrategy = (typeof Vp9CodecSettingsFrameRateConversionStrategy)[keyof typeof Vp9CodecSettingsFrameRateConversionStrategy];

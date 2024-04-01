@@ -48,7 +48,7 @@ export interface GetFeatureGroupResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+     * Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
      */
     readonly name: string;
     /**

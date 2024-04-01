@@ -47,7 +47,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      */
     public readonly dagTimeout!: pulumi.Output<string>;
     /**
-     * Optional. Encryption settings for the encrypting customer core content.
+     * Optional. Encryption settings for encrypting workflow template job arguments.
      */
     public readonly encryptionConfig!: pulumi.Output<outputs.dataproc.v1.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse>;
     /**
@@ -141,7 +141,7 @@ export interface WorkflowTemplateArgs {
      */
     dagTimeout?: pulumi.Input<string>;
     /**
-     * Optional. Encryption settings for the encrypting customer core content.
+     * Optional. Encryption settings for encrypting workflow template job arguments.
      */
     encryptionConfig?: pulumi.Input<inputs.dataproc.v1.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs>;
     id?: pulumi.Input<string>;

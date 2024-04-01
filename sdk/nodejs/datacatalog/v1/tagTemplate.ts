@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -35,6 +38,10 @@ export class TagTemplate extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. Transfer status of the TagTemplate
+     */
+    public readonly dataplexTransferStatus!: pulumi.Output<string>;
+    /**
      * Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -48,7 +55,7 @@ export class TagTemplate extends pulumi.CustomResource {
     public readonly isPubliclyReadable!: pulumi.Output<boolean>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+     * Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -74,6 +81,7 @@ export class TagTemplate extends pulumi.CustomResource {
             if ((!args || args.tagTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagTemplateId'");
             }
+            resourceInputs["dataplexTransferStatus"] = args ? args.dataplexTransferStatus : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["fields"] = args ? args.fields : undefined;
             resourceInputs["isPubliclyReadable"] = args ? args.isPubliclyReadable : undefined;
@@ -82,6 +90,7 @@ export class TagTemplate extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tagTemplateId"] = args ? args.tagTemplateId : undefined;
         } else {
+            resourceInputs["dataplexTransferStatus"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["fields"] = undefined /*out*/;
             resourceInputs["isPubliclyReadable"] = undefined /*out*/;
@@ -102,6 +111,10 @@ export class TagTemplate extends pulumi.CustomResource {
  */
 export interface TagTemplateArgs {
     /**
+     * Optional. Transfer status of the TagTemplate
+     */
+    dataplexTransferStatus?: pulumi.Input<enums.datacatalog.v1.TagTemplateDataplexTransferStatus>;
+    /**
      * Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
      */
     displayName?: pulumi.Input<string>;
@@ -115,7 +128,7 @@ export interface TagTemplateArgs {
     isPubliclyReadable?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+     * Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

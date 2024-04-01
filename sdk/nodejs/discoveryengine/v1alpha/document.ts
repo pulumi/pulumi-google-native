@@ -37,6 +37,10 @@ export class Document extends pulumi.CustomResource {
         return obj['__pulumiType'] === Document.__pulumiType;
     }
 
+    /**
+     * Access control information for the document.
+     */
+    public readonly aclInfo!: pulumi.Output<outputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponse>;
     public readonly branchId!: pulumi.Output<string>;
     public readonly collectionId!: pulumi.Output<string>;
     /**
@@ -52,6 +56,10 @@ export class Document extends pulumi.CustomResource {
      * Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
      */
     public readonly documentId!: pulumi.Output<string>;
+    /**
+     * The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+     */
+    public /*out*/ readonly indexTime!: pulumi.Output<string>;
     /**
      * The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
@@ -98,6 +106,7 @@ export class Document extends pulumi.CustomResource {
             if ((!args || args.documentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'documentId'");
             }
+            resourceInputs["aclInfo"] = args ? args.aclInfo : undefined;
             resourceInputs["branchId"] = args ? args.branchId : undefined;
             resourceInputs["collectionId"] = args ? args.collectionId : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
@@ -112,13 +121,16 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["schemaId"] = args ? args.schemaId : undefined;
             resourceInputs["structData"] = args ? args.structData : undefined;
             resourceInputs["derivedStructData"] = undefined /*out*/;
+            resourceInputs["indexTime"] = undefined /*out*/;
         } else {
+            resourceInputs["aclInfo"] = undefined /*out*/;
             resourceInputs["branchId"] = undefined /*out*/;
             resourceInputs["collectionId"] = undefined /*out*/;
             resourceInputs["content"] = undefined /*out*/;
             resourceInputs["dataStoreId"] = undefined /*out*/;
             resourceInputs["derivedStructData"] = undefined /*out*/;
             resourceInputs["documentId"] = undefined /*out*/;
+            resourceInputs["indexTime"] = undefined /*out*/;
             resourceInputs["jsonData"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -138,6 +150,10 @@ export class Document extends pulumi.CustomResource {
  * The set of arguments for constructing a Document resource.
  */
 export interface DocumentArgs {
+    /**
+     * Access control information for the document.
+     */
+    aclInfo?: pulumi.Input<inputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoArgs>;
     branchId: pulumi.Input<string>;
     collectionId: pulumi.Input<string>;
     /**

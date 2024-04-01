@@ -6,7 +6,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a policy tag in the specified taxonomy.
- * Auto-naming is currently not supported for this resource.
  */
 export class PolicyTag extends pulumi.CustomResource {
     /**
@@ -49,9 +48,9 @@ export class PolicyTag extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
+     * Identifier. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
      */
@@ -79,11 +78,11 @@ export class PolicyTag extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parentPolicyTag"] = args ? args.parentPolicyTag : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["taxonomyId"] = args ? args.taxonomyId : undefined;
             resourceInputs["childPolicyTags"] = undefined /*out*/;
-            resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["childPolicyTags"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -114,6 +113,10 @@ export interface PolicyTagArgs {
      */
     displayName: pulumi.Input<string>;
     location?: pulumi.Input<string>;
+    /**
+     * Identifier. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
+     */
+    name?: pulumi.Input<string>;
     /**
      * Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
      */

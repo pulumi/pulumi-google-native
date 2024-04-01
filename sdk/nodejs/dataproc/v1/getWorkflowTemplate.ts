@@ -38,7 +38,7 @@ export interface GetWorkflowTemplateResult {
      */
     readonly dagTimeout: string;
     /**
-     * Optional. Encryption settings for the encrypting customer core content.
+     * Optional. Encryption settings for encrypting workflow template job arguments.
      */
     readonly encryptionConfig: outputs.dataproc.v1.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse;
     /**

@@ -22,6 +22,30 @@ export const ComputeEnginePreferencesLicenseType = {
  */
 export type ComputeEnginePreferencesLicenseType = (typeof ComputeEnginePreferencesLicenseType)[keyof typeof ComputeEnginePreferencesLicenseType];
 
+export const ComputeEnginePreferencesPersistentDiskType = {
+    /**
+     * Unspecified (default value). Selecting this value allows the system to use any disk type according to reported usage. This a good value to start with.
+     */
+    PersistentDiskTypeUnspecified: "PERSISTENT_DISK_TYPE_UNSPECIFIED",
+    /**
+     * Standard HDD Persistent Disk.
+     */
+    PersistentDiskTypeStandard: "PERSISTENT_DISK_TYPE_STANDARD",
+    /**
+     * Balanced Persistent Disk.
+     */
+    PersistentDiskTypeBalanced: "PERSISTENT_DISK_TYPE_BALANCED",
+    /**
+     * SSD Persistent Disk.
+     */
+    PersistentDiskTypeSsd: "PERSISTENT_DISK_TYPE_SSD",
+} as const;
+
+/**
+ * Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+ */
+export type ComputeEnginePreferencesPersistentDiskType = (typeof ComputeEnginePreferencesPersistentDiskType)[keyof typeof ComputeEnginePreferencesPersistentDiskType];
+
 export const ImportDataFileFormat = {
     /**
      * Default value.
@@ -163,6 +187,10 @@ export const SourceType = {
      * Third-party owned sources.
      */
     SourceTypeCustom: "SOURCE_TYPE_CUSTOM",
+    /**
+     * Discovery clients
+     */
+    SourceTypeDiscoveryClient: "SOURCE_TYPE_DISCOVERY_CLIENT",
 } as const;
 
 /**

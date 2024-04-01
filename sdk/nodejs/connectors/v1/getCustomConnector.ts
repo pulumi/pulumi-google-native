@@ -23,6 +23,10 @@ export interface GetCustomConnectorArgs {
 
 export interface GetCustomConnectorResult {
     /**
+     * Optional. Active connector versions.
+     */
+    readonly activeConnectorVersions: string[];
+    /**
      * Created time.
      */
     readonly createTime: string;

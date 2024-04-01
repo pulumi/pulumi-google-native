@@ -130,6 +130,26 @@ export const GroupMigrationTargetType = {
  */
 export type GroupMigrationTargetType = (typeof GroupMigrationTargetType)[keyof typeof GroupMigrationTargetType];
 
+export const ImageImportOsAdaptationParametersLicenseType = {
+    /**
+     * The license type is the default for the OS.
+     */
+    ComputeEngineLicenseTypeDefault: "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT",
+    /**
+     * The license type is Pay As You Go license type.
+     */
+    ComputeEngineLicenseTypePayg: "COMPUTE_ENGINE_LICENSE_TYPE_PAYG",
+    /**
+     * The license type is Bring Your Own License type.
+     */
+    ComputeEngineLicenseTypeByol: "COMPUTE_ENGINE_LICENSE_TYPE_BYOL",
+} as const;
+
+/**
+ * Optional. Choose which type of license to apply to the imported image.
+ */
+export type ImageImportOsAdaptationParametersLicenseType = (typeof ImageImportOsAdaptationParametersLicenseType)[keyof typeof ImageImportOsAdaptationParametersLicenseType];
+
 export const PersistentDiskDefaultsDiskType = {
     /**
      * An unspecified disk type. Will be used as STANDARD.

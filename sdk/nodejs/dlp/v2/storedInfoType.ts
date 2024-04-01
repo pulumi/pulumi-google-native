@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+ * Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
  * Auto-naming is currently not supported for this resource.
  */
 export class StoredInfoType extends pulumi.CustomResource {

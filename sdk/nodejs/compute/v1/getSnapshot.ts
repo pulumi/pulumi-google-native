@@ -58,6 +58,10 @@ export interface GetSnapshotResult {
      */
     readonly downloadBytes: string;
     /**
+     * Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+     */
+    readonly enableConfidentialCompute: boolean;
+    /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
      */
     readonly guestOsFeatures: outputs.compute.v1.GuestOsFeatureResponse[];
@@ -92,6 +96,10 @@ export interface GetSnapshotResult {
     /**
      * Reserved for future use.
      */
+    readonly satisfiesPzi: boolean;
+    /**
+     * Reserved for future use.
+     */
     readonly satisfiesPzs: boolean;
     /**
      * Server-defined URL for the resource.
@@ -121,6 +129,18 @@ export interface GetSnapshotResult {
      * The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
      */
     readonly sourceDiskId: string;
+    /**
+     * The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+     */
+    readonly sourceInstantSnapshot: string;
+    /**
+     * Customer provided encryption key when creating Snapshot from Instant Snapshot.
+     */
+    readonly sourceInstantSnapshotEncryptionKey: outputs.compute.v1.CustomerEncryptionKeyResponse;
+    /**
+     * The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+     */
+    readonly sourceInstantSnapshotId: string;
     /**
      * URL of the resource policy which created this scheduled snapshot.
      */

@@ -96,6 +96,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly skipValidation!: pulumi.Output<boolean | undefined>;
     /**
+     * Connection profile for a SQL Server data source.
+     */
+    public readonly sqlserver!: pulumi.Output<outputs.datamigration.v1.SqlServerConnectionProfileResponse>;
+    /**
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */
     public readonly state!: pulumi.Output<string>;
@@ -132,6 +136,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["provider"] = args ? args.provider : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
+            resourceInputs["sqlserver"] = args ? args.sqlserver : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
@@ -153,6 +158,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["provider"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["skipValidation"] = undefined /*out*/;
+            resourceInputs["sqlserver"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -217,6 +223,10 @@ export interface ConnectionProfileArgs {
      * Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
      */
     skipValidation?: pulumi.Input<boolean>;
+    /**
+     * Connection profile for a SQL Server data source.
+     */
+    sqlserver?: pulumi.Input<inputs.datamigration.v1.SqlServerConnectionProfileArgs>;
     /**
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */

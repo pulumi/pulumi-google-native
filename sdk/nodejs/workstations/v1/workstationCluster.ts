@@ -66,6 +66,10 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Optional. Configuration options for a custom domain.
+     */
+    public readonly domainConfig!: pulumi.Output<outputs.workstations.v1.DomainConfigResponse>;
+    /**
      * Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     public readonly etag!: pulumi.Output<string>;
@@ -124,6 +128,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["domainConfig"] = args ? args.domainConfig : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -149,6 +154,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["degraded"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["domainConfig"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -181,6 +187,10 @@ export interface WorkstationClusterArgs {
      * Optional. Human-readable name for this workstation cluster.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Optional. Configuration options for a custom domain.
+     */
+    domainConfig?: pulumi.Input<inputs.workstations.v1.DomainConfigArgs>;
     /**
      * Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */

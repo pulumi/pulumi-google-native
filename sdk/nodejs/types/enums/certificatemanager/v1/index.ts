@@ -57,3 +57,23 @@ export const CertificateScope = {
  * Immutable. The scope of the certificate.
  */
 export type CertificateScope = (typeof CertificateScope)[keyof typeof CertificateScope];
+
+export const DnsAuthorizationType = {
+    /**
+     * Type is unspecified.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * FIXED_RECORD DNS authorization uses DNS-01 validation method.
+     */
+    FixedRecord: "FIXED_RECORD",
+    /**
+     * PER_PROJECT_RECORD DNS authorization allows for independent management of Google-managed certificates with DNS authorization across multiple projects.
+     */
+    PerProjectRecord: "PER_PROJECT_RECORD",
+} as const;
+
+/**
+ * Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+ */
+export type DnsAuthorizationType = (typeof DnsAuthorizationType)[keyof typeof DnsAuthorizationType];

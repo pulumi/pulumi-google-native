@@ -35,12 +35,12 @@ export class Dataset extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     * Required. The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
      */
-    public readonly datasetId!: pulumi.Output<string | undefined>;
+    public readonly datasetId!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+     * Identifier. Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -56,10 +56,13 @@ export class Dataset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: DatasetArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DatasetArgs, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
+            }
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -73,7 +76,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["timeZone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "location", "project"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Dataset.__pulumiType, name, resourceInputs, opts);
     }
@@ -84,12 +87,12 @@ export class Dataset extends pulumi.CustomResource {
  */
 export interface DatasetArgs {
     /**
-     * The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     * Required. The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
      */
-    datasetId?: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
-     * Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+     * Identifier. Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

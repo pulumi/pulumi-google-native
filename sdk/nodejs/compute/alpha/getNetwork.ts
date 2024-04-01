@@ -76,6 +76,10 @@ export interface GetNetworkResult {
      */
     readonly networkFirewallPolicyEnforcementOrder: string;
     /**
+     * A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
+     */
+    readonly networkPlacement: string;
+    /**
      * A list of network peerings for the resource.
      */
     readonly peerings: outputs.compute.alpha.NetworkPeeringResponse[];

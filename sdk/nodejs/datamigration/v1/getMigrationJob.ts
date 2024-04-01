@@ -104,6 +104,10 @@ export interface GetMigrationJobResult {
      */
     readonly sourceDatabase: outputs.datamigration.v1.DatabaseTypeResponse;
     /**
+     * Optional. Configuration for SQL Server homogeneous migration.
+     */
+    readonly sqlserverHomogeneousMigrationJobConfig: outputs.datamigration.v1.SqlServerHomogeneousMigrationJobConfigResponse;
+    /**
      * The current migration job state.
      */
     readonly state: string;

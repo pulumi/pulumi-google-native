@@ -610,6 +610,27 @@ export const BackendServiceConnectionTrackingPolicyTrackingMode = {
  */
 export type BackendServiceConnectionTrackingPolicyTrackingMode = (typeof BackendServiceConnectionTrackingPolicyTrackingMode)[keyof typeof BackendServiceConnectionTrackingPolicyTrackingMode];
 
+export const BackendServiceExternalManagedMigrationState = {
+    Finalize: "FINALIZE",
+    Prepare: "PREPARE",
+    Test: "TEST",
+} as const;
+
+/**
+ * Specifies the canary migration state. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic by percentage using externalManagedMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+ */
+export type BackendServiceExternalManagedMigrationState = (typeof BackendServiceExternalManagedMigrationState)[keyof typeof BackendServiceExternalManagedMigrationState];
+
+export const BackendServiceHAPolicyFastIPMove = {
+    Disabled: "DISABLED",
+    GarpRa: "GARP_RA",
+} as const;
+
+/**
+ * Enabling fastIPMove is not supported.
+ */
+export type BackendServiceHAPolicyFastIPMove = (typeof BackendServiceHAPolicyFastIPMove)[keyof typeof BackendServiceHAPolicyFastIPMove];
+
 export const BackendServiceIpAddressSelectionPolicy = {
     /**
      * Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting.
@@ -630,25 +651,25 @@ export const BackendServiceIpAddressSelectionPolicy = {
 } as const;
 
 /**
- * Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+ * Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
  */
 export type BackendServiceIpAddressSelectionPolicy = (typeof BackendServiceIpAddressSelectionPolicy)[keyof typeof BackendServiceIpAddressSelectionPolicy];
 
 export const BackendServiceLoadBalancingScheme = {
     /**
-     * Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+     * Signifies that this will be used for classic Application Load Balancers, global external proxy Network Load Balancers, or external passthrough Network Load Balancers.
      */
     External: "EXTERNAL",
     /**
-     * Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+     * Signifies that this will be used for global external Application Load Balancers, regional external Application Load Balancers, or regional external proxy Network Load Balancers.
      */
     ExternalManaged: "EXTERNAL_MANAGED",
     /**
-     * Signifies that this will be used for Internal TCP/UDP Load Balancing.
+     * Signifies that this will be used for internal passthrough Network Load Balancers.
      */
     Internal: "INTERNAL",
     /**
-     * Signifies that this will be used for Internal HTTP(S) Load Balancing.
+     * Signifies that this will be used for internal Application Load Balancers.
      */
     InternalManaged: "INTERNAL_MANAGED",
     /**
@@ -1268,6 +1289,17 @@ export const FirewallPolicyVpcNetworkScope = {
  */
 export type FirewallPolicyVpcNetworkScope = (typeof FirewallPolicyVpcNetworkScope)[keyof typeof FirewallPolicyVpcNetworkScope];
 
+export const ForwardingRuleExternalManagedBackendBucketMigrationState = {
+    Finalize: "FINALIZE",
+    Prepare: "PREPARE",
+    Test: "TEST",
+} as const;
+
+/**
+ * Specifies the canary migration state for the backend buckets attached to this forwarding rule. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic to backend buckets attached to this forwarding rule by percentage using externalManagedBackendBucketMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+ */
+export type ForwardingRuleExternalManagedBackendBucketMigrationState = (typeof ForwardingRuleExternalManagedBackendBucketMigrationState)[keyof typeof ForwardingRuleExternalManagedBackendBucketMigrationState];
+
 export const ForwardingRuleIpProtocol = {
     Ah: "AH",
     All: "ALL",
@@ -1396,9 +1428,29 @@ export const GRPCHealthCheckPortSpecification = {
 } as const;
 
 /**
- * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+ * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
  */
 export type GRPCHealthCheckPortSpecification = (typeof GRPCHealthCheckPortSpecification)[keyof typeof GRPCHealthCheckPortSpecification];
+
+export const GRPCTLSHealthCheckPortSpecification = {
+    /**
+     * The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
+     */
+    UseFixedPort: "USE_FIXED_PORT",
+    /**
+     * Not supported.
+     */
+    UseNamedPort: "USE_NAMED_PORT",
+    /**
+     * For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
+     */
+    UseServingPort: "USE_SERVING_PORT",
+} as const;
+
+/**
+ * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+ */
+export type GRPCTLSHealthCheckPortSpecification = (typeof GRPCTLSHealthCheckPortSpecification)[keyof typeof GRPCTLSHealthCheckPortSpecification];
 
 export const GlobalAddressAddressType = {
     /**
@@ -1516,6 +1568,17 @@ export const GlobalAddressPurpose = {
  */
 export type GlobalAddressPurpose = (typeof GlobalAddressPurpose)[keyof typeof GlobalAddressPurpose];
 
+export const GlobalForwardingRuleExternalManagedBackendBucketMigrationState = {
+    Finalize: "FINALIZE",
+    Prepare: "PREPARE",
+    Test: "TEST",
+} as const;
+
+/**
+ * Specifies the canary migration state for the backend buckets attached to this forwarding rule. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic to backend buckets attached to this forwarding rule by percentage using externalManagedBackendBucketMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+ */
+export type GlobalForwardingRuleExternalManagedBackendBucketMigrationState = (typeof GlobalForwardingRuleExternalManagedBackendBucketMigrationState)[keyof typeof GlobalForwardingRuleExternalManagedBackendBucketMigrationState];
+
 export const GlobalForwardingRuleIpProtocol = {
     Ah: "AH",
     All: "ALL",
@@ -1623,7 +1686,7 @@ export const GlobalNetworkEndpointGroupClientPortMappingMode = {
 } as const;
 
 /**
- * Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+ * Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
  */
 export type GlobalNetworkEndpointGroupClientPortMappingMode = (typeof GlobalNetworkEndpointGroupClientPortMappingMode)[keyof typeof GlobalNetworkEndpointGroupClientPortMappingMode];
 
@@ -1709,7 +1772,7 @@ export const GuestOsFeatureType = {
 } as const;
 
 /**
- * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+ * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
  */
 export type GuestOsFeatureType = (typeof GuestOsFeatureType)[keyof typeof GuestOsFeatureType];
 
@@ -1729,7 +1792,7 @@ export const HTTP2HealthCheckPortSpecification = {
 } as const;
 
 /**
- * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+ * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
  */
 export type HTTP2HealthCheckPortSpecification = (typeof HTTP2HealthCheckPortSpecification)[keyof typeof HTTP2HealthCheckPortSpecification];
 
@@ -1779,7 +1842,7 @@ export const HTTPHealthCheckPortSpecification = {
 } as const;
 
 /**
- * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+ * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
  */
 export type HTTPHealthCheckPortSpecification = (typeof HTTPHealthCheckPortSpecification)[keyof typeof HTTPHealthCheckPortSpecification];
 
@@ -1829,7 +1892,7 @@ export const HTTPSHealthCheckPortSpecification = {
 } as const;
 
 /**
- * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+ * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
  */
 export type HTTPSHealthCheckPortSpecification = (typeof HTTPSHealthCheckPortSpecification)[keyof typeof HTTPSHealthCheckPortSpecification];
 
@@ -2019,17 +2082,17 @@ export type InstanceGroupManagerListManagedInstancesResults = (typeof InstanceGr
 
 export const InstanceGroupManagerStandbyPolicyMode = {
     /**
-     * MIG does not automatically stop/start or suspend/resume VMs.
+     * MIG does not automatically resume or start VMs in the standby pool when the group scales out.
      */
     Manual: "MANUAL",
     /**
-     * MIG automatically resumes and starts VMs when it scales out, and replenishes the standby pool afterwards.
+     * MIG automatically resumes or starts VMs in the standby pool when the group scales out, and replenishes the standby pool afterwards.
      */
     ScaleOutPool: "SCALE_OUT_POOL",
 } as const;
 
 /**
- * Defines behaviour of using instances from standby pool to resize MIG.
+ * Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
  */
 export type InstanceGroupManagerStandbyPolicyMode = (typeof InstanceGroupManagerStandbyPolicyMode)[keyof typeof InstanceGroupManagerStandbyPolicyMode];
 
@@ -2542,7 +2605,7 @@ export const NetworkEndpointGroupClientPortMappingMode = {
 } as const;
 
 /**
- * Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+ * Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
  */
 export type NetworkEndpointGroupClientPortMappingMode = (typeof NetworkEndpointGroupClientPortMappingMode)[keyof typeof NetworkEndpointGroupClientPortMappingMode];
 
@@ -2610,11 +2673,31 @@ export const NetworkFirewallPolicyVpcNetworkScope = {
  */
 export type NetworkFirewallPolicyVpcNetworkScope = (typeof NetworkFirewallPolicyVpcNetworkScope)[keyof typeof NetworkFirewallPolicyVpcNetworkScope];
 
+export const NetworkInterfaceIgmpQuery = {
+    /**
+     * The network interface has disabled IGMP query.
+     */
+    IgmpQueryDisabled: "IGMP_QUERY_DISABLED",
+    /**
+     * The network interface has enabled IGMP query - v2.
+     */
+    IgmpQueryV2: "IGMP_QUERY_V2",
+} as const;
+
+/**
+ * Indicate whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+ */
+export type NetworkInterfaceIgmpQuery = (typeof NetworkInterfaceIgmpQuery)[keyof typeof NetworkInterfaceIgmpQuery];
+
 export const NetworkInterfaceNicType = {
     /**
      * GVNIC
      */
     Gvnic: "GVNIC",
+    /**
+     * IDPF
+     */
+    Idpf: "IDPF",
     /**
      * No type specified.
      */
@@ -2955,6 +3038,17 @@ export const RegionBackendServiceCompressionMode = {
  */
 export type RegionBackendServiceCompressionMode = (typeof RegionBackendServiceCompressionMode)[keyof typeof RegionBackendServiceCompressionMode];
 
+export const RegionBackendServiceExternalManagedMigrationState = {
+    Finalize: "FINALIZE",
+    Prepare: "PREPARE",
+    Test: "TEST",
+} as const;
+
+/**
+ * Specifies the canary migration state. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic by percentage using externalManagedMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+ */
+export type RegionBackendServiceExternalManagedMigrationState = (typeof RegionBackendServiceExternalManagedMigrationState)[keyof typeof RegionBackendServiceExternalManagedMigrationState];
+
 export const RegionBackendServiceIpAddressSelectionPolicy = {
     /**
      * Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting.
@@ -2975,25 +3069,25 @@ export const RegionBackendServiceIpAddressSelectionPolicy = {
 } as const;
 
 /**
- * Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+ * Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
  */
 export type RegionBackendServiceIpAddressSelectionPolicy = (typeof RegionBackendServiceIpAddressSelectionPolicy)[keyof typeof RegionBackendServiceIpAddressSelectionPolicy];
 
 export const RegionBackendServiceLoadBalancingScheme = {
     /**
-     * Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+     * Signifies that this will be used for classic Application Load Balancers, global external proxy Network Load Balancers, or external passthrough Network Load Balancers.
      */
     External: "EXTERNAL",
     /**
-     * Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+     * Signifies that this will be used for global external Application Load Balancers, regional external Application Load Balancers, or regional external proxy Network Load Balancers.
      */
     ExternalManaged: "EXTERNAL_MANAGED",
     /**
-     * Signifies that this will be used for Internal TCP/UDP Load Balancing.
+     * Signifies that this will be used for internal passthrough Network Load Balancers.
      */
     Internal: "INTERNAL",
     /**
-     * Signifies that this will be used for Internal HTTP(S) Load Balancing.
+     * Signifies that this will be used for internal Application Load Balancers.
      */
     InternalManaged: "INTERNAL_MANAGED",
     /**
@@ -3164,19 +3258,23 @@ export type RegionCommitmentPlan = (typeof RegionCommitmentPlan)[keyof typeof Re
 export const RegionCommitmentType = {
     AcceleratorOptimized: "ACCELERATOR_OPTIMIZED",
     AcceleratorOptimizedA3: "ACCELERATOR_OPTIMIZED_A3",
+    AcceleratorOptimizedA3Mega: "ACCELERATOR_OPTIMIZED_A3_MEGA",
     ComputeOptimized: "COMPUTE_OPTIMIZED",
     ComputeOptimizedC2d: "COMPUTE_OPTIMIZED_C2D",
     ComputeOptimizedC3: "COMPUTE_OPTIMIZED_C3",
     ComputeOptimizedC3d: "COMPUTE_OPTIMIZED_C3D",
     ComputeOptimizedH3: "COMPUTE_OPTIMIZED_H3",
     GeneralPurpose: "GENERAL_PURPOSE",
+    GeneralPurposeC4: "GENERAL_PURPOSE_C4",
     GeneralPurposeE2: "GENERAL_PURPOSE_E2",
     GeneralPurposeN2: "GENERAL_PURPOSE_N2",
     GeneralPurposeN2d: "GENERAL_PURPOSE_N2D",
+    GeneralPurposeN4: "GENERAL_PURPOSE_N4",
     GeneralPurposeT2d: "GENERAL_PURPOSE_T2D",
     GraphicsOptimized: "GRAPHICS_OPTIMIZED",
     MemoryOptimized: "MEMORY_OPTIMIZED",
     MemoryOptimizedM3: "MEMORY_OPTIMIZED_M3",
+    StorageOptimizedZ3: "STORAGE_OPTIMIZED_Z3",
     TypeUnspecified: "TYPE_UNSPECIFIED",
 } as const;
 
@@ -3348,7 +3446,7 @@ export const RegionNetworkEndpointGroupClientPortMappingMode = {
 } as const;
 
 /**
- * Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+ * Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
  */
 export type RegionNetworkEndpointGroupClientPortMappingMode = (typeof RegionNetworkEndpointGroupClientPortMappingMode)[keyof typeof RegionNetworkEndpointGroupClientPortMappingMode];
 
@@ -3519,6 +3617,26 @@ export const RegionTargetHttpsProxyQuicOverride = {
  * Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
  */
 export type RegionTargetHttpsProxyQuicOverride = (typeof RegionTargetHttpsProxyQuicOverride)[keyof typeof RegionTargetHttpsProxyQuicOverride];
+
+export const RegionTargetHttpsProxyTlsEarlyData = {
+    /**
+     * TLS 1.3 Early Data is not advertised, and any (invalid) attempts to send Early Data will be rejected by closing the connection.
+     */
+    Disabled: "DISABLED",
+    /**
+     * This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE). This mode does not enforce any other limitations for requests with Early Data. The application owner should validate that Early Data is acceptable for a given request path.
+     */
+    Permissive: "PERMISSIVE",
+    /**
+     * This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE) without query parameters. Requests that send Early Data with non-idempotent HTTP methods or with query parameters will be rejected with a HTTP 425.
+     */
+    Strict: "STRICT",
+} as const;
+
+/**
+ *  Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED.
+ */
+export type RegionTargetHttpsProxyTlsEarlyData = (typeof RegionTargetHttpsProxyTlsEarlyData)[keyof typeof RegionTargetHttpsProxyTlsEarlyData];
 
 export const RegionTargetTcpProxyProxyHeader = {
     None: "NONE",
@@ -3969,7 +4087,7 @@ export const SSLHealthCheckPortSpecification = {
 } as const;
 
 /**
- * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+ * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
  */
 export type SSLHealthCheckPortSpecification = (typeof SSLHealthCheckPortSpecification)[keyof typeof SSLHealthCheckPortSpecification];
 
@@ -4082,6 +4200,17 @@ export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVi
  */
 export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility = (typeof SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility)[keyof typeof SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility];
 
+export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType = {
+    HttpHeaderHost: "HTTP_HEADER_HOST",
+    HttpPath: "HTTP_PATH",
+    UnspecifiedType: "UNSPECIFIED_TYPE",
+} as const;
+
+/**
+ * Type of this configuration.
+ */
+export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType = (typeof SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType)[keyof typeof SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType];
+
 export const SecurityPolicyAdvancedOptionsConfigJsonParsing = {
     Disabled: "DISABLED",
     Standard: "STANDARD",
@@ -4165,11 +4294,13 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
     Ip: "IP",
     RegionCode: "REGION_CODE",
     Sni: "SNI",
+    TlsJa3Fingerprint: "TLS_JA3_FINGERPRINT",
+    UserIp: "USER_IP",
     XffIp: "XFF_IP",
 } as const;
 
 /**
- * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
 
@@ -4182,11 +4313,13 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTyp
     Ip: "IP",
     RegionCode: "REGION_CODE",
     Sni: "SNI",
+    TlsJa3Fingerprint: "TLS_JA3_FINGERPRINT",
+    UserIp: "USER_IP",
     XffIp: "XFF_IP",
 } as const;
 
 /**
- * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType];
 
@@ -4529,7 +4662,7 @@ export const SubnetworkPurpose = {
      */
     GlobalManagedProxy: "GLOBAL_MANAGED_PROXY",
     /**
-     * Subnet reserved for Internal HTTP(S) Load Balancing.
+     * Subnet reserved for Internal HTTP(S) Load Balancing. This is a legacy purpose, please use REGIONAL_MANAGED_PROXY instead.
      */
     InternalHttpsLoadBalancer: "INTERNAL_HTTPS_LOAD_BALANCER",
     /**
@@ -4555,7 +4688,7 @@ export const SubnetworkPurpose = {
 } as const;
 
 /**
- * The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+ * The purpose of the resource. This field can be either PRIVATE, GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
  */
 export type SubnetworkPurpose = (typeof SubnetworkPurpose)[keyof typeof SubnetworkPurpose];
 
@@ -4571,7 +4704,7 @@ export const SubnetworkRole = {
 } as const;
 
 /**
- * The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+ * The role of subnetwork. Currently, this field is only used when purpose is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
  */
 export type SubnetworkRole = (typeof SubnetworkRole)[keyof typeof SubnetworkRole];
 
@@ -4624,7 +4757,7 @@ export const TCPHealthCheckPortSpecification = {
 } as const;
 
 /**
- * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+ * Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
  */
 export type TCPHealthCheckPortSpecification = (typeof TCPHealthCheckPortSpecification)[keyof typeof TCPHealthCheckPortSpecification];
 
@@ -4657,6 +4790,26 @@ export const TargetHttpsProxyQuicOverride = {
  * Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
  */
 export type TargetHttpsProxyQuicOverride = (typeof TargetHttpsProxyQuicOverride)[keyof typeof TargetHttpsProxyQuicOverride];
+
+export const TargetHttpsProxyTlsEarlyData = {
+    /**
+     * TLS 1.3 Early Data is not advertised, and any (invalid) attempts to send Early Data will be rejected by closing the connection.
+     */
+    Disabled: "DISABLED",
+    /**
+     * This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE). This mode does not enforce any other limitations for requests with Early Data. The application owner should validate that Early Data is acceptable for a given request path.
+     */
+    Permissive: "PERMISSIVE",
+    /**
+     * This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE) without query parameters. Requests that send Early Data with non-idempotent HTTP methods or with query parameters will be rejected with a HTTP 425.
+     */
+    Strict: "STRICT",
+} as const;
+
+/**
+ *  Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED.
+ */
+export type TargetHttpsProxyTlsEarlyData = (typeof TargetHttpsProxyTlsEarlyData)[keyof typeof TargetHttpsProxyTlsEarlyData];
 
 export const TargetInstanceNatPolicy = {
     /**

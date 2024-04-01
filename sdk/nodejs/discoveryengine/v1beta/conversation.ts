@@ -38,7 +38,6 @@ export class Conversation extends pulumi.CustomResource {
         return obj['__pulumiType'] === Conversation.__pulumiType;
     }
 
-    public readonly collectionId!: pulumi.Output<string>;
     public readonly dataStoreId!: pulumi.Output<string>;
     /**
      * The time the conversation finished.
@@ -50,7 +49,7 @@ export class Conversation extends pulumi.CustomResource {
      */
     public readonly messages!: pulumi.Output<outputs.discoveryengine.v1beta.GoogleCloudDiscoveryengineV1betaConversationMessageResponse[]>;
     /**
-     * Immutable. Fully qualified name `project/*&#47;locations/global/collections/{collection}/dataStore/*&#47;conversations/*`
+     * Immutable. Fully qualified name `project/*&#47;locations/global/collections/{collection}/dataStore/*&#47;conversations/*` or `project/*&#47;locations/global/collections/{collection}/engines/*&#47;conversations/*`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -78,13 +77,9 @@ export class Conversation extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.collectionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'collectionId'");
-            }
             if ((!args || args.dataStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataStoreId'");
             }
-            resourceInputs["collectionId"] = args ? args.collectionId : undefined;
             resourceInputs["dataStoreId"] = args ? args.dataStoreId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["messages"] = args ? args.messages : undefined;
@@ -95,7 +90,6 @@ export class Conversation extends pulumi.CustomResource {
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
         } else {
-            resourceInputs["collectionId"] = undefined /*out*/;
             resourceInputs["dataStoreId"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -107,7 +101,7 @@ export class Conversation extends pulumi.CustomResource {
             resourceInputs["userPseudoId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["collectionId", "dataStoreId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["dataStoreId", "location", "project"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Conversation.__pulumiType, name, resourceInputs, opts);
     }
@@ -117,7 +111,6 @@ export class Conversation extends pulumi.CustomResource {
  * The set of arguments for constructing a Conversation resource.
  */
 export interface ConversationArgs {
-    collectionId: pulumi.Input<string>;
     dataStoreId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
@@ -125,7 +118,7 @@ export interface ConversationArgs {
      */
     messages?: pulumi.Input<pulumi.Input<inputs.discoveryengine.v1beta.GoogleCloudDiscoveryengineV1betaConversationMessageArgs>[]>;
     /**
-     * Immutable. Fully qualified name `project/*&#47;locations/global/collections/{collection}/dataStore/*&#47;conversations/*`
+     * Immutable. Fully qualified name `project/*&#47;locations/global/collections/{collection}/dataStore/*&#47;conversations/*` or `project/*&#47;locations/global/collections/{collection}/engines/*&#47;conversations/*`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

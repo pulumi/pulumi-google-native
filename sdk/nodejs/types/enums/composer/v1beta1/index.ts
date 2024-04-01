@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AirflowMetadataRetentionPolicyConfigRetentionMode = {
+    /**
+     * Default mode doesn't change environment parameters.
+     */
+    RetentionModeUnspecified: "RETENTION_MODE_UNSPECIFIED",
+    /**
+     * Retention policy is enabled.
+     */
+    RetentionModeEnabled: "RETENTION_MODE_ENABLED",
+    /**
+     * Retention policy is disabled.
+     */
+    RetentionModeDisabled: "RETENTION_MODE_DISABLED",
+} as const;
+
+/**
+ * Optional. Retention can be either enabled or disabled.
+ */
+export type AirflowMetadataRetentionPolicyConfigRetentionMode = (typeof AirflowMetadataRetentionPolicyConfigRetentionMode)[keyof typeof AirflowMetadataRetentionPolicyConfigRetentionMode];
+
 export const EnvironmentConfigEnvironmentSize = {
     /**
      * The size of the environment is unspecified.
@@ -93,3 +113,43 @@ export const NetworkingConfigConnectionType = {
  * Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
  */
 export type NetworkingConfigConnectionType = (typeof NetworkingConfigConnectionType)[keyof typeof NetworkingConfigConnectionType];
+
+export const SoftwareConfigWebServerPluginsMode = {
+    /**
+     * Default mode.
+     */
+    WebServerPluginsModeUnspecified: "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED",
+    /**
+     * Web server plugins are not supported.
+     */
+    PluginsDisabled: "PLUGINS_DISABLED",
+    /**
+     * Web server plugins are supported.
+     */
+    PluginsEnabled: "PLUGINS_ENABLED",
+} as const;
+
+/**
+ * Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+ */
+export type SoftwareConfigWebServerPluginsMode = (typeof SoftwareConfigWebServerPluginsMode)[keyof typeof SoftwareConfigWebServerPluginsMode];
+
+export const TaskLogsRetentionConfigStorageMode = {
+    /**
+     * This configuration is not specified by the user.
+     */
+    TaskLogsStorageModeUnspecified: "TASK_LOGS_STORAGE_MODE_UNSPECIFIED",
+    /**
+     * Store task logs in Cloud Logging and in the environment's Cloud Storage bucket.
+     */
+    CloudLoggingAndCloudStorage: "CLOUD_LOGGING_AND_CLOUD_STORAGE",
+    /**
+     * Store task logs in Cloud Logging only.
+     */
+    CloudLoggingOnly: "CLOUD_LOGGING_ONLY",
+} as const;
+
+/**
+ * Optional. The mode of storage for Airflow workers task logs.
+ */
+export type TaskLogsRetentionConfigStorageMode = (typeof TaskLogsRetentionConfigStorageMode)[keyof typeof TaskLogsRetentionConfigStorageMode];

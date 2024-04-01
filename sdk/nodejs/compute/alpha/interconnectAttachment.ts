@@ -132,6 +132,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly mtu!: pulumi.Output<number>;
     /**
+     * Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
+     */
+    public readonly multicastEnabled!: pulumi.Output<boolean>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
@@ -229,6 +233,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["mtu"] = args ? args.mtu : undefined;
+            resourceInputs["multicastEnabled"] = args ? args.multicastEnabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["pairingKey"] = args ? args.pairingKey : undefined;
             resourceInputs["partnerAsn"] = args ? args.partnerAsn : undefined;
@@ -282,6 +287,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["mtu"] = undefined /*out*/;
+            resourceInputs["multicastEnabled"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
             resourceInputs["pairingKey"] = undefined /*out*/;
@@ -365,6 +371,10 @@ export interface InterconnectAttachmentArgs {
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
      */
     mtu?: pulumi.Input<number>;
+    /**
+     * Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
+     */
+    multicastEnabled?: pulumi.Input<boolean>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */

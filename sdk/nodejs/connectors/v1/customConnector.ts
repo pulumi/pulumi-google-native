@@ -39,6 +39,10 @@ export class CustomConnector extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. Active connector versions.
+     */
+    public readonly activeConnectorVersions!: pulumi.Output<string[]>;
+    /**
      * Created time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -93,6 +97,7 @@ export class CustomConnector extends pulumi.CustomResource {
             if ((!args || args.customConnectorType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'customConnectorType'");
             }
+            resourceInputs["activeConnectorVersions"] = args ? args.activeConnectorVersions : undefined;
             resourceInputs["customConnectorId"] = args ? args.customConnectorId : undefined;
             resourceInputs["customConnectorType"] = args ? args.customConnectorType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -104,6 +109,7 @@ export class CustomConnector extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["activeConnectorVersions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["customConnectorId"] = undefined /*out*/;
             resourceInputs["customConnectorType"] = undefined /*out*/;
@@ -126,6 +132,10 @@ export class CustomConnector extends pulumi.CustomResource {
  * The set of arguments for constructing a CustomConnector resource.
  */
 export interface CustomConnectorArgs {
+    /**
+     * Optional. Active connector versions.
+     */
+    activeConnectorVersions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource.
      */

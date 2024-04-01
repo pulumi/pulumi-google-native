@@ -32,7 +32,7 @@ export interface GetBucketResult {
      */
     readonly analyticsEnabled: boolean;
     /**
-     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+     * Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
     readonly cmekSettings: outputs.logging.v2.CmekSettingsResponse;
     /**
@@ -40,11 +40,11 @@ export interface GetBucketResult {
      */
     readonly createTime: string;
     /**
-     * Describes this bucket.
+     * Optional. Describes this bucket.
      */
     readonly description: string;
     /**
-     * A list of indexed fields and related configuration data.
+     * Optional. A list of indexed fields and related configuration data.
      */
     readonly indexConfigs: outputs.logging.v2.IndexConfigResponse[];
     /**
@@ -52,7 +52,7 @@ export interface GetBucketResult {
      */
     readonly lifecycleState: string;
     /**
-     * Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+     * Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
      */
     readonly locked: boolean;
     /**
@@ -60,11 +60,11 @@ export interface GetBucketResult {
      */
     readonly name: string;
     /**
-     * Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+     * Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
      */
     readonly restrictedFields: string[];
     /**
-     * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+     * Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
      */
     readonly retentionDays: number;
     /**

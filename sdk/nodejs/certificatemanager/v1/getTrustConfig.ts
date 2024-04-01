@@ -28,6 +28,10 @@ export interface GetTrustConfigArgs {
 
 export interface GetTrustConfigResult {
     /**
+     * Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+     */
+    readonly allowlistedCertificates: outputs.certificatemanager.v1.AllowlistedCertificateResponse[];
+    /**
      * The creation timestamp of a TrustConfig.
      */
     readonly createTime: string;

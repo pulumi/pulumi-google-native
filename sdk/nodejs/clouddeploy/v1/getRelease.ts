@@ -50,6 +50,10 @@ export interface GetReleaseResult {
      */
     readonly createTime: string;
     /**
+     * Snapshot of the custom target types referenced by the targets taken at release creation time.
+     */
+    readonly customTargetTypeSnapshots: outputs.clouddeploy.v1.CustomTargetTypeResponse[];
+    /**
      * Snapshot of the parent pipeline taken at release creation time.
      */
     readonly deliveryPipelineSnapshot: outputs.clouddeploy.v1.DeliveryPipelineResponse;

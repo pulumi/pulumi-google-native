@@ -68,6 +68,10 @@ export class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * A list of packet mirroring rules that belong to this policy.
+     */
+    public readonly packetMirroringRules!: pulumi.Output<outputs.compute.alpha.FirewallPolicyRuleResponse[]>;
+    /**
      * The parent of the firewall policy. This field is not applicable to network firewall policies.
      */
     public /*out*/ readonly parent!: pulumi.Output<string>;
@@ -120,6 +124,7 @@ export class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["packetMirroringRules"] = args ? args.packetMirroringRules : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
@@ -141,6 +146,7 @@ export class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["packetMirroringRules"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
@@ -181,6 +187,10 @@ export interface RegionNetworkFirewallPolicyArgs {
      * Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
      */
     name?: pulumi.Input<string>;
+    /**
+     * A list of packet mirroring rules that belong to this policy.
+     */
+    packetMirroringRules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.FirewallPolicyRuleArgs>[]>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     /**

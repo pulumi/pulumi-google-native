@@ -96,6 +96,10 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly namedPorts: outputs.compute.alpha.NamedPortResponse[];
     /**
+     * Input only. Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    readonly params: outputs.compute.alpha.InstanceGroupManagerParamsResponse;
+    /**
      * The URL of the region where the managed instance group resides (for regional resources).
      */
     readonly region: string;

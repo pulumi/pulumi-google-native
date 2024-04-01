@@ -68,7 +68,7 @@ export const EthereumDetailsNetwork = {
      */
     Mainnet: "MAINNET",
     /**
-     * The Ethereum Testnet based on Goerli protocol.
+     * Deprecated: The Ethereum Testnet based on Goerli protocol. Holesky (TESTNET_HOLESKY) is the recommended testnet to replace Goerli.
      */
     TestnetGoerliPrater: "TESTNET_GOERLI_PRATER",
     /**

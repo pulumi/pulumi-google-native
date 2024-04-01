@@ -70,6 +70,10 @@ export interface GetEntryResult {
      */
     readonly displayName: string;
     /**
+     * FeatureonlineStore spec for Vertex AI Feature Store.
+     */
+    readonly featureOnlineStoreSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponse;
+    /**
      * Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
      */
     readonly filesetSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1FilesetSpecResponse;
@@ -102,7 +106,7 @@ export interface GetEntryResult {
      */
     readonly modelSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1ModelSpecResponse;
     /**
-     * The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
+     * Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
      */
     readonly name: string;
     /**

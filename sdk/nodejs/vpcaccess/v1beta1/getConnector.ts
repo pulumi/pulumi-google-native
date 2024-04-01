@@ -32,9 +32,17 @@ export interface GetConnectorResult {
      */
     readonly connectedProjects: string[];
     /**
+     * The creation time of the connector.
+     */
+    readonly createTime: string;
+    /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
     readonly ipCidrRange: string;
+    /**
+     * The last restart time of the connector.
+     */
+    readonly lastRestartTime: string;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
      */

@@ -9,7 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new FeatureGroup in a given project and location.
- * Auto-naming is currently not supported for this resource.
  */
 export class FeatureGroup extends pulumi.CustomResource {
     /**
@@ -64,9 +63,9 @@ export class FeatureGroup extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+     * Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Timestamp when this FeatureGroup was last updated.
@@ -93,9 +92,9 @@ export class FeatureGroup extends pulumi.CustomResource {
             resourceInputs["featureGroupId"] = args ? args.featureGroupId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["bigQuery"] = undefined /*out*/;
@@ -141,5 +140,9 @@ export interface FeatureGroupArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+     */
+    name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

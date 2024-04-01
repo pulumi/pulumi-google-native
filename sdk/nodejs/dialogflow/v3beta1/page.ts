@@ -43,6 +43,10 @@ export class Page extends pulumi.CustomResource {
     public readonly advancedSettings!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>;
     public readonly agentId!: pulumi.Output<string>;
     /**
+     * The description of the page. The maximum length is 500 characters.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
      * The human-readable name of the page, unique within the flow.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -104,6 +108,7 @@ export class Page extends pulumi.CustomResource {
             }
             resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
             resourceInputs["agentId"] = args ? args.agentId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["entryFulfillment"] = args ? args.entryFulfillment : undefined;
             resourceInputs["eventHandlers"] = args ? args.eventHandlers : undefined;
@@ -119,6 +124,7 @@ export class Page extends pulumi.CustomResource {
         } else {
             resourceInputs["advancedSettings"] = undefined /*out*/;
             resourceInputs["agentId"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["entryFulfillment"] = undefined /*out*/;
             resourceInputs["eventHandlers"] = undefined /*out*/;
@@ -148,6 +154,10 @@ export interface PageArgs {
      */
     advancedSettings?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs>;
     agentId: pulumi.Input<string>;
+    /**
+     * The description of the page. The maximum length is 500 characters.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The human-readable name of the page, unique within the flow.
      */

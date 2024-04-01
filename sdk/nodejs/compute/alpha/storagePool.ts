@@ -69,13 +69,29 @@ export class StoragePool extends pulumi.CustomResource {
      * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
      */
     public readonly performanceProvisioningType!: pulumi.Output<string>;
+    /**
+     * Size, in GiB, of the storage pool.
+     */
+    public readonly poolProvisionedCapacityGb!: pulumi.Output<string>;
+    /**
+     * Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+     */
+    public readonly poolProvisionedIops!: pulumi.Output<string>;
+    /**
+     * Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+     */
+    public readonly poolProvisionedThroughput!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Provsioned IOPS of the storage pool.
+     * DEPRECATED -- use "pool provisioned IOPS".
+     *
+     * @deprecated DEPRECATED -- use "pool provisioned IOPS".
      */
     public readonly provisionedIops!: pulumi.Output<string>;
     /**
-     * Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+     * DEPRECATED -- use "pool provisioned throughput".
+     *
+     * @deprecated DEPRECATED -- use "pool provisioned throughput".
      */
     public readonly provisionedThroughput!: pulumi.Output<string>;
     /**
@@ -95,7 +111,9 @@ export class StoragePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
-     * Size, in GiB, of the storage pool.
+     * DEPRECATED -- use "pool provisioned capacity gb".
+     *
+     * @deprecated DEPRECATED -- use "pool provisioned capacity gb".
      */
     public readonly sizeGb!: pulumi.Output<string>;
     /**
@@ -128,6 +146,9 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["performanceProvisioningType"] = args ? args.performanceProvisioningType : undefined;
+            resourceInputs["poolProvisionedCapacityGb"] = args ? args.poolProvisionedCapacityGb : undefined;
+            resourceInputs["poolProvisionedIops"] = args ? args.poolProvisionedIops : undefined;
+            resourceInputs["poolProvisionedThroughput"] = args ? args.poolProvisionedThroughput : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             resourceInputs["provisionedThroughput"] = args ? args.provisionedThroughput : undefined;
@@ -152,6 +173,9 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["performanceProvisioningType"] = undefined /*out*/;
+            resourceInputs["poolProvisionedCapacityGb"] = undefined /*out*/;
+            resourceInputs["poolProvisionedIops"] = undefined /*out*/;
+            resourceInputs["poolProvisionedThroughput"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provisionedIops"] = undefined /*out*/;
             resourceInputs["provisionedThroughput"] = undefined /*out*/;
@@ -196,13 +220,29 @@ export interface StoragePoolArgs {
      * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
      */
     performanceProvisioningType?: pulumi.Input<enums.compute.alpha.StoragePoolPerformanceProvisioningType>;
+    /**
+     * Size, in GiB, of the storage pool.
+     */
+    poolProvisionedCapacityGb?: pulumi.Input<string>;
+    /**
+     * Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+     */
+    poolProvisionedIops?: pulumi.Input<string>;
+    /**
+     * Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+     */
+    poolProvisionedThroughput?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Provsioned IOPS of the storage pool.
+     * DEPRECATED -- use "pool provisioned IOPS".
+     *
+     * @deprecated DEPRECATED -- use "pool provisioned IOPS".
      */
     provisionedIops?: pulumi.Input<string>;
     /**
-     * Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+     * DEPRECATED -- use "pool provisioned throughput".
+     *
+     * @deprecated DEPRECATED -- use "pool provisioned throughput".
      */
     provisionedThroughput?: pulumi.Input<string>;
     /**
@@ -210,7 +250,9 @@ export interface StoragePoolArgs {
      */
     requestId?: pulumi.Input<string>;
     /**
-     * Size, in GiB, of the storage pool.
+     * DEPRECATED -- use "pool provisioned capacity gb".
+     *
+     * @deprecated DEPRECATED -- use "pool provisioned capacity gb".
      */
     sizeGb?: pulumi.Input<string>;
     /**

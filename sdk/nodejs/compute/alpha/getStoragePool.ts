@@ -60,11 +60,27 @@ export interface GetStoragePoolResult {
      */
     readonly performanceProvisioningType: string;
     /**
-     * Provsioned IOPS of the storage pool.
+     * Size, in GiB, of the storage pool.
+     */
+    readonly poolProvisionedCapacityGb: string;
+    /**
+     * Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+     */
+    readonly poolProvisionedIops: string;
+    /**
+     * Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+     */
+    readonly poolProvisionedThroughput: string;
+    /**
+     * DEPRECATED -- use "pool provisioned IOPS".
+     *
+     * @deprecated DEPRECATED -- use "pool provisioned IOPS".
      */
     readonly provisionedIops: string;
     /**
-     * Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+     * DEPRECATED -- use "pool provisioned throughput".
+     *
+     * @deprecated DEPRECATED -- use "pool provisioned throughput".
      */
     readonly provisionedThroughput: string;
     /**
@@ -80,7 +96,9 @@ export interface GetStoragePoolResult {
      */
     readonly selfLinkWithId: string;
     /**
-     * Size, in GiB, of the storage pool.
+     * DEPRECATED -- use "pool provisioned capacity gb".
+     *
+     * @deprecated DEPRECATED -- use "pool provisioned capacity gb".
      */
     readonly sizeGb: string;
     /**

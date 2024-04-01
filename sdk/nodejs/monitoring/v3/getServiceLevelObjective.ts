@@ -44,7 +44,7 @@ export interface GetServiceLevelObjectiveResult {
      */
     readonly goal: number;
     /**
-     * Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+     * Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
      */
     readonly name: string;
     /**

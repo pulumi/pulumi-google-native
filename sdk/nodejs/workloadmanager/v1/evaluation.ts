@@ -9,8 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Evaluation in a given project and location.
- * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
- * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class Evaluation extends pulumi.CustomResource {
     /**
@@ -39,6 +37,10 @@ export class Evaluation extends pulumi.CustomResource {
         return obj['__pulumiType'] === Evaluation.__pulumiType;
     }
 
+    /**
+     * Optional. BigQuery destination
+     */
+    public readonly bigQueryDestination!: pulumi.Output<outputs.workloadmanager.v1.BigQueryDestinationResponse>;
     /**
      * [Output only] Create time stamp
      */
@@ -108,6 +110,7 @@ export class Evaluation extends pulumi.CustomResource {
             if ((!args || args.evaluationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'evaluationId'");
             }
+            resourceInputs["bigQueryDestination"] = args ? args.bigQueryDestination : undefined;
             resourceInputs["customRulesBucket"] = args ? args.customRulesBucket : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["evaluationId"] = args ? args.evaluationId : undefined;
@@ -124,6 +127,7 @@ export class Evaluation extends pulumi.CustomResource {
             resourceInputs["ruleVersions"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["bigQueryDestination"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["customRulesBucket"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -151,6 +155,10 @@ export class Evaluation extends pulumi.CustomResource {
  * The set of arguments for constructing a Evaluation resource.
  */
 export interface EvaluationArgs {
+    /**
+     * Optional. BigQuery destination
+     */
+    bigQueryDestination?: pulumi.Input<inputs.workloadmanager.v1.BigQueryDestinationArgs>;
     /**
      * The Cloud Storage bucket name for custom rules.
      */

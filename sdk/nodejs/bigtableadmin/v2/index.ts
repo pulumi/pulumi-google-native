@@ -10,6 +10,11 @@ export type AppProfile = import("./appProfile").AppProfile;
 export const AppProfile: typeof import("./appProfile").AppProfile = null as any;
 utilities.lazyLoad(exports, ["AppProfile"], () => require("./appProfile"));
 
+export { AuthorizedViewArgs } from "./authorizedView";
+export type AuthorizedView = import("./authorizedView").AuthorizedView;
+export const AuthorizedView: typeof import("./authorizedView").AuthorizedView = null as any;
+utilities.lazyLoad(exports, ["AuthorizedView"], () => require("./authorizedView"));
+
 export { BackupArgs } from "./backup";
 export type Backup = import("./backup").Backup;
 export const Backup: typeof import("./backup").Backup = null as any;
@@ -24,6 +29,11 @@ export { GetAppProfileArgs, GetAppProfileResult, GetAppProfileOutputArgs } from 
 export const getAppProfile: typeof import("./getAppProfile").getAppProfile = null as any;
 export const getAppProfileOutput: typeof import("./getAppProfile").getAppProfileOutput = null as any;
 utilities.lazyLoad(exports, ["getAppProfile","getAppProfileOutput"], () => require("./getAppProfile"));
+
+export { GetAuthorizedViewArgs, GetAuthorizedViewResult, GetAuthorizedViewOutputArgs } from "./getAuthorizedView";
+export const getAuthorizedView: typeof import("./getAuthorizedView").getAuthorizedView = null as any;
+export const getAuthorizedViewOutput: typeof import("./getAuthorizedView").getAuthorizedViewOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthorizedView","getAuthorizedViewOutput"], () => require("./getAuthorizedView"));
 
 export { GetBackupArgs, GetBackupResult, GetBackupOutputArgs } from "./getBackup";
 export const getBackup: typeof import("./getBackup").getBackup = null as any;
@@ -125,6 +135,8 @@ const _module = {
         switch (type) {
             case "google-native:bigtableadmin/v2:AppProfile":
                 return new AppProfile(name, <any>undefined, { urn })
+            case "google-native:bigtableadmin/v2:AuthorizedView":
+                return new AuthorizedView(name, <any>undefined, { urn })
             case "google-native:bigtableadmin/v2:Backup":
                 return new Backup(name, <any>undefined, { urn })
             case "google-native:bigtableadmin/v2:Cluster":

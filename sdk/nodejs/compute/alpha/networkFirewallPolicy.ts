@@ -68,6 +68,10 @@ export class NetworkFirewallPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * A list of packet mirroring rules that belong to this policy.
+     */
+    public readonly packetMirroringRules!: pulumi.Output<outputs.compute.alpha.FirewallPolicyRuleResponse[]>;
+    /**
      * The parent of the firewall policy. This field is not applicable to network firewall policies.
      */
     public /*out*/ readonly parent!: pulumi.Output<string>;
@@ -120,6 +124,7 @@ export class NetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["packetMirroringRules"] = args ? args.packetMirroringRules : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
@@ -141,6 +146,7 @@ export class NetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["packetMirroringRules"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
@@ -181,6 +187,10 @@ export interface NetworkFirewallPolicyArgs {
      * Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
      */
     name?: pulumi.Input<string>;
+    /**
+     * A list of packet mirroring rules that belong to this policy.
+     */
+    packetMirroringRules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.FirewallPolicyRuleArgs>[]>;
     project?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).

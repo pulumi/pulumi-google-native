@@ -67,9 +67,57 @@ export const ExtensionChainExtensionSupportedEventsItem = {
      * If included in `supported_events`, the extension is called when the HTTP response body arrives.
      */
     ResponseBody: "RESPONSE_BODY",
+    /**
+     * If included in `supported_events`, the extension is called when the HTTP request trailers arrives.
+     */
+    RequestTrailers: "REQUEST_TRAILERS",
+    /**
+     * If included in `supported_events`, the extension is called when the HTTP response trailers arrives.
+     */
+    ResponseTrailers: "RESPONSE_TRAILERS",
 } as const;
 
 export type ExtensionChainExtensionSupportedEventsItem = (typeof ExtensionChainExtensionSupportedEventsItem)[keyof typeof ExtensionChainExtensionSupportedEventsItem];
+
+export const GatewayEnvoyHeaders = {
+    /**
+     * Defaults to NONE.
+     */
+    EnvoyHeadersUnspecified: "ENVOY_HEADERS_UNSPECIFIED",
+    /**
+     * Suppress envoy debug headers.
+     */
+    None: "NONE",
+    /**
+     * Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+     */
+    DebugHeaders: "DEBUG_HEADERS",
+} as const;
+
+/**
+ * Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+ */
+export type GatewayEnvoyHeaders = (typeof GatewayEnvoyHeaders)[keyof typeof GatewayEnvoyHeaders];
+
+export const GatewayIpVersion = {
+    /**
+     * The type when IP version is not specified. Defaults to IPV4.
+     */
+    IpVersionUnspecified: "IP_VERSION_UNSPECIFIED",
+    /**
+     * The type for IP version 4.
+     */
+    Ipv4: "IPV4",
+    /**
+     * The type for IP version 6.
+     */
+    Ipv6: "IPV6",
+} as const;
+
+/**
+ * Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+ */
+export type GatewayIpVersion = (typeof GatewayIpVersion)[keyof typeof GatewayIpVersion];
 
 export const GatewayType = {
     /**
@@ -203,6 +251,26 @@ export const LbTrafficExtensionLoadBalancingScheme = {
  */
 export type LbTrafficExtensionLoadBalancingScheme = (typeof LbTrafficExtensionLoadBalancingScheme)[keyof typeof LbTrafficExtensionLoadBalancingScheme];
 
+export const MeshEnvoyHeaders = {
+    /**
+     * Defaults to NONE.
+     */
+    EnvoyHeadersUnspecified: "ENVOY_HEADERS_UNSPECIFIED",
+    /**
+     * Suppress envoy debug headers.
+     */
+    None: "NONE",
+    /**
+     * Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+     */
+    DebugHeaders: "DEBUG_HEADERS",
+} as const;
+
+/**
+ * Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+ */
+export type MeshEnvoyHeaders = (typeof MeshEnvoyHeaders)[keyof typeof MeshEnvoyHeaders];
+
 export const MetadataLabelMatcherMetadataLabelMatchCriteria = {
     /**
      * Default value. Should not be used.
@@ -219,7 +287,7 @@ export const MetadataLabelMatcherMetadataLabelMatchCriteria = {
 } as const;
 
 /**
- * Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+ * Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
  */
 export type MetadataLabelMatcherMetadataLabelMatchCriteria = (typeof MetadataLabelMatcherMetadataLabelMatchCriteria)[keyof typeof MetadataLabelMatcherMetadataLabelMatchCriteria];
 

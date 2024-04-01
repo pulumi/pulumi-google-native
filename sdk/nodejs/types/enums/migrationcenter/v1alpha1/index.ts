@@ -18,7 +18,7 @@ export const ComputeEnginePreferencesLicenseType = {
 } as const;
 
 /**
- * License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+ * Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
  */
 export type ComputeEnginePreferencesLicenseType = (typeof ComputeEnginePreferencesLicenseType)[keyof typeof ComputeEnginePreferencesLicenseType];
 
@@ -64,15 +64,15 @@ export const GCSPayloadInfoFormat = {
      */
     ImportJobFormatRvtoolsCsv: "IMPORT_JOB_FORMAT_RVTOOLS_CSV",
     /**
-     * CSV format exported from AWS using the AWS collection script.
+     * CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
      */
     ImportJobFormatExportedAwsCsv: "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV",
     /**
-     * CSV format exported from Azure using the Azure collection script.
+     * CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
      */
     ImportJobFormatExportedAzureCsv: "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV",
     /**
-     * CSV format created manually. For more information, see Manually create and upload data tables.
+     * CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
      */
     ImportJobFormatManualCsv: "IMPORT_JOB_FORMAT_MANUAL_CSV",
 } as const;
@@ -100,15 +100,15 @@ export const ImportDataFileFormat = {
      */
     ImportJobFormatRvtoolsCsv: "IMPORT_JOB_FORMAT_RVTOOLS_CSV",
     /**
-     * CSV format exported from AWS using the AWS collection script.
+     * CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
      */
     ImportJobFormatExportedAwsCsv: "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV",
     /**
-     * CSV format exported from Azure using the Azure collection script.
+     * CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
      */
     ImportJobFormatExportedAzureCsv: "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV",
     /**
-     * CSV format created manually. For more information, see Manually create and upload data tables.
+     * CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
      */
     ImportJobFormatManualCsv: "IMPORT_JOB_FORMAT_MANUAL_CSV",
 } as const;
@@ -136,15 +136,15 @@ export const InlinePayloadInfoFormat = {
      */
     ImportJobFormatRvtoolsCsv: "IMPORT_JOB_FORMAT_RVTOOLS_CSV",
     /**
-     * CSV format exported from AWS using the AWS collection script.
+     * CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
      */
     ImportJobFormatExportedAwsCsv: "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV",
     /**
-     * CSV format exported from Azure using the Azure collection script.
+     * CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
      */
     ImportJobFormatExportedAzureCsv: "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV",
     /**
-     * CSV format created manually. For more information, see Manually create and upload data tables.
+     * CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
      */
     ImportJobFormatManualCsv: "IMPORT_JOB_FORMAT_MANUAL_CSV",
 } as const;
@@ -180,11 +180,11 @@ export type ReportState = (typeof ReportState)[keyof typeof ReportState];
 
 export const ReportType = {
     /**
-     * Default Report type.
+     * Default report type.
      */
     TypeUnspecified: "TYPE_UNSPECIFIED",
     /**
-     * Total cost of ownership Report type.
+     * Total cost of ownership report type.
      */
     TotalCostOfOwnership: "TOTAL_COST_OF_OWNERSHIP",
 } as const;
@@ -204,11 +204,11 @@ export const SoleTenancyPreferencesCommitmentPlan = {
      */
     OnDemand: "ON_DEMAND",
     /**
-     * 1 year commitment.
+     * 1-year regular committed use discount.
      */
     Commitment1Year: "COMMITMENT_1_YEAR",
     /**
-     * 3 years commitment.
+     * 3-year regular committed use discount.
      */
     Commitment3Year: "COMMITMENT_3_YEAR",
 } as const;
@@ -263,6 +263,10 @@ export const SourceType = {
      * Third-party owned sources.
      */
     SourceTypeCustom: "SOURCE_TYPE_CUSTOM",
+    /**
+     * Discovery clients
+     */
+    SourceTypeDiscoveryClient: "SOURCE_TYPE_DISCOVERY_CLIENT",
 } as const;
 
 /**
@@ -280,11 +284,11 @@ export const VirtualMachinePreferencesCommitmentPlan = {
      */
     CommitmentPlanNone: "COMMITMENT_PLAN_NONE",
     /**
-     * 1 year commitment.
+     * 1-year regular committed use discount.
      */
     CommitmentPlanOneYear: "COMMITMENT_PLAN_ONE_YEAR",
     /**
-     * 3 years commitment.
+     * 3-year regular committed use discount.
      */
     CommitmentPlanThreeYears: "COMMITMENT_PLAN_THREE_YEARS",
 } as const;

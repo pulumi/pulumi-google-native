@@ -62,6 +62,10 @@ export class VmwareCluster extends pulumi.CustomResource {
      */
     public readonly autoRepairConfig!: pulumi.Output<outputs.gkeonprem.v1.VmwareAutoRepairConfigResponse>;
     /**
+     * Binary Authorization related configurations.
+     */
+    public readonly binaryAuthorization!: pulumi.Output<outputs.gkeonprem.v1.BinaryAuthorizationResponse>;
+    /**
      * VMware user cluster control plane nodes must have either 1 or 3 replicas.
      */
     public readonly controlPlaneNode!: pulumi.Output<outputs.gkeonprem.v1.VmwareControlPlaneNodeConfigResponse>;
@@ -190,6 +194,7 @@ export class VmwareCluster extends pulumi.CustomResource {
             resourceInputs["antiAffinityGroups"] = args ? args.antiAffinityGroups : undefined;
             resourceInputs["authorization"] = args ? args.authorization : undefined;
             resourceInputs["autoRepairConfig"] = args ? args.autoRepairConfig : undefined;
+            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["controlPlaneNode"] = args ? args.controlPlaneNode : undefined;
             resourceInputs["dataplaneV2"] = args ? args.dataplaneV2 : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -226,6 +231,7 @@ export class VmwareCluster extends pulumi.CustomResource {
             resourceInputs["antiAffinityGroups"] = undefined /*out*/;
             resourceInputs["authorization"] = undefined /*out*/;
             resourceInputs["autoRepairConfig"] = undefined /*out*/;
+            resourceInputs["binaryAuthorization"] = undefined /*out*/;
             resourceInputs["controlPlaneNode"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataplaneV2"] = undefined /*out*/;
@@ -286,6 +292,10 @@ export interface VmwareClusterArgs {
      * Configuration for auto repairing.
      */
     autoRepairConfig?: pulumi.Input<inputs.gkeonprem.v1.VmwareAutoRepairConfigArgs>;
+    /**
+     * Binary Authorization related configurations.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.gkeonprem.v1.BinaryAuthorizationArgs>;
     /**
      * VMware user cluster control plane nodes must have either 1 or 3 replicas.
      */

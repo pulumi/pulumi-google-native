@@ -87,7 +87,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly meshIstio!: pulumi.Output<outputs.monitoring.v3.MeshIstioResponse>;
     /**
-     * Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
+     * Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -220,7 +220,7 @@ export interface ServiceArgs {
      */
     meshIstio?: pulumi.Input<inputs.monitoring.v3.MeshIstioArgs>;
     /**
-     * Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
+     * Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
      */
     name?: pulumi.Input<string>;
     /**

@@ -40,7 +40,9 @@ export interface GetFeatureOnlineStoreResult {
      */
     readonly dedicatedServingEndpoint: outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse;
     /**
-     * Optional. The settings for embedding management in FeatureOnlineStore.
+     * Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
+     *
+     * @deprecated Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
      */
     readonly embeddingManagement: outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse;
     /**
@@ -52,7 +54,7 @@ export interface GetFeatureOnlineStoreResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+     * Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
      */
     readonly name: string;
     /**

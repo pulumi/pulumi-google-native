@@ -28,11 +28,11 @@ export interface GetFutureReservationArgs {
 
 export interface GetFutureReservationResult {
     /**
-     * Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+     * Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
      */
     readonly autoCreatedReservationsDeleteTime: string;
     /**
-     * Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     * Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
      */
     readonly autoCreatedReservationsDuration: outputs.compute.alpha.DurationResponse;
     /**
@@ -75,6 +75,10 @@ export interface GetFutureReservationResult {
      * List of Projects/Folders to share with.
      */
     readonly shareSettings: outputs.compute.alpha.ShareSettingsResponse;
+    /**
+     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation. If set to true,the delivered resevervation will have the same name as the future reservation.
+     */
+    readonly specificReservationRequired: boolean;
     /**
      * Future Reservation configuration to indicate instance properties and total count.
      */

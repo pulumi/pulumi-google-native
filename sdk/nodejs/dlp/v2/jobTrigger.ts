@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+ * Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
  */
 export class JobTrigger extends pulumi.CustomResource {
     /**

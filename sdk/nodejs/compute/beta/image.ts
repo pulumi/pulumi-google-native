@@ -125,6 +125,10 @@ export class Image extends pulumi.CustomResource {
     /**
      * Reserved for future use.
      */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
+    /**
+     * Reserved for future use.
+     */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
      * Server-defined URL for the resource.
@@ -230,6 +234,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
@@ -259,6 +264,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["rawDisk"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["rolloutOverride"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["shieldedInstanceInitialState"] = undefined /*out*/;

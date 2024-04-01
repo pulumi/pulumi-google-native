@@ -43,11 +43,11 @@ export class OrganizationBucket extends pulumi.CustomResource {
      */
     public readonly analyticsEnabled!: pulumi.Output<boolean>;
     /**
-     * Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+     * Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character.
      */
     public readonly bucketId!: pulumi.Output<string>;
     /**
-     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+     * Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
     public readonly cmekSettings!: pulumi.Output<outputs.logging.v2.CmekSettingsResponse>;
     /**
@@ -55,11 +55,11 @@ export class OrganizationBucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Describes this bucket.
+     * Optional. Describes this bucket.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * A list of indexed fields and related configuration data.
+     * Optional. A list of indexed fields and related configuration data.
      */
     public readonly indexConfigs!: pulumi.Output<outputs.logging.v2.IndexConfigResponse[]>;
     /**
@@ -68,7 +68,7 @@ export class OrganizationBucket extends pulumi.CustomResource {
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+     * Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
      */
     public readonly locked!: pulumi.Output<boolean>;
     /**
@@ -77,11 +77,11 @@ export class OrganizationBucket extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+     * Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
      */
     public readonly restrictedFields!: pulumi.Output<string[]>;
     /**
-     * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+     * Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
      */
     public readonly retentionDays!: pulumi.Output<number>;
     /**
@@ -152,33 +152,33 @@ export interface OrganizationBucketArgs {
      */
     analyticsEnabled?: pulumi.Input<boolean>;
     /**
-     * Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+     * Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character.
      */
     bucketId: pulumi.Input<string>;
     /**
-     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+     * Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
     cmekSettings?: pulumi.Input<inputs.logging.v2.CmekSettingsArgs>;
     /**
-     * Describes this bucket.
+     * Optional. Describes this bucket.
      */
     description?: pulumi.Input<string>;
     /**
-     * A list of indexed fields and related configuration data.
+     * Optional. A list of indexed fields and related configuration data.
      */
     indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.v2.IndexConfigArgs>[]>;
     location?: pulumi.Input<string>;
     /**
-     * Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+     * Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
      */
     locked?: pulumi.Input<boolean>;
     organizationId: pulumi.Input<string>;
     /**
-     * Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+     * Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
      */
     restrictedFields?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+     * Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
      */
     retentionDays?: pulumi.Input<number>;
 }

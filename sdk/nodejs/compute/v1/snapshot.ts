@@ -70,6 +70,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly downloadBytes!: pulumi.Output<string>;
     /**
+     * Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+     */
+    public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
+    /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
      */
     public /*out*/ readonly guestOsFeatures!: pulumi.Output<outputs.compute.v1.GuestOsFeatureResponse[]>;
@@ -109,6 +113,10 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * Reserved for future use.
      */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
+    /**
+     * Reserved for future use.
+     */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
      * Server-defined URL for the resource.
@@ -138,6 +146,18 @@ export class Snapshot extends pulumi.CustomResource {
      * The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
      */
     public /*out*/ readonly sourceDiskId!: pulumi.Output<string>;
+    /**
+     * The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+     */
+    public readonly sourceInstantSnapshot!: pulumi.Output<string>;
+    /**
+     * Customer provided encryption key when creating Snapshot from Instant Snapshot.
+     */
+    public readonly sourceInstantSnapshotEncryptionKey!: pulumi.Output<outputs.compute.v1.CustomerEncryptionKeyResponse>;
+    /**
+     * The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+     */
+    public /*out*/ readonly sourceInstantSnapshotId!: pulumi.Output<string>;
     /**
      * URL of the resource policy which created this scheduled snapshot.
      */
@@ -176,6 +196,7 @@ export class Snapshot extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["chainName"] = args ? args.chainName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableConfidentialCompute"] = args ? args.enableConfidentialCompute : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["locationHint"] = args ? args.locationHint : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -186,6 +207,8 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
             resourceInputs["sourceDiskForRecoveryCheckpoint"] = args ? args.sourceDiskForRecoveryCheckpoint : undefined;
+            resourceInputs["sourceInstantSnapshot"] = args ? args.sourceInstantSnapshot : undefined;
+            resourceInputs["sourceInstantSnapshotEncryptionKey"] = args ? args.sourceInstantSnapshotEncryptionKey : undefined;
             resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
             resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["autoCreated"] = undefined /*out*/;
@@ -198,9 +221,11 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["licenseCodes"] = undefined /*out*/;
             resourceInputs["licenses"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
             resourceInputs["sourceSnapshotSchedulePolicy"] = undefined /*out*/;
             resourceInputs["sourceSnapshotSchedulePolicyId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -215,6 +240,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
             resourceInputs["downloadBytes"] = undefined /*out*/;
+            resourceInputs["enableConfidentialCompute"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -225,6 +251,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotEncryptionKey"] = undefined /*out*/;
@@ -233,6 +260,9 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["sourceDiskEncryptionKey"] = undefined /*out*/;
             resourceInputs["sourceDiskForRecoveryCheckpoint"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshot"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshotEncryptionKey"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
             resourceInputs["sourceSnapshotSchedulePolicy"] = undefined /*out*/;
             resourceInputs["sourceSnapshotSchedulePolicyId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -259,6 +289,10 @@ export interface SnapshotArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+     */
+    enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
      * Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
      */
@@ -296,6 +330,14 @@ export interface SnapshotArgs {
      * The source disk whose recovery checkpoint will be used to create this snapshot.
      */
     sourceDiskForRecoveryCheckpoint?: pulumi.Input<string>;
+    /**
+     * The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+     */
+    sourceInstantSnapshot?: pulumi.Input<string>;
+    /**
+     * Customer provided encryption key when creating Snapshot from Instant Snapshot.
+     */
+    sourceInstantSnapshotEncryptionKey?: pulumi.Input<inputs.compute.v1.CustomerEncryptionKeyArgs>;
     /**
      * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
      */

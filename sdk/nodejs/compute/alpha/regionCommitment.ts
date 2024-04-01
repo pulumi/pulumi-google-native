@@ -90,7 +90,7 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
-     * List of create-on-create reseravtions for this commitment.
+     * List of create-on-create reservations for this commitment.
      */
     public readonly reservations!: pulumi.Output<outputs.compute.alpha.ReservationResponse[]>;
     /**
@@ -244,7 +244,7 @@ export interface RegionCommitmentArgs {
      */
     requestId?: pulumi.Input<string>;
     /**
-     * List of create-on-create reseravtions for this commitment.
+     * List of create-on-create reservations for this commitment.
      */
     reservations?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ReservationArgs>[]>;
     /**

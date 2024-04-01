@@ -2,13 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../../types/input";
-import * as outputs from "../../types/output";
-import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a ServiceAccountKey.
+ * Uploads the public key portion of a key pair that you manage, and associates the public key with a ServiceAccount. After you upload the public key, you can use the private key from the key pair as a service account key.
  * Auto-naming is currently not supported for this resource.
  */
 export class Key extends pulumi.CustomResource {
@@ -45,7 +42,7 @@ export class Key extends pulumi.CustomResource {
     /**
      * Specifies the algorithm (and possibly key size) for the key.
      */
-    public readonly keyAlgorithm!: pulumi.Output<string>;
+    public /*out*/ readonly keyAlgorithm!: pulumi.Output<string>;
     /**
      * The key origin.
      */
@@ -65,12 +62,12 @@ export class Key extends pulumi.CustomResource {
     /**
      * The output format for the private key. Only provided in `CreateServiceAccountKey` responses, not in `GetServiceAccountKey` or `ListServiceAccountKey` responses. Google never exposes system-managed private keys, and never retains user-managed private keys.
      */
-    public readonly privateKeyType!: pulumi.Output<string>;
+    public /*out*/ readonly privateKeyType!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * The public key data. Only provided in `GetServiceAccountKey` responses.
      */
-    public /*out*/ readonly publicKeyData!: pulumi.Output<string>;
+    public readonly publicKeyData!: pulumi.Output<string>;
     public readonly serviceAccountId!: pulumi.Output<string>;
     /**
      * The key can be used after this timestamp.
@@ -95,16 +92,16 @@ export class Key extends pulumi.CustomResource {
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            resourceInputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
-            resourceInputs["privateKeyType"] = args ? args.privateKeyType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["publicKeyData"] = args ? args.publicKeyData : undefined;
             resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
             resourceInputs["disabled"] = undefined /*out*/;
+            resourceInputs["keyAlgorithm"] = undefined /*out*/;
             resourceInputs["keyOrigin"] = undefined /*out*/;
             resourceInputs["keyType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateKeyData"] = undefined /*out*/;
-            resourceInputs["publicKeyData"] = undefined /*out*/;
+            resourceInputs["privateKeyType"] = undefined /*out*/;
             resourceInputs["validAfterTime"] = undefined /*out*/;
             resourceInputs["validBeforeTime"] = undefined /*out*/;
         } else {
@@ -132,14 +129,10 @@ export class Key extends pulumi.CustomResource {
  * The set of arguments for constructing a Key resource.
  */
 export interface KeyArgs {
-    /**
-     * Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-     */
-    keyAlgorithm?: pulumi.Input<enums.iam.v1.KeyKeyAlgorithm>;
-    /**
-     * The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-     */
-    privateKeyType?: pulumi.Input<enums.iam.v1.KeyPrivateKeyType>;
     project?: pulumi.Input<string>;
+    /**
+     * The public key to associate with the service account. Must be an RSA public key that is wrapped in an X.509 v3 certificate. Include the first line, `-----BEGIN CERTIFICATE-----`, and the last line, `-----END CERTIFICATE-----`.
+     */
+    publicKeyData?: pulumi.Input<string>;
     serviceAccountId: pulumi.Input<string>;
 }

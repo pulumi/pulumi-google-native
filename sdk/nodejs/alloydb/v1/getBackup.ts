@@ -92,6 +92,10 @@ export interface GetBackupResult {
      */
     readonly reconciling: boolean;
     /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzs: boolean;
+    /**
      * The size of the backup in bytes.
      */
     readonly sizeBytes: string;

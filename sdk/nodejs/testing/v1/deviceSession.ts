@@ -77,7 +77,7 @@ export class DeviceSession extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateHistories!: pulumi.Output<outputs.testing.v1.SessionStateEventResponse[]>;
     /**
-     * Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+     * Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
      */
     public readonly ttl!: pulumi.Output<string>;
 
@@ -144,7 +144,7 @@ export interface DeviceSessionArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+     * Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
      */
     ttl?: pulumi.Input<string>;
 }

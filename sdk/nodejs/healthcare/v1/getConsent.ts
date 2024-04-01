@@ -44,7 +44,7 @@ export interface GetConsentResult {
      */
     readonly metadata: {[key: string]: string};
     /**
-     * Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
+     * Identifier. Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
      */
     readonly name: string;
     /**

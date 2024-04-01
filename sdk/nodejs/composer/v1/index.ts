@@ -15,6 +15,26 @@ export const getEnvironment: typeof import("./getEnvironment").getEnvironment = 
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
 utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
+export { GetUserWorkloadsConfigMapArgs, GetUserWorkloadsConfigMapResult, GetUserWorkloadsConfigMapOutputArgs } from "./getUserWorkloadsConfigMap";
+export const getUserWorkloadsConfigMap: typeof import("./getUserWorkloadsConfigMap").getUserWorkloadsConfigMap = null as any;
+export const getUserWorkloadsConfigMapOutput: typeof import("./getUserWorkloadsConfigMap").getUserWorkloadsConfigMapOutput = null as any;
+utilities.lazyLoad(exports, ["getUserWorkloadsConfigMap","getUserWorkloadsConfigMapOutput"], () => require("./getUserWorkloadsConfigMap"));
+
+export { GetUserWorkloadsSecretArgs, GetUserWorkloadsSecretResult, GetUserWorkloadsSecretOutputArgs } from "./getUserWorkloadsSecret";
+export const getUserWorkloadsSecret: typeof import("./getUserWorkloadsSecret").getUserWorkloadsSecret = null as any;
+export const getUserWorkloadsSecretOutput: typeof import("./getUserWorkloadsSecret").getUserWorkloadsSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getUserWorkloadsSecret","getUserWorkloadsSecretOutput"], () => require("./getUserWorkloadsSecret"));
+
+export { UserWorkloadsConfigMapArgs } from "./userWorkloadsConfigMap";
+export type UserWorkloadsConfigMap = import("./userWorkloadsConfigMap").UserWorkloadsConfigMap;
+export const UserWorkloadsConfigMap: typeof import("./userWorkloadsConfigMap").UserWorkloadsConfigMap = null as any;
+utilities.lazyLoad(exports, ["UserWorkloadsConfigMap"], () => require("./userWorkloadsConfigMap"));
+
+export { UserWorkloadsSecretArgs } from "./userWorkloadsSecret";
+export type UserWorkloadsSecret = import("./userWorkloadsSecret").UserWorkloadsSecret;
+export const UserWorkloadsSecret: typeof import("./userWorkloadsSecret").UserWorkloadsSecret = null as any;
+utilities.lazyLoad(exports, ["UserWorkloadsSecret"], () => require("./userWorkloadsSecret"));
+
 
 // Export enums:
 export * from "../../types/enums/composer/v1";
@@ -25,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:composer/v1:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "google-native:composer/v1:UserWorkloadsConfigMap":
+                return new UserWorkloadsConfigMap(name, <any>undefined, { urn })
+            case "google-native:composer/v1:UserWorkloadsSecret":
+                return new UserWorkloadsSecret(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

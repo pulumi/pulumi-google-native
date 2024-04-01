@@ -44,6 +44,10 @@ export interface GetRepositoryResult {
      */
     readonly description: string;
     /**
+     * Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+     */
+    readonly disallowUnspecifiedMode: boolean;
+    /**
      * Docker repository config contains repository level configuration for the repositories of docker type.
      */
     readonly dockerConfig: outputs.artifactregistry.v1.DockerRepositoryConfigResponse;

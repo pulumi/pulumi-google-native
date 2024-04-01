@@ -50,7 +50,7 @@ export interface GetCompilationResultResult {
      */
     readonly name: string;
     /**
-     * Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*`.
+     * Immutable. The name of the release config to compile. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*`.
      */
     readonly releaseConfig: string;
     /**

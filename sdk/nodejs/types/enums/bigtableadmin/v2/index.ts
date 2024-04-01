@@ -61,6 +61,22 @@ export const ClusterDefaultStorageType = {
  */
 export type ClusterDefaultStorageType = (typeof ClusterDefaultStorageType)[keyof typeof ClusterDefaultStorageType];
 
+export const DataBoostIsolationReadOnlyComputeBillingOwner = {
+    /**
+     * Unspecified value.
+     */
+    ComputeBillingOwnerUnspecified: "COMPUTE_BILLING_OWNER_UNSPECIFIED",
+    /**
+     * The host Cloud Project containing the targeted Bigtable Instance / Table pays for compute.
+     */
+    HostPays: "HOST_PAYS",
+} as const;
+
+/**
+ * The Compute Billing Owner for this Data Boost App Profile.
+ */
+export type DataBoostIsolationReadOnlyComputeBillingOwner = (typeof DataBoostIsolationReadOnlyComputeBillingOwner)[keyof typeof DataBoostIsolationReadOnlyComputeBillingOwner];
+
 export const InstanceType = {
     /**
      * The type of the instance is unspecified. If set when creating an instance, a `PRODUCTION` instance will be created. If set when updating an instance, the type will be left unchanged.

@@ -14,12 +14,14 @@ export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Pro
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:secretmanager/v1:getSecret", {
+        "location": args.location,
         "project": args.project,
         "secretId": args.secretId,
     }, opts);
 }
 
 export interface GetSecretArgs {
+    location: string;
     project?: string;
     secretId: string;
 }
@@ -33,6 +35,10 @@ export interface GetSecretResult {
      * The time at which the Secret was created.
      */
     readonly createTime: string;
+    /**
+     * Optional. The customer-managed encryption configuration of the Regionalised Secrets. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
+     */
+    readonly customerManagedEncryption: outputs.secretmanager.v1.CustomerManagedEncryptionResponse;
     /**
      * Optional. Etag of the currently stored Secret.
      */
@@ -50,7 +56,7 @@ export interface GetSecretResult {
      */
     readonly name: string;
     /**
-     * Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+     * Optional. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
     readonly replication: outputs.secretmanager.v1.ReplicationResponse;
     /**
@@ -66,9 +72,13 @@ export interface GetSecretResult {
      */
     readonly ttl: string;
     /**
-     * Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+     * Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. Access by alias is only be supported on GetSecretVersion and AccessSecretVersion.
      */
     readonly versionAliases: {[key: string]: string};
+    /**
+     * Optional. Secret Version TTL after destruction request This is a part of the Delayed secret version destroy feature. For secret with TTL>0, version destruction doesn't happen immediately on calling destroy instead the version goes to a disabled state and destruction happens after the TTL expires.
+     */
+    readonly versionDestroyTtl: string;
 }
 /**
  * Gets metadata for a given Secret.
@@ -78,6 +88,7 @@ export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeO
 }
 
 export interface GetSecretOutputArgs {
+    location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     secretId: pulumi.Input<string>;
 }

@@ -25,6 +25,10 @@ export interface GetTagTemplateArgs {
 
 export interface GetTagTemplateResult {
     /**
+     * Optional. Transfer status of the TagTemplate
+     */
+    readonly dataplexTransferStatus: string;
+    /**
      * Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
      */
     readonly displayName: string;
@@ -37,7 +41,7 @@ export interface GetTagTemplateResult {
      */
     readonly isPubliclyReadable: boolean;
     /**
-     * The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+     * Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
      */
     readonly name: string;
 }

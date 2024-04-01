@@ -10,6 +10,8 @@ import * as utilities from "../../utilities";
 /**
  * Creates a new CustomConnectorVersion in a given project and location.
  * Auto-naming is currently not supported for this resource.
+ * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+ * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class CustomConnectorVersion extends pulumi.CustomResource {
     /**
@@ -39,9 +41,13 @@ export class CustomConnectorVersion extends pulumi.CustomResource {
     }
 
     /**
-     * Configuration for establishing the authentication to the connector destination.
+     * Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
      */
     public readonly authConfig!: pulumi.Output<outputs.connectors.v1.AuthConfigResponse>;
+    /**
+     * Optional. Backend variables config templates. This translates to additional variable templates in connection.
+     */
+    public readonly backendVariableTemplates!: pulumi.Output<outputs.connectors.v1.ConfigVariableTemplateResponse[]>;
     /**
      * Created time.
      */
@@ -52,11 +58,11 @@ export class CustomConnectorVersion extends pulumi.CustomResource {
      */
     public readonly customConnectorVersionId!: pulumi.Output<string>;
     /**
-     * Configuration of the customConnector's destination.
+     * Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
      */
-    public readonly destinationConfig!: pulumi.Output<outputs.connectors.v1.DestinationConfigResponse>;
+    public readonly destinationConfigs!: pulumi.Output<outputs.connectors.v1.DestinationConfigResponse[]>;
     /**
-     * Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+     * Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
      */
     public readonly enableBackendDestinationConfig!: pulumi.Output<boolean>;
     /**
@@ -69,13 +75,21 @@ export class CustomConnectorVersion extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Service account needed for runtime plane to access Custom Connector secrets.
+     * Optional. Service account used by runtime plane to access auth config secrets.
      */
     public readonly serviceAccount!: pulumi.Output<string>;
     /**
-     * Optional. Location of the custom connector spec.
+     * Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
      */
     public readonly specLocation!: pulumi.Output<string>;
+    /**
+     * Server URLs parsed from the spec.
+     */
+    public /*out*/ readonly specServerUrls!: pulumi.Output<string[]>;
+    /**
+     * State of the custom connector version.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * Updated time.
      */
@@ -92,25 +106,17 @@ export class CustomConnectorVersion extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.authConfig === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'authConfig'");
-            }
             if ((!args || args.customConnectorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'customConnectorId'");
             }
             if ((!args || args.customConnectorVersionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'customConnectorVersionId'");
             }
-            if ((!args || args.destinationConfig === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'destinationConfig'");
-            }
-            if ((!args || args.serviceAccount === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceAccount'");
-            }
             resourceInputs["authConfig"] = args ? args.authConfig : undefined;
+            resourceInputs["backendVariableTemplates"] = args ? args.backendVariableTemplates : undefined;
             resourceInputs["customConnectorId"] = args ? args.customConnectorId : undefined;
             resourceInputs["customConnectorVersionId"] = args ? args.customConnectorVersionId : undefined;
-            resourceInputs["destinationConfig"] = args ? args.destinationConfig : undefined;
+            resourceInputs["destinationConfigs"] = args ? args.destinationConfigs : undefined;
             resourceInputs["enableBackendDestinationConfig"] = args ? args.enableBackendDestinationConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -118,19 +124,24 @@ export class CustomConnectorVersion extends pulumi.CustomResource {
             resourceInputs["specLocation"] = args ? args.specLocation : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["specServerUrls"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["authConfig"] = undefined /*out*/;
+            resourceInputs["backendVariableTemplates"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["customConnectorId"] = undefined /*out*/;
             resourceInputs["customConnectorVersionId"] = undefined /*out*/;
-            resourceInputs["destinationConfig"] = undefined /*out*/;
+            resourceInputs["destinationConfigs"] = undefined /*out*/;
             resourceInputs["enableBackendDestinationConfig"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["specLocation"] = undefined /*out*/;
+            resourceInputs["specServerUrls"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,20 +156,24 @@ export class CustomConnectorVersion extends pulumi.CustomResource {
  */
 export interface CustomConnectorVersionArgs {
     /**
-     * Configuration for establishing the authentication to the connector destination.
+     * Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
      */
-    authConfig: pulumi.Input<inputs.connectors.v1.AuthConfigArgs>;
+    authConfig?: pulumi.Input<inputs.connectors.v1.AuthConfigArgs>;
+    /**
+     * Optional. Backend variables config templates. This translates to additional variable templates in connection.
+     */
+    backendVariableTemplates?: pulumi.Input<pulumi.Input<inputs.connectors.v1.ConfigVariableTemplateArgs>[]>;
     customConnectorId: pulumi.Input<string>;
     /**
      * Required. Identifier to assign to the CreateCustomConnectorVersion. Must be unique within scope of the parent resource.
      */
     customConnectorVersionId: pulumi.Input<string>;
     /**
-     * Configuration of the customConnector's destination.
+     * Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
      */
-    destinationConfig: pulumi.Input<inputs.connectors.v1.DestinationConfigArgs>;
+    destinationConfigs?: pulumi.Input<pulumi.Input<inputs.connectors.v1.DestinationConfigArgs>[]>;
     /**
-     * Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+     * Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
      */
     enableBackendDestinationConfig?: pulumi.Input<boolean>;
     /**
@@ -167,11 +182,11 @@ export interface CustomConnectorVersionArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     project?: pulumi.Input<string>;
     /**
-     * Service account needed for runtime plane to access Custom Connector secrets.
+     * Optional. Service account used by runtime plane to access auth config secrets.
      */
-    serviceAccount: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string>;
     /**
-     * Optional. Location of the custom connector spec.
+     * Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
      */
     specLocation?: pulumi.Input<string>;
 }

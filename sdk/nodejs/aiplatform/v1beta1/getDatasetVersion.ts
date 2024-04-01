@@ -37,9 +37,17 @@ export interface GetDatasetVersionResult {
      */
     readonly createTime: string;
     /**
+     * The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+     */
+    readonly displayName: string;
+    /**
      * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     readonly etag: string;
+    /**
+     * Additional information about the DatasetVersion.
+     */
+    readonly metadata: any;
     /**
      * The resource name of the DatasetVersion.
      */

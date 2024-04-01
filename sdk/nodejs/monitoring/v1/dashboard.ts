@@ -66,7 +66,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly mosaicLayout!: pulumi.Output<outputs.monitoring.v1.MosaicLayoutResponse>;
     /**
-     * Immutable. The resource name of the dashboard.
+     * Identifier. The resource name of the dashboard.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -151,7 +151,7 @@ export interface DashboardArgs {
      */
     mosaicLayout?: pulumi.Input<inputs.monitoring.v1.MosaicLayoutArgs>;
     /**
-     * Immutable. The resource name of the dashboard.
+     * Identifier. The resource name of the dashboard.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

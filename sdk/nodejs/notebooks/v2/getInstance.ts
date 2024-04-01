@@ -72,6 +72,10 @@ export interface GetInstanceResult {
      */
     readonly state: string;
     /**
+     * The workforce pools proxy endpoint that is used to access the Jupyter notebook.
+     */
+    readonly thirdPartyProxyUrl: string;
+    /**
      * Instance update time.
      */
     readonly updateTime: string;

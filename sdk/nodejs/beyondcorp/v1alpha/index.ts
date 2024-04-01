@@ -275,6 +275,11 @@ export const getProxyConfig: typeof import("./getProxyConfig").getProxyConfig = 
 export const getProxyConfigOutput: typeof import("./getProxyConfig").getProxyConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getProxyConfig","getProxyConfigOutput"], () => require("./getProxyConfig"));
 
+export { GetSecurityGatewayArgs, GetSecurityGatewayResult, GetSecurityGatewayOutputArgs } from "./getSecurityGateway";
+export const getSecurityGateway: typeof import("./getSecurityGateway").getSecurityGateway = null as any;
+export const getSecurityGatewayOutput: typeof import("./getSecurityGateway").getSecurityGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityGateway","getSecurityGatewayOutput"], () => require("./getSecurityGateway"));
+
 export { GetSubscriptionArgs, GetSubscriptionResult, GetSubscriptionOutputArgs } from "./getSubscription";
 export const getSubscription: typeof import("./getSubscription").getSubscription = null as any;
 export const getSubscriptionOutput: typeof import("./getSubscription").getSubscriptionOutput = null as any;
@@ -349,6 +354,11 @@ export { ProxyConfigArgs } from "./proxyConfig";
 export type ProxyConfig = import("./proxyConfig").ProxyConfig;
 export const ProxyConfig: typeof import("./proxyConfig").ProxyConfig = null as any;
 utilities.lazyLoad(exports, ["ProxyConfig"], () => require("./proxyConfig"));
+
+export { SecurityGatewayArgs } from "./securityGateway";
+export type SecurityGateway = import("./securityGateway").SecurityGateway;
+export const SecurityGateway: typeof import("./securityGateway").SecurityGateway = null as any;
+utilities.lazyLoad(exports, ["SecurityGateway"], () => require("./securityGateway"));
 
 export { SubscriptionArgs } from "./subscription";
 export type Subscription = import("./subscription").Subscription;
@@ -457,6 +467,8 @@ const _module = {
                 return new PartnerTenant(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ProxyConfig":
                 return new ProxyConfig(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:SecurityGateway":
+                return new SecurityGateway(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
             default:

@@ -64,6 +64,10 @@ export class Folder extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Timestamp when the folder was last modified.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -84,6 +88,7 @@ export class Folder extends pulumi.CustomResource {
             }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -98,6 +103,7 @@ export class Folder extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -117,4 +123,8 @@ export interface FolderArgs {
      * The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
      */
     parent: pulumi.Input<string>;
+    /**
+     * Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

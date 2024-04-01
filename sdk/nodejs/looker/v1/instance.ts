@@ -79,6 +79,10 @@ export class Instance extends pulumi.CustomResource {
      * Last computed maintenance denial period for this instance.
      */
     public /*out*/ readonly lastDenyMaintenancePeriod!: pulumi.Output<outputs.looker.v1.DenyMaintenancePeriodResponse>;
+    /**
+     * Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+     */
+    public readonly linkedLspProjectNumber!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Looker instance URI which can be used to access the Looker Instance UI.
@@ -154,6 +158,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["denyMaintenancePeriod"] = args ? args.denyMaintenancePeriod : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["linkedLspProjectNumber"] = args ? args.linkedLspProjectNumber : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenanceSchedule"] = args ? args.maintenanceSchedule : undefined;
             resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
@@ -186,6 +191,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ingressPublicIp"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["lastDenyMaintenancePeriod"] = undefined /*out*/;
+            resourceInputs["linkedLspProjectNumber"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["lookerUri"] = undefined /*out*/;
             resourceInputs["lookerVersion"] = undefined /*out*/;
@@ -234,6 +240,10 @@ export interface InstanceArgs {
      * Required. The unique instance identifier. Must contain only lowercase letters, numbers, or hyphens, with the first character a letter and the last a letter or a number. 63 characters maximum.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+     */
+    linkedLspProjectNumber?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
      * Maintenance schedule for this instance.

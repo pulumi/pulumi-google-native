@@ -68,6 +68,10 @@ export interface GetPipelineJobResult {
      */
     readonly pipelineSpec: {[key: string]: string};
     /**
+     * Optional. Whether to do component level validations before job creation.
+     */
+    readonly preflightValidations: boolean;
+    /**
      * A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
      */
     readonly reservedIpRanges: string[];

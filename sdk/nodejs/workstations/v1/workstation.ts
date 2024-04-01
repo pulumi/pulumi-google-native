@@ -63,6 +63,10 @@ export class Workstation extends pulumi.CustomResource {
      */
     public /*out*/ readonly host!: pulumi.Output<string>;
     /**
+     * The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key can only be configured in the WorkstationConfig. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     */
+    public /*out*/ readonly kmsKey!: pulumi.Output<string>;
+    /**
      * Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -133,6 +137,7 @@ export class Workstation extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["kmsKey"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -146,6 +151,7 @@ export class Workstation extends pulumi.CustomResource {
             resourceInputs["env"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["kmsKey"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

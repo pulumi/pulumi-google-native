@@ -54,6 +54,10 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+     */
+    public readonly envoyHeaders!: pulumi.Output<string>;
+    /**
      * Required. Short name of the Gateway resource to be created.
      */
     public readonly gatewayId!: pulumi.Output<string>;
@@ -61,6 +65,10 @@ export class Gateway extends pulumi.CustomResource {
      * Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
      */
     public readonly gatewaySecurityPolicy!: pulumi.Output<string>;
+    /**
+     * Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+     */
+    public readonly ipVersion!: pulumi.Output<string>;
     /**
      * Optional. Set of label tags associated with the Gateway resource.
      */
@@ -124,8 +132,10 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["addresses"] = args ? args.addresses : undefined;
             resourceInputs["certificateUrls"] = args ? args.certificateUrls : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["envoyHeaders"] = args ? args.envoyHeaders : undefined;
             resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
             resourceInputs["gatewaySecurityPolicy"] = args ? args.gatewaySecurityPolicy : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -144,8 +154,10 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["certificateUrls"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["envoyHeaders"] = undefined /*out*/;
             resourceInputs["gatewayId"] = undefined /*out*/;
             resourceInputs["gatewaySecurityPolicy"] = undefined /*out*/;
+            resourceInputs["ipVersion"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -183,6 +195,10 @@ export interface GatewayArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+     */
+    envoyHeaders?: pulumi.Input<enums.networkservices.v1beta1.GatewayEnvoyHeaders>;
+    /**
      * Required. Short name of the Gateway resource to be created.
      */
     gatewayId: pulumi.Input<string>;
@@ -190,6 +206,10 @@ export interface GatewayArgs {
      * Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
      */
     gatewaySecurityPolicy?: pulumi.Input<string>;
+    /**
+     * Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+     */
+    ipVersion?: pulumi.Input<enums.networkservices.v1beta1.GatewayIpVersion>;
     /**
      * Optional. Set of label tags associated with the Gateway resource.
      */

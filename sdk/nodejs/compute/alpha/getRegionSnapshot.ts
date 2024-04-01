@@ -108,6 +108,14 @@ export interface GetRegionSnapshotResult {
      */
     readonly region: string;
     /**
+     * [Output only] ResourceStatus of the Snapshot resource
+     */
+    readonly resourceStatus: outputs.compute.alpha.SnapshotResourceStatusResponse;
+    /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzi: boolean;
+    /**
      * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;

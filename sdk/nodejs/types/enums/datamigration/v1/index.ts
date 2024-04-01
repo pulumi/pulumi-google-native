@@ -160,6 +160,10 @@ export const CloudSqlSettingsDatabaseVersion = {
      */
     Mysql8034: "MYSQL_8_0_34",
     /**
+     * The database major version is MySQL 8.0 and the minor version is 35.
+     */
+    Mysql8035: "MYSQL_8_0_35",
+    /**
      * PostgreSQL 9.6.
      */
     Postgres96: "POSTGRES_9_6",
@@ -216,23 +220,23 @@ export type CloudSqlSettingsEdition = (typeof CloudSqlSettingsEdition)[keyof typ
 
 export const ConnectionProfileProvider = {
     /**
-     * The database provider is unknown.
+     * Use this value for on-premise source database instances.
      */
     DatabaseProviderUnspecified: "DATABASE_PROVIDER_UNSPECIFIED",
     /**
-     * CloudSQL runs the database.
+     * Cloud SQL is the source instance provider.
      */
     Cloudsql: "CLOUDSQL",
     /**
-     * RDS runs the database.
+     * Amazon RDS is the source instance provider.
      */
     Rds: "RDS",
     /**
-     * Amazon Aurora.
+     * Amazon Aurora is the source instance provider.
      */
     Aurora: "AURORA",
     /**
-     * AlloyDB.
+     * AlloyDB for PostgreSQL is the source instance provider.
      */
     Alloydb: "ALLOYDB",
 } as const;
@@ -296,6 +300,10 @@ export const DatabaseEngineInfoEngine = {
      */
     Postgresql: "POSTGRESQL",
     /**
+     * The source engine is SQL Server.
+     */
+    Sqlserver: "SQLSERVER",
+    /**
      * The source engine is Oracle.
      */
     Oracle: "ORACLE",
@@ -320,6 +328,10 @@ export const DatabaseTypeEngine = {
      */
     Postgresql: "POSTGRESQL",
     /**
+     * The source engine is SQL Server.
+     */
+    Sqlserver: "SQLSERVER",
+    /**
      * The source engine is Oracle.
      */
     Oracle: "ORACLE",
@@ -332,23 +344,23 @@ export type DatabaseTypeEngine = (typeof DatabaseTypeEngine)[keyof typeof Databa
 
 export const DatabaseTypeProvider = {
     /**
-     * The database provider is unknown.
+     * Use this value for on-premise source database instances.
      */
     DatabaseProviderUnspecified: "DATABASE_PROVIDER_UNSPECIFIED",
     /**
-     * CloudSQL runs the database.
+     * Cloud SQL is the source instance provider.
      */
     Cloudsql: "CLOUDSQL",
     /**
-     * RDS runs the database.
+     * Amazon RDS is the source instance provider.
      */
     Rds: "RDS",
     /**
-     * Amazon Aurora.
+     * Amazon Aurora is the source instance provider.
      */
     Aurora: "AURORA",
     /**
-     * AlloyDB.
+     * AlloyDB for PostgreSQL is the source instance provider.
      */
     Alloydb: "ALLOYDB",
 } as const;

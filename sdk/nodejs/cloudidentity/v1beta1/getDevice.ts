@@ -82,7 +82,7 @@ export interface GetDeviceResult {
      */
     readonly encryptionState: string;
     /**
-     * Attributes specific to Endpoint Verification devices.
+     * Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
      */
     readonly endpointVerificationSpecificAttributes: outputs.cloudidentity.v1beta1.EndpointVerificationSpecificAttributesResponse;
     /**

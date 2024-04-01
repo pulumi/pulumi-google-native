@@ -10,6 +10,26 @@ export type Automation = import("./automation").Automation;
 export const Automation: typeof import("./automation").Automation = null as any;
 utilities.lazyLoad(exports, ["Automation"], () => require("./automation"));
 
+export { CustomTargetTypeArgs } from "./customTargetType";
+export type CustomTargetType = import("./customTargetType").CustomTargetType;
+export const CustomTargetType: typeof import("./customTargetType").CustomTargetType = null as any;
+utilities.lazyLoad(exports, ["CustomTargetType"], () => require("./customTargetType"));
+
+export { CustomTargetTypeIamBindingArgs } from "./customTargetTypeIamBinding";
+export type CustomTargetTypeIamBinding = import("./customTargetTypeIamBinding").CustomTargetTypeIamBinding;
+export const CustomTargetTypeIamBinding: typeof import("./customTargetTypeIamBinding").CustomTargetTypeIamBinding = null as any;
+utilities.lazyLoad(exports, ["CustomTargetTypeIamBinding"], () => require("./customTargetTypeIamBinding"));
+
+export { CustomTargetTypeIamMemberArgs } from "./customTargetTypeIamMember";
+export type CustomTargetTypeIamMember = import("./customTargetTypeIamMember").CustomTargetTypeIamMember;
+export const CustomTargetTypeIamMember: typeof import("./customTargetTypeIamMember").CustomTargetTypeIamMember = null as any;
+utilities.lazyLoad(exports, ["CustomTargetTypeIamMember"], () => require("./customTargetTypeIamMember"));
+
+export { CustomTargetTypeIamPolicyArgs } from "./customTargetTypeIamPolicy";
+export type CustomTargetTypeIamPolicy = import("./customTargetTypeIamPolicy").CustomTargetTypeIamPolicy;
+export const CustomTargetTypeIamPolicy: typeof import("./customTargetTypeIamPolicy").CustomTargetTypeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["CustomTargetTypeIamPolicy"], () => require("./customTargetTypeIamPolicy"));
+
 export { DeliveryPipelineArgs } from "./deliveryPipeline";
 export type DeliveryPipeline = import("./deliveryPipeline").DeliveryPipeline;
 export const DeliveryPipeline: typeof import("./deliveryPipeline").DeliveryPipeline = null as any;
@@ -34,6 +54,16 @@ export { GetAutomationArgs, GetAutomationResult, GetAutomationOutputArgs } from 
 export const getAutomation: typeof import("./getAutomation").getAutomation = null as any;
 export const getAutomationOutput: typeof import("./getAutomation").getAutomationOutput = null as any;
 utilities.lazyLoad(exports, ["getAutomation","getAutomationOutput"], () => require("./getAutomation"));
+
+export { GetCustomTargetTypeArgs, GetCustomTargetTypeResult, GetCustomTargetTypeOutputArgs } from "./getCustomTargetType";
+export const getCustomTargetType: typeof import("./getCustomTargetType").getCustomTargetType = null as any;
+export const getCustomTargetTypeOutput: typeof import("./getCustomTargetType").getCustomTargetTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomTargetType","getCustomTargetTypeOutput"], () => require("./getCustomTargetType"));
+
+export { GetCustomTargetTypeIamPolicyArgs, GetCustomTargetTypeIamPolicyResult, GetCustomTargetTypeIamPolicyOutputArgs } from "./getCustomTargetTypeIamPolicy";
+export const getCustomTargetTypeIamPolicy: typeof import("./getCustomTargetTypeIamPolicy").getCustomTargetTypeIamPolicy = null as any;
+export const getCustomTargetTypeIamPolicyOutput: typeof import("./getCustomTargetTypeIamPolicy").getCustomTargetTypeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomTargetTypeIamPolicy","getCustomTargetTypeIamPolicyOutput"], () => require("./getCustomTargetTypeIamPolicy"));
 
 export { GetDeliveryPipelineArgs, GetDeliveryPipelineResult, GetDeliveryPipelineOutputArgs } from "./getDeliveryPipeline";
 export const getDeliveryPipeline: typeof import("./getDeliveryPipeline").getDeliveryPipeline = null as any;
@@ -105,6 +135,14 @@ const _module = {
         switch (type) {
             case "google-native:clouddeploy/v1:Automation":
                 return new Automation(name, <any>undefined, { urn })
+            case "google-native:clouddeploy/v1:CustomTargetType":
+                return new CustomTargetType(name, <any>undefined, { urn })
+            case "google-native:clouddeploy/v1:CustomTargetTypeIamBinding":
+                return new CustomTargetTypeIamBinding(name, <any>undefined, { urn })
+            case "google-native:clouddeploy/v1:CustomTargetTypeIamMember":
+                return new CustomTargetTypeIamMember(name, <any>undefined, { urn })
+            case "google-native:clouddeploy/v1:CustomTargetTypeIamPolicy":
+                return new CustomTargetTypeIamPolicy(name, <any>undefined, { urn })
             case "google-native:clouddeploy/v1:DeliveryPipeline":
                 return new DeliveryPipeline(name, <any>undefined, { urn })
             case "google-native:clouddeploy/v1:DeliveryPipelineIamBinding":

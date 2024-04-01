@@ -23,6 +23,9 @@ export const DiscoveryConfigStatus = {
 export type DiscoveryConfigStatus = (typeof DiscoveryConfigStatus)[keyof typeof DiscoveryConfigStatus];
 
 export const GooglePrivacyDlpV2BigQueryOptionsSampleMethod = {
+    /**
+     * No sampling.
+     */
     SampleMethodUnspecified: "SAMPLE_METHOD_UNSPECIFIED",
     /**
      * Scan groups of rows in the order BigQuery provides (default). Multiple groups of rows may be scanned in parallel, so results may not appear in the same order the rows are read.
@@ -34,6 +37,9 @@ export const GooglePrivacyDlpV2BigQueryOptionsSampleMethod = {
     RandomStart: "RANDOM_START",
 } as const;
 
+/**
+ * How to sample the data.
+ */
 export type GooglePrivacyDlpV2BigQueryOptionsSampleMethod = (typeof GooglePrivacyDlpV2BigQueryOptionsSampleMethod)[keyof typeof GooglePrivacyDlpV2BigQueryOptionsSampleMethod];
 
 export const GooglePrivacyDlpV2BigQueryTableTypesTypesItem = {
@@ -95,7 +101,7 @@ export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem = {
      */
     BinaryFile: "BINARY_FILE",
     /**
-     * Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+     * Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, jsonl, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
      */
     TextFile: "TEXT_FILE",
     /**
@@ -135,6 +141,9 @@ export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem = {
 export type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem = (typeof GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem)[keyof typeof GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem];
 
 export const GooglePrivacyDlpV2CloudStorageOptionsSampleMethod = {
+    /**
+     * No sampling.
+     */
     SampleMethodUnspecified: "SAMPLE_METHOD_UNSPECIFIED",
     /**
      * Scan from the top (default).
@@ -146,6 +155,9 @@ export const GooglePrivacyDlpV2CloudStorageOptionsSampleMethod = {
     RandomStart: "RANDOM_START",
 } as const;
 
+/**
+ * How to sample the data.
+ */
 export type GooglePrivacyDlpV2CloudStorageOptionsSampleMethod = (typeof GooglePrivacyDlpV2CloudStorageOptionsSampleMethod)[keyof typeof GooglePrivacyDlpV2CloudStorageOptionsSampleMethod];
 
 export const GooglePrivacyDlpV2ConditionOperator = {
@@ -274,7 +286,7 @@ export const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem = {
      */
     BinaryFile: "BINARY_FILE",
     /**
-     * Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+     * Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, jsonl, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
      */
     TextFile: "TEXT_FILE",
     /**
@@ -528,7 +540,7 @@ export const GooglePrivacyDlpV2InspectConfigMinLikelihood = {
 } as const;
 
 /**
- * Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+ * Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
  */
 export type GooglePrivacyDlpV2InspectConfigMinLikelihood = (typeof GooglePrivacyDlpV2InspectConfigMinLikelihood)[keyof typeof GooglePrivacyDlpV2InspectConfigMinLikelihood];
 

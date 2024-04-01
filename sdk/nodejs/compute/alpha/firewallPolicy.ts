@@ -68,6 +68,10 @@ export class FirewallPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * A list of packet mirroring rules that belong to this policy.
+     */
+    public readonly packetMirroringRules!: pulumi.Output<outputs.compute.alpha.FirewallPolicyRuleResponse[]>;
+    /**
      * The parent of the firewall policy. This field is not applicable to network firewall policies.
      */
     public /*out*/ readonly parent!: pulumi.Output<string>;
@@ -123,6 +127,7 @@ export class FirewallPolicy extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["packetMirroringRules"] = args ? args.packetMirroringRules : undefined;
             resourceInputs["parentId"] = args ? args.parentId : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
@@ -144,6 +149,7 @@ export class FirewallPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["packetMirroringRules"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["parentId"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
@@ -182,6 +188,10 @@ export interface FirewallPolicyArgs {
      * Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
      */
     name?: pulumi.Input<string>;
+    /**
+     * A list of packet mirroring rules that belong to this policy.
+     */
+    packetMirroringRules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.FirewallPolicyRuleArgs>[]>;
     /**
      * Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
      */

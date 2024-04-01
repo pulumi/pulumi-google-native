@@ -39,15 +39,15 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
-     * [Optional] Specifies the configuration of a BigLake managed table.
+     * Optional. Specifies the configuration of a BigLake managed table.
      */
     public readonly biglakeConfiguration!: pulumi.Output<outputs.bigquery.v2.BigLakeConfigurationResponse>;
     /**
-     * Clone definition.
+     * Contains information about the clone. This value is set via the clone operation.
      */
     public /*out*/ readonly cloneDefinition!: pulumi.Output<outputs.bigquery.v2.CloneDefinitionResponse>;
     /**
-     * [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+     * Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
      */
     public readonly clustering!: pulumi.Output<outputs.bigquery.v2.ClusteringResponse>;
     /**
@@ -56,15 +56,15 @@ export class Table extends pulumi.CustomResource {
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     public readonly datasetId!: pulumi.Output<string>;
     /**
-     * The default collation of the table.
+     * Optional. Defines the default collation specification of new STRING fields in the table. During table creation or update, if a STRING field is added to this table without explicit collation specified, then the table inherits the table default collation. A change to this field affects only fields added afterwards, and does not alter the existing fields. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
      */
-    public /*out*/ readonly defaultCollation!: pulumi.Output<string>;
+    public readonly defaultCollation!: pulumi.Output<string>;
     /**
-     * The default rounding mode of the table.
+     * Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
      */
-    public /*out*/ readonly defaultRoundingMode!: pulumi.Output<string>;
+    public readonly defaultRoundingMode!: pulumi.Output<string>;
     /**
-     * [Optional] A user-friendly description of this table.
+     * Optional. A user-friendly description of this table.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -72,25 +72,25 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly encryptionConfiguration!: pulumi.Output<outputs.bigquery.v2.EncryptionConfigurationResponse>;
     /**
-     * A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+     * A hash of this resource.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+     * Optional. The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
      */
     public readonly expirationTime!: pulumi.Output<string>;
     /**
-     * [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+     * Optional. Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
      */
     public readonly externalDataConfiguration!: pulumi.Output<outputs.bigquery.v2.ExternalDataConfigurationResponse>;
     /**
-     * [Optional] A descriptive name for this table.
+     * Optional. A descriptive name for this table.
      */
     public readonly friendlyName!: pulumi.Output<string>;
     /**
-     * The type of the resource.
+     * The type of resource ID.
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    public readonly kind!: pulumi.Output<string>;
     /**
      * The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
      */
@@ -104,15 +104,21 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly location!: pulumi.Output<string>;
     /**
-     * [Optional] Materialized view definition.
+     * Optional. The materialized view definition.
      */
     public readonly materializedView!: pulumi.Output<outputs.bigquery.v2.MaterializedViewDefinitionResponse>;
     /**
-     * [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+     * The materialized view status.
+     */
+    public /*out*/ readonly materializedViewStatus!: pulumi.Output<outputs.bigquery.v2.MaterializedViewStatusResponse>;
+    /**
+     * Optional. The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
      */
     public readonly maxStaleness!: pulumi.Output<string>;
     /**
-     * [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+     * Deprecated.
+     *
+     * @deprecated Deprecated.
      */
     public readonly model!: pulumi.Output<outputs.bigquery.v2.ModelDefinitionResponse>;
     /**
@@ -124,11 +130,11 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly numActivePhysicalBytes!: pulumi.Output<string>;
     /**
-     * The size of this table in bytes, excluding any data in the streaming buffer.
+     * The size of this table in logical bytes, excluding any data in the streaming buffer.
      */
     public /*out*/ readonly numBytes!: pulumi.Output<string>;
     /**
-     * The number of bytes in the table that are considered "long-term storage".
+     * The number of logical bytes in the table that are considered "long-term storage".
      */
     public /*out*/ readonly numLongTermBytes!: pulumi.Output<string>;
     /**
@@ -144,7 +150,7 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly numPartitions!: pulumi.Output<string>;
     /**
-     * [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+     * The physical size of this table in bytes. This includes storage used for time travel.
      */
     public /*out*/ readonly numPhysicalBytes!: pulumi.Output<string>;
     /**
@@ -163,13 +169,21 @@ export class Table extends pulumi.CustomResource {
      * The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
      */
     public /*out*/ readonly numTotalPhysicalBytes!: pulumi.Output<string>;
+    /**
+     * The partition information for all table formats, including managed partitioned tables, hive partitioned tables, and iceberg partitioned tables.
+     */
+    public /*out*/ readonly partitionDefinition!: pulumi.Output<outputs.bigquery.v2.PartitioningDefinitionResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+     * If specified, configures range partitioning for this table.
      */
     public readonly rangePartitioning!: pulumi.Output<outputs.bigquery.v2.RangePartitioningResponse>;
     /**
-     * [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+     * Optional. Output only. Table references of all replicas currently active on the table.
+     */
+    public /*out*/ readonly replicas!: pulumi.Output<outputs.bigquery.v2.TableReferenceResponse[]>;
+    /**
+     * Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
      */
     public readonly requirePartitionFilter!: pulumi.Output<boolean>;
     /**
@@ -177,7 +191,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly resourceTags!: pulumi.Output<{[key: string]: string}>;
     /**
-     * [Optional] Describes the schema of this table.
+     * Optional. Describes the schema of this table.
      */
     public readonly schema!: pulumi.Output<outputs.bigquery.v2.TableSchemaResponse>;
     /**
@@ -185,7 +199,7 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Snapshot definition.
+     * Contains information about the snapshot. This value is set via snapshot creation.
      */
     public /*out*/ readonly snapshotDefinition!: pulumi.Output<outputs.bigquery.v2.SnapshotDefinitionResponse>;
     /**
@@ -193,23 +207,27 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly streamingBuffer!: pulumi.Output<outputs.bigquery.v2.StreamingbufferResponse>;
     /**
-     * [Optional] The table constraints on the table.
+     * Optional. Tables Primary Key and Foreign Key information
      */
     public readonly tableConstraints!: pulumi.Output<outputs.bigquery.v2.TableConstraintsResponse>;
     /**
-     * [Required] Reference describing the ID of this table.
+     * Reference describing the ID of this table.
      */
     public readonly tableReference!: pulumi.Output<outputs.bigquery.v2.TableReferenceResponse>;
     /**
-     * Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+     * Optional. Table replication info for table created `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+     */
+    public readonly tableReplicationInfo!: pulumi.Output<outputs.bigquery.v2.TableReplicationInfoResponse>;
+    /**
+     * If specified, configures time-based partitioning for this table.
      */
     public readonly timePartitioning!: pulumi.Output<outputs.bigquery.v2.TimePartitioningResponse>;
     /**
-     * Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+     * Describes the table type. The following values are supported: * `TABLE`: A normal BigQuery table. * `VIEW`: A virtual table defined by a SQL query. * `EXTERNAL`: A table that references data stored in an external storage system, such as Google Cloud Storage. * `MATERIALIZED_VIEW`: A precomputed view defined by a SQL query. * `SNAPSHOT`: An immutable BigQuery table that preserves the contents of a base table at a particular time. See additional information on [table snapshots](/bigquery/docs/table-snapshots-intro). The default value is `TABLE`.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * [Optional] The view definition.
+     * Optional. The view definition.
      */
     public readonly view!: pulumi.Output<outputs.bigquery.v2.ViewDefinitionResponse>;
 
@@ -227,14 +245,20 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
+            if ((!args || args.tableReference === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'tableReference'");
+            }
             resourceInputs["biglakeConfiguration"] = args ? args.biglakeConfiguration : undefined;
             resourceInputs["clustering"] = args ? args.clustering : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["defaultCollation"] = args ? args.defaultCollation : undefined;
+            resourceInputs["defaultRoundingMode"] = args ? args.defaultRoundingMode : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
             resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
             resourceInputs["externalDataConfiguration"] = args ? args.externalDataConfiguration : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["materializedView"] = args ? args.materializedView : undefined;
             resourceInputs["maxStaleness"] = args ? args.maxStaleness : undefined;
@@ -246,16 +270,15 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["tableConstraints"] = args ? args.tableConstraints : undefined;
             resourceInputs["tableReference"] = args ? args.tableReference : undefined;
+            resourceInputs["tableReplicationInfo"] = args ? args.tableReplicationInfo : undefined;
             resourceInputs["timePartitioning"] = args ? args.timePartitioning : undefined;
             resourceInputs["view"] = args ? args.view : undefined;
             resourceInputs["cloneDefinition"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
-            resourceInputs["defaultCollation"] = undefined /*out*/;
-            resourceInputs["defaultRoundingMode"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
-            resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["materializedViewStatus"] = undefined /*out*/;
             resourceInputs["numActiveLogicalBytes"] = undefined /*out*/;
             resourceInputs["numActivePhysicalBytes"] = undefined /*out*/;
             resourceInputs["numBytes"] = undefined /*out*/;
@@ -268,6 +291,8 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["numTimeTravelPhysicalBytes"] = undefined /*out*/;
             resourceInputs["numTotalLogicalBytes"] = undefined /*out*/;
             resourceInputs["numTotalPhysicalBytes"] = undefined /*out*/;
+            resourceInputs["partitionDefinition"] = undefined /*out*/;
+            resourceInputs["replicas"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotDefinition"] = undefined /*out*/;
             resourceInputs["streamingBuffer"] = undefined /*out*/;
@@ -291,6 +316,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["materializedView"] = undefined /*out*/;
+            resourceInputs["materializedViewStatus"] = undefined /*out*/;
             resourceInputs["maxStaleness"] = undefined /*out*/;
             resourceInputs["model"] = undefined /*out*/;
             resourceInputs["numActiveLogicalBytes"] = undefined /*out*/;
@@ -305,8 +331,10 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["numTimeTravelPhysicalBytes"] = undefined /*out*/;
             resourceInputs["numTotalLogicalBytes"] = undefined /*out*/;
             resourceInputs["numTotalPhysicalBytes"] = undefined /*out*/;
+            resourceInputs["partitionDefinition"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rangePartitioning"] = undefined /*out*/;
+            resourceInputs["replicas"] = undefined /*out*/;
             resourceInputs["requirePartitionFilter"] = undefined /*out*/;
             resourceInputs["resourceTags"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
@@ -315,6 +343,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["streamingBuffer"] = undefined /*out*/;
             resourceInputs["tableConstraints"] = undefined /*out*/;
             resourceInputs["tableReference"] = undefined /*out*/;
+            resourceInputs["tableReplicationInfo"] = undefined /*out*/;
             resourceInputs["timePartitioning"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["view"] = undefined /*out*/;
@@ -331,16 +360,24 @@ export class Table extends pulumi.CustomResource {
  */
 export interface TableArgs {
     /**
-     * [Optional] Specifies the configuration of a BigLake managed table.
+     * Optional. Specifies the configuration of a BigLake managed table.
      */
     biglakeConfiguration?: pulumi.Input<inputs.bigquery.v2.BigLakeConfigurationArgs>;
     /**
-     * [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+     * Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
      */
     clustering?: pulumi.Input<inputs.bigquery.v2.ClusteringArgs>;
     datasetId: pulumi.Input<string>;
     /**
-     * [Optional] A user-friendly description of this table.
+     * Optional. Defines the default collation specification of new STRING fields in the table. During table creation or update, if a STRING field is added to this table without explicit collation specified, then the table inherits the table default collation. A change to this field affects only fields added afterwards, and does not alter the existing fields. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
+     */
+    defaultCollation?: pulumi.Input<string>;
+    /**
+     * Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
+     */
+    defaultRoundingMode?: pulumi.Input<enums.bigquery.v2.TableDefaultRoundingMode>;
+    /**
+     * Optional. A user-friendly description of this table.
      */
     description?: pulumi.Input<string>;
     /**
@@ -348,40 +385,46 @@ export interface TableArgs {
      */
     encryptionConfiguration?: pulumi.Input<inputs.bigquery.v2.EncryptionConfigurationArgs>;
     /**
-     * [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+     * Optional. The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
      */
     expirationTime?: pulumi.Input<string>;
     /**
-     * [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+     * Optional. Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
      */
     externalDataConfiguration?: pulumi.Input<inputs.bigquery.v2.ExternalDataConfigurationArgs>;
     /**
-     * [Optional] A descriptive name for this table.
+     * Optional. A descriptive name for this table.
      */
     friendlyName?: pulumi.Input<string>;
+    /**
+     * The type of resource ID.
+     */
+    kind?: pulumi.Input<string>;
     /**
      * The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * [Optional] Materialized view definition.
+     * Optional. The materialized view definition.
      */
     materializedView?: pulumi.Input<inputs.bigquery.v2.MaterializedViewDefinitionArgs>;
     /**
-     * [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+     * Optional. The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
      */
     maxStaleness?: pulumi.Input<string>;
     /**
-     * [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+     * Deprecated.
+     *
+     * @deprecated Deprecated.
      */
     model?: pulumi.Input<inputs.bigquery.v2.ModelDefinitionArgs>;
     project?: pulumi.Input<string>;
     /**
-     * [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+     * If specified, configures range partitioning for this table.
      */
     rangePartitioning?: pulumi.Input<inputs.bigquery.v2.RangePartitioningArgs>;
     /**
-     * [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+     * Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
      */
     requirePartitionFilter?: pulumi.Input<boolean>;
     /**
@@ -389,23 +432,27 @@ export interface TableArgs {
      */
     resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * [Optional] Describes the schema of this table.
+     * Optional. Describes the schema of this table.
      */
     schema?: pulumi.Input<inputs.bigquery.v2.TableSchemaArgs>;
     /**
-     * [Optional] The table constraints on the table.
+     * Optional. Tables Primary Key and Foreign Key information
      */
     tableConstraints?: pulumi.Input<inputs.bigquery.v2.TableConstraintsArgs>;
     /**
-     * [Required] Reference describing the ID of this table.
+     * Reference describing the ID of this table.
      */
-    tableReference?: pulumi.Input<inputs.bigquery.v2.TableReferenceArgs>;
+    tableReference: pulumi.Input<inputs.bigquery.v2.TableReferenceArgs>;
     /**
-     * Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+     * Optional. Table replication info for table created `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+     */
+    tableReplicationInfo?: pulumi.Input<inputs.bigquery.v2.TableReplicationInfoArgs>;
+    /**
+     * If specified, configures time-based partitioning for this table.
      */
     timePartitioning?: pulumi.Input<inputs.bigquery.v2.TimePartitioningArgs>;
     /**
-     * [Optional] The view definition.
+     * Optional. The view definition.
      */
     view?: pulumi.Input<inputs.bigquery.v2.ViewDefinitionArgs>;
 }

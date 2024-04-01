@@ -67,6 +67,18 @@ export const EntryType = {
      * A Looker Look. For more information, see [Looker Look API] (https://developers.looker.com/api/explorer/4.0/methods/Look).
      */
     Look: "LOOK",
+    /**
+     * Feature Online Store resource in Vertex AI Feature Store.
+     */
+    FeatureOnlineStore: "FEATURE_ONLINE_STORE",
+    /**
+     * Feature View resource in Vertex AI Feature Store.
+     */
+    FeatureView: "FEATURE_VIEW",
+    /**
+     * Feature Group resource in Vertex AI Feature Store.
+     */
+    FeatureGroup: "FEATURE_GROUP",
 } as const;
 
 /**
@@ -305,6 +317,22 @@ export const GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType = {
  * Type of the model source.
  */
 export type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType = (typeof GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType)[keyof typeof GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType];
+
+export const TagTemplateDataplexTransferStatus = {
+    /**
+     * Default value. TagTemplate and its tags are only visible and editable in DataCatalog.
+     */
+    DataplexTransferStatusUnspecified: "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED",
+    /**
+     * TagTemplate and its tags are auto-copied to Dataplex service. Visible in both services. Editable in DataCatalog, read-only in Dataplex.
+     */
+    Migrated: "MIGRATED",
+} as const;
+
+/**
+ * Optional. Transfer status of the TagTemplate
+ */
+export type TagTemplateDataplexTransferStatus = (typeof TagTemplateDataplexTransferStatus)[keyof typeof TagTemplateDataplexTransferStatus];
 
 export const TaxonomyActivatedPolicyTypesItem = {
     /**

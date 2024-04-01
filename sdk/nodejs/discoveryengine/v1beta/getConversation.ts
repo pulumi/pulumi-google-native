@@ -14,7 +14,6 @@ export function getConversation(args: GetConversationArgs, opts?: pulumi.InvokeO
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:discoveryengine/v1beta:getConversation", {
-        "collectionId": args.collectionId,
         "conversationId": args.conversationId,
         "dataStoreId": args.dataStoreId,
         "location": args.location,
@@ -23,7 +22,6 @@ export function getConversation(args: GetConversationArgs, opts?: pulumi.InvokeO
 }
 
 export interface GetConversationArgs {
-    collectionId: string;
     conversationId: string;
     dataStoreId: string;
     location: string;
@@ -40,7 +38,7 @@ export interface GetConversationResult {
      */
     readonly messages: outputs.discoveryengine.v1beta.GoogleCloudDiscoveryengineV1betaConversationMessageResponse[];
     /**
-     * Immutable. Fully qualified name `project/*&#47;locations/global/collections/{collection}/dataStore/*&#47;conversations/*`
+     * Immutable. Fully qualified name `project/*&#47;locations/global/collections/{collection}/dataStore/*&#47;conversations/*` or `project/*&#47;locations/global/collections/{collection}/engines/*&#47;conversations/*`.
      */
     readonly name: string;
     /**
@@ -64,7 +62,6 @@ export function getConversationOutput(args: GetConversationOutputArgs, opts?: pu
 }
 
 export interface GetConversationOutputArgs {
-    collectionId: pulumi.Input<string>;
     conversationId: pulumi.Input<string>;
     dataStoreId: pulumi.Input<string>;
     location: pulumi.Input<string>;

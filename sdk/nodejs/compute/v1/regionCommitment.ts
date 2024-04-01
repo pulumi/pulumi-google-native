@@ -60,6 +60,10 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     public /*out*/ readonly endTimestamp!: pulumi.Output<string>;
     /**
+     * Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation 
+     */
+    public readonly existingReservations!: pulumi.Output<string[]>;
+    /**
      * Type of the resource. Always compute#commitment for commitments.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -86,7 +90,7 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
-     * List of create-on-create reseravtions for this commitment.
+     * List of create-on-create reservations for this commitment.
      */
     public readonly reservations!: pulumi.Output<outputs.compute.v1.ReservationResponse[]>;
     /**
@@ -135,6 +139,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["existingReservations"] = args ? args.existingReservations : undefined;
             resourceInputs["licenseResource"] = args ? args.licenseResource : undefined;
             resourceInputs["mergeSourceCommitments"] = args ? args.mergeSourceCommitments : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -159,6 +164,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["endTimestamp"] = undefined /*out*/;
+            resourceInputs["existingReservations"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["licenseResource"] = undefined /*out*/;
             resourceInputs["mergeSourceCommitments"] = undefined /*out*/;
@@ -200,6 +206,10 @@ export interface RegionCommitmentArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation 
+     */
+    existingReservations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The license specification required as part of a license commitment.
      */
     licenseResource?: pulumi.Input<inputs.compute.v1.LicenseResourceCommitmentArgs>;
@@ -222,7 +232,7 @@ export interface RegionCommitmentArgs {
      */
     requestId?: pulumi.Input<string>;
     /**
-     * List of create-on-create reseravtions for this commitment.
+     * List of create-on-create reservations for this commitment.
      */
     reservations?: pulumi.Input<pulumi.Input<inputs.compute.v1.ReservationArgs>[]>;
     /**

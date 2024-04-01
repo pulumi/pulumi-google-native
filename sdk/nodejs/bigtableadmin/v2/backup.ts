@@ -66,7 +66,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly sizeBytes!: pulumi.Output<string>;
     /**
-     * Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+     * Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
      */
     public /*out*/ readonly sourceBackup!: pulumi.Output<string>;
     /**

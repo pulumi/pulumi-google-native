@@ -36,6 +36,10 @@ export interface GetFeatureOnlineStoreResult {
      */
     readonly createTime: string;
     /**
+     * Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+     */
+    readonly dedicatedServingEndpoint: outputs.aiplatform.v1.GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponse;
+    /**
      * Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     readonly etag: string;
@@ -44,9 +48,13 @@ export interface GetFeatureOnlineStoreResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+     * Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
      */
     readonly name: string;
+    /**
+     * Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+     */
+    readonly optimized: outputs.aiplatform.v1.GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponse;
     /**
      * State of the featureOnlineStore.
      */

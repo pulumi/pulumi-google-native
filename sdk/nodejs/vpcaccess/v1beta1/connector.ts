@@ -46,9 +46,17 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly connectorId!: pulumi.Output<string>;
     /**
+     * The creation time of the connector.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
+    /**
+     * The last restart time of the connector.
+     */
+    public /*out*/ readonly lastRestartTime!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
@@ -115,11 +123,15 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["subnet"] = args ? args.subnet : undefined;
             resourceInputs["connectedProjects"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["lastRestartTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["connectedProjects"] = undefined /*out*/;
             resourceInputs["connectorId"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ipCidrRange"] = undefined /*out*/;
+            resourceInputs["lastRestartTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["machineType"] = undefined /*out*/;
             resourceInputs["maxInstances"] = undefined /*out*/;

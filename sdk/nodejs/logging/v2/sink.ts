@@ -9,6 +9,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Sink extends pulumi.CustomResource {
     /**
@@ -74,9 +75,13 @@ export class Sink extends pulumi.CustomResource {
      */
     public readonly includeChildren!: pulumi.Output<boolean>;
     /**
-     * The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly interceptChildren!: pulumi.Output<boolean>;
+    /**
+     * The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First character has to be alphanumeric.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Deprecated. This field is unused.
      *
@@ -84,6 +89,10 @@ export class Sink extends pulumi.CustomResource {
      */
     public readonly outputVersionFormat!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The resource name of the sink. "projects/[PROJECT_ID]/sinks/[SINK_NAME] "organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME] "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME] "folders/[FOLDER_ID]/sinks/[SINK_NAME] For example: projects/my_project/sinks/SINK_NAME
+     */
+    public /*out*/ readonly resourceName!: pulumi.Output<string>;
     /**
      * Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.
      */
@@ -119,11 +128,13 @@ export class Sink extends pulumi.CustomResource {
             resourceInputs["exclusions"] = args ? args.exclusions : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["includeChildren"] = args ? args.includeChildren : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["interceptChildren"] = args ? args.interceptChildren : undefined;
             resourceInputs["outputVersionFormat"] = args ? args.outputVersionFormat : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resourceName"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["writerIdentity"] = undefined /*out*/;
         } else {
@@ -136,9 +147,11 @@ export class Sink extends pulumi.CustomResource {
             resourceInputs["exclusions"] = undefined /*out*/;
             resourceInputs["filter"] = undefined /*out*/;
             resourceInputs["includeChildren"] = undefined /*out*/;
+            resourceInputs["interceptChildren"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["outputVersionFormat"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["resourceName"] = undefined /*out*/;
             resourceInputs["uniqueWriterIdentity"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["writerIdentity"] = undefined /*out*/;
@@ -187,9 +200,9 @@ export interface SinkArgs {
      */
     includeChildren?: pulumi.Input<boolean>;
     /**
-     * The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
      */
-    name?: pulumi.Input<string>;
+    interceptChildren?: pulumi.Input<boolean>;
     /**
      * Deprecated. This field is unused.
      *

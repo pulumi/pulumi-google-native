@@ -92,6 +92,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly gceZone!: pulumi.Output<string>;
     /**
+     * Gemini configuration.
+     */
+    public readonly geminiConfig!: pulumi.Output<outputs.sqladmin.v1.GeminiInstanceConfigResponse>;
+    /**
      * The instance type.
      */
     public readonly instanceType!: pulumi.Output<string>;
@@ -145,7 +149,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly pscServiceAttachmentLink!: pulumi.Output<string>;
     /**
-     * The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+     * The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -156,6 +160,10 @@ export class Instance extends pulumi.CustomResource {
      * The replicas of the instance.
      */
     public readonly replicaNames!: pulumi.Output<string[]>;
+    /**
+     * Optional. The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+     */
+    public readonly replicationCluster!: pulumi.Output<outputs.sqladmin.v1.ReplicationClusterResponse>;
     /**
      * Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
      */
@@ -222,6 +230,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["failoverReplica"] = args ? args.failoverReplica : undefined;
             resourceInputs["gceZone"] = args ? args.gceZone : undefined;
+            resourceInputs["geminiConfig"] = args ? args.geminiConfig : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["ipAddresses"] = args ? args.ipAddresses : undefined;
             resourceInputs["ipv6Address"] = args ? args.ipv6Address : undefined;
@@ -236,6 +245,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["replicaConfiguration"] = args ? args.replicaConfiguration : undefined;
             resourceInputs["replicaNames"] = args ? args.replicaNames : undefined;
+            resourceInputs["replicationCluster"] = args ? args.replicationCluster : undefined;
             resourceInputs["rootPassword"] = args ? args.rootPassword : undefined;
             resourceInputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             resourceInputs["scheduledMaintenance"] = args ? args.scheduledMaintenance : undefined;
@@ -268,6 +278,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["failoverReplica"] = undefined /*out*/;
             resourceInputs["gceZone"] = undefined /*out*/;
+            resourceInputs["geminiConfig"] = undefined /*out*/;
             resourceInputs["instanceType"] = undefined /*out*/;
             resourceInputs["ipAddresses"] = undefined /*out*/;
             resourceInputs["ipv6Address"] = undefined /*out*/;
@@ -284,6 +295,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["replicaConfiguration"] = undefined /*out*/;
             resourceInputs["replicaNames"] = undefined /*out*/;
+            resourceInputs["replicationCluster"] = undefined /*out*/;
             resourceInputs["rootPassword"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["scheduledMaintenance"] = undefined /*out*/;
@@ -347,6 +359,10 @@ export interface InstanceArgs {
      */
     gceZone?: pulumi.Input<string>;
     /**
+     * Gemini configuration.
+     */
+    geminiConfig?: pulumi.Input<inputs.sqladmin.v1.GeminiInstanceConfigArgs>;
+    /**
      * The instance type.
      */
     instanceType?: pulumi.Input<enums.sqladmin.v1.InstanceInstanceType>;
@@ -393,7 +409,7 @@ export interface InstanceArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+     * The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
      */
     region?: pulumi.Input<string>;
     /**
@@ -404,6 +420,10 @@ export interface InstanceArgs {
      * The replicas of the instance.
      */
     replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Optional. The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+     */
+    replicationCluster?: pulumi.Input<inputs.sqladmin.v1.ReplicationClusterArgs>;
     /**
      * Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
      */

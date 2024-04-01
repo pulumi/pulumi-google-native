@@ -144,6 +144,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly params!: pulumi.Output<outputs.compute.beta.InstanceParamsResponse>;
     /**
+     * Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+     */
+    public readonly partnerMetadata!: pulumi.Output<{[key: string]: string}>;
+    /**
      * PostKeyRevocationActionType of the instance.
      */
     public readonly postKeyRevocationActionType!: pulumi.Output<string>;
@@ -168,6 +172,10 @@ export class Instance extends pulumi.CustomResource {
      * Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
      */
     public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.beta.ResourceStatusResponse>;
+    /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
     /**
      * Reserved for future use.
      */
@@ -255,6 +263,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
             resourceInputs["params"] = args ? args.params : undefined;
+            resourceInputs["partnerMetadata"] = args ? args.partnerMetadata : undefined;
             resourceInputs["postKeyRevocationActionType"] = args ? args.postKeyRevocationActionType : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -281,6 +290,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["lastStopTimestamp"] = undefined /*out*/;
             resourceInputs["lastSuspendedTimestamp"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["startRestricted"] = undefined /*out*/;
@@ -315,6 +325,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = undefined /*out*/;
             resourceInputs["networkPerformanceConfig"] = undefined /*out*/;
             resourceInputs["params"] = undefined /*out*/;
+            resourceInputs["partnerMetadata"] = undefined /*out*/;
             resourceInputs["postKeyRevocationActionType"] = undefined /*out*/;
             resourceInputs["privateIpv6GoogleAccess"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -322,6 +333,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["reservationAffinity"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["scheduling"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -424,6 +436,10 @@ export interface InstanceArgs {
      * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
      */
     params?: pulumi.Input<inputs.compute.beta.InstanceParamsArgs>;
+    /**
+     * Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+     */
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * PostKeyRevocationActionType of the instance.
      */

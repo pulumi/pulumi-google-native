@@ -46,11 +46,15 @@ export interface GetFeatureViewResult {
      */
     readonly featureRegistrySource: outputs.aiplatform.v1.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse;
     /**
+     * Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     */
+    readonly indexConfig: outputs.aiplatform.v1.GoogleCloudAiplatformV1FeatureViewIndexConfigResponse;
+    /**
      * Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
      */
     readonly labels: {[key: string]: string};
     /**
-     * Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+     * Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
      */
     readonly name: string;
     /**

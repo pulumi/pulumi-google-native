@@ -49,6 +49,10 @@ export class TestMatrix extends pulumi.CustomResource {
      */
     public readonly environmentMatrix!: pulumi.Output<outputs.testing.v1.EnvironmentMatrixResponse>;
     /**
+     * Details about why a matrix was deemed invalid. If multiple checks can be safely performed, they will be reported but no assumptions should be made about the length of this list.
+     */
+    public /*out*/ readonly extendedInvalidMatrixDetails!: pulumi.Output<outputs.testing.v1.MatrixErrorDetailResponse[]>;
+    /**
      * If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
      */
     public readonly failFast!: pulumi.Output<boolean>;
@@ -122,6 +126,7 @@ export class TestMatrix extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["resultStorage"] = args ? args.resultStorage : undefined;
             resourceInputs["testSpecification"] = args ? args.testSpecification : undefined;
+            resourceInputs["extendedInvalidMatrixDetails"] = undefined /*out*/;
             resourceInputs["invalidMatrixDetails"] = undefined /*out*/;
             resourceInputs["outcomeSummary"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -131,6 +136,7 @@ export class TestMatrix extends pulumi.CustomResource {
         } else {
             resourceInputs["clientInfo"] = undefined /*out*/;
             resourceInputs["environmentMatrix"] = undefined /*out*/;
+            resourceInputs["extendedInvalidMatrixDetails"] = undefined /*out*/;
             resourceInputs["failFast"] = undefined /*out*/;
             resourceInputs["flakyTestAttempts"] = undefined /*out*/;
             resourceInputs["invalidMatrixDetails"] = undefined /*out*/;

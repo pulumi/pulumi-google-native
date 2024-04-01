@@ -68,6 +68,10 @@ export interface GetRegistrationResult {
      */
     readonly pendingContactSettings: outputs.domains.v1alpha2.ContactSettingsResponse;
     /**
+     * Current domain management provider.
+     */
+    readonly provider: string;
+    /**
      * The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
      */
     readonly registerFailureReason: string;
@@ -80,9 +84,9 @@ export interface GetRegistrationResult {
      */
     readonly supportedPrivacy: string[];
     /**
-     * Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+     * Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
      *
-     * @deprecated Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+     * @deprecated Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
      */
     readonly transferFailureReason: string;
 }

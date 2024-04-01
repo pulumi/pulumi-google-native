@@ -42,6 +42,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly buildConfig!: pulumi.Output<outputs.cloudfunctions.v2.BuildConfigResponse>;
     /**
+     * The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * User-provided description of a function.
      */
     public readonly description!: pulumi.Output<string>;
@@ -92,6 +96,10 @@ export class Function extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
+     * UpgradeInfo for this Cloud Function
+     */
+    public /*out*/ readonly upgradeInfo!: pulumi.Output<outputs.cloudfunctions.v2.UpgradeInfoResponse>;
+    /**
      * The deployed url for the function.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
@@ -118,13 +126,16 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceConfig"] = args ? args.serviceConfig : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessages"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["upgradeInfo"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         } else {
             resourceInputs["buildConfig"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
             resourceInputs["eventTrigger"] = undefined /*out*/;
@@ -139,6 +150,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessages"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["upgradeInfo"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

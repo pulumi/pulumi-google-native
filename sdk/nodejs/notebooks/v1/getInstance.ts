@@ -100,7 +100,7 @@ export interface GetInstanceResult {
      */
     readonly machineType: string;
     /**
-     * Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
+     * Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
      */
     readonly metadata: {[key: string]: string};
     /**

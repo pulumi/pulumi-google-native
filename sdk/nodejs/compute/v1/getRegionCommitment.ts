@@ -48,6 +48,10 @@ export interface GetRegionCommitmentResult {
      */
     readonly endTimestamp: string;
     /**
+     * Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation 
+     */
+    readonly existingReservations: string[];
+    /**
      * Type of the resource. Always compute#commitment for commitments.
      */
     readonly kind: string;
@@ -72,7 +76,7 @@ export interface GetRegionCommitmentResult {
      */
     readonly region: string;
     /**
-     * List of create-on-create reseravtions for this commitment.
+     * List of create-on-create reservations for this commitment.
      */
     readonly reservations: outputs.compute.v1.ReservationResponse[];
     /**

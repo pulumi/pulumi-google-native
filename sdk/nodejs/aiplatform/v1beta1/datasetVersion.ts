@@ -45,10 +45,18 @@ export class DatasetVersion extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     public readonly datasetId!: pulumi.Output<string>;
     /**
+     * The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
      * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     public readonly etag!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
+    /**
+     * Additional information about the DatasetVersion.
+     */
+    public /*out*/ readonly metadata!: pulumi.Output<any>;
     /**
      * The resource name of the DatasetVersion.
      */
@@ -74,19 +82,23 @@ export class DatasetVersion extends pulumi.CustomResource {
                 throw new Error("Missing required property 'datasetId'");
             }
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["bigQueryDatasetName"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["bigQueryDatasetName"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["datasetId"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -103,6 +115,10 @@ export class DatasetVersion extends pulumi.CustomResource {
  */
 export interface DatasetVersionArgs {
     datasetId: pulumi.Input<string>;
+    /**
+     * The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+     */
+    displayName?: pulumi.Input<string>;
     /**
      * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */

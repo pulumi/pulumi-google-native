@@ -15,6 +15,11 @@ export const getFolderReplay: typeof import("./getFolderReplay").getFolderReplay
 export const getFolderReplayOutput: typeof import("./getFolderReplay").getFolderReplayOutput = null as any;
 utilities.lazyLoad(exports, ["getFolderReplay","getFolderReplayOutput"], () => require("./getFolderReplay"));
 
+export { GetOrgPolicyViolationsPreviewArgs, GetOrgPolicyViolationsPreviewResult, GetOrgPolicyViolationsPreviewOutputArgs } from "./getOrgPolicyViolationsPreview";
+export const getOrgPolicyViolationsPreview: typeof import("./getOrgPolicyViolationsPreview").getOrgPolicyViolationsPreview = null as any;
+export const getOrgPolicyViolationsPreviewOutput: typeof import("./getOrgPolicyViolationsPreview").getOrgPolicyViolationsPreviewOutput = null as any;
+utilities.lazyLoad(exports, ["getOrgPolicyViolationsPreview","getOrgPolicyViolationsPreviewOutput"], () => require("./getOrgPolicyViolationsPreview"));
+
 export { GetOrganizationReplayArgs, GetOrganizationReplayResult, GetOrganizationReplayOutputArgs } from "./getOrganizationReplay";
 export const getOrganizationReplay: typeof import("./getOrganizationReplay").getOrganizationReplay = null as any;
 export const getOrganizationReplayOutput: typeof import("./getOrganizationReplay").getOrganizationReplayOutput = null as any;
@@ -24,6 +29,11 @@ export { GetReplayArgs, GetReplayResult, GetReplayOutputArgs } from "./getReplay
 export const getReplay: typeof import("./getReplay").getReplay = null as any;
 export const getReplayOutput: typeof import("./getReplay").getReplayOutput = null as any;
 utilities.lazyLoad(exports, ["getReplay","getReplayOutput"], () => require("./getReplay"));
+
+export { OrgPolicyViolationsPreviewArgs } from "./orgPolicyViolationsPreview";
+export type OrgPolicyViolationsPreview = import("./orgPolicyViolationsPreview").OrgPolicyViolationsPreview;
+export const OrgPolicyViolationsPreview: typeof import("./orgPolicyViolationsPreview").OrgPolicyViolationsPreview = null as any;
+utilities.lazyLoad(exports, ["OrgPolicyViolationsPreview"], () => require("./orgPolicyViolationsPreview"));
 
 export { OrganizationReplayArgs } from "./organizationReplay";
 export type OrganizationReplay = import("./organizationReplay").OrganizationReplay;
@@ -45,6 +55,8 @@ const _module = {
         switch (type) {
             case "google-native:policysimulator/v1:FolderReplay":
                 return new FolderReplay(name, <any>undefined, { urn })
+            case "google-native:policysimulator/v1:OrgPolicyViolationsPreview":
+                return new OrgPolicyViolationsPreview(name, <any>undefined, { urn })
             case "google-native:policysimulator/v1:OrganizationReplay":
                 return new OrganizationReplay(name, <any>undefined, { urn })
             case "google-native:policysimulator/v1:Replay":

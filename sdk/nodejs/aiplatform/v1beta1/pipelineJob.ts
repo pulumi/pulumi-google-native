@@ -83,6 +83,10 @@ export class PipelineJob extends pulumi.CustomResource {
      * The spec of the pipeline.
      */
     public readonly pipelineSpec!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Optional. Whether to do component level validations before job creation.
+     */
+    public readonly preflightValidations!: pulumi.Output<boolean>;
     public readonly project!: pulumi.Output<string>;
     /**
      * A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
@@ -139,6 +143,7 @@ export class PipelineJob extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["pipelineJobId"] = args ? args.pipelineJobId : undefined;
             resourceInputs["pipelineSpec"] = args ? args.pipelineSpec : undefined;
+            resourceInputs["preflightValidations"] = args ? args.preflightValidations : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["reservedIpRanges"] = args ? args.reservedIpRanges : undefined;
             resourceInputs["runtimeConfig"] = args ? args.runtimeConfig : undefined;
@@ -167,6 +172,7 @@ export class PipelineJob extends pulumi.CustomResource {
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["pipelineJobId"] = undefined /*out*/;
             resourceInputs["pipelineSpec"] = undefined /*out*/;
+            resourceInputs["preflightValidations"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reservedIpRanges"] = undefined /*out*/;
             resourceInputs["runtimeConfig"] = undefined /*out*/;
@@ -214,6 +220,10 @@ export interface PipelineJobArgs {
      * The spec of the pipeline.
      */
     pipelineSpec?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Optional. Whether to do component level validations before job creation.
+     */
+    preflightValidations?: pulumi.Input<boolean>;
     project?: pulumi.Input<string>;
     /**
      * A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].

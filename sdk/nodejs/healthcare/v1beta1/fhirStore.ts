@@ -60,20 +60,24 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly disableResourceVersioning!: pulumi.Output<boolean>;
     /**
+     * Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
+     */
+    public readonly enableHistoryModifications!: pulumi.Output<boolean>;
+    /**
      * Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
      */
     public readonly enableUpdateCreate!: pulumi.Output<boolean>;
     /**
-     * The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     * Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
      */
-    public readonly fhirStoreId!: pulumi.Output<string | undefined>;
+    public readonly fhirStoreId!: pulumi.Output<string>;
     /**
      * User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+     * Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -118,12 +122,19 @@ export class FhirStore extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
+            if ((!args || args.fhirStoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'fhirStoreId'");
+            }
+            if ((!args || args.version === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'version'");
+            }
             resourceInputs["complexDataTypeReferenceParsing"] = args ? args.complexDataTypeReferenceParsing : undefined;
             resourceInputs["consentConfig"] = args ? args.consentConfig : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
             resourceInputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
             resourceInputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
+            resourceInputs["enableHistoryModifications"] = args ? args.enableHistoryModifications : undefined;
             resourceInputs["enableUpdateCreate"] = args ? args.enableUpdateCreate : undefined;
             resourceInputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -143,6 +154,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["defaultSearchHandlingStrict"] = undefined /*out*/;
             resourceInputs["disableReferentialIntegrity"] = undefined /*out*/;
             resourceInputs["disableResourceVersioning"] = undefined /*out*/;
+            resourceInputs["enableHistoryModifications"] = undefined /*out*/;
             resourceInputs["enableUpdateCreate"] = undefined /*out*/;
             resourceInputs["fhirStoreId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -157,7 +169,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["datasetId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "fhirStoreId", "location", "project"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(FhirStore.__pulumiType, name, resourceInputs, opts);
     }
@@ -189,13 +201,17 @@ export interface FhirStoreArgs {
      */
     disableResourceVersioning?: pulumi.Input<boolean>;
     /**
+     * Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
+     */
+    enableHistoryModifications?: pulumi.Input<boolean>;
+    /**
      * Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
      */
     enableUpdateCreate?: pulumi.Input<boolean>;
     /**
-     * The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     * Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
      */
-    fhirStoreId?: pulumi.Input<string>;
+    fhirStoreId: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
@@ -227,5 +243,5 @@ export interface FhirStoreArgs {
     /**
      * Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
      */
-    version?: pulumi.Input<enums.healthcare.v1beta1.FhirStoreVersion>;
+    version: pulumi.Input<enums.healthcare.v1beta1.FhirStoreVersion>;
 }

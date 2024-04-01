@@ -48,9 +48,17 @@ export interface GetVersionResult {
      */
     readonly description: string;
     /**
+     * Optional. True if variable masking feature should be turned on for this version
+     */
+    readonly enableVariableMasking: boolean;
+    /**
      * Optional. Error Catch Task configuration for the integration. It's optional.
      */
     readonly errorCatcherConfigs: outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse[];
+    /**
+     * Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter.
+     */
+    readonly integrationConfigParameters: outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse[];
     /**
      * Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
      */

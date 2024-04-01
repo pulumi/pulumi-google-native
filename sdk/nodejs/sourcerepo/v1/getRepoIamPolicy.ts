@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ * Gets the IAM policy policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getRepoIamPolicy(args: GetRepoIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRepoIamPolicyResult> {
 
@@ -45,7 +45,7 @@ export interface GetRepoIamPolicyResult {
     readonly version: number;
 }
 /**
- * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ * Gets the IAM policy policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getRepoIamPolicyOutput(args: GetRepoIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepoIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getRepoIamPolicy(a, opts))

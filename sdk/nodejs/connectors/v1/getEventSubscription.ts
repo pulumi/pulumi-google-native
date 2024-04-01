@@ -62,6 +62,10 @@ export interface GetEventSubscriptionResult {
      */
     readonly subscriberLink: string;
     /**
+     * Optional. Configuration for configuring the trigger
+     */
+    readonly triggerConfigVariables: outputs.connectors.v1.ConfigVariableResponse[];
+    /**
      * Updated time.
      */
     readonly updateTime: string;

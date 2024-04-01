@@ -108,6 +108,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly scalingConfig!: pulumi.Output<outputs.metastore.v1beta.ScalingConfigResponse>;
     /**
+     * Optional. The configuration of scheduled backup for the metastore service.
+     */
+    public readonly scheduledBackup!: pulumi.Output<outputs.metastore.v1beta.ScheduledBackupResponse>;
+    /**
      * Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
      */
     public readonly serviceId!: pulumi.Output<string>;
@@ -165,6 +169,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["scalingConfig"] = args ? args.scalingConfig : undefined;
+            resourceInputs["scheduledBackup"] = args ? args.scheduledBackup : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["telemetryConfig"] = args ? args.telemetryConfig : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
@@ -196,6 +201,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["releaseChannel"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["scalingConfig"] = undefined /*out*/;
+            resourceInputs["scheduledBackup"] = undefined /*out*/;
             resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
@@ -269,6 +275,10 @@ export interface ServiceArgs {
      * Scaling configuration of the metastore service.
      */
     scalingConfig?: pulumi.Input<inputs.metastore.v1beta.ScalingConfigArgs>;
+    /**
+     * Optional. The configuration of scheduled backup for the metastore service.
+     */
+    scheduledBackup?: pulumi.Input<inputs.metastore.v1beta.ScheduledBackupArgs>;
     /**
      * Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
      */

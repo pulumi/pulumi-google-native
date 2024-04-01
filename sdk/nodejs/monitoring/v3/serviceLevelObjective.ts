@@ -51,7 +51,7 @@ export class ServiceLevelObjective extends pulumi.CustomResource {
      */
     public readonly goal!: pulumi.Output<number>;
     /**
-     * Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+     * Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -142,7 +142,7 @@ export interface ServiceLevelObjectiveArgs {
      */
     goal?: pulumi.Input<number>;
     /**
-     * Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+     * Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
      */
     name?: pulumi.Input<string>;
     /**

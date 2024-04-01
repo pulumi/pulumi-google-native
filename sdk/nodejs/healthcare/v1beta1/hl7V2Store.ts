@@ -39,16 +39,16 @@ export class Hl7V2Store extends pulumi.CustomResource {
 
     public readonly datasetId!: pulumi.Output<string>;
     /**
-     * The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     * Required. The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
      */
-    public readonly hl7V2StoreId!: pulumi.Output<string | undefined>;
+    public readonly hl7V2StoreId!: pulumi.Output<string>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+     * Identifier. Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -83,6 +83,9 @@ export class Hl7V2Store extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
+            if ((!args || args.hl7V2StoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'hl7V2StoreId'");
+            }
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -106,7 +109,7 @@ export class Hl7V2Store extends pulumi.CustomResource {
             resourceInputs["rejectDuplicateMessage"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["datasetId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "hl7V2StoreId", "location", "project"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Hl7V2Store.__pulumiType, name, resourceInputs, opts);
     }
@@ -118,16 +121,16 @@ export class Hl7V2Store extends pulumi.CustomResource {
 export interface Hl7V2StoreArgs {
     datasetId: pulumi.Input<string>;
     /**
-     * The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     * Required. The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
      */
-    hl7V2StoreId?: pulumi.Input<string>;
+    hl7V2StoreId: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+     * Identifier. Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
      */
     name?: pulumi.Input<string>;
     /**

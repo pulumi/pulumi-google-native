@@ -206,13 +206,13 @@ export const MetadataOptionsTimeCreated = {
      */
     TimeCreatedSkip: "TIME_CREATED_SKIP",
     /**
-     * Preserves the source object's `timeCreated` metadata in the `customTime` field in the destination object. Note that any value stored in the source object's `customTime` field will not be propagated to the destination object.
+     * Preserves the source object's `timeCreated` or `lastModified` metadata in the `customTime` field in the destination object. Note that any value stored in the source object's `customTime` field will not be propagated to the destination object.
      */
     TimeCreatedPreserveAsCustomTime: "TIME_CREATED_PRESERVE_AS_CUSTOM_TIME",
 } as const;
 
 /**
- * Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+ * Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
  */
 export type MetadataOptionsTimeCreated = (typeof MetadataOptionsTimeCreated)[keyof typeof MetadataOptionsTimeCreated];
 

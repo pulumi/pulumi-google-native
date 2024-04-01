@@ -56,6 +56,10 @@ export interface GetMachineImageResult {
     /**
      * Reserved for future use.
      */
+    readonly satisfiesPzi: boolean;
+    /**
+     * Reserved for future use.
+     */
     readonly satisfiesPzs: boolean;
     /**
      * An array of Machine Image specific properties for disks attached to the source instance

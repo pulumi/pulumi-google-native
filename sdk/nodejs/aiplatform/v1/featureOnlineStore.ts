@@ -9,7 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new FeatureOnlineStore in a given project and location.
- * Auto-naming is currently not supported for this resource.
  */
 export class FeatureOnlineStore extends pulumi.CustomResource {
     /**
@@ -47,6 +46,10 @@ export class FeatureOnlineStore extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+     */
+    public readonly dedicatedServingEndpoint!: pulumi.Output<outputs.aiplatform.v1.GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponse>;
+    /**
      * Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     public readonly etag!: pulumi.Output<string>;
@@ -60,9 +63,13 @@ export class FeatureOnlineStore extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+     * Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+     */
+    public readonly optimized!: pulumi.Output<outputs.aiplatform.v1.GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
      * State of the featureOnlineStore.
@@ -88,23 +95,27 @@ export class FeatureOnlineStore extends pulumi.CustomResource {
                 throw new Error("Missing required property 'featureOnlineStoreId'");
             }
             resourceInputs["bigtable"] = args ? args.bigtable : undefined;
+            resourceInputs["dedicatedServingEndpoint"] = args ? args.dedicatedServingEndpoint : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["featureOnlineStoreId"] = args ? args.featureOnlineStoreId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["optimized"] = args ? args.optimized : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["bigtable"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dedicatedServingEndpoint"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["featureOnlineStoreId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["optimized"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -125,6 +136,10 @@ export interface FeatureOnlineStoreArgs {
      */
     bigtable?: pulumi.Input<inputs.aiplatform.v1.GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgs>;
     /**
+     * Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+     */
+    dedicatedServingEndpoint?: pulumi.Input<inputs.aiplatform.v1.GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointArgs>;
+    /**
      * Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     etag?: pulumi.Input<string>;
@@ -137,5 +152,13 @@ export interface FeatureOnlineStoreArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+     */
+    optimized?: pulumi.Input<inputs.aiplatform.v1.GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedArgs>;
     project?: pulumi.Input<string>;
 }

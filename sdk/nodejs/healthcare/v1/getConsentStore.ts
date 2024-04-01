@@ -39,7 +39,7 @@ export interface GetConsentStoreResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
+     * Identifier. Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
      */
     readonly name: string;
 }

@@ -141,7 +141,7 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly provisionedIops!: pulumi.Output<string>;
     /**
-     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
      */
     public readonly provisionedThroughput!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
@@ -161,6 +161,10 @@ export class RegionDisk extends pulumi.CustomResource {
      * Status information for the disk resource.
      */
     public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.beta.DiskResourceStatusResponse>;
+    /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
     /**
      * Reserved for future use.
      */
@@ -230,6 +234,10 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+     */
+    public readonly storagePool!: pulumi.Output<string>;
+    /**
      * [Deprecated] Storage type of the persistent disk.
      *
      * @deprecated [Deprecated] Storage type of the persistent disk.
@@ -298,6 +306,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["sourceStorageObject"] = args ? args.sourceStorageObject : undefined;
+            resourceInputs["storagePool"] = args ? args.storagePool : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["userLicenses"] = args ? args.userLicenses : undefined;
@@ -309,6 +318,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["lastDetachTimestamp"] = undefined /*out*/;
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sourceConsistencyGroupPolicy"] = undefined /*out*/;
@@ -353,6 +363,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sizeGb"] = undefined /*out*/;
@@ -370,6 +381,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
             resourceInputs["sourceStorageObject"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["storagePool"] = undefined /*out*/;
             resourceInputs["storageType"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userLicenses"] = undefined /*out*/;
@@ -463,7 +475,7 @@ export interface RegionDiskArgs {
      */
     provisionedIops?: pulumi.Input<string>;
     /**
-     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
      */
     provisionedThroughput?: pulumi.Input<string>;
     region: pulumi.Input<string>;
@@ -511,6 +523,10 @@ export interface RegionDiskArgs {
      * The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
      */
     sourceStorageObject?: pulumi.Input<string>;
+    /**
+     * The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+     */
+    storagePool?: pulumi.Input<string>;
     /**
      * [Deprecated] Storage type of the persistent disk.
      *

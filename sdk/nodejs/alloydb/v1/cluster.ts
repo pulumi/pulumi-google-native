@@ -112,9 +112,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+     * The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
      *
-     * @deprecated Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+     * @deprecated Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
      */
     public readonly network!: pulumi.Output<string>;
     public readonly networkConfig!: pulumi.Output<outputs.alloydb.v1.NetworkConfigResponse>;
@@ -131,6 +131,10 @@ export class Cluster extends pulumi.CustomResource {
      * Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
+    /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
      * Cross Region replication config specific to SECONDARY cluster.
      */
@@ -196,6 +200,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["primaryConfig"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -225,6 +230,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["secondaryConfig"] = undefined /*out*/;
             resourceInputs["sslConfig"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -284,9 +290,9 @@ export interface ClusterArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+     * The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
      *
-     * @deprecated Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+     * @deprecated Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
      */
     network: pulumi.Input<string>;
     networkConfig?: pulumi.Input<inputs.alloydb.v1.NetworkConfigArgs>;

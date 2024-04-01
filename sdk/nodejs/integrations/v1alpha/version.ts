@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Create a integration with a draft version in the specified project.
+ * Uploads an integration. The content can be a previously downloaded integration. Performs the same function as CreateDraftIntegrationVersion, but accepts input in a string format, which holds the complete representation of the IntegrationVersion content.
  * Auto-naming is currently not supported for this resource.
  */
 export class Version extends pulumi.CustomResource {
@@ -41,11 +41,7 @@ export class Version extends pulumi.CustomResource {
     /**
      * Optional. Cloud Logging details for the integration version
      */
-    public readonly cloudLoggingDetails!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse>;
-    /**
-     * Optional. Optional. Indicates if sample workflow should be created.
-     */
-    public readonly createSampleIntegrations!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly cloudLoggingDetails!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse>;
     /**
      * Auto-generated.
      */
@@ -53,59 +49,63 @@ export class Version extends pulumi.CustomResource {
     /**
      * Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
      */
-    public readonly databasePersistencePolicy!: pulumi.Output<string>;
+    public /*out*/ readonly databasePersistencePolicy!: pulumi.Output<string>;
     /**
      * Optional. The integration description.
      */
-    public readonly description!: pulumi.Output<string>;
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. True if variable masking feature should be turned on for this version
+     */
+    public /*out*/ readonly enableVariableMasking!: pulumi.Output<boolean>;
     /**
      * Optional. Error Catch Task configuration for the integration. It's optional.
      */
-    public readonly errorCatcherConfigs!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse[]>;
+    public /*out*/ readonly errorCatcherConfigs!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse[]>;
+    /**
+     * Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter.
+     */
+    public /*out*/ readonly integrationConfigParameters!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse[]>;
     public readonly integrationId!: pulumi.Output<string>;
     /**
      * Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
      */
-    public readonly integrationParameters!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaIntegrationParameterResponse[]>;
+    public /*out*/ readonly integrationParameters!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaIntegrationParameterResponse[]>;
     /**
      * Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
      */
-    public readonly integrationParametersInternal!: pulumi.Output<outputs.integrations.v1alpha.EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse>;
+    public /*out*/ readonly integrationParametersInternal!: pulumi.Output<outputs.integrations.v1alpha.EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse>;
     /**
      * Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
      */
-    public readonly lastModifierEmail!: pulumi.Output<string>;
+    public /*out*/ readonly lastModifierEmail!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
      */
-    public readonly lockHolder!: pulumi.Output<string>;
+    public /*out*/ readonly lockHolder!: pulumi.Output<string>;
     /**
      * Auto-generated primary key.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-     */
-    public readonly newIntegration!: pulumi.Output<boolean | undefined>;
-    /**
      * Optional. The origin that indicates where this integration is coming from.
      */
-    public readonly origin!: pulumi.Output<string>;
+    public /*out*/ readonly origin!: pulumi.Output<string>;
     /**
      * Optional. The id of the template which was used to create this integration_version.
      */
-    public readonly parentTemplateId!: pulumi.Output<string>;
+    public /*out*/ readonly parentTemplateId!: pulumi.Output<string>;
     public readonly productId!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
      */
-    public readonly runAsServiceAccount!: pulumi.Output<string>;
+    public /*out*/ readonly runAsServiceAccount!: pulumi.Output<string>;
     /**
      * Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
      */
-    public readonly snapshotNumber!: pulumi.Output<string>;
+    public /*out*/ readonly snapshotNumber!: pulumi.Output<string>;
     /**
      * User should not set it as an input.
      */
@@ -117,23 +117,23 @@ export class Version extends pulumi.CustomResource {
     /**
      * Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
      */
-    public readonly taskConfigs!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaTaskConfigResponse[]>;
+    public /*out*/ readonly taskConfigs!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaTaskConfigResponse[]>;
     /**
      * Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
      */
-    public readonly taskConfigsInternal!: pulumi.Output<outputs.integrations.v1alpha.EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse[]>;
+    public /*out*/ readonly taskConfigsInternal!: pulumi.Output<outputs.integrations.v1alpha.EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse[]>;
     /**
      * Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
      */
-    public readonly teardown!: pulumi.Output<outputs.integrations.v1alpha.EnterpriseCrmEventbusProtoTeardownResponse>;
+    public /*out*/ readonly teardown!: pulumi.Output<outputs.integrations.v1alpha.EnterpriseCrmEventbusProtoTeardownResponse>;
     /**
      * Optional. Trigger configurations.
      */
-    public readonly triggerConfigs!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaTriggerConfigResponse[]>;
+    public /*out*/ readonly triggerConfigs!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaTriggerConfigResponse[]>;
     /**
      * Optional. Trigger configurations.
      */
-    public readonly triggerConfigsInternal!: pulumi.Output<outputs.integrations.v1alpha.EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse[]>;
+    public /*out*/ readonly triggerConfigsInternal!: pulumi.Output<outputs.integrations.v1alpha.EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse[]>;
     /**
      * Auto-generated.
      */
@@ -141,7 +141,7 @@ export class Version extends pulumi.CustomResource {
     /**
      * Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
      */
-    public readonly userLabel!: pulumi.Output<string>;
+    public /*out*/ readonly userLabel!: pulumi.Output<string>;
 
     /**
      * Create a Version resource with the given unique name, arguments, and options.
@@ -160,42 +160,45 @@ export class Version extends pulumi.CustomResource {
             if ((!args || args.productId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
-            resourceInputs["cloudLoggingDetails"] = args ? args.cloudLoggingDetails : undefined;
-            resourceInputs["createSampleIntegrations"] = args ? args.createSampleIntegrations : undefined;
-            resourceInputs["databasePersistencePolicy"] = args ? args.databasePersistencePolicy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["errorCatcherConfigs"] = args ? args.errorCatcherConfigs : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["fileFormat"] = args ? args.fileFormat : undefined;
             resourceInputs["integrationId"] = args ? args.integrationId : undefined;
-            resourceInputs["integrationParameters"] = args ? args.integrationParameters : undefined;
-            resourceInputs["integrationParametersInternal"] = args ? args.integrationParametersInternal : undefined;
-            resourceInputs["lastModifierEmail"] = args ? args.lastModifierEmail : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["lockHolder"] = args ? args.lockHolder : undefined;
-            resourceInputs["newIntegration"] = args ? args.newIntegration : undefined;
-            resourceInputs["origin"] = args ? args.origin : undefined;
-            resourceInputs["parentTemplateId"] = args ? args.parentTemplateId : undefined;
             resourceInputs["productId"] = args ? args.productId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["runAsServiceAccount"] = args ? args.runAsServiceAccount : undefined;
-            resourceInputs["snapshotNumber"] = args ? args.snapshotNumber : undefined;
-            resourceInputs["taskConfigs"] = args ? args.taskConfigs : undefined;
-            resourceInputs["taskConfigsInternal"] = args ? args.taskConfigsInternal : undefined;
-            resourceInputs["teardown"] = args ? args.teardown : undefined;
-            resourceInputs["triggerConfigs"] = args ? args.triggerConfigs : undefined;
-            resourceInputs["triggerConfigsInternal"] = args ? args.triggerConfigsInternal : undefined;
-            resourceInputs["userLabel"] = args ? args.userLabel : undefined;
-            resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["updateTime"] = undefined /*out*/;
-        } else {
             resourceInputs["cloudLoggingDetails"] = undefined /*out*/;
-            resourceInputs["createSampleIntegrations"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databasePersistencePolicy"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enableVariableMasking"] = undefined /*out*/;
             resourceInputs["errorCatcherConfigs"] = undefined /*out*/;
+            resourceInputs["integrationConfigParameters"] = undefined /*out*/;
+            resourceInputs["integrationParameters"] = undefined /*out*/;
+            resourceInputs["integrationParametersInternal"] = undefined /*out*/;
+            resourceInputs["lastModifierEmail"] = undefined /*out*/;
+            resourceInputs["lockHolder"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["origin"] = undefined /*out*/;
+            resourceInputs["parentTemplateId"] = undefined /*out*/;
+            resourceInputs["runAsServiceAccount"] = undefined /*out*/;
+            resourceInputs["snapshotNumber"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["taskConfigs"] = undefined /*out*/;
+            resourceInputs["taskConfigsInternal"] = undefined /*out*/;
+            resourceInputs["teardown"] = undefined /*out*/;
+            resourceInputs["triggerConfigs"] = undefined /*out*/;
+            resourceInputs["triggerConfigsInternal"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["userLabel"] = undefined /*out*/;
+        } else {
+            resourceInputs["cloudLoggingDetails"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["databasePersistencePolicy"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enableVariableMasking"] = undefined /*out*/;
+            resourceInputs["errorCatcherConfigs"] = undefined /*out*/;
+            resourceInputs["integrationConfigParameters"] = undefined /*out*/;
             resourceInputs["integrationId"] = undefined /*out*/;
             resourceInputs["integrationParameters"] = undefined /*out*/;
             resourceInputs["integrationParametersInternal"] = undefined /*out*/;
@@ -203,7 +206,6 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["lockHolder"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["newIntegration"] = undefined /*out*/;
             resourceInputs["origin"] = undefined /*out*/;
             resourceInputs["parentTemplateId"] = undefined /*out*/;
             resourceInputs["productId"] = undefined /*out*/;
@@ -232,87 +234,15 @@ export class Version extends pulumi.CustomResource {
  */
 export interface VersionArgs {
     /**
-     * Optional. Cloud Logging details for the integration version
+     * The textproto of the integration_version.
      */
-    cloudLoggingDetails?: pulumi.Input<inputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs>;
+    content?: pulumi.Input<string>;
     /**
-     * Optional. Optional. Indicates if sample workflow should be created.
+     * File format for upload request.
      */
-    createSampleIntegrations?: pulumi.Input<boolean>;
-    /**
-     * Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
-     */
-    databasePersistencePolicy?: pulumi.Input<enums.integrations.v1alpha.VersionDatabasePersistencePolicy>;
-    /**
-     * Optional. The integration description.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Optional. Error Catch Task configuration for the integration. It's optional.
-     */
-    errorCatcherConfigs?: pulumi.Input<pulumi.Input<inputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs>[]>;
+    fileFormat?: pulumi.Input<enums.integrations.v1alpha.VersionFileFormat>;
     integrationId: pulumi.Input<string>;
-    /**
-     * Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-     */
-    integrationParameters?: pulumi.Input<pulumi.Input<inputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaIntegrationParameterArgs>[]>;
-    /**
-     * Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-     */
-    integrationParametersInternal?: pulumi.Input<inputs.integrations.v1alpha.EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs>;
-    /**
-     * Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-     */
-    lastModifierEmail?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
-    /**
-     * Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-     */
-    lockHolder?: pulumi.Input<string>;
-    /**
-     * Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-     */
-    newIntegration?: pulumi.Input<boolean>;
-    /**
-     * Optional. The origin that indicates where this integration is coming from.
-     */
-    origin?: pulumi.Input<enums.integrations.v1alpha.VersionOrigin>;
-    /**
-     * Optional. The id of the template which was used to create this integration_version.
-     */
-    parentTemplateId?: pulumi.Input<string>;
     productId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    /**
-     * Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
-     */
-    runAsServiceAccount?: pulumi.Input<string>;
-    /**
-     * Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
-     */
-    snapshotNumber?: pulumi.Input<string>;
-    /**
-     * Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-     */
-    taskConfigs?: pulumi.Input<pulumi.Input<inputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaTaskConfigArgs>[]>;
-    /**
-     * Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-     */
-    taskConfigsInternal?: pulumi.Input<pulumi.Input<inputs.integrations.v1alpha.EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs>[]>;
-    /**
-     * Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
-     */
-    teardown?: pulumi.Input<inputs.integrations.v1alpha.EnterpriseCrmEventbusProtoTeardownArgs>;
-    /**
-     * Optional. Trigger configurations.
-     */
-    triggerConfigs?: pulumi.Input<pulumi.Input<inputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaTriggerConfigArgs>[]>;
-    /**
-     * Optional. Trigger configurations.
-     */
-    triggerConfigsInternal?: pulumi.Input<pulumi.Input<inputs.integrations.v1alpha.EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs>[]>;
-    /**
-     * Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
-     */
-    userLabel?: pulumi.Input<string>;
 }

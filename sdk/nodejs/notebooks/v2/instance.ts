@@ -93,6 +93,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * The workforce pools proxy endpoint that is used to access the Jupyter notebook.
+     */
+    public /*out*/ readonly thirdPartyProxyUrl!: pulumi.Output<string>;
+    /**
      * Instance update time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -130,6 +134,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["proxyUri"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["thirdPartyProxyUrl"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["upgradeHistory"] = undefined /*out*/;
         } else {
@@ -148,6 +153,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["proxyUri"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["thirdPartyProxyUrl"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["upgradeHistory"] = undefined /*out*/;
         }

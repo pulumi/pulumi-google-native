@@ -38,6 +38,10 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
+     * If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+     */
+    public readonly automatedBackupPolicy!: pulumi.Output<outputs.bigtableadmin.v2.AutomatedBackupPolicyResponse>;
+    /**
      * If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
      */
     public readonly changeStreamConfig!: pulumi.Output<outputs.bigtableadmin.v2.ChangeStreamConfigResponse>;
@@ -89,6 +93,7 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.tableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
             }
+            resourceInputs["automatedBackupPolicy"] = args ? args.automatedBackupPolicy : undefined;
             resourceInputs["changeStreamConfig"] = args ? args.changeStreamConfig : undefined;
             resourceInputs["columnFamilies"] = args ? args.columnFamilies : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
@@ -102,6 +107,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["restoreInfo"] = undefined /*out*/;
             resourceInputs["stats"] = undefined /*out*/;
         } else {
+            resourceInputs["automatedBackupPolicy"] = undefined /*out*/;
             resourceInputs["changeStreamConfig"] = undefined /*out*/;
             resourceInputs["clusterStates"] = undefined /*out*/;
             resourceInputs["columnFamilies"] = undefined /*out*/;
@@ -124,6 +130,10 @@ export class Table extends pulumi.CustomResource {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    /**
+     * If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+     */
+    automatedBackupPolicy?: pulumi.Input<inputs.bigtableadmin.v2.AutomatedBackupPolicyArgs>;
     /**
      * If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
      */

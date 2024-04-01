@@ -140,7 +140,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly redisConfigs!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
+     * Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility * `REDIS_7_0` for Redis 7.0 compatibility
      */
     public readonly redisVersion!: pulumi.Output<string>;
     /**
@@ -152,11 +152,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly reservedIpRange!: pulumi.Output<string>;
     /**
-     * Optional. Output only. Reserved for future use. Zone Isolation compliance state of the instance. Field name and documentation is obfuscated according to go/per-resource-zi-bit-semantics.
+     * Optional. Output only. Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
     /**
-     * Optional. Output only. Reserved for future use. Zone Separation compliance state of the instance. Field name and documentation is obfuscated according to go/zs-resource-status.
+     * Optional. Output only. Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
@@ -369,7 +369,7 @@ export interface InstanceArgs {
      */
     redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
+     * Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility * `REDIS_7_0` for Redis 7.0 compatibility
      */
     redisVersion?: pulumi.Input<string>;
     /**

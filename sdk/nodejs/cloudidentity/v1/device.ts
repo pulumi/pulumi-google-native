@@ -95,6 +95,10 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly encryptionState!: pulumi.Output<string>;
     /**
+     * Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
+     */
+    public /*out*/ readonly endpointVerificationSpecificAttributes!: pulumi.Output<outputs.cloudidentity.v1.GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse>;
+    /**
      * Host name of the device.
      */
     public readonly hostname!: pulumi.Output<string>;
@@ -192,6 +196,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["enabledDeveloperOptions"] = undefined /*out*/;
             resourceInputs["enabledUsbDebugging"] = undefined /*out*/;
             resourceInputs["encryptionState"] = undefined /*out*/;
+            resourceInputs["endpointVerificationSpecificAttributes"] = undefined /*out*/;
             resourceInputs["imei"] = undefined /*out*/;
             resourceInputs["kernelVersion"] = undefined /*out*/;
             resourceInputs["managementState"] = undefined /*out*/;
@@ -220,6 +225,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["enabledDeveloperOptions"] = undefined /*out*/;
             resourceInputs["enabledUsbDebugging"] = undefined /*out*/;
             resourceInputs["encryptionState"] = undefined /*out*/;
+            resourceInputs["endpointVerificationSpecificAttributes"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
             resourceInputs["imei"] = undefined /*out*/;
             resourceInputs["kernelVersion"] = undefined /*out*/;

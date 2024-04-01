@@ -15,6 +15,11 @@ export type DataStore = import("./dataStore").DataStore;
 export const DataStore: typeof import("./dataStore").DataStore = null as any;
 utilities.lazyLoad(exports, ["DataStore"], () => require("./dataStore"));
 
+export { DataStoreConversationArgs } from "./dataStoreConversation";
+export type DataStoreConversation = import("./dataStoreConversation").DataStoreConversation;
+export const DataStoreConversation: typeof import("./dataStoreConversation").DataStoreConversation = null as any;
+utilities.lazyLoad(exports, ["DataStoreConversation"], () => require("./dataStoreConversation"));
+
 export { DocumentArgs } from "./document";
 export type Document = import("./document").Document;
 export const Document: typeof import("./document").Document = null as any;
@@ -24,6 +29,11 @@ export { EngineArgs } from "./engine";
 export type Engine = import("./engine").Engine;
 export const Engine: typeof import("./engine").Engine = null as any;
 utilities.lazyLoad(exports, ["Engine"], () => require("./engine"));
+
+export { EngineConversationArgs } from "./engineConversation";
+export type EngineConversation = import("./engineConversation").EngineConversation;
+export const EngineConversation: typeof import("./engineConversation").EngineConversation = null as any;
+utilities.lazyLoad(exports, ["EngineConversation"], () => require("./engineConversation"));
 
 export { GetConversationArgs, GetConversationResult, GetConversationOutputArgs } from "./getConversation";
 export const getConversation: typeof import("./getConversation").getConversation = null as any;
@@ -35,6 +45,11 @@ export const getDataStore: typeof import("./getDataStore").getDataStore = null a
 export const getDataStoreOutput: typeof import("./getDataStore").getDataStoreOutput = null as any;
 utilities.lazyLoad(exports, ["getDataStore","getDataStoreOutput"], () => require("./getDataStore"));
 
+export { GetDataStoreConversationArgs, GetDataStoreConversationResult, GetDataStoreConversationOutputArgs } from "./getDataStoreConversation";
+export const getDataStoreConversation: typeof import("./getDataStoreConversation").getDataStoreConversation = null as any;
+export const getDataStoreConversationOutput: typeof import("./getDataStoreConversation").getDataStoreConversationOutput = null as any;
+utilities.lazyLoad(exports, ["getDataStoreConversation","getDataStoreConversationOutput"], () => require("./getDataStoreConversation"));
+
 export { GetDocumentArgs, GetDocumentResult, GetDocumentOutputArgs } from "./getDocument";
 export const getDocument: typeof import("./getDocument").getDocument = null as any;
 export const getDocumentOutput: typeof import("./getDocument").getDocumentOutput = null as any;
@@ -45,15 +60,30 @@ export const getEngine: typeof import("./getEngine").getEngine = null as any;
 export const getEngineOutput: typeof import("./getEngine").getEngineOutput = null as any;
 utilities.lazyLoad(exports, ["getEngine","getEngineOutput"], () => require("./getEngine"));
 
+export { GetEngineConversationArgs, GetEngineConversationResult, GetEngineConversationOutputArgs } from "./getEngineConversation";
+export const getEngineConversation: typeof import("./getEngineConversation").getEngineConversation = null as any;
+export const getEngineConversationOutput: typeof import("./getEngineConversation").getEngineConversationOutput = null as any;
+utilities.lazyLoad(exports, ["getEngineConversation","getEngineConversationOutput"], () => require("./getEngineConversation"));
+
 export { GetSchemaArgs, GetSchemaResult, GetSchemaOutputArgs } from "./getSchema";
 export const getSchema: typeof import("./getSchema").getSchema = null as any;
 export const getSchemaOutput: typeof import("./getSchema").getSchemaOutput = null as any;
 utilities.lazyLoad(exports, ["getSchema","getSchemaOutput"], () => require("./getSchema"));
 
+export { GetTargetSiteArgs, GetTargetSiteResult, GetTargetSiteOutputArgs } from "./getTargetSite";
+export const getTargetSite: typeof import("./getTargetSite").getTargetSite = null as any;
+export const getTargetSiteOutput: typeof import("./getTargetSite").getTargetSiteOutput = null as any;
+utilities.lazyLoad(exports, ["getTargetSite","getTargetSiteOutput"], () => require("./getTargetSite"));
+
 export { SchemaArgs } from "./schema";
 export type Schema = import("./schema").Schema;
 export const Schema: typeof import("./schema").Schema = null as any;
 utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
+
+export { TargetSiteArgs } from "./targetSite";
+export type TargetSite = import("./targetSite").TargetSite;
+export const TargetSite: typeof import("./targetSite").TargetSite = null as any;
+utilities.lazyLoad(exports, ["TargetSite"], () => require("./targetSite"));
 
 
 // Export enums:
@@ -67,12 +97,18 @@ const _module = {
                 return new Conversation(name, <any>undefined, { urn })
             case "google-native:discoveryengine/v1alpha:DataStore":
                 return new DataStore(name, <any>undefined, { urn })
+            case "google-native:discoveryengine/v1alpha:DataStoreConversation":
+                return new DataStoreConversation(name, <any>undefined, { urn })
             case "google-native:discoveryengine/v1alpha:Document":
                 return new Document(name, <any>undefined, { urn })
             case "google-native:discoveryengine/v1alpha:Engine":
                 return new Engine(name, <any>undefined, { urn })
+            case "google-native:discoveryengine/v1alpha:EngineConversation":
+                return new EngineConversation(name, <any>undefined, { urn })
             case "google-native:discoveryengine/v1alpha:Schema":
                 return new Schema(name, <any>undefined, { urn })
+            case "google-native:discoveryengine/v1alpha:TargetSite":
+                return new TargetSite(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

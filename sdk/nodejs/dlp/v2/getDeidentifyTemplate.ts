@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+ * Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
  */
 export function getDeidentifyTemplate(args: GetDeidentifyTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetDeidentifyTemplateResult> {
 
@@ -53,7 +53,7 @@ export interface GetDeidentifyTemplateResult {
     readonly updateTime: string;
 }
 /**
- * Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+ * Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
  */
 export function getDeidentifyTemplateOutput(args: GetDeidentifyTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeidentifyTemplateResult> {
     return pulumi.output(args).apply((a: any) => getDeidentifyTemplate(a, opts))

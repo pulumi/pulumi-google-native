@@ -48,7 +48,7 @@ export interface GetManagementServerResult {
      */
     readonly managementUri: outputs.backupdr.v1.ManagementURIResponse;
     /**
-     * The resource name.
+     * Identifier. The resource name.
      */
     readonly name: string;
     /**
@@ -64,7 +64,7 @@ export interface GetManagementServerResult {
      */
     readonly state: string;
     /**
-     * The type of the ManagementServer resource.
+     * Optional. The type of the ManagementServer resource.
      */
     readonly type: string;
     /**

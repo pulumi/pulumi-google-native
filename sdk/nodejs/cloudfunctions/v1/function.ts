@@ -37,6 +37,7 @@ export class Function extends pulumi.CustomResource {
         return obj['__pulumiType'] === Function.__pulumiType;
     }
 
+    public readonly automaticUpdatePolicy!: pulumi.Output<outputs.cloudfunctions.v1.AutomaticUpdatePolicyResponse>;
     /**
      * The amount of memory in MB available for a function. Defaults to 256MB.
      */
@@ -54,6 +55,10 @@ export class Function extends pulumi.CustomResource {
      */
     public /*out*/ readonly buildName!: pulumi.Output<string>;
     /**
+     * Optional. A service account the user provides for use with Cloud Build.
+     */
+    public readonly buildServiceAccount!: pulumi.Output<string>;
+    /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
      */
     public readonly buildWorkerPool!: pulumi.Output<string>;
@@ -62,7 +67,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+     * Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
      */
     public readonly dockerRegistry!: pulumi.Output<string>;
     /**
@@ -116,6 +121,7 @@ export class Function extends pulumi.CustomResource {
      * @deprecated Deprecated: use vpc_connector
      */
     public readonly network!: pulumi.Output<string>;
+    public readonly onDeployUpdatePolicy!: pulumi.Output<outputs.cloudfunctions.v1.OnDeployUpdatePolicyResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
      * The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
@@ -185,8 +191,10 @@ export class Function extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["automaticUpdatePolicy"] = args ? args.automaticUpdatePolicy : undefined;
             resourceInputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
+            resourceInputs["buildServiceAccount"] = args ? args.buildServiceAccount : undefined;
             resourceInputs["buildWorkerPool"] = args ? args.buildWorkerPool : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dockerRegistry"] = args ? args.dockerRegistry : undefined;
@@ -203,6 +211,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["minInstances"] = args ? args.minInstances : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["onDeployUpdatePolicy"] = args ? args.onDeployUpdatePolicy : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["runtime"] = args ? args.runtime : undefined;
             resourceInputs["secretEnvironmentVariables"] = args ? args.secretEnvironmentVariables : undefined;
@@ -221,10 +230,12 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["versionId"] = undefined /*out*/;
         } else {
+            resourceInputs["automaticUpdatePolicy"] = undefined /*out*/;
             resourceInputs["availableMemoryMb"] = undefined /*out*/;
             resourceInputs["buildEnvironmentVariables"] = undefined /*out*/;
             resourceInputs["buildId"] = undefined /*out*/;
             resourceInputs["buildName"] = undefined /*out*/;
+            resourceInputs["buildServiceAccount"] = undefined /*out*/;
             resourceInputs["buildWorkerPool"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["dockerRegistry"] = undefined /*out*/;
@@ -241,6 +252,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["minInstances"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["onDeployUpdatePolicy"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["runtime"] = undefined /*out*/;
             resourceInputs["secretEnvironmentVariables"] = undefined /*out*/;
@@ -268,6 +280,7 @@ export class Function extends pulumi.CustomResource {
  * The set of arguments for constructing a Function resource.
  */
 export interface FunctionArgs {
+    automaticUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.v1.AutomaticUpdatePolicyArgs>;
     /**
      * The amount of memory in MB available for a function. Defaults to 256MB.
      */
@@ -277,6 +290,10 @@ export interface FunctionArgs {
      */
     buildEnvironmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Optional. A service account the user provides for use with Cloud Build.
+     */
+    buildServiceAccount?: pulumi.Input<string>;
+    /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
      */
     buildWorkerPool?: pulumi.Input<string>;
@@ -285,7 +302,7 @@ export interface FunctionArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+     * Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
      */
     dockerRegistry?: pulumi.Input<enums.cloudfunctions.v1.FunctionDockerRegistry>;
     /**
@@ -339,6 +356,7 @@ export interface FunctionArgs {
      * @deprecated Deprecated: use vpc_connector
      */
     network?: pulumi.Input<string>;
+    onDeployUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.v1.OnDeployUpdatePolicyArgs>;
     project?: pulumi.Input<string>;
     /**
      * The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).

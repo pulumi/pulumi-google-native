@@ -9,6 +9,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Message extends pulumi.CustomResource {
     /**
@@ -59,7 +60,7 @@ export class Message extends pulumi.CustomResource {
     /**
      * Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The parsed version of the raw message data.
      */
@@ -93,6 +94,9 @@ export class Message extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.data === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'data'");
+            }
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
@@ -105,13 +109,13 @@ export class Message extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["messageType"] = args ? args.messageType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["patientIds"] = args ? args.patientIds : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schematizedData"] = args ? args.schematizedData : undefined;
             resourceInputs["sendFacility"] = args ? args.sendFacility : undefined;
             resourceInputs["sendTime"] = args ? args.sendTime : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parsedData"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -143,7 +147,7 @@ export interface MessageArgs {
     /**
      * Raw message bytes.
      */
-    data?: pulumi.Input<string>;
+    data: pulumi.Input<string>;
     datasetId: pulumi.Input<string>;
     hl7V2StoreId: pulumi.Input<string>;
     /**
@@ -155,10 +159,6 @@ export interface MessageArgs {
      * The message type for this message. MSH-9.1.
      */
     messageType?: pulumi.Input<string>;
-    /**
-     * Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-     */
-    name?: pulumi.Input<string>;
     /**
      * All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
      */

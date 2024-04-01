@@ -113,6 +113,10 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
      * The size of the backup in bytes.
      */
     public /*out*/ readonly sizeBytes!: pulumi.Output<string>;
@@ -171,6 +175,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["expiryTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -196,6 +201,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

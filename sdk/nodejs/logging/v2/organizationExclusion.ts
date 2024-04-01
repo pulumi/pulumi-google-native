@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
+ * Auto-naming is currently not supported for this resource.
  */
 export class OrganizationExclusion extends pulumi.CustomResource {
     /**
@@ -53,7 +54,7 @@ export class OrganizationExclusion extends pulumi.CustomResource {
     /**
      * A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly organizationId!: pulumi.Output<string>;
     /**
      * The last update timestamp of the exclusion.This field may not be present for older exclusions.
@@ -80,9 +81,9 @@ export class OrganizationExclusion extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -116,9 +117,5 @@ export interface OrganizationExclusionArgs {
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries.For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)
      */
     filter: pulumi.Input<string>;
-    /**
-     * A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-     */
-    name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
 }

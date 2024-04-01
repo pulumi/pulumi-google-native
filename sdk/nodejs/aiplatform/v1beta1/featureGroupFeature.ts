@@ -82,6 +82,10 @@ export class FeatureGroupFeature extends pulumi.CustomResource {
      * Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+     */
+    public readonly pointOfContact!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was most recently updated.
@@ -92,7 +96,7 @@ export class FeatureGroupFeature extends pulumi.CustomResource {
      */
     public readonly valueType!: pulumi.Output<string>;
     /**
-     * Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+     * Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
      */
     public readonly versionColumnName!: pulumi.Output<string>;
 
@@ -122,6 +126,7 @@ export class FeatureGroupFeature extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pointOfContact"] = args ? args.pointOfContact : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["valueType"] = args ? args.valueType : undefined;
             resourceInputs["versionColumnName"] = args ? args.versionColumnName : undefined;
@@ -142,6 +147,7 @@ export class FeatureGroupFeature extends pulumi.CustomResource {
             resourceInputs["monitoringStats"] = undefined /*out*/;
             resourceInputs["monitoringStatsAnomalies"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pointOfContact"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["valueType"] = undefined /*out*/;
@@ -190,13 +196,17 @@ export interface FeatureGroupFeatureArgs {
      * Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+     */
+    pointOfContact?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
      */
     valueType?: pulumi.Input<enums.aiplatform.v1beta1.FeatureGroupFeatureValueType>;
     /**
-     * Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+     * Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
      */
     versionColumnName?: pulumi.Input<string>;
 }

@@ -38,6 +38,10 @@ export class TrustConfig extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+     */
+    public readonly allowlistedCertificates!: pulumi.Output<outputs.certificatemanager.v1.AllowlistedCertificateResponse[]>;
+    /**
      * The creation timestamp of a TrustConfig.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -86,6 +90,7 @@ export class TrustConfig extends pulumi.CustomResource {
             if ((!args || args.trustConfigId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'trustConfigId'");
             }
+            resourceInputs["allowlistedCertificates"] = args ? args.allowlistedCertificates : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -97,6 +102,7 @@ export class TrustConfig extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["allowlistedCertificates"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -119,6 +125,10 @@ export class TrustConfig extends pulumi.CustomResource {
  * The set of arguments for constructing a TrustConfig resource.
  */
 export interface TrustConfigArgs {
+    /**
+     * Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+     */
+    allowlistedCertificates?: pulumi.Input<pulumi.Input<inputs.certificatemanager.v1.AllowlistedCertificateArgs>[]>;
     /**
      * One or more paragraphs of text description of a TrustConfig.
      */

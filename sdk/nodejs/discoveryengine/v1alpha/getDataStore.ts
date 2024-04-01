@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -27,6 +30,10 @@ export interface GetDataStoreArgs {
 
 export interface GetDataStoreResult {
     /**
+     * Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with non-`PUBLIC_WEBSITE` content config.
+     */
+    readonly aclEnabled: boolean;
+    /**
      * Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
      */
     readonly contentConfig: string;
@@ -43,6 +50,14 @@ export interface GetDataStoreResult {
      */
     readonly displayName: string;
     /**
+     * Configuration for Document understanding and enrichment.
+     */
+    readonly documentProcessingConfig: outputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse;
+    /**
+     * Data store level identity provider config.
+     */
+    readonly idpConfig: outputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaIdpConfigResponse;
+    /**
      * Immutable. The industry vertical that the data store registers.
      */
     readonly industryVertical: string;
@@ -54,6 +69,10 @@ export interface GetDataStoreResult {
      * The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled.
      */
     readonly solutionTypes: string[];
+    /**
+     * The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against certain rules on schema. Learn more from [this doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+     */
+    readonly startingSchema: outputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaSchemaResponse;
 }
 /**
  * Gets a DataStore.

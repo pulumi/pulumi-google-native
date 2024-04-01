@@ -28,19 +28,23 @@ export interface GetCustomConnectorVersionArgs {
 
 export interface GetCustomConnectorVersionResult {
     /**
-     * Configuration for establishing the authentication to the connector destination.
+     * Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
      */
     readonly authConfig: outputs.connectors.v1.AuthConfigResponse;
+    /**
+     * Optional. Backend variables config templates. This translates to additional variable templates in connection.
+     */
+    readonly backendVariableTemplates: outputs.connectors.v1.ConfigVariableTemplateResponse[];
     /**
      * Created time.
      */
     readonly createTime: string;
     /**
-     * Configuration of the customConnector's destination.
+     * Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
      */
-    readonly destinationConfig: outputs.connectors.v1.DestinationConfigResponse;
+    readonly destinationConfigs: outputs.connectors.v1.DestinationConfigResponse[];
     /**
-     * Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+     * Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
      */
     readonly enableBackendDestinationConfig: boolean;
     /**
@@ -52,13 +56,21 @@ export interface GetCustomConnectorVersionResult {
      */
     readonly name: string;
     /**
-     * Service account needed for runtime plane to access Custom Connector secrets.
+     * Optional. Service account used by runtime plane to access auth config secrets.
      */
     readonly serviceAccount: string;
     /**
-     * Optional. Location of the custom connector spec.
+     * Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
      */
     readonly specLocation: string;
+    /**
+     * Server URLs parsed from the spec.
+     */
+    readonly specServerUrls: string[];
+    /**
+     * State of the custom connector version.
+     */
+    readonly state: string;
     /**
      * Updated time.
      */

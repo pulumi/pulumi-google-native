@@ -62,6 +62,110 @@ export const AuthConfigAuthType = {
  */
 export type AuthConfigAuthType = (typeof AuthConfigAuthType)[keyof typeof AuthConfigAuthType];
 
+export const ConfigVariableTemplateEnumSource = {
+    /**
+     * Api type unspecified.
+     */
+    EnumSourceUnspecified: "ENUM_SOURCE_UNSPECIFIED",
+    /**
+     * list event types.
+     */
+    EventTypesApi: "EVENT_TYPES_API",
+} as const;
+
+/**
+ * Optional. enum source denotes the source of api to fill the enum options
+ */
+export type ConfigVariableTemplateEnumSource = (typeof ConfigVariableTemplateEnumSource)[keyof typeof ConfigVariableTemplateEnumSource];
+
+export const ConfigVariableTemplateLocationType = {
+    /**
+     * Location type unspecified.
+     */
+    LocationTypeUnspecified: "LOCATION_TYPE_UNSPECIFIED",
+    /**
+     * Request header.
+     */
+    Header: "HEADER",
+    /**
+     * Request Payload.
+     */
+    Payload: "PAYLOAD",
+    /**
+     * Request query param.
+     */
+    QueryParam: "QUERY_PARAM",
+    /**
+     * Request path param.
+     */
+    PathParam: "PATH_PARAM",
+} as const;
+
+/**
+ * Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+ */
+export type ConfigVariableTemplateLocationType = (typeof ConfigVariableTemplateLocationType)[keyof typeof ConfigVariableTemplateLocationType];
+
+export const ConfigVariableTemplateState = {
+    /**
+     * Status is unspecified.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * Config variable is active
+     */
+    Active: "ACTIVE",
+    /**
+     * Config variable is deprecated.
+     */
+    Deprecated: "DEPRECATED",
+} as const;
+
+/**
+ * State of the config variable.
+ */
+export type ConfigVariableTemplateState = (typeof ConfigVariableTemplateState)[keyof typeof ConfigVariableTemplateState];
+
+export const ConfigVariableTemplateValueType = {
+    /**
+     * Value type is not specified.
+     */
+    ValueTypeUnspecified: "VALUE_TYPE_UNSPECIFIED",
+    /**
+     * Value type is string.
+     */
+    String: "STRING",
+    /**
+     * Value type is integer.
+     */
+    Int: "INT",
+    /**
+     * Value type is boolean.
+     */
+    Bool: "BOOL",
+    /**
+     * Value type is secret.
+     */
+    Secret: "SECRET",
+    /**
+     * Value type is enum.
+     */
+    Enum: "ENUM",
+    /**
+     * Value type is authorization code.
+     */
+    AuthorizationCode: "AUTHORIZATION_CODE",
+    /**
+     * Encryption Key.
+     */
+    EncryptionKey: "ENCRYPTION_KEY",
+} as const;
+
+/**
+ * Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+ */
+export type ConfigVariableTemplateValueType = (typeof ConfigVariableTemplateValueType)[keyof typeof ConfigVariableTemplateValueType];
+
 export const ConnectionEventingEnablementType = {
     /**
      * Eventing Enablement Type Unspecifeied.
@@ -138,6 +242,26 @@ export const EventSubscriptionDestinationType = {
  */
 export type EventSubscriptionDestinationType = (typeof EventSubscriptionDestinationType)[keyof typeof EventSubscriptionDestinationType];
 
+export const FieldComparisonComparator = {
+    /**
+     * The default value.
+     */
+    ComparatorUnspecified: "COMPARATOR_UNSPECIFIED",
+    /**
+     * The field value must be equal to the specified value.
+     */
+    Equals: "EQUALS",
+    /**
+     * The field value must not be equal to the specified value.
+     */
+    NotEquals: "NOT_EQUALS",
+} as const;
+
+/**
+ * Comparator to use for comparing the field value.
+ */
+export type FieldComparisonComparator = (typeof FieldComparisonComparator)[keyof typeof FieldComparisonComparator];
+
 export const JMSType = {
     /**
      * Default state.
@@ -157,6 +281,70 @@ export const JMSType = {
  * Optional. Type of the JMS Source. i.e. Queue or Topic
  */
 export type JMSType = (typeof JMSType)[keyof typeof JMSType];
+
+export const LogicalExpressionLogicalOperator = {
+    /**
+     * The default value.
+     */
+    OperatorUnspecified: "OPERATOR_UNSPECIFIED",
+    /**
+     * AND operator; The conditions must all be true.
+     */
+    And: "AND",
+    /**
+     * OR operator; At least one of the conditions must be true.
+     */
+    Or: "OR",
+} as const;
+
+/**
+ * The logical operator to use between the fields and conditions.
+ */
+export type LogicalExpressionLogicalOperator = (typeof LogicalExpressionLogicalOperator)[keyof typeof LogicalExpressionLogicalOperator];
+
+export const ResourceType = {
+    /**
+     * Value type is not specified.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Google Cloud Project Resource.
+     */
+    GcpProject: "GCP_PROJECT",
+    /**
+     * Any Google Cloud Resource which is identified uniquely by IAM.
+     */
+    GcpResource: "GCP_RESOURCE",
+    /**
+     * Google Cloud Secret Resource.
+     */
+    GcpSecretmanagerSecret: "GCP_SECRETMANAGER_SECRET",
+    /**
+     * Google Cloud Secret Version Resource.
+     */
+    GcpSecretmanagerSecretVersion: "GCP_SECRETMANAGER_SECRET_VERSION",
+} as const;
+
+/**
+ * Different types of resource supported.
+ */
+export type ResourceType = (typeof ResourceType)[keyof typeof ResourceType];
+
+export const RoleGrantPrincipal = {
+    /**
+     * Value type is not specified.
+     */
+    PrincipalUnspecified: "PRINCIPAL_UNSPECIFIED",
+    /**
+     * Service Account used for Connector workload identity This is either the default service account if unspecified or Service Account provided by Customers through BYOSA.
+     */
+    ConnectorSa: "CONNECTOR_SA",
+} as const;
+
+/**
+ * Prinicipal/Identity for whom the role need to assigned.
+ */
+export type RoleGrantPrincipal = (typeof RoleGrantPrincipal)[keyof typeof RoleGrantPrincipal];
 
 export const SslConfigClientCertType = {
     /**

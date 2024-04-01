@@ -50,6 +50,7 @@ export class HealthCheck extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     public readonly grpcHealthCheck!: pulumi.Output<outputs.compute.alpha.GRPCHealthCheckResponse>;
+    public readonly grpcTlsHealthCheck!: pulumi.Output<outputs.compute.alpha.GRPCTLSHealthCheckResponse>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
      */
@@ -120,6 +121,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["grpcHealthCheck"] = args ? args.grpcHealthCheck : undefined;
+            resourceInputs["grpcTlsHealthCheck"] = args ? args.grpcTlsHealthCheck : undefined;
             resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             resourceInputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
             resourceInputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
@@ -145,6 +147,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["grpcHealthCheck"] = undefined /*out*/;
+            resourceInputs["grpcTlsHealthCheck"] = undefined /*out*/;
             resourceInputs["healthyThreshold"] = undefined /*out*/;
             resourceInputs["http2HealthCheck"] = undefined /*out*/;
             resourceInputs["httpHealthCheck"] = undefined /*out*/;
@@ -185,6 +188,7 @@ export interface HealthCheckArgs {
      */
     description?: pulumi.Input<string>;
     grpcHealthCheck?: pulumi.Input<inputs.compute.alpha.GRPCHealthCheckArgs>;
+    grpcTlsHealthCheck?: pulumi.Input<inputs.compute.alpha.GRPCTLSHealthCheckArgs>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
      */

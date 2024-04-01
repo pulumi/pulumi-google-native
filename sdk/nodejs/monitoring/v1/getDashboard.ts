@@ -54,7 +54,7 @@ export interface GetDashboardResult {
      */
     readonly mosaicLayout: outputs.monitoring.v1.MosaicLayoutResponse;
     /**
-     * Immutable. The resource name of the dashboard.
+     * Identifier. The resource name of the dashboard.
      */
     readonly name: string;
     /**

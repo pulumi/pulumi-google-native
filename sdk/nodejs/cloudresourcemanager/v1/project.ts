@@ -65,6 +65,10 @@ export class Project extends pulumi.CustomResource {
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */
     public readonly projectNumber!: pulumi.Output<string>;
+    /**
+     * Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -84,6 +88,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["projectNumber"] = args ? args.projectNumber : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -92,6 +97,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["projectId"] = undefined /*out*/;
             resourceInputs["projectNumber"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);
@@ -130,4 +136,8 @@ export interface ProjectArgs {
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */
     projectNumber?: pulumi.Input<string>;
+    /**
+     * Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

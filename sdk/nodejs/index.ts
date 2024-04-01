@@ -21,6 +21,7 @@ import * as apigee from "./apigee";
 import * as apigeeregistry from "./apigeeregistry";
 import * as apikeys from "./apikeys";
 import * as appengine from "./appengine";
+import * as apphub from "./apphub";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as authorization from "./authorization";
@@ -169,6 +170,7 @@ export {
     apigeeregistry,
     apikeys,
     appengine,
+    apphub,
     artifactregistry,
     assuredworkloads,
     authorization,

@@ -10,6 +10,11 @@ export type FolderBigQueryExport = import("./folderBigQueryExport").FolderBigQue
 export const FolderBigQueryExport: typeof import("./folderBigQueryExport").FolderBigQueryExport = null as any;
 utilities.lazyLoad(exports, ["FolderBigQueryExport"], () => require("./folderBigQueryExport"));
 
+export { FolderEventThreatDetectionSettingCustomModuleArgs } from "./folderEventThreatDetectionSettingCustomModule";
+export type FolderEventThreatDetectionSettingCustomModule = import("./folderEventThreatDetectionSettingCustomModule").FolderEventThreatDetectionSettingCustomModule;
+export const FolderEventThreatDetectionSettingCustomModule: typeof import("./folderEventThreatDetectionSettingCustomModule").FolderEventThreatDetectionSettingCustomModule = null as any;
+utilities.lazyLoad(exports, ["FolderEventThreatDetectionSettingCustomModule"], () => require("./folderEventThreatDetectionSettingCustomModule"));
+
 export { FolderNotificationConfigArgs } from "./folderNotificationConfig";
 export type FolderNotificationConfig = import("./folderNotificationConfig").FolderNotificationConfig;
 export const FolderNotificationConfig: typeof import("./folderNotificationConfig").FolderNotificationConfig = null as any;
@@ -24,6 +29,11 @@ export { GetFolderBigQueryExportArgs, GetFolderBigQueryExportResult, GetFolderBi
 export const getFolderBigQueryExport: typeof import("./getFolderBigQueryExport").getFolderBigQueryExport = null as any;
 export const getFolderBigQueryExportOutput: typeof import("./getFolderBigQueryExport").getFolderBigQueryExportOutput = null as any;
 utilities.lazyLoad(exports, ["getFolderBigQueryExport","getFolderBigQueryExportOutput"], () => require("./getFolderBigQueryExport"));
+
+export { GetFolderEventThreatDetectionSettingCustomModuleArgs, GetFolderEventThreatDetectionSettingCustomModuleResult, GetFolderEventThreatDetectionSettingCustomModuleOutputArgs } from "./getFolderEventThreatDetectionSettingCustomModule";
+export const getFolderEventThreatDetectionSettingCustomModule: typeof import("./getFolderEventThreatDetectionSettingCustomModule").getFolderEventThreatDetectionSettingCustomModule = null as any;
+export const getFolderEventThreatDetectionSettingCustomModuleOutput: typeof import("./getFolderEventThreatDetectionSettingCustomModule").getFolderEventThreatDetectionSettingCustomModuleOutput = null as any;
+utilities.lazyLoad(exports, ["getFolderEventThreatDetectionSettingCustomModule","getFolderEventThreatDetectionSettingCustomModuleOutput"], () => require("./getFolderEventThreatDetectionSettingCustomModule"));
 
 export { GetFolderNotificationConfigArgs, GetFolderNotificationConfigResult, GetFolderNotificationConfigOutputArgs } from "./getFolderNotificationConfig";
 export const getFolderNotificationConfig: typeof import("./getFolderNotificationConfig").getFolderNotificationConfig = null as any;
@@ -79,6 +89,11 @@ export { GetProjectBigQueryExportArgs, GetProjectBigQueryExportResult, GetProjec
 export const getProjectBigQueryExport: typeof import("./getProjectBigQueryExport").getProjectBigQueryExport = null as any;
 export const getProjectBigQueryExportOutput: typeof import("./getProjectBigQueryExport").getProjectBigQueryExportOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectBigQueryExport","getProjectBigQueryExportOutput"], () => require("./getProjectBigQueryExport"));
+
+export { GetProjectEventThreatDetectionSettingCustomModuleArgs, GetProjectEventThreatDetectionSettingCustomModuleResult, GetProjectEventThreatDetectionSettingCustomModuleOutputArgs } from "./getProjectEventThreatDetectionSettingCustomModule";
+export const getProjectEventThreatDetectionSettingCustomModule: typeof import("./getProjectEventThreatDetectionSettingCustomModule").getProjectEventThreatDetectionSettingCustomModule = null as any;
+export const getProjectEventThreatDetectionSettingCustomModuleOutput: typeof import("./getProjectEventThreatDetectionSettingCustomModule").getProjectEventThreatDetectionSettingCustomModuleOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectEventThreatDetectionSettingCustomModule","getProjectEventThreatDetectionSettingCustomModuleOutput"], () => require("./getProjectEventThreatDetectionSettingCustomModule"));
 
 export { GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs, GetProjectSecurityHealthAnalyticsSettingCustomModuleResult, GetProjectSecurityHealthAnalyticsSettingCustomModuleOutputArgs } from "./getProjectSecurityHealthAnalyticsSettingCustomModule";
 export const getProjectSecurityHealthAnalyticsSettingCustomModule: typeof import("./getProjectSecurityHealthAnalyticsSettingCustomModule").getProjectSecurityHealthAnalyticsSettingCustomModule = null as any;
@@ -145,6 +160,11 @@ export type ProjectBigQueryExport = import("./projectBigQueryExport").ProjectBig
 export const ProjectBigQueryExport: typeof import("./projectBigQueryExport").ProjectBigQueryExport = null as any;
 utilities.lazyLoad(exports, ["ProjectBigQueryExport"], () => require("./projectBigQueryExport"));
 
+export { ProjectEventThreatDetectionSettingCustomModuleArgs } from "./projectEventThreatDetectionSettingCustomModule";
+export type ProjectEventThreatDetectionSettingCustomModule = import("./projectEventThreatDetectionSettingCustomModule").ProjectEventThreatDetectionSettingCustomModule;
+export const ProjectEventThreatDetectionSettingCustomModule: typeof import("./projectEventThreatDetectionSettingCustomModule").ProjectEventThreatDetectionSettingCustomModule = null as any;
+utilities.lazyLoad(exports, ["ProjectEventThreatDetectionSettingCustomModule"], () => require("./projectEventThreatDetectionSettingCustomModule"));
+
 export { ProjectSecurityHealthAnalyticsSettingCustomModuleArgs } from "./projectSecurityHealthAnalyticsSettingCustomModule";
 export type ProjectSecurityHealthAnalyticsSettingCustomModule = import("./projectSecurityHealthAnalyticsSettingCustomModule").ProjectSecurityHealthAnalyticsSettingCustomModule;
 export const ProjectSecurityHealthAnalyticsSettingCustomModule: typeof import("./projectSecurityHealthAnalyticsSettingCustomModule").ProjectSecurityHealthAnalyticsSettingCustomModule = null as any;
@@ -165,6 +185,8 @@ const _module = {
         switch (type) {
             case "google-native:securitycenter/v1:FolderBigQueryExport":
                 return new FolderBigQueryExport(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:FolderEventThreatDetectionSettingCustomModule":
+                return new FolderEventThreatDetectionSettingCustomModule(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:FolderNotificationConfig":
                 return new FolderNotificationConfig(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:FolderSecurityHealthAnalyticsSettingCustomModule":
@@ -191,6 +213,8 @@ const _module = {
                 return new OrganizationSourceIamPolicy(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:ProjectBigQueryExport":
                 return new ProjectBigQueryExport(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:ProjectEventThreatDetectionSettingCustomModule":
+                return new ProjectEventThreatDetectionSettingCustomModule(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:ProjectSecurityHealthAnalyticsSettingCustomModule":
                 return new ProjectSecurityHealthAnalyticsSettingCustomModule(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:Source":

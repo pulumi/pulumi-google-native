@@ -54,6 +54,10 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+     */
+    public readonly disallowUnspecifiedMode!: pulumi.Output<boolean>;
+    /**
      * Docker repository config contains repository level configuration for the repositories of docker type.
      */
     public readonly dockerConfig!: pulumi.Output<outputs.artifactregistry.v1.DockerRepositoryConfigResponse>;
@@ -125,6 +129,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["cleanupPolicies"] = args ? args.cleanupPolicies : undefined;
             resourceInputs["cleanupPolicyDryRun"] = args ? args.cleanupPolicyDryRun : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disallowUnspecifiedMode"] = args ? args.disallowUnspecifiedMode : undefined;
             resourceInputs["dockerConfig"] = args ? args.dockerConfig : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -146,6 +151,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["cleanupPolicyDryRun"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["disallowUnspecifiedMode"] = undefined /*out*/;
             resourceInputs["dockerConfig"] = undefined /*out*/;
             resourceInputs["format"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
@@ -185,6 +191,10 @@ export interface RepositoryArgs {
      * The user-provided description of the repository.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+     */
+    disallowUnspecifiedMode?: pulumi.Input<boolean>;
     /**
      * Docker repository config contains repository level configuration for the repositories of docker type.
      */

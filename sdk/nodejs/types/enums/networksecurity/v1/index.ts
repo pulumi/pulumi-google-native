@@ -126,6 +126,110 @@ export const RuleBasicProfile = {
  */
 export type RuleBasicProfile = (typeof RuleBasicProfile)[keyof typeof RuleBasicProfile];
 
+export const SecurityProfileType = {
+    /**
+     * Profile type not specified.
+     */
+    ProfileTypeUnspecified: "PROFILE_TYPE_UNSPECIFIED",
+    /**
+     * Profile type for threat prevention.
+     */
+    ThreatPrevention: "THREAT_PREVENTION",
+} as const;
+
+/**
+ * Immutable. The single ProfileType that the SecurityProfile resource configures.
+ */
+export type SecurityProfileType = (typeof SecurityProfileType)[keyof typeof SecurityProfileType];
+
+export const SeverityOverrideAction = {
+    /**
+     * Threat action not specified.
+     */
+    ThreatActionUnspecified: "THREAT_ACTION_UNSPECIFIED",
+    /**
+     * The default action (as specified by the vendor) is taken.
+     */
+    DefaultAction: "DEFAULT_ACTION",
+    /**
+     * The packet matching this rule will be allowed to transmit.
+     */
+    Allow: "ALLOW",
+    /**
+     * The packet matching this rule will be allowed to transmit, but a threat_log entry will be sent to the consumer project.
+     */
+    Alert: "ALERT",
+    /**
+     * The packet matching this rule will be dropped, and a threat_log entry will be sent to the consumer project.
+     */
+    Deny: "DENY",
+} as const;
+
+/**
+ * Required. Threat action override.
+ */
+export type SeverityOverrideAction = (typeof SeverityOverrideAction)[keyof typeof SeverityOverrideAction];
+
+export const SeverityOverrideSeverity = {
+    /**
+     * Severity level not specified.
+     */
+    SeverityUnspecified: "SEVERITY_UNSPECIFIED",
+    /**
+     * Suspicious events that do not pose an immediate threat, but that are reported to call attention to deeper problems that could possibly exist.
+     */
+    Informational: "INFORMATIONAL",
+    /**
+     * Warning-level threats that have very little impact on an organization's infrastructure. They usually require local or physical system access and may often result in victim privacy issues and information leakage.
+     */
+    Low: "LOW",
+    /**
+     * Minor threats in which impact is minimized, that do not compromise the target or exploits that require an attacker to reside on the same local network as the victim, affect only non-standard configurations or obscure applications, or provide very limited access.
+     */
+    Medium: "MEDIUM",
+    /**
+     * Threats that have the ability to become critical but have mitigating factors; for example, they may be difficult to exploit, do not result in elevated privileges, or do not have a large victim pool.
+     */
+    High: "HIGH",
+    /**
+     * Serious threats, such as those that affect default installations of widely deployed software, result in root compromise of servers, and the exploit code is widely available to attackers. The attacker usually does not need any special authentication credentials or knowledge about the individual victims and the target does not need to be manipulated into performing any special functions.
+     */
+    Critical: "CRITICAL",
+} as const;
+
+/**
+ * Required. Severity level to match.
+ */
+export type SeverityOverrideSeverity = (typeof SeverityOverrideSeverity)[keyof typeof SeverityOverrideSeverity];
+
+export const ThreatOverrideAction = {
+    /**
+     * Threat action not specified.
+     */
+    ThreatActionUnspecified: "THREAT_ACTION_UNSPECIFIED",
+    /**
+     * The default action (as specified by the vendor) is taken.
+     */
+    DefaultAction: "DEFAULT_ACTION",
+    /**
+     * The packet matching this rule will be allowed to transmit.
+     */
+    Allow: "ALLOW",
+    /**
+     * The packet matching this rule will be allowed to transmit, but a threat_log entry will be sent to the consumer project.
+     */
+    Alert: "ALERT",
+    /**
+     * The packet matching this rule will be dropped, and a threat_log entry will be sent to the consumer project.
+     */
+    Deny: "DENY",
+} as const;
+
+/**
+ * Required. Threat action override. For some threat types, only a subset of actions applies.
+ */
+export type ThreatOverrideAction = (typeof ThreatOverrideAction)[keyof typeof ThreatOverrideAction];
+
 export const TlsInspectionPolicyMinTlsVersion = {
     /**
      * Indicates no TLS version was specified.

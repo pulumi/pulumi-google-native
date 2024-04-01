@@ -9,7 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new FeatureOnlineStore in a given project and location.
- * Auto-naming is currently not supported for this resource.
  */
 export class FeatureOnlineStore extends pulumi.CustomResource {
     /**
@@ -51,7 +50,9 @@ export class FeatureOnlineStore extends pulumi.CustomResource {
      */
     public readonly dedicatedServingEndpoint!: pulumi.Output<outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse>;
     /**
-     * Optional. The settings for embedding management in FeatureOnlineStore.
+     * Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
+     *
+     * @deprecated Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
      */
     public readonly embeddingManagement!: pulumi.Output<outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse>;
     /**
@@ -68,9 +69,9 @@ export class FeatureOnlineStore extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+     * Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
      */
@@ -106,10 +107,10 @@ export class FeatureOnlineStore extends pulumi.CustomResource {
             resourceInputs["featureOnlineStoreId"] = args ? args.featureOnlineStoreId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["optimized"] = args ? args.optimized : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
@@ -147,7 +148,9 @@ export interface FeatureOnlineStoreArgs {
      */
     dedicatedServingEndpoint?: pulumi.Input<inputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs>;
     /**
-     * Optional. The settings for embedding management in FeatureOnlineStore.
+     * Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
+     *
+     * @deprecated Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
      */
     embeddingManagement?: pulumi.Input<inputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs>;
     /**
@@ -163,6 +166,10 @@ export interface FeatureOnlineStoreArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+     */
+    name?: pulumi.Input<string>;
     /**
      * Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
      */

@@ -211,6 +211,10 @@ export const RepositoryMode = {
      * A remote repository to serve artifacts from a remote source.
      */
     RemoteRepository: "REMOTE_REPOSITORY",
+    /**
+     * An AOSS repository provides artifacts from AOSS upstreams.
+     */
+    AossRepository: "AOSS_REPOSITORY",
 } as const;
 
 /**

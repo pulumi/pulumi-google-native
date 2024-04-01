@@ -63,6 +63,26 @@ export const EnvironmentFlexResourceSchedulingGoal = {
  */
 export type EnvironmentFlexResourceSchedulingGoal = (typeof EnvironmentFlexResourceSchedulingGoal)[keyof typeof EnvironmentFlexResourceSchedulingGoal];
 
+export const EnvironmentStreamingMode = {
+    /**
+     * Run in the default mode.
+     */
+    StreamingModeUnspecified: "STREAMING_MODE_UNSPECIFIED",
+    /**
+     * In this mode, message deduplication is performed against persistent state to make sure each message is processed and committed to storage exactly once.
+     */
+    StreamingModeExactlyOnce: "STREAMING_MODE_EXACTLY_ONCE",
+    /**
+     * Message deduplication is not performed. Messages might be processed multiple times, and the results are applied multiple times. Note: Setting this value also enables Streaming Engine and Streaming Engine resource-based billing.
+     */
+    StreamingModeAtLeastOnce: "STREAMING_MODE_AT_LEAST_ONCE",
+} as const;
+
+/**
+ * Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+ */
+export type EnvironmentStreamingMode = (typeof EnvironmentStreamingMode)[keyof typeof EnvironmentStreamingMode];
+
 export const ExecutionStageStateExecutionStageState = {
     /**
      * The job's run state isn't specified.
@@ -326,6 +346,26 @@ export const RuntimeEnvironmentIpConfiguration = {
  * Optional. Configuration for VM IPs.
  */
 export type RuntimeEnvironmentIpConfiguration = (typeof RuntimeEnvironmentIpConfiguration)[keyof typeof RuntimeEnvironmentIpConfiguration];
+
+export const RuntimeEnvironmentStreamingMode = {
+    /**
+     * Run in the default mode.
+     */
+    StreamingModeUnspecified: "STREAMING_MODE_UNSPECIFIED",
+    /**
+     * In this mode, message deduplication is performed against persistent state to make sure each message is processed and committed to storage exactly once.
+     */
+    StreamingModeExactlyOnce: "STREAMING_MODE_EXACTLY_ONCE",
+    /**
+     * Message deduplication is not performed. Messages might be processed multiple times, and the results are applied multiple times. Note: Setting this value also enables Streaming Engine and Streaming Engine resource-based billing.
+     */
+    StreamingModeAtLeastOnce: "STREAMING_MODE_AT_LEAST_ONCE",
+} as const;
+
+/**
+ * Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+ */
+export type RuntimeEnvironmentStreamingMode = (typeof RuntimeEnvironmentStreamingMode)[keyof typeof RuntimeEnvironmentStreamingMode];
 
 export const SdkVersionSdkSupportStatus = {
     /**

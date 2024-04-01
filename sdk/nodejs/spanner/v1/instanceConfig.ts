@@ -86,6 +86,10 @@ export class InstanceConfig extends pulumi.CustomResource {
      * The current instance config state. Applicable only for USER_MANAGED configs.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The storage limit in bytes per processing unit.
+     */
+    public /*out*/ readonly storageLimitPerProcessingUnit!: pulumi.Output<string>;
 
     /**
      * Create a InstanceConfig resource with the given unique name, arguments, and options.
@@ -116,6 +120,7 @@ export class InstanceConfig extends pulumi.CustomResource {
             resourceInputs["optionalReplicas"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["storageLimitPerProcessingUnit"] = undefined /*out*/;
         } else {
             resourceInputs["baseConfig"] = undefined /*out*/;
             resourceInputs["configType"] = undefined /*out*/;
@@ -130,6 +135,7 @@ export class InstanceConfig extends pulumi.CustomResource {
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["replicas"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["storageLimitPerProcessingUnit"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["project"] };

@@ -2,11 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
  * Creates a new FirewallEndpoint in a given project and location.
- * Auto-naming is currently not supported for this resource.
  */
 export class FirewallEndpoint extends pulumi.CustomResource {
     /**
@@ -40,7 +42,11 @@ export class FirewallEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly associatedNetworks!: pulumi.Output<string[]>;
     /**
-     * Optional. Project to bill on endpoint uptime usage.
+     * List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured.
+     */
+    public /*out*/ readonly associations!: pulumi.Output<outputs.networksecurity.v1beta1.FirewallEndpointAssociationReferenceResponse[]>;
+    /**
+     * Project to bill on endpoint uptime usage.
      */
     public readonly billingProjectId!: pulumi.Output<string>;
     /**
@@ -61,9 +67,9 @@ export class FirewallEndpoint extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * name of resource
+     * Immutable. Identifier. name of resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     public readonly organizationId!: pulumi.Output<string>;
     /**
      * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
@@ -93,6 +99,9 @@ export class FirewallEndpoint extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.billingProjectId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'billingProjectId'");
+            }
             if ((!args || args.firewallEndpointId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'firewallEndpointId'");
             }
@@ -104,16 +113,18 @@ export class FirewallEndpoint extends pulumi.CustomResource {
             resourceInputs["firewallEndpointId"] = args ? args.firewallEndpointId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["associatedNetworks"] = undefined /*out*/;
+            resourceInputs["associations"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["associatedNetworks"] = undefined /*out*/;
+            resourceInputs["associations"] = undefined /*out*/;
             resourceInputs["billingProjectId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -139,9 +150,9 @@ export class FirewallEndpoint extends pulumi.CustomResource {
  */
 export interface FirewallEndpointArgs {
     /**
-     * Optional. Project to bill on endpoint uptime usage.
+     * Project to bill on endpoint uptime usage.
      */
-    billingProjectId?: pulumi.Input<string>;
+    billingProjectId: pulumi.Input<string>;
     /**
      * Optional. Description of the firewall endpoint. Max length 2048 characters.
      */
@@ -155,6 +166,10 @@ export interface FirewallEndpointArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Immutable. Identifier. name of resource
+     */
+    name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
      * Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).

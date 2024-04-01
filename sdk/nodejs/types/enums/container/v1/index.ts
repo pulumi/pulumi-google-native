@@ -122,6 +122,26 @@ export const ClusterUpdateDesiredDatapathProvider = {
  */
 export type ClusterUpdateDesiredDatapathProvider = (typeof ClusterUpdateDesiredDatapathProvider)[keyof typeof ClusterUpdateDesiredDatapathProvider];
 
+export const ClusterUpdateDesiredInTransitEncryptionConfig = {
+    /**
+     * Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+     */
+    InTransitEncryptionConfigUnspecified: "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED",
+    /**
+     * In-transit encryption is disabled.
+     */
+    InTransitEncryptionDisabled: "IN_TRANSIT_ENCRYPTION_DISABLED",
+    /**
+     * Data in-transit is encrypted using inter-node transparent encryption.
+     */
+    InTransitEncryptionInterNodeTransparent: "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT",
+} as const;
+
+/**
+ * Specify the details of in-transit encryption.
+ */
+export type ClusterUpdateDesiredInTransitEncryptionConfig = (typeof ClusterUpdateDesiredInTransitEncryptionConfig)[keyof typeof ClusterUpdateDesiredInTransitEncryptionConfig];
+
 export const ClusterUpdateDesiredPrivateIpv6GoogleAccess = {
     /**
      * Default value. Same as DISABLED
@@ -513,6 +533,26 @@ export const NetworkConfigDatapathProvider = {
  */
 export type NetworkConfigDatapathProvider = (typeof NetworkConfigDatapathProvider)[keyof typeof NetworkConfigDatapathProvider];
 
+export const NetworkConfigInTransitEncryptionConfig = {
+    /**
+     * Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+     */
+    InTransitEncryptionConfigUnspecified: "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED",
+    /**
+     * In-transit encryption is disabled.
+     */
+    InTransitEncryptionDisabled: "IN_TRANSIT_ENCRYPTION_DISABLED",
+    /**
+     * Data in-transit is encrypted using inter-node transparent encryption.
+     */
+    InTransitEncryptionInterNodeTransparent: "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT",
+} as const;
+
+/**
+ * Specify the details of in-transit encryption.
+ */
+export type NetworkConfigInTransitEncryptionConfig = (typeof NetworkConfigInTransitEncryptionConfig)[keyof typeof NetworkConfigInTransitEncryptionConfig];
+
 export const NetworkConfigPrivateIpv6GoogleAccess = {
     /**
      * Default value. Same as DISABLED
@@ -713,6 +753,22 @@ export const SandboxConfigType = {
  */
 export type SandboxConfigType = (typeof SandboxConfigType)[keyof typeof SandboxConfigType];
 
+export const SecondaryBootDiskMode = {
+    /**
+     * MODE_UNSPECIFIED is when mode is not set.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * CONTAINER_IMAGE_CACHE is for using the secondary boot disk as a container image cache.
+     */
+    ContainerImageCache: "CONTAINER_IMAGE_CACHE",
+} as const;
+
+/**
+ * Disk mode (container image cache, etc.)
+ */
+export type SecondaryBootDiskMode = (typeof SecondaryBootDiskMode)[keyof typeof SecondaryBootDiskMode];
+
 export const SecurityPostureConfigMode = {
     /**
      * Default value not specified.
@@ -746,6 +802,10 @@ export const SecurityPostureConfigVulnerabilityMode = {
      * Applies basic vulnerability scanning on the cluster.
      */
     VulnerabilityBasic: "VULNERABILITY_BASIC",
+    /**
+     * Applies the Security Posture's vulnerability on cluster Enterprise level features.
+     */
+    VulnerabilityEnterprise: "VULNERABILITY_ENTERPRISE",
 } as const;
 
 /**

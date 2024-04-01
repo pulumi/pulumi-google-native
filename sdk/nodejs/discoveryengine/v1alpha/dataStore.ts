@@ -37,6 +37,10 @@ export class DataStore extends pulumi.CustomResource {
         return obj['__pulumiType'] === DataStore.__pulumiType;
     }
 
+    /**
+     * Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with non-`PUBLIC_WEBSITE` content config.
+     */
+    public readonly aclEnabled!: pulumi.Output<boolean>;
     public readonly collectionId!: pulumi.Output<string>;
     /**
      * Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
@@ -63,6 +67,14 @@ export class DataStore extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Configuration for Document understanding and enrichment.
+     */
+    public readonly documentProcessingConfig!: pulumi.Output<outputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse>;
+    /**
+     * Data store level identity provider config.
+     */
+    public /*out*/ readonly idpConfig!: pulumi.Output<outputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaIdpConfigResponse>;
+    /**
      * Immutable. The industry vertical that the data store registers.
      */
     public readonly industryVertical!: pulumi.Output<string>;
@@ -76,6 +88,10 @@ export class DataStore extends pulumi.CustomResource {
      * The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled.
      */
     public readonly solutionTypes!: pulumi.Output<string[]>;
+    /**
+     * The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against certain rules on schema. Learn more from [this doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+     */
+    public readonly startingSchema!: pulumi.Output<outputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaSchemaResponse>;
 
     /**
      * Create a DataStore resource with the given unique name, arguments, and options.
@@ -97,19 +113,24 @@ export class DataStore extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["aclEnabled"] = args ? args.aclEnabled : undefined;
             resourceInputs["collectionId"] = args ? args.collectionId : undefined;
             resourceInputs["contentConfig"] = args ? args.contentConfig : undefined;
             resourceInputs["createAdvancedSiteSearch"] = args ? args.createAdvancedSiteSearch : undefined;
             resourceInputs["dataStoreId"] = args ? args.dataStoreId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["documentProcessingConfig"] = args ? args.documentProcessingConfig : undefined;
             resourceInputs["industryVertical"] = args ? args.industryVertical : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["solutionTypes"] = args ? args.solutionTypes : undefined;
+            resourceInputs["startingSchema"] = args ? args.startingSchema : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["defaultSchemaId"] = undefined /*out*/;
+            resourceInputs["idpConfig"] = undefined /*out*/;
         } else {
+            resourceInputs["aclEnabled"] = undefined /*out*/;
             resourceInputs["collectionId"] = undefined /*out*/;
             resourceInputs["contentConfig"] = undefined /*out*/;
             resourceInputs["createAdvancedSiteSearch"] = undefined /*out*/;
@@ -117,11 +138,14 @@ export class DataStore extends pulumi.CustomResource {
             resourceInputs["dataStoreId"] = undefined /*out*/;
             resourceInputs["defaultSchemaId"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["documentProcessingConfig"] = undefined /*out*/;
+            resourceInputs["idpConfig"] = undefined /*out*/;
             resourceInputs["industryVertical"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["solutionTypes"] = undefined /*out*/;
+            resourceInputs["startingSchema"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["collectionId", "dataStoreId", "location", "project"] };
@@ -134,6 +158,10 @@ export class DataStore extends pulumi.CustomResource {
  * The set of arguments for constructing a DataStore resource.
  */
 export interface DataStoreArgs {
+    /**
+     * Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with non-`PUBLIC_WEBSITE` content config.
+     */
+    aclEnabled?: pulumi.Input<boolean>;
     collectionId: pulumi.Input<string>;
     /**
      * Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
@@ -152,6 +180,10 @@ export interface DataStoreArgs {
      */
     displayName: pulumi.Input<string>;
     /**
+     * Configuration for Document understanding and enrichment.
+     */
+    documentProcessingConfig?: pulumi.Input<inputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigArgs>;
+    /**
      * Immutable. The industry vertical that the data store registers.
      */
     industryVertical?: pulumi.Input<enums.discoveryengine.v1alpha.DataStoreIndustryVertical>;
@@ -165,4 +197,8 @@ export interface DataStoreArgs {
      * The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled.
      */
     solutionTypes?: pulumi.Input<pulumi.Input<enums.discoveryengine.v1alpha.DataStoreSolutionTypesItem>[]>;
+    /**
+     * The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against certain rules on schema. Learn more from [this doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+     */
+    startingSchema?: pulumi.Input<inputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaSchemaArgs>;
 }

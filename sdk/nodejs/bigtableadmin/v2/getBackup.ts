@@ -50,7 +50,7 @@ export interface GetBackupResult {
      */
     readonly sizeBytes: string;
     /**
-     * Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+     * Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
      */
     readonly sourceBackup: string;
     /**

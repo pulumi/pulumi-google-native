@@ -30,7 +30,9 @@ export interface GetInstanceGroupManagerResizeRequestArgs {
 
 export interface GetInstanceGroupManagerResizeRequestResult {
     /**
-     * The count of instances to create as part of this resize request.
+     * This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+     *
+     * @deprecated This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
      */
     readonly count: number;
     /**

@@ -124,6 +124,10 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     public readonly sourceDatabase!: pulumi.Output<outputs.datamigration.v1.DatabaseTypeResponse>;
     /**
+     * Optional. Configuration for SQL Server homogeneous migration.
+     */
+    public readonly sqlserverHomogeneousMigrationJobConfig!: pulumi.Output<outputs.datamigration.v1.SqlServerHomogeneousMigrationJobConfigResponse>;
+    /**
      * The current migration job state.
      */
     public readonly state!: pulumi.Output<string>;
@@ -185,6 +189,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["reverseSshConnectivity"] = args ? args.reverseSshConnectivity : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["sourceDatabase"] = args ? args.sourceDatabase : undefined;
+            resourceInputs["sqlserverHomogeneousMigrationJobConfig"] = args ? args.sqlserverHomogeneousMigrationJobConfig : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["staticIpConnectivity"] = args ? args.staticIpConnectivity : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -219,6 +224,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["reverseSshConnectivity"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;
             resourceInputs["sourceDatabase"] = undefined /*out*/;
+            resourceInputs["sqlserverHomogeneousMigrationJobConfig"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["staticIpConnectivity"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -302,6 +308,10 @@ export interface MigrationJobArgs {
      * The database engine type and provider of the source.
      */
     sourceDatabase?: pulumi.Input<inputs.datamigration.v1.DatabaseTypeArgs>;
+    /**
+     * Optional. Configuration for SQL Server homogeneous migration.
+     */
+    sqlserverHomogeneousMigrationJobConfig?: pulumi.Input<inputs.datamigration.v1.SqlServerHomogeneousMigrationJobConfigArgs>;
     /**
      * The current migration job state.
      */
